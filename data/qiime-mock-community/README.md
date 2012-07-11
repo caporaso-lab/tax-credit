@@ -1,1 +1,1 @@
-Known compositions of mock communities.
+QIIME analysis of mock community data.
