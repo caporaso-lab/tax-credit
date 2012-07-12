@@ -2,6 +2,18 @@ b8cb836da8a447c9bf80199110c43d33  L18S-1/s_8_1_sequences.fastq
 b8538e33c6e0efa9740f529f54978985  L18S-1/s_8_2_sequences.fastq
 f19dc667945e63bba4eb8863d63b966b  L18S-1/s_8_3_sequences.fastq
 
+# These two still need to be uploaded to S3.
+9fa2b73d8f6dc7c7ef673e2eef5aa1d0  S16S-1/s_4_1_withindex_sequence.fastq
+f1709fb44fdf44dfe3927a4be3363ace  S16S-1/s_4_1_withindex_sequence_barcodes.fastq
+
+79cbd34118c1068508b07fa854e17c5b  Broad1/A0A3V.I1.fastq
+42c3994525936ed9949e3d9c267533f0  Broad1/A0A3V.R1.fastq
+38a429d5c6fa6c7d935e15e282c29e9e  Broad1/A0A3V.R2.fastq
+
+f5d99b4cf6f7e736a30727c0aadb05cd  Broad2/s_G1_L001_I1_001.fastq
+6f253497eea93609661490cecc037175  Broad2/s_G1_L001_R1_001.fastq
+35d26269a59cb74c7ca858ea56ac4d80  Broad2/s_G1_L001_R2_001.fastq
+
 4069e174dda044b82091c9bfba1c0124  Turnbaugh2/16SPOOL9_fwd.txt
 ca273140b4d934ef21f8f2a85b4c62da  Turnbaugh2/16SPOOL9_rev.txt
 bbd0d74458549f4c114adde69d09c539  Turnbaugh2/16SPOOL9_run2_fwd.txt
