@@ -6,6 +6,10 @@ f19dc667945e63bba4eb8863d63b966b  L18S-1/s_8_3_sequences.fastq
 9fa2b73d8f6dc7c7ef673e2eef5aa1d0  S16S-1/s_4_1_withindex_sequence.fastq
 f1709fb44fdf44dfe3927a4be3363ace  S16S-1/s_4_1_withindex_sequence_barcodes.fastq
 
+4e6bf7ba25953cecc1eaa2afb14fd884  S16S-2/ISME_MiSeq_Index.fastq
+7a277411d581a96433e79fc139fa5010  S16S-2/ISME_MiSeq_Read1.fastq
+2af7078bc3a9b94d7f4b473bb5a09280  S16S-2/ISME_MiSeq_Read2.fastq
+
 79cbd34118c1068508b07fa854e17c5b  Broad1/A0A3V.I1.fastq
 42c3994525936ed9949e3d9c267533f0  Broad1/A0A3V.R1.fastq
 38a429d5c6fa6c7d935e15e282c29e9e  Broad1/A0A3V.R2.fastq
@@ -18,8 +22,8 @@ f5d99b4cf6f7e736a30727c0aadb05cd  Broad2/s_G1_L001_I1_001.fastq
 e024f50826cdfed441d61a3823219147  Broad3/combined.read1.fastq
 14b12850c4f2ecc7cb9a41c82e4ca4ec  Broad3/combined.read2.fastq
 
-b8ee3bcdf767960896ee05ad3e337aef  Turnbaugh1/s_6_1_sequences_barcodes.fastq
 8ae4a45d4f991d5de20ab170d97b7863  Turnbaugh1/s_6_1_sequences.fastq
+b8ee3bcdf767960896ee05ad3e337aef  Turnbaugh1/s_6_1_sequences_barcodes.fastq
 
 4069e174dda044b82091c9bfba1c0124  Turnbaugh2/16SPOOL9_fwd.txt
 ca273140b4d934ef21f8f2a85b4c62da  Turnbaugh2/16SPOOL9_rev.txt
