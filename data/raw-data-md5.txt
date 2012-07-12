@@ -2,13 +2,15 @@ b8cb836da8a447c9bf80199110c43d33  L18S-1/s_8_1_sequences.fastq
 b8538e33c6e0efa9740f529f54978985  L18S-1/s_8_2_sequences.fastq
 f19dc667945e63bba4eb8863d63b966b  L18S-1/s_8_3_sequences.fastq
 
-# These two still need to be uploaded to S3.
 9fa2b73d8f6dc7c7ef673e2eef5aa1d0  S16S-1/s_4_1_withindex_sequence.fastq
 f1709fb44fdf44dfe3927a4be3363ace  S16S-1/s_4_1_withindex_sequence_barcodes.fastq
 
 4e6bf7ba25953cecc1eaa2afb14fd884  S16S-2/ISME_MiSeq_Index.fastq
 7a277411d581a96433e79fc139fa5010  S16S-2/ISME_MiSeq_Read1.fastq
 2af7078bc3a9b94d7f4b473bb5a09280  S16S-2/ISME_MiSeq_Read2.fastq
+
+7615e7794fdc467bb305b1186a0ad219  S16S-3/MiSeqPhased.fastq
+82587bd246c1c67b6c0a1109def53e36  S16S-3/MiSeqPhased.index.fastq
 
 79cbd34118c1068508b07fa854e17c5b  Broad1/A0A3V.I1.fastq
 42c3994525936ed9949e3d9c267533f0  Broad1/A0A3V.R1.fastq

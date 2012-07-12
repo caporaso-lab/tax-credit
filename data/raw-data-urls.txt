@@ -2,9 +2,21 @@ https://s3.amazonaws.com/illumina-mock-communities-raw-data/L18S-1/s_8_1_sequenc
 https://s3.amazonaws.com/illumina-mock-communities-raw-data/L18S-1/s_8_2_sequences.fastq.gz
 https://s3.amazonaws.com/illumina-mock-communities-raw-data/L18S-1/s_8_3_sequences.fastq.gz
 
+# The following file had to be split into three parts due to Amazon's 5GB limit
+# per file. To recombine, run:
+#   cat s_4_1_withindex_sequence.fastq.gz_part* > s_4_1_withindex_sequence.fastq.gz
+# And then gunzip the file and check the MD5 sum.
+https://s3.amazonaws.com/illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence.fastq.gz_part0
+https://s3.amazonaws.com/illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence.fastq.gz_part1
+https://s3.amazonaws.com/illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence.fastq.gz_part2
+https://s3.amazonaws.com/illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence_barcodes.fastq.gz
+
 https://s3.amazonaws.com/illumina-mock-communities-raw-data/S16S-2/ISME_MiSeq_Index.fastq.gz
 https://s3.amazonaws.com/illumina-mock-communities-raw-data/S16S-2/ISME_MiSeq_Read1.fastq.gz
 https://s3.amazonaws.com/illumina-mock-communities-raw-data/S16S-2/ISME_MiSeq_Read2.fastq.gz
+
+https://s3.amazonaws.com/illumina-mock-communities-raw-data/S16S-3/MiSeqPhased.fastq.gz
+https://s3.amazonaws.com/illumina-mock-communities-raw-data/S16S-3/MiSeqPhased.index.fastq.gz
 
 https://s3.amazonaws.com/illumina-mock-communities-raw-data/Broad1/A0A3V.I1.fastq.gz
 https://s3.amazonaws.com/illumina-mock-communities-raw-data/Broad1/A0A3V.R1.fastq.gz
