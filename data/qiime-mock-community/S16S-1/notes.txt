@@ -1,0 +1,13 @@
+# Commands were run by Jai Ram Rideout from 07/11/2012 to XX/XX/XXXX using
+# QIIME 1.5.0-dev, svn revision 3119. Used gg_otus_4feb2011 as the reference
+# database.
+
+# RDP 0.80
+assign_taxonomy.py -i rep_set.fna -o rdp_assigned_taxonomy_0.80 -c 0.80 -m rdp -r ../gg_otus_4feb2011/rep_set/gg_97_otus_4feb2011.fasta -t ../gg_otus_4feb2011/taxonomies/greengenes_tax_rdp_train.txt
+add_taxa.py -i otu_table_mc2.biom -o rdp_assigned_taxonomy_0.80/otu_table_mc2_w_taxa.biom -t rdp_assigned_taxonomy_0.80/rep_set_tax_assignments.txt
+summarize_taxa.py -i rdp_assigned_taxonomy_0.80/otu_table_mc2_w_taxa.biom -o rdp_assigned_taxonomy_0.80/
+
+# RDP 0.60
+assign_taxonomy.py -i rep_set.fna -o rdp_assigned_taxonomy_0.60 -c 0.60 -m rdp -r ../gg_otus_4feb2011/rep_set/gg_97_otus_4feb2011.fasta -t ../gg_otus_4feb2011/taxonomies/greengenes_tax_rdp_train.txt
+add_taxa.py -i otu_table_mc2.biom -o rdp_assigned_taxonomy_0.60/otu_table_mc2_w_taxa.biom -t rdp_assigned_taxonomy_0.60/rep_set_tax_assignments.txt
+summarize_taxa.py -i rdp_assigned_taxonomy_0.60/otu_table_mc2_w_taxa.biom -o rdp_assigned_taxonomy_0.60/
