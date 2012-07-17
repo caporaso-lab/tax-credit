@@ -10,11 +10,13 @@ __maintainer__ = "Jai Ram Rideout"
 __email__ = "jai.rideout@gmail.com"
 __status__ = "Development"
 
+from qiime.parse import parse_taxa_summary_table
 from qiime.util import (parse_command_line_parameters,
                         get_options_lookup,
                         make_option)
 
-from taxcompare.compare_taxa_summaries import compare_taxa_summaries
+from taxcompare.compare_taxa_summaries import (compare_taxa_summaries,
+        comparison_modes, correlation_types)
 
 options_lookup = get_options_lookup()
 
@@ -30,9 +32,9 @@ script_info['output_description']= """
 script_info['required_options'] = [
     make_option('-i', '--taxa_summary_fps', type='existing_filepaths',
         help='the input taxa summary filepaths, comma-separated'),
-    options_lookup['output_fp'],
+    options_lookup['output_dir'],
     make_option('-m', '--comparison_mode', type='choice',
-        choices=['paired', 'expected'], help='the type of comparison to '
+        choices=comparison_modes, help='the type of comparison to '
         'perform. "paired" will compare each sample in the taxa summary '
         'files. "expected" will compare each sample in the first taxa summary '
         'file to an expected taxa summary (specified in the second taxa '
@@ -42,7 +44,7 @@ script_info['required_options'] = [
 ]
 script_info['optional_options'] = [
     make_option('-c', '--correlation_type', type='choice',
-        choices=['pearson', 'spearman'], help='the type of correlation '
+        choices=correlation_types, help='the type of correlation '
         'measure to use [default: %default]', default='pearson'),
     make_option('-n', '--normalized_count', type='int',
         help='multiply all values in the taxa summary by this value. '
@@ -55,11 +57,11 @@ def main():
     option_parser, opts, args = parse_command_line_parameters(**script_info)
 
     if len(opts.taxa_summary_fps) != 2:
-        option_parser.error("Exactly two taxa summaries are required.")
+        option_parser.error("Exactly two taxa summary files are required.")
 
-    results = compare_sorted_taxa_summaries(
-            open(opts.taxa_summary_fps[0], 'U'),
-            open(opts.taxa_summary_fps[1], 'U'),
+    results = compare_taxa_summaries(
+            parse_taxa_summary_table(open(opts.taxa_summary_fps[0], 'U')),
+            parse_taxa_summary_table(open(opts.taxa_summary_fps[1], 'U')),
             opts.comparison_mode,
             correlation_type=opts.correlation_type,
             normalized_count=opts.normalized_count)
