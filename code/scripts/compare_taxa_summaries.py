@@ -10,13 +10,16 @@ __maintainer__ = "Jai Ram Rideout"
 __email__ = "jai.rideout@gmail.com"
 __status__ = "Development"
 
+from os.path import join
+from cogent.util.misc import create_dir
 from qiime.parse import parse_taxa_summary_table
 from qiime.util import (parse_command_line_parameters,
                         get_options_lookup,
                         make_option)
 
-from taxcompare.compare_taxa_summaries import (compare_taxa_summaries,
-        comparison_modes, correlation_types)
+from taxcompare.compare_taxa_summaries import (add_filename_suffix,
+        compare_all_to_expected, format_taxa_summary, comparison_modes,
+        correlation_types)
 
 options_lookup = get_options_lookup()
 
@@ -31,7 +34,7 @@ script_info['output_description']= """
 
 script_info['required_options'] = [
     make_option('-i', '--taxa_summary_fps', type='existing_filepaths',
-        help='the input taxa summary filepaths, comma-separated'),
+        help='the two input taxa summary filepaths, comma-separated'),
     options_lookup['output_dir'],
     make_option('-m', '--comparison_mode', type='choice',
         choices=comparison_modes, help='the type of comparison to '
@@ -45,11 +48,7 @@ script_info['required_options'] = [
 script_info['optional_options'] = [
     make_option('-c', '--correlation_type', type='choice',
         choices=correlation_types, help='the type of correlation '
-        'measure to use [default: %default]', default='pearson'),
-    make_option('-n', '--normalized_count', type='int',
-        help='multiply all values in the taxa summary by this value. '
-        'Useful to, for example, normalize frequency table to median '
-        'seqs/sample count [default: %default]', default=1)
+        'measure to use [default: %default]', default='pearson')
 ]
 script_info['version'] = __version__
 
@@ -59,12 +58,40 @@ def main():
     if len(opts.taxa_summary_fps) != 2:
         option_parser.error("Exactly two taxa summary files are required.")
 
-    results = compare_taxa_summaries(
-            parse_taxa_summary_table(open(opts.taxa_summary_fps[0], 'U')),
-            parse_taxa_summary_table(open(opts.taxa_summary_fps[1], 'U')),
-            opts.comparison_mode,
-            correlation_type=opts.correlation_type,
-            normalized_count=opts.normalized_count)
+    # Create the output dir if it doesn't already exist.
+    try:
+        create_dir(opts.output_dir)
+    except:
+        option_parser.error("Could not create or access output directory "
+                            "specified with the -o option.")
+
+    if opts.comparison_mode == 'expected':
+        results = compare_all_to_expected(
+                parse_taxa_summary_table(open(opts.taxa_summary_fps[0], 'U')),
+                parse_taxa_summary_table(open(opts.taxa_summary_fps[1], 'U')),
+                correlation_type=opts.correlation_type)
+
+        # Write out the sorted and filled taxa summaries, basing their
+        # filenames on the original input filenames.
+        for taxa_summary_fp, filled_taxa_summary in zip(opts.taxa_summary_fps,
+                                                        results[:2]):
+            taxa_summary_filled_fp = add_filename_suffix(taxa_summary_fp,
+                                                         '_sorted_and_filled')
+            filled_taxa_summary_f = open(join(opts.output_dir,
+                                              taxa_summary_filled_fp), 'w')
+            filled_taxa_summary_f.write(format_taxa_summary(filled_taxa_summary))
+            filled_taxa_summary_f.close()
+
+        # Write the comparison matrix.
+        comp_matrix_f = open(join(opts.output_dir,
+                                  'all_samples_vs_expected.txt'), 'w')
+        comp_matrix_f.write(results[2])
+        comp_matrix_f.close()
+    elif opts.comparison_mode == 'paired':
+        pass
+    else:
+        option_parser.error("Invalid comparison mode '%s'. Must be one of %r."
+                            % (opts.comparison_mode, comparison_modes))
 
 
 if __name__ == "__main__":

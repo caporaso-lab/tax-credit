@@ -12,33 +12,51 @@ __status__ = "Development"
 
 """Contains functions used in the compare_taxa_summaries.py script."""
 
+from os.path import basename, splitext
 from numpy import array, sqrt
 from cogent.maths.stats.test import pearson
+from qiime.format import format_matrix
 
 comparison_modes = ['paired', 'expected']
 correlation_types = ['pearson', 'spearman']
 
-def compare_taxa_summaries(taxa_summary1, taxa_summary2, comparison_mode,
-                           correlation_type='pearson', normalized_count=1):
+def compare_all_to_expected(observed_taxa_summary, expected_taxa_summary,
+                            correlation_type='pearson'):
+    correlation_fn = _get_correlation_function(correlation_type)
+    filled_obs_summary, filled_exp_summary = _sort_and_fill_taxa_summaries(
+            [observed_taxa_summary, expected_taxa_summary])
+    correlations = _compute_all_to_expected_correlations(filled_obs_summary,
+            filled_exp_summary, correlation_fn)
+
+    # Create the comparison matrix.
+    header = ('# All samples in the first taxa summary file are compared to '
+              'the single sample "%s" in the second taxa summary file using '
+              '%s correlation.\n' % (filled_exp_summary[0][0],
+                                     correlation_type))
+    comparison_matrix = header + format_matrix(correlations,
+            filled_obs_summary[0], filled_exp_summary[0])
+    return filled_obs_summary, filled_exp_summary, comparison_matrix
+
+def add_filename_suffix(filepath, suffix):
+    root, extension = splitext(basename(filepath))
+    return root + suffix + extension
+
+def format_taxa_summary(taxa_summary):
+    result = 'Taxon\t' + '\t'.join(taxa_summary[0]) + '\n'
+    for taxon, row in zip(taxa_summary[1], taxa_summary[2]):
+        row = map(str, row)
+        result += '%s\t' % taxon + '\t'.join(row) + '\n'
+    return result
+
+def _get_correlation_function(correlation_type):
     if correlation_type == 'pearson':
-        correlation_fn = pearson
+        correlation_fn = _pearson_correlation
     elif correlation_type == 'spearman':
-        correlation_fn = spearman_correlation
+        correlation_fn = _spearman_correlation
     else:
         raise ValueError("Invalid correlation type '%s'. Must be one of %r." %
                          (correlation_type, correlation_types))
-
-    taxa_summary1, taxa_summary2 = _sort_and_fill_taxa_summaries(
-            [taxa_summary1, taxa_summary2])
-
-    if comparison_mode == 'paired':
-        pass
-    elif comparison_mode == 'expected':
-        correlations = _compare_all_to_expected(taxa_summary1, taxa_summary2,
-                                                correlation_fn)
-    else:
-        raise ValueError("Invalid comparison mode '%s'. Must be one of %r." %
-                         (comparison_mode, comparison_modes))
+    return correlation_fn
 
 def _sort_and_fill_taxa_summaries(taxa_summaries):
     master_taxa = []
@@ -63,8 +81,9 @@ def _sort_and_fill_taxa_summaries(taxa_summaries):
         result.append((samples, master_taxa, array(data)))
     return result
 
-def _compare_all_to_expected(observed_taxa_summary, expected_taxa_summary,
-                             correlation_fn):
+def _compute_all_to_expected_correlations(observed_taxa_summary,
+                                          expected_taxa_summary,
+                                          correlation_fn):
     # Compare each sample in the first taxa summary to the single sample in
     # the second. Make sure that the second taxa summary has only one
     # sample.
@@ -76,18 +95,26 @@ def _compare_all_to_expected(observed_taxa_summary, expected_taxa_summary,
 
     result = []
     for sample_num in range(len(observed_taxa_summary[0])):
-        result.append(correlation_fn(
+        result.append([correlation_fn(
             observed_taxa_summary[2].T[sample_num],
-            expected_taxa_summary[2].T[0]))
-#        print "x: %r" % observed_taxa_summary[2].T[sample_num]
-#        print "y: %r" % expected_taxa_summary[2].T[0]
+            expected_taxa_summary[2].T[0])])
     return result
+
+def _pearson_correlation(vec1, vec2):
+    if len(vec1) != len(vec2):
+        raise ValueError("The length of the two vectors must be the same in "
+                         "order to calculate the Pearson correlation "
+                         "coefficient.")
+    if len(vec1) < 2:
+        raise ValueError("The two vectors must both contain at least 2 "
+                "elements. The vectors are of length %d." % len(vec1))
+    return pearson(vec1, vec2)
 
 # These next two functions are taken from the qiime.stats.BioEnv class. We
 # don't use the class itself because we don't have the required data to
 # instantiate one, so the methods are copied here for convenience. TODO: this
 # should be moved into pycogent at some point.
-def spearman_correlation(vec1, vec2, ranked=False):
+def _spearman_correlation(vec1, vec2, ranked=False):
     """Calculates the the Spearman distance of two vectors."""
     try:
         temp = len(vec1)
