@@ -17,8 +17,8 @@ from cogent.util.unit_test import TestCase, main
 from taxcompare.compare_taxa_summaries import (add_filename_suffix,
         compare_all_to_expected, _compute_all_to_expected_correlations,
         format_taxa_summary, _get_correlation_function,
-        _sort_and_fill_taxa_summaries, _pearson_correlation,
-        _spearman_correlation)
+        _make_compatible_taxa_summaries, _sort_and_fill_taxa_summaries,
+        _pearson_correlation, _spearman_correlation)
 
 class CompareTaxaSummariesTests(TestCase):
     """Tests for the compare_all_to_expected.py module."""
@@ -70,6 +70,19 @@ class CompareTaxaSummariesTests(TestCase):
         self.taxa_summary5 = (['Even1','Even2'], ['foo'],
                                    array([[0.5, 0.6]]))
 
+        # Different sample ID from self.taxa_summary5.
+        self.taxa_summary6 = (['Even1','Even3'], ['foo'],
+                                   array([[0.1, 0.6]]))
+
+        # Samples are in different orders from self.taxa_summary6.
+        self.taxa_summary7 = (['Even3','Even1'], ['foo'],
+                                   array([[0.2, 0.77]]))
+
+        # Samples are not in alphabetical order, and we have multiple taxa.
+        self.taxa_summary8 = (['Even3','Even1', 'S7'], ['foo', 'bar'],
+                                   array([[0.2, 0.77, 0.001],
+                                          [0.45, 0.9, 0.0]]))
+
         # For testing all versus expected comparison mode.
         self.taxa_summary_exp1 = (['Expected'], ['Eukarya', 'Bacteria'],
                                    array([[0.5], [0.6]]))
@@ -108,17 +121,6 @@ class CompareTaxaSummariesTests(TestCase):
                 self.taxa_summary_exp1, 'spearman')
         self.assertEqual(obs, exp)
 
-    def test_get_correlation_function(self):
-        """Test returns correct correlation function."""
-        self.assertEqual(_get_correlation_function('pearson'),
-                         _pearson_correlation)
-        self.assertEqual(_get_correlation_function('spearman'),
-                         _spearman_correlation)
-
-    def test_get_correlation_function_invalid_correlation_type(self):
-        """Test with an invalid (unrecognized) correlation type."""
-        self.assertRaises(ValueError, _get_correlation_function, 'foo')
-
     def test_add_filename_suffix(self):
         """Test adding a suffix to a filename works correctly."""
         self.assertEqual(add_filename_suffix('/foo/bar/baz.txt', 'z'),
@@ -146,6 +148,98 @@ class CompareTaxaSummariesTests(TestCase):
         exp = 'Taxon\tExpected\nEukarya\t0.5\nBacteria\t0.6\nArchaea\t0.4\n'
         obs = format_taxa_summary(self.taxa_summary_exp2)
         self.assertEqual(obs, exp)
+
+    def test_get_correlation_function(self):
+        """Test returns correct correlation function."""
+        self.assertEqual(_get_correlation_function('pearson'),
+                         _pearson_correlation)
+        self.assertEqual(_get_correlation_function('spearman'),
+                         _spearman_correlation)
+
+    def test_get_correlation_function_invalid_correlation_type(self):
+        """Test with an invalid (unrecognized) correlation type."""
+        self.assertRaises(ValueError, _get_correlation_function, 'foo')
+
+    def test_make_compatible_taxa_summaries_one_ts(self):
+        """Test making compatible taxa summaries works correctly on one ts."""
+        # Should return the same taxa summary since no samples should get
+        # stripped out, and the sample IDs are already in alphabetical order.
+        obs = _make_compatible_taxa_summaries([self.taxa_summary1])
+        self.assertFloatEqual(obs, [self.taxa_summary1])
+
+        obs = _make_compatible_taxa_summaries([self.taxa_summary6])
+        self.assertFloatEqual(obs, [self.taxa_summary6])
+
+        # The sample IDs will be reordered to be in alphabetical order.
+        exp = [(['Even1', 'Even3'], ['foo'], array([[ 0.77,  0.2 ]]))]
+        obs = _make_compatible_taxa_summaries([self.taxa_summary7])
+        self.assertFloatEqual(obs, exp)
+
+        # The sample IDs will be reordered to be in alphabetical order (this
+        # one includes multiple taxa).
+        exp = [(['Even1', 'Even3', 'S7'], ['foo', 'bar'],
+                array([[ 0.77 ,  0.2  ,  0.001], [ 0.9  ,  0.45 ,  0.   ]]))]
+        obs = _make_compatible_taxa_summaries([self.taxa_summary8])
+        self.assertFloatEqual(obs, exp)
+
+    def test_make_compatible_taxa_summaries_two_ts(self):
+        """Test making compatible taxa summaries works correctly on two ts."""
+        exp = [(['Even1'], ['foo'], array([[ 0.5]])), (['Even1'], ['foo'],
+                array([[ 0.1]]))]
+        obs = _make_compatible_taxa_summaries([self.taxa_summary5,
+            self.taxa_summary6])
+        self.assertFloatEqual(obs, exp)
+
+    def test_make_compatible_taxa_summaries_multiple_ts(self):
+        """Test making compatible taxa summaries works correctly on many ts."""
+        exp = [(['Even1'], ['foo'], array([[ 0.5]])), (['Even1'], ['foo'],
+                array([[ 0.1]])), (['Even1'], ['Eukarya'], array([[ 0.5]]))]
+        obs = _make_compatible_taxa_summaries([self.taxa_summary5,
+            self.taxa_summary6, self.taxa_summary4])
+        self.assertFloatEqual(obs, exp)
+
+    def test_make_compatible_taxa_summaries_already_compatible(self):
+        """Test on taxa summaries that are already compatible."""
+        # Using two compatible ts.
+        obs = _make_compatible_taxa_summaries([self.taxa_summary4,
+                                               self.taxa_summary5])
+        self.assertFloatEqual(obs, [self.taxa_summary4, self.taxa_summary5])
+
+        # Using four compatible ts.
+        obs = _make_compatible_taxa_summaries([self.taxa_summary4,
+                                               self.taxa_summary5,
+                                               self.taxa_summary5,
+                                               self.taxa_summary4])
+        self.assertFloatEqual(obs, [self.taxa_summary4, self.taxa_summary5,
+                                    self.taxa_summary5, self.taxa_summary4])
+
+    def test_make_compatible_taxa_summaries_incompatible(self):
+        """Test on taxa summaries that have no common sample IDs."""
+        # Using two incompatible ts.
+        self.assertRaises(ValueError, _make_compatible_taxa_summaries,
+                          [self.taxa_summary3, self.taxa_summary4])
+
+        # Using three incompatible ts.
+        self.assertRaises(ValueError, _make_compatible_taxa_summaries,
+            [self.taxa_summary1, self.taxa_summary2, self.taxa_summary3])
+
+    def test_make_compatible_taxa_summaries_unordered(self):
+        """Test on taxa summaries whose sample IDs are in different orders."""
+        # Using two compatible ts.
+        exp = [(['Even1', 'Even3'], ['foo'], array([[ 0.1,  0.6]])),
+               (['Even1', 'Even3'], ['foo'], array([[ 0.77,  0.2 ]]))]
+        obs = _make_compatible_taxa_summaries(
+                [self.taxa_summary6, self.taxa_summary7])
+        self.assertFloatEqual(obs, exp)
+
+        #self.taxa_summary6 = (['Even1','Even3'], ['foo'],
+        #                           array([[0.1, 0.6]]))
+        #self.taxa_summary7 = (['Even3','Even1'], ['foo'],
+        #                           array([[0.2, 0.77]]))
+
+        # Using three incompatible ts.
+        #self.assertRaises(ValueError, _make_compatible_taxa_summaries,
+        #    [self.taxa_summary1, self.taxa_summary2, self.taxa_summary3])
 
     def test_sort_and_fill_taxa_summaries(self):
         """Test _sort_and_fill_taxa_summaries functions as expected."""

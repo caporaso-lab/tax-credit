@@ -37,6 +37,23 @@ def compare_all_to_expected(observed_taxa_summary, expected_taxa_summary,
             filled_obs_summary[0], filled_exp_summary[0])
     return filled_obs_summary, filled_exp_summary, comparison_matrix
 
+def compare_all_to_all(taxa_summary1, taxa_summary2,
+                       correlation_type='pearson'):
+    correlation_fn = _get_correlation_function(correlation_type)
+    filled_summary1, filled_summary2 = _sort_and_fill_taxa_summaries(
+            _make_compatible_taxa_summaries([taxa_summary1, taxa_summary2]))
+    correlations = _compute_all_to_all_correlations(filled_summary1,
+            filled_summary2, correlation_fn)
+
+    # Create the comparison matrix.
+    header = ('# All samples in the first taxa summary file are compared to '
+              'the single sample "%s" in the second taxa summary file using '
+              '%s correlation.\n' % (filled_exp_summary[0][0],
+                                     correlation_type))
+    comparison_matrix = header + format_matrix(correlations,
+            filled_obs_summary[0], filled_exp_summary[0])
+    return filled_obs_summary, filled_exp_summary, comparison_matrix
+
 def add_filename_suffix(filepath, suffix):
     root, extension = splitext(basename(filepath))
     return root + suffix + extension
@@ -58,9 +75,33 @@ def _get_correlation_function(correlation_type):
                          (correlation_type, correlation_types))
     return correlation_fn
 
+def _make_compatible_taxa_summaries(taxa_summaries):
+    """
+    This could be merged with _sort_and_fill_taxa_summaries(), but is kept
+    separate in order to keep the functions short. This may need to be merged
+    with the other function if performance becomes an issue.
+    """
+    # Only keep the samples that match between all of the taxa summaries.
+    sample_ids = [set(taxa_summary[0]) for taxa_summary in taxa_summaries]
+    common_sample_ids = sorted(list(set.intersection(*sample_ids)))
+
+    if len(common_sample_ids) == 0:
+        raise ValueError("No sample IDs matched between all %d taxa "
+                         "summaries. The taxa summaries are incompatible."
+                         % len(taxa_summaries))
+
+    result = []
+    for taxa_summary in taxa_summaries:
+        orig_samp_ids = taxa_summary[0]
+        orig_taxa = taxa_summary[1]
+        orig_data = taxa_summary[2].T
+        new_data = [orig_data[orig_samp_ids.index(samp_id)] \
+                    for samp_id in common_sample_ids]
+        result.append((common_sample_ids, orig_taxa, array(new_data).T))
+    return result
+
 def _sort_and_fill_taxa_summaries(taxa_summaries):
     master_taxa = []
-
     for ts in taxa_summaries:
         master_taxa += ts[1]
     master_taxa = list(set(master_taxa))
@@ -93,6 +134,15 @@ def _compute_all_to_expected_correlations(observed_taxa_summary,
                 "summary file against when the comparison mode is 'expected'. "
                 "You provided %d samples." % len(expected_taxa_summary[0]))
 
+    result = []
+    for sample_num in range(len(observed_taxa_summary[0])):
+        result.append([correlation_fn(
+            observed_taxa_summary[2].T[sample_num],
+            expected_taxa_summary[2].T[0])])
+    return result
+
+def _compute_paired_sample_correlations(taxa_summary1, taxa_summary2,
+                                        correlation_fn):
     result = []
     for sample_num in range(len(observed_taxa_summary[0])):
         result.append([correlation_fn(
