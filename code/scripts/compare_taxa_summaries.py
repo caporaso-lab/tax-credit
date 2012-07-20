@@ -45,8 +45,10 @@ script_info['script_usage'].append(("Paired sample comparison",
 "summary files using the pearson correlation coefficient.",
 "%prog -i ts_rdp_0.60.txt,ts_rdp_0.80.txt -m paired -o taxa_comp"))
 script_info['script_usage'].append(("Paired sample comparison with sample ID "
-"map", "Compare all samples that have sample ID mappings in the sample ID "
-"map.", "%prog -i ts_rdp_0.60.txt,ts_rdp_0.80.txt -m paired -o taxa_comp"))
+"map", "Compare all samples that have mappings in the sample ID "
+"map using the pearson correlation coefficient.",
+"%prog -i ts_rdp_0.80.txt,ts_rdp_0.60_renamed.txt -m paired -o taxa_comp -s "
+"sample_id_map.txt"))
 script_info['script_usage'].append(("Expected sample comparison",
 "Compare all samples in the first taxa summary file to a taxa summary file "
 "that contains a single expected, or known, sample using the spearman "
