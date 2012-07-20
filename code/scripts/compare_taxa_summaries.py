@@ -10,7 +10,7 @@ __maintainer__ = "Jai Ram Rideout"
 __email__ = "jai.rideout@gmail.com"
 __status__ = "Development"
 
-from os.path import join
+from os.path import basename, join
 from cogent.util.misc import create_dir
 from qiime.parse import parse_taxa_summary_table
 from qiime.util import (parse_command_line_parameters, get_options_lookup,
@@ -43,7 +43,15 @@ script_info['script_usage'] = []
 script_info['script_usage'].append(("Paired sample comparison",
 "Compare all samples that have matching sample IDs between the two input taxa "
 "summary files using the pearson correlation coefficient.",
-"%prog -i ts1.txt,ts2.txt -m paired -o taxa_comp"))
+"%prog -i ts_rdp_0.60.txt,ts_rdp_0.80.txt -m paired -o taxa_comp"))
+script_info['script_usage'].append(("Paired sample comparison with sample ID "
+"map", "Compare all samples that have sample ID mappings in the sample ID "
+"map.", "%prog -i ts_rdp_0.60.txt,ts_rdp_0.80.txt -m paired -o taxa_comp"))
+script_info['script_usage'].append(("Expected sample comparison",
+"Compare all samples in the first taxa summary file to a taxa summary file "
+"that contains a single expected, or known, sample using the spearman "
+"correlation coefficient.",
+"%prog -i ts_rdp_0.60.txt,expected.txt -m expected -o taxa_comp -c spearman"))
 script_info['output_description'] = """
 The script will always output three files to the specified output directory.
 Two files will be the sorted and filled versions of the input taxa summary
@@ -119,9 +127,19 @@ def main():
             sample_id_map=sample_id_map)
 
     # Write out the sorted and filled taxa summaries, basing their
-    # filenames on the original input filenames.
-    for orig_ts_fp, filled_ts_lines in zip(opts.taxa_summary_fps, results[:2]):
-        filled_ts_fp = add_filename_suffix(orig_ts_fp, '_sorted_and_filled')
+    # filenames on the original input filenames. If the filenames are the same,
+    # append a number to each filename.
+    same_filenames = False
+    if basename(opts.taxa_summary_fps[0]) == \
+       basename(opts.taxa_summary_fps[1]):
+        same_filenames = True
+
+    for orig_ts_fp, filled_ts_lines, file_num in zip(opts.taxa_summary_fps,
+                                                     results[:2], range(0, 2)):
+        filename_suffix = '_sorted_and_filled'
+        if same_filenames:
+            filename_suffix += '_%d' % file_num
+        filled_ts_fp = add_filename_suffix(orig_ts_fp, filename_suffix)
         filled_ts_f = open(join(opts.output_dir, filled_ts_fp), 'w')
         filled_ts_f.write(filled_ts_lines)
         filled_ts_f.close()

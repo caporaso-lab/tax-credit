@@ -60,12 +60,13 @@ def compare_taxa_summaries(taxa_summary1, taxa_summary2, comparison_mode,
             'paired'. If not provided, only matching sample IDs between the two
             taxa summaries will be compared
     """
+    # Sort and fill the taxa summaries so that we can compare them.
     correlation_fn = _get_correlation_function(correlation_type)
     filled_ts1, filled_ts2 = _sort_and_fill_taxa_summaries([taxa_summary1,
                                                             taxa_summary2])
-    header = "# Correlation coefficient: %s" % correlation_type
-
     if comparison_mode == 'paired':
+        # Make sure that each sample is paired up to the sample it needs to be
+        # compared against according to the sample ID map.
         compatible_ts1, compatible_ts2 = _make_compatible_taxa_summaries(
                 filled_ts1, filled_ts2, sample_id_map)
         correlations = _compute_paired_sample_correlations(compatible_ts1,
@@ -77,6 +78,9 @@ def compare_taxa_summaries(taxa_summary1, taxa_summary2, comparison_mode,
         raise ValueError("Invalid comparison mode '%s'. Must be one of %r." %
                          (comparison_mode, comparison_modes))
 
+    # Format the correlation vector with a header describing the correlation
+    # coefficient that was used.
+    header = "# Correlation coefficient: %s" % correlation_type
     correlation_vector = _format_correlation_vector(correlations, header)
     return (_format_taxa_summary(filled_ts1), _format_taxa_summary(filled_ts2),
            correlation_vector)
@@ -96,6 +100,7 @@ def parse_sample_id_map(sample_id_map_f):
     for line in sample_id_map_f:
         line = line.strip()
         if line:
+            # Only try to parse lines that aren't just whitespace.
             samp_id, mapped_id = line.split('\t')
             if samp_id in result:
                 raise ValueError("The first column of the sample ID map must "
@@ -213,13 +218,18 @@ def _make_compatible_taxa_summaries(ts1, ts2, sample_id_map=None):
             summary. If not provided, only samples whose sample IDs directly
             match will be compared
     """
+    # Check to make sure the sample ID map looks sane.
     if sample_id_map:
-        for samp_id in sample_id_map:
-            if samp_id not in ts1[0]:
-                raise ValueError("The sample ID '%s' in the sample ID map "
-                                 "does not match any of the sample IDs in the "
-                                 "taxa summary file." % samp_id)
+        bad_samp_ids = set(sample_id_map.keys()).difference(set(ts1[0]))
+        if len(bad_samp_ids) != 0:
+            raise ValueError("The sample IDs %r in the sample ID map do not "
+                             "match any of the sample IDs in the taxa summary "
+                             "file." % bad_samp_ids)
 
+    # For each sample ID in the first taxa summary file, try to find a matching
+    # sample ID (using the sample ID map if one was provided) in the second
+    # file. Create two new taxa summary files containing the matching samples
+    # in the same order.
     new_samp_ids1, new_samp_ids2, new_data1, new_data2 = [], [], [], []
     for samp_idx, samp_id in enumerate(ts1[0]):
         matching_samp_id = None
@@ -232,6 +242,8 @@ def _make_compatible_taxa_summaries(ts1, ts2, sample_id_map=None):
         if matching_samp_id:
             new_samp_ids1.append(samp_id)
             new_samp_ids2.append(matching_samp_id)
+
+            # Transpose the data matrix so that we can index by sample index.
             new_data1.append(ts1[2].T[samp_idx])
             try:
                 new_data2.append(ts2[2].T[ts2[0].index(matching_samp_id)])
@@ -260,12 +272,17 @@ def _sort_and_fill_taxa_summaries(taxa_summaries):
         taxa_summaries - a list of any number of taxa summaries to be sorted
             and filled
     """
+    # Build up a sorted list of all taxa found in the taxa summaries
+    # (no repeats).
     master_taxa = []
     for ts in taxa_summaries:
         master_taxa += ts[1]
     master_taxa = list(set(master_taxa))
     master_taxa.sort()
 
+    # Put each taxon and data in the order it appears in the master taxa list
+    # for each taxa summary. If it doesn't exist, record an abundance of zero
+    # for that row.
     result = []
     for ts in taxa_summaries:
         samples = ts[0]
@@ -312,11 +329,15 @@ def _compute_all_to_expected_correlations(observed_taxa_summary,
                 "sample (column) to compare all samples in the first taxa "
                 "summary file against when the comparison mode is 'expected'. "
                 "You provided %d samples." % len(expected_taxa_summary[0]))
+
+    # Make sure the taxa information is the same (i.e. the summaries have been
+    # sorted and filled).
     if observed_taxa_summary[1] != expected_taxa_summary[1]:
         raise ValueError("The taxa do not match exactly between the two taxa "
                          "summary files. The taxa must be sorted and filled "
                          "before attempting to compare them.")
 
+    # Compute the correlation between each sample and the expected sample.
     result = []
     for sample_idx, sample_id in enumerate(observed_taxa_summary[0]):
         result.append((sample_id, expected_taxa_summary[0][0],
@@ -350,17 +371,23 @@ def _compute_paired_sample_correlations(ts1, ts2, correlation_fn):
             samples. This function must accept two lists of numbers and return
             a number (the correlation coefficient)
     """
+    # Make sure the number of samples match between the two files (the IDs do
+    # not have to match because of the sample ID map).
     if len(ts1[0]) != len(ts2[0]):
         raise ValueError("The two taxa summaries are incompatible because "
                          "they do not have the same number of sample IDs. The "
                          "taxa summaries must be made compatible before "
                          "attempting to perform pairwise-comparisons between "
                          "samples.")
+
+    # Make sure the taxa information is the same (i.e. the summaries have been
+    # sorted and filled).
     if ts1[1] != ts2[1]:
         raise ValueError("The taxa do not match exactly between the two taxa "
                          "summary files. The taxa must be sorted and filled "
                          "before attempting to compare them.")
 
+    # Compute the correlation between each paired sample.
     result = []
     for samp_idx, samp_id in enumerate(ts1[0]):
         corr_coeff = correlation_fn(ts1[2].T[samp_idx], ts2[2].T[samp_idx])
