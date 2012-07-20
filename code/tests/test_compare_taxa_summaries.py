@@ -14,10 +14,11 @@ __status__ = "Development"
 
 from numpy import array
 from cogent.util.unit_test import TestCase, main
+
 from taxcompare.compare_taxa_summaries import (add_filename_suffix,
         compare_taxa_summaries, _compute_all_to_expected_correlations,
         _compute_paired_sample_correlations, _format_correlation_vector,
-        _format_taxa_summary, _get_correlation_function,
+        _format_taxa_summary, _get_correlation_function, _get_rank,
         _make_compatible_taxa_summaries, parse_sample_id_map,
         _sort_and_fill_taxa_summaries, _pearson_correlation,
         _spearman_correlation)
@@ -149,6 +150,13 @@ class CompareTaxaSummariesTests(TestCase):
                                     'S2\tT2', '\n \t']
         self.sample_id_map_lines2 = ['\t\t\n', '', ' ', '\n', 'S1\tT1',
                                     'S2\tT2', '\n \t', 'S1\tT4']
+
+        # For testing spearman correlation, taken from test_stats.BioEnvTests.
+        self.a = [1,2,4,3,1,6,7,8,10,4]
+        self.b = [2,10,20,1,3,7,5,11,6,13]
+        self.c = [7,1,20,13,3,57,5,121,2,9]
+        self.r = (1.7,10,20,1.7,3,7,5,11,6.5,13)
+        self.x = (1, 2, 4, 3, 1, 6, 7, 8, 10, 4, 100, 2, 3, 77)
 
     def test_compare_taxa_summaries_expected_pearson(self):
         """Functions correctly using 'expected' comparison mode and pearson."""
@@ -542,6 +550,69 @@ class CompareTaxaSummariesTests(TestCase):
         self.assertRaises(ValueError, _pearson_correlation,
                           [1.4, 2.5], [5.6, 8.8, 9.0])
         self.assertRaises(ValueError, _pearson_correlation, [1.4], [5.6])
+
+    # The following tests are taken from test_stats.BioEnvTests to test the
+    # spearman function. They have been modified only to work with the function
+    # instead of the BioEnv object containing that method.
+    def test_get_rank(self):
+        """Test the _get_rank method with valid input."""
+        exp = ([1.5,3.5,7.5,5.5,1.5,9.0,10.0,11.0,12.0,7.5,14.0,3.5,5.5,13.0],
+               4)
+        obs = _get_rank(self.x)
+        self.assertFloatEqual(exp,obs)
+
+        exp = ([1.5,3.0,5.5,4.0,1.5,7.0,8.0,9.0,10.0,5.5],2)
+        obs = _get_rank(self.a)
+        self.assertFloatEqual(exp,obs)
+
+        exp = ([2,7,10,1,3,6,4,8,5,9],0)
+        obs = _get_rank(self.b)
+        self.assertFloatEqual(exp,obs)
+
+        exp = ([1.5,7.0,10.0,1.5,3.0,6.0,4.0,8.0,5.0,9.0], 1)
+        obs = _get_rank(self.r)
+        self.assertFloatEqual(exp,obs)
+
+        exp = ([],0)
+        obs = _get_rank([])
+        self.assertEqual(exp,obs)
+
+    def test_get_rank_invalid_input(self):
+        """Test the _get_rank method with invalid input."""
+        vec = [1, 'a', 3, 2.5, 3, 1]
+        self.assertRaises(TypeError, _get_rank, vec)
+
+        vec = [1, 2, {1:2}, 2.5, 3, 1]
+        self.assertRaises(TypeError, _get_rank, vec)
+
+        vec = [1, 2, [23,1], 2.5, 3, 1]
+        self.assertRaises(TypeError, _get_rank, vec)
+
+        vec = [1, 2, (1,), 2.5, 3, 1]
+        self.assertRaises(TypeError, _get_rank, vec)
+
+    def test_spearman_correlation(self):
+        """Test the _spearman_correlation method."""
+        # One vector has no ties.
+        exp = 0.3719581
+        obs = _spearman_correlation(self.a,self.b)
+        self.assertFloatEqual(exp,obs)
+
+        # Both vectors have no ties.
+        exp = 0.2969697
+        obs = _spearman_correlation(self.b,self.c)
+        self.assertFloatEqual(exp,obs)
+
+        # Both vectors have ties.
+        exp = 0.388381
+        obs = _spearman_correlation(self.a,self.r)
+        self.assertFloatEqual(exp,obs)
+
+    def test_spearman_correlation_invalid_input(self):
+        """Test the _spearman_correlation method with invalid input."""
+        self.assertRaises(ValueError, _spearman_correlation, [],[])
+        self.assertRaises(ValueError, _spearman_correlation, self.a,[])
+        self.assertRaises(ValueError, _spearman_correlation, {0:2}, [1,2,3])
 
 
 if __name__ == "__main__":
