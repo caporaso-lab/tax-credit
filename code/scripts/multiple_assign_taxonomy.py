@@ -12,6 +12,7 @@ __status__ = "Development"
 
 from qiime.util import (parse_command_line_parameters, get_options_lookup,
                         make_option)
+from qiime.workflow import call_commands_serially, no_status_updates
 
 from taxcompare.multiple_assign_taxonomy import assign_taxonomy_multiple_times
 
@@ -27,7 +28,8 @@ script_info['script_usage'].append(("", "", "%prog -h"))
 script_info['output_description'] = ""
 
 script_info['required_options'] = [
-    make_option('-i', '--input_dir', type='existing_dirpath', help=''),
+    make_option('-i', '--input_dirs', type='string', help=''),
+    options_lookup['output_dir'],
     make_option('-m', '--assignment_methods', type='string',
         help='Comma-separated list of taxon assignment methods to use, either '
         'blast, mothur, rdp, or rtax'),
@@ -56,7 +58,7 @@ script_info['optional_options'] = [
         help='Comma-separated list of maximum e-values to record an '
         'assignment, only used for blast method [default: %default]',
         default=None),
-    make_option('--rep_set_filename', type='string',
+    make_option('--input_fasta_filename', type='string',
         help='[default: %default]', default='rep_set.fna'),
     make_option('--clean_otu_table_filename', type='string',
         help='[default: %default]', default='otu_table_mc2.biom'),
@@ -64,13 +66,8 @@ script_info['optional_options'] = [
         help='Print the commands but don\'t call them -- useful for debugging '
         '[default: %default]', default=False),
     make_option('-f', '--force', action='store_true',
-        help='Force overwrite of existing taxonomy assignment directories '
-        'under the input directory (note: only existing taxonomy assignment '
-        'directories under input_dir will be removed). For example, if the '
-        'directory "rdp_0.80" exists under input_dir/some_study/ and you run '
-        'this script with rdp as one of the assignment methods and 0.80 as '
-        'one of the confidence levels, this directory will be removed and '
-        'recreated with the new output [default: %default]',
+        help='Force overwrite of existing output directory (note: existing '
+        'files in output_dir will not be removed) [default: %default]',
         default=False)
 ]
 script_info['version'] = __version__
@@ -78,9 +75,16 @@ script_info['version'] = __version__
 def main():
     option_parser, opts, args = parse_command_line_parameters(**script_info)
 
+    input_dirs = opts.input_dirs.split(',')
     assignment_methods = opts.assignment_methods.split(',')
-    confidences = map(float, opts.confidences.split(','))
-    e_values = map(float, opts.e_values.split(','))
+
+    confidences = opts.confidences
+    if confidences is not None:
+        confidences = map(float, opts.confidences.split(','))
+
+    e_values = opts.e_values
+    if e_values is not None:
+        e_values = map(float, opts.e_values.split(','))
 
     if opts.print_only:
         command_handler = print_commands
@@ -92,8 +96,8 @@ def main():
     else:
         status_update_callback = no_status_updates
 
-    assign_taxonomy_multiple_times(opts.input_dir, assignment_methods,
-        opts.reference_seqs_fp, opts.rep_set_filename,
+    assign_taxonomy_multiple_times(input_dirs, opts.output_dir,
+        assignment_methods, opts.reference_seqs_fp, opts.input_fasta_filename,
         opts.clean_otu_table_filename,
         rdp_id_to_taxonomy_fp=opts.rdp_id_to_taxonomy_fp,
         blast_id_to_taxonomy_fp=opts.blast_id_to_taxonomy_fp,
