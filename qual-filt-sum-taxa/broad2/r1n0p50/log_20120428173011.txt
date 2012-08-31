@@ -1,0 +1,42 @@
+Logging started at 17:30:11 on 28 Apr 2012
+QIIME version: 1.4.0
+
+qiime_config values:
+blastmat_dir	/share/apps/blast-2.2.22/data/
+pynast_template_alignment_fp	/share/apps/qiime-1.4.0/libs/core_set_aligned.fasta.imputed
+cluster_jobs_fp	/share/apps/qiime-1.4.0/scripts/start_parallel_jobs.py
+torque_queue	friendlyq
+template_alignment_lanemask_fp	/share/apps/qiime-1.4.0/libs/lanemask_in_1s_and_0s
+jobs_to_start	4
+cloud_environment	False
+qiime_scripts_dir	/share/apps/qiime-1.4.0/scripts/
+denoiser_min_per_core	50
+python_exe_fp	python
+temp_dir	/scratch/
+blastall_fp	blastall
+seconds_to_sleep	60
+
+parameter file values:
+
+Input file md5 sums:
+/home/nbokulic/broad/illumina/otu_table/r1n0p50_otu_table.txt: f9de5f035efebe71517a73dd65f12f85
+/home/nbokulic/broad/illumina/broad_map.txt: a0b8c14756205152437f6f2cad03e65d
+
+Executing commands.
+
+# Summarize Taxonomy command 
+python /share/apps/qiime-1.4.0/scripts//summarize_taxa.py -i /home/nbokulic/broad/illumina/otu_table/r1n0p50_otu_table.txt -o /home/nbokulic/broad/illumina/summarize_taxa/r1n0p50/ 
+
+Stdout:
+
+Stderr:
+
+# Plot Taxonomy Summary command 
+python /share/apps/qiime-1.4.0/scripts//plot_taxa_summary.py -i /home/nbokulic/broad/illumina/summarize_taxa/r1n0p50/r1n0p50_otu_table_L2.txt,/home/nbokulic/broad/illumina/summarize_taxa/r1n0p50/r1n0p50_otu_table_L3.txt,/home/nbokulic/broad/illumina/summarize_taxa/r1n0p50/r1n0p50_otu_table_L4.txt,/home/nbokulic/broad/illumina/summarize_taxa/r1n0p50/r1n0p50_otu_table_L5.txt,/home/nbokulic/broad/illumina/summarize_taxa/r1n0p50/r1n0p50_otu_table_L6.txt -o /home/nbokulic/broad/illumina/summarize_taxa/r1n0p50//taxa_summary_plots/ 
+
+Stdout:
+
+Stderr:
+
+
+Logging stopped at 17:30:20 on 28 Apr 2012
