@@ -1,0 +1,55 @@
+Logging started at 20:58:44 on 06 Feb 2012
+QIIME version: 1.4.0
+
+qiime_config values:
+pynast_template_alignment_fp	/home/qiime/Desktop/Shared_Folder/gg_otus_4feb2011/morg_aln_seqs_T_results_at_0.95.fasta.aligned.imputed
+torque_queue	friendlyq
+jobs_to_start	1
+cloud_environment	False
+qiime_scripts_dir	/software/qiime-1.4.0-release/bin
+denoiser_min_per_core	50
+﻿#	qiime_config
+working_dir	/home/qiime/Desktop/Shared_Folder/tmp/
+python_exe_fp	python
+temp_dir	/home/qiime/Desktop/Shared_Folder/tmp/
+blastall_fp	blastall
+seconds_to_sleep	60
+
+parameter file values:
+
+Input file md5 sums:
+qual_filt_project/otu_table/split_otu/r1n0p75_otu_table_Even1.txt: 2d4523933f4a0e9c14a912c7c209644b
+master_map_mock.txt: bb9b1003771ce1a3431fcb380327f6c1
+
+Executing commands.
+
+# Summarize Taxonomy command 
+python /software/qiime-1.4.0-release/bin/summarize_taxa.py -i qual_filt_project/otu_table/split_otu/r1n0p75_otu_table_Even1.txt -o qual_filt_project/filter_taxa_summary_c1/ 
+
+Stdout:
+
+Stderr:
+
+# Plot Taxonomy Summary command 
+python /software/qiime-1.4.0-release/bin/plot_taxa_summary.py -i qual_filt_project/filter_taxa_summary_c1/r1n0p75_otu_table_Even1_L2.txt,qual_filt_project/filter_taxa_summary_c1/r1n0p75_otu_table_Even1_L3.txt,qual_filt_project/filter_taxa_summary_c1/r1n0p75_otu_table_Even1_L4.txt,qual_filt_project/filter_taxa_summary_c1/r1n0p75_otu_table_Even1_L5.txt,qual_filt_project/filter_taxa_summary_c1/r1n0p75_otu_table_Even1_L6.txt -o qual_filt_project/filter_taxa_summary_c1//taxa_summary_plots/ 
+
+
+
+*** ERROR RAISED DURING STEP: Plot Taxonomy Summary
+Command run was:
+ python /software/qiime-1.4.0-release/bin/plot_taxa_summary.py -i qual_filt_project/filter_taxa_summary_c1/r1n0p75_otu_table_Even1_L2.txt,qual_filt_project/filter_taxa_summary_c1/r1n0p75_otu_table_Even1_L3.txt,qual_filt_project/filter_taxa_summary_c1/r1n0p75_otu_table_Even1_L4.txt,qual_filt_project/filter_taxa_summary_c1/r1n0p75_otu_table_Even1_L5.txt,qual_filt_project/filter_taxa_summary_c1/r1n0p75_otu_table_Even1_L6.txt -o qual_filt_project/filter_taxa_summary_c1//taxa_summary_plots/ 
+Command returned exit status: 1
+Stdout:
+
+Stderr
+Traceback (most recent call last):
+  File "/software/qiime-1.4.0-release/bin/plot_taxa_summary.py", line 284, in <module>
+    main()
+  File "/software/qiime-1.4.0-release/bin/plot_taxa_summary.py", line 280, in main
+    resize_nth_label,label_type,include_html_legend,include_html_counts)
+  File "/software/qiime-1.4.0-release/lib/qiime/plot_taxa_summary.py", line 1128, in make_all_charts
+    raise ValueError, 'When generating area charts, the number of samples (or category values) must be greater than 1.  However, you can still produce a pie chart or bar chart with only 1 sample (or category value), but you must remove the area chart value from the input arguments.'
+ValueError: When generating area charts, the number of samples (or category values) must be greater than 1.  However, you can still produce a pie chart or bar chart with only 1 sample (or category value), but you must remove the area chart value from the input arguments.
+
+
+Logging stopped at 20:58:45 on 06 Feb 2012
