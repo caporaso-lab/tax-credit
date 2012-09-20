@@ -21,8 +21,7 @@ from qiime.workflow import (call_commands_serially, generate_log_fp,
 
 def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         reference_seqs_fp, input_fasta_filename, clean_otu_table_filename,
-        rdp_id_to_taxonomy_fp=None, blast_id_to_taxonomy_fp=None,
-        mothur_id_to_taxonomy_fp=None, confidences=None, e_values=None,
+        id_to_taxonomy_fp=None, confidences=None, e_values=None,
         command_handler=call_commands_serially,
         status_update_callback=print_to_stdout, force=False):
     try:
@@ -41,6 +40,8 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         raise WorkflowError("You must provide an input fasta filename.")
     if clean_otu_table_filename is None:
         raise WorkflowError("You must provide a clean otu table filename.")
+    if id_to_taxonomy_fp is None:
+        raise WorkflowError("You must provide an ID to taxonomy map filename.")
     
     logger = WorkflowLogger(generate_log_fp(output_dir))
 
@@ -68,9 +69,6 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
             # method is RDP
             if method == 'rdp':
                 # check for execution parameters required by RDP method
-                if rdp_id_to_taxonomy_fp is None:
-                    raise WorkflowError("You must provide an ID to taxonomy "
-                                        "map (formatted for RDP) filepath.")
                 if confidences is None:
                     raise WorkflowError("You must specify at least one "
                                         "confidence level.")
@@ -78,16 +76,13 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                 commands = _generate_rdp_commands(output_dataset_dir,
                                                   input_fasta_fp,
                                                   reference_seqs_fp,
-                                                  rdp_id_to_taxonomy_fp,
+                                                  id_to_taxonomy_fp,
                                                   clean_otu_table_fp,
                                                   confidences)
                         
             # method is BLAST
             elif method == 'blast':
                 # check for execution parameters required by BLAST method
-                if blast_id_to_taxonomy_fp is None:
-                    raise WorkflowError("You must provide an ID to taxonomy "
-                                        "map (formatted for Blast) filepath.")
                 if e_values is None:
                     raise WorkflowError("You must specify at least one "
                                         "E value.")
@@ -95,16 +90,13 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                 commands = _generate_blast_commands(output_dataset_dir,
                                                     input_fasta_fp,
                                                     reference_seqs_fp,
-                                                    blast_id_to_taxonomy_fp,
+                                                    id_to_taxonomy_fp,
                                                     clean_otu_table_fp,
                                                     e_values)
                         
             # method is Mothur
             elif method == 'mothur':
                 # check for execution parameters required by Mothur method
-                if mothur_id_to_taxonomy_fp is None:
-                    raise WorkflowError("You must provide an ID to taxonomy "
-                                        "map (formatted for mothur) filepath.")
                 if confidences is None:
                     raise WorkflowError("You must specify at least one "
                                         "confidence level.")
@@ -112,7 +104,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                 commands = _generate_mothur_commands(output_dataset_dir,
                                                      input_fasta_fp,
                                                      reference_seqs,
-                                                     mothur_id_to_taxonomy_fp,
+                                                     id_to_taxonomy_fp,
                                                      clean_otu_table_fp,
                                                      confidences)
             # unsupported method
@@ -125,8 +117,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
     logger.close()
 
 def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
-                           rdp_id_to_taxonomy_fp, clean_otu_table_fp,
-                           confidences):
+                           id_to_taxonomy_fp, clean_otu_table_fp, confidences):
     result = []
     for confidence in confidences:
         run_id = 'RDP, %s confidence' % str(confidence)
@@ -134,7 +125,7 @@ def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         assign_taxonomy_command = \
                 'assign_taxonomy.py -i %s -o %s -c %s -m rdp -r %s -t %s' % (
                 input_fasta_fp, assigned_taxonomy_dir, str(confidence),
-                reference_seqs_fp, rdp_id_to_taxonomy_fp)
+                reference_seqs_fp, id_to_taxonomy_fp)
         result.append([('Assigning taxonomy (%s)' % run_id,
                        assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
@@ -142,16 +133,15 @@ def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
     return result
 
 def _generate_blast_commands(output_dir, input_fasta_fp, reference_seqs_fp,
-                           blast_id_to_taxonomy_fp, clean_otu_table_fp,
-                           e_values):
+                             id_to_taxonomy_fp, clean_otu_table_fp, e_values):
     result = []
     for e in e_values:
-        run_id = 'Blast, E %s' % str(e)
+        run_id = 'BLAST, E %s' % str(e)
         assigned_taxonomy_dir = join(output_dir, 'blast_' + str(e))
         assign_taxonomy_command = \
                 'assign_taxonomy.py -i %s -o %s -e %s -m blast -r %s -t %s' % (
                 input_fasta_fp, assigned_taxonomy_dir, str(e),
-                reference_seqs_fp, blast_id_to_taxonomy_fp)
+                reference_seqs_fp, id_to_taxonomy_fp)
         result.append([('Assigning taxonomy (%s)' % run_id,
                        assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
@@ -159,8 +149,7 @@ def _generate_blast_commands(output_dir, input_fasta_fp, reference_seqs_fp,
     return result
 
 def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
-                           mothur_id_to_taxonomy_fp, clean_otu_table_fp,
-                           confidences):
+                              id_to_taxonomy_fp, clean_otu_table_fp, confidences):
     result = []
     for confidence in confidences:
         run_id = 'Mothur, %s confidence' % str(confidence)
@@ -168,7 +157,7 @@ def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         assign_taxonomy_command = \
                 'assign_taxonomy.py -i %s -o %s -c %s -m mothur -r %s -t %s' % (
                 input_fasta_fp, assigned_taxonomy_dir, str(confidence), 
-                reference_seqs_fp, mothur_id_to_taxonomy_fp)
+                reference_seqs_fp, id_to_taxonomy_fp)
         result.append([('Assigning taxonomy (%s)' % run_id,
                        assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
