@@ -23,7 +23,8 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         reference_seqs_fp, input_fasta_filename, clean_otu_table_filename,
         id_to_taxonomy_fp=None, confidences=None, e_values=None,
         command_handler=call_commands_serially,
-        status_update_callback=print_to_stdout, force=False):
+        status_update_callback=print_to_stdout, force=False,
+        read_1_seqs_fp=None, read_2_seqs_fp=None):
     try:
         makedirs(output_dir)
     except OSError:
@@ -107,6 +108,25 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                                                      id_to_taxonomy_fp,
                                                      clean_otu_table_fp,
                                                      confidences)
+
+            # method is RTAX
+            elif method == 'rtax':
+                # check for execution parameters required by Mothur method
+                if read_1_seqs_fp is None:
+                    raise WorkflowError("You must specify a file containing the first "
+                                        "read from pair-end sequencing.")
+                if read_2_seqs_fp is None:
+                    raise WorkflowError("You must specify a file containing the second "
+                                        "read from pair-end sequencing.")
+                # generate command for mothur
+                commands = _generate_rtax_commands(output_dataset_dir,
+                                                   input_fasta_fp,
+                                                   reference_seqs,
+                                                   id_to_taxonomy_fp,
+                                                   clean_otu_table_fp,
+                                                   read_1_seqs_fp,
+                                                   read_2_seqs_fp)
+
             # unsupported method
             else:
                 raise WorkflowError("Unrecognized or unsupported taxonomy "
@@ -162,6 +182,23 @@ def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
                        assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
             input_fasta_fp, clean_otu_table_fp, run_id))
+    return result
+
+def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
+                            id_to_taxonomy_fp, clean_otu_table_fp,
+                            read_1, read_2):
+    result = []
+    run_id = 'RTAX, %s, %s' % (str(read_1)[-10:-4], str(read_2)[-10:-4])
+    assigned_taxonomy_dir = join(output_dir, 'rtax_%s_%s' % (str(read_1)[-10:-4], str(read_2)[-10:-4]))
+    assign_taxonomy_command = \
+            'assign_taxonomy.py -i %s -o %s -m rtax -r %s -t %s '\
+            '--read_1_seqs_fp %s --read_2_seqs_fp %s' % (
+            input_fasta_fp, assigned_taxonomy_dir,
+            reference_seqs_fp, id_to_taxonomy_fp, read_1, read_2)
+    result.append([('Assigning taxonomy (%s)' % run_id,
+                   assign_taxonomy_command)])
+    result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
+                  input_fasta_fp, clean_otu_table_fp, run_id))
     return result
 
 def _generate_taxa_processing_commands(assigned_taxonomy_dir, input_fasta_fp,
