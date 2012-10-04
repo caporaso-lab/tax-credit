@@ -22,7 +22,7 @@ from qiime.workflow import (call_commands_serially, generate_log_fp,
 def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         reference_seqs_fp, input_fasta_filename, clean_otu_table_filename,
         id_to_taxonomy_fp=None, confidences=None, e_values=None,
-        command_handler=call_commands_serially,
+        command_handler=call_commands_serially, rdp_max_memory=None,
         status_update_callback=print_to_stdout, force=False,
         read_1_seqs_fp=None, read_2_seqs_fp=None):
     try:
@@ -36,7 +36,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
     # Check for inputs that are universally required
     if assignment_methods is None:
         raise WorkflowError("You must specify at least one method:" 
-                            "'rdp', 'blast', or 'mothur'.")
+                            "'rdp', 'blast', 'mothur', or 'rtax'.")
     if input_fasta_filename is None:
         raise WorkflowError("You must provide an input fasta filename.")
     if clean_otu_table_filename is None:
@@ -79,7 +79,8 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                                                   reference_seqs_fp,
                                                   id_to_taxonomy_fp,
                                                   clean_otu_table_fp,
-                                                  confidences)
+                                                  confidences,
+                                                  rdp_max_memory=rdp_max_memory)
                         
             # method is BLAST
             elif method == 'blast':
@@ -104,7 +105,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                 # generate command for mothur
                 commands = _generate_mothur_commands(output_dataset_dir,
                                                      input_fasta_fp,
-                                                     reference_seqs,
+                                                     reference_seqs_fp,
                                                      id_to_taxonomy_fp,
                                                      clean_otu_table_fp,
                                                      confidences)
@@ -115,9 +116,6 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                 if read_1_seqs_fp is None:
                     raise WorkflowError("You must specify a file containing the first "
                                         "read from pair-end sequencing.")
-                if read_2_seqs_fp is None:
-                    raise WorkflowError("You must specify a file containing the second "
-                                        "read from pair-end sequencing.")
                 # generate command for mothur
                 commands = _generate_rtax_commands(output_dataset_dir,
                                                    input_fasta_fp,
@@ -125,7 +123,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                                                    id_to_taxonomy_fp,
                                                    clean_otu_table_fp,
                                                    read_1_seqs_fp,
-                                                   read_2_seqs_fp)
+                                                   read_2_seqs_fp=read_2_seqs_fp)
 
             # unsupported method
             else:
@@ -137,7 +135,8 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
     logger.close()
 
 def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
-                           id_to_taxonomy_fp, clean_otu_table_fp, confidences):
+                           id_to_taxonomy_fp, clean_otu_table_fp, confidences,
+                           rdp_max_memory=None):
     result = []
     for confidence in confidences:
         run_id = 'RDP, %s confidence' % str(confidence)
@@ -146,10 +145,12 @@ def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
                 'assign_taxonomy.py -i %s -o %s -c %s -m rdp -r %s -t %s' % (
                 input_fasta_fp, assigned_taxonomy_dir, str(confidence),
                 reference_seqs_fp, id_to_taxonomy_fp)
+        if rdp_max_memory is not None:
+            assign_taxonomy_command += ' --rdp_max_memory %s' % rdp_max_memory
         result.append([('Assigning taxonomy (%s)' % run_id,
-                       assign_taxonomy_command)])
+                      assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
-            input_fasta_fp, clean_otu_table_fp, run_id))
+                      input_fasta_fp, clean_otu_table_fp, run_id))
     return result
 
 def _generate_blast_commands(output_dir, input_fasta_fp, reference_seqs_fp,
@@ -163,9 +164,9 @@ def _generate_blast_commands(output_dir, input_fasta_fp, reference_seqs_fp,
                 input_fasta_fp, assigned_taxonomy_dir, str(e),
                 reference_seqs_fp, id_to_taxonomy_fp)
         result.append([('Assigning taxonomy (%s)' % run_id,
-                       assign_taxonomy_command)])
+                      assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
-            input_fasta_fp, clean_otu_table_fp, run_id))
+                      input_fasta_fp, clean_otu_table_fp, run_id))
     return result
 
 def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
@@ -179,26 +180,41 @@ def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
                 input_fasta_fp, assigned_taxonomy_dir, str(confidence), 
                 reference_seqs_fp, id_to_taxonomy_fp)
         result.append([('Assigning taxonomy (%s)' % run_id,
-                       assign_taxonomy_command)])
+                      assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
-            input_fasta_fp, clean_otu_table_fp, run_id))
+                      input_fasta_fp, clean_otu_table_fp, run_id))
     return result
 
 def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
                             id_to_taxonomy_fp, clean_otu_table_fp,
-                            read_1, read_2):
+                            read_1_seqs_fp, read_2_seqs_fp=None):
     result = []
-    run_id = 'RTAX, %s, %s' % (str(read_1)[-10:-4], str(read_2)[-10:-4])
-    assigned_taxonomy_dir = join(output_dir, 'rtax_%s_%s' % (str(read_1)[-10:-4], str(read_2)[-10:-4]))
-    assign_taxonomy_command = \
-            'assign_taxonomy.py -i %s -o %s -m rtax -r %s -t %s '\
-            '--read_1_seqs_fp %s --read_2_seqs_fp %s' % (
-            input_fasta_fp, assigned_taxonomy_dir,
-            reference_seqs_fp, id_to_taxonomy_fp, read_1, read_2)
-    result.append([('Assigning taxonomy (%s)' % run_id,
-                   assign_taxonomy_command)])
-    result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
-                  input_fasta_fp, clean_otu_table_fp, run_id))
+    run_id = 'RTAX'
+    for i in range(1,2):
+        ## For single-end reads
+        if i is 1:
+            run_id = 'RTAX, single-end'
+            assigned_taxonomy_dir = join(output_dir, 'rtax_single')
+        ## For paired-end reads
+        else:
+            run_id = 'RTAX, paired-end'
+            assigned_taxonomy_dir = join(output_dir, 'rtax_paired')
+        assigned_taxonomy_command = \
+                'assign_taxonomy.py -i %s -o %s -m rtax -r %s -t %s '\
+                '--read_1_seqs_fp %s' % (
+                input_fasta_fp, assigned_taxonomy_dir,
+                reference_seqs_fp, id_to_taxonomy_fp, read_1_seqs_fp)
+        ## Append second read parameter for paired end
+        if i is 2:
+            assigned_taxonomy_command += ' --read_2_seqs_fp %s' % read_2_seqs_fp
+        result.append([('Assigning taxonomy (%s)' % run_id,
+                      assign_taxonomy_command)])
+        result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
+                      input_fasta_fp, clean_otu_table_fp, run_id))
+        ## Break execution if no second read parameter is provided
+        if read_2_seqs_fp is None:
+            return result
+
     return result
 
 def _generate_taxa_processing_commands(assigned_taxonomy_dir, input_fasta_fp,

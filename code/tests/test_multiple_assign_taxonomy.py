@@ -27,6 +27,7 @@ from taxcompare.multiple_assign_taxonomy import (
         _generate_rdp_commands,
         _generate_blast_commands,
         _generate_mothur_commands,
+        _generate_rtax_commands,
         _generate_taxa_processing_commands)
 
 class MultipleAssignTaxonomyTests(TestCase):
@@ -93,6 +94,12 @@ class MultipleAssignTaxonomyTests(TestCase):
                           [out_dir, out_dir], out_dir, ['foo', 'rdp'],
                 '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom', force=True)
 
+        # ID to taxonomy map is missing
+        self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
+                          [out_dir, out_dir], out_dir, ['rdp', 'mothur'],
+                          '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom',
+                          force=True)
+
     # test bad RDP input
     def test_invalid_rdp_input(self):
         """Test that errors are thrown using invalid input for RDP."""
@@ -103,12 +110,6 @@ class MultipleAssignTaxonomyTests(TestCase):
                           [out_dir, out_dir], out_dir, ['rdp', 'rdp'],
                           '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom',
                           id_to_taxonomy_fp='/foo/id_to_tax.txt', force=True)
-
-        # RDP ID to taxonomy map is missing
-        self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
-                          [out_dir, out_dir], out_dir, ['rdp', 'rdp'],
-                          '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom',
-                          force=True)
 
     # test bad BLAST input
     def test_invalid_blast_input(self):
@@ -121,12 +122,6 @@ class MultipleAssignTaxonomyTests(TestCase):
                           '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom',
                           id_to_taxonomy_fp='/foo/id_to_tax.txt', force=True)
 
-        # BLAST ID to taxonomy map is missing
-        self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
-                          [out_dir, out_dir], out_dir, ['blast', 'blast'],
-                          '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom',
-                          force=True)
-
     # test bad Mothur input
     def test_invalid_mothur_input(self):
         """Test that errors are thrown using invalid input for Mothur."""
@@ -138,11 +133,16 @@ class MultipleAssignTaxonomyTests(TestCase):
                           '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom',
                           id_to_taxonomy_fp='/foo/id_to_tax.txt', force=True)
 
-        # Mothur ID to taxonomy map is missing
+    # test bad RTAX input
+    def test_invalid_rtax_input(self):
+        """Test that errors are thrown using invalid input for RTAX."""
+        # link local output_dir to global output_dir
+        out_dir = self.output_dir
+        # RTAX first read is missing.
         self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
-                          [out_dir, out_dir], out_dir, ['mothur', 'mothur'],
-                          '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom',
-                          force=True)
+                          [out_dir, out_dir], out_dir, ['rtax', 'rtax'],
+                          '/foo/ref_seqs/fasta', 'in.fasta', 'otu.biom',
+                          id_to_taxonomy_fp='/foo/id_to_tax.txt', force=True)
 
     # test RDP command generation
     def test_generate_rdp_commands(self):
