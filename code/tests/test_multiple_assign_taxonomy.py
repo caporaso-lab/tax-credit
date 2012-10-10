@@ -231,6 +231,38 @@ class MultipleAssignTaxonomyTests(TestCase):
                 '/foo/bar/otu_table.biom', [0.80, 0.60])
         self.assertEqual(obs, exp)
 
+    # test rtax command generation
+    def test_generate_rtax_commands(self):
+        """Functions correctly using standard valid input data."""
+        exp = [[('Assigning taxonomy (RTAX, single-end)',
+                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_single '
+                 '-m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt '
+                 '--read_1_seqs_fp /foo/bar/read_1_seqs.fna')],
+               [('Adding taxa (RTAX, single-end)',
+                 'add_taxa.py -i /foo/bar/otu_table.biom '
+                 '-o /foo/bar/rtax_single/otu_table_w_taxa.biom '
+                 '-t /foo/bar/rtax_single/rep_set_tax_assignments.txt')],
+               [('Summarizing taxa (RTAX, single-end)',
+                 'summarize_taxa.py -i /foo/bar/rtax_single/otu_table_w_taxa.biom '
+                 '-o /foo/bar/rtax_single')],
+               [('Assigning taxonomy (RTAX, paired-end)',
+                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_paired '
+                 '-m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt '
+                 '--read_1_seqs_fp /foo/bar/read_1_seqs.fna '
+                 '--read_2_seqs_fp /foo/bar/read_2_seqs.fna')],
+               [('Adding taxa (RTAX, paired-end)',
+                 'add_taxa.py -i /foo/bar/otu_table.biom '
+                 '-o /foo/bar/rtax_paired/otu_table_w_taxa.biom '
+                 '-t /foo/bar/rtax_paired/rep_set_tax_assignments.txt')],
+               [('Summarizing taxa (RTAX, paired-end)',
+                 'summarize_taxa.py -i /foo/bar/rtax_paired/otu_table_w_taxa.biom '
+                 '-o /foo/bar/rtax_single')]]
+
+        obs = _generate_rtax_commands('/foo/bar', '/foo/bar/rep_set.fna',
+                '/baz/reference_seqs.fasta', '/baz/id_to_taxonomy.txt',
+                '/foo/bar/otu_table.biom', '/foo/bar/read_1_seqs.fna',
+                read_2_seqs_fp='/foo/bar/read_2_seqs.fna')
+
     def test_generate_taxa_processing_commands(self):
         """Functions correctly using standard valid input data."""
         exp = ([('Adding taxa (RDP, 0.8 confidence)',

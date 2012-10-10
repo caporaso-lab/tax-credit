@@ -119,7 +119,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                 # generate command for mothur
                 commands = _generate_rtax_commands(output_dataset_dir,
                                                    input_fasta_fp,
-                                                   reference_seqs,
+                                                   reference_seqs_fp,
                                                    id_to_taxonomy_fp,
                                                    clean_otu_table_fp,
                                                    read_1_seqs_fp,
@@ -199,7 +199,7 @@ def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         else:
             run_id = 'RTAX, paired-end'
             assigned_taxonomy_dir = join(output_dir, 'rtax_paired')
-        assigned_taxonomy_command = \
+        assign_taxonomy_command = \
                 'assign_taxonomy.py -i %s -o %s -m rtax -r %s -t %s '\
                 '--read_1_seqs_fp %s' % (
                 input_fasta_fp, assigned_taxonomy_dir,
