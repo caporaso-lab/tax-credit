@@ -12,8 +12,9 @@ __status__ = "Development"
 
 """Contains functions used in the multiple_assign_taxonomy.py script."""
 
-from os import makedirs
+from os import makedirs, rename
 from os.path import basename, isdir, join, normpath, split, splitext
+from shutil import rmtree
 from qiime.util import add_filename_suffix
 from qiime.workflow import (call_commands_serially, generate_log_fp,
                             no_status_updates, print_commands, print_to_stdout,
@@ -25,6 +26,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         command_handler=call_commands_serially, rdp_max_memory=None,
         status_update_callback=print_to_stdout, force=False,
         read_1_seqs_fp=None, read_2_seqs_fp=None):
+    ## Check if temp output directory exists
     try:
         makedirs(output_dir)
     except OSError:
@@ -140,17 +142,32 @@ def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
     result = []
     for confidence in confidences:
         run_id = 'RDP, %s confidence' % str(confidence)
-        assigned_taxonomy_dir = join(output_dir, 'rdp_' + str(confidence))
+        # Save final and working output directory names
+        final_dir = join(output_dir, 'rdp_' + str(confidence))
+        working_dir = final_dir + '.tmp'
+        # Check if temp directory already exists (and delete if necessary)
+        if isdir(working_dir):
+            try:
+                rmtree(working_dir)
+            except OSError:
+                raise WorkflowError("Temporary output directory exists (from a "
+                                    "previous run perhaps) and cannot be removed.")
+        # Check if final directory already exists (skip iteration if it does)
+        if isdir(final_dir):
+            continue
         assign_taxonomy_command = \
                 'assign_taxonomy.py -i %s -o %s -c %s -m rdp -r %s -t %s' % (
-                input_fasta_fp, assigned_taxonomy_dir, str(confidence),
-                reference_seqs_fp, id_to_taxonomy_fp)
+                input_fasta_fp, working_dir, str(confidence), reference_seqs_fp,
+                id_to_taxonomy_fp)
         if rdp_max_memory is not None:
             assign_taxonomy_command += ' --rdp_max_memory %s' % rdp_max_memory
         result.append([('Assigning taxonomy (%s)' % run_id,
                       assign_taxonomy_command)])
-        result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
+        result.extend(_generate_taxa_processing_commands(working_dir,
                       input_fasta_fp, clean_otu_table_fp, run_id))
+        ## Rename output directory
+        result.append([('Renaming output directory (%s)' % run_id,
+                      'mv %s %s' % (working_dir, final_dir))])
     return result
 
 def _generate_blast_commands(output_dir, input_fasta_fp, reference_seqs_fp,
@@ -158,15 +175,30 @@ def _generate_blast_commands(output_dir, input_fasta_fp, reference_seqs_fp,
     result = []
     for e in e_values:
         run_id = 'BLAST, E %s' % str(e)
-        assigned_taxonomy_dir = join(output_dir, 'blast_' + str(e))
+        # Save final and working output directory names
+        final_dir = join(output_dir, 'blast_' + str(e))
+        working_dir = final_dir + '.tmp'
+        # Check if temp directory already exists (and delete if necessary)
+        if isdir(working_dir):
+            try:
+                rmtree(working_dir)
+            except OSError:
+                raise WorkflowError("Temporary output directory exists (from a "
+                                    "previous run perhaps) and cannot be removed.")
+        # Check if final directory already exists (skip iteration if it does)
+        if isdir(final_dir):
+            continue
         assign_taxonomy_command = \
                 'assign_taxonomy.py -i %s -o %s -e %s -m blast -r %s -t %s' % (
-                input_fasta_fp, assigned_taxonomy_dir, str(e),
-                reference_seqs_fp, id_to_taxonomy_fp)
+                input_fasta_fp, working_dir, str(e), reference_seqs_fp,
+                id_to_taxonomy_fp)
         result.append([('Assigning taxonomy (%s)' % run_id,
                       assign_taxonomy_command)])
-        result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
+        result.extend(_generate_taxa_processing_commands(working_dir,
                       input_fasta_fp, clean_otu_table_fp, run_id))
+        ## Rename output directory
+        result.append([('Renaming output directory (%s)' % run_id,
+                      'mv %s %s' % (working_dir, final_dir))])
     return result
 
 def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
@@ -174,15 +206,30 @@ def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
     result = []
     for confidence in confidences:
         run_id = 'Mothur, %s confidence' % str(confidence)
-        assigned_taxonomy_dir = join(output_dir, 'mothur_%s' % str(confidence))
+        # Save final and working output directory names
+        final_dir = join(output_dir, 'mothur_' + str(confidence))
+        working_dir = final_dir + '.tmp'
+        # Check if temp directory already exists (and delete if necessary)
+        if isdir(working_dir):
+            try:
+                rmtree(working_dir)
+            except OSError:
+                raise WorkflowError("Temporary output directory exists (from a "
+                                    "previous run perhaps) and cannot be removed.")
+        # Check if final directory already exists (skip iteration if it does)
+        if isdir(final_dir):
+            continue
         assign_taxonomy_command = \
                 'assign_taxonomy.py -i %s -o %s -c %s -m mothur -r %s -t %s' % (
-                input_fasta_fp, assigned_taxonomy_dir, str(confidence), 
-                reference_seqs_fp, id_to_taxonomy_fp)
+                input_fasta_fp, working_dir, str(confidence), reference_seqs_fp,
+                id_to_taxonomy_fp)
         result.append([('Assigning taxonomy (%s)' % run_id,
                       assign_taxonomy_command)])
-        result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
+        result.extend(_generate_taxa_processing_commands(working_dir,
                       input_fasta_fp, clean_otu_table_fp, run_id))
+        ## Rename output directory
+        result.append([('Renaming output directory (%s)' % run_id,
+                      'mv %s %s' % (working_dir, final_dir))])
     return result
 
 def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
@@ -194,23 +241,38 @@ def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         ## For single-end reads
         if i is 1:
             run_id = 'RTAX, single-end'
-            assigned_taxonomy_dir = join(output_dir, 'rtax_single')
+            final_dir = join(output_dir, 'rtax_single')
         ## For paired-end reads
         else:
             run_id = 'RTAX, paired-end'
-            assigned_taxonomy_dir = join(output_dir, 'rtax_paired')
+            final_dir = join(output_dir, 'rtax_paired')
+        # Save working output directory name
+        working_dir = final_dir + '.tmp'
+        # Check if temp directory already exists (and delete if necessary)
+        if isdir(working_dir):
+            try:
+                rmtree(working_dir)
+            except OSError:
+                raise WorkflowError("Temporary output directory exists (from a "
+                                    "previous run perhaps) and cannot be removed.")
+        # Check if final directory already exists (skip iteration if it does)
+        if isdir(final_dir):
+            continue
         assign_taxonomy_command = \
                 'assign_taxonomy.py -i %s -o %s -m rtax -r %s -t %s '\
                 '--read_1_seqs_fp %s' % (
-                input_fasta_fp, assigned_taxonomy_dir,
-                reference_seqs_fp, id_to_taxonomy_fp, read_1_seqs_fp)
+                input_fasta_fp, working_dir, reference_seqs_fp, id_to_taxonomy_fp,
+                read_1_seqs_fp)
         ## Append second read parameter for paired end
         if i is 2:
             assigned_taxonomy_command += ' --read_2_seqs_fp %s' % read_2_seqs_fp
         result.append([('Assigning taxonomy (%s)' % run_id,
                       assign_taxonomy_command)])
-        result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
+        result.extend(_generate_taxa_processing_commands(working_dir,
                       input_fasta_fp, clean_otu_table_fp, run_id))
+        ## Rename output directory
+        result.append([('Renaming output directory (%s)' % run_id,
+                      'mv %s %s' % (working_dir, final_dir))])
         ## Break execution if no second read parameter is provided
         if read_2_seqs_fp is None:
             return result
