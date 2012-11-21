@@ -13,13 +13,13 @@ from os import walk
 from qiime.parse import parse_taxa_summary_table
 from qiime.compare_taxa_summaries import compare_taxa_summaries
 
-assignment_method_choices = ['rdp','blast','rtax','mothur','t2t']
+assignment_method_choices = ['rdp','blast','rtax','mothur','tax2tree']
 
 def get_key_files(directory):
     key_fps = {}
     for key_file in walk(directory).next()[2]:
-	experiment = key_file.split('_')[0].capitalize()
-	key_fps[experiment] = directory + key_file
+        experiment = key_file.split('_')[0].capitalize()
+        key_fps[experiment] = directory + key_file
     return key_fps
 
 def get_coefficients(run_fp, key_fp):
@@ -39,26 +39,26 @@ def generate_taxa_compare_table(root, key_directory, levels):
 
     results = []
     for i in range(len(levels)):
-	results.append(list())
+        results.append(list())
 
     for(path, dirs, files) in walk(root, topdown=True):
-	dirs.sort()
-	files.sort()
+        dirs.sort()
+        files.sort()
         for choice in assignment_method_choices:
             if choice in path:
                 experiment = path.split('/')[-2].rstrip('-123').capitalize()
                 for f in files:
-		    if 'otu_table_mc2_w_taxa_L' in f:
-			name = path.split('/')[-2].capitalize()
-			level = int(f[-5])-2
-                    	try:
-			    pearson_coeff, spearman_coeff = get_coefficients(path+'/'+f, key_fps[experiment])
-			except ValueError:#compare_taxa_summaries couldn't find a match between the 2
-			#Likely due to mismatch between key and input sample names.
-			    pearson_coeff = 'X'
-			    spearman_coeff = 'X'
+                    if 'otu_table_mc2_w_taxa_L' in f:
+                        name = path.split('/')[-2].capitalize()
+                        level = int(f[-5])-2
+                        try:
+                            pearson_coeff, spearman_coeff = get_coefficients(path+'/'+f, key_fps[experiment])
+                        except ValueError:#compare_taxa_summaries couldn't find a match between the 2
+                        #Likely due to mismatch between key and input sample names.
+                            pearson_coeff = 'X'
+                            spearman_coeff = 'X'
 
-                    	results[level].append((name, path.split('/')[-1],
-						pearson_coeff, spearman_coeff))
+                        results[level].append((name, path.split('/')[-1],
+                                                pearson_coeff, spearman_coeff))
 
     return results

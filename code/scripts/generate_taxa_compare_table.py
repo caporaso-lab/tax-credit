@@ -35,12 +35,12 @@ script_info['required_options']=[\
 script_info['optional_options']=[\
  make_option('--output_fp', type="new_dirpath",
         help='Prefix for output files. If None is given, will print output.',
-	default = None),\
+        default = None),\
 
  make_option('--levels', type="string",
         help='Comma-separated list of multiple_assign_taxonomy output levels to analyze. Numbers between 2 and 6 inclusive.'+\
-	'[default: %default]',
-	default = '2,3,4,5,6')]
+        '[default: %default]',
+        default = '2,3,4,5,6')]
 script_info['version'] = __version__
 
 def main():
@@ -50,15 +50,15 @@ def main():
     results = generate_taxa_compare_table(opts.root_fp, opts.key_files_fp, levels)
 
     for level, out_file in izip(levels, results):
-	if(opts.output_fp):
-	    with open(opts.output_fp + '_L' + str(level) + '.txt', 'w') as f:
-		f.write('Study\tRun ID\tPearson\tSpearman\n')
-		for line in out_file:
-		    f.write('\t'.join(line)+'\n')
-	else:
-	    print 'Level ' + level
-	    for run in out_file:
-		print run
+        if(opts.output_fp):
+            with open(opts.output_fp + '_L' + str(level) + '.txt', 'w') as f:
+                f.write('Study\tRun ID\tPearson\tSpearman\n')
+                for line in out_file:
+                    f.write('\t'.join(line)+'\n')
+        else:
+            print 'Level ' + level
+            for run in out_file:
+                print run
 
 if __name__ == '__main__':
     main()
