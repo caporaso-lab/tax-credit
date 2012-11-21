@@ -36,14 +36,13 @@ script_info['required_options'] = [
     make_option('-r', '--reference_seqs_fp', type='existing_filepath',
         help='Path to reference sequences.  For assignment with blast, these '
         'are used to generate a blast database. For assignment with rdp, they '
-        'are used as training sequences for the classifier')
-]
-script_info['optional_options'] = [
+        'are used as training sequences for the classifier'),
     make_option('--id_to_taxonomy_fp', type='existing_filepath',
         help='Path to tab-delimited file mapping sequences to assigned '
         'taxonomy. Each assigned taxonomy is provided as a '
-        'semicolon-separated list. REQUIRED when assignment_methods '
-        'includes blast, mothur,  [default: %default]', default=None),
+        'semicolon-separated list.')
+]
+script_info['optional_options'] = [
     make_option('-c', '--confidences', type='string',
         help='Comma-separated list of minimum confidences to record an '
         'assignment, only used for rdp and mothur methods [default: %default]',
@@ -61,7 +60,7 @@ script_info['optional_options'] = [
         'sequencing, prior to OTU clustering (used for RTAX only) '
         '[default: %default]', default=None),
     make_option('--rdp_max_memory', type='string',
-        help='Maximum mamory allocation, in MB, for JVM when using the rdp '
+        help='Maximum memory allocation, in MB, for JVM when using the rdp '
         'method. Increase for large training sets [default: $default]',
         default=1000),
     make_option('--input_fasta_filename', type='string',

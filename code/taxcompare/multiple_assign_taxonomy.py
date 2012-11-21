@@ -114,11 +114,11 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
 
             # method is RTAX
             elif method == 'rtax':
-                # check for execution parameters required by Mothur method
+                # check for execution parameters required by RTAX method
                 if read_1_seqs_fp is None:
                     raise WorkflowError("You must specify a file containing the first "
                                         "read from pair-end sequencing.")
-                # generate command for mothur
+                # generate command for rtax
                 commands = _generate_rtax_commands(output_dataset_dir,
                                                    input_fasta_fp,
                                                    reference_seqs_fp,
@@ -136,22 +136,27 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                             close_logger_on_success=False)
     logger.close()
 
+def _directory_check(output_dir, base_str, param_str):
+    # Save final and working output directory names
+    final_dir = join(output_dir, base_str + param_str)
+    working_dir = final_dir + '.tmp'
+    # Check if temp directory already exists (and delete if necessary)
+    if isdir(working_dir):
+        try:
+            rmtree(working_dir)
+        except OSError:
+            raise WorkflowError("Temporary output directory already exests (from "
+                                "a previous run perhaps) and cannot be removed.")
+    return final_dir, working_dir
+
 def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
                            id_to_taxonomy_fp, clean_otu_table_fp, confidences,
                            rdp_max_memory=None):
     result = []
     for confidence in confidences:
         run_id = 'RDP, %s confidence' % str(confidence)
-        # Save final and working output directory names
-        final_dir = join(output_dir, 'rdp_' + str(confidence))
-        working_dir = final_dir + '.tmp'
-        # Check if temp directory already exists (and delete if necessary)
-        if isdir(working_dir):
-            try:
-                rmtree(working_dir)
-            except OSError:
-                raise WorkflowError("Temporary output directory exists (from a "
-                                    "previous run perhaps) and cannot be removed.")
+        # Get final and working directory names
+        final_dir, working_dir = _directory_check(output_dir, 'rdp_', str(confidence))
         # Check if final directory already exists (skip iteration if it does)
         if isdir(final_dir):
             continue
@@ -173,24 +178,16 @@ def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
 def _generate_blast_commands(output_dir, input_fasta_fp, reference_seqs_fp,
                              id_to_taxonomy_fp, clean_otu_table_fp, e_values):
     result = []
-    for e in e_values:
-        run_id = 'BLAST, E %s' % str(e)
-        # Save final and working output directory names
-        final_dir = join(output_dir, 'blast_' + str(e))
-        working_dir = final_dir + '.tmp'
-        # Check if temp directory already exists (and delete if necessary)
-        if isdir(working_dir):
-            try:
-                rmtree(working_dir)
-            except OSError:
-                raise WorkflowError("Temporary output directory exists (from a "
-                                    "previous run perhaps) and cannot be removed.")
+    for e_value in e_values:
+        run_id = 'BLAST, E %s' % str(e_value)
+        # get final and working directory names
+        final_dir, working_dir = _directory_check(output_dir, 'blast_', str(e_value))
         # Check if final directory already exists (skip iteration if it does)
         if isdir(final_dir):
             continue
         assign_taxonomy_command = \
                 'assign_taxonomy.py -i %s -o %s -e %s -m blast -r %s -t %s' % (
-                input_fasta_fp, working_dir, str(e), reference_seqs_fp,
+                input_fasta_fp, working_dir, str(e_value), reference_seqs_fp,
                 id_to_taxonomy_fp)
         result.append([('Assigning taxonomy (%s)' % run_id,
                       assign_taxonomy_command)])
@@ -206,16 +203,8 @@ def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
     result = []
     for confidence in confidences:
         run_id = 'Mothur, %s confidence' % str(confidence)
-        # Save final and working output directory names
-        final_dir = join(output_dir, 'mothur_' + str(confidence))
-        working_dir = final_dir + '.tmp'
-        # Check if temp directory already exists (and delete if necessary)
-        if isdir(working_dir):
-            try:
-                rmtree(working_dir)
-            except OSError:
-                raise WorkflowError("Temporary output directory exists (from a "
-                                    "previous run perhaps) and cannot be removed.")
+        # get final and working directory names
+        final_dir, working_dir = _directory_check(output_dir, 'mothur_', str(confidence))
         # Check if final directory already exists (skip iteration if it does)
         if isdir(final_dir):
             continue
