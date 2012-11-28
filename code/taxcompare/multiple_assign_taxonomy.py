@@ -11,7 +11,7 @@ __email__ = "jai.rideout@gmail.com"
 __status__ = "Development"
 
 """Contains functions used in the multiple_assign_taxonomy.py script."""
-
+import sys
 from os import makedirs, rename
 from os.path import basename, isdir, join, normpath, split, splitext
 from shutil import rmtree
@@ -196,6 +196,8 @@ def _generate_blast_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         ## Rename output directory
         result.append([('Renaming output directory (%s)' % run_id,
                       'mv %s %s' % (working_dir, final_dir))])
+    print result
+    sys.exit()
     return result
 
 def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
