@@ -10,22 +10,25 @@ __email__ = "kpatnode1@gmail.com"
 __status__ = "Development"
 
 from os import walk
+from os.path import exists
+from qiime.workflow import WorkflowError
 from qiime.parse import parse_taxa_summary_table
 from qiime.compare_taxa_summaries import compare_taxa_summaries
 
 assignment_method_choices = ['rdp','blast','rtax','mothur','tax2tree']
 
 def get_key_files(directory):
+    if(not exists(directory)):
+        raise WorkflowError('The key directory does not exist.')
     key_fps = {}
     for key_file in walk(directory).next()[2]:
         experiment = key_file.split('_')[0].capitalize()
-        key_fps[experiment] = directory + key_file
+        key_fps[experiment] = directory+'/'+key_file
+    if(not key_fps):
+        raise WorkflowError('There are no key files in the given directory.')
     return key_fps
 
-def get_coefficients(run_fp, key_fp):
-    run = parse_taxa_summary_table(open(run_fp, 'U'))
-    key = parse_taxa_summary_table(open(key_fp, 'U'))
-
+def get_coefficients(run, key):
     pearson_compare = compare_taxa_summaries(run, key, 'paired', 'pearson')
     spearman_compare = compare_taxa_summaries(run, key, 'paired', 'spearman')
 
@@ -34,31 +37,49 @@ def get_coefficients(run_fp, key_fp):
 
     return pearson_coeff, spearman_coeff
 
-def generate_taxa_compare_table(root, key_directory, levels):
+def generate_taxa_compare_table(root, key_directory, levels=[2,3,4,5,6]):
     key_fps = get_key_files(key_directory)
 
     results = []
-    for i in range(len(levels)):
-        results.append(list())
 
-    for(path, dirs, files) in walk(root, topdown=True):
-        dirs.sort()
-        files.sort()
+    
+    for i in range(len(levels)):
+        results.append(dict())
+
+    for(path, dirs, files) in walk(root):
         for choice in assignment_method_choices:
             if choice in path:
                 experiment = path.split('/')[-2].rstrip('-123').capitalize()
                 for f in files:
                     if 'otu_table_mc2_w_taxa_L' in f:
                         name = path.split('/')[-2].capitalize()
-                        level = int(f[-5])-2
+                        level = int(f[-5])
+
+                        with open(path+'/'+f,'U') as run_file:
+                            #print run_file.readlines()
+                            #run_file.seek(0)
+                            test = run_file.readline()
+                            if('Taxon\t' not in test):
+                                raise WorkflowError('Invalid multiple_assign_taxonomy output file, check for corrupted file: '+path)
+                            run_file.seek(0)
+                            run = parse_taxa_summary_table(run_file)
+
+                        with open(key_fps[experiment]) as key_file:
+                            test = key_file.readline()
+                            if('Taxon\t' not in test):
+                                raise WorkflowError('Invalid key file in directory: '+path)
+                            key_file.seek(0)
+                            key = parse_taxa_summary_table(key_file)
+
                         try:
-                            pearson_coeff, spearman_coeff = get_coefficients(path+'/'+f, key_fps[experiment])
+                            pearson_coeff, spearman_coeff = get_coefficients(run, key)
                         except ValueError:#compare_taxa_summaries couldn't find a match between the 2
                         #Likely due to mismatch between key and input sample names.
                             pearson_coeff = 'X'
                             spearman_coeff = 'X'
-
-                        results[level].append((name, path.split('/')[-1],
-                                                pearson_coeff, spearman_coeff))
-
+                        try:
+                            results[level-2][name]
+                        except KeyError:
+                            results[level-2][name] = dict()
+                        results[level-2][name][path.split('/')[-1]] = (pearson_coeff, spearman_coeff)
     return results
