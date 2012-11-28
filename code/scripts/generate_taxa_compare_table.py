@@ -52,7 +52,7 @@ def main():
     option_parser, opts, args = parse_command_line_parameters(**script_info)
 
     if(opts.output_dir):
-        create_dir(opts.output_dir, fail_on_exist=opts.force)
+        create_dir('/'.join(opts.output_dir.split('/')[:-1]), fail_on_exist=opts.force)
 
     levels = map(int, opts.levels.split(','))
 
