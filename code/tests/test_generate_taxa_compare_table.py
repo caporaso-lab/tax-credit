@@ -107,7 +107,14 @@ class GenerateTaxaCompareTableTests(TestCase):
         #self.assertRaises(WorkflowError, generate_taxa_compare_table,
         #        out_dir, out_dir, 'foo')
 
+    def test_valid_format_output(self):
+        """Functions correctly using standard valid input data"""
+        exp = [['P,S\t\n'], ['P,S\t\n'], ['P,S\t\n'], ['P,S\tblast_1.0\n', 'L18s-1\t-0.2336,-0.7924\t\n'], ['P,S\t\n']]
+
+        obs = format_output([{}, {}, {}, {'L18s-1': {'blast_1.0': ('-0.2336', '-0.7924')}}, {}], ',')
+
     def test_invalid_get_key_files_input(self):
+        """Test that errors are thrown using various types of invalid input."""
         # Key directory does not exist
         self.assertRaises(WorkflowError, get_key_files, '/foobarbaz')
 
@@ -119,6 +126,7 @@ class GenerateTaxaCompareTableTests(TestCase):
         #Anything that would crash this should have already been caught elsewhere.
 
     def test_valid_get_coefficients_input(self):
+        """Functions correctly using standard valid input data"""
         exp = ('-0.2336','-0.7924')
 
         run = parse_taxa_summary_table(open(self.L18S_fp, 'U'))

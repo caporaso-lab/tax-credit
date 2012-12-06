@@ -18,7 +18,8 @@ from qiime.compare_taxa_summaries import compare_taxa_summaries
 assignment_method_choices = ['rdp','blast','rtax','mothur','tax2tree']
 
 def format_output(compare_tables, separator):
-    result = []#Will end up being a list of lists of strings; at each index is a file ready for writelines()
+    """Formats the output from generate_taxa_compare_table into a list of lists(corresponding to files) ready for writelines()"""
+    result = []
     for i, table in enumerate(compare_tables):
         result.append(list())
         datasets = sorted(table.keys())
@@ -38,17 +39,19 @@ def format_output(compare_tables, separator):
     return result
 
 def get_key_files(directory):
+    """Given a directory containing keys, will identify key files and return a dict {name of study: file path}"""
     if(not exists(directory)):
         raise WorkflowError('The key directory does not exist.')
     key_fps = {}
     for key_file in walk(directory).next()[2]:
-        experiment = key_file.split('_')[0].capitalize()
-        key_fps[experiment] = directory+'/'+key_file
+        study = key_file.split('_')[0].capitalize()
+        key_fps[study] = directory+'/'+key_file
     if(not key_fps):
         raise WorkflowError('There are no key files in the given directory.')
     return key_fps
 
 def get_coefficients(run, key):
+    """Given a parsed taxa summary table, will find and return correlation coefficients"""
     pearson_compare = compare_taxa_summaries(run, key, 'paired', 'pearson')
     spearman_compare = compare_taxa_summaries(run, key, 'paired', 'spearman')
 
@@ -58,6 +61,8 @@ def get_coefficients(run, key):
     return pearson_coeff, spearman_coeff
 
 def generate_taxa_compare_table(root, key_directory, levels=[2,3,4,5,6]):
+    """Walks a file tree rooted at root, finds otu tables and compares them against """\
+    """the keys in key_directory. Will check every otu table at level in levels"""
     key_fps = get_key_files(key_directory)
 
     results = []
