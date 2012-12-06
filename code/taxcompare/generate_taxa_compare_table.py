@@ -17,6 +17,26 @@ from qiime.compare_taxa_summaries import compare_taxa_summaries
 
 assignment_method_choices = ['rdp','blast','rtax','mothur','tax2tree']
 
+def format_output(compare_tables, separator):
+    result = []#Will end up being a list of lists of strings; at each index is a file ready for writelines()
+    for i, table in enumerate(compare_tables):
+        result.append(list())
+        datasets = sorted(table.keys())
+        methods = set()
+        for m in table.itervalues():#Find all methods used in table
+            methods|= set(m.keys())
+        methods = sorted(list(methods))
+        result[i].append('P'+separator+'S\t'+'\t'.join(methods)+'\n')
+        for dataset in datasets:
+            line = dataset+'\t'
+            for method in methods:
+                try:
+                    line += table[dataset][method][0] + separator + table[dataset][method][1]+'\t'
+                except KeyError:
+                    line += 'N/A'+'\t' #Don't have data for that set/method
+            result[i].append(line + '\n')
+    return result
+
 def get_key_files(directory):
     if(not exists(directory)):
         raise WorkflowError('The key directory does not exist.')

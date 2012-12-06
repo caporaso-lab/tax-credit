@@ -12,7 +12,7 @@ __status__ = "Development"
 from itertools import izip
 from qiime.util import parse_command_line_parameters, get_options_lookup, make_option, create_dir
 from cogent.util.misc import create_dir
-from taxcompare.generate_taxa_compare_table import generate_taxa_compare_table
+from taxcompare.generate_taxa_compare_table import generate_taxa_compare_table, format_output
 
 options_lookup = get_options_lookup()
 
@@ -30,13 +30,13 @@ script_info['required_options']=[\
         help='Path to the root of the output from multiple_assign_taxonomy.py'),\
 
  make_option('-k', '--key_dir',type="existing_dirpath",
-        help='Path to file containing the expected results of the files in the output directory.')]
+        help='Path to file containing the expected results of the files in the output directory.'),\
+
+ make_option('-o', '--output_dir', type="new_dirpath",
+        help='Prefix for output files. If None is given, will print output.',
+        default = None)]
 
 script_info['optional_options']=[\
- make_option('--output_dir', type="new_dirpath",
-        help='Prefix for output files. If None is given, will print output.',
-        default = None),\
-
  make_option('--levels', type="string",
         help='Comma-separated list of multiple_assign_taxonomy output levels to analyze. Numbers between 2 and 6 inclusive.'+\
         '[default: %default]',
@@ -45,40 +45,26 @@ script_info['optional_options']=[\
  make_option('--force', action='store_true',
 	help='If true forces output directory creation even if the directory already exists.'+\
 	'[default: %default]',
-	default = False)]
+	default = False),\
+
+ make_option('--separator', type="string",
+        help='Sets the string separator used to split up Pearson and Spearman coefficients in the output.'+\
+        '[default: %default]',
+        default = ',')]
 script_info['version'] = __version__
 
 def main():
     option_parser, opts, args = parse_command_line_parameters(**script_info)
 
-    if(opts.output_dir):
-        create_dir('/'.join(opts.output_dir.split('/')[:-1]), fail_on_exist=opts.force)
+    create_dir('/'.join(opts.output_dir.split('/')[:-1]), fail_on_exist=opts.force)
 
     levels = map(int, opts.levels.split(','))
 
     results = generate_taxa_compare_table(opts.root_dir, opts.key_dir, levels)
 
-    for level, out_file in izip(levels, results):
-        if(opts.output_dir):
-            with open(opts.output_dir + '_L' + str(level) + '.txt', 'w') as f:
-                datasets = sorted(out_file.keys())
-                methods = set()
-                for m in out_file.itervalues():
-                    methods|= set(m.keys())
-                methods = sorted(list(methods))
-                f.write('P_S\t')
-                f.write('\t'.join(methods)+'\n')
-                for dataset in datasets:
-                    f.write(dataset+'\t')
-                    for method in methods:
-                        try:
-                            f.write(out_file[dataset][method][0] + "_" + out_file[dataset][method][1]+'\t')
-                        except KeyError:
-                            f.write('N/A'+'\t')#Don't have data for that set/method
-                    f.write('\n')
-        else:
-            #Terminal output code here if wanted
-            pass
+    for level, result in zip(levels, format_output(results, opts.separator)):
+        with open(opts.output_dir + '_L' + str(level) + '.txt', 'w') as f:
+            f.writelines(result)
 
 if __name__ == '__main__':
     main()
