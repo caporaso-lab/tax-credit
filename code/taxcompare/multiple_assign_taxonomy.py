@@ -15,7 +15,7 @@ __status__ = "Development"
 from time import time
 from os import makedirs, walk
 from os.path import basename, isdir, join, normpath, split, splitext
-from qiime.util import add_filename_suffix, get_qiime_temp_dir
+from qiime.util import add_filename_suffix
 from qiime.workflow import (call_commands_serially, generate_log_fp,
                             no_status_updates, print_commands, print_to_stdout,
                             WorkflowError, WorkflowLogger)
@@ -45,6 +45,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         raise WorkflowError("You must provide an ID to taxonomy map filename.")
     
     logger = WorkflowLogger(generate_log_fp(output_dir))
+    time_results=['\n\nAssignment times:\n']
 
     for input_dir in input_dirs:
         # Make sure the input dataset directory exists.
@@ -112,6 +113,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
             else:
                 raise WorkflowError("Unrecognized or unsupported taxonomy "
                         "assignment method '%s'." % method)
+
             # send command for current method to command handler
             for command in commands:
                 c = list()
@@ -120,7 +122,12 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                 command_handler(c, status_update_callback, logger,
                                 close_logger_on_success=False)
                 end = time()
-                logger.write('Time for ' + command[0][0] + ': ' + str(end-start) + ' seconds\n')
+                time_results.append((command[0][0], end-start))
+
+    for t in time_results:
+        if 'Assigning' in t[0]:
+            logger.write(' '.join(t[0].split()[2:]) + '\t' + str(t[1]) + '\n')
+
     logger.close()
 
 def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
