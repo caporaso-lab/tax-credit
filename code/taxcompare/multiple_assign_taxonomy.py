@@ -12,9 +12,10 @@ __status__ = "Development"
 
 """Contains functions used in the multiple_assign_taxonomy.py script."""
 
-from os import makedirs
+from time import time
+from os import makedirs, walk
 from os.path import basename, isdir, join, normpath, split, splitext
-from qiime.util import add_filename_suffix
+from qiime.util import add_filename_suffix, get_qiime_temp_dir
 from qiime.workflow import (call_commands_serially, generate_log_fp,
                             no_status_updates, print_commands, print_to_stdout,
                             WorkflowError, WorkflowLogger)
@@ -112,8 +113,14 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                 raise WorkflowError("Unrecognized or unsupported taxonomy "
                         "assignment method '%s'." % method)
             # send command for current method to command handler
-            command_handler(commands, status_update_callback, logger,
-                            close_logger_on_success=False)
+            for command in commands:
+                c = list()
+                c.append(command)#call_commands_serially needs a list of commands so here's a length one commmand list.
+                start = time()
+                command_handler(c, status_update_callback, logger,
+                                close_logger_on_success=False)
+                end = time()
+                logger.write('Time for ' + command[0][0] + ': ' + str(end-start) + ' seconds\n')
     logger.close()
 
 def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
@@ -123,9 +130,9 @@ def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         run_id = 'RDP, %s confidence' % str(confidence)
         assigned_taxonomy_dir = join(output_dir, 'rdp_' + str(confidence))
         assign_taxonomy_command = \
-                'assign_taxonomy.py -i %s -o %s -c %s -m rdp -r %s -t %s' % (
-                input_fasta_fp, assigned_taxonomy_dir, str(confidence),
-                reference_seqs_fp, id_to_taxonomy_fp)
+                    'assign_taxonomy.py -i %s -o %s -c %s -m rdp -r %s -t %s' % (
+                    input_fasta_fp, assigned_taxonomy_dir, str(confidence),
+                    reference_seqs_fp, id_to_taxonomy_fp)
         result.append([('Assigning taxonomy (%s)' % run_id,
                        assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
@@ -139,9 +146,10 @@ def _generate_blast_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         run_id = 'BLAST, E %s' % str(e)
         assigned_taxonomy_dir = join(output_dir, 'blast_' + str(e))
         assign_taxonomy_command = \
-                'assign_taxonomy.py -i %s -o %s -e %s -m blast -r %s -t %s' % (
-                input_fasta_fp, assigned_taxonomy_dir, str(e),
-                reference_seqs_fp, id_to_taxonomy_fp)
+                    'assign_taxonomy.py -i %s -o %s -e %s -m blast -r %s -t %s' % (
+                    input_fasta_fp, assigned_taxonomy_dir, str(e),
+                    reference_seqs_fp, id_to_taxonomy_fp)
+	print assign_taxonomy_command
         result.append([('Assigning taxonomy (%s)' % run_id,
                        assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,
@@ -155,9 +163,9 @@ def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         run_id = 'Mothur, %s confidence' % str(confidence)
         assigned_taxonomy_dir = join(output_dir, 'mothur_%s' % str(confidence))
         assign_taxonomy_command = \
-                'assign_taxonomy.py -i %s -o %s -c %s -m mothur -r %s -t %s' % (
-                input_fasta_fp, assigned_taxonomy_dir, str(confidence), 
-                reference_seqs_fp, id_to_taxonomy_fp)
+                    'assign_taxonomy.py -i %s -o %s -c %s -m mothur -r %s -t %s' % (
+                    input_fasta_fp, assigned_taxonomy_dir, str(confidence), 
+                    reference_seqs_fp, id_to_taxonomy_fp)
         result.append([('Assigning taxonomy (%s)' % run_id,
                        assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(assigned_taxonomy_dir,

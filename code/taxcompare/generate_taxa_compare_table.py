@@ -61,8 +61,7 @@ def get_coefficients(run, key):
     return pearson_coeff, spearman_coeff
 
 def generate_taxa_compare_table(root, key_directory, levels=[2,3,4,5,6]):
-    """Walks a file tree rooted at root, finds otu tables and compares them against """\
-    """the keys in key_directory. Will check every otu table at level in levels"""
+    """Finds otu tables in root and compares them against the keys in key_directory."""
     key_fps = get_key_files(key_directory)
 
     results = []
@@ -89,7 +88,7 @@ def generate_taxa_compare_table(root, key_directory, levels=[2,3,4,5,6]):
                             run_file.seek(0)
                             run = parse_taxa_summary_table(run_file)
 
-                        with open(key_fps[experiment]) as key_file:
+                        with open(key_fps[experiment],'U') as key_file:
                             test = key_file.readline()
                             if('Taxon\t' not in test):
                                 raise WorkflowError('Invalid key file in directory: '+path)
