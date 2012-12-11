@@ -26,7 +26,8 @@ def format_output(compare_tables, separator):
             continue
         datasets = sorted(table.keys())
         methods = set()
-        for m in table.itervalues():#Find all methods used in table
+        for m in table.itervalues():
+            #Find all methods used in table
             methods|= set(m.keys())
         methods = sorted(list(methods))
         result[i].append('P'+separator+'S\t'+'\t'.join(methods)+'\n')
@@ -36,7 +37,8 @@ def format_output(compare_tables, separator):
                 try:
                     line += table[dataset][method][0] + separator + table[dataset][method][1]+'\t'
                 except KeyError:
-                    line += 'N/A'+'\t' #Don't have data for that set/method
+                    #Don't have data for that set/method
+                    line += 'N/A'+'\t'
             result[i].append(line + '\n')
     return result
 
@@ -127,8 +129,9 @@ def generate_taxa_compare_table(root, key_directory, levels=None):
 
                         try:
                             pearson_coeff, spearman_coeff = get_coefficients(run, key)
-                        except ValueError:#compare_taxa_summaries couldn't find a match between the 2
-                        #Likely due to mismatch between key and input sample names.
+                        except ValueError:
+                            #compare_taxa_summaries couldn't find a match between the 2
+                            #Likely due to mismatch between key and input sample names.
                             pearson_coeff = 'X'
                             spearman_coeff = 'X'
                         try:
