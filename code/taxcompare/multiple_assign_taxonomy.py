@@ -45,7 +45,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         raise WorkflowError("You must provide an ID to taxonomy map filename.")
     
     logger = WorkflowLogger(generate_log_fp(output_dir))
-    time_results=['\n\nAssignment times (seconds):\n']
+    time_results=[]
 
     for input_dir in input_dirs:
         # Make sure the input dataset directory exists.
@@ -116,7 +116,6 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
 
             # send command for current method to command handler
             for command in commands:
-                print command
                 #call_commands_serially needs a list of commands so here's a length one commmand list.
                 c = list()
                 c.append(command)
@@ -129,7 +128,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                     time_results.append((input_file, ' '.join(command[0][0].split()[2:]), end-start))
 
     # removes and writes out the title we initialized with earlier
-    logger.write(time_results.pop(0))
+    logger.write('\n\nAssignment times (seconds):\n')
     for t in time_results:
         # write out each time result as (method, params)\ttime (seconds)
         #First clean up the output

@@ -37,8 +37,7 @@ script_info['required_options']=[
         help='Path to file containing the expected results of the files in the output directory.'),
 
  make_option('-o', '--output_dir', type="new_dirpath",
-        help='Directory to output files.',
-        default = None)]
+        help='Directory to output files.')]
 
 script_info['optional_options']=[
  make_option('-l', '--levels', type="string",
