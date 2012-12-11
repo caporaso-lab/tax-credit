@@ -13,7 +13,7 @@ __status__ = "Development"
 """Contains functions used in the multiple_assign_taxonomy.py script."""
 
 from time import time
-from os import makedirs, walk
+from os import makedirs
 from os.path import basename, isdir, join, normpath, split, splitext
 from qiime.util import add_filename_suffix
 from qiime.workflow import (call_commands_serially, generate_log_fp,
