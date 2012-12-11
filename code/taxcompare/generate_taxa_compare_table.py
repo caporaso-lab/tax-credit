@@ -10,7 +10,7 @@ __email__ = "kpatnode1@gmail.com"
 __status__ = "Development"
 
 from os import walk
-from os.path import exists
+from os.path import exists, join
 from qiime.workflow import WorkflowError
 from qiime.parse import parse_taxa_summary_table
 from qiime.compare_taxa_summaries import compare_taxa_summaries
@@ -22,6 +22,8 @@ def format_output(compare_tables, separator):
     result = []
     for i, table in enumerate(compare_tables):
         result.append(list())
+        if not table:
+            continue
         datasets = sorted(table.keys())
         methods = set()
         for m in table.itervalues():#Find all methods used in table
@@ -44,8 +46,10 @@ def get_key_files(directory):
         raise WorkflowError('The key directory does not exist.')
     key_fps = {}
     for key_file in walk(directory).next()[2]:
+        if key_file.endswith('~'):
+            continue
         study = key_file.split('_')[0].capitalize()
-        key_fps[study] = directory+'/'+key_file
+        key_fps[study] = join(directory, key_file)
     if(not key_fps):
         raise WorkflowError('There are no key files in the given directory.')
     return key_fps
@@ -60,35 +64,61 @@ def get_coefficients(run, key):
 
     return pearson_coeff, spearman_coeff
 
-def generate_taxa_compare_table(root, key_directory, levels=[2,3,4,5,6]):
-    """Finds otu tables in root and compares them against the keys in key_directory."""
+def generate_taxa_compare_table(root, key_directory, levels=None):
+    """Finds otu tables in root and compares them against the keys in key_directory.
+
+    Walks a file tree starting at root and finds the otu tables output by
+    multiple_assign_taxonomy.py. Then compares the found otu tables to their corresponding
+    key in key_directory. Returns a list containing a dict for every
+    level of output compared. It should be noted that since levels start at 2, by default 
+    a specific level will be at results[level-2]. Each level dict is of the format 
+    {name of study: {method_and_params: (pearson, spearman)}}
+
+    Parameters:
+    root: path to root of multiple_assign_taxonomy.py output.
+    key_directory: path to directory containing known/expected compositions. Each study
+        should be in its own otu table.
+    levels: INCOMPLETE. Use other than default will cause unexpected results. The
+        multiple_assign_taxonomy.py output levels to be analyzed."""
     key_fps = get_key_files(key_directory)
 
     results = []
 
-    
-    for i in range(len(levels)):
+    if not levels:
+        levels = [2,3,4,5,6]
+
+    if len(levels) > 5:
+        raise WorkflowError('Too many levels.')
+    for l in levels:
+        if l < 2 or l > 6:
+            raise WorkflowError('Level out of range: ' + str(l))
+
+    for i in range(5):
         results.append(dict())
 
     for(path, dirs, files) in walk(root):
         for choice in assignment_method_choices:
+            #Checks if this dir's name includes a known assignment method (and therefor contains that output)
             if choice in path:
-                experiment = path.split('/')[-2].rstrip('-123').capitalize()
+                study = path.split('/')[-2].rstrip('-123').capitalize()
                 for f in files:
-                    if 'otu_table_mc2_w_taxa_L' in f:
+                    if 'otu_table_mc2_w_taxa_L' in f and not f.endswith('~'):
                         name = path.split('/')[-2].capitalize()
                         level = int(f[-5])
+                        if level not in levels:
+                            #If that level wasn't requested, skip it.
+                            continue
 
-                        with open(path+'/'+f,'U') as run_file:
-                            #print run_file.readlines()
-                            #run_file.seek(0)
+                        with open(join(path,f),'U') as run_file:
+                            #Open and parse run file
                             test = run_file.readline()
                             if('Taxon\t' not in test):
                                 raise WorkflowError('Invalid multiple_assign_taxonomy output file, check for corrupted file: '+path)
                             run_file.seek(0)
                             run = parse_taxa_summary_table(run_file)
 
-                        with open(key_fps[experiment],'U') as key_file:
+                        with open(key_fps[study],'U') as key_file:
+                            #Open and parse key file
                             test = key_file.readline()
                             if('Taxon\t' not in test):
                                 raise WorkflowError('Invalid key file in directory: '+path)
