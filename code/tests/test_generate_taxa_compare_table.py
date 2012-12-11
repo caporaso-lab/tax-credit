@@ -2,7 +2,7 @@
 
 __author__ = "Kyle Patnode"
 __copyright__ = "Copyright 2012, The QIIME project"
-__credits__ = ["Kyle Patnode","Jai Ram Rideout"]
+__credits__ = ["Kyle Patnode","Jai Ram Rideout","Greg Caporaso"]
 __license__ = "GPL"
 __version__ = "1.5.0-dev"
 __maintainer__ = "Kyle Patnode"
@@ -23,7 +23,7 @@ from qiime.util import get_qiime_temp_dir, get_tmp_filename
 
 
 class GenerateTaxaCompareTableTests(TestCase):
-    """Tests for the multiple_assign_taxonomy.py module."""
+    """Tests for the generate_taxa_compare_table.py module."""
 
     def setUp(self):
         """Set up files/environment that will be used by the tests."""
@@ -62,6 +62,7 @@ class GenerateTaxaCompareTableTests(TestCase):
         with open(self.key_fp, 'w') as f:
             f.writelines(L18S_key)
         self.files_to_remove.append(self.key_fp)
+        self.bad_key = self.key_dir+'/L18S_key.txt'
 
         # setup temporary output directory
         self.output_dir = mkdtemp(dir=self.tmp_dir,
@@ -103,15 +104,26 @@ class GenerateTaxaCompareTableTests(TestCase):
                 '/foobarbaz', out_dir)
 
         # Invalid levels
-        # code for varying level input has yet to be implemented so there's nothing to check yet.
-        #self.assertRaises(WorkflowError, generate_taxa_compare_table,
-        #        out_dir, out_dir, 'foo')
+        self.assertRaises(WorkflowError, generate_taxa_compare_table, out_dir, out_dir, 'foo')
+        self.assertRaises(WorkflowError, generate_taxa_compare_table, out_dir, out_dir, [7])
+        self.assertRaises(WorkflowError, generate_taxa_compare_table, out_dir, out_dir, [1,2,3,4,5,6])
 
     def test_valid_format_output(self):
         """Functions correctly using standard valid input data"""
-        exp = [['P,S\t\n'], ['P,S\t\n'], ['P,S\t\n'], ['P,S\tblast_1.0\n', 'L18s-1\t-0.2336,-0.7924\t\n'], ['P,S\t\n']]
+        exp = [[], [], [], ['P,S\tblast_1.0\trdp_0.8\n', 'Broad1\tN/A\t-0.1236,-0.7477\t\n',
+              'L18s-1\t-0.2336,-0.7924\tN/A\t\n'], []]
 
-        obs = format_output([{}, {}, {}, {'L18s-1': {'blast_1.0': ('-0.2336', '-0.7924')}}, {}], ',')
+        obs = format_output([{}, {}, {}, {'L18s-1': {'blast_1.0': ('-0.2336', '-0.7924')},
+              'Broad1': {'rdp_0.8': ('-0.1236', '-0.7477')}}, {}], ',')
+        self.assertEqual(obs, exp)
+
+    def test_valid_get_key_files_input(self):
+        """Functions correctly using standard valid input data. Also checks to make sure get_key_files isn't grabbing backups."""
+        obs = get_key_files(self.key_dir)
+        # Test key and incidentally length
+        self.assertTrue(obs.keys() == ['L18s'])
+        # Test value
+        self.assertTrue(obs.values()[0].endswith('L18S_key.txt'))
 
     def test_invalid_get_key_files_input(self):
         """Test that errors are thrown using various types of invalid input."""
@@ -120,10 +132,6 @@ class GenerateTaxaCompareTableTests(TestCase):
 
         # Key directory is empty
         self.assertRaises(WorkflowError, get_key_files, self.output_dir)
-
-    def test_invalid_get_coefficients_input(self):
-        pass#Not really sure if there's anything to put here.
-        #Anything that would crash this should have already been caught elsewhere.
 
     def test_valid_get_coefficients_input(self):
         """Functions correctly using standard valid input data"""

@@ -45,7 +45,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         raise WorkflowError("You must provide an ID to taxonomy map filename.")
     
     logger = WorkflowLogger(generate_log_fp(output_dir))
-    time_results=['\n\nAssignment times:\n']
+    time_results=['\n\nAssignment times (seconds):\n']
 
     for input_dir in input_dirs:
         # Make sure the input dataset directory exists.
@@ -116,17 +116,28 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
 
             # send command for current method to command handler
             for command in commands:
+                print command
+                #call_commands_serially needs a list of commands so here's a length one commmand list.
                 c = list()
-                c.append(command)#call_commands_serially needs a list of commands so here's a length one commmand list.
+                c.append(command)
                 start = time()
                 command_handler(c, status_update_callback, logger,
                                 close_logger_on_success=False)
                 end = time()
-                time_results.append((command[0][0], end-start))
+                input_file = command[0][1].split()[command[0][1].split().index('-i')+1].split('/')[-2]
+                if 'Assigning' in command[0][0]:
+                    time_results.append((input_file, ' '.join(command[0][0].split()[2:]), end-start))
 
+    # removes and writes out the title we initialized with earlier
+    logger.write(time_results.pop(0))
     for t in time_results:
-        if 'Assigning' in t[0]:
-            logger.write(' '.join(t[0].split()[2:]) + '\t' + str(t[1]) + '\n')
+        # write out each time result as (method, params)\ttime (seconds)
+        #First clean up the output
+        method, param = t[1].split(', ')
+        method = method.lstrip('(')
+        param = param.rstrip(')')
+
+        logger.write('%s\t%s\t%s\t%s\n' % (t[0], method, param, str(t[2])))
 
     logger.close()
 
