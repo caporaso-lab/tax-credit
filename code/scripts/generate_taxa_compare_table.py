@@ -9,6 +9,7 @@ __maintainer__ = "Kyle Patnode"
 __email__ = "kpatnode1@gmail.com"
 __status__ = "Development"
 
+from os.path import join
 from itertools import izip
 from qiime.util import parse_command_line_parameters, get_options_lookup, make_option, create_dir
 from taxcompare.generate_taxa_compare_table import generate_taxa_compare_table, format_output
@@ -62,7 +63,7 @@ def main():
     results = format_output(results, opts.separator)
 
     for level in levels:
-        with open('compare_table_L' + str(level) + '.txt', 'w') as f:
+        with open(join(opts.output_dir, 'compare_table_L' + str(level) + '.txt'), 'w') as f:
             f.writelines(results[level])
 
 if __name__ == '__main__':

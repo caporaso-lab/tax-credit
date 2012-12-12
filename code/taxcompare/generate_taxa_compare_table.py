@@ -18,19 +18,20 @@ from qiime.compare_taxa_summaries import compare_taxa_summaries
 assignment_method_choices = ['rdp','blast','rtax','mothur','tax2tree']
 
 def format_output(compare_tables, separator):
-    """Formats the output from generate_taxa_compare_table into a list of lists(corresponding to files) ready for writelines()"""
-    result = []
-    for i, table in enumerate(compare_tables):
-        result.append(list())
-        if not table:
+    """Formats the output from generate_taxa_compare_table into {level: [write_ready_list]}"""
+    result = {}
+    for key in compare_tables.iterkeys():
+        result[key] = list()
+        if not compare_tables[key]:
             continue
+        table = compare_tables[key]
         datasets = sorted(table.keys())
         methods = set()
         for m in table.itervalues():
             #Find all methods used in table
             methods|= set(m.keys())
         methods = sorted(list(methods))
-        result[i].append('P'+separator+'S\t'+'\t'.join(methods)+'\n')
+        result[key].append('P'+separator+'S\t'+'\t'.join(methods)+'\n')
         for dataset in datasets:
             line = dataset+'\t'
             for method in methods:
@@ -39,7 +40,7 @@ def format_output(compare_tables, separator):
                 except KeyError:
                     #Don't have data for that set/method
                     line += 'N/A'+'\t'
-            result[i].append(line + '\n')
+            result[key].append(line + '\n')
     return result
 
 def get_key_files(directory):
@@ -71,10 +72,9 @@ def generate_taxa_compare_table(root, key_directory, levels=None):
 
     Walks a file tree starting at root and finds the otu tables output by
     multiple_assign_taxonomy.py. Then compares the found otu tables to their corresponding
-    key in key_directory. Returns a list containing a dict for every
-    level of output compared. It should be noted that since levels start at 2, by default 
-    a specific level will be at results[level-2]. Each level dict is of the format 
-    {name of study: {method_and_params: (pearson, spearman)}}
+    key in key_directory. Returns a dict containing another dict for every level of output
+    compared. Output is of the format:
+    {level: {name of study: {method_and_params: (pearson, spearman)}}}
 
     Parameters:
     root: path to root of multiple_assign_taxonomy.py output.
@@ -84,19 +84,18 @@ def generate_taxa_compare_table(root, key_directory, levels=None):
         multiple_assign_taxonomy.py output levels to be analyzed."""
     key_fps = get_key_files(key_directory)
 
-    results = []
+    results = {}
 
     if not levels:
         levels = [2,3,4,5,6]
-
     if len(levels) > 5:
         raise WorkflowError('Too many levels.')
     for l in levels:
         if l < 2 or l > 6:
             raise WorkflowError('Level out of range: ' + str(l))
 
-    for i in range(5):
-        results.append(dict())
+    for l in levels:
+        results[l] = dict()
 
     for(path, dirs, files) in walk(root):
         for choice in assignment_method_choices:
@@ -135,8 +134,8 @@ def generate_taxa_compare_table(root, key_directory, levels=None):
                             pearson_coeff = 'X'
                             spearman_coeff = 'X'
                         try:
-                            results[level-2][name]
+                            results[level][name]
                         except KeyError:
-                            results[level-2][name] = dict()
-                        results[level-2][name][path.split('/')[-1]] = (pearson_coeff, spearman_coeff)
+                            results[level][name] = dict()
+                        results[level][name][path.split('/')[-1]] = (pearson_coeff, spearman_coeff)
     return results

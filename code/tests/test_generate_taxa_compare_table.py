@@ -87,9 +87,9 @@ class GenerateTaxaCompareTableTests(TestCase):
 
     def test_generate_taxa_compare_table_method(self):
         """Functions correctly using standard valid input data."""
-        exp = [{}, {}, {}, {'L18s-1': {'blast_1.0': ('-0.2336', '-0.7924')}}, {}]
+        exp = {2:{}, 4:{}, 5:{'L18s-1': {'blast_1.0': ('-0.2336', '-0.7924')}}}
 
-        obs = generate_taxa_compare_table(self.root_dir, self.key_dir)
+        obs = generate_taxa_compare_table(self.root_dir, self.key_dir, [2,4,5])
 
         self.assertEqual(obs, exp)
 
@@ -104,17 +104,21 @@ class GenerateTaxaCompareTableTests(TestCase):
                 '/foobarbaz', out_dir)
 
         # Invalid levels
+        # Not a list
         self.assertRaises(WorkflowError, generate_taxa_compare_table, out_dir, out_dir, 'foo')
+        # Out of range
         self.assertRaises(WorkflowError, generate_taxa_compare_table, out_dir, out_dir, [7])
+        # Too many values (and technically out of range)
         self.assertRaises(WorkflowError, generate_taxa_compare_table, out_dir, out_dir, [1,2,3,4,5,6])
 
     def test_valid_format_output(self):
         """Functions correctly using standard valid input data"""
-        exp = [[], [], [], ['P,S\tblast_1.0\trdp_0.8\n', 'Broad1\tN/A\t-0.1236,-0.7477\t\n',
-              'L18s-1\t-0.2336,-0.7924\tN/A\t\n'], []]
+        exp = {2:[], 4:[], 5:['P,S\tblast_1.0\trdp_0.8\n', 'Broad1\tN/A\t-0.1236,-0.7477\t\n',
+              'L18s-1\t-0.2336,-0.7924\tN/A\t\n']}
 
-        obs = format_output([{}, {}, {}, {'L18s-1': {'blast_1.0': ('-0.2336', '-0.7924')},
-              'Broad1': {'rdp_0.8': ('-0.1236', '-0.7477')}}, {}], ',')
+        obs = format_output({2:{}, 4:{}, 5:{'L18s-1': {'blast_1.0': ('-0.2336', '-0.7924')},
+              'Broad1':{'rdp_0.8': ('-0.1236','-0.7477')}}}, ',')
+
         self.assertEqual(obs, exp)
 
     def test_valid_get_key_files_input(self):
