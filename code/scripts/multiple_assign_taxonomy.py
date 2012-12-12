@@ -39,7 +39,7 @@ script_info['required_options'] = [
         'are used as training sequences for the classifier')
 ]
 script_info['optional_options'] = [
-    make_option('--rdp_id_to_taxonomy_fp', type='existing_filepath',
+    make_option('-t', '--id_to_taxonomy_fp', type='existing_filepath',
         help='Path to tab-delimited file mapping sequences to assigned '
          'taxonomy. Each assigned taxonomy is provided as a '
          'semicolon-separated list. Each assigned taxonomy must be exactly 6 '
@@ -99,11 +99,12 @@ def main():
     assign_taxonomy_multiple_times(input_dirs, opts.output_dir,
         assignment_methods, opts.reference_seqs_fp, opts.input_fasta_filename,
         opts.clean_otu_table_filename,
-        rdp_id_to_taxonomy_fp=opts.rdp_id_to_taxonomy_fp,
-        blast_id_to_taxonomy_fp=opts.blast_id_to_taxonomy_fp,
+        id_to_taxonomy_fp=opts.id_to_taxonomy_fp,
         confidences=confidences, e_values=e_values,
         command_handler=command_handler,
         status_update_callback=status_update_callback, force=opts.force)
+
+    
 
 
 if __name__ == "__main__":
