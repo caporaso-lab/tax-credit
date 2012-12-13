@@ -205,8 +205,6 @@ def _generate_blast_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         ## Rename output directory
         result.append([('Renaming output directory (%s)' % run_id,
                       'mv %s %s' % (working_dir, final_dir))])
-    print result
-    sys.exit()
     return result
 
 def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
@@ -240,36 +238,20 @@ def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
                             read_1_seqs_fp, read_2_seqs_fp=None):
     """ Build command strings for RTAX method. """
     result = []
-    run_id = 'RTAX'
-    for i in range(1,2):
-        ## For single-end reads
-        if i is 1:
-            run_id = 'RTAX, single-end'
-            final_dir = join(output_dir, 'rtax_single')
-        ## For paired-end reads
-        else:
-            run_id = 'RTAX, paired-end'
-            final_dir = join(output_dir, 'rtax_paired')
-        ## Save working output directory name
-        working_dir = final_dir + '.tmp'
-        ## Check if temp directory already exists (and delete if necessary)
-        if isdir(working_dir):
-            try:
-                rmtree(working_dir)
-            except OSError:
-                raise WorkflowError("Temporary output directory exists (from "
-                                    "a previous run perhaps) and cannot be "
-                                    "removed.")
+    for run in ['single', 'paired']:
+        run_id = 'RTAX, ' + run + '-end'
+        ## Get final and working directory names
+        final_dir, working_dir = \
+                _directory_check(output_dir, 'rtax_', run)
         ## Check if final directory already exists (skip iteration if it does)
         if isdir(final_dir):
             continue
         assign_taxonomy_command = \
                 'assign_taxonomy.py -i %s -o %s -m rtax -r %s -t %s '\
                 '--read_1_seqs_fp %s' % (input_fasta_fp, working_dir,
-                 reference_seqs_fp, id_to_taxonomy_fp, read_1_seqs_fp)
-        ## Append second read parameter for paired end
-        if i is 2:
-            assigned_taxonomy_command += ' --read_2_seqs_fp %s' % read_2_seqs_fp
+                reference_seqs_fp, id_to_taxonomy_fp, read_1_seqs_fp)
+        if run is 'paired':
+            assign_taxonomy_command += ' --read_2_seqs_fp %s' % read_2_seqs_fp
         result.append([('Assigning taxonomy (%s)' % run_id,
                       assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(working_dir,
@@ -277,7 +259,7 @@ def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         ## Rename output directory
         result.append([('Renaming output directory (%s)' % run_id,
                       'mv %s %s' % (working_dir, final_dir))])
-        ## Break execution if no second read parameter is provided
+        ## Break if second read is None
         if read_2_seqs_fp is None:
             return result
 
