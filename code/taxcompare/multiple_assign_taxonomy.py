@@ -13,6 +13,7 @@ __status__ = "Development"
 """Contains functions used in the multiple_assign_taxonomy.py script."""
 import sys
 from os import makedirs, rename
+from time import time
 from os.path import basename, isdir, join, normpath, split, splitext
 from shutil import rmtree
 from qiime.util import add_filename_suffix
@@ -49,6 +50,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         raise WorkflowError("You must provide an ID to taxonomy map filename.")
     
     logger = WorkflowLogger(generate_log_fp(output_dir))
+    time_results=[]
 
     for input_dir in input_dirs:
         ## Make sure the input dataset directory exists.
@@ -134,9 +136,31 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
             else:
                 raise WorkflowError("Unrecognized or unsupported taxonomy "
                         "assignment method '%s'." % method)
-            ## Send command for current method to command handler
-            command_handler(commands, status_update_callback, logger,
-                            close_logger_on_success=False)
+
+            # send command for current method to command handler
+            for command in commands:
+                #call_commands_serially needs a list of commands so here's a length one commmand list.
+                c = list()
+                c.append(command)
+                start = time()
+                command_handler(c, status_update_callback, logger,
+                                close_logger_on_success=False)
+                end = time()
+                input_file = command[0][1].split()[command[0][1].split().index('-i')+1].split('/')[-2]
+                if 'Assigning' in command[0][0]:
+                    time_results.append((input_file, ' '.join(command[0][0].split()[2:]), end-start))
+
+    # removes and writes out the title we initialized with earlier
+    logger.write('\n\nAssignment times (seconds):\n')
+    for t in time_results:
+        # write out each time result as (method, params)\ttime (seconds)
+        #First clean up the output
+        method, param = t[1].split(', ')
+        method = method.lstrip('(')
+        param = param.rstrip(')')
+
+        logger.write('%s\t%s\t%s\t%s\n' % (t[0], method, param, str(t[2])))
+
     logger.close()
 
 def _directory_check(output_dir, base_str, param_str):

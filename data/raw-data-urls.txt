@@ -37,3 +37,13 @@ https://s3.amazonaws.com/illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_
 https://s3.amazonaws.com/illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_rev.txt.gz
 https://s3.amazonaws.com/illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_run2_fwd.txt.gz
 https://s3.amazonaws.com/illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_run2_rev.txt.gz
+
+https://s3.amazonaws.com/illumina-mock-communities-raw-data/RDBW/RDBW_fwd.txt.gz
+
+# The following file had to be split into three parts due to Amazon's 5GB limit
+# per file. To recombine, run:
+#   cat ITS_SAG_fwd.txt.gz_part* > ITS_SAG_fwd.txt.gz
+# And then gunzip the file and check the MD5 sum.
+https://s3.amazonaws.com/illumina-mock-communities-raw-data/ITS_SAG/ITS_SAG_fwd.txt.gz_parta
+https://s3.amazonaws.com/illumina-mock-communities-raw-data/ITS_SAG/ITS_SAG_fwd.txt.gz_partb
+https://s3.amazonaws.com/illumina-mock-communities-raw-data/ITS_SAG/ITS_SAG_fwd.txt.gz_partc
