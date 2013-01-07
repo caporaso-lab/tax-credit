@@ -36,20 +36,13 @@ script_info['required_options'] = [
     make_option('-r', '--reference_seqs_fp', type='existing_filepath',
         help='Path to reference sequences.  For assignment with blast, these '
         'are used to generate a blast database. For assignment with rdp, they '
-        'are used as training sequences for the classifier')
+        'are used as training sequences for the classifier'),
+    make_option('--id_to_taxonomy_fp', type='existing_filepath',
+        help='Path to tab-delimited file mapping sequences to assigned '
+        'taxonomy. Each assigned taxonomy is provided as a '
+        'semicolon-separated list.')
 ]
 script_info['optional_options'] = [
-    make_option('-t', '--id_to_taxonomy_fp', type='existing_filepath',
-        help='Path to tab-delimited file mapping sequences to assigned '
-         'taxonomy. Each assigned taxonomy is provided as a '
-         'semicolon-separated list. Each assigned taxonomy must be exactly 6 '
-         'levels deep and each genus must be unique. REQUIRED when '
-         'assignment_methods includes rdp [default: %default]', default=None),
-    make_option('--blast_id_to_taxonomy_fp', type='existing_filepath',
-        help='Path to tab-delimited file mapping sequences to assigned '
-         'taxonomy. Each assigned taxonomy is provided as a '
-         'semicolon-separated list. REQUIRED when assignment_methods includes '
-         'blast [default: %default]', default=None),
     make_option('-c', '--confidences', type='string',
         help='Comma-separated list of minimum confidences to record an '
         'assignment, only used for rdp and mothur methods [default: %default]',
@@ -58,6 +51,18 @@ script_info['optional_options'] = [
         help='Comma-separated list of maximum e-values to record an '
         'assignment, only used for blast method [default: %default]',
         default=None),
+    make_option('--read_1_seqs_fp', type='existing_filepath',
+        help='Path to fasta file containing the first read from paired-end '
+        'sequencing, prior to OTU clustering (used for RTAX only) '
+        '[default: %default]', default=None),
+    make_option('--read_2_seqs_fp', type='existing_filepath',
+        help='Path to fasta file containing a second read from paired-end '
+        'sequencing, prior to OTU clustering (used for RTAX only) '
+        '[default: %default]', default=None),
+    make_option('--rdp_max_memory', type='string',
+        help='Maximum memory allocation, in MB, for JVM when using the rdp '
+        'method. Increase for large training sets [default: $default]',
+        default=1000),
     make_option('--input_fasta_filename', type='string',
         help='[default: %default]', default='rep_set.fna'),
     make_option('--clean_otu_table_filename', type='string',
@@ -101,11 +106,11 @@ def main():
         opts.clean_otu_table_filename,
         id_to_taxonomy_fp=opts.id_to_taxonomy_fp,
         confidences=confidences, e_values=e_values,
+        read_1_seqs_fp=opts.read_1_seqs_fp,
+        read_2_seqs_fp=opts.read_2_seqs_fp,
+        rdp_max_memory=opts.rdp_max_memory,
         command_handler=command_handler,
         status_update_callback=status_update_callback, force=opts.force)
-
-    
-
 
 if __name__ == "__main__":
     main()
