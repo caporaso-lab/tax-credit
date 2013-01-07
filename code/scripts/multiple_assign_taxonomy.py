@@ -5,7 +5,7 @@ __author__ = "Jai Ram Rideout"
 __copyright__ = "Copyright 2012, The QIIME project"
 __credits__ = ["Jai Ram Rideout", "Zack Ellett", "Kyle Patnode"]
 __license__ = "GPL"
-__version__ = "1.5.0-dev"
+__version__ = "1.6.0-dev"
 __maintainer__ = "Jai Ram Rideout"
 __email__ = "jai.rideout@gmail.com"
 __status__ = "Development"
@@ -59,18 +59,22 @@ script_info['optional_options'] = [
         '[default: %default]', default=None),
     make_option('--input_fasta_filename', type='string',
         help='Name of fasta file containing sequences to receive taxonomy '
-        'assignment [default: %default]', default='rep_set.fna'),
+        'assignment. Must exist under each input dataset directory '
+        '[default: %default]', default='rep_set.fna'),
     make_option('--clean_otu_table_filename', type='string',
         help='Name of OTU table BIOM file that will have taxonomic '
-        'information added to it [default: %default]',
-        default='otu_table_mc2.biom'),
+        'information added to it. Must exist under each input dataset '
+        'directory [default: %default]', default='otu_table_mc2.biom'),
     make_option('--read_1_seqs_filename', type='string',
         help='Name of fasta file containing the first read from paired-end '
-        'sequencing, prior to OTU clustering (used for RTAX only) '
-        '[default: %default]', default='seqs1.fna'),
+        'sequencing, prior to OTU clustering (used for RTAX only). Must exist '
+        'under each input dataset directory if rtax is specified as an '
+        'assignment method [default: %default]', default='seqs1.fna'),
     make_option('--read_2_seqs_filename', type='string',
         help='Name of fasta file containing a second read from paired-end '
-        'sequencing, prior to OTU clustering (used for RTAX only) '
+        'sequencing, prior to OTU clustering (used for RTAX only). Must exist '
+        'under each input dataset directory if rtax is specified as an '
+        'assignment method and the "paired" rtax mode is specified '
         '[default: %default]', default='seqs2.fna'),
     make_option('--rdp_max_memory', type='string',
         help='Maximum memory allocation, in MB, for JVM when using the rdp '
@@ -119,8 +123,8 @@ def main():
         id_to_taxonomy_fp=opts.id_to_taxonomy_fp,
         confidences=confidences, e_values=e_values,
         rtax_modes=opts.rtax_modes,
-        opts.input_fasta_filename,
-        opts.clean_otu_table_filename,
+        input_fasta_filename=opts.input_fasta_filename,
+        clean_otu_table_filename=opts.clean_otu_table_filename,
         read_1_seqs_filename=opts.read_1_seqs_filename,
         read_2_seqs_filename=opts.read_2_seqs_filename,
         rdp_max_memory=opts.rdp_max_memory,
