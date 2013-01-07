@@ -3,7 +3,7 @@ from __future__ import division
 
 __author__ = "Jai Ram Rideout"
 __copyright__ = "Copyright 2012, The QIIME project"
-__credits__ = ["Jai Ram Rideout"]
+__credits__ = ["Jai Ram Rideout", "Zack Ellett", "Kyle Patnode"]
 __license__ = "GPL"
 __version__ = "1.5.0-dev"
 __maintainer__ = "Jai Ram Rideout"
@@ -11,6 +11,7 @@ __email__ = "jai.rideout@gmail.com"
 __status__ = "Development"
 
 """Contains functions used in the multiple_assign_taxonomy.py script."""
+
 import sys
 from os import makedirs, rename
 from time import time
@@ -22,11 +23,13 @@ from qiime.workflow import (call_commands_serially, generate_log_fp,
                             WorkflowError, WorkflowLogger)
 
 def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
-        reference_seqs_fp, input_fasta_filename, clean_otu_table_filename,
-        id_to_taxonomy_fp=None, confidences=None, e_values=None,
-        command_handler=call_commands_serially, rdp_max_memory=None,
-        status_update_callback=print_to_stdout, force=False,
-        read_1_seqs_fp=None, read_2_seqs_fp=None):
+        reference_seqs_fp, id_to_taxonomy_fp,
+        confidences=None, e_values=None, rtax_modes=None,
+        input_fasta_filename='rep_set.fna',
+        clean_otu_table_filename='otu_table_mc2.biom',
+        read_1_seqs_filename='seqs1.fna', read_2_seqs_fp='seqs2.fna',
+        rdp_max_memory=None, command_handler=call_commands_serially,
+        status_update_callback=print_to_stdout, force=False):
     """ Performs sanity checks on passed arguments and directories. Builds 
         commands for each method and sends them off to be executed. """
     ## Check if temp output directory exists
@@ -40,7 +43,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
 
     ## Check for inputs that are universally required
     if assignment_methods is None:
-        raise WorkflowError("You must specify at least one method:" 
+        raise WorkflowError("You must specify at least one method: "
                             "'rdp', 'blast', 'mothur', or 'rtax'.")
     if input_fasta_filename is None:
         raise WorkflowError("You must provide an input fasta filename.")
@@ -48,7 +51,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         raise WorkflowError("You must provide a clean otu table filename.")
     if id_to_taxonomy_fp is None:
         raise WorkflowError("You must provide an ID to taxonomy map filename.")
-    
+
     logger = WorkflowLogger(generate_log_fp(output_dir))
     time_results=[]
 
