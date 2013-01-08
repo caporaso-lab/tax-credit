@@ -26,11 +26,45 @@ assigners over multiple datasets.
 
 It accepts a list of directories as input (one for each dataset), where each
 directory contains the same set of files following a common naming convention.
-At a minimum, each directory must have an 
+At a minimum, each directory must have an OTU table without taxonomic
+information and a fasta file containing the representative sequences that need
+to be assigned taxonomy. Additional files may be needed depending on the
+taxonomy assignment method; please refer to the script option documentation
+below for more details.
+
+The script creates (under the specified output directory) a subdirectory for
+each input dataset directory. Under each of these directories, a subdirectory
+is created for every possible combination of taxonomy assigners and parameters.
+Each of these directories will contain an OTU table with taxonomic information,
+the representative set's taxonomic assignments, and a set of taxa summary files
+at varying taxonomic levels.
+
+For example, if ran the script using the RDP classifier at 0.6 and 0.8
+confidences over the S16S-1 input dataset, we'd get an output directory that
+looks like:
+
+output_dir
+  S16S-1
+    rdp_0.6
+      otu_table.biom
+      ...
+    rdp_0.8
+      otu_table.biom
+      ...
+
+The script supports efficient reruns, meaning that it will not reprocess a
+taxonomy assigner/parameter combo if the expected output subdirectory already
+exists. This allows the script to be rerun in an incremental fashion (e.g. if
+the script fails or we decide to add a new assigner or parameter, we don't want
+to have to rerun everything from scratch).
 """
 
 script_info['script_usage'] = []
-script_info['script_usage'].append(("", "", "%prog -h"))
+script_info['script_usage'].append(("Multiple RDP and mothur assignments",
+"This example shows how to assign taxonomy using RDP and mothur, at 0.6 and "
+"0.8 confidence levels, over the S16S-1 and S16S-2 datasets. This command "
+"will result in a total of eight subdirectories (four for each dataset).",
+"%prog -i S16S-1,S16S-2 -o example_1_output -m rdp,mothur -r gg_97_otus_4feb2011.fasta -t greengenes_tax.txt -c 0.6,0.8"))
 
 script_info['output_description'] = ""
 
@@ -130,7 +164,7 @@ def main():
     assign_taxonomy_multiple_times(input_dirs, opts.output_dir,
         assignment_methods, opts.reference_seqs_fp,
         opts.id_to_taxonomy_fp, confidences=confidences,
-        e_values=e_values, rtax_modes=opts.rtax_modes,
+        e_values=e_values, rtax_modes=rtax_modes,
         input_fasta_filename=opts.input_fasta_filename,
         clean_otu_table_filename=opts.clean_otu_table_filename,
         read_1_seqs_filename=opts.read_1_seqs_filename,
