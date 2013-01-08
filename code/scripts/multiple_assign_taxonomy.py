@@ -20,7 +20,14 @@ options_lookup = get_options_lookup()
 
 script_info = {}
 script_info['brief_description'] = "Assigns taxonomy with multiple taxonomy assigners"
-script_info['script_description'] = ""
+script_info['script_description'] = """
+This script provides a workflow to assign taxonomy using multiple taxonomy
+assigners over multiple datasets.
+
+It accepts a list of directories as input (one for each dataset), where each
+directory contains the same set of files following a common naming convention.
+At a minimum, each directory must have an 
+"""
 
 script_info['script_usage'] = []
 script_info['script_usage'].append(("", "", "%prog -h"))

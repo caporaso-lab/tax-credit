@@ -42,7 +42,6 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                     % output_dir)
 
     logger = WorkflowLogger(generate_log_fp(output_dir))
-    time_results=[]
 
     for input_dir in input_dirs:
         ## Make sure the input dataset directory exists.
@@ -145,19 +144,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                 command_handler([command], status_update_callback, logger,
                                 close_logger_on_success=False)
                 end = time()
-                input_file = command[0][1].split()[command[0][1].split().index('-i')+1].split('/')[-2]
-                if 'Assigning' in command[0][0]:
-                    time_results.append((input_file, ' '.join(command[0][0].split()[2:]), end-start))
-
-    logger.write('\n\nAssignment times (seconds):\n')
-    for t in time_results:
-        # write out each time result as (method, params)\ttime (seconds)
-        #First clean up the output
-        method, param = t[1].split(', ')
-        method = method.lstrip('(')
-        param = param.rstrip(')')
-
-        logger.write('%s\t%s\t%s\t%s\n' % (t[0], method, param, str(t[2])))
+                logger.write('Time (s): %d\n\n' % (end - start))
 
     logger.close()
 
@@ -296,7 +283,8 @@ def _generate_taxa_processing_commands(assigned_taxonomy_dir, input_fasta_fp,
             add_filename_suffix(clean_otu_table_fp, '_w_taxa'))
     add_md_command = [('Adding metadata (%s)' % run_id,
                        'add_metadata.py -i %s -o %s '
-                       '--observation_mapping_fp %s --sc_separated taxonomy' %
+                       '--observation_mapping_fp %s --sc_separated taxonomy '
+                       '--observation_header OTUID,taxonomy' %
                        (clean_otu_table_fp, otu_table_w_taxa_fp,
                         taxa_assignments_fp))]
     summarize_taxa_command = [('Summarizing taxa (%s)' % run_id,

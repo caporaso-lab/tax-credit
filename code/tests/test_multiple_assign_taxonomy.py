@@ -162,7 +162,7 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '/foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom '
                  '--observation_mapping_fp '
                  '/foo/bar/rdp_0.8.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy')],
+                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
                  [('Summarizing taxa (RDP, confidence: 0.8)',
                  'summarize_taxa.py -i /foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/rdp_0.8.tmp')],
@@ -176,7 +176,7 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '/foo/bar/rdp_0.6.tmp/otu_table_w_taxa.biom '
                  '--observation_mapping_fp '
                  '/foo/bar/rdp_0.6.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy')],
+                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
                  [('Summarizing taxa (RDP, confidence: 0.6)',
                  'summarize_taxa.py -i /foo/bar/rdp_0.6.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/rdp_0.6.tmp')],
@@ -198,7 +198,7 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '/foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom '
                  '--observation_mapping_fp '
                  '/foo/bar/rdp_0.8.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy')],
+                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
                  [('Summarizing taxa (RDP, confidence: 0.8)',
                  'summarize_taxa.py -i /foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/rdp_0.8.tmp')],
@@ -231,7 +231,7 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '/foo/bar/blast_0.002.tmp/otu_table_w_taxa.biom '
                  '--observation_mapping_fp '
                  '/foo/bar/blast_0.002.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy')],
+                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
                  [('Summarizing taxa (BLAST, E: 0.002)',
                  'summarize_taxa.py -i /foo/bar/blast_0.002.tmp/otu_table_w_taxa.biom '
                  '-o /foo/bar/blast_0.002.tmp')],
@@ -245,7 +245,7 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '/foo/bar/blast_0.005.tmp/otu_table_w_taxa.biom '
                  '--observation_mapping_fp '
                  '/foo/bar/blast_0.005.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy')],
+                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
                  [('Summarizing taxa (BLAST, E: 0.005)',
                  'summarize_taxa.py -i /foo/bar/blast_0.005.tmp/otu_table_w_taxa.biom '
                  '-o /foo/bar/blast_0.005.tmp')],
@@ -268,7 +268,7 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '/foo/bar/mothur_0.8.tmp/otu_table_w_taxa.biom '
                  '--observation_mapping_fp '
                  '/foo/bar/mothur_0.8.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy')],
+                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
                  [('Summarizing taxa (Mothur, confidence: 0.8)',
                  'summarize_taxa.py -i /foo/bar/mothur_0.8.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/mothur_0.8.tmp')],
@@ -283,7 +283,7 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '/foo/bar/mothur_0.6.tmp/otu_table_w_taxa.biom '
                  '--observation_mapping_fp '
                  '/foo/bar/mothur_0.6.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy')],
+                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
                  [('Summarizing taxa (Mothur, confidence: 0.6)',
                  'summarize_taxa.py -i /foo/bar/mothur_0.6.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/mothur_0.6.tmp')],
@@ -306,7 +306,7 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '/foo/bar/rtax_single.tmp/otu_table_w_taxa.biom '
                  '--observation_mapping_fp '
                  '/foo/bar/rtax_single.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy')],
+                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
                  [('Summarizing taxa (RTAX, mode: single)',
                  'summarize_taxa.py -i /foo/bar/rtax_single.tmp/otu_table_w_taxa.biom '
                  '-o /foo/bar/rtax_single.tmp')],
@@ -322,7 +322,7 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '/foo/bar/rtax_paired.tmp/otu_table_w_taxa.biom '
                  '--observation_mapping_fp '
                  '/foo/bar/rtax_paired.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy')],
+                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
                  [('Summarizing taxa (RTAX, mode: paired)',
                  'summarize_taxa.py -i /foo/bar/rtax_paired.tmp/otu_table_w_taxa.biom '
                  '-o /foo/bar/rtax_paired.tmp')],
@@ -342,7 +342,7 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '/foo/rdp_0.8/otu_table_w_taxa.biom '
                  '--observation_mapping_fp '
                  '/foo/rdp_0.8/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy')],
+                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
                [('Summarizing taxa (RDP, confidence: 0.8)',
                  'summarize_taxa.py -i /foo/rdp_0.8/otu_table_w_taxa.biom -o '
                  '/foo/rdp_0.8')])
