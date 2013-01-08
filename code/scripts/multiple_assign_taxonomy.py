@@ -79,7 +79,7 @@ script_info['optional_options'] = [
     make_option('--rdp_max_memory', type='string',
         help='Maximum memory allocation, in MB, for JVM when using the rdp '
         'method. Increase for large training sets [default: %default]',
-        default=1000),
+        default=4000),
     make_option('-w', '--print_only', action='store_true',
         help='Print the commands but don\'t call them -- useful for debugging '
         '[default: %default]', default=False),

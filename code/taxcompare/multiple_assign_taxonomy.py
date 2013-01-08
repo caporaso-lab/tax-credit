@@ -28,7 +28,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         input_fasta_filename='rep_set.fna',
         clean_otu_table_filename='otu_table_mc2.biom',
         read_1_seqs_filename='seqs1.fna', read_2_seqs_filename='seqs2.fna',
-        rdp_max_memory=1000, command_handler=call_commands_serially,
+        rdp_max_memory=4000, command_handler=call_commands_serially,
         status_update_callback=no_status_updates, force=False):
     """ Performs sanity checks on passed arguments and directories. Builds 
         commands for each method and sends them off to be executed. """
@@ -294,12 +294,13 @@ def _generate_taxa_processing_commands(assigned_taxonomy_dir, input_fasta_fp,
             splitext(basename(input_fasta_fp))[0] + '_tax_assignments.txt')
     otu_table_w_taxa_fp = join(assigned_taxonomy_dir,
             add_filename_suffix(clean_otu_table_fp, '_w_taxa'))
-    add_taxa_command = [('Adding taxa (%s)' % run_id,
-                        'add_taxa.py -i %s -o %s -t %s' %
-                        (clean_otu_table_fp, otu_table_w_taxa_fp,
-                         taxa_assignments_fp))]
+    add_md_command = [('Adding metadata (%s)' % run_id,
+                       'add_metadata.py -i %s -o %s '
+                       '--observation_mapping_fp %s --sc_separated taxonomy' %
+                       (clean_otu_table_fp, otu_table_w_taxa_fp,
+                        taxa_assignments_fp))]
     summarize_taxa_command = [('Summarizing taxa (%s)' % run_id,
-                              'summarize_taxa.py -i %s -o %s' %
-                              (otu_table_w_taxa_fp, assigned_taxonomy_dir))]
+                               'summarize_taxa.py -i %s -o %s' %
+                               (otu_table_w_taxa_fp, assigned_taxonomy_dir))]
 
-    return add_taxa_command, summarize_taxa_command
+    return add_md_command, summarize_taxa_command
