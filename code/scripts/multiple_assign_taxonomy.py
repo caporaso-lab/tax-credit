@@ -85,8 +85,10 @@ script_info['optional_options'] = [
         '[default: %default]', default=False),
     make_option('-f', '--force', action='store_true',
         help='Force overwrite of existing output directory (note: existing '
-        'files in output_dir will not be removed) [default: %default]',
-        default=False)
+        'files in output_dir will not be removed). Subdirectories that '
+        'already exist will be skipped (they are assumed to have been '
+        'successfully created during a previous run of the script) '
+        '[default: %default]', default=False)
 ]
 script_info['version'] = __version__
 
@@ -120,9 +122,8 @@ def main():
 
     assign_taxonomy_multiple_times(input_dirs, opts.output_dir,
         assignment_methods, opts.reference_seqs_fp,
-        id_to_taxonomy_fp=opts.id_to_taxonomy_fp,
-        confidences=confidences, e_values=e_values,
-        rtax_modes=opts.rtax_modes,
+        opts.id_to_taxonomy_fp, confidences=confidences,
+        e_values=e_values, rtax_modes=opts.rtax_modes,
         input_fasta_filename=opts.input_fasta_filename,
         clean_otu_table_filename=opts.clean_otu_table_filename,
         read_1_seqs_filename=opts.read_1_seqs_filename,

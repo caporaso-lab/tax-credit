@@ -13,7 +13,7 @@ __status__ = "Development"
 """Test suite for the multiple_assign_taxonomy.py module."""
 
 from os import makedirs, getcwd, chdir
-from os.path import exists
+from os.path import exists, join
 from shutil import rmtree
 from tempfile import mkdtemp, NamedTemporaryFile
 from cogent.util.misc import remove_files
@@ -53,7 +53,7 @@ class MultipleAssignTaxonomyTests(TestCase):
 
         # setup temporary output directories
         self.output_dir = mkdtemp(dir=self.tmp_dir,
-                             prefix='%s_output_dir_' %self.prefix)
+                                  prefix='%s_output_dir_' % self.prefix)
         self.dirs_to_remove.append(self.output_dir)
 
         initiate_timeout(60)
@@ -78,74 +78,73 @@ class MultipleAssignTaxonomyTests(TestCase):
 
     def test_assign_taxonomy_multiple_times_invalid_input(self):
         """Test that errors are thrown using various types of invalid input."""
-        # link local output_dir to global output_dir
         out_dir = self.output_dir
+
         # The output directory already exists, and we aren't in force mode.
         self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
                 ['/foo', '/bar/'], out_dir, ['rdp', 'blast'],
-                '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom')
+                '/foo/ref_seqs.fasta', '/foo/tax.txt', confidences=[0.6, 0.7],
+                e_values=[1e-3, 1e-10])
 
         # The input directories don't exist.
         self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
                 ['/foobarbaz', '/foobarbaz2/'], out_dir, ['rdp', 'blast'],
-                '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom', force=True)
+                '/foo/ref_seqs.fasta', '/foo/tax.txt', confidences=[0.6, 0.7],
+                e_values=[1e-3, 1e-10], force=True)
 
         # Invalid assignment method.
         self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
                           [out_dir, out_dir], out_dir, ['foo', 'rdp'],
-                '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom', force=True)
-
-        # ID to taxonomy map is missing
-        self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
-                          [out_dir, out_dir], out_dir, ['rdp', 'mothur'],
-                          '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom',
+                          '/foo/ref_seqs.fasta', '/foo/tax.txt',
+                          confidences=[0.6, 0.7], e_values=[1e-3, 1e-10],
                           force=True)
 
-    # test bad RDP input
-    def test_invalid_rdp_input(self):
+    def test_assign_taxonomy_multiple_times_invalid_input_rdp(self):
         """Test that errors are thrown using invalid input for RDP."""
-        # link local output_dir to global output_dir
         out_dir = self.output_dir
+
         # RDP confidences are missing.
         self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
                           [out_dir, out_dir], out_dir, ['rdp', 'rdp'],
-                          '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom',
-                          id_to_taxonomy_fp='/foo/id_to_tax.txt', force=True)
+                          '/foo/ref_seqs.fasta', '/foo/tax.txt',
+                          e_values=[1e-3, 1], force=True)
 
-    # test bad BLAST input
-    def test_invalid_blast_input(self):
+    def test_assign_taxonomy_multiple_times_invalid_input_blast(self):
         """Test that errors are thrown using invalid input for BLAST."""
-        # link local output_dir to global output_dir
         out_dir = self.output_dir
+
         # BLAST E-values are missing.
         self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
                           [out_dir, out_dir], out_dir, ['blast', 'blast'],
-                          '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom',
-                          id_to_taxonomy_fp='/foo/id_to_tax.txt', force=True)
+                          '/foo/ref_seqs.fasta', '/foo/tax.txt',
+                          confidences=[0.88], force=True)
 
-    # test bad Mothur input
-    def test_invalid_mothur_input(self):
+    def test_assign_taxonomy_multiple_times_invalid_input_mothur(self):
         """Test that errors are thrown using invalid input for Mothur."""
-        # link local output_dir to global output_dir
         out_dir = self.output_dir
+
         # Mothur confidences are missing.
         self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
                           [out_dir, out_dir], out_dir, ['mothur', 'mothur'],
-                          '/foo/ref_seqs.fasta', 'in.fasta', 'otu.biom',
-                          id_to_taxonomy_fp='/foo/id_to_tax.txt', force=True)
+                          '/foo/ref_seqs.fasta', '/foo/tax.txt',
+                          rtax_modes=['single', 'paired'], force=True)
 
-    # test bad RTAX input
-    def test_invalid_rtax_input(self):
+    def test_assign_taxonomy_multiple_times_invalid_input_rtax(self):
         """Test that errors are thrown using invalid input for RTAX."""
-        # link local output_dir to global output_dir
         out_dir = self.output_dir
-        # RTAX first read is missing.
+
+        # RTAX modes are missing.
         self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
                           [out_dir, out_dir], out_dir, ['rtax', 'rtax'],
-                          '/foo/ref_seqs/fasta', 'in.fasta', 'otu.biom',
-                          id_to_taxonomy_fp='/foo/id_to_tax.txt', force=True)
+                          '/foo/ref_seqs/fasta', '/foo/tax.txt',
+                          force=True)
 
-    # test directory check function
+        # RTAX modes are invalid.
+        self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
+                          [out_dir, out_dir], out_dir, ['rtax', 'rtax'],
+                          '/foo/ref_seqs/fasta', '/foo/tax.txt',
+                          rtax_modes=['single', 'piared'], force=True)
+
     def test_directory_check(self):
         """Test that directory names are generated properly."""
         exp = ("output_dir/method_X","output_dir/method_X.tmp")
@@ -153,32 +152,31 @@ class MultipleAssignTaxonomyTests(TestCase):
         obs = _directory_check("output_dir", "method_", "X")
         self.assertEqual(obs, exp)
 
-    # test RDP command generation
     def test_generate_rdp_commands(self):
         """Functions correctly using standard valid input data."""
-        exp = [[('Assigning taxonomy (RDP, 0.8 confidence)',
+        exp = [[('Assigning taxonomy (RDP, confidence: 0.8)',
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rdp_0.8.tmp '
                  '-c 0.8 -m rdp -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt')],
-               [('Adding taxa (RDP, 0.8 confidence)',
+                 [('Adding taxa (RDP, confidence: 0.8)',
                  'add_taxa.py -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom -t '
                  '/foo/bar/rdp_0.8.tmp/rep_set_tax_assignments.txt')],
-               [('Summarizing taxa (RDP, 0.8 confidence)',
+                 [('Summarizing taxa (RDP, confidence: 0.8)',
                  'summarize_taxa.py -i /foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/rdp_0.8.tmp')],
-               [('Renaming output directory (RDP, 0.8 confidence)',
+                 [('Renaming output directory (RDP, confidence: 0.8)',
                  'mv /foo/bar/rdp_0.8.tmp /foo/bar/rdp_0.8')],
-               [('Assigning taxonomy (RDP, 0.6 confidence)',
+                 [('Assigning taxonomy (RDP, confidence: 0.6)',
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rdp_0.6.tmp '
                  '-c 0.6 -m rdp -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt')],
-               [('Adding taxa (RDP, 0.6 confidence)',
+                 [('Adding taxa (RDP, confidence: 0.6)',
                  'add_taxa.py -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/rdp_0.6.tmp/otu_table_w_taxa.biom -t '
                  '/foo/bar/rdp_0.6.tmp/rep_set_tax_assignments.txt')],
-               [('Summarizing taxa (RDP, 0.6 confidence)',
+                 [('Summarizing taxa (RDP, confidence: 0.6)',
                  'summarize_taxa.py -i /foo/bar/rdp_0.6.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/rdp_0.6.tmp')],
-               [('Renaming output directory (RDP, 0.6 confidence)',
+                 [('Renaming output directory (RDP, confidence: 0.6)',
                  'mv /foo/bar/rdp_0.6.tmp /foo/bar/rdp_0.6')]]
 
         obs = _generate_rdp_commands('/foo/bar', '/foo/bar/rep_set.fna',
@@ -186,30 +184,60 @@ class MultipleAssignTaxonomyTests(TestCase):
                 '/foo/bar/otu_table.biom', [0.80, 0.60])
         self.assertEqual(obs, exp)
 
-    # test blast command generation
+        # Test rdp_max_memory.
+        exp = [[('Assigning taxonomy (RDP, confidence: 0.8)',
+                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rdp_0.8.tmp '
+                 '-c 0.8 -m rdp -r /baz/reference_seqs.fasta -t '
+                 '/baz/id_to_taxonomy.txt --rdp_max_memory 2')],
+                 [('Adding taxa (RDP, confidence: 0.8)',
+                 'add_taxa.py -i /foo/bar/otu_table.biom -o '
+                 '/foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom -t '
+                 '/foo/bar/rdp_0.8.tmp/rep_set_tax_assignments.txt')],
+                 [('Summarizing taxa (RDP, confidence: 0.8)',
+                 'summarize_taxa.py -i /foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom -o '
+                 '/foo/bar/rdp_0.8.tmp')],
+                 [('Renaming output directory (RDP, confidence: 0.8)',
+                 'mv /foo/bar/rdp_0.8.tmp /foo/bar/rdp_0.8')]]
+
+        obs = _generate_rdp_commands('/foo/bar', '/foo/bar/rep_set.fna',
+                '/baz/reference_seqs.fasta', '/baz/id_to_taxonomy.txt',
+                '/foo/bar/otu_table.biom', [0.80], rdp_max_memory=2)
+        self.assertEqual(obs, exp)
+
+        # Test skips directory that already exists.
+        try:
+            makedirs(join(self.output_dir, 'rdp_0.8'))
+        except OSError:
+            pass
+
+        obs = _generate_rdp_commands(self.output_dir, '/foo/bar/rep_set.fna',
+                '/baz/reference_seqs.fasta', '/baz/id_to_taxonomy.txt',
+                '/foo/bar/otu_table.biom', [0.80])
+        self.assertEqual(obs, [])
+
     def test_generate_blast_commands(self):
         """Functions correctly using standard valid input data."""
-        exp = [[('Assigning taxonomy (BLAST, E 0.002)',
+        exp = [[('Assigning taxonomy (BLAST, E: 0.002)',
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/blast_0.002.tmp -e 0.002 '
                  '-m blast -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt')],
-               [('Adding taxa (BLAST, E 0.002)',
+                 [('Adding taxa (BLAST, E: 0.002)',
                  'add_taxa.py -i /foo/bar/otu_table.biom -o /foo/bar/blast_0.002.tmp/otu_table_w_taxa.biom '
                  '-t /foo/bar/blast_0.002.tmp/rep_set_tax_assignments.txt')],
-               [('Summarizing taxa (BLAST, E 0.002)',
+                 [('Summarizing taxa (BLAST, E: 0.002)',
                  'summarize_taxa.py -i /foo/bar/blast_0.002.tmp/otu_table_w_taxa.biom '
                  '-o /foo/bar/blast_0.002.tmp')],
-               [('Renaming output directory (BLAST, E 0.002)',
+                 [('Renaming output directory (BLAST, E: 0.002)',
                  'mv /foo/bar/blast_0.002.tmp /foo/bar/blast_0.002')],
-               [('Assigning taxonomy (BLAST, E 0.005)',
+                 [('Assigning taxonomy (BLAST, E: 0.005)',
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/blast_0.005.tmp -e 0.005 '
                  '-m blast -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt')],
-               [('Adding taxa (BLAST, E 0.005)',
+                 [('Adding taxa (BLAST, E: 0.005)',
                  'add_taxa.py -i /foo/bar/otu_table.biom -o /foo/bar/blast_0.005.tmp/otu_table_w_taxa.biom '
                  '-t /foo/bar/blast_0.005.tmp/rep_set_tax_assignments.txt')],
-               [('Summarizing taxa (BLAST, E 0.005)',
+                 [('Summarizing taxa (BLAST, E: 0.005)',
                  'summarize_taxa.py -i /foo/bar/blast_0.005.tmp/otu_table_w_taxa.biom '
                  '-o /foo/bar/blast_0.005.tmp')],
-               [('Renaming output directory (BLAST, E 0.005)',
+                 [('Renaming output directory (BLAST, E: 0.005)',
                  'mv /foo/bar/blast_0.005.tmp /foo/bar/blast_0.005')]]
 
         obs = _generate_blast_commands('/foo/bar', '/foo/bar/rep_set.fna',
@@ -217,34 +245,33 @@ class MultipleAssignTaxonomyTests(TestCase):
                 '/foo/bar/otu_table.biom', [0.002, 0.005])
         self.assertEqual(obs, exp)
 
-    # test mothur command generation
     def test_generate_mothur_commands(self):
         """Functions correctly using standard valid input data."""
-        exp = [[('Assigning taxonomy (Mothur, 0.8 confidence)',
+        exp = [[('Assigning taxonomy (Mothur, confidence: 0.8)',
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/mothur_0.8.tmp '
                  '-c 0.8 -m mothur -r /baz/reference_seqs.fasta -t '
                  '/baz/id_to_taxonomy.txt')],
-               [('Adding taxa (Mothur, 0.8 confidence)',
+                 [('Adding taxa (Mothur, confidence: 0.8)',
                  'add_taxa.py -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/mothur_0.8.tmp/otu_table_w_taxa.biom -t '
                  '/foo/bar/mothur_0.8.tmp/rep_set_tax_assignments.txt')],
-               [('Summarizing taxa (Mothur, 0.8 confidence)',
+                 [('Summarizing taxa (Mothur, confidence: 0.8)',
                  'summarize_taxa.py -i /foo/bar/mothur_0.8.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/mothur_0.8.tmp')],
-               [('Renaming output directory (Mothur, 0.8 confidence)',
+                 [('Renaming output directory (Mothur, confidence: 0.8)',
                  'mv /foo/bar/mothur_0.8.tmp /foo/bar/mothur_0.8')],
-               [('Assigning taxonomy (Mothur, 0.6 confidence)',
+                 [('Assigning taxonomy (Mothur, confidence: 0.6)',
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/mothur_0.6.tmp '
                  '-c 0.6 -m mothur -r /baz/reference_seqs.fasta -t '
                  '/baz/id_to_taxonomy.txt')],
-               [('Adding taxa (Mothur, 0.6 confidence)',
+                 [('Adding taxa (Mothur, confidence: 0.6)',
                  'add_taxa.py -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/mothur_0.6.tmp/otu_table_w_taxa.biom -t '
                  '/foo/bar/mothur_0.6.tmp/rep_set_tax_assignments.txt')],
-               [('Summarizing taxa (Mothur, 0.6 confidence)',
+                 [('Summarizing taxa (Mothur, confidence: 0.6)',
                  'summarize_taxa.py -i /foo/bar/mothur_0.6.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/mothur_0.6.tmp')],
-               [('Renaming output directory (Mothur, 0.6 confidence)',
+                 [('Renaming output directory (Mothur, confidence: 0.6)',
                  'mv /foo/bar/mothur_0.6.tmp /foo/bar/mothur_0.6')]]
 
         obs = _generate_mothur_commands('/foo/bar', '/foo/bar/rep_set.fna',
@@ -252,69 +279,55 @@ class MultipleAssignTaxonomyTests(TestCase):
                 '/foo/bar/otu_table.biom', [0.80, 0.60])
         self.assertEqual(obs, exp)
 
-    # test rtax command generation
     def test_generate_rtax_commands(self):
         """Functions correctly using standard valid input data."""
-        exp = [[('Assigning taxonomy (RTAX, single-end)',
-                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_single '
+        exp = [[('Assigning taxonomy (RTAX, mode: single)',
+                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_single.tmp '
                  '-m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt '
                  '--read_1_seqs_fp /foo/bar/read_1_seqs.fna')],
-               [('Adding taxa (RTAX, single-end)',
+                 [('Adding taxa (RTAX, mode: single)',
                  'add_taxa.py -i /foo/bar/otu_table.biom '
-                 '-o /foo/bar/rtax_single/otu_table_w_taxa.biom '
-                 '-t /foo/bar/rtax_single/rep_set_tax_assignments.txt')],
-               [('Summarizing taxa (RTAX, single-end)',
-                 'summarize_taxa.py -i /foo/bar/rtax_single/otu_table_w_taxa.biom '
-                 '-o /foo/bar/rtax_single')],
-               [('Assigning taxonomy (RTAX, paired-end)',
-                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_paired '
+                 '-o /foo/bar/rtax_single.tmp/otu_table_w_taxa.biom '
+                 '-t /foo/bar/rtax_single.tmp/rep_set_tax_assignments.txt')],
+                 [('Summarizing taxa (RTAX, mode: single)',
+                 'summarize_taxa.py -i /foo/bar/rtax_single.tmp/otu_table_w_taxa.biom '
+                 '-o /foo/bar/rtax_single.tmp')],
+                 [('Renaming output directory (RTAX, mode: single)',
+                 'mv /foo/bar/rtax_single.tmp /foo/bar/rtax_single')],
+                 [('Assigning taxonomy (RTAX, mode: paired)',
+                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_paired.tmp '
                  '-m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt '
                  '--read_1_seqs_fp /foo/bar/read_1_seqs.fna '
                  '--read_2_seqs_fp /foo/bar/read_2_seqs.fna')],
-               [('Adding taxa (RTAX, paired-end)',
+                 [('Adding taxa (RTAX, mode: paired)',
                  'add_taxa.py -i /foo/bar/otu_table.biom '
-                 '-o /foo/bar/rtax_paired/otu_table_w_taxa.biom '
-                 '-t /foo/bar/rtax_paired/rep_set_tax_assignments.txt')],
-               [('Summarizing taxa (RTAX, paired-end)',
-                 'summarize_taxa.py -i /foo/bar/rtax_paired/otu_table_w_taxa.biom '
-                 '-o /foo/bar/rtax_single')]]
+                 '-o /foo/bar/rtax_paired.tmp/otu_table_w_taxa.biom '
+                 '-t /foo/bar/rtax_paired.tmp/rep_set_tax_assignments.txt')],
+                 [('Summarizing taxa (RTAX, mode: paired)',
+                 'summarize_taxa.py -i /foo/bar/rtax_paired.tmp/otu_table_w_taxa.biom '
+                 '-o /foo/bar/rtax_paired.tmp')],
+                 [('Renaming output directory (RTAX, mode: paired)',
+                 'mv /foo/bar/rtax_paired.tmp /foo/bar/rtax_paired')]]
 
         obs = _generate_rtax_commands('/foo/bar', '/foo/bar/rep_set.fna',
                 '/baz/reference_seqs.fasta', '/baz/id_to_taxonomy.txt',
-                '/foo/bar/otu_table.biom', '/foo/bar/read_1_seqs.fna',
-                read_2_seqs_fp='/foo/bar/read_2_seqs.fna')
-
-    # test rtax command generation
-    def test_generate_rtax_single_commands(self):
-        """Functions correctly using standard valid input data."""
-        exp = [[('Assigning taxonomy (RTAX, single-end)',
-                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_single '
-                 '-m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt '
-                 '--read_1_seqs_fp /foo/bar/read_1_seqs.fna')],
-               [('Adding taxa (RTAX, single-end)',
-                 'add_taxa.py -i /foo/bar/otu_table.biom '
-                 '-o /foo/bar/rtax_single/otu_table_w_taxa.biom '
-                 '-t /foo/bar/rtax_single/rep_set_tax_assignments.txt')],
-               [('Summarizing taxa (RTAX, single-end)',
-                 'summarize_taxa.py -i /foo/bar/rtax_single/otu_table_w_taxa.biom '
-                 '-o /foo/bar/rtax_single')]]
-
-        obs = _generate_rtax_commands('/foo/bar', '/foo/bar/rep_set.fna',
-                '/baz/reference_seqs.fasta', '/baz/id_to_taxonomy.txt',
-                '/foo/bar/otu_table.biom', '/foo/bar/read_1_seqs.fna')
+                '/foo/bar/otu_table.biom', ['single', 'paired'],
+                '/foo/bar/read_1_seqs.fna', '/foo/bar/read_2_seqs.fna')
+        self.assertEqual(obs, exp)
 
     def test_generate_taxa_processing_commands(self):
         """Functions correctly using standard valid input data."""
-        exp = ([('Adding taxa (RDP, 0.8 confidence)',
+        exp = ([('Adding taxa (RDP, confidence: 0.8)',
             'add_taxa.py -i /foo/otu_table.biom -o '
             '/foo/rdp_0.8/otu_table_w_taxa.biom -t '
             '/foo/rdp_0.8/rep_set_tax_assignments.txt')],
-            [('Summarizing taxa (RDP, 0.8 confidence)',
+            [('Summarizing taxa (RDP, confidence: 0.8)',
             'summarize_taxa.py -i /foo/rdp_0.8/otu_table_w_taxa.biom -o '
             '/foo/rdp_0.8')])
+
         obs = _generate_taxa_processing_commands('/foo/rdp_0.8',
                 '/foo/rep_set.fna', '/foo/otu_table.biom',
-                'RDP, 0.8 confidence')
+                'RDP, confidence: 0.8')
         self.assertEqual(obs, exp)
 
 
