@@ -13,11 +13,10 @@ __status__ = "Development"
 """Contains functions used in the multiple_assign_taxonomy.py script."""
 
 import sys
-from os import makedirs, rename
 from time import time
 from os.path import basename, isdir, join, normpath, split, splitext
 from shutil import rmtree
-from qiime.util import add_filename_suffix
+from qiime.util import add_filename_suffix, create_dir
 from qiime.workflow import (call_commands_serially, generate_log_fp,
                             no_status_updates, print_commands, print_to_stdout,
                             WorkflowError, WorkflowLogger)
@@ -34,12 +33,11 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         commands for each method and sends them off to be executed. """
     ## Check if output directory exists
     try:
-        makedirs(output_dir)
+        create_dir(output_dir, fail_on_exist=not force)
     except OSError:
-        if not force:
-            raise WorkflowError("Output directory '%s' already exists. Please "
-                    "choose a different directory, or force overwrite with -f."
-                    % output_dir)
+        raise WorkflowError("Output directory '%s' already exists. Please "
+                "choose a different directory, or force overwrite with -f."
+                % output_dir)
 
     logger = WorkflowLogger(generate_log_fp(output_dir))
 
@@ -58,12 +56,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
 
         logger.write("\nCreating output subdirectory '%s' if it doesn't "
                      "already exist.\n" % output_dataset_dir)
-        try:
-            makedirs(output_dataset_dir)
-        except OSError:
-            # It already exists, which is okay since we already know we are in
-            # 'force' mode from above.
-            pass
+        create_dir(output_dataset_dir)
 
         for method in assignment_methods:
             ## Method is RDP
