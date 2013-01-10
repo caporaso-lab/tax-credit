@@ -3,74 +3,60 @@ from __future__ import division
 
 __author__ = "Jai Ram Rideout"
 __copyright__ = "Copyright 2012, The QIIME project"
-__credits__ = ["Jai Ram Rideout"]
+__credits__ = ["Jai Ram Rideout", "Zack Ellett", "Kyle Patnode"]
 __license__ = "GPL"
-__version__ = "1.5.0-dev"
+__version__ = "1.6.0-dev"
 __maintainer__ = "Jai Ram Rideout"
 __email__ = "jai.rideout@gmail.com"
 __status__ = "Development"
 
 """Contains functions used in the multiple_assign_taxonomy.py script."""
+
 import sys
-from os import makedirs, rename
 from time import time
 from os.path import basename, isdir, join, normpath, split, splitext
 from shutil import rmtree
-from qiime.util import add_filename_suffix
+from qiime.util import add_filename_suffix, create_dir
 from qiime.workflow import (call_commands_serially, generate_log_fp,
                             no_status_updates, print_commands, print_to_stdout,
                             WorkflowError, WorkflowLogger)
 
 def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
-        reference_seqs_fp, input_fasta_filename, clean_otu_table_filename,
-        id_to_taxonomy_fp=None, confidences=None, e_values=None,
-        command_handler=call_commands_serially, rdp_max_memory=None,
-        status_update_callback=print_to_stdout, force=False,
-        read_1_seqs_fp=None, read_2_seqs_fp=None):
+        reference_seqs_fp, id_to_taxonomy_fp,
+        confidences=None, e_values=None, rtax_modes=None,
+        input_fasta_filename='rep_set.fna',
+        clean_otu_table_filename='otu_table_mc2.biom',
+        read_1_seqs_filename='seqs1.fna', read_2_seqs_filename='seqs2.fna',
+        rdp_max_memory=4000, command_handler=call_commands_serially,
+        status_update_callback=no_status_updates, force=False):
     """ Performs sanity checks on passed arguments and directories. Builds 
         commands for each method and sends them off to be executed. """
-    ## Check if temp output directory exists
+    ## Check if output directory exists
     try:
-        makedirs(output_dir)
+        create_dir(output_dir, fail_on_exist=not force)
     except OSError:
-        if not force:
-            raise WorkflowError("Output directory '%s' already exists. Please "
-                    "choose a different directory, or force overwrite with -f."
-                    % output_dir)
+        raise WorkflowError("Output directory '%s' already exists. Please "
+                "choose a different directory, or force overwrite with -f."
+                % output_dir)
 
-    ## Check for inputs that are universally required
-    if assignment_methods is None:
-        raise WorkflowError("You must specify at least one method:" 
-                            "'rdp', 'blast', 'mothur', or 'rtax'.")
-    if input_fasta_filename is None:
-        raise WorkflowError("You must provide an input fasta filename.")
-    if clean_otu_table_filename is None:
-        raise WorkflowError("You must provide a clean otu table filename.")
-    if id_to_taxonomy_fp is None:
-        raise WorkflowError("You must provide an ID to taxonomy map filename.")
-    
     logger = WorkflowLogger(generate_log_fp(output_dir))
-    time_results=[]
 
     for input_dir in input_dirs:
         ## Make sure the input dataset directory exists.
         if not isdir(input_dir):
-            raise WorkflowError("The input directory '%s' does not exist." %
-                                input_dir)
+            raise WorkflowError("The input dataset directory '%s' does not "
+                                "exist." % input_dir)
 
         input_dir_name = split(normpath(input_dir))[1]
         output_dataset_dir = join(output_dir, input_dir_name)
         input_fasta_fp = join(input_dir, input_fasta_filename)
         clean_otu_table_fp = join(input_dir, clean_otu_table_filename)
+        read_1_seqs_fp = join(input_dir, read_1_seqs_filename)
+        read_2_seqs_fp = join(input_dir, read_2_seqs_filename)
 
         logger.write("\nCreating output subdirectory '%s' if it doesn't "
                      "already exist.\n" % output_dataset_dir)
-        try:
-            makedirs(output_dataset_dir)
-        except OSError:
-            # It already exists, which is okay since we already know we are in
-            # 'force' mode from above.
-            pass
+        create_dir(output_dataset_dir)
 
         for method in assignment_methods:
             ## Method is RDP
@@ -93,7 +79,7 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                 ## Check for execution parameters required by BLAST method
                 if e_values is None:
                     raise WorkflowError("You must specify at least one "
-                                        "E value.")
+                                        "E-value.")
                 ## Generate command for BLAST
                 commands = _generate_blast_commands(output_dataset_dir,
                                                     input_fasta_fp,
@@ -119,47 +105,39 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
             ## Method is RTAX
             elif method == 'rtax':
                 ## Check for execution parameters required by RTAX method
-                if read_1_seqs_fp is None:
-                    raise WorkflowError("You must specify a file containing "
-                                        "the first read from pair-end "
-                                        "sequencing.")
+                if rtax_modes is None:
+                    raise WorkflowError("You must specify at least one mode "
+                                        "to run RTAX in.")
+                for mode in rtax_modes:
+                    if mode not in ['single', 'paired']:
+                        raise WorkflowError("Invalid rtax mode '%s'. Must be "
+                                            "'single' or 'paired'." % mode)
+
                 ## Generate command for rtax
                 commands = _generate_rtax_commands(output_dataset_dir,
                                                    input_fasta_fp,
                                                    reference_seqs_fp,
                                                    id_to_taxonomy_fp,
                                                    clean_otu_table_fp,
+                                                   rtax_modes,
                                                    read_1_seqs_fp,
-                                                   read_2_seqs_fp=read_2_seqs_fp)
+                                                   read_2_seqs_fp)
 
             ## Unsupported method
             else:
                 raise WorkflowError("Unrecognized or unsupported taxonomy "
-                        "assignment method '%s'." % method)
+                                    "assignment method '%s'." % method)
 
             # send command for current method to command handler
             for command in commands:
-                #call_commands_serially needs a list of commands so here's a length one commmand list.
-                c = list()
-                c.append(command)
                 start = time()
-                command_handler(c, status_update_callback, logger,
+
+                # call_commands_serially needs a list of commands so here's a
+                # length one commmand list.
+                command_handler([command], status_update_callback, logger,
                                 close_logger_on_success=False)
                 end = time()
-                input_file = command[0][1].split()[command[0][1].split().index('-i')+1].split('/')[-2]
-                if 'Assigning' in command[0][0]:
-                    time_results.append((input_file, ' '.join(command[0][0].split()[2:]), end-start))
-
-    # removes and writes out the title we initialized with earlier
-    logger.write('\n\nAssignment times (seconds):\n')
-    for t in time_results:
-        # write out each time result as (method, params)\ttime (seconds)
-        #First clean up the output
-        method, param = t[1].split(', ')
-        method = method.lstrip('(')
-        param = param.rstrip(')')
-
-        logger.write('%s\t%s\t%s\t%s\n' % (t[0], method, param, str(t[2])))
+                logger.write('Time (s): %d\n\n' % (end - start))
 
     logger.close()
 
@@ -184,7 +162,7 @@ def _generate_rdp_commands(output_dir, input_fasta_fp, reference_seqs_fp,
     """ Build command strings for RDP method. """
     result = []
     for confidence in confidences:
-        run_id = 'RDP, %s confidence' % str(confidence)
+        run_id = 'RDP, confidence: %s' % str(confidence)
         ## Get final and working directory names
         final_dir, working_dir = \
              _directory_check(output_dir, 'rdp_', str(confidence))
@@ -211,7 +189,7 @@ def _generate_blast_commands(output_dir, input_fasta_fp, reference_seqs_fp,
     """ Build command strings for BLAST method. """
     result = []
     for e_value in e_values:
-        run_id = 'BLAST, E %s' % str(e_value)
+        run_id = 'BLAST, E: %s' % str(e_value)
         ## Get final and working directory names
         final_dir, working_dir = \
             _directory_check(output_dir, 'blast_', str(e_value))
@@ -237,7 +215,7 @@ def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
     """ Build command strings for Mothur method. """
     result = []
     for confidence in confidences:
-        run_id = 'Mothur, %s confidence' % str(confidence)
+        run_id = 'Mothur, confidence: %s' % str(confidence)
         ## Get final and working directory names
         final_dir, working_dir = \
             _directory_check(output_dir, 'mothur_', str(confidence))
@@ -258,24 +236,26 @@ def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
     return result
 
 def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
-                            id_to_taxonomy_fp, clean_otu_table_fp,
-                            read_1_seqs_fp, read_2_seqs_fp=None):
+                            id_to_taxonomy_fp, clean_otu_table_fp, rtax_modes,
+                            read_1_seqs_fp, read_2_seqs_fp):
     """ Build command strings for RTAX method. """
     result = []
-    for run in ['single', 'paired']:
-        run_id = 'RTAX, ' + run + '-end'
+    for mode in rtax_modes:
+        run_id = 'RTAX, mode: %s' % mode
         ## Get final and working directory names
         final_dir, working_dir = \
-                _directory_check(output_dir, 'rtax_', run)
+                _directory_check(output_dir, 'rtax_', mode)
         ## Check if final directory already exists (skip iteration if it does)
         if isdir(final_dir):
             continue
+
         assign_taxonomy_command = \
                 'assign_taxonomy.py -i %s -o %s -m rtax -r %s -t %s '\
                 '--read_1_seqs_fp %s' % (input_fasta_fp, working_dir,
                 reference_seqs_fp, id_to_taxonomy_fp, read_1_seqs_fp)
-        if run is 'paired':
+        if mode == 'paired':
             assign_taxonomy_command += ' --read_2_seqs_fp %s' % read_2_seqs_fp
+
         result.append([('Assigning taxonomy (%s)' % run_id,
                       assign_taxonomy_command)])
         result.extend(_generate_taxa_processing_commands(working_dir,
@@ -283,9 +263,6 @@ def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         ## Rename output directory
         result.append([('Renaming output directory (%s)' % run_id,
                       'mv %s %s' % (working_dir, final_dir))])
-        ## Break if second read is None
-        if read_2_seqs_fp is None:
-            return result
 
     return result
 
@@ -297,12 +274,14 @@ def _generate_taxa_processing_commands(assigned_taxonomy_dir, input_fasta_fp,
             splitext(basename(input_fasta_fp))[0] + '_tax_assignments.txt')
     otu_table_w_taxa_fp = join(assigned_taxonomy_dir,
             add_filename_suffix(clean_otu_table_fp, '_w_taxa'))
-    add_taxa_command = [('Adding taxa (%s)' % run_id,
-                        'add_taxa.py -i %s -o %s -t %s' %
-                        (clean_otu_table_fp, otu_table_w_taxa_fp,
-                         taxa_assignments_fp))]
+    add_md_command = [('Adding metadata (%s)' % run_id,
+                       'add_metadata.py -i %s -o %s '
+                       '--observation_mapping_fp %s --sc_separated taxonomy '
+                       '--observation_header OTUID,taxonomy' %
+                       (clean_otu_table_fp, otu_table_w_taxa_fp,
+                        taxa_assignments_fp))]
     summarize_taxa_command = [('Summarizing taxa (%s)' % run_id,
-                              'summarize_taxa.py -i %s -o %s' %
-                              (otu_table_w_taxa_fp, assigned_taxonomy_dir))]
+                               'summarize_taxa.py -i %s -o %s' %
+                               (otu_table_w_taxa_fp, assigned_taxonomy_dir))]
 
-    return add_taxa_command, summarize_taxa_command
+    return add_md_command, summarize_taxa_command
