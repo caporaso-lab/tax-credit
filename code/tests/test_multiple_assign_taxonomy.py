@@ -20,7 +20,7 @@ from cogent.util.misc import remove_files
 from cogent.util.unit_test import TestCase, main
 from qiime.test import initiate_timeout, disable_timeout
 from qiime.util import get_qiime_temp_dir, get_tmp_filename
-from qiime.workflow import WorkflowError
+from qiime.workflow.util import WorkflowError
 
 from taxcompare.multiple_assign_taxonomy import (
         assign_taxonomy_multiple_times,

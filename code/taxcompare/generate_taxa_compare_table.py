@@ -11,7 +11,7 @@ __status__ = "Development"
 
 from os import walk
 from os.path import exists, join
-from qiime.workflow import WorkflowError
+from qiime.workflow.util import WorkflowError
 from qiime.parse import parse_taxa_summary_table
 from qiime.compare_taxa_summaries import compare_taxa_summaries
 
