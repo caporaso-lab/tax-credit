@@ -17,9 +17,10 @@ from time import time
 from os.path import basename, isdir, join, normpath, split, splitext
 from shutil import rmtree
 from qiime.util import add_filename_suffix, create_dir
-from qiime.workflow import (call_commands_serially, generate_log_fp,
-                            no_status_updates, print_commands, print_to_stdout,
-                            WorkflowError, WorkflowLogger)
+from qiime.workflow.util import (call_commands_serially, generate_log_fp,
+                                 no_status_updates, print_commands,
+                                 print_to_stdout, WorkflowError,
+                                 WorkflowLogger)
 
 def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         reference_seqs_fp, id_to_taxonomy_fp,
