@@ -49,7 +49,7 @@ class GenerateTaxaCompareTableTests(TestCase):
 
         L18S_dir = '/L18S-1/blast_1.0/'
         makedirs(self.root_dir+L18S_dir)
-        self.L18S_fp = self.root_dir+L18S_dir+'/otu_table_mc2_w_taxa_L5.txt'
+        self.L18S_fp = self.root_dir+L18S_dir+'/otu_table_mc2_no_pynast_failures_w_taxa_L5.txt'
         with open(self.L18S_fp, 'w') as f:
             f.writelines(L18S_L5_blast_one_multiple_assign_output)
         self.files_to_remove.append(self.L18S_fp)
@@ -69,6 +69,8 @@ class GenerateTaxaCompareTableTests(TestCase):
                                   prefix='%s_output_dir_' %self.prefix)
         self.dirs_to_remove.append(self.output_dir)
 
+        self.ts1 = parse_taxa_summary_table(ts1.split('\n'))
+
         initiate_timeout(60)
 
     def tearDown(self):
@@ -85,9 +87,16 @@ class GenerateTaxaCompareTableTests(TestCase):
             if exists(d):
                 rmtree(d)
 
+    def test_convert_taxa_summary(self):
+        """Correctly converts a taxa summary to the specified level."""
+        obs = convert_taxa_summary(self.ts1, 2)
+        self.assertFloatEqual(obs, (['S1', 'S2'],
+                                    ['foo;bar', 'foo;baz'],
+                                    [[0.7, 0.9], [0.3, 0.1]]))
+
     def test_generate_taxa_compare_table_method(self):
         """Functions correctly using standard valid input data."""
-        exp = {2:{}, 4:{}, 5:{'L18s-1': {'blast_1.0': ('-0.2336', '-0.7924')}}}
+        exp = {2:{}, 4:{}, 5:{'L18s-1': {'blast_1.0': ('-0.1618', '-0.5964')}}}
 
         obs = generate_taxa_compare_table(self.root_dir, self.key_dir, [2,4,5])
 
@@ -197,6 +206,12 @@ Eukaryota;Metazoa;Cnidaria;Anthozoa;Octocorallia	1.88144984525e-05
 Eukaryota;Viridiplantae;Streptophyta;Embryophyta;Tracheophyta	0.000884281427268
 Eukaryota;environmental samples;uncultured eukaryote;Other;Other	0.0123046819879
 No blast hit;Other;Other;Other;Other	0.00187204259602
+"""
+
+ts1 = """Taxon\tS1\tS2
+foo;bar;baz\t0.45\t0.3
+foo;bar;bazz\t0.25\t0.60
+foo;baz;bar\t0.30\t0.10
 """
 
 
