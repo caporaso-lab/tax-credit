@@ -67,6 +67,28 @@ def get_coefficients(run, key):
 
     return pearson_coeff, spearman_coeff
 
+def convert_taxa_summary(ts, level):
+    level_data = {}
+    for taxon, taxon_data in zip(ts[1], ts[2]):
+        taxon_levels = taxon.split(';')
+
+        if level > len(taxon_levels):
+            raise ValueError("The requested taxonomic level %d is higher than "
+                             "number of levels in the input taxa summary "
+                             "file.")
+
+        level_key = ';'.join(taxon_levels[:level])
+
+        if level_key in level_data:
+            level_data[level_key] = [sum(pair) for pair in
+                                     zip(taxon_data, level_data[level_key])]
+        else:
+            level_data[level_key] = list(taxon_data)
+
+    sorted_keys = sorted(level_data.keys())
+
+    return ts[0], sorted_keys, [level_data[k] for k in sorted_keys]
+
 def generate_taxa_compare_table(root, key_directory, levels=None):
     """Finds otu tables in root and compares them against the keys in key_directory.
 
@@ -99,7 +121,7 @@ def generate_taxa_compare_table(root, key_directory, levels=None):
 
     for(path, dirs, files) in walk(root):
         for choice in assignment_method_choices:
-            #Checks if this dir's name includes a known assignment method (and therefor contains that output)
+            #Checks if this dir's name includes a known assignment method (and therefore contains that output)
             if choice in path:
                 study = path.split('/')[-2].rstrip('-123').capitalize()
                 for f in files:
@@ -125,6 +147,7 @@ def generate_taxa_compare_table(root, key_directory, levels=None):
                                 raise WorkflowError('Invalid key file in directory: '+path)
                             key_file.seek(0)
                             key = parse_taxa_summary_table(key_file)
+                            key = convert_taxa_summary(key, level)
 
                         try:
                             pearson_coeff, spearman_coeff = get_coefficients(run, key)
