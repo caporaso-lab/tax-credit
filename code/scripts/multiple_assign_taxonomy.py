@@ -12,8 +12,8 @@ __status__ = "Development"
 
 from qiime.util import (parse_command_line_parameters, get_options_lookup,
                         make_option)
-from qiime.workflow import (call_commands_serially, no_status_updates,
-                            print_commands, print_to_stdout)
+from qiime.workflow.util import (call_commands_serially, no_status_updates,
+                                 print_commands, print_to_stdout)
 
 from taxcompare.multiple_assign_taxonomy import assign_taxonomy_multiple_times
 
