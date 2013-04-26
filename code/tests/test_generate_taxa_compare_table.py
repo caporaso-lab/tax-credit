@@ -96,7 +96,7 @@ class GenerateTaxaCompareTableTests(TestCase):
 
     def test_generate_taxa_compare_table_method(self):
         """Functions correctly using standard valid input data."""
-        exp = {2:{}, 4:{}, 5:{'L18s-1': {'blast_1.0': ('-0.1618', '-0.5964')}}}
+        exp = {2:{}, 4:{}, 5:{'L18S-1': {'blast_1.0': ('-0.1618', '-0.5964')}}}
 
         obs = generate_taxa_compare_table(self.root_dir, self.key_dir, [2,4,5])
 
@@ -123,9 +123,9 @@ class GenerateTaxaCompareTableTests(TestCase):
     def test_valid_format_output(self):
         """Functions correctly using standard valid input data"""
         exp = {2:[], 4:[], 5:['P,S\tblast_1.0\trdp_0.8\n', 'Broad1\tN/A\t-0.1236,-0.7477\t\n',
-              'L18s-1\t-0.2336,-0.7924\tN/A\t\n']}
+              'L18S-1\t-0.2336,-0.7924\tN/A\t\n']}
 
-        obs = format_output({2:{}, 4:{}, 5:{'L18s-1': {'blast_1.0': ('-0.2336', '-0.7924')},
+        obs = format_output({2:{}, 4:{}, 5:{'L18S-1': {'blast_1.0': ('-0.2336', '-0.7924')},
               'Broad1':{'rdp_0.8': ('-0.1236','-0.7477')}}}, ',')
 
         self.assertEqual(obs, exp)
@@ -134,7 +134,7 @@ class GenerateTaxaCompareTableTests(TestCase):
         """Functions correctly using standard valid input data. Also checks to make sure get_key_files isn't grabbing backups."""
         obs = get_key_files(self.key_dir)
         # Test key and incidentally length
-        self.assertTrue(obs.keys() == ['L18s'])
+        self.assertTrue(obs.keys() == ['L18S'])
         # Test value
         self.assertTrue(obs.values()[0].endswith('L18S_key.txt'))
 

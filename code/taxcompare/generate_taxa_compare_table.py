@@ -51,7 +51,7 @@ def get_key_files(directory):
     for key_file in walk(directory).next()[2]:
         if key_file.endswith('~'):
             continue
-        study = key_file.split('_')[0].capitalize()
+        study = key_file.split('_')[0]
         key_fps[study] = join(directory, key_file)
     if(not key_fps):
         raise WorkflowError('There are no key files in the given directory.')
@@ -123,11 +123,21 @@ def generate_taxa_compare_table(root, key_directory, levels=None):
         for choice in assignment_method_choices:
             #Checks if this dir's name includes a known assignment method (and therefore contains that output)
             if choice in path:
-                study = path.split('/')[-2].rstrip('-123').capitalize()
+                study_dir = path.split('/')[-2]
+                study_keys = key_fps.keys()
+
+                study = None
+                for study_key in study_keys:
+                    if study_key in study_dir:
+                        study = study_key
+                if study is None:
+                    raise ValueError("Couldn't find matching study key for "
+                                     "'%s'." % study_dir)
+
                 for f in files:
                     if ('otu_table_mc2_no_pynast_failures_w_taxa_L' in f or
                         'otu_table_mc2_w_taxa_L' in f) and not f.endswith('~'):
-                        name = path.split('/')[-2].capitalize()
+                        name = path.split('/')[-2]
                         level = int(f[-5])
                         if level not in levels:
                             #If that level wasn't requested, skip it.
