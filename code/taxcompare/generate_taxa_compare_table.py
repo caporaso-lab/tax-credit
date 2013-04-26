@@ -49,12 +49,14 @@ def get_key_files(directory):
         raise WorkflowError('The key directory does not exist.')
     key_fps = {}
     for key_file in walk(directory).next()[2]:
-        if key_file.endswith('~'):
+        if (key_file.endswith('~') or key_file.endswith('.orig.txt') or
+            key_file == 'README.md'):
             continue
         study = key_file.split('_')[0]
         key_fps[study] = join(directory, key_file)
     if(not key_fps):
         raise WorkflowError('There are no key files in the given directory.')
+    print key_fps
     return key_fps
 
 def get_coefficients(run, key):
