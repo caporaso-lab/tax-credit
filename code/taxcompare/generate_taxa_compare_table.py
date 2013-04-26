@@ -56,7 +56,6 @@ def get_key_files(directory):
         key_fps[study] = join(directory, key_file)
     if(not key_fps):
         raise WorkflowError('There are no key files in the given directory.')
-    print key_fps
     return key_fps
 
 def get_coefficients(run, key):
