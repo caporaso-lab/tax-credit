@@ -118,6 +118,21 @@ script_info['optional_options'] = [
         'under each input dataset directory if rtax is specified as an '
         'assignment method and the "paired" rtax mode is specified '
         '[default: %default]', default='seqs2.fna'),
+    make_option('--rtax_read_id_regexes', type='string',
+        help='Comma-separated list of regular expressions that will be passed '
+        'to RTAX for parsing read 1 IDs. The number (and order) of the '
+        'supplied regexes must match the number (and order) of input datasets '
+        'supplied via -i/--input_dirs [default: %default]', default=None),
+    make_option('--rtax_amplicon_id_regexes', type='string',
+        help='Comma-separated list of regular expressions that will be passed '
+        'to RTAX for parsing amplicon IDs. The number (and order) of the '
+        'supplied regexes must match the number (and order) of input datasets '
+        'supplied via -i/--input_dirs [default: %default]', default=None),
+    make_option('--rtax_header_id_regexes', type='string',
+        help='Comma-separated list of regular expressions that will be passed '
+        'to RTAX for parsing header IDs. The number (and order) of the '
+        'supplied regexes must match the number (and order) of input datasets '
+        'supplied via -i/--input_dirs [default: %default]', default=None),
     make_option('--rdp_max_memory', type='string',
         help='Maximum memory allocation, in MB, for JVM when using the rdp '
         'method. Increase for large training sets [default: %default]',
@@ -152,6 +167,18 @@ def main():
     if rtax_modes is not None:
         rtax_modes = opts.rtax_modes.split(',')
 
+    rtax_read_id_regexes = opts.rtax_read_id_regexes
+    if rtax_read_id_regexes is not None:
+        rtax_read_id_regexes = rtax_read_id_regexes.split(',')
+
+    rtax_amplicon_id_regexes = opts.rtax_amplicon_id_regexes
+    if rtax_amplicon_id_regexes is not None:
+        rtax_amplicon_id_regexes = rtax_amplicon_id_regexes.split(',')
+
+    rtax_header_id_regexes = opts.rtax_header_id_regexes
+    if rtax_header_id_regexes is not None:
+        rtax_header_id_regexes = rtax_header_id_regexes.split(',')
+
     if opts.print_only:
         command_handler = print_commands
     else:
@@ -170,6 +197,9 @@ def main():
         clean_otu_table_filename=opts.clean_otu_table_filename,
         read_1_seqs_filename=opts.read_1_seqs_filename,
         read_2_seqs_filename=opts.read_2_seqs_filename,
+        rtax_read_id_regexes=rtax_read_id_regexes,
+        rtax_amplicon_id_regexes=rtax_amplicon_id_regexes,
+        rtax_header_id_regexes=rtax_header_id_regexes,
         rdp_max_memory=opts.rdp_max_memory,
         command_handler=command_handler,
         status_update_callback=status_update_callback, force=opts.force)
