@@ -28,7 +28,9 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         input_fasta_filename='rep_set.fna',
         clean_otu_table_filename='otu_table_mc2.biom',
         read_1_seqs_filename='seqs1.fna', read_2_seqs_filename='seqs2.fna',
-        rdp_max_memory=4000, command_handler=call_commands_serially,
+        rtax_read_id_regexes=None, rtax_amplicon_id_regexes=None,
+        rtax_header_id_regexes=None, rdp_max_memory=4000,
+        command_handler=call_commands_serially,
         status_update_callback=no_status_updates, force=False):
     """ Performs sanity checks on passed arguments and directories. Builds 
         commands for each method and sends them off to be executed. """
@@ -42,7 +44,24 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
 
     logger = WorkflowLogger(generate_log_fp(output_dir))
 
-    for input_dir in input_dirs:
+    # We're going to zip these with the input directories.
+    num_dirs = len(input_dirs)
+    if rtax_read_id_regexes is None:
+        rtax_read_id_regexes = [None] * num_dirs
+    if rtax_amplicon_id_regexes is None:
+        rtax_amplicon_id_regexes = [None] * num_dirs
+    if rtax_header_id_regexes is None:
+        rtax_header_id_regexes = [None] * num_dirs
+
+    if num_dirs != len(rtax_read_id_regexes) or \
+       num_dirs != len(rtax_amplicon_id_regexes) or \
+       num_dirs != len(rtax_header_id_regexes):
+        raise WorkflowError("The number of RTAX regular expressions must "
+                            "match the number of input directories.")
+
+    for input_dir, rtax_read_id_regex, rtax_amplicon_id_regex, \
+            rtax_header_id_regex in zip(input_dirs, rtax_read_id_regexes,
+                         rtax_amplicon_id_regexes, rtax_header_id_regexes):
         ## Make sure the input dataset directory exists.
         if not isdir(input_dir):
             raise WorkflowError("The input dataset directory '%s' does not "
@@ -122,7 +141,10 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                                                    clean_otu_table_fp,
                                                    rtax_modes,
                                                    read_1_seqs_fp,
-                                                   read_2_seqs_fp)
+                                                   read_2_seqs_fp,
+                                                   rtax_read_id_regex,
+                                                   rtax_amplicon_id_regex,
+                                                   rtax_header_id_regex)
 
             ## Unsupported method
             else:
@@ -238,7 +260,8 @@ def _generate_mothur_commands(output_dir, input_fasta_fp, reference_seqs_fp,
 
 def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
                             id_to_taxonomy_fp, clean_otu_table_fp, rtax_modes,
-                            read_1_seqs_fp, read_2_seqs_fp):
+                            read_1_seqs_fp, read_2_seqs_fp, read_id_regex=None,
+                            amplicon_id_regex=None, header_id_regex=None):
     """ Build command strings for RTAX method. """
     result = []
     for mode in rtax_modes:
@@ -256,6 +279,16 @@ def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
                 reference_seqs_fp, id_to_taxonomy_fp, read_1_seqs_fp)
         if mode == 'paired':
             assign_taxonomy_command += ' --read_2_seqs_fp %s' % read_2_seqs_fp
+
+        if read_id_regex is not None:
+            assign_taxonomy_command += \
+                    ' --read_id_regex \'%s\'' % read_id_regex
+        if amplicon_id_regex is not None:
+            assign_taxonomy_command += \
+                    ' --amplicon_id_regex \'%s\'' % amplicon_id_regex
+        if header_id_regex is not None:
+            assign_taxonomy_command += \
+                    ' --header_id_regex \'%s\'' % header_id_regex
 
         result.append([('Assigning taxonomy (%s)' % run_id,
                       assign_taxonomy_command)])
