@@ -99,6 +99,13 @@ class MultipleAssignTaxonomyTests(TestCase):
                           confidences=[0.6, 0.7], e_values=[1e-3, 1e-10],
                           force=True)
 
+        # Not enough custom regexes.
+        self.assertRaises(WorkflowError, assign_taxonomy_multiple_times,
+                          [out_dir, out_dir], out_dir, ['rdp'],
+                          '/foo/ref_seqs.fasta', '/foo/tax.txt',
+                          confidences=[0.6, 0.7], e_values=[1e-3, 1e-10],
+                          force=True, rtax_amplicon_id_regexes=['foo*'])
+
     def test_assign_taxonomy_multiple_times_invalid_input_rdp(self):
         """Test that errors are thrown using invalid input for RDP."""
         out_dir = self.output_dir
@@ -334,6 +341,23 @@ class MultipleAssignTaxonomyTests(TestCase):
                 '/foo/bar/otu_table.biom', ['single', 'paired'],
                 '/foo/bar/read_1_seqs.fna', '/foo/bar/read_2_seqs.fna')
         self.assertEqual(obs, exp)
+
+    def test_generate_rtax_commands_custom_regexes(self):
+        """Correctly passes custom regexes through to RTAX."""
+        exp = [[('Assigning taxonomy (RTAX, mode: single)',
+                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_single.tmp -m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt --read_1_seqs_fp /foo/bar/read_1_seqs.fna --read_id_regex \'f*\' --amplicon_id_regex \'*b\' --header_id_regex \'b(*)z\'')],
+               [('Assigning taxonomy (RTAX, mode: paired)',
+                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_paired.tmp ' '-m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt ' '--read_1_seqs_fp /foo/bar/read_1_seqs.fna ' '--read_2_seqs_fp /foo/bar/read_2_seqs.fna --read_id_regex \'f*\' --amplicon_id_regex \'*b\' --header_id_regex \'b(*)z\'')]]
+
+        obs = _generate_rtax_commands('/foo/bar', '/foo/bar/rep_set.fna',
+                '/baz/reference_seqs.fasta', '/baz/id_to_taxonomy.txt',
+                '/foo/bar/otu_table.biom', ['single', 'paired'],
+                '/foo/bar/read_1_seqs.fna', '/foo/bar/read_2_seqs.fna', 'f*',
+                '*b', 'b(*)z')
+
+        self.assertEqual(len(obs), 8)
+        self.assertEqual(obs[0], exp[0])
+        self.assertEqual(obs[4], exp[1])
 
     def test_generate_taxa_processing_commands(self):
         """Functions correctly using standard valid input data."""
