@@ -1,0 +1,9 @@
+BlastTaxonAssigner parameters:
+Application:blastn/megablast
+Max E value:1.0
+Min percent identity:90.0
+id_to_taxonomy_filepath:/home/nbokulic/ref_seq_dbs/its_12_11_otus/taxonomy/97_otu_taxonomy.txt
+reference_seqs_filepath:/home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta
+Number of sequences inspected: 94
+Number with no blast hits: 11
+Result path: "/scratch/assign-taxB1sGLXV2Ls7ZWVQw33BG.txt"

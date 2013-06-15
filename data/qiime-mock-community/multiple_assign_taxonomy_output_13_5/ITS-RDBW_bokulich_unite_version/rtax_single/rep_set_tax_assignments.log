@@ -1,0 +1,86 @@
+RtaxTaxonAssigner parameters:
+Application:RTAX classifier
+Citation:Soergel D.A.W., Dey N., Knight R., and Brenner S.E.  2012.  Selection of primers for optimal taxonomic classification of environmental 16S rRNA gene sequences.  ISME J (6), 1440-1444
+amplicon_id_regex:(\S+)\s(\S+?)\s
+header_id_regex:\S+\s(\S+?)\s
+id_to_taxonomy_filepath:/home/nbokulic/ref_seq_dbs/UNITE/unite_rep_set_97-rdp-taxonomy.txt
+id_to_taxonomy_fp:/home/nbokulic/ref_seq_dbs/UNITE/unite_rep_set_97-rdp-taxonomy.txt
+no_single_ok_generic:False
+read_1_seqs_fp:/home/nbokulic/bewolf/sl/RDBW/seqs.fna
+read_2_seqs_fp:None
+read_id_regex:\S+\s+(\S+)
+reference_sequences_fp:/home/nbokulic/ref_seq_dbs/UNITE/align/rep_set_uclust_ref_97.fasta
+single_ok:False
+RTAX: Rapid and accurate taxonomic classification of short paired-end
+      sequence reads from the 16S ribosomal RNA gene.
+
+David A. W. Soergel (1), Rob Knight (2), and Steven E. Brenner (1)
+
+1 Department of Plant and Microbial Biology,
+  University of California, Berkeley 
+2 Howard Hughes Medical Institute and Department of Chemistry 
+  and Biochemistry, University of Colorado at Boulder
+* Corresponding author (current address): soergel@cs.umass.edu
+
+Version 0.983  (August 21, 2012)
+
+http://dev.davidsoergel.com/rtax
+
+Please cite:
+Soergel D.A.W., Dey N., Knight R., and Brenner S.E.  2012.
+Selection of primers for optimal taxonomic classification of
+environmental 16S rRNA gene sequences.  ISME J (6), 1440–1444
+
+using usearch: /share/apps/qiime-1.6.0/bin/usearch
+
+Header Regex: \S+\s(\S+?)\s
+Index file /home/nbokulic/bewolf/sl/RDBW/seqs.fna.pos already exists; assuming valid
+file a only = 79 sequences
+file b only = 0 sequences
+both        = 0 sequences
+doSingleSearch 2: 79 query sequences remaining
+     searching with %id 0.01 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 2 --db /home/nbokulic/ref_seq_dbs/UNITE/align/rep_set_uclust_ref_97.fasta --uc /tmp/79532.1.all.q/V4s5By60cx/a --id 0.99 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doSingleSearch 2: Finished at pair threshold 0.01 and maxAccepts 1000
+         NOHITS: 60
+    TOOMANYHITS: 0
+Finished round at threshold 0.01; 60 NOHIT, 0 TOOMANYHIT.
+doSingleSearch 4: 60 query sequences remaining
+     searching with %id 0.02 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 4 --db /home/nbokulic/ref_seq_dbs/UNITE/align/rep_set_uclust_ref_97.fasta --uc /tmp/79532.1.all.q/c4ipHUYvL6/a --id 0.98 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doSingleSearch 4: Finished at pair threshold 0.02 and maxAccepts 1000
+         NOHITS: 45
+    TOOMANYHITS: 0
+Finished round at threshold 0.02; 45 NOHIT, 0 TOOMANYHIT.
+doSingleSearch 5: 45 query sequences remaining
+     searching with %id 0.04 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 5 --db /home/nbokulic/ref_seq_dbs/UNITE/align/rep_set_uclust_ref_97.fasta --uc /tmp/79532.1.all.q/rDviIu3NUo/a --id 0.96 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doSingleSearch 5: Finished at pair threshold 0.04 and maxAccepts 1000
+         NOHITS: 30
+    TOOMANYHITS: 0
+Finished round at threshold 0.04; 30 NOHIT, 0 TOOMANYHIT.
+doSingleSearch 6: 30 query sequences remaining
+     searching with %id 0.08 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 6 --db /home/nbokulic/ref_seq_dbs/UNITE/align/rep_set_uclust_ref_97.fasta --uc /tmp/79532.1.all.q/TVDmi9BVJG/a --id 0.92 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doSingleSearch 6: Finished at pair threshold 0.08 and maxAccepts 1000
+         NOHITS: 16
+    TOOMANYHITS: 0
+Finished round at threshold 0.08; 16 NOHIT, 0 TOOMANYHIT.
+doSingleSearch 7: 16 query sequences remaining
+     searching with %id 0.16 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 7 --db /home/nbokulic/ref_seq_dbs/UNITE/align/rep_set_uclust_ref_97.fasta --uc /tmp/79532.1.all.q/vWnIxX96Ll/a --id 0.84 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doSingleSearch 7: Finished at pair threshold 0.16 and maxAccepts 1000
+         NOHITS: 16
+    TOOMANYHITS: 0
+Finished round at threshold 0.16; 16 NOHIT, 0 TOOMANYHIT.
+16 query sequences remaining with NOHIT
+0 query sequences remaining with TOOMANYHITS
+loading taxonomy...
+...done loading 29436 taxonomy lines
+79 items
+0 (0.0%) had no primer match
+16 (20.3%) had no hits
+0 (0.0%) had too many hits
+0 (0.0%) had hits but no classification
+63 (79.7%) were classified
+

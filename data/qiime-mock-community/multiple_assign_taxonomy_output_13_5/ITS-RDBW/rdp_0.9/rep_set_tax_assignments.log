@@ -1,0 +1,10 @@
+RdpTaxonAssigner parameters:
+Application:RDP classfier
+Citation:Wang, Q, G. M. Garrity, J. M. Tiedje, and J. R. Cole. 2007. Naive Bayesian Classifier for Rapid Assignment of rRNA Sequences into the New Bacterial Taxonomy. Appl Environ Microbiol. 73(16):5261-7.
+Taxonomy:RDP
+Confidence:0.9
+id_to_taxonomy_filepath:/home/nbokulic/ref_seq_dbs/qiime-unite-2.0-24.5.13/sh_taxonomy_24.05.2013_97_MOD.txt
+id_to_taxonomy_fp:/home/nbokulic/ref_seq_dbs/qiime-unite-2.0-24.5.13/sh_taxonomy_24.05.2013_97_MOD.txt
+max_memory:16000M
+reference_sequences_fp:/home/nbokulic/ref_seq_dbs/qiime-unite-2.0-24.5.13/sh_refs_24.05.2013_97.fasta
+training_data_properties_fp:None

@@ -1,0 +1,86 @@
+RtaxTaxonAssigner parameters:
+Application:RTAX classifier
+Citation:Soergel D.A.W., Dey N., Knight R., and Brenner S.E.  2012.  Selection of primers for optimal taxonomic classification of environmental 16S rRNA gene sequences.  ISME J (6), 1440-1444
+amplicon_id_regex:(\S+)\s(\S+?)\/
+header_id_regex:\S+\s(\S+?)\/
+id_to_taxonomy_filepath:/home/nbokulic/ref_seq_dbs/Silva_108/taxa_mapping/Silva_RDP_taxa_mapping_Eukarya_only_species.txt
+id_to_taxonomy_fp:/home/nbokulic/ref_seq_dbs/Silva_108/taxa_mapping/Silva_RDP_taxa_mapping_Eukarya_only_species.txt
+no_single_ok_generic:False
+read_1_seqs_fp:/home/nbokulic/laura/sl/r3n0p75/seqs.fna
+read_2_seqs_fp:/home/nbokulic/laura/sl_rev/r3n0p75/seqs.fna
+read_id_regex:\S+\s+(\S+)
+reference_sequences_fp:/home/nbokulic/ref_seq_dbs/Silva_108/rep_set/Silva_108_rep_set_Eukarya_only.fna
+single_ok:False
+RTAX: Rapid and accurate taxonomic classification of short paired-end
+      sequence reads from the 16S ribosomal RNA gene.
+
+David A. W. Soergel (1), Rob Knight (2), and Steven E. Brenner (1)
+
+1 Department of Plant and Microbial Biology,
+  University of California, Berkeley 
+2 Howard Hughes Medical Institute and Department of Chemistry 
+  and Biochemistry, University of Colorado at Boulder
+* Corresponding author (current address): soergel@cs.umass.edu
+
+Version 0.983  (August 21, 2012)
+
+http://dev.davidsoergel.com/rtax
+
+Please cite:
+Soergel D.A.W., Dey N., Knight R., and Brenner S.E.  2012.
+Selection of primers for optimal taxonomic classification of
+environmental 16S rRNA gene sequences.  ISME J (6), 1440–1444
+
+using usearch: /share/apps/qiime-1.6.0/bin/usearch
+
+Header Regex: \S+\s(\S+?)\/
+Index file /home/nbokulic/laura/sl/r3n0p75/seqs.fna.pos already exists; assuming valid
+file a only = 350 sequences
+file b only = 0 sequences
+both        = 1045 sequences
+doPairSearch 0, 1: 1045 query sequences remaining
+     searching with pair %id 0.01 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 1 --db /home/nbokulic/ref_seq_dbs/Silva_108/rep_set/Silva_108_rep_set_Eukarya_only.fna --uc /tmp/79503.1.all.q/DyqQONLh4I/b --id 0.98 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doPairSearch 0, 1: Finished at pair threshold 0.01 and maxAccepts 1000
+         NOHITS: 1042
+    TOOMANYHITS: 0
+MAIN: Finished round at threshold 0.01; 1042 NOHIT, 0 TOOMANYHIT.
+doPairSearch 4, 5: 1042 query sequences remaining
+     searching with pair %id 0.02 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 5 --db /home/nbokulic/ref_seq_dbs/Silva_108/rep_set/Silva_108_rep_set_Eukarya_only.fna --uc /tmp/79503.1.all.q/utlaOKh73F/b --id 0.96 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doPairSearch 4, 5: Finished at pair threshold 0.02 and maxAccepts 1000
+         NOHITS: 723
+    TOOMANYHITS: 0
+MAIN: Finished round at threshold 0.02; 723 NOHIT, 0 TOOMANYHIT.
+doPairSearch 6, 7: 723 query sequences remaining
+     searching with pair %id 0.04 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 7 --db /home/nbokulic/ref_seq_dbs/Silva_108/rep_set/Silva_108_rep_set_Eukarya_only.fna --uc /tmp/79503.1.all.q/yy87LbONny/b --id 0.92 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doPairSearch 6, 7: Finished at pair threshold 0.04 and maxAccepts 1000
+         NOHITS: 218
+    TOOMANYHITS: 0
+MAIN: Finished round at threshold 0.04; 218 NOHIT, 0 TOOMANYHIT.
+doPairSearch 8, 9: 218 query sequences remaining
+     searching with pair %id 0.08 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 8 --db /home/nbokulic/ref_seq_dbs/Silva_108/rep_set/Silva_108_rep_set_Eukarya_only.fna --uc /tmp/79503.1.all.q/uIvA5OvttH/a --id 0.84 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doPairSearch 8, 9: Finished at pair threshold 0.08 and maxAccepts 1000
+         NOHITS: 58
+    TOOMANYHITS: 0
+MAIN: Finished round at threshold 0.08; 58 NOHIT, 0 TOOMANYHIT.
+doPairSearch 10, 11: 58 query sequences remaining
+     searching with pair %id 0.16 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 11 --db /home/nbokulic/ref_seq_dbs/Silva_108/rep_set/Silva_108_rep_set_Eukarya_only.fna --uc /tmp/79503.1.all.q/ZHQzKg_Mfh/b --id 0.68 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doPairSearch 10, 11: Finished at pair threshold 0.16 and maxAccepts 1000
+         NOHITS: 48
+    TOOMANYHITS: 0
+MAIN: Finished round at threshold 0.16; 48 NOHIT, 0 TOOMANYHIT.
+MAIN: 48 query sequences remaining with NOHIT
+MAIN: 0 query sequences remaining with TOOMANYHITS
+loading taxonomy...
+...done loading 11584 taxonomy lines
+1045 items
+0 (0.0%) had no primer match
+48 (4.6%) had no hits
+0 (0.0%) had too many hits
+0 (0.0%) had hits but no classification
+997 (95.4%) were classified
+
