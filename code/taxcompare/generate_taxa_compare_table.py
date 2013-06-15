@@ -137,7 +137,9 @@ def generate_taxa_compare_table(root, key_directory, levels=None):
 
                 for f in files:
                     if ('otu_table_mc2_no_pynast_failures_w_taxa_L' in f or
-                        'otu_table_mc2_w_taxa_L' in f) and not f.endswith('~'):
+                        'otu_table_mc2_w_taxa_L' in f)\
+                        and not f.endswith('~')\
+                        and not f.endswith('.biom'):
                         name = path.split('/')[-2]
                         level = int(f[-5])
                         if level not in levels:
