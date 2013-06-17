@@ -289,6 +289,8 @@ def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         if header_id_regex is not None:
             assign_taxonomy_command += \
                     ' --header_id_regex \'%s\'' % header_id_regex
+        if mode == 'paired':
+            assign_taxonomy_command += ' --single_ok'
 
         result.append([('Assigning taxonomy (%s)' % run_id,
                       assign_taxonomy_command)])
