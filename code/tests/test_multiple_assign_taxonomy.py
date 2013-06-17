@@ -323,7 +323,7 @@ class MultipleAssignTaxonomyTests(TestCase):
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_paired.tmp '
                  '-m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt '
                  '--read_1_seqs_fp /foo/bar/read_1_seqs.fna '
-                 '--read_2_seqs_fp /foo/bar/read_2_seqs.fna')],
+                 '--read_2_seqs_fp /foo/bar/read_2_seqs.fna --single_ok')],
                  [('Adding metadata (RTAX, mode: paired)',
                  'add_metadata.py -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/rtax_paired.tmp/otu_table_w_taxa.biom '
@@ -347,7 +347,7 @@ class MultipleAssignTaxonomyTests(TestCase):
         exp = [[('Assigning taxonomy (RTAX, mode: single)',
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_single.tmp -m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt --read_1_seqs_fp /foo/bar/read_1_seqs.fna --read_id_regex \'f*\' --amplicon_id_regex \'*b\' --header_id_regex \'b(*)z\'')],
                [('Assigning taxonomy (RTAX, mode: paired)',
-                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_paired.tmp ' '-m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt ' '--read_1_seqs_fp /foo/bar/read_1_seqs.fna ' '--read_2_seqs_fp /foo/bar/read_2_seqs.fna --read_id_regex \'f*\' --amplicon_id_regex \'*b\' --header_id_regex \'b(*)z\'')]]
+                 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rtax_paired.tmp ' '-m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt ' '--read_1_seqs_fp /foo/bar/read_1_seqs.fna ' '--read_2_seqs_fp /foo/bar/read_2_seqs.fna --read_id_regex \'f*\' --amplicon_id_regex \'*b\' --header_id_regex \'b(*)z\' --single_ok')]]
 
         obs = _generate_rtax_commands('/foo/bar', '/foo/bar/rep_set.fna',
                 '/baz/reference_seqs.fasta', '/baz/id_to_taxonomy.txt',
