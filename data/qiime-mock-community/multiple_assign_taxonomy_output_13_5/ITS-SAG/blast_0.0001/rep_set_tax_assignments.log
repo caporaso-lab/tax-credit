@@ -1,9 +1,0 @@
-BlastTaxonAssigner parameters:
-Application:blastn/megablast
-Max E value:0.0001
-Min percent identity:90.0
-id_to_taxonomy_filepath:/home/nbokulic/ref_seq_dbs/qiime-unite-2.0-24.5.13/sh_taxonomy_24.05.2013_97_MOD.txt
-reference_seqs_filepath:/home/nbokulic/ref_seq_dbs/qiime-unite-2.0-24.5.13/sh_refs_24.05.2013_97.fasta
-Number of sequences inspected: 73
-Number with no blast hits: 0
-Result path: "/scratch/assign-taxvi75kq6cqMmDfq72dHLn.txt"
