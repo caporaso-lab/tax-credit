@@ -1,0 +1,95 @@
+Logging started at 22:04:25 on 24 Jun 2013
+QIIME version: 1.6.0-dev
+
+qiime_config values:
+sc_queue	all.q
+cluster_jobs_fp	/home/nbokulic/Qiime/bin/start_parallel_jobs_sc.py
+torque_queue	friendlyq
+jobs_to_start	1
+qiime_temp_dir	/scratch/
+cloud_environment	False
+qiime_scripts_dir	/home/nbokulic/Qiime/scripts/
+denoiser_min_per_core	50
+python_exe_fp	python
+temp_dir	/scratch/
+blastall_fp	blastall
+seconds_to_sleep	2
+
+parameter file values:
+alpha_diversity:metrics	observed_species,shannon
+assign_taxonomy:reference_seqs_fp	/home/nbokulic/ref_seq_dbs/fungal_its_otus_18jun2012/rep_set/97_otus_fungal_ITS_14-06-2012.fasta
+assign_taxonomy:id_to_taxonomy_fp	/home/nbokulic/fungal_its_otus_18jun2012/taxonomies/taxonomy_mapping_file_15_June_2012_noquotes_qiime_formatted.txt
+assign_taxonomy:assignment_method	blast
+beta_diversity:metrics	bray_curtis
+pick_otus:refseqs_fp	/home/nbokulic/ref_seq_dbs/fungal_its_otus_18jun2012/rep_set/97_otus_fungal_ITS_14-06-2012.fasta
+pick_otus:enable_rev_strand_match	True
+pick_otus:otu_picking_method	uclust_ref
+pick_otus:similarity	0.97
+align_seqs:min_length	75
+align_seqs:min_percent_id	75.0
+parallel:jobs_to_start	1
+
+Input file md5 sums:
+/home/nbokulic/bewolf/psrotot/SAG/multiple_assign_taxonomy/SAG/concatenated_otu_table.biom: 07cecceda2e2a2f4a5ef693a5fbdc25b
+/home/nbokulic/bewolf/psrotot/SAG/multiple_assign_taxonomy/SAG/concatenated_otu_map.txt: 5bbfa3b145c2650b9c5c4942b84c6d16
+
+Executing commands.
+
+# Build prefs file command 
+python /home/nbokulic/Qiime/scripts//make_prefs_file.py -m /home/nbokulic/bewolf/psrotot/SAG/multiple_assign_taxonomy/SAG/concatenated_otu_map.txt -o /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//prefs.txt  --mapping_headers_to_use SampleID,assignment_method,Description
+
+Stdout:
+
+Stderr:
+
+# Beta Diversity (bray_curtis) command 
+python /home/nbokulic/Qiime/scripts//beta_diversity.py -i /home/nbokulic/bewolf/psrotot/SAG/multiple_assign_taxonomy/SAG/concatenated_otu_table.biom -o /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha/ --metrics bray_curtis 
+
+Stdout:
+
+Stderr:
+
+# Rename distance matrix (bray_curtis) command 
+mv /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_concatenated_otu_table.txt /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_dm.txt
+
+Stdout:
+
+Stderr:
+
+# Principal coordinates (bray_curtis) command 
+python /home/nbokulic/Qiime/scripts//principal_coordinates.py -i /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_dm.txt -o /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_pc.txt 
+
+Stdout:
+
+Stderr:
+
+# Make 3D plots (continuous coloring, bray_curtis) command 
+python /home/nbokulic/Qiime/scripts//make_3d_plots.py -p /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//prefs.txt -i /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_pc.txt -o /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_3d_continuous/ -m /home/nbokulic/bewolf/psrotot/SAG/multiple_assign_taxonomy/SAG/concatenated_otu_map.txt 
+
+Stdout:
+
+Stderr:
+
+# Make 3D plots (discrete coloring, bray_curtis) command 
+python /home/nbokulic/Qiime/scripts//make_3d_plots.py -b "SampleID,assignment_method,Description" -i /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_pc.txt -o /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_3d_discrete/ -m /home/nbokulic/bewolf/psrotot/SAG/multiple_assign_taxonomy/SAG/concatenated_otu_map.txt 
+
+Stdout:
+
+Stderr:
+
+# Make 2D plots (continuous coloring, bray_curtis) command 
+python /home/nbokulic/Qiime/scripts//make_2d_plots.py -p /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//prefs.txt -i /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_pc.txt -o /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_2d_continuous/ -m /home/nbokulic/bewolf/psrotot/SAG/multiple_assign_taxonomy/SAG/concatenated_otu_map.txt 
+
+Stdout:
+
+Stderr:
+
+# Make 2D plots (discrete coloring, bray_curtis) command 
+python /home/nbokulic/Qiime/scripts//make_2d_plots.py -b "SampleID,assignment_method,Description" -i /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_pc.txt -o /home/nbokulic/bewolf/psrotot/SAG/concatenated_bdiv_plots_alpha//bray_curtis_2d_discrete/ -m /home/nbokulic/bewolf/psrotot/SAG/multiple_assign_taxonomy/SAG/concatenated_otu_map.txt 
+
+Stdout:
+
+Stderr:
+
+
+Logging stopped at 22:04:35 on 24 Jun 2013

@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Emperor</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="emperor_required_resources/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/emperor/css/emperor.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/jquery-ui2.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/colorPicker.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/spectrum.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/d3.parcoords.css">
+    <table id="logotable" style="vertical-align:middle;text-align:center;height:100%;width:100%;margin:0;padding:0;border:0;">
+        <tr><td><img src="emperor_required_resources/img/emperor.png" alt="Emperor" id="logo"/></td></tr>
+    </table>
+    <script type="text/javascript" src="emperor_required_resources/js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/d3.parcoords.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script src="emperor_required_resources/js/jquery.colorPicker.js"></script>
+    <script src="emperor_required_resources/js/spectrum.js"></script>
+
+    <script src="emperor_required_resources/js/Three.js"></script>
+    <script src="emperor_required_resources/js/js/Detector.js"></script>
+    <script src="emperor_required_resources/js/js/RequestAnimationFrame.js"></script>
+    <script src="emperor_required_resources/emperor/js/emperor.js"></script>
+    <script type="text/javascript">
+var g_mappingFileHeaders = ['SampleID','assignment_method'];
+var g_mappingFileData = { 'blast_1.0': ['blast_1.0','blast'],'rtax_single': ['rtax_single','rtax'],'rdp_0.6': ['rdp_0.6','rdp'],'rdp_0.7': ['rdp_0.7','rdp'],'rdp_0.4': ['rdp_0.4','rdp'],'rdp_0.5': ['rdp_0.5','rdp'],'rdp_0.2': ['rdp_0.2','rdp'],'rdp_0.3': ['rdp_0.3','rdp'],'rdp_0.0': ['rdp_0.0','rdp'],'rdp_0.1': ['rdp_0.1','rdp'],'Expected': ['Expected','Expected'],'blast_1e-06': ['blast_1e-06','blast'],'rdp_0.8': ['rdp_0.8','rdp'],'rdp_0.9': ['rdp_0.9','rdp'],'mothur_1.0': ['mothur_1.0','mothur'],'rtax_paired': ['rtax_paired','rtax'],'blast_1e-30': ['blast_1e-30','blast'],'blast_100.0': ['blast_100.0','blast'],'blast_1e-10': ['blast_1e-10','blast'],'blast_0.0001': ['blast_0.0001','blast'],'rdp_1.0': ['rdp_1.0','rdp'],'mothur_0.8': ['mothur_0.8','mothur'],'mothur_0.9': ['mothur_0.9','mothur'],'mothur_0.4': ['mothur_0.4','mothur'],'mothur_0.5': ['mothur_0.5','mothur'],'mothur_0.6': ['mothur_0.6','mothur'],'mothur_0.7': ['mothur_0.7','mothur'],'mothur_0.0': ['mothur_0.0','mothur'],'mothur_0.1': ['mothur_0.1','mothur'],'mothur_0.2': ['mothur_0.2','mothur'],'mothur_0.3': ['mothur_0.3','mothur'] };
+
+var g_spherePositions = new Array();
+g_spherePositions['blast_100.0'] = { 'name': 'blast_100.0', 'color': 0, 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'P1': -0.430613, 'P2': 0.211598, 'P3': 0.040796, 'P4': 0.014883, 'P5': -0.023297, 'P6': -0.015569, 'P7': 0.049590, 'P8': 0.012615, 'P9': -0.013967 };
+g_spherePositions['blast_0.0001'] = { 'name': 'blast_0.0001', 'color': 0, 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'P1': -0.430613, 'P2': 0.211598, 'P3': 0.040796, 'P4': 0.014883, 'P5': -0.023297, 'P6': -0.015569, 'P7': 0.049590, 'P8': 0.012615, 'P9': -0.013967 };
+g_spherePositions['blast_1e-06'] = { 'name': 'blast_1e-06', 'color': 0, 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'P1': -0.430613, 'P2': 0.211598, 'P3': 0.040796, 'P4': 0.014883, 'P5': -0.023297, 'P6': -0.015569, 'P7': 0.049590, 'P8': 0.012615, 'P9': -0.013967 };
+g_spherePositions['blast_1.0'] = { 'name': 'blast_1.0', 'color': 0, 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'P1': -0.430613, 'P2': 0.211598, 'P3': 0.040796, 'P4': 0.014883, 'P5': -0.023297, 'P6': -0.015569, 'P7': 0.049590, 'P8': 0.012615, 'P9': -0.013967 };
+g_spherePositions['blast_1e-10'] = { 'name': 'blast_1e-10', 'color': 0, 'x': -0.430614, 'y': 0.211599, 'z': 0.040796, 'P1': -0.430614, 'P2': 0.211599, 'P3': 0.040796, 'P4': 0.014883, 'P5': -0.023297, 'P6': -0.015567, 'P7': 0.049595, 'P8': 0.012616, 'P9': -0.013966 };
+g_spherePositions['blast_1e-30'] = { 'name': 'blast_1e-30', 'color': 0, 'x': -0.428536, 'y': 0.217302, 'z': 0.042971, 'P1': -0.428536, 'P2': 0.217302, 'P3': 0.042971, 'P4': 0.015392, 'P5': -0.001546, 'P6': -0.020121, 'P7': 0.061501, 'P8': -0.003628, 'P9': -0.004199 };
+g_spherePositions['mothur_0.0'] = { 'name': 'mothur_0.0', 'color': 0, 'x': -0.201020, 'y': -0.252800, 'z': -0.056413, 'P1': -0.201020, 'P2': -0.252800, 'P3': -0.056413, 'P4': 0.017124, 'P5': -0.192119, 'P6': -0.027848, 'P7': -0.050960, 'P8': -0.051094, 'P9': 0.001885 };
+g_spherePositions['mothur_0.1'] = { 'name': 'mothur_0.1', 'color': 0, 'x': -0.175403, 'y': -0.291044, 'z': -0.059523, 'P1': -0.175403, 'P2': -0.291044, 'P3': -0.059523, 'P4': -0.044850, 'P5': 0.076369, 'P6': -0.003915, 'P7': -0.005330, 'P8': -0.005896, 'P9': -0.000586 };
+g_spherePositions['mothur_0.2'] = { 'name': 'mothur_0.2', 'color': 0, 'x': -0.170568, 'y': -0.289727, 'z': -0.055941, 'P1': -0.170568, 'P2': -0.289727, 'P3': -0.055941, 'P4': -0.044265, 'P5': 0.082332, 'P6': -0.012769, 'P7': -0.001832, 'P8': -0.011160, 'P9': -0.007345 };
+g_spherePositions['mothur_0.3'] = { 'name': 'mothur_0.3', 'color': 0, 'x': -0.092340, 'y': -0.252128, 'z': -0.015414, 'P1': -0.092340, 'P2': -0.252128, 'P3': -0.015414, 'P4': -0.040919, 'P5': 0.088800, 'P6': -0.065197, 'P7': 0.058869, 'P8': -0.069585, 'P9': -0.011969 };
+g_spherePositions['mothur_0.4'] = { 'name': 'mothur_0.4', 'color': 0, 'x': 0.137496, 'y': -0.108961, 'z': 0.103255, 'P1': 0.137496, 'P2': -0.108961, 'P3': 0.103255, 'P4': -0.004510, 'P5': -0.017430, 'P6': 0.081536, 'P7': 0.001581, 'P8': 0.042075, 'P9': 0.007660 };
+g_spherePositions['mothur_0.5'] = { 'name': 'mothur_0.5', 'color': 0, 'x': 0.149153, 'y': -0.101825, 'z': 0.108186, 'P1': 0.149153, 'P2': -0.101825, 'P3': 0.108186, 'P4': -0.003341, 'P5': -0.019470, 'P6': 0.087673, 'P7': 0.006781, 'P8': 0.043265, 'P9': 0.013142 };
+g_spherePositions['mothur_0.6'] = { 'name': 'mothur_0.6', 'color': 0, 'x': 0.159386, 'y': -0.095367, 'z': 0.108458, 'P1': 0.159386, 'P2': -0.095367, 'P3': 0.108458, 'P4': -0.004740, 'P5': -0.019318, 'P6': 0.092248, 'P7': 0.003406, 'P8': 0.045120, 'P9': 0.016289 };
+g_spherePositions['mothur_0.7'] = { 'name': 'mothur_0.7', 'color': 0, 'x': 0.420495, 'y': -0.045660, 'z': -0.017998, 'P1': 0.420495, 'P2': -0.045660, 'P3': -0.017998, 'P4': 0.149516, 'P5': 0.009766, 'P6': -0.053098, 'P7': 0.001392, 'P8': 0.048750, 'P9': -0.001335 };
+g_spherePositions['mothur_0.8'] = { 'name': 'mothur_0.8', 'color': 0, 'x': 0.466084, 'y': -0.029633, 'z': -0.034614, 'P1': 0.466084, 'P2': -0.029633, 'P3': -0.034614, 'P4': 0.122840, 'P5': 0.003959, 'P6': -0.072165, 'P7': -0.004719, 'P8': 0.034638, 'P9': 0.010003 };
+g_spherePositions['mothur_0.9'] = { 'name': 'mothur_0.9', 'color': 0, 'x': 0.473120, 'y': -0.007770, 'z': -0.019255, 'P1': 0.473120, 'P2': -0.007770, 'P3': -0.019255, 'P4': -0.164076, 'P5': -0.057456, 'P6': 0.013364, 'P7': -0.054636, 'P8': -0.048062, 'P9': -0.108951 };
+g_spherePositions['mothur_1.0'] = { 'name': 'mothur_1.0', 'color': 0, 'x': 0.533719, 'y': 0.335458, 'z': 0.038552, 'P1': 0.533719, 'P2': 0.335458, 'P3': 0.038552, 'P4': -0.218875, 'P5': -0.009171, 'P6': -0.067002, 'P7': -0.004100, 'P8': 0.012982, 'P9': 0.071077 };
+g_spherePositions['rdp_0.0'] = { 'name': 'rdp_0.0', 'color': 0, 'x': -0.201349, 'y': -0.252287, 'z': -0.056233, 'P1': -0.201349, 'P2': -0.252287, 'P3': -0.056233, 'P4': 0.017506, 'P5': -0.193084, 'P6': -0.027520, 'P7': -0.048267, 'P8': -0.051489, 'P9': 0.002307 };
+g_spherePositions['rdp_0.1'] = { 'name': 'rdp_0.1', 'color': 0, 'x': -0.194673, 'y': -0.291963, 'z': -0.066346, 'P1': -0.194673, 'P2': -0.291963, 'P3': -0.066346, 'P4': -0.041686, 'P5': 0.048944, 'P6': 0.005873, 'P7': 0.027263, 'P8': -0.014665, 'P9': 0.026807 };
+g_spherePositions['rdp_0.2'] = { 'name': 'rdp_0.2', 'color': 0, 'x': -0.168037, 'y': -0.289247, 'z': -0.057443, 'P1': -0.168037, 'P2': -0.289247, 'P3': -0.057443, 'P4': -0.045703, 'P5': 0.081273, 'P6': -0.004321, 'P7': -0.006219, 'P8': -0.003318, 'P9': -0.006639 };
+g_spherePositions['rdp_0.3'] = { 'name': 'rdp_0.3', 'color': 0, 'x': -0.158236, 'y': -0.286291, 'z': -0.052414, 'P1': -0.158236, 'P2': -0.286291, 'P3': -0.052414, 'P4': -0.042894, 'P5': 0.091143, 'P6': -0.013472, 'P7': -0.002779, 'P8': -0.007156, 'P9': -0.017651 };
+g_spherePositions['rdp_0.4'] = { 'name': 'rdp_0.4', 'color': 0, 'x': 0.065570, 'y': -0.124718, 'z': 0.039958, 'P1': 0.065570, 'P2': -0.124718, 'P3': 0.039958, 'P4': -0.010291, 'P5': -0.034687, 'P6': 0.040336, 'P7': 0.062286, 'P8': -0.043859, 'P9': 0.081556 };
+g_spherePositions['rdp_0.5'] = { 'name': 'rdp_0.5', 'color': 0, 'x': 0.190723, 'y': -0.093845, 'z': 0.096050, 'P1': 0.190723, 'P2': -0.093845, 'P3': 0.096050, 'P4': -0.018062, 'P5': -0.019261, 'P6': 0.073776, 'P7': 0.010154, 'P8': 0.053086, 'P9': 0.002937 };
+g_spherePositions['rdp_0.6'] = { 'name': 'rdp_0.6', 'color': 0, 'x': 0.196395, 'y': -0.090326, 'z': 0.096319, 'P1': 0.196395, 'P2': -0.090326, 'P3': 0.096319, 'P4': -0.014921, 'P5': -0.018871, 'P6': 0.074346, 'P7': 0.008546, 'P8': 0.053812, 'P9': 0.002843 };
+g_spherePositions['rdp_0.7'] = { 'name': 'rdp_0.7', 'color': 0, 'x': 0.457717, 'y': -0.046232, 'z': -0.038155, 'P1': 0.457717, 'P2': -0.046232, 'P3': -0.038155, 'P4': 0.125688, 'P5': 0.004212, 'P6': -0.081461, 'P7': -0.004787, 'P8': 0.036457, 'P9': -0.018682 };
+g_spherePositions['rdp_0.8'] = { 'name': 'rdp_0.8', 'color': 0, 'x': 0.463629, 'y': -0.030642, 'z': -0.035445, 'P1': 0.463629, 'P2': -0.030642, 'P3': -0.035445, 'P4': 0.127392, 'P5': 0.004543, 'P6': -0.074901, 'P7': -0.004907, 'P8': 0.033217, 'P9': 0.009289 };
+g_spherePositions['rdp_0.9'] = { 'name': 'rdp_0.9', 'color': 0, 'x': 0.538355, 'y': 0.299540, 'z': 0.010626, 'P1': 0.538355, 'P2': 0.299540, 'P3': 0.010626, 'P4': 0.168055, 'P5': 0.056964, 'P6': 0.109956, 'P7': 0.039035, 'P8': -0.155204, 'P9': -0.037086 };
+g_spherePositions['rdp_1.0'] = { 'name': 'rdp_1.0', 'color': 0, 'x': 0.531850, 'y': 0.335179, 'z': 0.038537, 'P1': 0.531850, 'P2': 0.335179, 'P3': 0.038537, 'P4': -0.184543, 'P5': 0.005863, 'P6': -0.048279, 'P7': 0.017094, 'P8': -0.014928, 'P9': -0.011142 };
+g_spherePositions['rtax_single'] = { 'name': 'rtax_single', 'color': 0, 'x': -0.303543, 'y': 0.226993, 'z': 0.234100, 'P1': -0.303543, 'P2': 0.226993, 'P3': 0.234100, 'P4': 0.055334, 'P5': 0.068027, 'P6': -0.014599, 'P7': -0.161565, 'P8': -0.089290, 'P9': 0.074225 };
+g_spherePositions['rtax_paired'] = { 'name': 'rtax_paired', 'color': 0, 'x': -0.408561, 'y': 0.180642, 'z': 0.130340, 'P1': -0.408561, 'P2': 0.180642, 'P3': 0.130340, 'P4': 0.013239, 'P5': 0.065092, 'P6': 0.013432, 'P7': -0.148279, 'P8': 0.076779, 'P9': -0.052691 };
+g_spherePositions['Expected'] = { 'name': 'Expected', 'color': 0, 'x': -0.128359, 'y': 0.327359, 'z': -0.686136, 'P1': -0.128359, 'P2': 0.327359, 'P3': -0.686136, 'P4': -0.002829, 'P5': 0.011612, 'P6': 0.071969, 'P7': -0.047483, 'P8': 0.026075, 'P9': 0.028087 };
+
+var g_ellipsesDimensions = new Array();
+var g_segments = 16, g_rings = 16, g_radius = 0.011628;
+var g_xAxisLength = 0.968968;
+var g_yAxisLength = 0.627421;
+var g_zAxisLength = 0.920236;
+var g_xMaximumValue = 0.538355;
+var g_yMaximumValue = 0.335458;
+var g_zMaximumValue = 0.234100;
+var g_xMinimumValue = -0.430614;
+var g_yMinimumValue = -0.291963;
+var g_zMinimumValue = -0.686136;
+var g_maximum = 0.686136;
+var g_pc1Label = "PC1 (56 %)";
+var g_pc2Label = "PC2 (22 %)";
+var g_pc3Label = "PC3 (10 %)";
+var g_number_of_custom_axes = 0;
+var g_fractionExplained = [0.561563, 0.222882, 0.097612, 0.034222, 0.020415, 0.013485, 0.012943, 0.011011, 0.005730];
+var g_fractionExplainedRounded = [56, 22, 10, 3, 2, 1, 1, 1, 1];
+
+var g_taxaPositions = new Array();
+g_taxaPositions['0'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Saccharomyces;s__Saccharomyces_cerevisiae_(bakers_yeast)', 'x': -0.165002, 'y': -0.052712, 'z': 0.032676, 'radius': 5.000000};
+g_taxaPositions['1'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;Other;Other;Other;Other', 'x': 0.341472, 'y': 0.026485, 'z': 0.031882, 'radius': 4.062212};
+g_taxaPositions['2'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungi_incertae_sedis;g__Rhizopus;s__Rhizopus_sp._accc_30795', 'x': 0.090040, 'y': -0.158849, 'z': -0.000487, 'radius': 3.578402};
+g_taxaPositions['3'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;Other;Other', 'x': 0.364123, 'y': 0.056853, 'z': 0.026653, 'radius': 2.640242};
+g_taxaPositions['4'] = { 'lineage': 'EUK.Mock.1;NO_HIT', 'x': -0.411980, 'y': 0.210454, 'z': 0.075899, 'radius': 2.320559};
+g_taxaPositions['5'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;Other;Other;Other', 'x': -0.159642, 'y': -0.282852, 'z': -0.051425, 'radius': 1.702133};
+g_taxaPositions['6'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungi_incertae_sedis;g__Rhizopus;s__Rhizopus_oryzae_ra_99-880', 'x': -0.411327, 'y': 0.219653, 'z': -0.004392, 'radius': 1.554683};
+g_taxaPositions['7'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Saccharomyces;Other', 'x': 0.455983, 'y': 0.025586, 'z': -0.018855, 'radius': 1.509114};
+g_taxaPositions['8'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Filobasidiella/cryptococcus_neoformans_species_complex;s__Cryptococcus_gattii', 'x': -0.257549, 'y': -0.020024, 'z': -0.053847, 'radius': 1.328577};
+g_taxaPositions['9'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Coccidioides;s__Coccidioides_posadasii_rmscc_1037', 'x': -0.185898, 'y': -0.044373, 'z': 0.025380, 'radius': 1.111852};
+g_taxaPositions['10'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungi_incertae_sedis;Other;Other', 'x': 0.521244, 'y': 0.285075, 'z': 0.024603, 'radius': 1.022994};
+g_taxaPositions['11'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Clavispora;s__Clavispora_lusitaniae_atcc_42720', 'x': -0.064903, 'y': 0.006171, 'z': -0.077872, 'radius': 0.967116};
+g_taxaPositions['12'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Chytridiomycota;g__Batrachochytrium;s__Batrachochytrium_dendrobatidis_jel423', 'x': -0.049191, 'y': 0.023170, 'z': -0.088353, 'radius': 0.921953};
+g_taxaPositions['13'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Trichophyton;s__Trichophyton_tonsurans_cbs_112818', 'x': -0.098699, 'y': 0.024720, 'z': -0.098584, 'radius': 0.886621};
+g_taxaPositions['14'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungi_incertae_sedis;g__Rhizopus;Other', 'x': -0.353343, 'y': 0.202200, 'z': 0.181485, 'radius': 0.831959};
+g_taxaPositions['15'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Phaeosphaeria;s__Phaeosphaeria_nodorum_sn15', 'x': -0.411145, 'y': 0.210224, 'z': 0.077570, 'radius': 0.790940};
+g_taxaPositions['16'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;Other', 'x': 0.096204, 'y': -0.134706, 'z': 0.067915, 'radius': 0.761028};
+g_taxaPositions['17'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_nanaspora', 'x': -0.182008, 'y': -0.278584, 'z': -0.057860, 'radius': 0.746694};
+g_taxaPositions['18'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Acanthocephala;g__Acanthocephaloides;s__Acanthocephaloides_propinquus', 'x': -0.201048, 'y': -0.252756, 'z': -0.056398, 'radius': 0.722513};
+g_taxaPositions['19'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Chordata;g__Homo;s__Homo_sapiens_(human)', 'x': -0.073390, 'y': 0.077530, 'z': -0.200079, 'radius': 0.710210};
+g_taxaPositions['20'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Acanthocephala;g__Acanthocephalus;s__Acanthocephalus_lucii', 'x': -0.201349, 'y': -0.252287, 'z': -0.056233, 'radius': 0.684991};
+g_taxaPositions['21'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;Other;Other;Other', 'x': 0.490500, 'y': 0.193458, 'z': 0.014954, 'radius': 0.656740};
+g_taxaPositions['22'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__', 'x': -0.128359, 'y': 0.327359, 'z': -0.686136, 'radius': 0.632044};
+g_taxaPositions['23'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Scheffersomyces;s__Scheffersomyces_stipitis', 'x': -0.351726, 'y': 0.049075, 'z': 0.006590, 'radius': 0.605577};
+g_taxaPositions['24'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Vanderwaltozyma;s__Vanderwaltozyma_polyspora_dsm_70294', 'x': -0.352351, 'y': 0.119670, 'z': 0.032865, 'radius': 0.585108};
+g_taxaPositions['25'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Environmental_samples;c__Uncultured_eukaryote;g__Environmental_samples;s__Uncultured_eukaryote', 'x': -0.411854, 'y': 0.210355, 'z': 0.076164, 'radius': 0.576917};
+g_taxaPositions['26'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Schizosaccharomyces;s__Schizosaccharomyces_octosporus_yfs286', 'x': -0.168923, 'y': -0.274148, 'z': -0.051900, 'radius': 0.573063};
+g_taxaPositions['27'] = { 'lineage': 'EUK.Mock.1;Root;k__Unclassified_sequences;p__Fusarium_oxysporum_f._sp._lycopersici_4286;c__Fusarium_oxysporum_f._sp._lycopersici_4286;g__Unclassified_sequences;s__Fusarium_oxysporum_f._sp._lycopersici_4286', 'x': -0.128359, 'y': 0.327359, 'z': -0.686136, 'radius': 0.566015};
+g_taxaPositions['28'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Coccidioides;s__Coccidioides_immitis_rmscc_2394', 'x': -0.128359, 'y': 0.327359, 'z': -0.686136, 'radius': 0.566015};
+g_taxaPositions['29'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Schizosaccharomyces;s__', 'x': -0.128359, 'y': 0.327359, 'z': -0.686136, 'radius': 0.566015};
+g_taxaPositions['30'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Saccharomyces;s__Saccharomyces_cerevisiae', 'x': -0.128359, 'y': 0.327359, 'z': -0.686136, 'radius': 0.566015};
+g_taxaPositions['31'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Saccharomyces;s__Saccharomyces_cerevisiae_rm11-1a', 'x': -0.098790, 'y': -0.224485, 'z': -0.022935, 'radius': 0.542577};
+g_taxaPositions['32'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Chordata;Other;Other', 'x': 0.412222, 'y': 0.101489, 'z': 0.028634, 'radius': 0.535995};
+g_taxaPositions['33'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Environmental_samples;s__Debaryomyces_sp._enrichment_culture_clone_mpsr02', 'x': -0.359036, 'y': 0.202911, 'z': 0.175243, 'radius': 0.529435};
+g_taxaPositions['34'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Papiliotrema;s__Papiliotrema_bandonii', 'x': -0.169692, 'y': -0.190784, 'z': -0.026655, 'radius': 0.518873};
+g_taxaPositions['35'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_sp._bg02-7-14-001k-1-1', 'x': -0.125343, 'y': -0.133047, 'z': 0.007018, 'radius': 0.518262};
+g_taxaPositions['36'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Acanthocephala;Other;Other', 'x': -0.194483, 'y': -0.291954, 'z': -0.066279, 'radius': 0.518098};
+g_taxaPositions['37'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Chordata;g__Equus;s__Equus_caballus_(horse)', 'x': -0.124898, 'y': -0.248749, 'z': -0.031824, 'radius': 0.516309};
+g_taxaPositions['38'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Parabasalia;c__Trichonymphida;g__Trichonympha;s__Trichonympha_sp._hsjtcb', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.516309};
+g_taxaPositions['39'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Chordata;g__Sus;s__Sus_scrofa_(pig)', 'x': -0.411833, 'y': 0.210380, 'z': 0.076195, 'radius': 0.513790};
+g_taxaPositions['40'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Viridiplantae;c__Streptophyta;g__Zea;s__Zea_mays', 'x': -0.201592, 'y': -0.061971, 'z': 0.015659, 'radius': 0.512940};
+g_taxaPositions['41'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Mollusca;g__Fragum;s__Fragum_loochooanum', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.510391};
+g_taxaPositions['42'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_sp._y15_eg-2010', 'x': -0.189590, 'y': -0.269658, 'z': -0.057144, 'radius': 0.509779};
+g_taxaPositions['43'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Viridiplantae;c__Streptophyta;Other;Other', 'x': 0.352669, 'y': 0.072262, 'z': 0.035114, 'radius': 0.507752};
+g_taxaPositions['44'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Tremella;s__Tremella_globispora', 'x': -0.208423, 'y': -0.080253, 'z': 0.012105, 'radius': 0.507528};
+g_taxaPositions['45'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;Other;Other', 'x': -0.172106, 'y': -0.287676, 'z': -0.057140, 'radius': 0.506038};
+g_taxaPositions['46'] = { 'lineage': 'EUK.Mock.1;Root;Other;Other;Other;Other;Other', 'x': 0.531922, 'y': 0.335190, 'z': 0.038538, 'radius': 0.505367};
+g_taxaPositions['47'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Chytridiomycota;Other;Other', 'x': 0.491687, 'y': 0.127040, 'z': -0.009876, 'radius': 0.503481};
+g_taxaPositions['48'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Phaeosphaeria;s__Phaeosphaeria_rousseliana', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.502013};
+g_taxaPositions['49'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Saccharomycopsis;s__Saccharomycopsis_selenospora', 'x': -0.295575, 'y': -0.063889, 'z': -0.016531, 'radius': 0.501722};
+g_taxaPositions['50'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_parapsilosis', 'x': -0.183114, 'y': -0.218544, 'z': -0.036497, 'radius': 0.501699};
+g_taxaPositions['51'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Cnidaria;g__Henneguya;s__Henneguya_pagri', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.501401};
+g_taxaPositions['52'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Aspergillus;s__Aspergillus_niger', 'x': -0.143042, 'y': -0.226320, 'z': -0.028176, 'radius': 0.501379};
+g_taxaPositions['53'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Aristeomorpha;s__Aristeomorpha_foliacea', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.501327};
+g_taxaPositions['54'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_succiphila', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.501290};
+g_taxaPositions['55'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Euglenozoa;c__Euglenida;Other;Other', 'x': -0.178688, 'y': -0.290265, 'z': -0.060271, 'radius': 0.500999};
+g_taxaPositions['56'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Chordata;g__Mus;s__Mus_musculus_(house_mouse)', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500835};
+g_taxaPositions['57'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Environmental_samples;g__Environmental_samples;s__Uncultured_fungal_contaminant', 'x': -0.326666, 'y': 0.216787, 'z': 0.211254, 'radius': 0.500798};
+g_taxaPositions['58'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Filobasidiella/cryptococcus_neoformans_species_complex;s__Cryptococcus_gattii_wm276', 'x': -0.352309, 'y': 0.069334, 'z': 0.037935, 'radius': 0.500723};
+g_taxaPositions['59'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Euglenozoa;c__Euglenida;g__Rhabdomonas;s__Rhabdomonas_incurva', 'x': -0.199302, 'y': -0.256592, 'z': -0.056941, 'radius': 0.500701};
+g_taxaPositions['60'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Telonemida;c__Telonema;g__Telonema;s__Telonema_subtile', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500701};
+g_taxaPositions['61'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Cnidaria;Other;Other', 'x': -0.194673, 'y': -0.291963, 'z': -0.066346, 'radius': 0.500678};
+g_taxaPositions['62'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Cnidaria;g__Henneguya;Other', 'x': -0.175403, 'y': -0.291044, 'z': -0.059523, 'radius': 0.500678};
+g_taxaPositions['63'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_lignicola', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500656};
+g_taxaPositions['64'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Euthlastoblatta;s__Euthlastoblatta_sp._2_djgi-2006', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500626};
+g_taxaPositions['65'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Kuraishia;s__Kuraishia_capsulata', 'x': -0.274127, 'y': -0.100290, 'z': -0.022780, 'radius': 0.500611};
+g_taxaPositions['66'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Cyphopelta;s__Cyphopelta_modesta', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500581};
+g_taxaPositions['67'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Pichia;s__Pichia_triangularis', 'x': -0.191917, 'y': -0.272844, 'z': -0.059525, 'radius': 0.500455};
+g_taxaPositions['68'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Zygosaccharomyces;s__Zygosaccharomyces_rouxii', 'x': -0.274096, 'y': -0.104789, 'z': -0.025063, 'radius': 0.500440};
+g_taxaPositions['69'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Rhodotorula;s__Rhodotorula_sp._s1000', 'x': -0.128658, 'y': -0.015350, 'z': 0.011549, 'radius': 0.500432};
+g_taxaPositions['70'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Filobasidiella/cryptococcus_neoformans_species_complex;Other', 'x': -0.024172, 'y': -0.184375, 'z': 0.016462, 'radius': 0.500425};
+g_taxaPositions['71'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Amoebozoa;c__Mycetozoa;g__Lepidoderma;s__Lepidoderma_tigrinum', 'x': -0.201179, 'y': -0.252552, 'z': -0.056326, 'radius': 0.500417};
+g_taxaPositions['72'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Chordata;g__Monodelphis;s__Monodelphis_domestica_(gray_short-tailed_opossum)', 'x': -0.317865, 'y': 0.007323, 'z': 0.022390, 'radius': 0.500417};
+g_taxaPositions['73'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Environmental_samples;s__Uncultured_dikarya', 'x': -0.397134, 'y': 0.144122, 'z': 0.026854, 'radius': 0.500410};
+g_taxaPositions['74'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Environmental_samples;g__Environmental_samples;s__Uncultured_fungus', 'x': -0.340391, 'y': 0.210729, 'z': 0.197693, 'radius': 0.500410};
+g_taxaPositions['75'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Chytridiomycota;g__Cladochytrium;s__Cladochytrium_sp._nbrc_105429', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500395};
+g_taxaPositions['76'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Penicillium;s__Penicillium_sp._mi_31', 'x': -0.195703, 'y': -0.126227, 'z': -0.006144, 'radius': 0.500388};
+g_taxaPositions['77'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Rhizaria;c__Cercozoa;g__Unclassified_chlorarachniophyceae;s__Chlorarachniophyceae_sp._bc52', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500373};
+g_taxaPositions['78'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Amoebozoa;c__Archamoebae;g__Mastigamoeba;s__Mastigamomeba_sp._atcc50617', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500358};
+g_taxaPositions['79'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Amoebozoa;Other;Other;Other', 'x': -0.192265, 'y': -0.291848, 'z': -0.065493, 'radius': 0.500343};
+g_taxaPositions['80'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Paecilomyces;s__Paecilomyces_pascua', 'x': -0.430267, 'y': 0.212549, 'z': 0.041158, 'radius': 0.500343};
+g_taxaPositions['81'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungi_incertae_sedis;g__Harpellomyces;s__Harpellomyces_sp._pa-3-1d', 'x': -0.192243, 'y': -0.270961, 'z': -0.059111, 'radius': 0.500328};
+g_taxaPositions['82'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Kluyveromyces;s__Kluyveromyces_blattae', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500321};
+g_taxaPositions['83'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Alveolata;Other;Other;Other', 'x': -0.180101, 'y': -0.290956, 'z': -0.060785, 'radius': 0.500313};
+g_taxaPositions['84'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Rhodotorula;s__Rhodotorula_sp._w500', 'x': 0.154557, 'y': -0.103587, 'z': 0.009026, 'radius': 0.500313};
+g_taxaPositions['85'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_ernobii', 'x': -0.310234, 'y': -0.030572, 'z': -0.004784, 'radius': 0.500313};
+g_taxaPositions['86'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Epichloe;s__Epichloe_typhina', 'x': -0.033065, 'y': -0.201466, 'z': 0.009464, 'radius': 0.500298};
+g_taxaPositions['87'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_naeodendra', 'x': -0.396721, 'y': 0.141752, 'z': 0.026094, 'radius': 0.500291};
+g_taxaPositions['88'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Tremella;Other', 'x': -0.137131, 'y': -0.267789, 'z': -0.041578, 'radius': 0.500283};
+g_taxaPositions['89'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Amoebozoa;c__Mycetozoa;g__Didymium;s__Didymium_dubium', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500268};
+g_taxaPositions['90'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Lepisma;s__Lepisma_saccharina', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500253};
+g_taxaPositions['91'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Capnobotryella;s__Capnobotryella_sp._ma_3612', 'x': -0.368911, 'y': 0.103965, 'z': 0.029571, 'radius': 0.500239};
+g_taxaPositions['92'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Chordata;g__Pan;s__Pan_troglodytes_(chimpanzee)', 'x': -0.156334, 'y': -0.266805, 'z': -0.047029, 'radius': 0.500239};
+g_taxaPositions['93'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Aspergillus;Other', 'x': 0.066455, 'y': -0.148309, 'z': 0.052723, 'radius': 0.500224};
+g_taxaPositions['94'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Viridiplantae;c__Streptophyta;g__Solanum;s__Solanum_tuberosum_(potato)', 'x': -0.290958, 'y': -0.032660, 'z': 0.011979, 'radius': 0.500224};
+g_taxaPositions['95'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Preussia;s__Preussia_lignicola', 'x': -0.430267, 'y': 0.212549, 'z': 0.041158, 'radius': 0.500209};
+g_taxaPositions['96'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Humidicutis;s__Humidicutis_marginata', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500209};
+g_taxaPositions['97'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Unclassified_capnodiales;s__Capnodiales_sp._ccfee_5502', 'x': -0.405110, 'y': 0.180396, 'z': 0.053474, 'radius': 0.500209};
+g_taxaPositions['98'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Petractis;s__Petractis_nodispora', 'x': -0.253715, 'y': -0.069277, 'z': -0.004635, 'radius': 0.500209};
+g_taxaPositions['99'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_sp._nrrl_y-27690', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500194};
+g_taxaPositions['100'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Cryptococcus;Other', 'x': -0.307600, 'y': -0.021227, 'z': 0.049738, 'radius': 0.500194};
+g_taxaPositions['101'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_sp._bg01-8-20-001b-c1', 'x': -0.208887, 'y': -0.200735, 'z': -0.017668, 'radius': 0.500194};
+g_taxaPositions['102'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Chytridiomycota;g__Environmental_samples;s__Uncultured_chytridiomycota', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500186};
+g_taxaPositions['103'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungi_incertae_sedis;g__Rhizomucor;s__Rhizomucor_endophyticus', 'x': -0.033040, 'y': -0.206309, 'z': -0.005990, 'radius': 0.500179};
+g_taxaPositions['104'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungi_incertae_sedis;g__Rhizopus;s__Rhizopus_microsporus_var._rhizopodiformis', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500171};
+g_taxaPositions['105'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Pilidium;s__Pilidium_concavum', 'x': -0.167114, 'y': -0.260562, 'z': -0.050295, 'radius': 0.500164};
+g_taxaPositions['106'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Zygosaccharomyces;s__Zygosaccharomyces_bailii', 'x': -0.392375, 'y': 0.134241, 'z': 0.024609, 'radius': 0.500164};
+g_taxaPositions['107'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Saccharomycopsis;s__Saccharomycopsis_microspora', 'x': -0.392375, 'y': 0.134241, 'z': 0.024609, 'radius': 0.500164};
+g_taxaPositions['108'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Heterogastridium;s__Heterogastridium_pycnidioideum', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500164};
+g_taxaPositions['109'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Euglenozoa;Other;Other;Other', 'x': -0.176275, 'y': -0.290209, 'z': -0.059740, 'radius': 0.500157};
+g_taxaPositions['110'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Schizosaccharomyces;Other', 'x': -0.026598, 'y': -0.202447, 'z': 0.014378, 'radius': 0.500142};
+g_taxaPositions['111'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Amoebozoa;c__Mycetozoa;Other;Other', 'x': -0.185276, 'y': -0.291352, 'z': -0.062738, 'radius': 0.500134};
+g_taxaPositions['112'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_valdiviana', 'x': -0.309355, 'y': -0.031935, 'z': -0.009198, 'radius': 0.500134};
+g_taxaPositions['113'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Platyhelminthes;g__Conaperta;s__Conaperta_cirrata', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500134};
+g_taxaPositions['114'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Alveolata;c__Ciliophora;g__Spirotontonia;s__Spirotontonia_turbinata', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500134};
+g_taxaPositions['115'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Peziza;s__Peziza_quelepidotia', 'x': -0.336707, 'y': 0.212356, 'z': 0.201334, 'radius': 0.500127};
+g_taxaPositions['116'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Ustilaginoidea;s__Ustilaginoidea_virens', 'x': -0.430267, 'y': 0.212549, 'z': 0.041158, 'radius': 0.500119};
+g_taxaPositions['117'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Viridiplantae;c__Streptophyta;g__Pilostyles;s__Pilostyles_berteroi', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500119};
+g_taxaPositions['118'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_cidri', 'x': -0.189788, 'y': -0.273791, 'z': -0.058988, 'radius': 0.500119};
+g_taxaPositions['119'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_sp._bcmu_bx01', 'x': -0.192591, 'y': -0.265377, 'z': -0.057390, 'radius': 0.500119};
+g_taxaPositions['120'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Euglenozoa;c__Euglenida;g__Euglena;Other', 'x': -0.187872, 'y': -0.291639, 'z': -0.063938, 'radius': 0.500112};
+g_taxaPositions['121'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Basidiomycota;s__Basidiomycete_yeast_sp._bg98-9-24-3-1', 'x': -0.408561, 'y': 0.180642, 'z': 0.130340, 'radius': 0.500112};
+g_taxaPositions['122'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Alveolata;c__Apicomplexa;g__Filipodium;s__Filipodium_phascolosomae', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500104};
+g_taxaPositions['123'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Parabasalia;c__Hodotermopsis_sjoestedti_parabasalian_symbiont_clone_hss2;g__Parabasalia;s__Hodotermopsis_sjoestedti_parabasalian_symbiont_clone_hss2', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500104};
+g_taxaPositions['124'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Bosmaella;s__Bosmaella_japonica', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500104};
+g_taxaPositions['125'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Nematoda;g__Aphelenchoides;s__Aphelenchoides_sp._h1_wy-2008', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500104};
+g_taxaPositions['126'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Amoebozoa;c__Mycetozoa;g__Protophysarum;s__Protophysarum_phloiogenum', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500104};
+g_taxaPositions['127'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Ulospora;s__Ulospora_bilgramii', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500097};
+g_taxaPositions['128'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Glomeromycota;g__Glomus;s__Glomus_eburneum', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500097};
+g_taxaPositions['129'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungi_incertae_sedis;g__Mucor;s__Mucor_indicus', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500097};
+g_taxaPositions['130'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Millerozyma;s__Millerozyma_farinosa', 'x': -0.354192, 'y': 0.056970, 'z': 0.008453, 'radius': 0.500097};
+g_taxaPositions['131'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Brettanomyces;s__Brettanomyces_naardenensis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500089};
+g_taxaPositions['132'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Cordyceps;s__Cordyceps_kanzashiana', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500089};
+g_taxaPositions['133'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Acanthocephala;g__Unclassified_echinorhynchida;s__Echinorhynchida_sp._mgv-2008', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500089};
+g_taxaPositions['134'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Chytridiomycota;g__Hyaloraphidium;s__Hyaloraphidium_curvatum', 'x': -0.171913, 'y': -0.274171, 'z': -0.052473, 'radius': 0.500089};
+g_taxaPositions['135'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Euglenozoa;c__Euglenida;g__Gyropaigne;s__Gyropaigne_lefevrei', 'x': -0.197501, 'y': -0.258043, 'z': -0.056780, 'radius': 0.500089};
+g_taxaPositions['136'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Helicobasidium;s__Helicobasidium_corticioides', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500075};
+g_taxaPositions['137'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Ajellomyces;s__Ajellomyces_capsulatus_g186ar', 'x': -0.159833, 'y': -0.271425, 'z': -0.046823, 'radius': 0.500075};
+g_taxaPositions['138'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Aspergillus;s__Aspergillus_sydowii', 'x': -0.193111, 'y': -0.272023, 'z': -0.059629, 'radius': 0.500075};
+g_taxaPositions['139'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Buellia;s__Buellia_elegans', 'x': -0.430267, 'y': 0.212549, 'z': 0.041158, 'radius': 0.500075};
+g_taxaPositions['140'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Rhizaria;c__Foraminifera;g__Operculina;s__Operculina_elegans', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500075};
+g_taxaPositions['141'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Euglenozoa;c__Euglenida;g__Euglena;s__Euglena_communis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500075};
+g_taxaPositions['142'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_methanosorbosa', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500075};
+g_taxaPositions['143'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Amoebozoa;c__Tubulinea;g__Nolandella;s__Nolandella_sp._atcc_pra-27', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500075};
+g_taxaPositions['144'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Orius;s__Orius_sp._wcw-2003b', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500075};
+g_taxaPositions['145'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Alveolata;c__Ciliophora;g__Phacodinium;s__Phacodinium_metchnikoffi', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500075};
+g_taxaPositions['146'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Parabasalia;c__Trichonymphida;g__Urinympha;s__Urinympha_talea', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500075};
+g_taxaPositions['147'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Viridiplantae;c__Chlorophyta;g__Botryococcus;s__Botryococcus_sp._tow_9/21_p-16w', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500075};
+g_taxaPositions['148'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Cryptococcus;s__Cryptococcus_sp._fyb-2007a', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500075};
+g_taxaPositions['149'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Ophiocordyceps;s__Ophiocordyceps_prolifica', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500075};
+g_taxaPositions['150'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Lirceus;s__Lirceus_fontinalis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500075};
+g_taxaPositions['151'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Chordata;g__Otolemur;s__Otolemur_garnettii_(small-eared_galago)', 'x': -0.199014, 'y': -0.265683, 'z': -0.059664, 'radius': 0.500075};
+g_taxaPositions['152'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Hyphodontia;s__Hyphodontia_arguta', 'x': -0.199014, 'y': -0.265683, 'z': -0.059664, 'radius': 0.500075};
+g_taxaPositions['153'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Kazachstania;s__Kazachstania_aquatica', 'x': -0.199014, 'y': -0.265683, 'z': -0.059664, 'radius': 0.500075};
+g_taxaPositions['154'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Platyhelminthes;Other;Other', 'x': -0.178906, 'y': -0.291211, 'z': -0.060764, 'radius': 0.500067};
+g_taxaPositions['155'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Euglenozoa;c__Euglenida;g__Euglena;s__Euglena_sp._crrdv', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500060};
+g_taxaPositions['156'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Chloroperla;s__Chloroperla_tripunctata', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500060};
+g_taxaPositions['157'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Dendryphiopsis;s__Dendryphiopsis_atra', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500060};
+g_taxaPositions['158'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Starmera;s__Starmera_amethionina_var._amethionina', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500060};
+g_taxaPositions['159'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_tanzawaensis', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500060};
+g_taxaPositions['160'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Cnidaria;g__Dendronephthya;s__Dendronephthya_putteri', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500060};
+g_taxaPositions['161'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Neoplaconema;s__Neoplaconema_gloeosporioides', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500060};
+g_taxaPositions['162'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Aspergillus;s__Aspergillus_candidus', 'x': -0.188603, 'y': -0.275564, 'z': -0.058891, 'radius': 0.500060};
+g_taxaPositions['163'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungal_endophyte_sp._sx01;g__Fungi;s__Fungal_endophyte_sp._sx01', 'x': -0.188020, 'y': -0.277832, 'z': -0.060007, 'radius': 0.500052};
+g_taxaPositions['164'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungi_incertae_sedis;g__Coemansia;s__Coemansia_sp._id05-f0237', 'x': -0.192591, 'y': -0.265377, 'z': -0.057390, 'radius': 0.500052};
+g_taxaPositions['165'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Metschnikowia;s__Metschnikowia_pulcherrima', 'x': -0.192591, 'y': -0.265377, 'z': -0.057390, 'radius': 0.500052};
+g_taxaPositions['166'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Lachancea;s__Lachancea_waltii_ncyc_2644', 'x': -0.303543, 'y': 0.226993, 'z': 0.234100, 'radius': 0.500052};
+g_taxaPositions['167'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Chytridiomycota;g__Synchytrium;s__Synchytrium_decipiens', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500045};
+g_taxaPositions['168'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Cryptococcus;s__Cryptococcus_aureus', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500045};
+g_taxaPositions['169'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Unclassified_pseudospirobolellidae;s__Pseudospirobolellidae_sp._china_sternum', 'x': -0.430613, 'y': 0.211598, 'z': 0.040796, 'radius': 0.500045};
+g_taxaPositions['170'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Rhodotorula;Other', 'x': -0.356052, 'y': 0.203817, 'z': 0.182220, 'radius': 0.500045};
+g_taxaPositions['171'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Coenobita;s__Coenobita_compressus', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500045};
+g_taxaPositions['172'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Platyhelminthes;g__Pseudomurraytrema;s__Pseudomurraytrema_ardens', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500045};
+g_taxaPositions['173'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Mesozoa;g__Dicyema;s__Dicyema_sp.', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500045};
+g_taxaPositions['174'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Leydigiopsis;s__Leydigiopsis_curvirostris', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500045};
+g_taxaPositions['175'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Stramenopiles;c__Labyrinthulida;g__Unclassified_thraustochytriidae;s__Thraustochytriidae_sp._n4-103', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500045};
+g_taxaPositions['176'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Platyhelminthes;g__Moniezia;s__Moniezia_expansa_(sheep_tapeworm)', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500045};
+g_taxaPositions['177'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Parabasalia;c__Trichonymphida;g__Trichonympha;s__Trichonympha_sp._zntca', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500045};
+g_taxaPositions['178'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Anguillospora;s__Anguillospora_rosea', 'x': -0.193111, 'y': -0.272023, 'z': -0.059629, 'radius': 0.500045};
+g_taxaPositions['179'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Parabasalia;c__Trichonymphida;Other;Other', 'x': -0.189856, 'y': -0.291733, 'z': -0.064640, 'radius': 0.500045};
+g_taxaPositions['180'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Parabasalia;Other;Other;Other', 'x': -0.185038, 'y': -0.291504, 'z': -0.062935, 'radius': 0.500045};
+g_taxaPositions['181'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Alveolata;c__Ciliophora;Other;Other', 'x': -0.185038, 'y': -0.291504, 'z': -0.062935, 'radius': 0.500045};
+g_taxaPositions['182'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Anelpistina;s__Anelpistina_puertoricensis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500030};
+g_taxaPositions['183'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Rhodophyta;c__Bangiophyceae;g__Porphyra;s__Porphyra_pseudolinearis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500030};
+g_taxaPositions['184'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Pichia;s__Pichia_sp._nrrl_y-17803', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500030};
+g_taxaPositions['185'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Amoebozoa;c__Mycetozoa;g__Lamproderma;s__Lamproderma_sauteri', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500030};
+g_taxaPositions['186'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Euglenozoa;c__Euglenida;g__Lepocinclis;s__Euglena_acus_var._gracilis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500030};
+g_taxaPositions['187'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungi_incertae_sedis;g__Linderina;s__Linderina_macrospora', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500030};
+g_taxaPositions['188'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungal_sp._melon_seed;g__Fungi;s__Fungal_sp._melon_seed', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500030};
+g_taxaPositions['189'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Mollusca;Other;Other', 'x': -0.185038, 'y': -0.291504, 'z': -0.062935, 'radius': 0.500030};
+g_taxaPositions['190'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Zygosaccharomyces;Other', 'x': -0.194673, 'y': -0.291963, 'z': -0.066346, 'radius': 0.500030};
+g_taxaPositions['191'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Stramenopiles;Other;Other;Other', 'x': -0.188250, 'y': -0.291657, 'z': -0.064072, 'radius': 0.500030};
+g_taxaPositions['192'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Euglenozoa;c__Euglenida;g__Distigma;s__Distigma_proteus_var._longicauda', 'x': -0.201239, 'y': -0.252458, 'z': -0.056293, 'radius': 0.500030};
+g_taxaPositions['193'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Rhizaria;c__Foraminifera;Other;Other', 'x': -0.180215, 'y': -0.290912, 'z': -0.060604, 'radius': 0.500030};
+g_taxaPositions['194'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Mycogloea;s__Mycogloea_sp._tub_fo40962', 'x': -0.356052, 'y': 0.203817, 'z': 0.182220, 'radius': 0.500015};
+g_taxaPositions['195'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Coccidioides;Other', 'x': -0.131454, 'y': -0.270928, 'z': -0.035678, 'radius': 0.500015};
+g_taxaPositions['196'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Ceratobasidium;s__Ceratobasidium_sp._fo_38200', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['197'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Heterolobosea;c__Schizopyrenida;g__Naegleria;s__Naegleria_clarki', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['198'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Rhodophyta;c__Florideophyceae;g__Asparagopsis;s__Asparagopsis_armata', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['199'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Rhodophyta;c__Bangiophyceae;g__Unclassified_porphyra;s__Porphyra_sp._p148', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['200'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Annelida;g__Hydroides;s__Hydroides_ezoensis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['201'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Platyhelminthes;g__Spirometra;s__Spirometra_erinaceieuropaei', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['202'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Trichoderma;s__Trichoderma_sp._090209', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['203'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Alveolata;c__Apicomplexa;g__Leidyana;s__Leidyana_migrator', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['204'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Choanoflagellida;c__Salpingoecidae;g__Salpingoeca;s__Salpingoeca_infusionum', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['205'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Bryozoa;g__Walkeria;s__Walkeria_uva', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['206'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Hicanonectes;c__Hicanonectes_teleskopos;g__Hicanonectes;s__Hicanonectes_teleskopos', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['207'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Cnidaria;g__Myxidium;s__Myxidium_lieberkuehni', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['208'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Alveolata;c__Ciliophora;g__Unclassified_colpodidiidae;s__Colpodidiidae_sp._hwb-2007', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['209'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Procyliosoma;s__Procyliosoma_leae', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['210'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Fungi_incertae_sedis;g__Smittium;s__Smittium_annulatum', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['211'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Euglenozoa;c__Kinetoplastida;g__Trypanosoma;s__Trypanosoma_murmanensis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['212'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Tremella;s__Tremella_aurantia', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['213'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Orius;s__Orius_agilis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['214'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Euglenozoa;c__Euglenida;g__Euglena;s__Euglena_exilis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['215'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Pseudochydorus;s__Pseudochydorus_globosus', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['216'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Acanthocephala;g__Ibirhynchus;s__Ibirhynchus_dimorpha', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['217'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_digboiensis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['218'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Alveolata;c__Ciliophora;g__Pseudokeronopsis;s__Pseudokeronopsis_rubra', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['219'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Amoebozoa;c__Mycetozoa;g__Lepidoderma;s__Lepidoderma_carestianum', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['220'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Chaetognatha;g__Sagitta;s__Sagitta_sp._gg-2005', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['221'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Acanthocephala;g__Pseudocorynosoma;s__Pseudocorynosoma_anatarium', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['222'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Stramenopiles;c__Labyrinthulida;g__Unclassified_thraustochytriidae;s__Thraustochytriidae_sp._n1-27', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['223'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Parabasalia;c__Trichonymphida;g__Trichonympha;s__Trichonympha_sp._rxxtca', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['224'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Acanthocephala;g__Echinorhynchus;s__Echinorhynchus_gadi', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['225'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Spiromastix;s__Spiromastix_sp._jcm_11276', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['226'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Stramenopiles;c__Labyrinthulida;g__Thraustochytrium;s__Thraustochytrium_sp._atcc_26185', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['227'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Arthropoda;g__Macrothrix;s__Macrothrix_triserialis', 'x': -0.201185, 'y': -0.252543, 'z': -0.056323, 'radius': 0.500015};
+g_taxaPositions['228'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Rhizaria;Other;Other;Other', 'x': -0.175403, 'y': -0.291044, 'z': -0.059523, 'radius': 0.500015};
+g_taxaPositions['229'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Hydropisphaera;s__Hydropisphaera_erubescens', 'x': -0.408561, 'y': 0.180642, 'z': 0.130340, 'radius': 0.500007};
+g_taxaPositions['230'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Candida;s__Candida_melibiosica', 'x': -0.303543, 'y': 0.226993, 'z': 0.234100, 'radius': 0.500007};
+g_taxaPositions['231'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Annelida;g__Dysponetus;s__Dysponetus_sp._nz_hw-2008', 'x': -0.303543, 'y': 0.226993, 'z': 0.234100, 'radius': 0.500007};
+g_taxaPositions['232'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Metschnikowia;Other', 'x': -0.194673, 'y': -0.291963, 'z': -0.066346, 'radius': 0.500007};
+g_taxaPositions['233'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Fungi;c__Dikarya;g__Unclassified_tremellales;s__Tremellales_sp._qmw-2009a', 'x': -0.408561, 'y': 0.180642, 'z': 0.130340, 'radius': 0.500000};
+g_taxaPositions['234'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Alveolata;c__Dinophyceae;g__Pyrocystis;s__Pyrocystis_noctiluca', 'x': -0.201020, 'y': -0.252800, 'z': -0.056413, 'radius': 0.500000};
+g_taxaPositions['235'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Chaetognatha;Other;Other', 'x': -0.194673, 'y': -0.291963, 'z': -0.066346, 'radius': 0.500000};
+g_taxaPositions['236'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Nematoda;Other;Other', 'x': -0.175403, 'y': -0.291044, 'z': -0.059523, 'radius': 0.500000};
+g_taxaPositions['237'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Rhodophyta;c__Bangiophyceae;Other;Other', 'x': -0.175403, 'y': -0.291044, 'z': -0.059523, 'radius': 0.500000};
+g_taxaPositions['238'] = { 'lineage': 'EUK.Mock.1;Root;k__Eukaryota;p__Metazoa;c__Cnidaria;g__Kudoa;s__Kudoa_thunni', 'x': -0.201349, 'y': -0.252287, 'z': -0.056233, 'radius': 0.500000};
+
+
+var g_vectorPositions = new Array();
+
+var g_comparisonPositions = new Array();
+document.getElementById("logo").style.display = 'none';
+document.getElementById("logotable").style.display = 'none';
+
+ </script>
+</head>
+
+<body>    
+
+<div id="plotToggle">
+    <form>
+      <div id="plottype">
+        <input id="pcoa" type="radio" id="pcoa" name="plottype" checked="checked" /><label for="pcoa">PCoA</label>
+        <input id="parallel" type="radio" id="parallel" name="plottype" /><label for="parallel">Parallel</label>
+      </div>
+    </form>
+</div>
+<div id="pcoaPlotWrapper" class="plotWrapper">
+    <label id="pointCount" class="ontop">
+    </label>
+
+    <div id="finder" class="arrow-right">
+    </div>
+
+    <div id="labels" class="unselectable">
+    </div>
+
+    <div id="taxalabels" class="unselectable">
+    </div>
+
+    <div id="axislabels" class="axislabels">
+    </div>
+
+    <div id="main_plot">
+    </div>
+</div>
+
+<div id="parallelPlotWrapper" class="plotWrapper">
+</div>
+
+<div id="menu">
+    <div id="menutabs">
+        <ul>
+            <li><a href="#keytab">Key</a></li>
+            <li><a href="#colorby">Colors</a></li>
+            <li><a href="#showby">Visibility</a></li>
+            <li><a href="#scalingby">Scaling</a></li>
+            <li><a href="#labelby">Labels</a></li>
+            <li><a href="#axes">Axes</a></li>
+            <li><a href="#view">View</a></li>
+            <li><a href="#settings">Options</a></li>
+        </ul>
+        <div id="keytab">
+            <form name="keyFilter">
+            <label>Filter  </label><input name="filterBox" type="text" onkeyup="filterKey()"></input>
+            </form>
+            <div id="key">
+            </div>
+        </div>
+        <div id="colorby">
+            <br>
+            <br>
+            <table>
+                <tr><td><div id="taxaspherescolor" class="colorbox" name="taxaspherescolor"></div></td><td title="taxacolor">Taxa Spheres Color</td></tr>
+            </table>
+            <br>
+            <select id="colorbycombo" onchange="colorByMenuChanged()" size="3">
+            </select>
+            <div class="list" id="colorbylist">
+            </div>
+        </div>
+        <div id="showby">
+            <br>
+            <form name="biplotsvisibility">
+            <input type="checkbox" onClick="toggleBiplotVisibility()" checked>Biplots Visibility</input>
+            </form>
+            <br>
+            <select id="showbycombo" onchange="showByMenuChanged()">
+            </select>
+            <div class="list" id="showbylist">
+            </div>
+        </div>
+        <div id="scalingby">
+            <select id="scalingbycombo" onchange="scalingByMenuChanged()">
+            </select>
+            <div class="list" id="scalingbylist">
+            </div>
+        </div>
+        <div id="labelby">
+        <div id="labelsTop">
+            <form name="plotoptions">
+            <input type="checkbox" onClick="toggleLabels()">Samples Label Visibility</input>
+            </form>
+            <form name="biplotoptions">
+            <input type="checkbox" onClick="toggleTaxaLabels()">Biplots Label Visibility</input>
+            </form>
+            <br>
+            <label for="labelopacity" class="text">Label Opacity</label>
+            <label id="labelopacity" class="slidervalue"></label>
+            <div id="lopacityslider" class="slider-range-max"></div>
+            <div id="labelColorHolder clearfix">
+            <table><tr>
+            <td><div id="labelColor" class="colorbox">
+            </div></td><td><label>Master Label Color</label></td>
+            </tr></table></div>
+        </div>
+            <br>
+            <select id="labelcombo" onchange="labelMenuChanged()">
+            </select>
+            <div class="list" id="labellist">
+            </div>
+        </div>
+        <div id="axes">
+            <div id="pcoaaxes">
+                <div class="list" id="axeslist">
+                </div>
+            </div>
+        </div>
+        <div id="view">
+            <table>
+                <tr><td><div id="axeslabelscolor" class="colorbox" name="axeslabelscolor"></div></td><td title="Axes Labels Color">Axes Labels Color</td></tr>
+                <tr><td><div id="axescolor" class="colorbox" name="axescolor"></div></td><td title="Axes Color Title">Axes Color</td></tr>
+                <tr><td><div id="rendererbackgroundcolor"class="colorbox" name="rendererbackgroundcolor"></div></td><td title="Background Color Title">Background Color</td></tr>
+            </table>
+            <br>
+            <form name="settingsoptionscolor">
+            <input type="checkbox" onchange="toggleContinuousAndDiscreteColors(this)" id="discreteorcontinuouscolors" name="discreteorcontinuouscolors">  Use gradient colors</input>
+            </form>
+            <div id="pcoaviewoptions" class="">
+                <br>
+                <input id="reset" class="button" type="submit" value="Recenter Camera" style="" onClick="resetCamera()">
+                <br>
+                <br>
+                <label for="sphereopacity" class="text">Sphere Opacity</label>
+                <label id="sphereopacity" class="slidervalue"></label>
+                <div id="sopacityslider" class="slider-range-max"></div>
+                <br>
+                <label for="sphereradius" class="text">Sphere Scale</label>
+                <label id="sphereradius" class="slidervalue"></label>
+                <div id="sradiusslider" class="slider-range-max"></div>
+                <br>
+            </div>
+            <br>
+        </div>
+        <div id="settings">
+            <br>
+            <input id="saveas" class="button" type="submit" value="Save as SVG" style="" onClick="saveSVG()">
+            <br>
+            <br>
+            <div id="pcoaoptions" class="">
+                <form name="settingsoptions">
+                    <input type="checkbox" onchange="toggleScaleCoordinates(this)" id="scale_checkbox" name="scale_checkbox">Scale coords by percent explained</input>
+                </form>
+            </div>
+            <br>
+            <div id="paralleloptions" class="">
+            </div>
+        </div>
+    </div>  
+</div>
+</body>
+
+</html>

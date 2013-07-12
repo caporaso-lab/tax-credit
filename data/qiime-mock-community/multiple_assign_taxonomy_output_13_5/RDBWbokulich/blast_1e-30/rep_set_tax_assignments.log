@@ -1,9 +1,0 @@
-BlastTaxonAssigner parameters:
-Application:blastn/megablast
-Max E value:1e-30
-Min percent identity:90.0
-id_to_taxonomy_filepath:/home/nbokulic/ref_seq_dbs/UNITE/unite_rep_set_97-rdp-taxonomy.txt
-reference_seqs_filepath:/home/nbokulic/ref_seq_dbs/UNITE/align/rep_set_uclust_ref_97.fasta
-Number of sequences inspected: 79
-Number with no blast hits: 18
-Result path: "/scratch/assign-taxVUrun20cnr0YWiUs3Oab.txt"

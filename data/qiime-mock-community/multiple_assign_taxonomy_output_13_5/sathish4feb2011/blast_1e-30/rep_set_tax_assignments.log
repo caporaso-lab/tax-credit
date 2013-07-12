@@ -1,9 +1,0 @@
-BlastTaxonAssigner parameters:
-Application:blastn/megablast
-Max E value:1e-30
-Min percent identity:90.0
-id_to_taxonomy_filepath:/home/nbokulic/greengenes/gg_otus_4feb2011/taxonomies/greengenes_tax.txt
-reference_seqs_filepath:/home/nbokulic/greengenes/gg_otus_4feb2011/rep_set/gg_97_otus_4feb2011.fasta
-Number of sequences inspected: 3319
-Number with no blast hits: 142
-Result path: "/scratch/assign-taxT5B7BpsGyvwP6anRLDIM.txt"

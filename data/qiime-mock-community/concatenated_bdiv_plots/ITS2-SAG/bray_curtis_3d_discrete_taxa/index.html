@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Emperor</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="emperor_required_resources/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/emperor/css/emperor.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/jquery-ui2.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/colorPicker.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/spectrum.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/d3.parcoords.css">
+    <table id="logotable" style="vertical-align:middle;text-align:center;height:100%;width:100%;margin:0;padding:0;border:0;">
+        <tr><td><img src="emperor_required_resources/img/emperor.png" alt="Emperor" id="logo"/></td></tr>
+    </table>
+    <script type="text/javascript" src="emperor_required_resources/js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/d3.parcoords.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script src="emperor_required_resources/js/jquery.colorPicker.js"></script>
+    <script src="emperor_required_resources/js/spectrum.js"></script>
+
+    <script src="emperor_required_resources/js/Three.js"></script>
+    <script src="emperor_required_resources/js/js/Detector.js"></script>
+    <script src="emperor_required_resources/js/js/RequestAnimationFrame.js"></script>
+    <script src="emperor_required_resources/emperor/js/emperor.js"></script>
+    <script type="text/javascript">
+var g_mappingFileHeaders = ['SampleID','assignment_method'];
+var g_mappingFileData = { 'blast_1.0': ['blast_1.0','blast'],'rtax_single': ['rtax_single','rtax'],'rdp_0.6': ['rdp_0.6','rdp'],'rdp_0.7': ['rdp_0.7','rdp'],'rdp_0.4': ['rdp_0.4','rdp'],'rdp_0.5': ['rdp_0.5','rdp'],'rdp_0.2': ['rdp_0.2','rdp'],'rdp_0.3': ['rdp_0.3','rdp'],'rdp_0.0': ['rdp_0.0','rdp'],'rdp_0.1': ['rdp_0.1','rdp'],'Expected': ['Expected','Expected'],'blast_1e-06': ['blast_1e-06','blast'],'rdp_0.8': ['rdp_0.8','rdp'],'rdp_0.9': ['rdp_0.9','rdp'],'mothur_1.0': ['mothur_1.0','mothur'],'blast_1e-30': ['blast_1e-30','blast'],'blast_100.0': ['blast_100.0','blast'],'blast_1e-10': ['blast_1e-10','blast'],'blast_0.0001': ['blast_0.0001','blast'],'rdp_1.0': ['rdp_1.0','rdp'],'mothur_0.8': ['mothur_0.8','mothur'],'mothur_0.9': ['mothur_0.9','mothur'],'mothur_0.4': ['mothur_0.4','mothur'],'mothur_0.5': ['mothur_0.5','mothur'],'mothur_0.6': ['mothur_0.6','mothur'],'mothur_0.7': ['mothur_0.7','mothur'],'mothur_0.0': ['mothur_0.0','mothur'],'mothur_0.1': ['mothur_0.1','mothur'],'mothur_0.2': ['mothur_0.2','mothur'],'mothur_0.3': ['mothur_0.3','mothur'] };
+
+var g_spherePositions = new Array();
+g_spherePositions['blast_100.0'] = { 'name': 'blast_100.0', 'color': 0, 'x': -0.287021, 'y': 0.321382, 'z': 0.077591, 'P1': -0.287021, 'P2': 0.321382, 'P3': 0.077591, 'P4': -0.013923, 'P5': 0.033371, 'P6': -0.008845, 'P7': 0.005648, 'P8': 0.013922, 'P9': -0.001174, 'P10': -0.011287 };
+g_spherePositions['blast_0.0001'] = { 'name': 'blast_0.0001', 'color': 0, 'x': -0.287021, 'y': 0.321382, 'z': 0.077591, 'P1': -0.287021, 'P2': 0.321382, 'P3': 0.077591, 'P4': -0.013923, 'P5': 0.033371, 'P6': -0.008845, 'P7': 0.005648, 'P8': 0.013922, 'P9': -0.001174, 'P10': -0.011287 };
+g_spherePositions['blast_1e-06'] = { 'name': 'blast_1e-06', 'color': 0, 'x': -0.287021, 'y': 0.321382, 'z': 0.077591, 'P1': -0.287021, 'P2': 0.321382, 'P3': 0.077591, 'P4': -0.013923, 'P5': 0.033371, 'P6': -0.008845, 'P7': 0.005648, 'P8': 0.013922, 'P9': -0.001174, 'P10': -0.011287 };
+g_spherePositions['blast_1.0'] = { 'name': 'blast_1.0', 'color': 0, 'x': -0.287021, 'y': 0.321382, 'z': 0.077591, 'P1': -0.287021, 'P2': 0.321382, 'P3': 0.077591, 'P4': -0.013923, 'P5': 0.033371, 'P6': -0.008845, 'P7': 0.005648, 'P8': 0.013922, 'P9': -0.001174, 'P10': -0.011287 };
+g_spherePositions['blast_1e-10'] = { 'name': 'blast_1e-10', 'color': 0, 'x': -0.287021, 'y': 0.321382, 'z': 0.077591, 'P1': -0.287021, 'P2': 0.321382, 'P3': 0.077591, 'P4': -0.013923, 'P5': 0.033371, 'P6': -0.008845, 'P7': 0.005648, 'P8': 0.013922, 'P9': -0.001174, 'P10': -0.011287 };
+g_spherePositions['blast_1e-30'] = { 'name': 'blast_1e-30', 'color': 0, 'x': -0.286379, 'y': 0.325598, 'z': 0.078529, 'P1': -0.286379, 'P2': 0.325598, 'P3': 0.078529, 'P4': -0.015844, 'P5': 0.033947, 'P6': -0.009157, 'P7': 0.003964, 'P8': 0.015545, 'P9': -0.000460, 'P10': -0.009103 };
+g_spherePositions['mothur_0.0'] = { 'name': 'mothur_0.0', 'color': 0, 'x': -0.190226, 'y': -0.134726, 'z': -0.072977, 'P1': -0.190226, 'P2': -0.134726, 'P3': -0.072977, 'P4': 0.114699, 'P5': 0.032476, 'P6': -0.002835, 'P7': -0.056179, 'P8': 0.017240, 'P9': -0.032543, 'P10': 0.037943 };
+g_spherePositions['mothur_0.1'] = { 'name': 'mothur_0.1', 'color': 0, 'x': -0.186751, 'y': -0.151954, 'z': -0.072570, 'P1': -0.186751, 'P2': -0.151954, 'P3': -0.072570, 'P4': 0.098396, 'P5': 0.022897, 'P6': -0.000676, 'P7': 0.018801, 'P8': -0.029851, 'P9': -0.008076, 'P10': -0.026120 };
+g_spherePositions['mothur_0.2'] = { 'name': 'mothur_0.2', 'color': 0, 'x': -0.099921, 'y': -0.136857, 'z': -0.005080, 'P1': -0.099921, 'P2': -0.136857, 'P3': -0.005080, 'P4': 0.066373, 'P5': -0.052617, 'P6': 0.000466, 'P7': -0.026114, 'P8': -0.060176, 'P9': 0.028753, 'P10': -0.045037 };
+g_spherePositions['mothur_0.3'] = { 'name': 'mothur_0.3', 'color': 0, 'x': -0.098720, 'y': -0.133593, 'z': 0.002024, 'P1': -0.098720, 'P2': -0.133593, 'P3': 0.002024, 'P4': 0.030811, 'P5': -0.098641, 'P6': 0.014873, 'P7': 0.041505, 'P8': -0.056785, 'P9': -0.045790, 'P10': 0.007385 };
+g_spherePositions['mothur_0.4'] = { 'name': 'mothur_0.4', 'color': 0, 'x': -0.129537, 'y': -0.203595, 'z': -0.068845, 'P1': -0.129537, 'P2': -0.203595, 'P3': -0.068845, 'P4': 0.002341, 'P5': 0.065733, 'P6': 0.030607, 'P7': 0.076726, 'P8': -0.016018, 'P9': 0.069947, 'P10': 0.054515 };
+g_spherePositions['mothur_0.5'] = { 'name': 'mothur_0.5', 'color': 0, 'x': -0.123399, 'y': -0.206383, 'z': -0.065918, 'P1': -0.123399, 'P2': -0.206383, 'P3': -0.065918, 'P4': -0.013700, 'P5': 0.075902, 'P6': 0.015482, 'P7': 0.086820, 'P8': -0.026976, 'P9': 0.077185, 'P10': 0.041016 };
+g_spherePositions['mothur_0.6'] = { 'name': 'mothur_0.6', 'color': 0, 'x': 0.065628, 'y': -0.219085, 'z': 0.014049, 'P1': 0.065628, 'P2': -0.219085, 'P3': 0.014049, 'P4': -0.057040, 'P5': 0.019053, 'P6': -0.045894, 'P7': 0.026936, 'P8': 0.056310, 'P9': 0.005107, 'P10': -0.057398 };
+g_spherePositions['mothur_0.7'] = { 'name': 'mothur_0.7', 'color': 0, 'x': 0.163261, 'y': -0.245947, 'z': 0.013011, 'P1': 0.163261, 'P2': -0.245947, 'P3': 0.013011, 'P4': -0.059689, 'P5': -0.014009, 'P6': -0.025951, 'P7': 0.033626, 'P8': 0.073694, 'P9': -0.008334, 'P10': -0.019317 };
+g_spherePositions['mothur_0.8'] = { 'name': 'mothur_0.8', 'color': 0, 'x': 0.203305, 'y': -0.250995, 'z': 0.009164, 'P1': 0.203305, 'P2': -0.250995, 'P3': 0.009164, 'P4': -0.087245, 'P5': 0.017863, 'P6': -0.058463, 'P7': -0.058055, 'P8': 0.037606, 'P9': 0.023458, 'P10': 0.009239 };
+g_spherePositions['mothur_0.9'] = { 'name': 'mothur_0.9', 'color': 0, 'x': 0.431464, 'y': 0.056740, 'z': 0.159036, 'P1': 0.431464, 'P2': 0.056740, 'P3': 0.159036, 'P4': -0.134507, 'P5': 0.094654, 'P6': 0.144689, 'P7': -0.054716, 'P8': -0.011530, 'P9': -0.018216, 'P10': 0.054572 };
+g_spherePositions['mothur_1.0'] = { 'name': 'mothur_1.0', 'color': 0, 'x': 0.670295, 'y': 0.309830, 'z': 0.078302, 'P1': 0.670295, 'P2': 0.309830, 'P3': 0.078302, 'P4': 0.244325, 'P5': -0.037333, 'P6': -0.097219, 'P7': 0.055894, 'P8': 0.004547, 'P9': -0.023187, 'P10': 0.054077 };
+g_spherePositions['rdp_0.0'] = { 'name': 'rdp_0.0', 'color': 0, 'x': -0.190233, 'y': -0.134713, 'z': -0.072970, 'P1': -0.190233, 'P2': -0.134713, 'P3': -0.072970, 'P4': 0.114694, 'P5': 0.032497, 'P6': -0.002844, 'P7': -0.056176, 'P8': 0.017212, 'P9': -0.032547, 'P10': 0.037929 };
+g_spherePositions['rdp_0.1'] = { 'name': 'rdp_0.1', 'color': 0, 'x': -0.190067, 'y': -0.134774, 'z': -0.072838, 'P1': -0.190067, 'P2': -0.134774, 'P3': -0.072838, 'P4': 0.114488, 'P5': 0.032401, 'P6': -0.002791, 'P7': -0.056154, 'P8': 0.017289, 'P9': -0.032534, 'P10': 0.038065 };
+g_spherePositions['rdp_0.2'] = { 'name': 'rdp_0.2', 'color': 0, 'x': -0.102968, 'y': -0.123774, 'z': -0.005017, 'P1': -0.102968, 'P2': -0.123774, 'P3': -0.005017, 'P4': 0.083684, 'P5': -0.054325, 'P6': -0.002424, 'P7': -0.107668, 'P8': -0.025787, 'P9': 0.061155, 'P10': -0.002743 };
+g_spherePositions['rdp_0.3'] = { 'name': 'rdp_0.3', 'color': 0, 'x': -0.099711, 'y': -0.136923, 'z': -0.004948, 'P1': -0.099711, 'P2': -0.136923, 'P3': -0.004948, 'P4': 0.065950, 'P5': -0.052470, 'P6': 0.000572, 'P7': -0.024799, 'P8': -0.060144, 'P9': 0.027602, 'P10': -0.045120 };
+g_spherePositions['rdp_0.4'] = { 'name': 'rdp_0.4', 'color': 0, 'x': -0.098344, 'y': -0.133728, 'z': 0.002148, 'P1': -0.098344, 'P2': -0.133728, 'P3': 0.002148, 'P4': 0.030215, 'P5': -0.098766, 'P6': 0.015016, 'P7': 0.043125, 'P8': -0.056839, 'P9': -0.046788, 'P10': 0.006919 };
+g_spherePositions['rdp_0.5'] = { 'name': 'rdp_0.5', 'color': 0, 'x': -0.040815, 'y': -0.186068, 'z': 0.000316, 'P1': -0.040815, 'P2': -0.186068, 'P3': 0.000316, 'P4': -0.038608, 'P5': -0.024859, 'P6': 0.026550, 'P7': 0.066358, 'P8': 0.013155, 'P9': -0.036833, 'P10': 0.007012 };
+g_spherePositions['rdp_0.6'] = { 'name': 'rdp_0.6', 'color': 0, 'x': 0.075538, 'y': -0.204396, 'z': 0.020245, 'P1': 0.075538, 'P2': -0.204396, 'P3': 0.020245, 'P4': -0.016448, 'P5': 0.009316, 'P6': 0.120125, 'P7': 0.022924, 'P8': 0.019738, 'P9': -0.051128, 'P10': -0.055820 };
+g_spherePositions['rdp_0.7'] = { 'name': 'rdp_0.7', 'color': 0, 'x': 0.121517, 'y': -0.209617, 'z': 0.032756, 'P1': 0.121517, 'P2': -0.209617, 'P3': 0.032756, 'P4': -0.044248, 'P5': 0.019810, 'P6': -0.045054, 'P7': -0.008053, 'P8': 0.044186, 'P9': 0.003046, 'P10': -0.002104 };
+g_spherePositions['rdp_0.8'] = { 'name': 'rdp_0.8', 'color': 0, 'x': 0.229694, 'y': -0.275669, 'z': -0.006170, 'P1': 0.229694, 'P2': -0.275669, 'P3': -0.006170, 'P4': -0.096949, 'P5': -0.020132, 'P6': -0.045420, 'P7': -0.010328, 'P8': 0.062768, 'P9': 0.000146, 'P10': -0.009395 };
+g_spherePositions['rdp_0.9'] = { 'name': 'rdp_0.9', 'color': 0, 'x': 0.440033, 'y': 0.026084, 'z': 0.159576, 'P1': 0.440033, 'P2': 0.026084, 'P3': 0.159576, 'P4': -0.185825, 'P5': 0.108408, 'P6': -0.088193, 'P7': -0.020148, 'P8': -0.136044, 'P9': -0.024665, 'P10': -0.017139 };
+g_spherePositions['rdp_1.0'] = { 'name': 'rdp_1.0', 'color': 0, 'x': 0.686640, 'y': 0.292817, 'z': 0.098670, 'P1': 0.686640, 'P2': 0.292817, 'P3': 0.098670, 'P4': 0.193876, 'P5': -0.027822, 'P6': 0.086576, 'P7': -0.002504, 'P8': 0.026992, 'P9': 0.051636, 'P10': -0.045987 };
+g_spherePositions['rtax_single'] = { 'name': 'rtax_single', 'color': 0, 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'P1': -0.078675, 'P2': 0.207201, 'P3': 0.138029, 'P4': -0.224382, 'P5': -0.240627, 'P6': 0.010211, 'P7': -0.015952, 'P8': 0.013285, 'P9': 0.024794, 'P10': 0.052090 };
+g_spherePositions['Expected'] = { 'name': 'Expected', 'color': 0, 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'P1': 0.263478, 'P2': 0.397615, 'P3': -0.746480, 'P4': -0.115754, 'P5': -0.010206, 'P6': 0.005977, 'P7': -0.008073, 'P8': -0.009029, 'P9': -0.005858, 'P10': -0.009042 };
+
+var g_ellipsesDimensions = new Array();
+var g_segments = 16, g_rings = 16, g_radius = 0.011684;
+var g_xAxisLength = 0.973661;
+var g_yAxisLength = 0.673284;
+var g_zAxisLength = 0.906057;
+var g_xMaximumValue = 0.686640;
+var g_yMaximumValue = 0.397615;
+var g_zMaximumValue = 0.159576;
+var g_xMinimumValue = -0.287021;
+var g_yMinimumValue = -0.275669;
+var g_zMinimumValue = -0.746480;
+var g_maximum = 0.746480;
+var g_pc1Label = "PC1 (42 %)";
+var g_pc2Label = "PC2 (30 %)";
+var g_pc3Label = "PC3 (13 %)";
+var g_number_of_custom_axes = 0;
+var g_fractionExplained = [0.419299, 0.304210, 0.133036, 0.057835, 0.024626, 0.013715, 0.010670, 0.010182, 0.006195, 0.006109];
+var g_fractionExplainedRounded = [42, 30, 13, 6, 2, 1, 1, 1, 1, 1];
+
+var g_taxaPositions = new Array();
+g_taxaPositions['0'] = { 'lineage': 's__Galactomyces_geotrichum', 'x': -0.144490, 'y': 0.039439, 'z': -0.021504, 'radius': 5.000000};
+g_taxaPositions['1'] = { 'lineage': 's__Galactomyces_geotrichum', 'x': -0.143418, 'y': 0.040159, 'z': -0.022234, 'radius': 4.874103};
+g_taxaPositions['2'] = { 'lineage': 's__Galactomyces_geotrichum', 'x': -0.140103, 'y': 0.037482, 'z': -0.025845, 'radius': 4.564208};
+g_taxaPositions['3'] = { 'lineage': 's__Candida_catenulata', 'x': -0.055105, 'y': -0.030404, 'z': 0.009351, 'radius': 3.913618};
+g_taxaPositions['4'] = { 'lineage': 's__Candida_catenulata', 'x': -0.054521, 'y': -0.029644, 'z': 0.008017, 'radius': 3.564004};
+g_taxaPositions['5'] = { 'lineage': 's__Candida_catenulata', 'x': -0.053618, 'y': -0.028452, 'z': 0.005915, 'radius': 3.138986};
+g_taxaPositions['6'] = { 'lineage': 's__Galactomyces_sp_3S_28C', 'x': -0.038484, 'y': -0.179027, 'z': -0.019656, 'radius': 3.072608};
+g_taxaPositions['7'] = { 'lineage': 'Other', 'x': 0.576759, 'y': 0.192887, 'z': 0.101403, 'radius': 2.444254};
+g_taxaPositions['8'] = { 'lineage': 'Other', 'x': 0.570920, 'y': 0.186463, 'z': 0.096454, 'radius': 2.429704};
+g_taxaPositions['9'] = { 'lineage': 'Other', 'x': 0.575481, 'y': 0.191501, 'z': 0.096687, 'radius': 2.380339};
+g_taxaPositions['10'] = { 'lineage': 's__Issatchenkia_sp_YS5', 'x': -0.038679, 'y': -0.178958, 'z': -0.019678, 'radius': 2.288700};
+g_taxaPositions['11'] = { 'lineage': 'Other', 'x': 0.183106, 'y': -0.061027, 'z': 0.049721, 'radius': 2.107773};
+g_taxaPositions['12'] = { 'lineage': 's__Issatchenkia_sp_YS5', 'x': -0.038675, 'y': -0.178960, 'z': -0.019673, 'radius': 2.105050};
+g_taxaPositions['13'] = { 'lineage': 'Other', 'x': 0.190465, 'y': -0.055609, 'z': 0.051009, 'radius': 2.028651};
+g_taxaPositions['14'] = { 'lineage': 's__Galactomyces_sp_3S_28C', 'x': -0.038464, 'y': -0.179033, 'z': -0.019653, 'radius': 2.017330};
+g_taxaPositions['15'] = { 'lineage': 's__Issatchenkia_sp_YS5', 'x': -0.038685, 'y': -0.178957, 'z': -0.019679, 'radius': 1.941138};
+g_taxaPositions['16'] = { 'lineage': 's__Galactomyces_sp_3S_28C', 'x': -0.038476, 'y': -0.179028, 'z': -0.019655, 'radius': 1.883972};
+g_taxaPositions['17'] = { 'lineage': 'Other', 'x': 0.196074, 'y': -0.052976, 'z': 0.051335, 'radius': 1.874482};
+g_taxaPositions['18'] = { 'lineage': 's__unculturedfungus', 'x': -0.282189, 'y': 0.319478, 'z': 0.079115, 'radius': 1.747362};
+g_taxaPositions['19'] = { 'lineage': 's__Kluyveromyces_lactis', 'x': -0.046155, 'y': -0.018423, 'z': -0.011795, 'radius': 1.717915};
+g_taxaPositions['20'] = { 'lineage': 's__unculturedfungus', 'x': -0.282151, 'y': 0.319457, 'z': 0.079126, 'radius': 1.655062};
+g_taxaPositions['21'] = { 'lineage': 's__unculturedfungus', 'x': -0.282205, 'y': 0.319487, 'z': 0.079111, 'radius': 1.631241};
+g_taxaPositions['22'] = { 'lineage': 's__Kluyveromyces_lactis', 'x': -0.044727, 'y': -0.016505, 'z': -0.015181, 'radius': 1.604207};
+g_taxaPositions['23'] = { 'lineage': 's__Pichia_burtonii', 'x': 0.018293, 'y': -0.111656, 'z': -0.034253, 'radius': 1.501297};
+g_taxaPositions['24'] = { 'lineage': 's__unculturedsoil_fungus', 'x': -0.257166, 'y': 0.305673, 'z': 0.086359, 'radius': 1.500650};
+g_taxaPositions['25'] = { 'lineage': 's__Pichia_burtonii', 'x': 0.018350, 'y': -0.111539, 'z': -0.034417, 'radius': 1.497128};
+g_taxaPositions['26'] = { 'lineage': 's__Kluyveromyces_lactis', 'x': -0.043071, 'y': -0.014280, 'z': -0.019111, 'radius': 1.496287};
+g_taxaPositions['27'] = { 'lineage': 's__Dipodascus_australiensis', 'x': -0.135605, 'y': 0.110536, 'z': 0.054585, 'radius': 1.454034};
+g_taxaPositions['28'] = { 'lineage': 's__Penicillium_concentricum', 'x': -0.189419, 'y': 0.054654, 'z': 0.018420, 'radius': 1.382930};
+g_taxaPositions['29'] = { 'lineage': 's__Penicillium_concentricum', 'x': -0.189066, 'y': 0.054181, 'z': 0.018360, 'radius': 1.365594};
+g_taxaPositions['30'] = { 'lineage': 's__Pichia_burtonii', 'x': 0.020616, 'y': -0.106831, 'z': -0.041001, 'radius': 1.354112};
+g_taxaPositions['31'] = { 'lineage': 's__Dipodascus_australiensis', 'x': -0.167699, 'y': 0.165680, 'z': 0.064864, 'radius': 1.332906};
+g_taxaPositions['32'] = { 'lineage': 's__Dipodascus_australiensis', 'x': -0.174476, 'y': 0.178480, 'z': 0.067647, 'radius': 1.329064};
+g_taxaPositions['33'] = { 'lineage': 's__Penicillium_concentricum', 'x': -0.189299, 'y': 0.054622, 'z': 0.018445, 'radius': 1.304333};
+g_taxaPositions['34'] = { 'lineage': 'Other', 'x': -0.018849, 'y': -0.187881, 'z': -0.011055, 'radius': 1.127958};
+g_taxaPositions['35'] = { 'lineage': 'Other', 'x': 0.130381, 'y': -0.173321, 'z': 0.024698, 'radius': 1.097754};
+g_taxaPositions['36'] = { 'lineage': 'Other', 'x': -0.012421, 'y': -0.189694, 'z': -0.009984, 'radius': 1.090557};
+g_taxaPositions['37'] = { 'lineage': 's__unculturedsoil_fungus', 'x': -0.257166, 'y': 0.305673, 'z': 0.086359, 'radius': 1.090149};
+g_taxaPositions['38'] = { 'lineage': 'Other', 'x': 0.130699, 'y': -0.173143, 'z': 0.024834, 'radius': 1.082663};
+g_taxaPositions['39'] = { 'lineage': 'Other', 'x': 0.319879, 'y': -0.064035, 'z': 0.068526, 'radius': 1.082109};
+g_taxaPositions['40'] = { 'lineage': 'Other', 'x': 0.319979, 'y': -0.063677, 'z': 0.068760, 'radius': 1.067864};
+g_taxaPositions['41'] = { 'lineage': 'Other', 'x': 0.207347, 'y': -0.214275, 'z': 0.027218, 'radius': 1.056912};
+g_taxaPositions['42'] = { 'lineage': 'Other', 'x': 0.130370, 'y': -0.173244, 'z': 0.024732, 'radius': 1.043084};
+g_taxaPositions['43'] = { 'lineage': 's__unculturedsoil_fungus', 'x': -0.257179, 'y': 0.305680, 'z': 0.086355, 'radius': 1.038574};
+g_taxaPositions['44'] = { 'lineage': 'Other', 'x': 0.207509, 'y': -0.214493, 'z': 0.027129, 'radius': 1.027048};
+g_taxaPositions['45'] = { 'lineage': 'Other', 'x': 0.319732, 'y': -0.063689, 'z': 0.068334, 'radius': 1.008242};
+g_taxaPositions['46'] = { 'lineage': 'Other', 'x': 0.206085, 'y': -0.220728, 'z': 0.023940, 'radius': 0.993122};
+g_taxaPositions['47'] = { 'lineage': 's__ascomycete_sp_VTT_D_041022', 'x': -0.168403, 'y': -0.160989, 'z': -0.071023, 'radius': 0.992427};
+g_taxaPositions['48'] = { 'lineage': 's__ascomycete_sp_VTT_D_041022', 'x': -0.168414, 'y': -0.160978, 'z': -0.071025, 'radius': 0.962238};
+g_taxaPositions['49'] = { 'lineage': 'Other', 'x': -0.012594, 'y': -0.189675, 'z': -0.010152, 'radius': 0.962139};
+g_taxaPositions['50'] = { 'lineage': 's__ascomycete_sp_VTT_D_041022', 'x': -0.168393, 'y': -0.160998, 'z': -0.071022, 'radius': 0.903474};
+g_taxaPositions['51'] = { 'lineage': 's__Debaryomyces_sp_R344', 'x': -0.151416, 'y': -0.136246, 'z': -0.043775, 'radius': 0.841503};
+g_taxaPositions['52'] = { 'lineage': 's__Zygosaccharomyces_pseudorouxii', 'x': -0.098852, 'y': -0.045851, 'z': 0.008637, 'radius': 0.833513};
+g_taxaPositions['53'] = { 'lineage': 's__Debaryomyces_sp_R344', 'x': -0.151417, 'y': -0.136246, 'z': -0.043776, 'radius': 0.832042};
+g_taxaPositions['54'] = { 'lineage': 's__Pichia_jadinii', 'x': -0.038859, 'y': -0.178733, 'z': -0.019621, 'radius': 0.822840};
+g_taxaPositions['55'] = { 'lineage': 's__Zygosaccharomyces_pseudorouxii', 'x': -0.096397, 'y': -0.046117, 'z': 0.009166, 'radius': 0.814407};
+g_taxaPositions['56'] = { 'lineage': 's__Pichia_jadinii', 'x': -0.039131, 'y': -0.178526, 'z': -0.019619, 'radius': 0.811147};
+g_taxaPositions['57'] = { 'lineage': 's__Debaryomyces_sp_R344', 'x': -0.151419, 'y': -0.136245, 'z': -0.043778, 'radius': 0.800911};
+g_taxaPositions['58'] = { 'lineage': 's__Zygosaccharomyces_pseudorouxii', 'x': -0.097902, 'y': -0.045954, 'z': 0.008841, 'radius': 0.794778};
+g_taxaPositions['59'] = { 'lineage': 'Other', 'x': -0.094908, 'y': -0.109385, 'z': 0.001283, 'radius': 0.792634};
+g_taxaPositions['60'] = { 'lineage': 's__Pichia_jadinii', 'x': -0.039221, 'y': -0.178490, 'z': -0.019603, 'radius': 0.789526};
+g_taxaPositions['61'] = { 'lineage': 'Other', 'x': -0.094906, 'y': -0.109390, 'z': 0.001281, 'radius': 0.784573};
+g_taxaPositions['62'] = { 'lineage': 'Other', 'x': -0.094903, 'y': -0.109399, 'z': 0.001276, 'radius': 0.757964};
+g_taxaPositions['63'] = { 'lineage': 's__Galactomyces_reessii', 'x': -0.168374, 'y': -0.131997, 'z': -0.055950, 'radius': 0.691811};
+g_taxaPositions['64'] = { 'lineage': 's__Galactomyces_reessii', 'x': -0.168358, 'y': -0.132010, 'z': -0.055945, 'radius': 0.672566};
+g_taxaPositions['65'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.656538};
+g_taxaPositions['66'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.656538};
+g_taxaPositions['67'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.656538};
+g_taxaPositions['68'] = { 'lineage': 's__Galactomyces_reessii', 'x': -0.168324, 'y': -0.132038, 'z': -0.055933, 'radius': 0.636048};
+g_taxaPositions['69'] = { 'lineage': 's__unculturedcompost_fungus', 'x': -0.084935, 'y': 0.210482, 'z': 0.136141, 'radius': 0.626219};
+g_taxaPositions['70'] = { 'lineage': 's__unculturedcompost_fungus', 'x': -0.084598, 'y': 0.210164, 'z': 0.136181, 'radius': 0.616194};
+g_taxaPositions['71'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.604354};
+g_taxaPositions['72'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.604354};
+g_taxaPositions['73'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.604354};
+g_taxaPositions['74'] = { 'lineage': 's__Scopulariopsis_brevicaulis', 'x': -0.138722, 'y': -0.142448, 'z': -0.037154, 'radius': 0.604328};
+g_taxaPositions['75'] = { 'lineage': 'Other', 'x': 0.430348, 'y': 0.017305, 'z': 0.154609, 'radius': 0.603406};
+g_taxaPositions['76'] = { 'lineage': 's__unculturedcompost_fungus', 'x': -0.086176, 'y': 0.211339, 'z': 0.135858, 'radius': 0.601826};
+g_taxaPositions['77'] = { 'lineage': 'Other', 'x': 0.426058, 'y': 0.051685, 'z': 0.156328, 'radius': 0.600895};
+g_taxaPositions['78'] = { 'lineage': 's__Scopulariopsis_brevicaulis', 'x': -0.138648, 'y': -0.142464, 'z': -0.037107, 'radius': 0.596323};
+g_taxaPositions['79'] = { 'lineage': 'Other', 'x': 0.125495, 'y': -0.196757, 'z': 0.019580, 'radius': 0.594297};
+g_taxaPositions['80'] = { 'lineage': 's__Scopulariopsis_brevicaulis', 'x': -0.138689, 'y': -0.142442, 'z': -0.037126, 'radius': 0.593291};
+g_taxaPositions['81'] = { 'lineage': 'Other', 'x': 0.431059, 'y': 0.017817, 'z': 0.154906, 'radius': 0.592466};
+g_taxaPositions['82'] = { 'lineage': 'Other', 'x': 0.426602, 'y': 0.051617, 'z': 0.156395, 'radius': 0.590488};
+g_taxaPositions['83'] = { 'lineage': 'Other', 'x': 0.125735, 'y': -0.196999, 'z': 0.019558, 'radius': 0.586954};
+g_taxaPositions['84'] = { 'lineage': 'Other', 'x': 0.125630, 'y': -0.196696, 'z': 0.019616, 'radius': 0.584165};
+g_taxaPositions['85'] = { 'lineage': 'Other', 'x': 0.428765, 'y': 0.015960, 'z': 0.153830, 'radius': 0.584079};
+g_taxaPositions['86'] = { 'lineage': 'Other', 'x': 0.424951, 'y': 0.050884, 'z': 0.155820, 'radius': 0.581485};
+g_taxaPositions['87'] = { 'lineage': 'Other', 'x': 0.664781, 'y': 0.270435, 'z': 0.097699, 'radius': 0.556731};
+g_taxaPositions['88'] = { 'lineage': 'Other', 'x': 0.669122, 'y': 0.273480, 'z': 0.098644, 'radius': 0.555095};
+g_taxaPositions['89'] = { 'lineage': 's__Zygosaccharomyces_rouxii', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['90'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['91'] = { 'lineage': 's__Debaryomyces_hansenii', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['92'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['93'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['94'] = { 'lineage': 's__Zygosaccharomyces_rouxii', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['95'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['96'] = { 'lineage': 's__Debaryomyces_hansenii', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['97'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['98'] = { 'lineage': 's__Debaryomyces_hansenii', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['99'] = { 'lineage': 's__Zygosaccharomyces_rouxii', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['100'] = { 'lineage': 's__', 'x': 0.263478, 'y': 0.397615, 'z': -0.746480, 'radius': 0.552170};
+g_taxaPositions['101'] = { 'lineage': 'Other', 'x': 0.666464, 'y': 0.270409, 'z': 0.098215, 'radius': 0.551506};
+g_taxaPositions['102'] = { 'lineage': 'Other', 'x': 0.255629, 'y': 0.003589, 'z': 0.112618, 'radius': 0.543346};
+g_taxaPositions['103'] = { 'lineage': 'Other', 'x': 0.255629, 'y': 0.003589, 'z': 0.112618, 'radius': 0.538751};
+g_taxaPositions['104'] = { 'lineage': 'Other', 'x': 0.255629, 'y': 0.003589, 'z': 0.112618, 'radius': 0.537545};
+g_taxaPositions['105'] = { 'lineage': 'Other', 'x': 0.623419, 'y': 0.265355, 'z': 0.074267, 'radius': 0.511513};
+g_taxaPositions['106'] = { 'lineage': 'Other', 'x': 0.607030, 'y': 0.248261, 'z': 0.073505, 'radius': 0.510743};
+g_taxaPositions['107'] = { 'lineage': 'Other', 'x': 0.622616, 'y': 0.265167, 'z': 0.074450, 'radius': 0.510612};
+g_taxaPositions['108'] = { 'lineage': 'Other', 'x': 0.429763, 'y': 0.055392, 'z': 0.158359, 'radius': 0.510445};
+g_taxaPositions['109'] = { 'lineage': 'Other', 'x': 0.430307, 'y': 0.055811, 'z': 0.158571, 'radius': 0.509637};
+g_taxaPositions['110'] = { 'lineage': 'Other', 'x': 0.428244, 'y': 0.054270, 'z': 0.157763, 'radius': 0.509352};
+g_taxaPositions['111'] = { 'lineage': 's__Nectria_cinnabarina', 'x': -0.149966, 'y': -0.140250, 'z': -0.044824, 'radius': 0.506646};
+g_taxaPositions['112'] = { 'lineage': 'Other', 'x': -0.021578, 'y': -0.185809, 'z': -0.004797, 'radius': 0.505935};
+g_taxaPositions['113'] = { 'lineage': 'Other', 'x': 0.177379, 'y': -0.182924, 'z': 0.030195, 'radius': 0.505605};
+g_taxaPositions['114'] = { 'lineage': 's__Nectria_cinnabarina', 'x': -0.150966, 'y': -0.139989, 'z': -0.045405, 'radius': 0.504897};
+g_taxaPositions['115'] = { 'lineage': 'Other', 'x': 0.158887, 'y': -0.181815, 'z': 0.026328, 'radius': 0.504550};
+g_taxaPositions['116'] = { 'lineage': 'Other', 'x': -0.026870, 'y': -0.184026, 'z': -0.005708, 'radius': 0.504485};
+g_taxaPositions['117'] = { 'lineage': 's__Pichia_norvegensis', 'x': -0.151269, 'y': -0.135770, 'z': -0.042775, 'radius': 0.504381};
+g_taxaPositions['118'] = { 'lineage': 's__Nectria_cinnabarina', 'x': -0.152351, 'y': -0.139315, 'z': -0.046013, 'radius': 0.504314};
+g_taxaPositions['119'] = { 'lineage': 'Other', 'x': 0.169230, 'y': -0.185747, 'z': 0.028425, 'radius': 0.504301};
+g_taxaPositions['120'] = { 'lineage': 's__Pichia_norvegensis', 'x': -0.151269, 'y': -0.135770, 'z': -0.042775, 'radius': 0.504266};
+g_taxaPositions['121'] = { 'lineage': 'Other', 'x': -0.032071, 'y': -0.179365, 'z': -0.005586, 'radius': 0.504167};
+g_taxaPositions['122'] = { 'lineage': 's__unculturedHypocreales', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.503952};
+g_taxaPositions['123'] = { 'lineage': 's__Pichia_norvegensis', 'x': -0.151269, 'y': -0.135770, 'z': -0.042775, 'radius': 0.503789};
+g_taxaPositions['124'] = { 'lineage': 'Other', 'x': -0.071030, 'y': -0.180963, 'z': -0.020533, 'radius': 0.503753};
+g_taxaPositions['125'] = { 'lineage': 'Other', 'x': -0.071030, 'y': -0.180963, 'z': -0.020533, 'radius': 0.503655};
+g_taxaPositions['126'] = { 'lineage': 'NO_HIT', 'x': -0.286379, 'y': 0.325598, 'z': 0.078529, 'radius': 0.503507};
+g_taxaPositions['127'] = { 'lineage': 'Other', 'x': -0.071030, 'y': -0.180963, 'z': -0.020533, 'radius': 0.503246};
+g_taxaPositions['128'] = { 'lineage': 'NO_HIT', 'x': -0.286379, 'y': 0.325598, 'z': 0.078529, 'radius': 0.503242};
+g_taxaPositions['129'] = { 'lineage': 'NO_HIT', 'x': -0.286379, 'y': 0.325598, 'z': 0.078529, 'radius': 0.503059};
+g_taxaPositions['130'] = { 'lineage': 's__unculturedHypocreales', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.502792};
+g_taxaPositions['131'] = { 'lineage': 's__unculturedHypocreales', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.502725};
+g_taxaPositions['132'] = { 'lineage': 's__Aspergillus_versicolor', 'x': -0.187088, 'y': 0.041899, 'z': 0.013904, 'radius': 0.502515};
+g_taxaPositions['133'] = { 'lineage': 's__unculturedAscomycota', 'x': -0.285535, 'y': 0.321324, 'z': 0.078147, 'radius': 0.502482};
+g_taxaPositions['134'] = { 'lineage': 's__Penicillium_paneum', 'x': -0.151908, 'y': -0.136239, 'z': -0.044145, 'radius': 0.502246};
+g_taxaPositions['135'] = { 'lineage': 's__Penicillium_paneum', 'x': -0.151721, 'y': -0.136242, 'z': -0.044004, 'radius': 0.502217};
+g_taxaPositions['136'] = { 'lineage': 's__Aspergillus_versicolor', 'x': -0.187088, 'y': 0.041899, 'z': 0.013904, 'radius': 0.502203};
+g_taxaPositions['137'] = { 'lineage': 's__Penicillium_paneum', 'x': -0.151411, 'y': -0.136246, 'z': -0.043771, 'radius': 0.502184};
+g_taxaPositions['138'] = { 'lineage': 's__unculturedAscomycota', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.501942};
+g_taxaPositions['139'] = { 'lineage': 's__unculturedAscomycota', 'x': -0.285274, 'y': 0.321180, 'z': 0.078222, 'radius': 0.501683};
+g_taxaPositions['140'] = { 'lineage': 's__Neosartorya_pseudofischeri', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.501573};
+g_taxaPositions['141'] = { 'lineage': 's__Neosartorya_pseudofischeri', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.501349};
+g_taxaPositions['142'] = { 'lineage': 's__Neosartorya_pseudofischeri', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.501290};
+g_taxaPositions['143'] = { 'lineage': 'Other', 'x': 0.115665, 'y': -0.189787, 'z': 0.020617, 'radius': 0.501176};
+g_taxaPositions['144'] = { 'lineage': 's__Aspergillus_versicolor', 'x': -0.187088, 'y': 0.041899, 'z': 0.013904, 'radius': 0.501122};
+g_taxaPositions['145'] = { 'lineage': 'Other', 'x': 0.115665, 'y': -0.189787, 'z': 0.020617, 'radius': 0.501030};
+g_taxaPositions['146'] = { 'lineage': 's__Scopulariopsis_flava', 'x': -0.107147, 'y': -0.112766, 'z': -0.011612, 'radius': 0.500899};
+g_taxaPositions['147'] = { 'lineage': 's__Scopulariopsis_flava', 'x': -0.116488, 'y': -0.115720, 'z': -0.016500, 'radius': 0.500815};
+g_taxaPositions['148'] = { 'lineage': 'Other', 'x': 0.115665, 'y': -0.189787, 'z': 0.020617, 'radius': 0.500521};
+g_taxaPositions['149'] = { 'lineage': 's__Pichia_kudriavzevii', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.500508};
+g_taxaPositions['150'] = { 'lineage': 's__Scopulariopsis_flava', 'x': -0.136952, 'y': -0.128770, 'z': -0.030211, 'radius': 0.500482};
+g_taxaPositions['151'] = { 'lineage': 's__Fusarium_sp_JJP_2009a', 'x': -0.224025, 'y': 0.178794, 'z': 0.051094, 'radius': 0.500449};
+g_taxaPositions['152'] = { 'lineage': 's__Bartalinia_sp_MM_101', 'x': -0.277238, 'y': 0.276402, 'z': 0.062682, 'radius': 0.500421};
+g_taxaPositions['153'] = { 'lineage': 'Other', 'x': -0.099850, 'y': -0.136395, 'z': -0.004956, 'radius': 0.500400};
+g_taxaPositions['154'] = { 'lineage': 's__Fusarium_sp_CBS_119875', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500383};
+g_taxaPositions['155'] = { 'lineage': 's__Penicillium_sp_PSF31', 'x': -0.269335, 'y': 0.239030, 'z': 0.050344, 'radius': 0.500350};
+g_taxaPositions['156'] = { 'lineage': 's__Fusarium_sp_JJP_2009a', 'x': -0.219228, 'y': 0.167501, 'z': 0.048984, 'radius': 0.500334};
+g_taxaPositions['157'] = { 'lineage': 's__fungal_sp_BMP2995', 'x': -0.247876, 'y': 0.137634, 'z': 0.017513, 'radius': 0.500317};
+g_taxaPositions['158'] = { 'lineage': 'Other', 'x': -0.099942, 'y': -0.136042, 'z': -0.004961, 'radius': 0.500313};
+g_taxaPositions['159'] = { 'lineage': 's__Fusarium_sp_JJP_2009a', 'x': -0.197250, 'y': 0.070160, 'z': 0.020009, 'radius': 0.500313};
+g_taxaPositions['160'] = { 'lineage': 's__Cyanonectria_buxi', 'x': -0.129224, 'y': -0.151424, 'z': -0.036390, 'radius': 0.500307};
+g_taxaPositions['161'] = { 'lineage': 's__Fusarium_sp_CBS_119875', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500294};
+g_taxaPositions['162'] = { 'lineage': 'Other', 'x': -0.107074, 'y': -0.141526, 'z': -0.017583, 'radius': 0.500284};
+g_taxaPositions['163'] = { 'lineage': 's__Bartalinia_sp_MM_101', 'x': -0.269321, 'y': 0.239025, 'z': 0.050356, 'radius': 0.500280};
+g_taxaPositions['164'] = { 'lineage': 'Other', 'x': -0.105579, 'y': -0.123172, 'z': -0.009393, 'radius': 0.500240};
+g_taxaPositions['165'] = { 'lineage': 's__Ilyonectria_macrodidyma', 'x': -0.171440, 'y': -0.138605, 'z': -0.059287, 'radius': 0.500235};
+g_taxaPositions['166'] = { 'lineage': 's__Penicillium_coprobium', 'x': -0.197250, 'y': 0.070160, 'z': 0.020009, 'radius': 0.500235};
+g_taxaPositions['167'] = { 'lineage': 's__Pichia_kudriavzevii', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.500227};
+g_taxaPositions['168'] = { 'lineage': 'Other', 'x': -0.099711, 'y': -0.136923, 'z': -0.004948, 'radius': 0.500214};
+g_taxaPositions['169'] = { 'lineage': 's__Penicillium_coprobium', 'x': -0.197250, 'y': 0.070160, 'z': 0.020009, 'radius': 0.500187};
+g_taxaPositions['170'] = { 'lineage': 's__Pichia_kudriavzevii', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.500185};
+g_taxaPositions['171'] = { 'lineage': 'Other', 'x': -0.117745, 'y': -0.096812, 'z': -0.003388, 'radius': 0.500182};
+g_taxaPositions['172'] = { 'lineage': 's__Gaeumannomyces_graminis_var_tritici', 'x': -0.172049, 'y': -0.135988, 'z': -0.059274, 'radius': 0.500152};
+g_taxaPositions['173'] = { 'lineage': 's__Fusarium_sp_472', 'x': -0.138648, 'y': -0.142464, 'z': -0.037107, 'radius': 0.500152};
+g_taxaPositions['174'] = { 'lineage': 's__Ilyonectria_macrodidyma', 'x': -0.171440, 'y': -0.138605, 'z': -0.059287, 'radius': 0.500120};
+g_taxaPositions['175'] = { 'lineage': 'Other', 'x': -0.105247, 'y': -0.148939, 'z': -0.014940, 'radius': 0.500120};
+g_taxaPositions['176'] = { 'lineage': 's__Fusarium_sp_472', 'x': -0.138648, 'y': -0.142464, 'z': -0.037107, 'radius': 0.500120};
+g_taxaPositions['177'] = { 'lineage': 's__Claviceps_purpurea', 'x': -0.172049, 'y': -0.135988, 'z': -0.059274, 'radius': 0.500120};
+g_taxaPositions['178'] = { 'lineage': 's__Debaryomyces_pseudopolymorphus', 'x': -0.143905, 'y': -0.139283, 'z': -0.037151, 'radius': 0.500119};
+g_taxaPositions['179'] = { 'lineage': 's__Fusarium_sp_BBA_65925', 'x': -0.189319, 'y': -0.139042, 'z': -0.072838, 'radius': 0.500119};
+g_taxaPositions['180'] = { 'lineage': 's__Neonectria_radicicola', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.500117};
+g_taxaPositions['181'] = { 'lineage': 'Other', 'x': 0.150556, 'y': -0.125295, 'z': 0.055993, 'radius': 0.500102};
+g_taxaPositions['182'] = { 'lineage': 's__Fusarium_sp_CBS_119875', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500095};
+g_taxaPositions['183'] = { 'lineage': 's__Gaeumannomyces_graminis_var_tritici', 'x': -0.172049, 'y': -0.135988, 'z': -0.059274, 'radius': 0.500095};
+g_taxaPositions['184'] = { 'lineage': 's__Penicillium_sp_PSF31', 'x': -0.190197, 'y': -0.134730, 'z': -0.072946, 'radius': 0.500095};
+g_taxaPositions['185'] = { 'lineage': 's__Debaryomyces_pseudopolymorphus', 'x': -0.143905, 'y': -0.139283, 'z': -0.037151, 'radius': 0.500093};
+g_taxaPositions['186'] = { 'lineage': 's__Fusarium_sp_BBA_65925', 'x': -0.189319, 'y': -0.139042, 'z': -0.072838, 'radius': 0.500093};
+g_taxaPositions['187'] = { 'lineage': 's__Penicillium_allii', 'x': -0.190189, 'y': -0.134733, 'z': -0.072939, 'radius': 0.500093};
+g_taxaPositions['188'] = { 'lineage': 's__Hypocreales_sp_TR114', 'x': -0.189070, 'y': -0.140464, 'z': -0.072839, 'radius': 0.500086};
+g_taxaPositions['189'] = { 'lineage': 's__Dipodascaceae_sp_CPK3512', 'x': -0.160028, 'y': -0.136133, 'z': -0.050242, 'radius': 0.500086};
+g_taxaPositions['190'] = { 'lineage': 's__Neonectria_radicicola', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.500086};
+g_taxaPositions['191'] = { 'lineage': 's__Bartalinia_sp_MM_101', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.500086};
+g_taxaPositions['192'] = { 'lineage': 's__Debaryomyces_pseudopolymorphus', 'x': -0.143905, 'y': -0.139283, 'z': -0.037151, 'radius': 0.500074};
+g_taxaPositions['193'] = { 'lineage': 's__Fusarium_sp_BBA_65925', 'x': -0.189319, 'y': -0.139042, 'z': -0.072838, 'radius': 0.500074};
+g_taxaPositions['194'] = { 'lineage': 's__Nectria_albida', 'x': -0.189319, 'y': -0.139042, 'z': -0.072838, 'radius': 0.500074};
+g_taxaPositions['195'] = { 'lineage': 's__Penicillium_sp_2_TMS_2011', 'x': -0.190230, 'y': -0.134719, 'z': -0.072973, 'radius': 0.500074};
+g_taxaPositions['196'] = { 'lineage': 'Other', 'x': 0.381021, 'y': -0.026363, 'z': 0.117734, 'radius': 0.500074};
+g_taxaPositions['197'] = { 'lineage': 'Other', 'x': -0.105247, 'y': -0.148939, 'z': -0.014940, 'radius': 0.500069};
+g_taxaPositions['198'] = { 'lineage': 's__Claviceps_purpurea', 'x': -0.172049, 'y': -0.135988, 'z': -0.059274, 'radius': 0.500069};
+g_taxaPositions['199'] = { 'lineage': 'Other', 'x': -0.128464, 'y': -0.140801, 'z': -0.025209, 'radius': 0.500067};
+g_taxaPositions['200'] = { 'lineage': 's__Dipodascaceae_sp_CPK3512', 'x': -0.160028, 'y': -0.136133, 'z': -0.050242, 'radius': 0.500067};
+g_taxaPositions['201'] = { 'lineage': 's__Ascomycota_sp_H33', 'x': -0.190230, 'y': -0.134719, 'z': -0.072973, 'radius': 0.500067};
+g_taxaPositions['202'] = { 'lineage': 's__Neonectria_radicicola', 'x': -0.286914, 'y': 0.322085, 'z': 0.077747, 'radius': 0.500067};
+g_taxaPositions['203'] = { 'lineage': 's__Penicillium_sp_PSF31', 'x': -0.190197, 'y': -0.134730, 'z': -0.072946, 'radius': 0.500053};
+g_taxaPositions['204'] = { 'lineage': 'Other', 'x': 0.431191, 'y': 0.031418, 'z': 0.076593, 'radius': 0.500053};
+g_taxaPositions['205'] = { 'lineage': 's__Fusarium_sp_2_TMS_2011', 'x': -0.190230, 'y': -0.134719, 'z': -0.072973, 'radius': 0.500053};
+g_taxaPositions['206'] = { 'lineage': 's__Penicillium_sp_2_TMS_2011', 'x': -0.190230, 'y': -0.134719, 'z': -0.072973, 'radius': 0.500053};
+g_taxaPositions['207'] = { 'lineage': 's__Penicillium_sp_LH185', 'x': -0.190230, 'y': -0.134719, 'z': -0.072973, 'radius': 0.500053};
+g_taxaPositions['208'] = { 'lineage': 's__Nectria_albida', 'x': -0.189319, 'y': -0.139042, 'z': -0.072838, 'radius': 0.500053};
+g_taxaPositions['209'] = { 'lineage': 'Other', 'x': -0.128464, 'y': -0.140801, 'z': -0.025209, 'radius': 0.500052};
+g_taxaPositions['210'] = { 'lineage': 's__Hypocreales_sp_TR114', 'x': -0.189070, 'y': -0.140464, 'z': -0.072839, 'radius': 0.500052};
+g_taxaPositions['211'] = { 'lineage': 's__Fusarium_sp_2_TMS_2011', 'x': -0.190230, 'y': -0.134719, 'z': -0.072973, 'radius': 0.500040};
+g_taxaPositions['212'] = { 'lineage': 's__Penicillium_sp_92506', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500036};
+g_taxaPositions['213'] = { 'lineage': 's__Penicillium_allii', 'x': -0.190175, 'y': -0.134737, 'z': -0.072928, 'radius': 0.500036};
+g_taxaPositions['214'] = { 'lineage': 's__Fusarium_sp_2_TMS_2011', 'x': -0.190230, 'y': -0.134719, 'z': -0.072973, 'radius': 0.500030};
+g_taxaPositions['215'] = { 'lineage': 's__Penicillium_allii', 'x': -0.190230, 'y': -0.134719, 'z': -0.072973, 'radius': 0.500030};
+g_taxaPositions['216'] = { 'lineage': 's__Calcarisporium_arbuscula', 'x': -0.190230, 'y': -0.134719, 'z': -0.072973, 'radius': 0.500030};
+g_taxaPositions['217'] = { 'lineage': 's__Fusarium_domesticum', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500030};
+g_taxaPositions['218'] = { 'lineage': 'Other', 'x': -0.186751, 'y': -0.151954, 'z': -0.072570, 'radius': 0.500027};
+g_taxaPositions['219'] = { 'lineage': 'Other', 'x': -0.099921, 'y': -0.136857, 'z': -0.005080, 'radius': 0.500020};
+g_taxaPositions['220'] = { 'lineage': 'Other', 'x': -0.099921, 'y': -0.136857, 'z': -0.005080, 'radius': 0.500020};
+g_taxaPositions['221'] = { 'lineage': 'Other', 'x': 0.203305, 'y': -0.250995, 'z': 0.009164, 'radius': 0.500020};
+g_taxaPositions['222'] = { 'lineage': 'Other', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500020};
+g_taxaPositions['223'] = { 'lineage': 's__Ascomycota_sp_H33', 'x': -0.190230, 'y': -0.134719, 'z': -0.072973, 'radius': 0.500020};
+g_taxaPositions['224'] = { 'lineage': 's__Calcarisporium_arbuscula', 'x': -0.190230, 'y': -0.134719, 'z': -0.072973, 'radius': 0.500013};
+g_taxaPositions['225'] = { 'lineage': 's__Bionectria_cf._ochroleuca_CBS_113336', 'x': -0.190226, 'y': -0.134726, 'z': -0.072977, 'radius': 0.500013};
+g_taxaPositions['226'] = { 'lineage': 'Other', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500013};
+g_taxaPositions['227'] = { 'lineage': 'Other', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500013};
+g_taxaPositions['228'] = { 'lineage': 's__Penicillium_sp_92506', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500013};
+g_taxaPositions['229'] = { 'lineage': 'Other', 'x': -0.099921, 'y': -0.136857, 'z': -0.005080, 'radius': 0.500008};
+g_taxaPositions['230'] = { 'lineage': 's__Bionectria_cf._ochroleuca_CBS_113336', 'x': -0.190226, 'y': -0.134726, 'z': -0.072977, 'radius': 0.500008};
+g_taxaPositions['231'] = { 'lineage': 'Other', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500008};
+g_taxaPositions['232'] = { 'lineage': 's__Debaryomyces_sp_IZ_1257', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500008};
+g_taxaPositions['233'] = { 'lineage': 'Other', 'x': -0.186751, 'y': -0.151954, 'z': -0.072570, 'radius': 0.500003};
+g_taxaPositions['234'] = { 'lineage': 'Other', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500003};
+g_taxaPositions['235'] = { 'lineage': 's__Debaryomyces_sp_IZ_1257', 'x': -0.078675, 'y': 0.207201, 'z': 0.138029, 'radius': 0.500000};
+
+
+var g_vectorPositions = new Array();
+
+var g_comparisonPositions = new Array();
+document.getElementById("logo").style.display = 'none';
+document.getElementById("logotable").style.display = 'none';
+
+ </script>
+</head>
+
+<body>    
+
+<div id="plotToggle">
+    <form>
+      <div id="plottype">
+        <input id="pcoa" type="radio" id="pcoa" name="plottype" checked="checked" /><label for="pcoa">PCoA</label>
+        <input id="parallel" type="radio" id="parallel" name="plottype" /><label for="parallel">Parallel</label>
+      </div>
+    </form>
+</div>
+<div id="pcoaPlotWrapper" class="plotWrapper">
+    <label id="pointCount" class="ontop">
+    </label>
+
+    <div id="finder" class="arrow-right">
+    </div>
+
+    <div id="labels" class="unselectable">
+    </div>
+
+    <div id="taxalabels" class="unselectable">
+    </div>
+
+    <div id="axislabels" class="axislabels">
+    </div>
+
+    <div id="main_plot">
+    </div>
+</div>
+
+<div id="parallelPlotWrapper" class="plotWrapper">
+</div>
+
+<div id="menu">
+    <div id="menutabs">
+        <ul>
+            <li><a href="#keytab">Key</a></li>
+            <li><a href="#colorby">Colors</a></li>
+            <li><a href="#showby">Visibility</a></li>
+            <li><a href="#scalingby">Scaling</a></li>
+            <li><a href="#labelby">Labels</a></li>
+            <li><a href="#axes">Axes</a></li>
+            <li><a href="#view">View</a></li>
+            <li><a href="#settings">Options</a></li>
+        </ul>
+        <div id="keytab">
+            <form name="keyFilter">
+            <label>Filter  </label><input name="filterBox" type="text" onkeyup="filterKey()"></input>
+            </form>
+            <div id="key">
+            </div>
+        </div>
+        <div id="colorby">
+            <br>
+            <br>
+            <table>
+                <tr><td><div id="taxaspherescolor" class="colorbox" name="taxaspherescolor"></div></td><td title="taxacolor">Taxa Spheres Color</td></tr>
+            </table>
+            <br>
+            <select id="colorbycombo" onchange="colorByMenuChanged()" size="3">
+            </select>
+            <div class="list" id="colorbylist">
+            </div>
+        </div>
+        <div id="showby">
+            <br>
+            <form name="biplotsvisibility">
+            <input type="checkbox" onClick="toggleBiplotVisibility()" checked>Biplots Visibility</input>
+            </form>
+            <br>
+            <select id="showbycombo" onchange="showByMenuChanged()">
+            </select>
+            <div class="list" id="showbylist">
+            </div>
+        </div>
+        <div id="scalingby">
+            <select id="scalingbycombo" onchange="scalingByMenuChanged()">
+            </select>
+            <div class="list" id="scalingbylist">
+            </div>
+        </div>
+        <div id="labelby">
+        <div id="labelsTop">
+            <form name="plotoptions">
+            <input type="checkbox" onClick="toggleLabels()">Samples Label Visibility</input>
+            </form>
+            <form name="biplotoptions">
+            <input type="checkbox" onClick="toggleTaxaLabels()">Biplots Label Visibility</input>
+            </form>
+            <br>
+            <label for="labelopacity" class="text">Label Opacity</label>
+            <label id="labelopacity" class="slidervalue"></label>
+            <div id="lopacityslider" class="slider-range-max"></div>
+            <div id="labelColorHolder clearfix">
+            <table><tr>
+            <td><div id="labelColor" class="colorbox">
+            </div></td><td><label>Master Label Color</label></td>
+            </tr></table></div>
+        </div>
+            <br>
+            <select id="labelcombo" onchange="labelMenuChanged()">
+            </select>
+            <div class="list" id="labellist">
+            </div>
+        </div>
+        <div id="axes">
+            <div id="pcoaaxes">
+                <div class="list" id="axeslist">
+                </div>
+            </div>
+        </div>
+        <div id="view">
+            <table>
+                <tr><td><div id="axeslabelscolor" class="colorbox" name="axeslabelscolor"></div></td><td title="Axes Labels Color">Axes Labels Color</td></tr>
+                <tr><td><div id="axescolor" class="colorbox" name="axescolor"></div></td><td title="Axes Color Title">Axes Color</td></tr>
+                <tr><td><div id="rendererbackgroundcolor"class="colorbox" name="rendererbackgroundcolor"></div></td><td title="Background Color Title">Background Color</td></tr>
+            </table>
+            <br>
+            <form name="settingsoptionscolor">
+            <input type="checkbox" onchange="toggleContinuousAndDiscreteColors(this)" id="discreteorcontinuouscolors" name="discreteorcontinuouscolors">  Use gradient colors</input>
+            </form>
+            <div id="pcoaviewoptions" class="">
+                <br>
+                <input id="reset" class="button" type="submit" value="Recenter Camera" style="" onClick="resetCamera()">
+                <br>
+                <br>
+                <label for="sphereopacity" class="text">Sphere Opacity</label>
+                <label id="sphereopacity" class="slidervalue"></label>
+                <div id="sopacityslider" class="slider-range-max"></div>
+                <br>
+                <label for="sphereradius" class="text">Sphere Scale</label>
+                <label id="sphereradius" class="slidervalue"></label>
+                <div id="sradiusslider" class="slider-range-max"></div>
+                <br>
+            </div>
+            <br>
+        </div>
+        <div id="settings">
+            <br>
+            <input id="saveas" class="button" type="submit" value="Save as SVG" style="" onClick="saveSVG()">
+            <br>
+            <br>
+            <div id="pcoaoptions" class="">
+                <form name="settingsoptions">
+                    <input type="checkbox" onchange="toggleScaleCoordinates(this)" id="scale_checkbox" name="scale_checkbox">Scale coords by percent explained</input>
+                </form>
+            </div>
+            <br>
+            <div id="paralleloptions" class="">
+            </div>
+        </div>
+    </div>  
+</div>
+</body>
+
+</html>

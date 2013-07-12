@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Emperor</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="emperor_required_resources/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/emperor/css/emperor.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/jquery-ui2.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/colorPicker.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/spectrum.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/d3.parcoords.css">
+    <table id="logotable" style="vertical-align:middle;text-align:center;height:100%;width:100%;margin:0;padding:0;border:0;">
+        <tr><td><img src="emperor_required_resources/img/emperor.png" alt="Emperor" id="logo"/></td></tr>
+    </table>
+    <script type="text/javascript" src="emperor_required_resources/js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/d3.parcoords.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script src="emperor_required_resources/js/jquery.colorPicker.js"></script>
+    <script src="emperor_required_resources/js/spectrum.js"></script>
+
+    <script src="emperor_required_resources/js/Three.js"></script>
+    <script src="emperor_required_resources/js/js/Detector.js"></script>
+    <script src="emperor_required_resources/js/js/RequestAnimationFrame.js"></script>
+    <script src="emperor_required_resources/emperor/js/emperor.js"></script>
+    <script type="text/javascript">
+var g_mappingFileHeaders = ['SampleID','assignment_method'];
+var g_mappingFileData = { 'blast_1.0': ['blast_1.0','blast'],'rtax_single': ['rtax_single','rtax'],'rdp_0.6': ['rdp_0.6','rdp'],'rdp_0.7': ['rdp_0.7','rdp'],'rdp_0.4': ['rdp_0.4','rdp'],'rdp_0.5': ['rdp_0.5','rdp'],'rdp_0.2': ['rdp_0.2','rdp'],'rdp_0.3': ['rdp_0.3','rdp'],'rdp_0.0': ['rdp_0.0','rdp'],'rdp_0.1': ['rdp_0.1','rdp'],'Expected': ['Expected','Expected'],'blast_1e-06': ['blast_1e-06','blast'],'rdp_0.8': ['rdp_0.8','rdp'],'rdp_0.9': ['rdp_0.9','rdp'],'mothur_1.0': ['mothur_1.0','mothur'],'rtax_paired': ['rtax_paired','rtax'],'blast_1e-30': ['blast_1e-30','blast'],'blast_100.0': ['blast_100.0','blast'],'blast_1e-10': ['blast_1e-10','blast'],'blast_0.0001': ['blast_0.0001','blast'],'rdp_1.0': ['rdp_1.0','rdp'],'mothur_0.8': ['mothur_0.8','mothur'],'mothur_0.9': ['mothur_0.9','mothur'],'mothur_0.4': ['mothur_0.4','mothur'],'mothur_0.5': ['mothur_0.5','mothur'],'mothur_0.6': ['mothur_0.6','mothur'],'mothur_0.7': ['mothur_0.7','mothur'],'mothur_0.0': ['mothur_0.0','mothur'],'mothur_0.1': ['mothur_0.1','mothur'],'mothur_0.2': ['mothur_0.2','mothur'],'mothur_0.3': ['mothur_0.3','mothur'] };
+
+var g_spherePositions = new Array();
+g_spherePositions['blast_100.0'] = { 'name': 'blast_100.0', 'color': 0, 'x': -0.099716, 'y': 0.027929, 'z': 0.091815, 'P1': -0.099716, 'P2': 0.027929, 'P3': 0.091815, 'P4': -0.010103, 'P5': 0.005739, 'P6': -0.013239, 'P7': 0.006003 };
+g_spherePositions['blast_0.0001'] = { 'name': 'blast_0.0001', 'color': 0, 'x': -0.099716, 'y': 0.027929, 'z': 0.091815, 'P1': -0.099716, 'P2': 0.027929, 'P3': 0.091815, 'P4': -0.010103, 'P5': 0.005739, 'P6': -0.013239, 'P7': 0.006003 };
+g_spherePositions['blast_1e-06'] = { 'name': 'blast_1e-06', 'color': 0, 'x': -0.099716, 'y': 0.027929, 'z': 0.091815, 'P1': -0.099716, 'P2': 0.027929, 'P3': 0.091815, 'P4': -0.010103, 'P5': 0.005739, 'P6': -0.013239, 'P7': 0.006003 };
+g_spherePositions['blast_1.0'] = { 'name': 'blast_1.0', 'color': 0, 'x': -0.099716, 'y': 0.027929, 'z': 0.091815, 'P1': -0.099716, 'P2': 0.027929, 'P3': 0.091815, 'P4': -0.010103, 'P5': 0.005739, 'P6': -0.013239, 'P7': 0.006003 };
+g_spherePositions['blast_1e-10'] = { 'name': 'blast_1e-10', 'color': 0, 'x': -0.099716, 'y': 0.027929, 'z': 0.091815, 'P1': -0.099716, 'P2': 0.027929, 'P3': 0.091815, 'P4': -0.010103, 'P5': 0.005739, 'P6': -0.013239, 'P7': 0.006003 };
+g_spherePositions['blast_1e-30'] = { 'name': 'blast_1e-30', 'color': 0, 'x': -0.099738, 'y': 0.027923, 'z': 0.091861, 'P1': -0.099738, 'P2': 0.027923, 'P3': 0.091861, 'P4': -0.010073, 'P5': 0.005725, 'P6': -0.013149, 'P7': 0.006033 };
+g_spherePositions['mothur_0.0'] = { 'name': 'mothur_0.0', 'color': 0, 'x': -0.033466, 'y': 0.042103, 'z': -0.061676, 'P1': -0.033466, 'P2': 0.042103, 'P3': -0.061676, 'P4': -0.017745, 'P5': 0.003667, 'P6': -0.003071, 'P7': -0.010858 };
+g_spherePositions['mothur_0.1'] = { 'name': 'mothur_0.1', 'color': 0, 'x': -0.033280, 'y': 0.042029, 'z': -0.061659, 'P1': -0.033280, 'P2': 0.042029, 'P3': -0.061659, 'P4': -0.017711, 'P5': 0.003637, 'P6': -0.002977, 'P7': -0.010792 };
+g_spherePositions['mothur_0.2'] = { 'name': 'mothur_0.2', 'color': 0, 'x': -0.030369, 'y': 0.041411, 'z': -0.060663, 'P1': -0.030369, 'P2': 0.041411, 'P3': -0.060663, 'P4': -0.016502, 'P5': 0.002908, 'P6': -0.000026, 'P7': -0.009464 };
+g_spherePositions['mothur_0.3'] = { 'name': 'mothur_0.3', 'color': 0, 'x': -0.027766, 'y': 0.040519, 'z': -0.060579, 'P1': -0.027766, 'P2': 0.040519, 'P3': -0.060579, 'P4': -0.015586, 'P5': 0.002313, 'P6': 0.002255, 'P7': -0.008315 };
+g_spherePositions['mothur_0.4'] = { 'name': 'mothur_0.4', 'color': 0, 'x': -0.001191, 'y': 0.027256, 'z': -0.041962, 'P1': -0.001191, 'P2': 0.027256, 'P3': -0.041962, 'P4': -0.000200, 'P5': -0.005730, 'P6': 0.030101, 'P7': 0.001539 };
+g_spherePositions['mothur_0.5'] = { 'name': 'mothur_0.5', 'color': 0, 'x': -0.019994, 'y': 0.037645, 'z': -0.059361, 'P1': -0.019994, 'P2': 0.037645, 'P3': -0.059361, 'P4': -0.013219, 'P5': 0.001061, 'P6': 0.007969, 'P7': -0.005389 };
+g_spherePositions['mothur_0.6'] = { 'name': 'mothur_0.6', 'color': 0, 'x': 0.053667, 'y': 0.021180, 'z': -0.043369, 'P1': 0.053667, 'P2': 0.021180, 'P3': -0.043369, 'P4': 0.032262, 'P5': 0.011612, 'P6': -0.003786, 'P7': 0.034742 };
+g_spherePositions['mothur_0.7'] = { 'name': 'mothur_0.7', 'color': 0, 'x': 0.064149, 'y': 0.015484, 'z': -0.037509, 'P1': 0.064149, 'P2': 0.015484, 'P3': -0.037509, 'P4': 0.033554, 'P5': 0.009709, 'P6': -0.000369, 'P7': 0.034175 };
+g_spherePositions['mothur_0.8'] = { 'name': 'mothur_0.8', 'color': 0, 'x': 0.092017, 'y': 0.003830, 'z': 0.006831, 'P1': 0.092017, 'P2': 0.003830, 'P3': 0.006831, 'P4': 0.021929, 'P5': -0.032558, 'P6': -0.018208, 'P7': -0.009848 };
+g_spherePositions['mothur_0.9'] = { 'name': 'mothur_0.9', 'color': 0, 'x': 0.160339, 'y': -0.058864, 'z': 0.008139, 'P1': 0.160339, 'P2': -0.058864, 'P3': 0.008139, 'P4': 0.011245, 'P5': -0.037528, 'P6': -0.028325, 'P7': -0.025768 };
+g_spherePositions['mothur_1.0'] = { 'name': 'mothur_1.0', 'color': 0, 'x': 0.259138, 'y': -0.126490, 'z': 0.083945, 'P1': 0.259138, 'P2': -0.126490, 'P3': 0.083945, 'P4': -0.096024, 'P5': -0.028139, 'P6': 0.026289, 'P7': 0.027465 };
+g_spherePositions['rdp_0.0'] = { 'name': 'rdp_0.0', 'color': 0, 'x': -0.033466, 'y': 0.042103, 'z': -0.061676, 'P1': -0.033466, 'P2': 0.042103, 'P3': -0.061676, 'P4': -0.017745, 'P5': 0.003667, 'P6': -0.003071, 'P7': -0.010858 };
+g_spherePositions['rdp_0.1'] = { 'name': 'rdp_0.1', 'color': 0, 'x': -0.033121, 'y': 0.042093, 'z': -0.061530, 'P1': -0.033121, 'P2': 0.042093, 'P3': -0.061530, 'P4': -0.017670, 'P5': 0.003620, 'P6': -0.002816, 'P7': -0.010718 };
+g_spherePositions['rdp_0.2'] = { 'name': 'rdp_0.2', 'color': 0, 'x': -0.030619, 'y': 0.041497, 'z': -0.060417, 'P1': -0.030619, 'P2': 0.041497, 'P3': -0.060417, 'P4': -0.016508, 'P5': 0.002962, 'P6': -0.000202, 'P7': -0.009575 };
+g_spherePositions['rdp_0.3'] = { 'name': 'rdp_0.3', 'color': 0, 'x': -0.027647, 'y': 0.040477, 'z': -0.060756, 'P1': -0.027647, 'P2': 0.040477, 'P3': -0.060756, 'P4': -0.015701, 'P5': 0.002373, 'P6': 0.002207, 'P7': -0.008318 };
+g_spherePositions['rdp_0.4'] = { 'name': 'rdp_0.4', 'color': 0, 'x': -0.020373, 'y': 0.037119, 'z': -0.057029, 'P1': -0.020373, 'P2': 0.037119, 'P3': -0.057029, 'P4': -0.012520, 'P5': 0.000146, 'P6': 0.009141, 'P7': -0.003471 };
+g_spherePositions['rdp_0.5'] = { 'name': 'rdp_0.5', 'color': 0, 'x': 0.002766, 'y': 0.025492, 'z': -0.041531, 'P1': 0.002766, 'P2': 0.025492, 'P3': -0.041531, 'P4': 0.000257, 'P5': -0.005923, 'P6': 0.031312, 'P7': 0.002300 };
+g_spherePositions['rdp_0.6'] = { 'name': 'rdp_0.6', 'color': 0, 'x': 0.054570, 'y': 0.020964, 'z': -0.047196, 'P1': 0.054570, 'P2': 0.020964, 'P3': -0.047196, 'P4': 0.030571, 'P5': 0.012379, 'P6': -0.007849, 'P7': 0.033977 };
+g_spherePositions['rdp_0.7'] = { 'name': 'rdp_0.7', 'color': 0, 'x': 0.065928, 'y': 0.013441, 'z': -0.034570, 'P1': 0.065928, 'P2': 0.013441, 'P3': -0.034570, 'P4': 0.033124, 'P5': 0.009694, 'P6': -0.002113, 'P7': 0.032639 };
+g_spherePositions['rdp_0.8'] = { 'name': 'rdp_0.8', 'color': 0, 'x': 0.092195, 'y': 0.003704, 'z': 0.007054, 'P1': 0.092195, 'P2': 0.003704, 'P3': 0.007054, 'P4': 0.021750, 'P5': -0.032319, 'P6': -0.018126, 'P7': -0.009686 };
+g_spherePositions['rdp_0.9'] = { 'name': 'rdp_0.9', 'color': 0, 'x': 0.142724, 'y': -0.040280, 'z': 0.010708, 'P1': 0.142724, 'P2': -0.040280, 'P3': 0.010708, 'P4': 0.016418, 'P5': -0.022432, 'P6': -0.024887, 'P7': -0.012929 };
+g_spherePositions['rdp_1.0'] = { 'name': 'rdp_1.0', 'color': 0, 'x': 0.222492, 'y': -0.106911, 'z': 0.058031, 'P1': 0.222492, 'P2': -0.106911, 'P3': 0.058031, 'P4': 0.021845, 'P5': 0.095233, 'P6': 0.004158, 'P7': -0.031428 };
+g_spherePositions['rtax_single'] = { 'name': 'rtax_single', 'color': 0, 'x': -0.027869, 'y': 0.026199, 'z': 0.104254, 'P1': -0.027869, 'P2': 0.026199, 'P3': 0.104254, 'P4': 0.013071, 'P5': 0.014764, 'P6': 0.038616, 'P7': -0.013589 };
+g_spherePositions['rtax_paired'] = { 'name': 'rtax_paired', 'color': 0, 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'P1': -0.056876, 'P2': 0.011415, 'P3': 0.090549, 'P4': 0.072356, 'P5': -0.046225, 'P6': 0.043834, 'P7': -0.014880 };
+g_spherePositions['Expected'] = { 'name': 'Expected', 'color': 0, 'x': -0.235632, 'y': -0.410986, 'z': -0.068966, 'P1': -0.235632, 'P2': -0.410986, 'P3': -0.068966, 'P4': 0.009339, 'P5': -0.003314, 'P6': -0.000712, 'P7': 0.003002 };
+
+var g_ellipsesDimensions = new Array();
+var g_segments = 16, g_rings = 16, g_radius = 0.005937;
+var g_xAxisLength = 0.494770;
+var g_yAxisLength = 0.453089;
+var g_zAxisLength = 0.173221;
+var g_xMaximumValue = 0.259138;
+var g_yMaximumValue = 0.042103;
+var g_zMaximumValue = 0.104254;
+var g_xMinimumValue = -0.235632;
+var g_yMinimumValue = -0.410986;
+var g_zMinimumValue = -0.068966;
+var g_maximum = 0.410986;
+var g_pc1Label = "PC1 (43 %)";
+var g_pc2Label = "PC2 (30 %)";
+var g_pc3Label = "PC3 (18 %)";
+var g_number_of_custom_axes = 0;
+var g_fractionExplained = [0.430123, 0.302330, 0.176340, 0.032035, 0.022806, 0.012577, 0.011794];
+var g_fractionExplainedRounded = [43, 30, 18, 3, 2, 1, 1];
+
+var g_taxaPositions = new Array();
+g_taxaPositions['0'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Bacteroidaceae;g__Bacteroides', 'x': -0.001212, 'y': 0.002213, 'z': -0.000213, 'radius': 5.000000};
+g_taxaPositions['1'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Streptococcaceae;g__Streptococcus', 'x': 0.004323, 'y': 0.010334, 'z': 0.000556, 'radius': 1.831711};
+g_taxaPositions['2'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Lachnospiraceae;g__[Ruminococcus]', 'x': 0.016376, 'y': 0.014255, 'z': -0.011731, 'radius': 1.820543};
+g_taxaPositions['3'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Lachnospiraceae;g__Dorea', 'x': -0.008043, 'y': 0.011520, 'z': -0.008071, 'radius': 1.751354};
+g_taxaPositions['4'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__', 'x': -0.027987, 'y': 0.027736, 'z': 0.007735, 'radius': 1.566813};
+g_taxaPositions['5'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Bifidobacteriales;f__Bifidobacteriaceae;g__Bifidobacterium', 'x': -0.000956, 'y': -0.000037, 'z': -0.000409, 'radius': 1.293622};
+g_taxaPositions['6'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Verrucomicrobia;c__Verrucomicrobiae;o__Verrucomicrobiales;f__Verrucomicrobiaceae;g__Akkermansia', 'x': 0.002321, 'y': 0.006021, 'z': 0.000719, 'radius': 1.190224};
+g_taxaPositions['7'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Ruminococcaceae;g__Faecalibacterium', 'x': -0.006986, 'y': 0.017418, 'z': -0.040597, 'radius': 1.013789};
+g_taxaPositions['8'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Lachnospiraceae;g__Lachnospira', 'x': 0.006261, 'y': 0.014331, 'z': 0.002320, 'radius': 0.917147};
+g_taxaPositions['9'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__[Tissierellaceae];g__Anaerococcus', 'x': 0.003000, 'y': 0.016137, 'z': 0.001316, 'radius': 0.904443};
+g_taxaPositions['10'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Porphyromonadaceae;g__Parabacteroides', 'x': -0.000275, 'y': 0.000012, 'z': -0.002210, 'radius': 0.893911};
+g_taxaPositions['11'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Clostridium', 'x': -0.054742, 'y': 0.017175, 'z': 0.000237, 'radius': 0.868628};
+g_taxaPositions['12'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Lachnospiraceae;g__Blautia', 'x': -0.012590, 'y': -0.016993, 'z': -0.003211, 'radius': 0.854162};
+g_taxaPositions['13'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;Other', 'x': 0.131743, 'y': -0.040755, 'z': 0.016488, 'radius': 0.835646};
+g_taxaPositions['14'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Lachnospiraceae;Other', 'x': 0.107227, 'y': -0.029112, 'z': 0.020181, 'radius': 0.804291};
+g_taxaPositions['15'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Lachnospiraceae;g__', 'x': -0.062475, 'y': 0.027029, 'z': 0.053749, 'radius': 0.755061};
+g_taxaPositions['16'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Ruminococcaceae;g__', 'x': -0.090382, 'y': -0.000400, 'z': 0.076682, 'radius': 0.719201};
+g_taxaPositions['17'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Edwardsiella', 'x': 0.002139, 'y': -0.004585, 'z': -0.036784, 'radius': 0.718127};
+g_taxaPositions['18'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Clostridiaceae;Other', 'x': 0.104927, 'y': -0.013837, 'z': -0.008164, 'radius': 0.655655};
+g_taxaPositions['19'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Ruminococcaceae;g__Ruminococcus', 'x': -0.069102, 'y': -0.104448, 'z': -0.019763, 'radius': 0.638383};
+g_taxaPositions['20'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Ruminococcaceae;Other', 'x': 0.143628, 'y': -0.042354, 'z': 0.024684, 'radius': 0.625466};
+g_taxaPositions['21'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Rikenellaceae;g__', 'x': -0.027008, 'y': -0.028029, 'z': -0.004699, 'radius': 0.623436};
+g_taxaPositions['22'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Lachnospiraceae;g__Coprococcus', 'x': -0.113897, 'y': -0.019245, 'z': 0.074432, 'radius': 0.623237};
+g_taxaPositions['23'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Erwinia', 'x': -0.021505, 'y': 0.037455, 'z': -0.055286, 'radius': 0.595946};
+g_taxaPositions['24'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Ruminococcaceae;g__Anaerotruncus', 'x': -0.030478, 'y': -0.044272, 'z': -0.010125, 'radius': 0.592977};
+g_taxaPositions['25'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Erysipelotrichi;o__Erysipelotrichales;f__Erysipelotrichaceae;g__[Eubacterium]', 'x': 0.007119, 'y': 0.014100, 'z': 0.002099, 'radius': 0.591581};
+g_taxaPositions['26'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Klebsiella', 'x': -0.022935, 'y': 0.038819, 'z': -0.058443, 'radius': 0.591129};
+g_taxaPositions['27'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Lachnospiraceae;g__Roseburia', 'x': -0.031673, 'y': -0.056006, 'z': -0.013852, 'radius': 0.579538};
+g_taxaPositions['28'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;Other;Other;Other;Other;Other', 'x': 0.216308, 'y': -0.099215, 'z': 0.056277, 'radius': 0.570672};
+g_taxaPositions['29'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;g__Lactobacillus', 'x': -0.003131, 'y': 0.015300, 'z': 0.012523, 'radius': 0.566660};
+g_taxaPositions['30'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Aeromonadales;f__Aeromonadaceae;g__', 'x': -0.099714, 'y': 0.027928, 'z': 0.091824, 'radius': 0.558514};
+g_taxaPositions['31'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Eubacteriaceae;g__Eubacterium', 'x': -0.235632, 'y': -0.410986, 'z': -0.068966, 'radius': 0.539693};
+g_taxaPositions['32'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Actinobacteria;c__Coriobacteriia;o__Coriobacteriales;f__Coriobacteriaceae;g__Collinsella', 'x': -0.010613, 'y': 0.023624, 'z': -0.002531, 'radius': 0.538849};
+g_taxaPositions['33'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;Other;Other', 'x': 0.208130, 'y': -0.094269, 'z': 0.058678, 'radius': 0.529226};
+g_taxaPositions['34'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;Other;Other;Other', 'x': 0.113770, 'y': -0.043220, 'z': 0.061970, 'radius': 0.528887};
+g_taxaPositions['35'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;Other;Other', 'x': 0.213459, 'y': -0.097271, 'z': 0.063044, 'radius': 0.526676};
+g_taxaPositions['36'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Escherichia', 'x': -0.235632, 'y': -0.410986, 'z': -0.068966, 'radius': 0.526461};
+g_taxaPositions['37'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Proteus', 'x': -0.141345, 'y': -0.245843, 'z': -0.041246, 'radius': 0.521639};
+g_taxaPositions['38'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Enterobacter', 'x': -0.196687, 'y': -0.324279, 'z': -0.065699, 'radius': 0.516378};
+g_taxaPositions['39'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;Other;Other;Other;Other', 'x': 0.217174, 'y': -0.102685, 'z': 0.057117, 'radius': 0.515858};
+g_taxaPositions['40'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Providencia', 'x': -0.209687, 'y': -0.363970, 'z': -0.062259, 'radius': 0.514853};
+g_taxaPositions['41'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Anaerococcus', 'x': -0.235632, 'y': -0.410986, 'z': -0.068966, 'radius': 0.513228};
+g_taxaPositions['42'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Coriobacteriia;o__Coriobacteriales;f__Coriobacteriaceae;g__Collinsella', 'x': -0.235632, 'y': -0.410986, 'z': -0.068966, 'radius': 0.513228};
+g_taxaPositions['43'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Moraxellaceae;g__Acinetobacter', 'x': 0.006484, 'y': 0.013935, 'z': 0.003441, 'radius': 0.509929};
+g_taxaPositions['44'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__;g__', 'x': -0.072764, 'y': 0.024655, 'z': 0.072810, 'radius': 0.508040};
+g_taxaPositions['45'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;Other;Other;Other;Other', 'x': 0.200561, 'y': -0.085442, 'z': 0.049339, 'radius': 0.506507};
+g_taxaPositions['46'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Lentisphaerae;c__[Lentisphaeria];o__Victivallales;f__Victivallaceae;g__', 'x': 0.007324, 'y': 0.013972, 'z': 0.002192, 'radius': 0.506331};
+g_taxaPositions['47'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;Other;Other;Other;Other', 'x': 0.211248, 'y': -0.097442, 'z': 0.052144, 'radius': 0.505247};
+g_taxaPositions['48'] = { 'lineage': 'MockMiSeq.even;Unknown;Other;Other;Other;Other;Other', 'x': 0.258551, 'y': -0.126089, 'z': 0.083495, 'radius': 0.504503};
+g_taxaPositions['49'] = { 'lineage': 'MockMiSeq.even;Unclassified;Other;Other;Other;Other;Other', 'x': 0.222114, 'y': -0.106593, 'z': 0.057834, 'radius': 0.504356};
+g_taxaPositions['50'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Salmonella', 'x': -0.049159, 'y': 0.036827, 'z': -0.010967, 'radius': 0.503154};
+g_taxaPositions['51'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Bifidobacteriales;f__Bifidobacteriaceae;Other', 'x': 0.162956, 'y': -0.062623, 'z': 0.030966, 'radius': 0.502436};
+g_taxaPositions['52'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Streptococcaceae;Other', 'x': 0.241550, 'y': -0.116644, 'z': 0.071595, 'radius': 0.502180};
+g_taxaPositions['53'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Actinobacteria;c__Coriobacteriia;o__Coriobacteriales;f__Coriobacteriaceae;Other', 'x': 0.204888, 'y': -0.088943, 'z': 0.048786, 'radius': 0.501957};
+g_taxaPositions['54'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Bifidobacteriales;f__Bifidobacteriaceae;g__', 'x': -0.084408, 'y': 0.030462, 'z': 0.060163, 'radius': 0.501687};
+g_taxaPositions['55'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Lachnospiraceae;g__Moryella', 'x': -0.028050, 'y': 0.040102, 'z': -0.059408, 'radius': 0.501415};
+g_taxaPositions['56'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Serratia', 'x': -0.052079, 'y': 0.037304, 'z': -0.014295, 'radius': 0.501411};
+g_taxaPositions['57'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Lachnospiraceae;g__Anaerostipes', 'x': 0.007854, 'y': 0.013700, 'z': 0.002299, 'radius': 0.501400};
+g_taxaPositions['58'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Trabulsiella', 'x': -0.025996, 'y': 0.034085, 'z': -0.029870, 'radius': 0.501364};
+g_taxaPositions['59'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__Burkholderiales;f__;g__', 'x': -0.090393, 'y': 0.026409, 'z': 0.092710, 'radius': 0.501195};
+g_taxaPositions['60'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__[Tissierellaceae];Other', 'x': 0.146408, 'y': -0.047464, 'z': 0.010842, 'radius': 0.501081};
+g_taxaPositions['61'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Flavobacteriia;o__Flavobacteriales;f__[Weeksellaceae];g__Cloacibacterium', 'x': 0.007854, 'y': 0.013700, 'z': 0.002299, 'radius': 0.500664};
+g_taxaPositions['62'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Citrobacter', 'x': -0.019682, 'y': 0.037169, 'z': -0.051195, 'radius': 0.500646};
+g_taxaPositions['63'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;Other;Other;Other', 'x': 0.092151, 'y': -0.014119, 'z': -0.009285, 'radius': 0.500588};
+g_taxaPositions['64'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Actinobacteria;c__Actinobacteria;Other;Other;Other', 'x': 0.221665, 'y': -0.102547, 'z': 0.057711, 'radius': 0.500575};
+g_taxaPositions['65'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;Other;Other', 'x': 0.219618, 'y': -0.101045, 'z': 0.059398, 'radius': 0.500553};
+g_taxaPositions['66'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Porphyromonadaceae;Other', 'x': 0.085174, 'y': -0.002133, 'z': -0.013105, 'radius': 0.500546};
+g_taxaPositions['67'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Bacteroidaceae;Other', 'x': 0.164914, 'y': -0.063931, 'z': 0.029229, 'radius': 0.500325};
+g_taxaPositions['68'] = { 'lineage': 'MockMiSeq.even;NO_HIT', 'x': -0.076551, 'y': 0.021998, 'z': 0.092828, 'radius': 0.500323};
+g_taxaPositions['69'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__;f__;g__', 'x': -0.069376, 'y': 0.021135, 'z': 0.093671, 'radius': 0.500314};
+g_taxaPositions['70'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__Burkholderiales;f__Comamonadaceae;g__Diaphorobacter', 'x': -0.007624, 'y': 0.034355, 'z': -0.054265, 'radius': 0.500263};
+g_taxaPositions['71'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfovibrionales;f__Desulfovibrionaceae;g__Desulfovibrio', 'x': -0.089455, 'y': 0.027681, 'z': 0.093599, 'radius': 0.500214};
+g_taxaPositions['72'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;Other;Other;Other', 'x': 0.232919, 'y': -0.111450, 'z': 0.066929, 'radius': 0.500214};
+g_taxaPositions['73'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__Burkholderiales;f__Comamonadaceae;Other', 'x': 0.113457, 'y': -0.025798, 'z': 0.002754, 'radius': 0.500192};
+g_taxaPositions['74'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Bacillaceae;g__Bacillus', 'x': -0.008786, 'y': 0.023014, 'z': -0.002607, 'radius': 0.500183};
+g_taxaPositions['75'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Verrucomicrobia;Other;Other;Other;Other', 'x': 0.094027, 'y': -0.020167, 'z': -0.003129, 'radius': 0.500132};
+g_taxaPositions['76'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__', 'x': -0.046461, 'y': 0.024204, 'z': 0.026613, 'radius': 0.500123};
+g_taxaPositions['77'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__Burkholderiales;f__Comamonadaceae;g__Alicycliphilus', 'x': -0.099720, 'y': 0.027928, 'z': 0.091823, 'radius': 0.500103};
+g_taxaPositions['78'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__Burkholderiales;f__Comamonadaceae;g__', 'x': -0.063878, 'y': 0.022228, 'z': 0.095310, 'radius': 0.500067};
+g_taxaPositions['79'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Arsenophonus', 'x': -0.031891, 'y': 0.041703, 'z': -0.061327, 'radius': 0.500062};
+g_taxaPositions['80'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Aeromonadales;f__Aeromonadaceae;g__Oceanisphaera', 'x': -0.030307, 'y': 0.041109, 'z': -0.060654, 'radius': 0.500049};
+g_taxaPositions['81'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Moraxellaceae;g__', 'x': -0.067060, 'y': 0.027142, 'z': 0.097474, 'radius': 0.500045};
+g_taxaPositions['82'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Erysipelotrichi;o__Erysipelotrichales;f__Erysipelotrichaceae;Other', 'x': 0.214241, 'y': -0.096919, 'z': 0.055718, 'radius': 0.500040};
+g_taxaPositions['83'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Lactobacillaceae;Other', 'x': 0.251423, 'y': -0.122368, 'z': 0.078489, 'radius': 0.500038};
+g_taxaPositions['84'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Actinobacteria;Other;Other;Other;Other', 'x': 0.214867, 'y': -0.098520, 'z': 0.052988, 'radius': 0.500036};
+g_taxaPositions['85'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__;f__;g__', 'x': -0.085383, 'y': 0.025648, 'z': 0.093218, 'radius': 0.500031};
+g_taxaPositions['86'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Halanaerobiales;f__Halobacteroidaceae;g__Natroniella', 'x': -0.033442, 'y': 0.042094, 'z': -0.061674, 'radius': 0.500031};
+g_taxaPositions['87'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Morganella', 'x': -0.031709, 'y': 0.041673, 'z': -0.061197, 'radius': 0.500027};
+g_taxaPositions['88'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Chromatiales;f__;g__', 'x': -0.093599, 'y': 0.025569, 'z': 0.091641, 'radius': 0.500027};
+g_taxaPositions['89'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Verrucomicrobia;c__Verrucomicrobiae;o__Verrucomicrobiales;f__Verrucomicrobiaceae;Other', 'x': 0.189741, 'y': -0.080447, 'z': 0.035597, 'radius': 0.500025};
+g_taxaPositions['90'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Photorhabdus', 'x': -0.033333, 'y': 0.042082, 'z': -0.061636, 'radius': 0.500022};
+g_taxaPositions['91'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Legionellales;f__;g__', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500022};
+g_taxaPositions['92'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Eubacteriaceae;g__Garciella', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500022};
+g_taxaPositions['93'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__;g__', 'x': -0.032740, 'y': 0.041948, 'z': -0.061441, 'radius': 0.500018};
+g_taxaPositions['94'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__Burkholderiales;f__Comamonadaceae;g__Pelomonas', 'x': -0.032740, 'y': 0.041948, 'z': -0.061441, 'radius': 0.500018};
+g_taxaPositions['95'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Actinomycetaceae;g__Candidatus Ancillula', 'x': -0.099716, 'y': 0.027929, 'z': 0.091815, 'radius': 0.500018};
+g_taxaPositions['96'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Thiotrichales;f__Piscirickettsiaceae;g__', 'x': -0.099716, 'y': 0.027929, 'z': 0.091815, 'radius': 0.500018};
+g_taxaPositions['97'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Enterococcaceae;g__Enterococcus', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500016};
+g_taxaPositions['98'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Plesiomonas', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500016};
+g_taxaPositions['99'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Oceanospirillales;f__Saccharospirillaceae;g__ML110J-20', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500013};
+g_taxaPositions['100'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Thiotrichales;f__Thiotrichaceae;g__Thiothrix', 'x': -0.033333, 'y': 0.042082, 'z': -0.061636, 'radius': 0.500013};
+g_taxaPositions['101'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__[Tissierellaceae];g__Tepidimicrobium', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500011};
+g_taxaPositions['102'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Leuconostocaceae;g__Fructobacillus', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500011};
+g_taxaPositions['103'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;Other;Other', 'x': 0.240815, 'y': -0.116701, 'z': 0.070988, 'radius': 0.500009};
+g_taxaPositions['104'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Porphyromonadaceae;g__Porphyromonas', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500009};
+g_taxaPositions['105'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Cytophagia;o__Cytophagales;f__Cytophagaceae;g__', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500009};
+g_taxaPositions['106'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfobacterales;f__Desulfobulbaceae;g__', 'x': -0.047207, 'y': 0.016343, 'z': 0.095118, 'radius': 0.500009};
+g_taxaPositions['107'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Thermoactinomycetaceae;g__', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500007};
+g_taxaPositions['108'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Porphyromonadaceae;g__Dysgonomonas', 'x': -0.033466, 'y': 0.042103, 'z': -0.061676, 'radius': 0.500004};
+g_taxaPositions['109'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Cytophagia;o__Cytophagales;f__Flammeovirgaceae;g__Persicobacter', 'x': -0.033466, 'y': 0.042103, 'z': -0.061676, 'radius': 0.500004};
+g_taxaPositions['110'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Verrucomicrobia;c__[Methylacidiphilae];o__;f__;g__', 'x': -0.033466, 'y': 0.042103, 'z': -0.061676, 'radius': 0.500004};
+g_taxaPositions['111'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Thermoactinomycetaceae;g__Laceyella', 'x': -0.033466, 'y': 0.042103, 'z': -0.061676, 'radius': 0.500004};
+g_taxaPositions['112'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Aeromonadales;f__Aeromonadaceae;Other', 'x': -0.027647, 'y': 0.040477, 'z': -0.060756, 'radius': 0.500002};
+g_taxaPositions['113'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;Other;Other;Other', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500002};
+g_taxaPositions['114'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Rikenellaceae;Other', 'x': 0.002766, 'y': 0.025492, 'z': -0.041531, 'radius': 0.500002};
+g_taxaPositions['115'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Thiohalorhabdales;f__;g__', 'x': -0.027869, 'y': 0.026199, 'z': 0.104254, 'radius': 0.500000};
+g_taxaPositions['116'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Erysipelotrichi;o__Erysipelotrichales;f__Erysipelotrichaceae;g__Erysipelothrix', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500000};
+g_taxaPositions['117'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__Proteiniclasticum', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500000};
+g_taxaPositions['118'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Chromatiales;f__Chromatiaceae;g__', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500000};
+g_taxaPositions['119'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Actinobacteria;c__Nitriliruptoria;o__Nitriliruptorales;f__Nitriliruptoraceae;g__', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500000};
+g_taxaPositions['120'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Vibrionales;f__Vibrionaceae;g__Photobacterium', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500000};
+g_taxaPositions['121'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Marinilabiaceae;g__', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500000};
+g_taxaPositions['122'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Clostridiaceae;g__02d06', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500000};
+g_taxaPositions['123'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Bifidobacteriales;f__Bifidobacteriaceae;g__Bombiscardovia', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500000};
+g_taxaPositions['124'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__;o__;f__;g__', 'x': -0.056876, 'y': 0.011415, 'z': 0.090549, 'radius': 0.500000};
+g_taxaPositions['125'] = { 'lineage': 'MockMiSeq.even;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Pseudomonadales;f__Moraxellaceae;Other', 'x': -0.027766, 'y': 0.040519, 'z': -0.060579, 'radius': 0.500000};
+
+
+var g_vectorPositions = new Array();
+
+var g_comparisonPositions = new Array();
+document.getElementById("logo").style.display = 'none';
+document.getElementById("logotable").style.display = 'none';
+
+ </script>
+</head>
+
+<body>    
+
+<div id="plotToggle">
+    <form>
+      <div id="plottype">
+        <input id="pcoa" type="radio" id="pcoa" name="plottype" checked="checked" /><label for="pcoa">PCoA</label>
+        <input id="parallel" type="radio" id="parallel" name="plottype" /><label for="parallel">Parallel</label>
+      </div>
+    </form>
+</div>
+<div id="pcoaPlotWrapper" class="plotWrapper">
+    <label id="pointCount" class="ontop">
+    </label>
+
+    <div id="finder" class="arrow-right">
+    </div>
+
+    <div id="labels" class="unselectable">
+    </div>
+
+    <div id="taxalabels" class="unselectable">
+    </div>
+
+    <div id="axislabels" class="axislabels">
+    </div>
+
+    <div id="main_plot">
+    </div>
+</div>
+
+<div id="parallelPlotWrapper" class="plotWrapper">
+</div>
+
+<div id="menu">
+    <div id="menutabs">
+        <ul>
+            <li><a href="#keytab">Key</a></li>
+            <li><a href="#colorby">Colors</a></li>
+            <li><a href="#showby">Visibility</a></li>
+            <li><a href="#scalingby">Scaling</a></li>
+            <li><a href="#labelby">Labels</a></li>
+            <li><a href="#axes">Axes</a></li>
+            <li><a href="#view">View</a></li>
+            <li><a href="#settings">Options</a></li>
+        </ul>
+        <div id="keytab">
+            <form name="keyFilter">
+            <label>Filter  </label><input name="filterBox" type="text" onkeyup="filterKey()"></input>
+            </form>
+            <div id="key">
+            </div>
+        </div>
+        <div id="colorby">
+            <br>
+            <br>
+            <table>
+                <tr><td><div id="taxaspherescolor" class="colorbox" name="taxaspherescolor"></div></td><td title="taxacolor">Taxa Spheres Color</td></tr>
+            </table>
+            <br>
+            <select id="colorbycombo" onchange="colorByMenuChanged()" size="3">
+            </select>
+            <div class="list" id="colorbylist">
+            </div>
+        </div>
+        <div id="showby">
+            <br>
+            <form name="biplotsvisibility">
+            <input type="checkbox" onClick="toggleBiplotVisibility()" checked>Biplots Visibility</input>
+            </form>
+            <br>
+            <select id="showbycombo" onchange="showByMenuChanged()">
+            </select>
+            <div class="list" id="showbylist">
+            </div>
+        </div>
+        <div id="scalingby">
+            <select id="scalingbycombo" onchange="scalingByMenuChanged()">
+            </select>
+            <div class="list" id="scalingbylist">
+            </div>
+        </div>
+        <div id="labelby">
+        <div id="labelsTop">
+            <form name="plotoptions">
+            <input type="checkbox" onClick="toggleLabels()">Samples Label Visibility</input>
+            </form>
+            <form name="biplotoptions">
+            <input type="checkbox" onClick="toggleTaxaLabels()">Biplots Label Visibility</input>
+            </form>
+            <br>
+            <label for="labelopacity" class="text">Label Opacity</label>
+            <label id="labelopacity" class="slidervalue"></label>
+            <div id="lopacityslider" class="slider-range-max"></div>
+            <div id="labelColorHolder clearfix">
+            <table><tr>
+            <td><div id="labelColor" class="colorbox">
+            </div></td><td><label>Master Label Color</label></td>
+            </tr></table></div>
+        </div>
+            <br>
+            <select id="labelcombo" onchange="labelMenuChanged()">
+            </select>
+            <div class="list" id="labellist">
+            </div>
+        </div>
+        <div id="axes">
+            <div id="pcoaaxes">
+                <div class="list" id="axeslist">
+                </div>
+            </div>
+        </div>
+        <div id="view">
+            <table>
+                <tr><td><div id="axeslabelscolor" class="colorbox" name="axeslabelscolor"></div></td><td title="Axes Labels Color">Axes Labels Color</td></tr>
+                <tr><td><div id="axescolor" class="colorbox" name="axescolor"></div></td><td title="Axes Color Title">Axes Color</td></tr>
+                <tr><td><div id="rendererbackgroundcolor"class="colorbox" name="rendererbackgroundcolor"></div></td><td title="Background Color Title">Background Color</td></tr>
+            </table>
+            <br>
+            <form name="settingsoptionscolor">
+            <input type="checkbox" onchange="toggleContinuousAndDiscreteColors(this)" id="discreteorcontinuouscolors" name="discreteorcontinuouscolors">  Use gradient colors</input>
+            </form>
+            <div id="pcoaviewoptions" class="">
+                <br>
+                <input id="reset" class="button" type="submit" value="Recenter Camera" style="" onClick="resetCamera()">
+                <br>
+                <br>
+                <label for="sphereopacity" class="text">Sphere Opacity</label>
+                <label id="sphereopacity" class="slidervalue"></label>
+                <div id="sopacityslider" class="slider-range-max"></div>
+                <br>
+                <label for="sphereradius" class="text">Sphere Scale</label>
+                <label id="sphereradius" class="slidervalue"></label>
+                <div id="sradiusslider" class="slider-range-max"></div>
+                <br>
+            </div>
+            <br>
+        </div>
+        <div id="settings">
+            <br>
+            <input id="saveas" class="button" type="submit" value="Save as SVG" style="" onClick="saveSVG()">
+            <br>
+            <br>
+            <div id="pcoaoptions" class="">
+                <form name="settingsoptions">
+                    <input type="checkbox" onchange="toggleScaleCoordinates(this)" id="scale_checkbox" name="scale_checkbox">Scale coords by percent explained</input>
+                </form>
+            </div>
+            <br>
+            <div id="paralleloptions" class="">
+            </div>
+        </div>
+    </div>  
+</div>
+</body>
+
+</html>
