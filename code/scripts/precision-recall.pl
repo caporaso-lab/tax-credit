@@ -46,20 +46,18 @@ foreach my $level (@levels) { #iterate through each assignment level
 		#generate new expected values key for each level for each input directory except top level	
 		#Open top level expected taxonomy key, extract taxonomy strings and generate new strings
 		#***LIMITATION: Assumes that taxonomy string is found in all samples in expected taxonomy key
-		if ($level !~ $top_level) {
-			open(my $expected_key, "<", "$dir/$input_directory/Expected/otu_table_mc2_w_taxa_L$top_level.txt") or die "error reading $dir/$input_directory/Expected/otu_table_mc2_w_taxa_L$top_level.txt: $!";
-			my $head = <$expected_key>;
-			while (<$expected_key>) {
-				my @abundances = split("\t",$_);
-				my $original_taxonomy_string = shift (@abundances);
-				my @taxonomy_levels = split(";",$original_taxonomy_string);
-				my @new_taxonomy_levels = @taxonomy_levels[0..$level-1];
-				my $taxonomy_string = join (";",@new_taxonomy_levels);
-				if ($taxonomy_string ~~ @taxonomy_strings) {}
-				else {push (@taxonomy_strings, $taxonomy_string)}
-			}
-			close $expected_key;
+		open(my $expected_key, "<", "$dir/$input_directory/Expected/otu_table_mc2_w_taxa_L$top_level.txt") or die "error reading $dir/$input_directory/Expected/otu_table_mc2_w_taxa_L$top_level.txt: $!";
+		my $head = <$expected_key>;
+		while (<$expected_key>) {
+			my @abundances = split("\t",$_);
+			my $original_taxonomy_string = shift (@abundances);
+			my @taxonomy_levels = split(";",$original_taxonomy_string);
+			my @new_taxonomy_levels = @taxonomy_levels[0..$level-1];
+			my $taxonomy_string = join (";",@new_taxonomy_levels);
+			if ($taxonomy_string ~~ @taxonomy_strings) {}
+			else {push (@taxonomy_strings, $taxonomy_string)}
 		}
+		close $expected_key;
 
 		foreach my $assignment_method (@assignment_methods) { #read all subdirectories for sum_taxa files at specified level
 			
@@ -121,7 +119,7 @@ foreach my $level (@levels) { #iterate through each assignment level
 					$recall = $true_positive{$sample} / ($true_positive{$sample} + $false_negative{$sample});
 					$f_measure = 2 * $precision * $recall / ($precision + $recall);
 				}
-				print $out "$level $assignment_method\t$level $assignment_method\t$level\t$assignment_method\t$precision\t$recall\t$f_measure\t$true_positive{$sample}\t$false_positive{$sample}\t$false_negative{$sample}\n";
+				print $out "$level $assignment_method\t$level $assignment_method\t$level\t$assignment_method\t$sample\t$precision\t$recall\t$f_measure\t$true_positive{$sample}\t$false_positive{$sample}\t$false_negative{$sample}\n";
 			}
 			close $in;
 		}
