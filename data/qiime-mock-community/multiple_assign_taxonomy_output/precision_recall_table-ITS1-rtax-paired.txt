@@ -1,0 +1,21 @@
+Precison-Recall Output 
+Values: precision,recall,f-measure,true positive, false positive,false negative
+Set	Level_Method	Level	Method	Community	Sample	P	R	F	TP	FP	FN
+2 rtax_paired	2 rtax_paired	2	rtax_paired	ITS1	Mock.3	0.333333333333333	1	0.5	1	2	0
+2 rtax_paired	2 rtax_paired	2	rtax_paired	ITS1	Mock.1	0.333333333333333	1	0.5	1	2	0
+2 rtax_paired	2 rtax_paired	2	rtax_paired	ITS1	Mock.2	0.333333333333333	1	0.5	1	2	0
+3 rtax_paired	3 rtax_paired	3	rtax_paired	ITS1	Mock.3	0.428571428571429	1	0.6	3	4	0
+3 rtax_paired	3 rtax_paired	3	rtax_paired	ITS1	Mock.1	0.428571428571429	1	0.6	3	4	0
+3 rtax_paired	3 rtax_paired	3	rtax_paired	ITS1	Mock.2	0.428571428571429	1	0.6	3	4	0
+4 rtax_paired	4 rtax_paired	4	rtax_paired	ITS1	Mock.3	0.428571428571429	0.75	0.545454545454545	3	4	1
+4 rtax_paired	4 rtax_paired	4	rtax_paired	ITS1	Mock.1	0.428571428571429	0.75	0.545454545454545	3	4	1
+4 rtax_paired	4 rtax_paired	4	rtax_paired	ITS1	Mock.2	0.428571428571429	0.75	0.545454545454545	3	4	1
+5 rtax_paired	5 rtax_paired	5	rtax_paired	ITS1	Mock.3	0.444444444444444	0.571428571428571	0.5	4	5	3
+5 rtax_paired	5 rtax_paired	5	rtax_paired	ITS1	Mock.1	0.444444444444444	0.571428571428571	0.5	4	5	3
+5 rtax_paired	5 rtax_paired	5	rtax_paired	ITS1	Mock.2	0.444444444444444	0.571428571428571	0.5	4	5	3
+6 rtax_paired	6 rtax_paired	6	rtax_paired	ITS1	Mock.3	0.384615384615385	0.555555555555556	0.454545454545455	5	8	4
+6 rtax_paired	6 rtax_paired	6	rtax_paired	ITS1	Mock.1	0.384615384615385	0.555555555555556	0.454545454545455	5	8	4
+6 rtax_paired	6 rtax_paired	6	rtax_paired	ITS1	Mock.2	0.384615384615385	0.555555555555556	0.454545454545455	5	8	4
+7 rtax_paired	7 rtax_paired	7	rtax_paired	ITS1	Mock.3	0.1875	0.3	0.230769230769231	3	13	7
+7 rtax_paired	7 rtax_paired	7	rtax_paired	ITS1	Mock.1	0.1875	0.3	0.230769230769231	3	13	7
+7 rtax_paired	7 rtax_paired	7	rtax_paired	ITS1	Mock.2	0.1875	0.3	0.230769230769231	3	13	7

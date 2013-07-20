@@ -23,14 +23,17 @@ die "usage: precision-recall.pl <stem directory fp> <comma-separated list of inp
 my $dir = $ARGV[0];
 my @input_directories = split(",",$ARGV[1]);
 my @assignment_methods = split(",",$ARGV[2]);
-my @levels = split(",",$ARGV[3]);
 my $methods_list = join("\t",@assignment_methods);
-my $top_level = pop(@levels);
+
+my @levels = split(",",$ARGV[3]);
+my @sorted_levels = sort {$a <=> $b} @levels;
+my $level_array_size = @levels;
+my $top_level = $sorted_levels[$level_array_size-1];
 
 #Open and print header lines for output table for this $level
 open(my $out, ">", "$dir/precision_recall_table.txt") or die "error reading $dir/precision_recall_table.txt for reading"; 
 #print $out "Precison-Recall Output Level $level\nValues: precision,recall,f,false positive,false negative\nInput\t$methods_list\n";
-print $out "Precison-Recall Output \nValues: precision,recall,f-measure,true positive, false positive,false negative\nSet\tLevel_Method\tLevel\tMethod\tSample\tP\tR\tF\tTP\tFP\tFN\n";
+print $out "Precison-Recall Output \nValues: precision,recall,f-measure,true positive, false positive,false negative\nSet\tLevel_Method\tLevel\tMethod\tCommunity\tSample\tP\tR\tF\tTP\tFP\tFN\n";
 
 foreach my $level (@levels) { #iterate through each assignment level
 
@@ -86,16 +89,22 @@ foreach my $level (@levels) { #iterate through each assignment level
 				#set false negatives = size of expected taxonomy array
 				if ($taxonomy_string ~~ @taxonomy_strings) { # Does $taxonomy_string match Expected? If no, add to $false_positive count
 					for (my $i = 0; $i < @samples; $i++) { #  loop @samples and @abundances, match against Expected key and add to hash matrix
-						if ($abundances[$i] == 0) { #if the string matches but abundance is 0, that's a false negative
-							if (exists $false_negative{$samples[$i]}) {$false_negative{$samples[$i]}++}
-							else					             {$false_negative{$samples[$i]} = 1}
-						}
-						else { #if it matches and is not 0, that's true positive, also subtract from false negative count
+						if ($abundances[$i] != 0) { #if it matches and is not 0, that's true positive, also subtract from false negative count
 							if (exists $true_positive{$samples[$i]}) {$true_positive{$samples[$i]}++}
 							else					            {$true_positive{$samples[$i]} = 1}
 							if (exists $false_negative{$samples[$i]}) {$false_negative{$samples[$i]}--}
 							else					             {$false_negative{$samples[$i]} = -1}
 						}
+						#if ($abundances[$i] == 0) { #if the string matches but abundance is 0, that's a false negative
+							#if (exists $false_negative{$samples[$i]}) {$false_negative{$samples[$i]}++}
+							#else					             {$false_negative{$samples[$i]} = 1}
+						#}
+						#else { #if it matches and is not 0, that's true positive, also subtract from false negative count
+						#	if (exists $true_positive{$samples[$i]}) {$true_positive{$samples[$i]}++}
+						#	else					            {$true_positive{$samples[$i]} = 1}
+						#	if (exists $false_negative{$samples[$i]}) {$false_negative{$samples[$i]}--}
+						#	else					             {$false_negative{$samples[$i]} = -1}
+						#}
 					}
 				}
 				else { #if it didn't match, you have a false positive
@@ -119,7 +128,7 @@ foreach my $level (@levels) { #iterate through each assignment level
 					$recall = $true_positive{$sample} / ($true_positive{$sample} + $false_negative{$sample});
 					$f_measure = 2 * $precision * $recall / ($precision + $recall);
 				}
-				print $out "$level $assignment_method\t$level $assignment_method\t$level\t$assignment_method\t$sample\t$precision\t$recall\t$f_measure\t$true_positive{$sample}\t$false_positive{$sample}\t$false_negative{$sample}\n";
+				print $out "$level $assignment_method\t$level $assignment_method\t$level\t$assignment_method\t$input_directory\t$sample\t$precision\t$recall\t$f_measure\t$true_positive{$sample}\t$false_positive{$sample}\t$false_negative{$sample}\n";
 			}
 			close $in;
 		}
