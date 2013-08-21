@@ -15,8 +15,8 @@ __status__ = "Development"
 """Contains code to support the automated evaluation framework.
 """
 
-def find_and_process_tables(start_dir,
-                            biom_processor=abspath):
+def find_and_process_result_tables(start_dir,
+                                   biom_processor=abspath):
     """ given a start_dir, return list of tuples describing the table and containing the processed table
     
          start_dir: top-level directory to use when starting the walk
@@ -40,4 +40,28 @@ def find_and_process_tables(start_dir,
         dataset_dir, reference_id = split(reference_dir)
         _, dataset_id = split(dataset_dir)
         results.append((dataset_id, reference_id, method_id, param_id, biom_processor(table_fp)))
+    return results
+
+def find_and_process_expected_tables(start_dir,
+                                     biom_processor=abspath):
+    """ given a start_dir, return list of tuples describing the table and containing the processed table
+    
+         start_dir: top-level directory to use when starting the walk
+         biom_processor: takes a relative path to a biom file and does
+          something with it. default is call abspath on it to convert the
+          relative path to an absolute path, but could also be 
+          parse_biom_table, for example. Not sure if we'll want this, but 
+          it's easy to hook up.
+        
+        results = [(data-set-id, reference-id, biom_processor(table_fp)),
+                   ...
+                  ]
+    """
+    table_fps = glob(join(start_dir,'*','*','expected','table.biom'))
+    results = []
+    for table_fp in table_fps:
+        reference_dir, _ = split(table_fp)
+        dataset_dir, reference_id = split(reference_dir)
+        _, dataset_id = split(dataset_dir)
+        results.append((dataset_id, reference_id, biom_processor(table_fp)))
     return results
