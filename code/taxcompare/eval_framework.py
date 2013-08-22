@@ -79,7 +79,7 @@ def get_observed_observation_ids(table,sample_id=None):
     
     filtered_table = table.filterObservations(f=f)
     
-    result = set(table.ObservationIds)
+    result = set(filtered_table.ObservationIds)
     return result
 
 
