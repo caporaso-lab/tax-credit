@@ -65,3 +65,44 @@ def find_and_process_expected_tables(start_dir,
         _, dataset_id = split(dataset_dir)
         results.append((dataset_id, reference_id, biom_processor(table_fp)))
     return results
+
+def get_observed_observation_ids(table,sample_id=None):
+    """ Return the set of observation ids with count > 0 in sample_id
+    """
+    if sample_id is None:
+        sample_idx = 0
+    else:
+        sample_idx = table.SampleIds.index(sample_id)
+        
+    def f(v,id_,md):
+        return v[sample_idx] > 0.0
+    
+    filtered_table = table.filterObservations(f=f)
+    
+    result = set(table.ObservationIds)
+    return result
+
+
+def compute_prf(actual_table,
+                expected_table,
+                actual_sample_id=None,
+                expected_sample_id=None):
+    """
+    """
+    
+    actual_obs_ids = get_observed_observation_ids(actual_table,
+                                                  actual_sample_id)
+    expected_obs_ids = get_observed_observation_ids(expected_table,
+                                                    expected_sample_id)
+    
+    tp = len(actual_obs_ids & expected_obs_ids)
+    fp = len(actual_obs_ids - expected_obs_ids)
+    fn = len(expected_obs_ids - actual_obs_ids)
+    
+    p = tp / (tp + fp)
+    r = tp / (tp + fn)
+    f = (2 * p * r) / (p + r)
+    
+    return p, r, f
+
+
