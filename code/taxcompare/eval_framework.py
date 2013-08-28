@@ -2,6 +2,8 @@
 from __future__ import division
 from glob import glob
 from os.path import abspath, join, exists, split
+from collections import defaultdict
+from biom.parse import parse_biom_table
 
 __author__ = "Greg Caporaso"
 __copyright__ = "Copyright 2013, The QIIME project"
@@ -57,13 +59,22 @@ def find_and_process_expected_tables(start_dir,
                    ...
                   ]
     """
-    table_fps = glob(join(start_dir,'*','*','expected','table.biom'))
+    table_fps = glob(join(start_dir,'*','*','expected','table.L6-taxa.biom'))
     results = []
     for table_fp in table_fps:
-        reference_dir, _ = split(table_fp)
+        expected_dir, _ = split(table_fp)
+        reference_dir, _ = split(expected_dir)
         dataset_dir, reference_id = split(reference_dir)
         _, dataset_id = split(dataset_dir)
         results.append((dataset_id, reference_id, biom_processor(table_fp)))
+    return results
+
+def get_expected_tables_lookup(start_dir,
+                               biom_processor=abspath):
+    results = defaultdict(dict)
+    expected_tables = find_and_process_expected_tables(start_dir,biom_processor)
+    for dataset_id, reference_id, processed_table in expected_tables:
+        results[dataset_id][reference_id] = processed_table
     return results
 
 def get_observed_observation_ids(table,sample_id=None):
@@ -87,7 +98,7 @@ def compute_prf(actual_table,
                 expected_table,
                 actual_sample_id=None,
                 expected_sample_id=None):
-    """
+    """ Compute precision, recall, and f-measure based on presence/absence of observations
     """
     
     actual_obs_ids = get_observed_observation_ids(actual_table,
@@ -105,4 +116,34 @@ def compute_prf(actual_table,
     
     return p, r, f
 
+def collapse_by_L6_taxonomy(md):
+    result = ';'.join(md['taxonomy'][:6])
+    return result
 
+def compute_prfs(result_tables,
+                 expected_table_lookup):
+    """ Compute p, r, and f for a set of results
+    """
+    for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
+        ## parse the expected table, which is collapsed on genus-level taxonomy
+        expected_table_fp = expected_table_lookup[dataset_id][reference_id]
+        try:
+            expected_table_L6 = parse_biom_table(open(expected_table_fp,'U'))
+        except ValueError:
+            raise ValueError, "Couldn't parse BIOM table: %s" % expected_table_fp
+        
+        ## parse the actual table and collapse it on genus-level taxonomy
+        try:
+            actual_table = parse_biom_table(open(actual_table_fp,'U'))
+        except ValueError:
+            raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
+        actual_table_L6 = actual_table.collapseObservationsByMetadata(collapse_by_L6_taxonomy)
+        
+        ## compute precision, recall, and f-measure and yeild those values
+        try:
+            p,r,f = compute_prf(actual_table_L6,
+                                expected_table_L6)
+        except ZeroDivisionError:
+            p, r, f = -1., -1., -1.
+        yield (dataset_id, reference_id, method_id, params, p, f, f)
+        
