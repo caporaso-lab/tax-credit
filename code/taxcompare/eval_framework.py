@@ -120,30 +120,39 @@ def collapse_by_L6_taxonomy(md):
     result = ';'.join(md['taxonomy'][:6])
     return result
 
+def get_taxonomy_collapser(level):
+    def f(md):
+        result = ';'.join(md['taxonomy'][:level])
+        return result
+    return f
+
 def compute_prfs(result_tables,
-                 expected_table_lookup):
+                 expected_table_lookup,
+                 taxonomy_level=6):
     """ Compute p, r, and f for a set of results
     """
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
-        ## parse the expected table, which is collapsed on genus-level taxonomy
+        ## parse the expected table (unless taxonomy_level is specified, this should be 
+        ## collapsed on level 6 taxonomy)
         expected_table_fp = expected_table_lookup[dataset_id][reference_id]
         try:
-            expected_table_L6 = parse_biom_table(open(expected_table_fp,'U'))
+            expected_table = parse_biom_table(open(expected_table_fp,'U'))
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % expected_table_fp
         
-        ## parse the actual table and collapse it on genus-level taxonomy
+        ## parse the actual table and collapse it at the specified taxonomic level
         try:
             actual_table = parse_biom_table(open(actual_table_fp,'U'))
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
-        actual_table_L6 = actual_table.collapseObservationsByMetadata(collapse_by_L6_taxonomy)
+        collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
+        actual_table = actual_table.collapseObservationsByMetadata(collapse_by_taxonomy)
         
         ## compute precision, recall, and f-measure and yeild those values
         try:
-            p,r,f = compute_prf(actual_table_L6,
-                                expected_table_L6)
+            p,r,f = compute_prf(actual_table,
+                                expected_table)
         except ZeroDivisionError:
             p, r, f = -1., -1., -1.
-        yield (dataset_id, reference_id, method_id, params, p, f, f)
+        yield (dataset_id, reference_id, method_id, params, p, r, f)
         
