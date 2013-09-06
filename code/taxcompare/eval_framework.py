@@ -134,7 +134,11 @@ def compute_prfs(result_tables,
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
         ## parse the expected table (unless taxonomy_level is specified, this should be 
         ## collapsed on level 6 taxonomy)
-        expected_table_fp = expected_table_lookup[dataset_id][reference_id]
+        try:
+            expected_table_fp = expected_table_lookup[dataset_id][reference_id]
+        except KeyError:
+            raise KeyError, "Can't find expected table for (%s, %s)." % (dataset_id, reference_id)
+            
         try:
             expected_table = parse_biom_table(open(expected_table_fp,'U'))
         except ValueError:
