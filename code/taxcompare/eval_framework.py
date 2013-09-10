@@ -159,4 +159,103 @@ def compute_prfs(result_tables,
         except ZeroDivisionError:
             p, r, f = -1., -1., -1.
         yield (dataset_id, reference_id, method_id, params, p, r, f)
+
+def get_actual_and_expected_vectors(actual_table, 
+                                    expected_table,
+                                    actual_sample_id=None,
+                                    expected_sample_id=None):
+    actual_obs_ids = get_observed_observation_ids(actual_table,
+                                                  actual_sample_id)
+    expected_obs_ids = get_observed_observation_ids(expected_table,
+                                                    expected_sample_id)
+    all_obs_ids = list(actual_obs_ids | expected_obs_ids)
+    
+    if actual_sample_id is None:
+        actual_sample_idx = 0
+    else:
+        actual_sample_idx = actual_table.SampleIds.index(actual_sample_id)
+
+    if expected_sample_id is None:
+        expected_sample_idx = 0
+    else:
+        expected_sample_idx = expected_table.SampleIds.index(expected_sample_id)
+    
+    actual_vector = []
+    expected_vector = []
+    for obs_id in all_obs_ids:
+        try:
+            actual_obs_idx = actual_table.ObservationIds.index(obs_id)
+        except ValueError:
+            actual_value = 0.0
+        else:
+            actual_value = actual_table[actual_obs_idx,actual_sample_idx]
+        actual_vector.append(actual_value)
         
+        try:
+            expected_obs_idx = expected_table.ObservationIds.index(obs_id)
+        except ValueError:
+            expected_value = 0.0
+        else:
+            expected_value = expected_table[expected_obs_idx,expected_sample_idx]
+        expected_vector.append(expected_value)
+    
+    return actual_vector, expected_vector
+
+def compute_pearson_spearman(result_tables,
+                             expected_table_lookup,
+                             taxonomy_level=6):
+    """ Compute pearson and spearman correlations and non-parameteric p-values for a set of results
+    """
+    ### Start code copied directly from compute_prfs - some re-factoring for re-use is
+    ### in order here. 
+    for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
+        ## parse the expected table (unless taxonomy_level is specified, this should be 
+        ## collapsed on level 6 taxonomy)
+        try:
+            expected_table_fp = expected_table_lookup[dataset_id][reference_id]
+        except KeyError:
+            raise KeyError, "Can't find expected table for (%s, %s)." % (dataset_id, reference_id)
+            
+        try:
+            expected_table = parse_biom_table(open(expected_table_fp,'U'))
+        except ValueError:
+            raise ValueError, "Couldn't parse BIOM table: %s" % expected_table_fp
+        
+        ## parse the actual table and collapse it at the specified taxonomic level
+        try:
+            actual_table = parse_biom_table(open(actual_table_fp,'U'))
+        except ValueError:
+            raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
+        collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
+        actual_table = actual_table.collapseObservationsByMetadata(collapse_by_taxonomy)
+        ### End code copied directly from compute_prfs.
+        
+        ## compute spearman and pearson correlations
+        actual_vector, expected_vector = get_actual_and_expected_vectors(actual_table,
+                                                                         expected_table)
+        (pearson_corr_coeff, 
+         pearson_parametric_p_val,
+         pearson_permuted_corr_coeffs, 
+         pearson_nonparametric_p_val, 
+         pearson_ci) = \
+         correlation_test(actual_vector, expected_vector, method='pearson')
+        (spearman_corr_coeff, 
+         spearman_parametric_p_val,
+         spearman_permuted_corr_coeffs, 
+         spearman_nonparametric_p_val, 
+         spearman_ci) = \
+         correlation_test(actual_vector, expected_vector, method='spearman')
+        yield (dataset_id,
+               reference_id,
+               method_id,
+               params,
+               pearson_corr_coeff,
+               pearson_nonparametric_p_val,
+               spearman_corr_coeff,
+               spearman_nonparametric_p_val)
+         
+         
+
+
+
+
