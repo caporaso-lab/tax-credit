@@ -4,6 +4,7 @@ from glob import glob
 from os.path import abspath, join, exists, split
 from collections import defaultdict
 from biom.parse import parse_biom_table
+from cogent.maths.stats.test import correlation_test
 
 __author__ = "Greg Caporaso"
 __copyright__ = "Copyright 2013, The QIIME project"
