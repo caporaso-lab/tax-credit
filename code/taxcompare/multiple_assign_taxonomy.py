@@ -311,9 +311,9 @@ def _generate_taxa_processing_commands(assigned_taxonomy_dir, input_fasta_fp,
     otu_table_w_taxa_fp = join(assigned_taxonomy_dir,
             add_filename_suffix(clean_otu_table_fp, '_w_taxa'))
     add_md_command = [('Adding metadata (%s)' % run_id,
-                       'add_metadata.py -i %s -o %s '
-                       '--observation_mapping_fp %s --sc_separated taxonomy '
-                       '--observation_header OTUID,taxonomy' %
+                       'biom add-metadata -i %s -o %s '
+                       '--observation-metadata-fp %s --sc-separated taxonomy '
+                       '--observation-header OTUID,taxonomy' %
                        (clean_otu_table_fp, otu_table_w_taxa_fp,
                         taxa_assignments_fp))]
     summarize_taxa_command = [('Summarizing taxa (%s)' % run_id,
