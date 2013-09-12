@@ -3,10 +3,14 @@ from __future__ import division
 from glob import glob
 from os.path import abspath, join, exists, split
 from collections import defaultdict
+from numpy import asarray
 from biom.parse import parse_biom_table
 from cogent.maths.stats.test import correlation_test
 from qiime.transform_coordinate_matrices import procrustes_monte_carlo,\
     get_procrustes_results
+from cogent.maths.distance_transform import dist_bray_curtis
+from qiime.principal_coordinates import pcoa
+from qiime.format import format_distance_matrix
 
 __author__ = "Greg Caporaso"
 __copyright__ = "Copyright 2013, The QIIME project"
@@ -269,6 +273,7 @@ def compute_procrustes(result_tables,
     ### Start code copied ALMOST* directly from compute_prfs - some re-factoring for re-use is
     ### in order here. *ALMOST refers to changes to parser and variable names since expected
     ### is a pc matrix here.
+    
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
         ## parse the expected table (unless taxonomy_level is specified, this should be 
         ## collapsed on level 6 taxonomy)
@@ -286,12 +291,22 @@ def compute_procrustes(result_tables,
         actual_table = actual_table.collapseObservationsByMetadata(collapse_by_taxonomy)
         ### End code copied directly from compute_prfs.
         
-        ## run Procrustes analysis with monte carlo simulations
+        # Next block of code, how do I hate thee? Let me count the ways...
+        # (1) dist_bray_curtis doesn't take a BIOM Table object
+        # (2) pcoa takes a qiime-formatted distance matrix as a list of lines
+        # (3) pcoa return a qiime-formatted pc matrix
+        # (4) procrustes_monte_carlo needs to pass through the pc "file" multiple
+        #     times, so we actually *need* those the pcs that get passed in to be
+        #     lists of lines
+        dm = dist_bray_curtis(asarray([v for v in actual_table.iterSampleData()]))
+        formatted_dm = format_distance_matrix(actual_table.SampleIds,dm)
+        actual_pc = pcoa(formatted_dm.split('\n')).split('\n')
+        expected_pc = list(open(expected_pc_fp,'U'))
+        
+        ## run Procrustes analysis with monte carlo simulation
         actual_m_squared, trial_m_squareds, count_better, mc_p_value =\
-         procrustes_monte_carlo(list(open(expected_pc_fp,'U')),
-                                ### the following line must be changed to 
-                                ### the query table!!!
-                                list(open(expected_pc_fp,'U')),
+         procrustes_monte_carlo(expected_pc,
+                                actual_pc,
                                 trials=random_trials,
                                 max_dimensions=num_dimensions,
                                 sample_id_map=None,
