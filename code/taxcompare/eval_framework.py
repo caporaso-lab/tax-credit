@@ -5,6 +5,8 @@ from os.path import abspath, join, exists, split
 from collections import defaultdict
 from biom.parse import parse_biom_table
 from cogent.maths.stats.test import correlation_test
+from qiime.transform_coordinate_matrices import procrustes_monte_carlo,\
+    get_procrustes_results
 
 __author__ = "Greg Caporaso"
 __copyright__ = "Copyright 2013, The QIIME project"
@@ -46,7 +48,8 @@ def find_and_process_result_tables(start_dir,
     return results
 
 def find_and_process_expected_tables(start_dir,
-                                     biom_processor=abspath):
+                                     biom_processor=abspath,
+                                     filename_pattern='table*biom'):
     """ given a start_dir, return list of tuples describing the table and containing the processed table
     
          start_dir: top-level directory to use when starting the walk
@@ -60,7 +63,7 @@ def find_and_process_expected_tables(start_dir,
                    ...
                   ]
     """
-    table_fps = glob(join(start_dir,'*','*','expected','table.L6-taxa.biom'))
+    table_fps = glob(join(start_dir,'*','*','expected',filename_pattern))
     results = []
     for table_fp in table_fps:
         expected_dir, _ = split(table_fp)
@@ -71,9 +74,10 @@ def find_and_process_expected_tables(start_dir,
     return results
 
 def get_expected_tables_lookup(start_dir,
-                               biom_processor=abspath):
+                               biom_processor=abspath,
+                               filename_pattern='table*biom'):
     results = defaultdict(dict)
-    expected_tables = find_and_process_expected_tables(start_dir,biom_processor)
+    expected_tables = find_and_process_expected_tables(start_dir,biom_processor,filename_pattern)
     for dataset_id, reference_id, processed_table in expected_tables:
         results[dataset_id][reference_id] = processed_table
     return results
@@ -254,7 +258,51 @@ def compute_pearson_spearman(result_tables,
                pearson_nonparametric_p_val,
                spearman_corr_coeff,
                spearman_nonparametric_p_val)
-         
+
+def compute_procrustes(result_tables,
+                       expected_pc_lookup,
+                       taxonomy_level=6,
+                       num_dimensions=3,
+                       random_trials=999):
+    """ Compute pearson and spearman correlations and non-parameteric p-values for a set of results
+    """
+    ### Start code copied ALMOST* directly from compute_prfs - some re-factoring for re-use is
+    ### in order here. *ALMOST refers to changes to parser and variable names since expected
+    ### is a pc matrix here.
+    for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
+        ## parse the expected table (unless taxonomy_level is specified, this should be 
+        ## collapsed on level 6 taxonomy)
+        try:
+            expected_pc_fp = expected_pc_lookup[dataset_id][reference_id]
+        except KeyError:
+            raise KeyError, "Can't find expected table for (%s, %s)." % (dataset_id, reference_id)
+        
+        ## parse the actual table and collapse it at the specified taxonomic level
+        try:
+            actual_table = parse_biom_table(open(actual_table_fp,'U'))
+        except ValueError:
+            raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
+        collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
+        actual_table = actual_table.collapseObservationsByMetadata(collapse_by_taxonomy)
+        ### End code copied directly from compute_prfs.
+        
+        ## run Procrustes analysis with monte carlo simulations
+        actual_m_squared, trial_m_squareds, count_better, mc_p_value =\
+         procrustes_monte_carlo(list(open(expected_pc_fp,'U')),
+                                ### the following line must be changed to 
+                                ### the query table!!!
+                                list(open(expected_pc_fp,'U')),
+                                trials=random_trials,
+                                max_dimensions=num_dimensions,
+                                sample_id_map=None,
+                                trial_output_dir=None)
+
+        yield (dataset_id,
+               reference_id,
+               method_id,
+               params,
+               actual_m_squared,
+               mc_p_value)
          
 
 
