@@ -15,7 +15,8 @@ from qiime.util import (parse_command_line_parameters, get_options_lookup,
 from qiime.workflow.util import (call_commands_serially, no_status_updates,
                                  print_commands, print_to_stdout)
 
-from taxcompare.multiple_assign_taxonomy import assign_taxonomy_multiple_times
+from taxcompare.multiple_assign_taxonomy import (
+        assign_taxonomy_multiple_times, split_input_str)
 
 options_lookup = get_options_lookup()
 
@@ -169,29 +170,20 @@ def main():
     input_dirs = opts.input_dirs.split(',')
     assignment_methods = opts.assignment_methods.split(',')
 
-    confidences = opts.confidences
-    if confidences is not None:
-        confidences = map(float, opts.confidences.split(','))
+    confidences = split_input_str(opts.confidences)
+    e_values = split_input_str(opts.e_values)
+    rtax_modes = split_input_str(opts.rtax_modes, map_fn=str)
+    uclust_min_consensus_fractions = \
+            split_input_str(opts.uclust_min_consensus_fractions)
+    uclust_similarities = split_input_str(opts.uclust_similarities)
+    uclust_max_accepts = split_input_str(opts.uclust_max_accepts, map_fn=int)
 
-    e_values = opts.e_values
-    if e_values is not None:
-        e_values = map(float, opts.e_values.split(','))
-
-    rtax_modes = opts.rtax_modes
-    if rtax_modes is not None:
-        rtax_modes = opts.rtax_modes.split(',')
-
-    rtax_read_id_regexes = opts.rtax_read_id_regexes
-    if rtax_read_id_regexes is not None:
-        rtax_read_id_regexes = rtax_read_id_regexes.split(',')
-
-    rtax_amplicon_id_regexes = opts.rtax_amplicon_id_regexes
-    if rtax_amplicon_id_regexes is not None:
-        rtax_amplicon_id_regexes = rtax_amplicon_id_regexes.split(',')
-
-    rtax_header_id_regexes = opts.rtax_header_id_regexes
-    if rtax_header_id_regexes is not None:
-        rtax_header_id_regexes = rtax_header_id_regexes.split(',')
+    rtax_read_id_regexes = split_input_str(opts.rtax_read_id_regexes,
+                                           map_fn=str)
+    rtax_amplicon_id_regexes = split_input_str(opts.rtax_amplicon_id_regexes,
+                                               map_fn=str)
+    rtax_header_id_regexes = split_input_str(opts.rtax_header_id_regexes,
+                                             map_fn=str)
 
     if opts.print_only:
         command_handler = print_commands
@@ -207,6 +199,9 @@ def main():
         assignment_methods, opts.reference_seqs_fp,
         opts.id_to_taxonomy_fp, confidences=confidences,
         e_values=e_values, rtax_modes=rtax_modes,
+        uclust_min_consensus_fractions=uclust_min_consensus_fractions,
+        uclust_similarities=uclust_similarities,
+        uclust_max_accepts=uclust_max_accepts,
         input_fasta_filename=opts.input_fasta_filename,
         clean_otu_table_filename=opts.clean_otu_table_filename,
         read_1_seqs_filename=opts.read_1_seqs_filename,

@@ -22,6 +22,12 @@ from qiime.workflow.util import (call_commands_serially, generate_log_fp,
                                  print_to_stdout, WorkflowError,
                                  WorkflowLogger)
 
+def split_input_str(input_str, split_char=',', map_fn=float):
+    values = None
+    if input_str is not None:
+        values = map(map_fn, input_str.split(split_char))
+    return values
+
 def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         reference_seqs_fp, id_to_taxonomy_fp,
         confidences=None, e_values=None, rtax_modes=None,
