@@ -99,6 +99,20 @@ script_info['optional_options'] = [
         'either "single" or "paired". If paired, paired-end reads must be '
         'available (i.e. forward and reverse reads, demultiplexed) '
         '[default: %default]', default=None),
+    make_option('--uclust_min_consensus_fractions', type='string',
+        help='Comma-separated list of floats indicating minimum consensus '
+        'fractions. Each value specifies the minimum fraction of database '
+        'hits that must have a specific taxonomic assignment to assign that '
+        'taxonomy to a query, only used for uclust method [default: %default]',
+        default=None),
+    make_option('--uclust_similarities', type='string',
+        help='Comma-separated list of floats indicating the minimum percent '
+        'similarities to consider a database match a hit, only used for '
+        'uclust method [default: %default]', default=None),
+    make_option('--uclust_max_accepts', type='string',
+        help='Comma-separated list of integers indicating the number of '
+        'database hits to consider when making an assignment, only used for '
+        'uclust method [default: %default]', default=None),
     make_option('--input_fasta_filename', type='string',
         help='Name of fasta file containing sequences to receive taxonomy '
         'assignment. Must exist under each input dataset directory '
