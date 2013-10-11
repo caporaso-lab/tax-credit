@@ -29,6 +29,7 @@ from taxcompare.multiple_assign_taxonomy import (
         _generate_blast_commands,
         _generate_mothur_commands,
         _generate_rtax_commands,
+        _generate_uclust_commands,
         _generate_taxa_processing_commands)
 
 class MultipleAssignTaxonomyTests(TestCase):
@@ -152,6 +153,30 @@ class MultipleAssignTaxonomyTests(TestCase):
                           '/foo/ref_seqs/fasta', '/foo/tax.txt',
                           rtax_modes=['single', 'piared'], force=True)
 
+    def test_assign_taxonomy_multiple_times_invalid_input_uclust(self):
+        """Test that errors are thrown using invalid input for uclust."""
+        out_dir = self.output_dir
+
+        # Missing uclust consensus parameters.
+        with self.assertRaises(WorkflowError):
+            assign_taxonomy_multiple_times([out_dir, out_dir], out_dir,
+                    ['uclust', 'uclust'], '/foo/ref_seqs.fasta',
+                    '/foo/tax.txt', rtax_modes=['single'], force=True)
+
+        # Missing uclust similarity parameters.
+        with self.assertRaises(WorkflowError):
+            assign_taxonomy_multiple_times([out_dir, out_dir], out_dir,
+                    ['uclust', 'uclust'], '/foo/ref_seqs.fasta',
+                    '/foo/tax.txt', uclust_min_consensus_fractions=[0.51],
+                    force=True)
+
+        # Missing uclust max accepts parameters.
+        with self.assertRaises(WorkflowError):
+            assign_taxonomy_multiple_times([out_dir, out_dir], out_dir,
+                    ['uclust', 'uclust'], '/foo/ref_seqs.fasta',
+                    '/foo/tax.txt', uclust_min_consensus_fractions=[0.51],
+                    uclust_similarities=[0.97], force=True)
+
     def test_directory_check(self):
         """Test that directory names are generated properly."""
         exp = ("output_dir/method_X","output_dir/method_X.tmp")
@@ -165,11 +190,11 @@ class MultipleAssignTaxonomyTests(TestCase):
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rdp_0.8.tmp '
                  '-c 0.8 -m rdp -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt')],
                  [('Adding metadata (RDP, confidence: 0.8)',
-                 'add_metadata.py -i /foo/bar/otu_table.biom -o '
+                 'biom add-metadata -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom '
-                 '--observation_mapping_fp '
+                 '--observation-metadata-fp '
                  '/foo/bar/rdp_0.8.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
+                 '--sc-separated taxonomy --observation-header OTUID,taxonomy')],
                  [('Summarizing taxa (RDP, confidence: 0.8)',
                  'summarize_taxa.py -i /foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/rdp_0.8.tmp')],
@@ -179,11 +204,11 @@ class MultipleAssignTaxonomyTests(TestCase):
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/rdp_0.6.tmp '
                  '-c 0.6 -m rdp -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt')],
                  [('Adding metadata (RDP, confidence: 0.6)',
-                 'add_metadata.py -i /foo/bar/otu_table.biom -o '
+                 'biom add-metadata -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/rdp_0.6.tmp/otu_table_w_taxa.biom '
-                 '--observation_mapping_fp '
+                 '--observation-metadata-fp '
                  '/foo/bar/rdp_0.6.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
+                 '--sc-separated taxonomy --observation-header OTUID,taxonomy')],
                  [('Summarizing taxa (RDP, confidence: 0.6)',
                  'summarize_taxa.py -i /foo/bar/rdp_0.6.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/rdp_0.6.tmp')],
@@ -201,11 +226,11 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '-c 0.8 -m rdp -r /baz/reference_seqs.fasta -t '
                  '/baz/id_to_taxonomy.txt --rdp_max_memory 2')],
                  [('Adding metadata (RDP, confidence: 0.8)',
-                 'add_metadata.py -i /foo/bar/otu_table.biom -o '
+                 'biom add-metadata -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom '
-                 '--observation_mapping_fp '
+                 '--observation-metadata-fp '
                  '/foo/bar/rdp_0.8.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
+                 '--sc-separated taxonomy --observation-header OTUID,taxonomy')],
                  [('Summarizing taxa (RDP, confidence: 0.8)',
                  'summarize_taxa.py -i /foo/bar/rdp_0.8.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/rdp_0.8.tmp')],
@@ -234,11 +259,11 @@ class MultipleAssignTaxonomyTests(TestCase):
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/blast_0.002.tmp -e 0.002 '
                  '-m blast -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt')],
                  [('Adding metadata (BLAST, E: 0.002)',
-                 'add_metadata.py -i /foo/bar/otu_table.biom -o '
+                 'biom add-metadata -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/blast_0.002.tmp/otu_table_w_taxa.biom '
-                 '--observation_mapping_fp '
+                 '--observation-metadata-fp '
                  '/foo/bar/blast_0.002.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
+                 '--sc-separated taxonomy --observation-header OTUID,taxonomy')],
                  [('Summarizing taxa (BLAST, E: 0.002)',
                  'summarize_taxa.py -i /foo/bar/blast_0.002.tmp/otu_table_w_taxa.biom '
                  '-o /foo/bar/blast_0.002.tmp')],
@@ -248,11 +273,11 @@ class MultipleAssignTaxonomyTests(TestCase):
                  'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/blast_0.005.tmp -e 0.005 '
                  '-m blast -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt')],
                  [('Adding metadata (BLAST, E: 0.005)',
-                 'add_metadata.py -i /foo/bar/otu_table.biom -o '
+                 'biom add-metadata -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/blast_0.005.tmp/otu_table_w_taxa.biom '
-                 '--observation_mapping_fp '
+                 '--observation-metadata-fp '
                  '/foo/bar/blast_0.005.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
+                 '--sc-separated taxonomy --observation-header OTUID,taxonomy')],
                  [('Summarizing taxa (BLAST, E: 0.005)',
                  'summarize_taxa.py -i /foo/bar/blast_0.005.tmp/otu_table_w_taxa.biom '
                  '-o /foo/bar/blast_0.005.tmp')],
@@ -271,11 +296,11 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '-c 0.8 -m mothur -r /baz/reference_seqs.fasta -t '
                  '/baz/id_to_taxonomy.txt')],
                  [('Adding metadata (Mothur, confidence: 0.8)',
-                 'add_metadata.py -i /foo/bar/otu_table.biom -o '
+                 'biom add-metadata -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/mothur_0.8.tmp/otu_table_w_taxa.biom '
-                 '--observation_mapping_fp '
+                 '--observation-metadata-fp '
                  '/foo/bar/mothur_0.8.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
+                 '--sc-separated taxonomy --observation-header OTUID,taxonomy')],
                  [('Summarizing taxa (Mothur, confidence: 0.8)',
                  'summarize_taxa.py -i /foo/bar/mothur_0.8.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/mothur_0.8.tmp')],
@@ -286,11 +311,11 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '-c 0.6 -m mothur -r /baz/reference_seqs.fasta -t '
                  '/baz/id_to_taxonomy.txt')],
                  [('Adding metadata (Mothur, confidence: 0.6)',
-                 'add_metadata.py -i /foo/bar/otu_table.biom -o '
+                 'biom add-metadata -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/mothur_0.6.tmp/otu_table_w_taxa.biom '
-                 '--observation_mapping_fp '
+                 '--observation-metadata-fp '
                  '/foo/bar/mothur_0.6.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
+                 '--sc-separated taxonomy --observation-header OTUID,taxonomy')],
                  [('Summarizing taxa (Mothur, confidence: 0.6)',
                  'summarize_taxa.py -i /foo/bar/mothur_0.6.tmp/otu_table_w_taxa.biom -o '
                  '/foo/bar/mothur_0.6.tmp')],
@@ -309,11 +334,11 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '-m rtax -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt '
                  '--read_1_seqs_fp /foo/bar/read_1_seqs.fna')],
                  [('Adding metadata (RTAX, mode: single)',
-                 'add_metadata.py -i /foo/bar/otu_table.biom -o '
+                 'biom add-metadata -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/rtax_single.tmp/otu_table_w_taxa.biom '
-                 '--observation_mapping_fp '
+                 '--observation-metadata-fp '
                  '/foo/bar/rtax_single.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
+                 '--sc-separated taxonomy --observation-header OTUID,taxonomy')],
                  [('Summarizing taxa (RTAX, mode: single)',
                  'summarize_taxa.py -i /foo/bar/rtax_single.tmp/otu_table_w_taxa.biom '
                  '-o /foo/bar/rtax_single.tmp')],
@@ -325,11 +350,11 @@ class MultipleAssignTaxonomyTests(TestCase):
                  '--read_1_seqs_fp /foo/bar/read_1_seqs.fna '
                  '--read_2_seqs_fp /foo/bar/read_2_seqs.fna --single_ok')],
                  [('Adding metadata (RTAX, mode: paired)',
-                 'add_metadata.py -i /foo/bar/otu_table.biom -o '
+                 'biom add-metadata -i /foo/bar/otu_table.biom -o '
                  '/foo/bar/rtax_paired.tmp/otu_table_w_taxa.biom '
-                 '--observation_mapping_fp '
+                 '--observation-metadata-fp '
                  '/foo/bar/rtax_paired.tmp/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
+                 '--sc-separated taxonomy --observation-header OTUID,taxonomy')],
                  [('Summarizing taxa (RTAX, mode: paired)',
                  'summarize_taxa.py -i /foo/bar/rtax_paired.tmp/otu_table_w_taxa.biom '
                  '-o /foo/bar/rtax_paired.tmp')],
@@ -359,14 +384,27 @@ class MultipleAssignTaxonomyTests(TestCase):
         self.assertEqual(obs[0], exp[0])
         self.assertEqual(obs[4], exp[1])
 
+    def test_generate_uclust_commands(self):
+        """Functions correctly using standard valid input data."""
+        exp = [[('Assigning taxonomy (uclust, minimum consensus fraction: 0.1, similarity: 0.89, max accepts: 4)', 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/uclust_consensus0.1_similarity0.89_accepts4.tmp -m uclust -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt --uclust_min_consensus_fraction 0.1 --uclust_similarity 0.89 --uclust_max_accepts 4')],
+               [('Assigning taxonomy (uclust, minimum consensus fraction: 0.1, similarity: 0.89, max accepts: 2)', 'assign_taxonomy.py -i /foo/bar/rep_set.fna -o /foo/bar/uclust_consensus0.1_similarity0.89_accepts2.tmp -m uclust -r /baz/reference_seqs.fasta -t /baz/id_to_taxonomy.txt --uclust_min_consensus_fraction 0.1 --uclust_similarity 0.89 --uclust_max_accepts 2')]]
+
+        obs = _generate_uclust_commands('/foo/bar', '/foo/bar/rep_set.fna',
+                '/baz/reference_seqs.fasta', '/baz/id_to_taxonomy.txt',
+                '/foo/bar/otu_table.biom', [0.1], [0.89], [4, 2])
+
+        self.assertEqual(len(obs), 8)
+        self.assertEqual(obs[0], exp[0])
+        self.assertEqual(obs[4], exp[1])
+
     def test_generate_taxa_processing_commands(self):
         """Functions correctly using standard valid input data."""
         exp = ([('Adding metadata (RDP, confidence: 0.8)',
-                 'add_metadata.py -i /foo/otu_table.biom -o '
+                 'biom add-metadata -i /foo/otu_table.biom -o '
                  '/foo/rdp_0.8/otu_table_w_taxa.biom '
-                 '--observation_mapping_fp '
+                 '--observation-metadata-fp '
                  '/foo/rdp_0.8/rep_set_tax_assignments.txt '
-                 '--sc_separated taxonomy --observation_header OTUID,taxonomy')],
+                 '--sc-separated taxonomy --observation-header OTUID,taxonomy')],
                [('Summarizing taxa (RDP, confidence: 0.8)',
                  'summarize_taxa.py -i /foo/rdp_0.8/otu_table_w_taxa.biom -o '
                  '/foo/rdp_0.8')])
