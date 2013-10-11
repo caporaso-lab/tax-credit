@@ -76,7 +76,7 @@ script_info['required_options'] = [
     options_lookup['output_dir'],
     make_option('-m', '--assignment_methods', type='string',
         help='Comma-separated list of taxon assignment methods to use, either '
-        'blast, mothur, rdp, or rtax'),
+        'blast, mothur, rdp, rtax, or uclust'),
     make_option('-r', '--reference_seqs_fp', type='existing_filepath',
         help='Path to reference sequences.  For assignment with blast, these '
         'are used to generate a blast database. For assignment with rdp and '

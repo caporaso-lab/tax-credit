@@ -13,6 +13,7 @@ __status__ = "Development"
 """Contains functions used in the multiple_assign_taxonomy.py script."""
 
 import sys
+from itertools import product
 from time import time
 from os.path import basename, isdir, join, normpath, split, splitext
 from shutil import rmtree
@@ -31,7 +32,8 @@ def split_input_str(input_str, split_char=',', map_fn=float):
 def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
         reference_seqs_fp, id_to_taxonomy_fp,
         confidences=None, e_values=None, rtax_modes=None,
-        input_fasta_filename='rep_set.fna',
+        uclust_min_consensus_fractions=None, uclust_similarities=None,
+        uclust_max_accepts=None, input_fasta_filename='rep_set.fna',
         clean_otu_table_filename='otu_table_mc2.biom',
         read_1_seqs_filename='seqs1.fna', read_2_seqs_filename='seqs2.fna',
         rtax_read_id_regexes=None, rtax_amplicon_id_regexes=None,
@@ -151,6 +153,28 @@ def assign_taxonomy_multiple_times(input_dirs, output_dir, assignment_methods,
                                                    rtax_read_id_regex,
                                                    rtax_amplicon_id_regex,
                                                    rtax_header_id_regex)
+
+            ## Method is uclust
+            elif method == 'uclust':
+                ## Check for execution parameters required by uclust method
+                if uclust_min_consensus_fractions is None:
+                    raise WorkflowError("You must specify at least one uclust "
+                                        "minimum consensus fraction.")
+                if uclust_similarities is None:
+                    raise WorkflowError("You must specify at least one uclust "
+                                        "similarity.")
+                if uclust_max_accepts is None:
+                    raise WorkflowError("You must specify at least one uclust "
+                                        "max accepts.")
+                ## Generate command for uclust
+                commands = _generate_uclust_commands(output_dataset_dir,
+                                                     input_fasta_fp,
+                                                     reference_seqs_fp,
+                                                     id_to_taxonomy_fp,
+                                                     clean_otu_table_fp,
+                                                     uclust_min_consensus_fractions,
+                                                     uclust_similarities,
+                                                     uclust_max_accepts)
 
             ## Unsupported method
             else:
@@ -306,6 +330,45 @@ def _generate_rtax_commands(output_dir, input_fasta_fp, reference_seqs_fp,
         result.append([('Renaming output directory (%s)' % run_id,
                       'mv %s %s' % (working_dir, final_dir))])
 
+    return result
+
+def _generate_uclust_commands(output_dir, input_fasta_fp, reference_seqs_fp,
+                              id_to_taxonomy_fp, clean_otu_table_fp,
+                              uclust_min_consensus_fractions,
+                              uclust_similarities, uclust_max_accepts):
+    """ Build command strings for uclust method. """
+    result = []
+    for con_frac, sim, max_acc in product(uclust_min_consensus_fractions,
+                                          uclust_similarities,
+                                          uclust_max_accepts):
+        con_frac = str(con_frac)
+        sim = str(sim)
+        max_acc = str(max_acc)
+
+        run_id = ('uclust, minimum consensus fraction: %s, similarity: %s, '
+                  'max accepts: %s' % (con_frac, sim, max_acc))
+
+        ## Get final and working directory names
+        param_str = 'consensus%s_similarity%s_accepts%s' % (con_frac, sim,
+                                                            max_acc)
+        final_dir, working_dir = _directory_check(output_dir,
+                                                  'uclust_', param_str)
+        # Check if final directory already exists (skip iteration if it does)
+        if isdir(final_dir):
+            continue
+
+        assign_taxonomy_command = ('assign_taxonomy.py -i %s -o %s -m uclust '
+                '-r %s -t %s --uclust_min_consensus_fraction %s '
+                '--uclust_similarity %s --uclust_max_accepts %s' % (
+                input_fasta_fp, working_dir, reference_seqs_fp,
+                id_to_taxonomy_fp, con_frac, sim, max_acc))
+        result.append([('Assigning taxonomy (%s)' % run_id,
+                        assign_taxonomy_command)])
+        result.extend(_generate_taxa_processing_commands(working_dir,
+                      input_fasta_fp, clean_otu_table_fp, run_id))
+        ## Rename output directory
+        result.append([('Renaming output directory (%s)' % run_id,
+                      'mv %s %s' % (working_dir, final_dir))])
     return result
 
 def _generate_taxa_processing_commands(assigned_taxonomy_dir, input_fasta_fp,
