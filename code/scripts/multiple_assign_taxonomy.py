@@ -121,7 +121,8 @@ script_info['optional_options'] = [
     make_option('--clean_otu_table_filename', type='string',
         help='Name of OTU table BIOM file that will have taxonomic '
         'information added to it. Must exist under each input dataset '
-        'directory [default: %default]', default='otu_table_mc2.biom'),
+        'directory [default: %default]',
+        default='otu_table_mc2_no_pynast_failures.biom'),
     make_option('--read_1_seqs_filename', type='string',
         help='Name of fasta file containing the first read from paired-end '
         'sequencing, prior to OTU clustering (used for RTAX only). Must exist '
