@@ -15,7 +15,7 @@ from qiime.workflow.util import WorkflowError
 from qiime.parse import parse_taxa_summary_table
 from qiime.compare_taxa_summaries import compare_taxa_summaries
 
-assignment_method_choices = ['rdp','blast','rtax','mothur','tax2tree', 'usearch']
+assignment_method_choices = ['rdp','blast','rtax','mothur','tax2tree','usearch','uclust']
 
 def format_output(compare_tables, separator):
     """Formats the output from generate_taxa_compare_table into {level: [write_ready_list]}"""
