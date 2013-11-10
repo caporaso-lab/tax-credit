@@ -320,6 +320,204 @@ def compute_procrustes(result_tables,
                mc_p_value)
          
 
+def generate_pr_scatter_plots(query_prf, 
+                              subject_prf, 
+                              query_color="b",
+                              subject_color="r",
+                              x_label="Precision",
+                              y_label="Recall"):
+    
+    # Extract the query precisions and recalls and 
+    # generate a scatter plot
+    query_precisions = [e[4] for e in query_prf]
+    query_recalls = [e[5] for e in query_prf]
+    scatter(query_precisions,
+            query_recalls,
+            c=query_color)
+    
+    # Extract the subject precisions and recalls and 
+    # generate a scatter plot
+    subject_precisions = [e[4] for e in subject_prf]
+    subject_recalls = [e[5] for e in subject_prf]
+    scatter(subject_precisions,
+            subject_recalls,
+            c=subject_color)
+    
+    xlim(0,1)
+    ylim(0,1)
+    xlabel(x_label)
+    ylabel(y_label)
 
 
+def generate_prf_box_plots(query_prf,
+                           subject_prf,
+                           metric,
+                           x_label="Method"):
+    metric_lookup = {"precision":(4,"Precision"),
+                     "p":(4,"Precision"),
+                     "recall":(5,"Recall"),
+                     "r":(5,"Recall"),
+                     "f-measure":(6,"F-measure"),
+                     "f":(6,"F-measure")}
+    try:
+        metric_idx, y_label = metric_lookup[metric.lower()]
+    except KeyError:
+        available_metric_desc = ", ".join(metric_lookup.keys())
+        error_msg = "Unknown metric: %s. Available choices are: %s" % (metric, available_metric_desc)
+        raise KeyError, error_msg
+         
+        
+    distributions_by_method = defaultdict(list)
+    for e in subject_prf:
+        distributions_by_method[e[2]].append(e[metric_idx])
+    for e in query_prf:
+        distributions_by_method[e[2]].append(e[metric_idx])
+    
+    x_tick_labels, distributions = zip(*distributions_by_method.items())
+    generate_box_plots(distributions, 
+                       x_tick_labels = x_tick_labels, 
+                       x_label = x_label, 
+                       y_label = y_label,
+                       y_min = 0.0,
+                       y_max = 1.0)
 
+def generate_precision_box_plots(query_prf,
+                                 subject_prf,
+                                 x_label="Method"):
+    generate_prf_box_plots(query_prf, subject_prf,"Precision",x_label)
+
+def generate_recall_box_plots(query_prf,
+                              subject_prf,
+                              x_label="Method"):
+    generate_prf_box_plots(query_prf, subject_prf,"Recall",x_label)
+    
+def generate_fmeasure_box_plots(query_prf,
+                                subject_prf,
+                                x_label="Method"):
+    generate_prf_box_plots(query_prf, subject_prf,"F-measure",x_label)
+    
+def generate_prf_table(query_prf,
+                       subject_prf,
+                       sort_metric="F-measure",
+                       num_rows=50):
+    
+    metric_lookup = {"precision":(4,"Precision"),
+                     "p":(4,"Precision"),
+                     "recall":(5,"Recall"),
+                     "r":(5,"Recall"),
+                     "f-measure":(6,"F-measure"),
+                     "f":(6,"F-measure")}
+    try:
+        sort_metric_idx, _ = metric_lookup[sort_metric.lower()]
+    except KeyError:
+        available_metric_desc = ", ".join(metric_lookup.keys())
+        error_msg = "Unknown metric: %s. Available choices are: %s" % (sort_metric, available_metric_desc)
+        raise KeyError, error_msg
+    
+    precision_idx, precision_title = metric_lookup['precision']
+    recall_idx, recall_title = metric_lookup['recall']
+    fmeasure_idx, fmeasure_title = metric_lookup['f-measure']
+    
+    all_prf = query_prf + subject_prf
+    # sort by the (-1 * sort_metric) to avoid having to 
+    # reverse the list in a second step
+    header_format = "{:^15} |{:^12} |{:^12} |{:^12} |{:^15} |{:^30}"
+    print header_format.format("Data set",
+                               precision_title,
+                               recall_title,
+                               fmeasure_title,
+                               "Method",
+                               "Parameters")
+    row_format = "{:<15} |{:>12} |{:>12} |{:>12} |{:<15} |{:<30}"
+    all_prf.sort(key=lambda x: -x[sort_metric_idx])
+    for e in all_prf[:num_rows]:
+        data = [e[0], 
+                '%1.3f' % e[precision_idx],
+                '%1.3f' % e[recall_idx],
+                '%1.3f' % e[fmeasure_idx],
+                e[2],
+                e[3]]
+        print row_format.format(*data)
+
+def generate_correlation_box_plots(query_pearson_spearman,
+                                   subject_pearson_spearman,
+                                   metric,
+                                   x_label="Method"):
+    metric_lookup = {'pearson':(4,"r"),
+                     'spearman':(6,"rho")}
+    
+    try:
+        metric_idx, y_label = metric_lookup[metric.lower()]
+    except KeyError:
+        available_metric_desc = ", ".join(metric_lookup.keys())
+        error_msg = "Unknown metric: %s. Available choices are: %s" % (metric, available_metric_desc)
+        raise KeyError, error_msg
+
+    distributions_by_method = defaultdict(list)
+    for e in query_pearson_spearman:
+        distributions_by_method[e[2]].append(e[metric_idx])
+    for e in subject_pearson_spearman:
+        distributions_by_method[e[2]].append(e[metric_idx])
+
+    x_tick_labels, distributions = zip(*distributions_by_method.items())
+    generate_box_plots(distributions, 
+                       x_tick_labels = x_tick_labels, 
+                       x_label = x_label, 
+                       y_label = y_label,
+                       y_min = -1.0,
+                       y_max = 1.0)
+
+def generate_pearson_box_plots(subject_pearson_spearman,
+                               query_pearson_spearman,
+                               x_label="Method"):
+    generate_correlation_box_plots(subject_pearson_spearman,
+                                   query_pearson_spearman,
+                                   "pearson",
+                                   x_label)
+
+def generate_spearman_box_plots(subject_pearson_spearman,
+                                query_pearson_spearman,
+                                x_label="Method"):
+    generate_correlation_box_plots(subject_pearson_spearman,
+                                   query_pearson_spearman,
+                                   "spearman",
+                                   x_label)
+
+def generate_pearson_spearman_table(query_pearson_spearman,
+                                    subject_pearson_spearman,
+                                    sort_metric="Pearson",
+                                    num_rows=50):
+    
+    metric_lookup = {'pearson':(4,"r"),
+                     'spearman':(6,"rho")}
+    
+    try:
+        sort_metric_idx, _ = metric_lookup[sort_metric.lower()]
+    except KeyError:
+        available_metric_desc = ", ".join(metric_lookup.keys())
+        error_msg = "Unknown metric: %s. Available choices are: %s" % (sort_metric, available_metric_desc)
+        raise KeyError, error_msg
+
+    all_pearson_spearman = query_pearson_spearman + subject_pearson_spearman
+
+    pearson_idx, pearson_title = metric_lookup['pearson']
+    spearman_idx, spearman_title = metric_lookup['spearman']
+    
+    # sort by the (-1 * sort_metric) to avoid having to 
+    # reverse the list in a second step
+    all_pearson_spearman.sort(key=lambda x: -x[sort_metric_idx])
+    
+    header_format = "{:^15} |{:^12} |{:^12} |{:^15} |{:^30}"
+    print header_format.format("Data set",
+                               pearson_title,
+                               spearman_title,
+                               "Method",
+                               "Parameters")
+    row_format = "{:<15} |{:>12} |{:>12} |{:<15} |{:<30}"
+    for e in all_pearson_spearman[:num_rows]:
+        data = [e[0], 
+                '%1.3f' % e[pearson_idx],
+                '%1.3f' % e[spearman_idx],
+                e[2],
+                e[3]]
+        print row_format.format(*data)
