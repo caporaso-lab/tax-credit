@@ -521,3 +521,38 @@ def generate_pearson_spearman_table(query_pearson_spearman,
                 e[2],
                 e[3]]
         print row_format.format(*data)
+
+def generate_procrustes_table(query_procrustes,
+                              subject_procrustes,
+                              sort_metric="Procrustes",
+                              num_rows=50):
+    
+    metric_lookup = {'procrustes':(4,"M^2")}
+    
+    try:
+        sort_metric_idx, _ = metric_lookup[sort_metric.lower()]
+    except KeyError:
+        available_metric_desc = ", ".join(metric_lookup.keys())
+        error_msg = "Unknown metric: %s. Available choices are: %s" % (sort_metric, available_metric_desc)
+        raise KeyError, error_msg
+
+    all_procrustes = query_procrustes + subject_procrustes
+
+    procrustes_idx, procrustes_title = metric_lookup['procrustes']
+    
+    # sort by the (-1 * sort_metric) to avoid having to 
+    # reverse the list in a second step
+    all_procrustes.sort(key=lambda x: x[sort_metric_idx])
+    
+    header_format = "{:^15} |{:^12} |{:^15} |{:^30}"
+    print header_format.format("Data set",
+                               procrustes_title,
+                               "Method",
+                               "Parameters")
+    row_format = "{:<15} |{:>12} |{:<15} |{:<30}"
+    for e in all_procrustes[:num_rows]:
+        data = [e[0], 
+                '%1.3f' % e[procrustes_idx],
+                e[2],
+                e[3]]
+        print row_format.format(*data)
