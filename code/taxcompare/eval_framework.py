@@ -25,7 +25,8 @@ __status__ = "Development"
 """
 
 def find_and_process_result_tables(start_dir,
-                                   biom_processor=abspath):
+                                   biom_processor=abspath,
+                                   filename_pattern='table*biom'):
     """ given a start_dir, return list of tuples describing the table and containing the processed table
     
          start_dir: top-level directory to use when starting the walk
@@ -34,13 +35,15 @@ def find_and_process_result_tables(start_dir,
           relative path to an absolute path, but could also be 
           parse_biom_table, for example. Not sure if we'll want this, but 
           it's easy to hook up.
+        filename_pattern: pattern to use when matching filenames, can contain 
+         globbable (i.e., bash-style) wildcards (default: "table*biom")
         
         results = [(data-set-id, reference-id, method-id, parameters-id, biom_processor(table_fp)),
                    ...
                   ]
     """
     
-    table_fps = glob(join(start_dir,'*','*','*','*','table.biom'))
+    table_fps = glob(join(start_dir,'*','*','*','*',filename_pattern))
     results = []
     for table_fp in table_fps:
         param_dir, _ = split(table_fp)
@@ -62,6 +65,8 @@ def find_and_process_expected_tables(start_dir,
           relative path to an absolute path, but could also be 
           parse_biom_table, for example. Not sure if we'll want this, but 
           it's easy to hook up.
+        filename_pattern: pattern to use when matching filenames, can contain 
+         globbable (i.e., bash-style) wildcards (default: "table*biom")
         
         results = [(data-set-id, reference-id, biom_processor(table_fp)),
                    ...
@@ -80,6 +85,18 @@ def find_and_process_expected_tables(start_dir,
 def get_expected_tables_lookup(start_dir,
                                biom_processor=abspath,
                                filename_pattern='table*biom'):
+    """ given a start_dir, return list of tuples describing the expected table and containing the processed table
+    
+         start_dir: top-level directory to use when starting the walk
+         biom_processor: takes a relative path to a biom file and does
+          something with it. default is call abspath on it to convert the
+          relative path to an absolute path, but could also be 
+          parse_biom_table, for example. Not sure if we'll want this, but 
+          it's easy to hook up.
+        filename_pattern: pattern to use when matching filenames, can contain 
+         globbable (i.e., bash-style) wildcards (default: "table*biom")
+    """
+    
     results = defaultdict(dict)
     expected_tables = find_and_process_expected_tables(start_dir,biom_processor,filename_pattern)
     for dataset_id, reference_id, processed_table in expected_tables:
@@ -88,6 +105,9 @@ def get_expected_tables_lookup(start_dir,
 
 def get_observed_observation_ids(table,sample_id=None):
     """ Return the set of observation ids with count > 0 in sample_id
+    
+        table: the biom table object to analyze
+        sample_id: the sample_id to test (default is first sample id in table.SampleIds)
     """
     if sample_id is None:
         sample_idx = 0
@@ -108,6 +128,13 @@ def compute_prf(actual_table,
                 actual_sample_id=None,
                 expected_sample_id=None):
     """ Compute precision, recall, and f-measure based on presence/absence of observations
+    
+        actual_table: table containing results achieved for query
+        expected_table: table containing expected results
+        actual_sample_id: sample_id to test (default is first sample id in 
+         actual_table.SampleIds)
+        expected_sample_id: sample_id to test (default is first sample id in 
+         expected_table.SampleIds)
     """
     
     actual_obs_ids = get_observed_observation_ids(actual_table,
@@ -125,11 +152,13 @@ def compute_prf(actual_table,
     
     return p, r, f
 
-def collapse_by_L6_taxonomy(md):
-    result = ';'.join(md['taxonomy'][:6])
-    return result
-
 def get_taxonomy_collapser(level):
+    """ Returns fn that to pass to table's collapseObservationsByMetadata
+    
+        level: the level to collapse on in the "taxonomy" observation 
+         metdata category
+    
+    """
     def f(md):
         result = ';'.join(md['taxonomy'][:level])
         return result
@@ -138,7 +167,16 @@ def get_taxonomy_collapser(level):
 def compute_prfs(result_tables,
                  expected_table_lookup,
                  taxonomy_level=6):
-    """ Compute p, r, and f for a set of results
+    """ Compute precision, recall, and f-measure for result_tables at taxonomy_level
+        
+        result_tables: 2d list of tables to be compared to expected tables, 
+         where the data in the inner list is:
+          [dataset_id, reference_database_id, method_id, 
+           parameter_combination_id, table_fp]
+        expected_table_lookup: 2d dict of dataset_id, reference_db_id to BIOM
+         table filepath, for the expected result tables
+        taxonomy_level: level to compute results
+        
     """
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
         ## parse the expected table (unless taxonomy_level is specified, this should be 
@@ -173,6 +211,15 @@ def get_actual_and_expected_vectors(actual_table,
                                     expected_table,
                                     actual_sample_id=None,
                                     expected_sample_id=None):
+    """ Return vectors of obs counts for obs ids observed in specified samples
+    
+        actual_table: table containing results achieved for query
+        expected_table: table containing expected results
+        actual_sample_id: sample_id to test (default is first sample id in 
+         actual_table.SampleIds)
+        expected_sample_id: sample_id to test (default is first sample id in 
+         expected_table.SampleIds)
+    """
     actual_obs_ids = get_observed_observation_ids(actual_table,
                                                   actual_sample_id)
     expected_obs_ids = get_observed_observation_ids(expected_table,
@@ -214,6 +261,14 @@ def compute_pearson_spearman(result_tables,
                              expected_table_lookup,
                              taxonomy_level=6):
     """ Compute pearson and spearman correlations and non-parameteric p-values for a set of results
+    
+        result_tables: 2d list of tables to be compared to expected tables, 
+         where the data in the inner list is:
+          [dataset_id, reference_database_id, method_id, 
+           parameter_combination_id, table_fp]
+        expected_table_lookup: 2d dict of dataset_id, reference_db_id to BIOM
+         table filepath, for the expected result tables
+        taxonomy_level: level to compute results
     """
     ### Start code copied directly from compute_prfs - some re-factoring for re-use is
     ### in order here. 
@@ -268,7 +323,15 @@ def compute_procrustes(result_tables,
                        taxonomy_level=6,
                        num_dimensions=3,
                        random_trials=999):
-    """ Compute pearson and spearman correlations and non-parameteric p-values for a set of results
+    """ Compute Procrustes M2 and p-values for a set of results
+    
+        result_tables: 2d list of tables to be compared to expected tables, 
+         where the data in the inner list is:
+          [dataset_id, reference_database_id, method_id, 
+           parameter_combination_id, table_fp]
+        expected_pc_lookup: 2d dict of dataset_id, reference_db_id to principal
+         coordinate matrices, for the expected result coordinate matrices
+        taxonomy_level: level to compute results
     """
     ### Start code copied ALMOST* directly from compute_prfs - some re-factoring for re-use is
     ### in order here. *ALMOST refers to changes to parser and variable names since expected
@@ -326,6 +389,18 @@ def generate_pr_scatter_plots(query_prf,
                               subject_color="r",
                               x_label="Precision",
                               y_label="Recall"):
+    """ Generate scatter plot of precision versus recall for query and subject results
+        
+        query_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for query data
+        subject_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for subject data
+        query_color: the color of the query points (defualt: blue)
+        subject_color: the color of the subject points (defualt: red)
+        x_label: x axis label for the plot (default: "Precision")
+        y_label: y axis label for the plot (default: "Recall")
+    
+    """
     
     # Extract the query precisions and recalls and 
     # generate a scatter plot
@@ -353,6 +428,16 @@ def generate_prf_box_plots(query_prf,
                            subject_prf,
                            metric,
                            x_label="Method"):
+    """ Generate box plots for precision, recall, or f-measure
+        
+        query_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for query data
+        subject_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for subject data
+        metric: metric to generate plots for (choices are "precision", 
+         "recall", and "f-measure")
+        x_label: x axis label for the plot (default: "Method")
+    """
     metric_lookup = {"precision":(4,"Precision"),
                      "p":(4,"Precision"),
                      "recall":(5,"Recall"),
@@ -384,23 +469,56 @@ def generate_prf_box_plots(query_prf,
 def generate_precision_box_plots(query_prf,
                                  subject_prf,
                                  x_label="Method"):
+    """ Generate precision box plots
+        
+        query_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for query data
+        subject_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for subject data
+        x_label: x axis label for the plot (default: "Method")
+    """
     generate_prf_box_plots(query_prf, subject_prf,"Precision",x_label)
 
 def generate_recall_box_plots(query_prf,
                               subject_prf,
                               x_label="Method"):
+    """ Generate recall box plots
+        
+        query_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for query data
+        subject_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for subject data
+        x_label: x axis label for the plot (default: "Method")
+    """
     generate_prf_box_plots(query_prf, subject_prf,"Recall",x_label)
     
 def generate_fmeasure_box_plots(query_prf,
                                 subject_prf,
                                 x_label="Method"):
+    """ Generate f-measure box plots
+        
+        query_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for query data
+        subject_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for subject data
+        x_label: x axis label for the plot (default: "Method")
+    """
     generate_prf_box_plots(query_prf, subject_prf,"F-measure",x_label)
     
 def generate_prf_table(query_prf,
                        subject_prf,
                        sort_metric="F-measure",
                        num_rows=50):
-    
+    """ Generate table of precision, recall, and f-measure data
+        
+        query_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for query data
+        subject_prf: precision, recall, and f-measure values as returned 
+         from compute_prfs for subject data
+        sort_metric: metric to sort rows on (choices are "precision", 
+         "recall", and "f-measure")
+        num_rows: number of rows to include in table (default: 50)
+    """
     metric_lookup = {"precision":(4,"Precision"),
                      "p":(4,"Precision"),
                      "recall":(5,"Recall"),
@@ -443,6 +561,16 @@ def generate_correlation_box_plots(query_pearson_spearman,
                                    subject_pearson_spearman,
                                    metric,
                                    x_label="Method"):
+    """ Generate box plots for correlation coefficient
+        
+        query_pearson_spearman: pearson and spearman data as returned
+         from compute_pearson_spearman for query data
+        subject_pearson_spearman: pearson and spearman data as returned
+         from compute_pearson_spearman for subject data
+        metric: metric to generate plots for (choices are "pearson", 
+         "spearman")
+        x_label: x axis label for the plot (default: "Method")
+    """
     metric_lookup = {'pearson':(4,"r"),
                      'spearman':(6,"rho")}
     
@@ -470,6 +598,14 @@ def generate_correlation_box_plots(query_pearson_spearman,
 def generate_pearson_box_plots(subject_pearson_spearman,
                                query_pearson_spearman,
                                x_label="Method"):
+    """ Generate box plots for pearson correlation coefficient
+        
+        query_pearson_spearman: pearson and spearman data as returned
+         from compute_pearson_spearman for query data
+        subject_pearson_spearman: pearson and spearman data as returned
+         from compute_pearson_spearman for subject data
+        x_label: x axis label for the plot (default: "Method")
+    """
     generate_correlation_box_plots(subject_pearson_spearman,
                                    query_pearson_spearman,
                                    "pearson",
@@ -478,6 +614,14 @@ def generate_pearson_box_plots(subject_pearson_spearman,
 def generate_spearman_box_plots(subject_pearson_spearman,
                                 query_pearson_spearman,
                                 x_label="Method"):
+    """ Generate box plots for spearman correlation coefficient
+        
+        query_pearson_spearman: pearson and spearman data as returned
+         from compute_pearson_spearman for query data
+        subject_pearson_spearman: pearson and spearman data as returned
+         from compute_pearson_spearman for subject data
+        x_label: x axis label for the plot (default: "Method")
+    """
     generate_correlation_box_plots(subject_pearson_spearman,
                                    query_pearson_spearman,
                                    "spearman",
@@ -487,7 +631,16 @@ def generate_pearson_spearman_table(query_pearson_spearman,
                                     subject_pearson_spearman,
                                     sort_metric="Pearson",
                                     num_rows=50):
-    
+    """ Generate table of pearson and spearman data
+        
+        query_pearson_spearman: pearson and spearman data as returned
+         from compute_pearson_spearman for query data
+        subject_pearson_spearman: pearson and spearman data as returned
+         from compute_pearson_spearman for subject data
+        sort_metric: metric to sort rows on (choices are "pearson"
+         and "spearman")
+        num_rows: number of rows to include in table (default: 50)
+    """
     metric_lookup = {'pearson':(4,"r"),
                      'spearman':(6,"rho")}
     
@@ -526,7 +679,17 @@ def generate_procrustes_table(query_procrustes,
                               subject_procrustes,
                               sort_metric="Procrustes",
                               num_rows=50):
-    
+    """ Generate table of pearson and spearman data
+        
+        query_procrustes: pearson and spearman data as returned
+         from compute_procrustes for query data
+        subject_procrustes: pearson and spearman data as returned
+         from compute_procrustes for subject data
+        sort_metric: metric to sort rows on (choices are "procrustes")
+         there is currently only one choice, but leaving this in place to
+         maintain consistent interface with related functions
+        num_rows: number of rows to include in table (default: 50)
+    """
     metric_lookup = {'procrustes':(4,"M^2")}
     
     try:
