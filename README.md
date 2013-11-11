@@ -15,6 +15,7 @@ commands (assuming you are in the ```short-read-tax-assignment``` directory):
 
     python code/tests/test_multiple_assign_taxonomy.py
     python code/tests/test_generate_taxa_compare_table.py
+    python code/tests/test_eval_framework.py
 
 Two [IPython Notebooks](http://ipython.org/notebook.html) are provided to
 demonstrate the workflows that were used to compare taxonomy assigners using
