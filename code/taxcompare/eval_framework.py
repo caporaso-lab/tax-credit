@@ -4,6 +4,7 @@ from glob import glob
 from os.path import abspath, join, exists, split
 from collections import defaultdict
 from numpy import asarray
+from pylab import scatter, xlabel, ylabel, xlim, ylim
 from biom.parse import parse_biom_table
 from cogent.maths.stats.test import correlation_test
 from qiime.transform_coordinate_matrices import procrustes_monte_carlo,\
