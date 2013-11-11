@@ -7,9 +7,10 @@ from numpy import asarray
 from pylab import scatter, xlabel, ylabel, xlim, ylim
 from biom.parse import parse_biom_table
 from cogent.maths.stats.test import correlation_test
+from cogent.maths.distance_transform import dist_bray_curtis
+from cogent.draw.distribution_plots import generate_box_plots
 from qiime.transform_coordinate_matrices import procrustes_monte_carlo,\
     get_procrustes_results
-from cogent.maths.distance_transform import dist_bray_curtis
 from qiime.principal_coordinates import pcoa
 from qiime.format import format_distance_matrix
 
