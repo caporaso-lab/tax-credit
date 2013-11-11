@@ -1,4 +1,4 @@
-biom add-metadata#!/usr/bin/env python
+#!/usr/bin/env python
 from __future__ import division
 
 __author__ = "Jai Ram Rideout"
