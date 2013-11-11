@@ -153,7 +153,7 @@ def compute_prf(actual_table,
     return p, r, f
 
 def get_taxonomy_collapser(level):
-    """ Returns fn that to pass to table's collapseObservationsByMetadata
+    """ Returns fn to pass to table's collapseObservationsByMetadata
     
         level: the level to collapse on in the "taxonomy" observation 
          metdata category
