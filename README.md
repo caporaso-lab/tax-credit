@@ -2,14 +2,16 @@ short-read-tax-assignment
 =========================
 
 A repository for storing code and data related to a systematic comparison of
-short read taxonomy assignment tools.
+short read taxonomy assignment tools. Includes a framework to facilitate the
+evaluation and comparison of additional taxonomy assigners in the context of
+the results presented in (Bokulich, Rideout, et al. (in preparation)).
 
 Installing
 ----------
 
 To run the code in this repository, you will need the development version of
 [QIIME](http://www.qiime.org) (tested on 1.7.0-dev, master@7b0920b) and
-[IPython](http://ipython.org/) 1.0.dev installed, with
+[IPython](http://ipython.org/) >= 1.0.0 installed, with
 ```short-read-tax-assignment/code``` added to your ```PYTHONPATH``` and
 ```short-read-tax-assignment/code/scripts``` added to your ```PATH```.
 
@@ -17,16 +19,15 @@ Testing your installation
 -------------------------
 
 To test your installation/setup, you can run the unit tests with the following
-commands (assuming you are in the ```short-read-tax-assignment``` directory):
+commands (assuming you are in the ```short-read-tax-assignment``` directory and
+you have [nose](http://nose.readthedocs.org/en/latest/) installed):
 
-    python code/tests/test_multiple_assign_taxonomy.py
-    python code/tests/test_generate_taxa_compare_table.py
-    python code/tests/test_eval_framework.py
+    nosetests code
 
 Using the IPython Notebooks included in this repository
 -------------------------------------------------------
 
-To view and interact with an [IPython Notebooks](http://ipython.org/notebook.html), change into the direcotry containing the IPython Notebooks of interest, and start an IPython Notebook server. For example:
+To view and interact with an [IPython Notebook](http://ipython.org/notebook.html), change into the directory containing the IPython Notebooks of interest, and start an IPython Notebook server. For example:
 
 ```
     cd short-read-tax-assignment/demo/eval-demo
@@ -53,8 +54,8 @@ Requirements for running the evaluation framework notebook, in addition to the c
 
 * Python 2.7
 * [IPython Notebook](http://ipython.org/notebook.html)
+* [QIIME](http://qiime.org/)
 * [PyCogent](https://github.com/pycogent/pycogent)
-* [short-read-tax-assignment](https://github.com/gregcaporaso/short-read-tax-assignment)
 * [matplotlib](http://matplotlib.org/)
 
 Analysis demonstration workflows (for taxonomic assigners in QIIME)
