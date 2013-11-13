@@ -31,7 +31,7 @@ Soergel D.A.W., Dey N., Knight R., and Brenner S.E.  2012.
 Selection of primers for optimal taxonomic classification of
 environmental 16S rRNA gene sequences.  ISME J (6), 1440–1444
 
-using usearch: /share/apps/qiime-1.6.0/bin/usearch
+using usearch: /share/apps/qiime-1.7.0/bin/usearch
 
 Header Regex: \S+\s(\S+?)\s
 Index file /home/nbokulic/bewolf/sl/RDBW/seqs.fna.pos already exists; assuming valid
@@ -40,50 +40,35 @@ file b only = 0 sequences
 both        = 0 sequences
 doSingleSearch 2: 94 query sequences remaining
      searching with %id 0.01 and maxAccepts 1000
-/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 2 --db /home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta --uc /tmp/79532.1.all.q/OxcZB2miuF/a --id 0.99 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
-
-WARNING: Invalid FASTA file '/home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta', non-letter '_' in sequence >UDB001348
-
+/share/apps/qiime-1.7.0/bin/usearch --quiet --global --iddef 2 --query 2 --db /home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta --uc /tmp/82296.1.all.q/iaatlK7g_7/a --id 0.99 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
 doSingleSearch 2: Finished at pair threshold 0.01 and maxAccepts 1000
          NOHITS: 66
     TOOMANYHITS: 0
 Finished round at threshold 0.01; 66 NOHIT, 0 TOOMANYHIT.
 doSingleSearch 4: 66 query sequences remaining
      searching with %id 0.02 and maxAccepts 1000
-/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 4 --db /home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta --uc /tmp/79532.1.all.q/gVWrN7uyVk/a --id 0.98 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
-
-WARNING: Invalid FASTA file '/home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta', non-letter '_' in sequence >UDB001348
-
+/share/apps/qiime-1.7.0/bin/usearch --quiet --global --iddef 2 --query 4 --db /home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta --uc /tmp/82296.1.all.q/0jjyh2tYBB/a --id 0.98 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
 doSingleSearch 4: Finished at pair threshold 0.02 and maxAccepts 1000
          NOHITS: 57
     TOOMANYHITS: 0
 Finished round at threshold 0.02; 57 NOHIT, 0 TOOMANYHIT.
 doSingleSearch 5: 57 query sequences remaining
      searching with %id 0.04 and maxAccepts 1000
-/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 5 --db /home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta --uc /tmp/79532.1.all.q/l554Zu49AG/a --id 0.96 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
-
-WARNING: Invalid FASTA file '/home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta', non-letter '_' in sequence >UDB001348
-
+/share/apps/qiime-1.7.0/bin/usearch --quiet --global --iddef 2 --query 5 --db /home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta --uc /tmp/82296.1.all.q/6gLwOk8uPS/a --id 0.96 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
 doSingleSearch 5: Finished at pair threshold 0.04 and maxAccepts 1000
          NOHITS: 37
     TOOMANYHITS: 0
 Finished round at threshold 0.04; 37 NOHIT, 0 TOOMANYHIT.
 doSingleSearch 6: 37 query sequences remaining
      searching with %id 0.08 and maxAccepts 1000
-/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 6 --db /home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta --uc /tmp/79532.1.all.q/vRDw_bIlqA/a --id 0.92 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
-
-WARNING: Invalid FASTA file '/home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta', non-letter '_' in sequence >UDB001348
-
+/share/apps/qiime-1.7.0/bin/usearch --quiet --global --iddef 2 --query 6 --db /home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta --uc /tmp/82296.1.all.q/whmSQ5b4up/a --id 0.92 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
 doSingleSearch 6: Finished at pair threshold 0.08 and maxAccepts 1000
          NOHITS: 17
     TOOMANYHITS: 0
 Finished round at threshold 0.08; 17 NOHIT, 0 TOOMANYHIT.
 doSingleSearch 7: 17 query sequences remaining
      searching with %id 0.16 and maxAccepts 1000
-/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 7 --db /home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta --uc /tmp/79532.1.all.q/P0X6GXGcDB/a --id 0.84 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
-
-WARNING: Invalid FASTA file '/home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta', non-letter '_' in sequence >UDB001348
-
+/share/apps/qiime-1.7.0/bin/usearch --quiet --global --iddef 2 --query 7 --db /home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta --uc /tmp/82296.1.all.q/JdD8CNqa5k/a --id 0.84 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
 doSingleSearch 7: Finished at pair threshold 0.16 and maxAccepts 1000
          NOHITS: 12
     TOOMANYHITS: 0
@@ -96,6 +81,6 @@ loading taxonomy...
 0 (0.0%) had no primer match
 12 (12.8%) had no hits
 0 (0.0%) had too many hits
-0 (0.0%) had hits but no classification
-82 (87.2%) were classified
+13 (13.8%) had hits but no classification
+69 (73.4%) were classified
 

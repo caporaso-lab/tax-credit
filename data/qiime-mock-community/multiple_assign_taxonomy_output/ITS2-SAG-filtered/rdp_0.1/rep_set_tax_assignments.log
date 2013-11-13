@@ -5,6 +5,6 @@ Taxonomy:RDP
 Confidence:0.1
 id_to_taxonomy_filepath:/home/nbokulic/ref_seq_dbs/UNITE/unite_rep_set_97-rdp-taxonomy.txt
 id_to_taxonomy_fp:/home/nbokulic/ref_seq_dbs/UNITE/unite_rep_set_97-rdp-taxonomy.txt
-max_memory:16000M
+max_memory:8000M
 reference_sequences_fp:/home/nbokulic/ref_seq_dbs/UNITE/align/rep_set_uclust_ref_97.fasta
 training_data_properties_fp:None
