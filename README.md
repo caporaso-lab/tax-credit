@@ -10,7 +10,7 @@ Installing
 ----------
 
 To run the code in this repository, you will need the development version of
-[QIIME](http://www.qiime.org) (tested on 1.7.0-dev, master@7b0920b) and
+[QIIME](http://www.qiime.org) (tested on 1.7.0-dev, master@dc1ca5e) and
 [IPython](http://ipython.org/) >= 1.0.0 installed, with
 ```short-read-tax-assignment/code``` added to your ```PYTHONPATH``` and
 ```short-read-tax-assignment/code/scripts``` added to your ```PATH```.
@@ -57,12 +57,3 @@ Requirements for running the evaluation framework notebook, in addition to the c
 * [QIIME](http://qiime.org/)
 * [PyCogent](https://github.com/pycogent/pycogent)
 * [matplotlib](http://matplotlib.org/)
-
-Analysis demonstration workflows (for taxonomic assigners in QIIME)
--------------------------------------------------------------------
-
-Two [IPython Notebooks](http://ipython.org/notebook.html) are provided to
-demonstrate the workflows that were used to compare taxonomy assigners using
-mock community data and natural community data. The notebooks and demonstration
-material can be found under ```short-read-tax-assignment/demo/mock-demo``` and
-```short-read-tax-assignment/demo/natural-demo```. 
