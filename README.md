@@ -4,7 +4,7 @@ short-read-tax-assignment
 A repository for storing code and data related to a systematic comparison of
 short read taxonomy assignment tools. Includes a framework to facilitate the
 evaluation and comparison of additional taxonomy assigners in the context of
-the results presented in (Bokulich, Rideout, et al. (in preparation)).
+the results presented in (Bokulich, Rideout, et al. (Nature Methods, under review)).
 
 Installing
 ----------
