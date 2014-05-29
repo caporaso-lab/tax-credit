@@ -1,0 +1,138 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/home/nbokulic/ref_seq_dbs/its_12_11_otus/taxonomy/97_otu_taxonomy.txt
+id_to_taxonomy_fp:/home/nbokulic/ref_seq_dbs/its_12_11_otus/taxonomy/97_otu_taxonomy.txt
+max_accepts:1
+min_consensus_fraction:0.75
+reference_sequences_fp:/home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta
+similarity:1.0
+unassignable_label:Unassigned
+Result path: "/scratch/assign-taxX3ncU9n00B2d42UbFDcN.txt"
+
+.uc file contents:
+
+# uclust --input /home/nbokulic/bewolf/psrotot/RDBW/rep_set.fna --id 1.0 --rev --maxaccepts 1 --allhits --libonly --lib /home/nbokulic/ref_seq_dbs/its_12_11_otus/rep_set/97_otus.fasta --uc /scratch/UclustConsensusTaxonAssigner_hwajgX.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+L	9213	476	*	*	*	*	*	DQ683006	*
+H	9213	101	100.0	+	0	0	11I101M364I	AB236002 Mock.2_4	DQ683006
+N	*	85	*	*	*	*	*	AM410602 Mock.1_7548	*
+N	*	92	*	*	*	*	*	DQ681335 Mock.1_1328	*
+N	*	101	*	*	*	*	*	DQ683114 Mock.1_531	*
+N	*	101	*	*	*	*	*	EF199746 Mock.1_0	*
+N	*	101	*	*	*	*	*	EF397557 Mock.2_15624	*
+N	*	101	*	*	*	*	*	EU490021 Mock.1_1838	*
+N	*	94	*	*	*	*	*	EU551202 Mock.2_9983	*
+N	*	83	*	*	*	*	*	FJ196614 Mock.2_39189	*
+L	34984	584	*	*	*	*	*	JN681281	*
+H	34984	81	100.0	+	0	0	25I81M478I	FJ466715 Mock.1_840	JN681281
+N	*	84	*	*	*	*	*	FJ777353 Mock.2_15608	*
+L	34170	704	*	*	*	*	*	FM177662	*
+H	34170	101	100.0	+	0	0	177I101M426I	FM177661 Mock.1_1051	FM177662
+N	*	77	*	*	*	*	*	FM875842 Mock.1_15760	*
+N	*	101	*	*	*	*	*	FR799498 Mock.1_17762	*
+L	37038	914	*	*	*	*	*	GQ229082	*
+H	37038	101	100.0	+	0	0	133I101M680I	GQ229082 Mock.3_2031	GQ229082
+L	20885	743	*	*	*	*	*	GQ376077	*
+H	20885	101	100.0	+	0	0	8I101M634I	GQ376077 Mock.2_8	GQ376077
+L	22440	631	*	*	*	*	*	GQ120969	*
+H	22440	80	100.0	+	0	0	24I80M527I	GQ458026 Mock.1_12861	GQ120969
+N	*	101	*	*	*	*	*	GQ999201 Mock.3_2	*
+N	*	101	*	*	*	*	*	GU054037 Mock.1_128	*
+N	*	101	*	*	*	*	*	GU370744 Mock.1_97	*
+N	*	101	*	*	*	*	*	GU566244 Mock.2_2258	*
+N	*	97	*	*	*	*	*	GU934594 Mock.2_4233	*
+L	44023	453	*	*	*	*	*	HM037662	*
+H	44023	101	100.0	+	0	0	22I101M330I	HM037662 Mock.1_7	HM037662
+N	*	101	*	*	*	*	*	HM069364 Mock.3_83	*
+L	47945	395	*	*	*	*	*	HQ115737	*
+H	47945	101	100.0	+	0	0	15I101M279I	HQ115737 Mock.2_65	HQ115737
+N	*	101	*	*	*	*	*	HQ589260 Mock.2_9798	*
+L	14063	632	*	*	*	*	*	DQ249212	*
+H	14063	89	100.0	+	0	0	26I89M517I	HQ827787 Mock.1_18213	DQ249212
+H	14063	88	100.0	+	0	0	26I88M518I	JF439501 Mock.1_13559	DQ249212
+N	*	84	*	*	*	*	*	JF449887 Mock.1_8251	*
+N	*	101	*	*	*	*	*	JF715197 Mock.3_44	*
+L	49327	673	*	*	*	*	*	JF720033	*
+H	49327	101	100.0	+	0	0	22I101M550I	JF720033 Mock.2_30	JF720033
+N	*	101	*	*	*	*	*	JF907594 Mock.1_40	*
+L	19843	705	*	*	*	*	*	AM410602	*
+H	19843	101	100.0	+	0	0	137I101M467I	JN905480 Mock.2_11	AM410602
+L	29152	597	*	*	*	*	*	HM239926	*
+H	29152	78	100.0	+	0	0	22I78M497I	JN905595 Mock.3_8139	HM239926
+N	*	101	*	*	*	*	*	New.ReferenceOTU1 Mock.1_44196	*
+N	*	101	*	*	*	*	*	New.ReferenceOTU2 Mock.1_66982	*
+N	*	101	*	*	*	*	*	New.ReferenceOTU3 Mock.1_7791	*
+N	*	101	*	*	*	*	*	New.ReferenceOTU4 Mock.3_2154	*
+N	*	101	*	*	*	*	*	New.ReferenceOTU5 Mock.2_15259	*
+N	*	101	*	*	*	*	*	New.ReferenceOTU6 Mock.1_2681	*
+N	*	101	*	*	*	*	*	New.ReferenceOTU7 Mock.2_65545	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU104 Mock.2_1714	*
+N	*	92	*	*	*	*	*	New.CleanUp.ReferenceOTU105 Mock.1_4452	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU106 Mock.2_73953	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU107 Mock.2_6026	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU109 Mock.3_64290	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU110 Mock.2_25781	*
+N	*	78	*	*	*	*	*	New.CleanUp.ReferenceOTU111 Mock.2_53527	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU117 Mock.2_19449	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU123 Mock.1_21242	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU124 Mock.1_5337	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU136 Mock.1_54066	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU138 Mock.1_46401	*
+N	*	91	*	*	*	*	*	New.CleanUp.ReferenceOTU142 Mock.2_31673	*
+N	*	89	*	*	*	*	*	New.CleanUp.ReferenceOTU145 Mock.1_42547	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU15 Mock.2_13064	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU150 Mock.1_20046	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU16 Mock.2_5394	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU162 Mock.2_13237	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU169 Mock.2_58493	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU170 Mock.2_72741	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU174 Mock.1_67324	*
+N	*	97	*	*	*	*	*	New.CleanUp.ReferenceOTU175 Mock.2_49488	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU176 Mock.2_44184	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU179 Mock.3_15573	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU180 Mock.1_39577	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU184 Mock.2_18978	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU185 Mock.3_9034	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU191 Mock.3_86	*
+N	*	91	*	*	*	*	*	New.CleanUp.ReferenceOTU2 Mock.3_52699	*
+N	*	93	*	*	*	*	*	New.CleanUp.ReferenceOTU25 Mock.2_38665	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU34 Mock.2_5485	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU40 Mock.1_52686	*
+N	*	94	*	*	*	*	*	New.CleanUp.ReferenceOTU43 Mock.1_25228	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU44 Mock.1_6422	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU48 Mock.3_9150	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU5 Mock.2_8898	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU51 Mock.1_65676	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU54 Mock.2_50493	*
+N	*	94	*	*	*	*	*	New.CleanUp.ReferenceOTU58 Mock.2_7816	*
+N	*	83	*	*	*	*	*	New.CleanUp.ReferenceOTU6 Mock.1_46887	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU60 Mock.3_43979	*
+N	*	95	*	*	*	*	*	New.CleanUp.ReferenceOTU61 Mock.1_44342	*
+N	*	96	*	*	*	*	*	New.CleanUp.ReferenceOTU62 Mock.1_1896	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU71 Mock.1_1352	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU72 Mock.2_8064	*
+N	*	92	*	*	*	*	*	New.CleanUp.ReferenceOTU78 Mock.1_53045	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU81 Mock.3_69820	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU82 Mock.1_50690	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU83 Mock.1_18246	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU9 Mock.2_3312	*
+N	*	93	*	*	*	*	*	New.CleanUp.ReferenceOTU90 Mock.3_36762	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU94 Mock.3_65355	*
+N	*	101	*	*	*	*	*	New.CleanUp.ReferenceOTU95 Mock.2_15039	*
+D	9213	2	*	*	*	*	100.0	DQ683006	*
+D	14063	3	*	*	*	*	100.0	DQ249212	*
+D	19843	2	*	*	*	*	100.0	AM410602	*
+D	20885	2	*	*	*	*	100.0	GQ376077	*
+D	22440	2	*	*	*	*	100.0	GQ120969	*
+D	29152	2	*	*	*	*	100.0	HM239926	*
+D	34170	2	*	*	*	*	100.0	FM177662	*
+D	34984	2	*	*	*	*	100.0	JN681281	*
+D	37038	2	*	*	*	*	100.0	GQ229082	*
+D	44023	2	*	*	*	*	100.0	HM037662	*
+D	47945	2	*	*	*	*	100.0	HQ115737	*
+D	49327	2	*	*	*	*	100.0	JF720033	*

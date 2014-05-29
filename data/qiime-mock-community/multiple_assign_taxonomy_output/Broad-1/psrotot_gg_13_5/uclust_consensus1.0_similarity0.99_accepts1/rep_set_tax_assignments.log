@@ -1,0 +1,140 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/home/nbokulic/gg_13_5/gg_13_5_otus/taxonomy/97_otu_taxonomy_MOD.txt
+id_to_taxonomy_fp:/home/nbokulic/gg_13_5/gg_13_5_otus/taxonomy/97_otu_taxonomy_MOD.txt
+max_accepts:1
+min_consensus_fraction:1.0
+reference_sequences_fp:/home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta
+similarity:0.99
+unassignable_label:Unassigned
+Result path: "/scratch/assign-taxwV2REdur5GhGfrGcfrba.txt"
+
+.uc file contents:
+
+# uclust --input /home/nbokulic/open_reference_otus/broad1/psrotot_gg_13_5/rep_set.fna --id 0.99 --rev --maxaccepts 1 --allhits --libonly --lib /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /scratch/UclustConsensusTaxonAssigner_B1AQUW.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	195	*	*	*	*	*	1039016 HMPMockV1.1.Even2_3369	*
+N	*	191	*	*	*	*	*	1055132 HMPMockV1.2.Staggered1_6279	*
+N	*	192	*	*	*	*	*	1059655 HMPMockV1.1.Even2_3613	*
+N	*	197	*	*	*	*	*	1059977 HMPMockV1.1.Even2_3545	*
+N	*	191	*	*	*	*	*	1067519 HMPMockV1.1.Even2_4052	*
+N	*	193	*	*	*	*	*	1068955 HMPMockV1.1.Even1_1752	*
+N	*	192	*	*	*	*	*	1069592 HMPMockV1.1.Even1_1196	*
+L	748	1374	*	*	*	*	*	1081058	*
+H	748	193	100.0	+	0	0	515I193M666I	1081058 HMPMockV1.2.Staggered1_6588	1081058
+N	*	193	*	*	*	*	*	1112200 HMPMockV1.2.Staggered1_5800	*
+N	*	191	*	*	*	*	*	1121111 HMPMockV1.1.Even2_3982	*
+N	*	190	*	*	*	*	*	113773 HMPMockV1.1.Even2_3406	*
+L	29028	1400	*	*	*	*	*	289709	*
+H	29028	193	100.0	+	0	0	526I193M681I	114510 HMPMockV1.2.Staggered1_5552	289709
+L	55311	1388	*	*	*	*	*	12574	*
+H	55311	193	100.0	+	0	0	423I193M772I	12574 HMPMockV1.1.Even1_694	12574
+L	49625	1505	*	*	*	*	*	128604	*
+H	49625	193	100.0	+	0	0	502I193M810I	128604 HMPMockV1.1.Even1_554	128604
+N	*	191	*	*	*	*	*	137056 HMPMockV1.2.Staggered1_6113	*
+N	*	193	*	*	*	*	*	138389 HMPMockV1.1.Even2_3850	*
+N	*	193	*	*	*	*	*	149265 HMPMockV1.2.Staggered2_7516	*
+L	45366	1414	*	*	*	*	*	164612	*
+H	45366	190	99.5	+	0	0	513I190M711I	152001 HMPMockV1.1.Even2_3537	164612
+L	1789	1368	*	*	*	*	*	960695	*
+H	1789	193	99.5	+	0	0	513I193M662I	153046 HMPMockV1.2.Staggered1_5921	960695
+N	*	194	*	*	*	*	*	1550056 HMPMockV1.2.Staggered1_5675	*
+N	*	192	*	*	*	*	*	158047 HMPMockV1.1.Even2_3136	*
+N	*	192	*	*	*	*	*	164413 HMPMockV1.1.Even2_5333	*
+N	*	190	*	*	*	*	*	164612 HMPMockV1.1.Even1_565	*
+L	84994	1344	*	*	*	*	*	4359590	*
+H	84994	193	99.5	+	0	0	440I193M711I	1756274 HMPMockV1.1.Even1_140	4359590
+L	41939	1432	*	*	*	*	*	187962	*
+H	41939	190	99.5	+	0	0	557I190M685I	187233 HMPMockV1.1.Even1_1184	187962
+L	30146	1371	*	*	*	*	*	277071	*
+H	30146	190	100.0	+	0	0	498I190M683I	1891556 HMPMockV1.1.Even1_516	277071
+L	72662	1372	*	*	*	*	*	953758	*
+H	72662	193	99.5	+	0	0	513I193M666I	1995363 HMPMockV1.1.Even1_2	953758
+N	*	189	*	*	*	*	*	219151 HMPMockV1.1.Even1_27	*
+N	*	189	*	*	*	*	*	227083 HMPMockV1.2.Staggered1_6436	*
+L	37210	1526	*	*	*	*	*	224745	*
+H	37210	193	100.0	+	0	0	518I193M815I	242070 HMPMockV1.1.Even1_59	224745
+L	31317	1434	*	*	*	*	*	269901	*
+H	31317	189	99.5	+	0	0	520I53MI136M724I	269901 HMPMockV1.1.Even1_366	269901
+L	62708	1460	*	*	*	*	*	1112200	*
+H	62708	193	100.0	+	0	0	508I130MI63M758I	2874742 HMPMockV1.1.Even1_107	1112200
+H	72662	199	99.5	+	0	0	513I199M660I	2896107 HMPMockV1.1.Even1_67	953758
+H	1789	190	99.5	+	0	0	513I190M665I	356733 HMPMockV1.1.Even1_1461	960695
+N	*	193	*	*	*	*	*	368134 HMPMockV1.1.Even2_5087	*
+L	77398	1411	*	*	*	*	*	4130483	*
+H	77398	191	99.5	+	0	0	513I191M707I	4130483 HMPMockV1.1.Even1_339	4130483
+L	80879	1413	*	*	*	*	*	4315958	*
+H	80879	189	100.0	+	0	0	540I189M684I	4297222 HMPMockV1.1.Even1_190	4315958
+N	*	192	*	*	*	*	*	4315958 HMPMockV1.2.Staggered2_7586	*
+N	*	193	*	*	*	*	*	4316928 HMPMockV1.2.Staggered1_5849	*
+L	85517	1531	*	*	*	*	*	4365141	*
+H	85517	193	99.5	+	0	0	521I193M817I	4365141 HMPMockV1.1.Even2_5097	4365141
+L	82802	1352	*	*	*	*	*	4336516	*
+H	82802	193	100.0	+	0	0	361I193M798I	4380971 HMPMockV1.1.Even1_31	4336516
+L	18091	1510	*	*	*	*	*	441155	*
+H	18091	191	100.0	+	0	0	533I191M786I	441155 HMPMockV1.1.Even1_642	441155
+L	90432	1514	*	*	*	*	*	4416988	*
+H	90432	193	100.0	+	0	0	534I193M787I	4416988 HMPMockV1.1.Even1_99	4416988
+N	*	193	*	*	*	*	*	4427114 HMPMockV1.2.Staggered1_6284	*
+N	*	199	*	*	*	*	*	4438739 HMPMockV1.1.Even2_5514	*
+L	92734	1541	*	*	*	*	*	4440404	*
+H	92734	189	100.0	+	0	0	531I189M821I	4440404 HMPMockV1.1.Even1_345	4440404
+N	*	191	*	*	*	*	*	4445673 HMPMockV1.1.Even1_797	*
+N	*	200	*	*	*	*	*	519673 HMPMockV1.1.Even2_4567	*
+L	15532	1433	*	*	*	*	*	532163	*
+H	15532	193	100.0	+	0	0	471I193M769I	532163 HMPMockV1.1.Even1_154	532163
+N	*	193	*	*	*	*	*	552922 HMPMockV1.1.Even2_4853	*
+N	*	189	*	*	*	*	*	617833 HMPMockV1.2.Staggered2_7482	*
+H	1789	190	99.5	+	0	0	513I190M665I	630141 HMPMockV1.1.Even1_146	960695
+N	*	192	*	*	*	*	*	767863 HMPMockV1.2.Staggered1_6591	*
+N	*	191	*	*	*	*	*	894774 HMPMockV1.2.Staggered1_6470	*
+N	*	201	*	*	*	*	*	919490 HMPMockV1.1.Even2_3252	*
+N	*	190	*	*	*	*	*	923151 HMPMockV1.2.Staggered1_6500	*
+L	48948	1490	*	*	*	*	*	137056	*
+H	48948	202	99.5	+	0	0	512I202M776I	928538 HMPMockV1.1.Even1_115	137056
+H	1789	192	99.5	+	0	0	513I192M663I	939252 HMPMockV1.1.Even2_3899	960695
+H	72662	193	100.0	+	0	0	513I193M666I	953758 HMPMockV1.1.Even2_4205	953758
+N	*	190	*	*	*	*	*	977188 HMPMockV1.1.Even1_1902	*
+L	77392	1372	*	*	*	*	*	979261	*
+H	77392	194	99.5	+	0	0	513I194M665I	979261 HMPMockV1.2.Staggered1_6077	979261
+L	1577	1373	*	*	*	*	*	984924	*
+H	1577	201	99.0	+	0	0	514I201M658I	984924 HMPMockV1.1.Even2_3417	984924
+N	*	194	*	*	*	*	*	996487 HMPMockV1.1.Even1_419	*
+L	26513	1477	*	*	*	*	*	305561	*
+H	26513	189	99.5	+	0	0	521I106MI83M766I	99882 HMPMockV1.1.Even1_863	305561
+N	*	190	*	*	*	*	*	New.CleanUp.ReferenceOTU0 HMPMockV1.2.Staggered1_6336	*
+N	*	189	*	*	*	*	*	New.CleanUp.ReferenceOTU10 HMPMockV1.2.Staggered2_7545	*
+N	*	193	*	*	*	*	*	New.CleanUp.ReferenceOTU2 HMPMockV1.2.Staggered1_6331	*
+N	*	190	*	*	*	*	*	New.CleanUp.ReferenceOTU27 HMPMockV1.2.Staggered1_6584	*
+N	*	191	*	*	*	*	*	New.CleanUp.ReferenceOTU36 HMPMockV1.1.Even2_5291	*
+N	*	189	*	*	*	*	*	New.CleanUp.ReferenceOTU39 HMPMockV1.1.Even1_971	*
+D	748	2	*	*	*	*	100.0	1081058	*
+D	1577	2	*	*	*	*	99.0	984924	*
+D	1789	5	*	*	*	*	99.5	960695	*
+D	15532	2	*	*	*	*	100.0	532163	*
+D	18091	2	*	*	*	*	100.0	441155	*
+D	26513	2	*	*	*	*	99.5	305561	*
+D	29028	2	*	*	*	*	100.0	289709	*
+D	30146	2	*	*	*	*	100.0	277071	*
+D	31317	2	*	*	*	*	99.5	269901	*
+D	37210	2	*	*	*	*	100.0	224745	*
+D	41939	2	*	*	*	*	99.5	187962	*
+D	45366	2	*	*	*	*	99.5	164612	*
+D	48948	2	*	*	*	*	99.5	137056	*
+D	49625	2	*	*	*	*	100.0	128604	*
+D	55311	2	*	*	*	*	100.0	12574	*
+D	62708	2	*	*	*	*	100.0	1112200	*
+D	72662	4	*	*	*	*	99.7	953758	*
+D	77392	2	*	*	*	*	99.5	979261	*
+D	77398	2	*	*	*	*	99.5	4130483	*
+D	80879	2	*	*	*	*	100.0	4315958	*
+D	82802	2	*	*	*	*	100.0	4336516	*
+D	84994	2	*	*	*	*	99.5	4359590	*
+D	85517	2	*	*	*	*	99.5	4365141	*
+D	90432	2	*	*	*	*	100.0	4416988	*
+D	92734	2	*	*	*	*	100.0	4440404	*

@@ -1,0 +1,183 @@
+RtaxTaxonAssigner parameters:
+Application:RTAX classifier
+Citation:Soergel D.A.W., Dey N., Knight R., and Brenner S.E.  2012.  Selection of primers for optimal taxonomic classification of environmental 16S rRNA gene sequences.  ISME J (6), 1440-1444
+amplicon_id_regex:(\S+)\s(\S+?)\s
+header_id_regex:\S+\s(\S+?)\s
+id_to_taxonomy_filepath:/home/nbokulic/gg_13_5/gg_13_5_otus/taxonomy/97_otu_taxonomy_MOD.txt
+id_to_taxonomy_fp:/home/nbokulic/gg_13_5/gg_13_5_otus/taxonomy/97_otu_taxonomy_MOD.txt
+no_single_ok_generic:False
+read_1_seqs_fp:/home/nbokulic/sathish/S16S-2/sl/r3n0p75/seqs.fna
+read_2_seqs_fp:/home/nbokulic/sathish/S16S-2/sl_rev/r3n0p200/seqs.fna
+read_id_regex:\S+\s+(\S+)
+reference_sequences_fp:/home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta
+single_ok:True
+RTAX: Rapid and accurate taxonomic classification of short paired-end
+      sequence reads from the 16S ribosomal RNA gene.
+
+David A. W. Soergel (1), Rob Knight (2), and Steven E. Brenner (1)
+
+1 Department of Plant and Microbial Biology,
+  University of California, Berkeley 
+2 Howard Hughes Medical Institute and Department of Chemistry 
+  and Biochemistry, University of Colorado at Boulder
+* Corresponding author (current address): soergel@cs.umass.edu
+
+Version 0.983  (August 21, 2012)
+
+http://dev.davidsoergel.com/rtax
+
+Please cite:
+Soergel D.A.W., Dey N., Knight R., and Brenner S.E.  2012.
+Selection of primers for optimal taxonomic classification of
+environmental 16S rRNA gene sequences.  ISME J (6), 1440–1444
+
+using usearch: /share/apps/qiime-1.6.0/bin/usearch
+
+Header Regex: \S+\s(\S+?)\s
+Index file /home/nbokulic/sathish/S16S-2/sl/r3n0p75/seqs.fna.pos already exists; assuming valid
+Index file /home/nbokulic/sathish/S16S-2/sl_rev/r3n0p200/seqs.fna.pos already exists; assuming valid
+file a only = 212 sequences
+file b only = 0 sequences
+both        = 3333 sequences
+doPairSearch 0, 1: 3333 query sequences remaining
+     searching with pair %id 0.01 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 0 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/DppvnFYJi6/a --id 0.98 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 1 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/DppvnFYJi6/b --id 0.98 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doPairSearch 0, 1: Finished at pair threshold 0.01 and maxAccepts 1000
+         NOHITS: 3319
+    TOOMANYHITS: 0
+MAIN: Finished round at threshold 0.01; 3319 NOHIT, 0 TOOMANYHIT.
+doPairSearch 4, 5: 3319 query sequences remaining
+     searching with pair %id 0.02 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 5 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/DbZnM5HRNg/b --id 0.96 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doPairSearch 4, 5: Finished at pair threshold 0.02 and maxAccepts 1000
+         NOHITS: 3200
+    TOOMANYHITS: 0
+MAIN: Finished round at threshold 0.02; 3200 NOHIT, 0 TOOMANYHIT.
+doPairSearch 6, 7: 3200 query sequences remaining
+     searching with pair %id 0.04 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 6 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/4VbI4pQmQ4/a --id 0.92 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doPairSearch 6, 7: Escalating maxAccepts to 2000 for 23 sequences.
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 8 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/3SJ3Bn74nY/a --id 0.92 --maxaccepts 2000 --maxrejects 128 --nowordcountreject
+doPairSearch 8, 9: Escalating maxAccepts to 4000 for 3 sequences.
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 10 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/mM640T_lSV/a --id 0.92 --maxaccepts 4000 --maxrejects 128 --nowordcountreject
+doPairSearch 10, 11: Finished at pair threshold 0.04 and maxAccepts 4000
+         NOHITS: 0
+    TOOMANYHITS: 0
+doPairSearch 8, 9: Finished at pair threshold 0.04 and maxAccepts 2000
+         NOHITS: 0
+    TOOMANYHITS: 0
+doPairSearch 6, 7: Finished at pair threshold 0.04 and maxAccepts 1000
+         NOHITS: 1395
+    TOOMANYHITS: 0
+MAIN: Finished round at threshold 0.04; 1395 NOHIT, 0 TOOMANYHIT.
+doPairSearch 12, 13: 1395 query sequences remaining
+     searching with pair %id 0.08 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 12 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/An1D24f4bu/a --id 0.84 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 13 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/An1D24f4bu/b --id 0.84 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doPairSearch 12, 13: Escalating maxAccepts to 2000 for 370 sequences.
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 14 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/LWtvlmYshw/a --id 0.84 --maxaccepts 2000 --maxrejects 128 --nowordcountreject
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 15 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/LWtvlmYshw/b --id 0.84 --maxaccepts 2000 --maxrejects 128 --nowordcountreject
+doPairSearch 14, 15: Escalating maxAccepts to 4000 for 191 sequences.
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 16 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/5ouj0aiGYa/a --id 0.84 --maxaccepts 4000 --maxrejects 128 --nowordcountreject
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 17 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/5ouj0aiGYa/b --id 0.84 --maxaccepts 4000 --maxrejects 128 --nowordcountreject
+doPairSearch 16, 17: Escalating maxAccepts to 8000 for 102 sequences.
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 18 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/IByc_4X7No/a --id 0.84 --maxaccepts 8000 --maxrejects 128 --nowordcountreject
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 19 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/IByc_4X7No/b --id 0.84 --maxaccepts 8000 --maxrejects 128 --nowordcountreject
+doPairSearch 18, 19: Escalating maxAccepts to 16000 for 14 sequences.
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 20 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/vFX632Phak/a --id 0.84 --maxaccepts 16000 --maxrejects 128 --nowordcountreject
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 21 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/vFX632Phak/b --id 0.84 --maxaccepts 16000 --maxrejects 128 --nowordcountreject
+doPairSearch 20, 21: Finished at pair threshold 0.08 and maxAccepts 16000
+         NOHITS: 2
+    TOOMANYHITS: 0
+doPairSearch 18, 19: Finished at pair threshold 0.08 and maxAccepts 8000
+         NOHITS: 18
+    TOOMANYHITS: 0
+doPairSearch 16, 17: Finished at pair threshold 0.08 and maxAccepts 4000
+         NOHITS: 31
+    TOOMANYHITS: 0
+doPairSearch 14, 15: Finished at pair threshold 0.08 and maxAccepts 2000
+         NOHITS: 63
+    TOOMANYHITS: 0
+doPairSearch 12, 13: Finished at pair threshold 0.08 and maxAccepts 1000
+         NOHITS: 429
+    TOOMANYHITS: 0
+MAIN: Finished round at threshold 0.08; 429 NOHIT, 0 TOOMANYHIT.
+doPairSearch 22, 23: 429 query sequences remaining
+     searching with pair %id 0.16 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 22 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/EmQGguzGTM/a --id 0.68 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 23 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/EmQGguzGTM/b --id 0.68 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doPairSearch 22, 23: Escalating maxAccepts to 2000 for 287 sequences.
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 25 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/5dxDbS2qqb/b --id 0.68 --maxaccepts 2000 --maxrejects 128 --nowordcountreject
+doPairSearch 24, 25: Escalating maxAccepts to 4000 for 254 sequences.
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 26 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/1GC_87ul6K/a --id 0.68 --maxaccepts 4000 --maxrejects 128 --nowordcountreject
+doPairSearch 26, 27: Escalating maxAccepts to 8000 for 224 sequences.
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 28 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/fhEk0jgCM3/a --id 0.68 --maxaccepts 8000 --maxrejects 128 --nowordcountreject
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 29 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/fhEk0jgCM3/b --id 0.68 --maxaccepts 8000 --maxrejects 128 --nowordcountreject
+doPairSearch 28, 29: Escalating maxAccepts to 16000 for 189 sequences.
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 30 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/xRsiU_VHhv/a --id 0.68 --maxaccepts 16000 --maxrejects 128 --nowordcountreject
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 31 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/xRsiU_VHhv/b --id 0.68 --maxaccepts 16000 --maxrejects 128 --nowordcountreject
+doPairSearch 30, 31: Finished at pair threshold 0.16 and maxAccepts 16000
+         NOHITS: 0
+    TOOMANYHITS: 0
+doPairSearch 28, 29: Finished at pair threshold 0.16 and maxAccepts 8000
+         NOHITS: 0
+    TOOMANYHITS: 0
+doPairSearch 26, 27: Finished at pair threshold 0.16 and maxAccepts 4000
+         NOHITS: 0
+    TOOMANYHITS: 0
+doPairSearch 24, 25: Finished at pair threshold 0.16 and maxAccepts 2000
+         NOHITS: 1
+    TOOMANYHITS: 0
+doPairSearch 22, 23: Finished at pair threshold 0.16 and maxAccepts 1000
+         NOHITS: 121
+    TOOMANYHITS: 0
+MAIN: Finished round at threshold 0.16; 121 NOHIT, 0 TOOMANYHIT.
+MAIN: 121 query sequences remaining with NOHIT
+MAIN: 0 query sequences remaining with TOOMANYHITS
+doSingleSearch 2: 212 query sequences remaining
+     searching with %id 0.01 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 2 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/eghqBO1Owe/a --id 0.99 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doSingleSearch 2: Finished at pair threshold 0.01 and maxAccepts 1000
+         NOHITS: 205
+    TOOMANYHITS: 0
+Finished round at threshold 0.01; 205 NOHIT, 0 TOOMANYHIT.
+doSingleSearch 32: 205 query sequences remaining
+     searching with %id 0.02 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 32 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/REZr_YeQzl/a --id 0.98 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doSingleSearch 32: Finished at pair threshold 0.02 and maxAccepts 1000
+         NOHITS: 198
+    TOOMANYHITS: 0
+Finished round at threshold 0.02; 198 NOHIT, 0 TOOMANYHIT.
+doSingleSearch 33: 198 query sequences remaining
+     searching with %id 0.04 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 33 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/1ESb8qUkRG/a --id 0.96 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doSingleSearch 33: Finished at pair threshold 0.04 and maxAccepts 1000
+         NOHITS: 145
+    TOOMANYHITS: 0
+Finished round at threshold 0.04; 145 NOHIT, 0 TOOMANYHIT.
+doSingleSearch 34: 145 query sequences remaining
+     searching with %id 0.08 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 34 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/4XDYq_8Ped/a --id 0.92 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doSingleSearch 34: Finished at pair threshold 0.08 and maxAccepts 1000
+         NOHITS: 50
+    TOOMANYHITS: 0
+Finished round at threshold 0.08; 50 NOHIT, 0 TOOMANYHIT.
+doSingleSearch 35: 50 query sequences remaining
+     searching with %id 0.16 and maxAccepts 1000
+/share/apps/qiime-1.6.0/bin/usearch --quiet --global --iddef 2 --query 35 --db /home/nbokulic/gg_13_5/gg_13_5_otus/rep_set/97_otus.fasta --uc /tmp/79682.1.all.q/Qkj1kOZp6Z/a --id 0.84 --maxaccepts 1000 --maxrejects 128 --nowordcountreject
+doSingleSearch 35: Finished at pair threshold 0.16 and maxAccepts 1000
+         NOHITS: 43
+    TOOMANYHITS: 0
+Finished round at threshold 0.16; 43 NOHIT, 0 TOOMANYHIT.
+43 query sequences remaining with NOHIT
+0 query sequences remaining with TOOMANYHITS
+loading taxonomy...
+...done loading 99322 taxonomy lines
+3545 items
+0 (0.0%) had no primer match
+164 (4.6%) had no hits
+0 (0.0%) had too many hits
+0 (0.0%) had hits but no classification
+3381 (95.4%) were classified
+
