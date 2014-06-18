@@ -7,7 +7,7 @@ from collections import defaultdict
 from numpy import asarray
 from pylab import scatter, xlabel, ylabel, xlim, ylim
 
-from biom import load_table
+from biom.exception import UnknownIDError
 
 from cogent.maths.stats.test import correlation_test
 from cogent.maths.distance_transform import dist_bray_curtis
@@ -231,27 +231,27 @@ def get_actual_and_expected_vectors(actual_table,
     if actual_sample_id is None:
         actual_sample_idx = 0
     else:
-        actual_sample_idx = actual_table.SampleIds.index(actual_sample_id)
+        actual_sample_idx = actual_table.index(actual_sample_id, axis="sample")
 
     if expected_sample_id is None:
         expected_sample_idx = 0
     else:
-        expected_sample_idx = expected_table.SampleIds.index(expected_sample_id)
+        expected_sample_idx = expected_table.index(expected_sample_id, axis="sample")
 
     actual_vector = []
     expected_vector = []
     for obs_id in all_obs_ids:
         try:
-            actual_obs_idx = actual_table.observation_ids.index(obs_id)
-        except ValueError:
+            actual_obs_idx = actual_table.index(obs_id, axis="observation")
+        except UnknownIDError:
             actual_value = 0.0
         else:
-            actual_value = actual_table[actual_obs_idx,actual_sample_idx]
+            actual_value = actual_table[actual_obs_idx, actual_sample_idx]
         actual_vector.append(actual_value)
 
         try:
-            expected_obs_idx = expected_table.observation_ids.index(obs_id)
-        except ValueError:
+            expected_obs_idx = expected_table.index(obs_id, axis="observation")
+        except UnknownIDError:
             expected_value = 0.0
         else:
             expected_value = expected_table[expected_obs_idx,expected_sample_idx]
