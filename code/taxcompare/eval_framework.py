@@ -155,14 +155,14 @@ def compute_prf(actual_table,
     return p, r, f
 
 def get_taxonomy_collapser(level):
-    """ Returns fn to pass to table's collapseObservationsByMetadata
+    """ Returns fn to pass to table.collapse
 
         level: the level to collapse on in the "taxonomy" observation
          metdata category
 
     """
-    def f(md):
-        result = ';'.join(md['taxonomy'][:level])
+    def f(id_, md):
+        result = ';'.join(md['taxonomy'][:level+1])
         return result
     return f
 
@@ -199,7 +199,7 @@ def compute_prfs(result_tables,
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
-        actual_table = actual_table.collapseObservationsByMetadata(collapse_by_taxonomy)
+        actual_table = actual_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
 
         ## compute precision, recall, and f-measure and yeild those values
         try:
@@ -293,7 +293,7 @@ def compute_pearson_spearman(result_tables,
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
-        actual_table = actual_table.collapseObservationsByMetadata(collapse_by_taxonomy)
+        actual_table = actual_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
         ### End code copied directly from compute_prfs.
 
         ## compute spearman and pearson correlations
@@ -353,7 +353,7 @@ def compute_procrustes(result_tables,
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
-        actual_table = actual_table.collapseObservationsByMetadata(collapse_by_taxonomy)
+        actual_table = actual_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
         ### End code copied directly from compute_prfs.
 
         # Next block of code, how do I hate thee? Let me count the ways...
