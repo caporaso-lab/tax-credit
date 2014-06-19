@@ -294,8 +294,8 @@ def compute_pearson_spearman(result_tables,
         actual_vector, expected_vector = get_actual_and_expected_vectors(actual_table,
                                                                          expected_table)
 
-        pearson_r, pearson_p = pearson_r(actual_vector, expected_vector)
-        spearman_r, spearman_p = spearman_r(actual_vector, expected_vector)
+        pearson_r, pearson_p = pearsonr(actual_vector, expected_vector)
+        spearman_r, spearman_p = spearmanr(actual_vector, expected_vector)
 
         yield (dataset_id,
                reference_id,
@@ -421,14 +421,14 @@ def compute_mantel(result_tables,
         taxonomy_level: level to compute results
         random_trials : number of Monte Carlo trials to run in Mantel test
     """
-
+    collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
+    
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
         ## load the table and collapse it at the specified taxonomic level
         try:
             full_table = load_table(actual_table_fp)
         except ValueError:
             raise ValueError("Couldn't parse BIOM table: %s" % actual_table_fp)
-        collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
         collapsed_table = full_table.collapse(collapse_by_taxonomy,
                                               axis='observation',
                                               min_group_size=1)
@@ -762,8 +762,9 @@ def generate_mantel_table(query_mantel,
     all_mantel = query_mantel + subject_mantel
 
     mantel_idx, mantel_title = metric_lookup['mantel']
-
-    all_mantel.sort(key=lambda x: x[sort_metric_idx])
+    # sort by negative test statistic to avoid having to reverse in an
+    # additional step
+    all_mantel.sort(key=lambda x: -x[sort_metric_idx])
 
     header_format = "{:^15} |{:^12} |{:^15} |{:^30}"
     print header_format.format("Data set",
