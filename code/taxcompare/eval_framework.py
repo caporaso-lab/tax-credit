@@ -8,6 +8,7 @@ from numpy import asarray
 from pylab import scatter, xlabel, ylabel, xlim, ylim
 
 from biom.exception import UnknownIDError
+from biom import load_table
 
 from cogent.maths.stats.test import correlation_test
 from cogent.maths.distance_transform import dist_bray_curtis
@@ -38,7 +39,7 @@ def find_and_process_result_tables(start_dir,
          biom_processor: takes a relative path to a biom file and does
           something with it. default is call abspath on it to convert the
           relative path to an absolute path, but could also be
-          parse_biom_table, for example. Not sure if we'll want this, but
+          load_table, for example. Not sure if we'll want this, but
           it's easy to hook up.
         filename_pattern: pattern to use when matching filenames, can contain
          globbable (i.e., bash-style) wildcards (default: "table*biom")
@@ -68,7 +69,7 @@ def find_and_process_expected_tables(start_dir,
          biom_processor: takes a relative path to a biom file and does
           something with it. default is call abspath on it to convert the
           relative path to an absolute path, but could also be
-          parse_biom_table, for example. Not sure if we'll want this, but
+          load_table, for example. Not sure if we'll want this, but
           it's easy to hook up.
         filename_pattern: pattern to use when matching filenames, can contain
          globbable (i.e., bash-style) wildcards (default: "table*biom")
@@ -96,7 +97,7 @@ def get_expected_tables_lookup(start_dir,
          biom_processor: takes a relative path to a biom file and does
           something with it. default is call abspath on it to convert the
           relative path to an absolute path, but could also be
-          parse_biom_table, for example. Not sure if we'll want this, but
+          load_table, for example. Not sure if we'll want this, but
           it's easy to hook up.
         filename_pattern: pattern to use when matching filenames, can contain
          globbable (i.e., bash-style) wildcards (default: "table*biom")
@@ -189,13 +190,13 @@ def compute_prfs(result_tables,
             raise KeyError, "Can't find expected table for (%s, %s)." % (dataset_id, reference_id)
 
         try:
-            expected_table = parse_biom_table(open(expected_table_fp,'U'))
+            expected_table = load_table(expected_table_fp)
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % expected_table_fp
 
         ## parse the actual table and collapse it at the specified taxonomic level
         try:
-            actual_table = parse_biom_table(open(actual_table_fp,'U'))
+            actual_table = load_table(actual_table_fp)
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
@@ -283,13 +284,13 @@ def compute_pearson_spearman(result_tables,
             raise KeyError, "Can't find expected table for (%s, %s)." % (dataset_id, reference_id)
 
         try:
-            expected_table = parse_biom_table(open(expected_table_fp,'U'))
+            expected_table = load_table(expected_table_fp)
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % expected_table_fp
 
         ## parse the actual table and collapse it at the specified taxonomic level
         try:
-            actual_table = parse_biom_table(open(actual_table_fp,'U'))
+            actual_table = load_table(actual_table_fp)
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
@@ -349,7 +350,7 @@ def compute_procrustes(result_tables,
 
         ## parse the actual table and collapse it at the specified taxonomic level
         try:
-            actual_table = parse_biom_table(open(actual_table_fp,'U'))
+            actual_table = load_table(actual_table_fp)
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
