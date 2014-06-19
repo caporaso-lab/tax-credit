@@ -272,8 +272,7 @@ def compute_pearson_spearman(result_tables,
          table filepath, for the expected result tables
         taxonomy_level: level to compute results
     """
-    ### Start code copied directly from compute_prfs - some re-factoring for re-use is
-    ### in order here.
+    results = []
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
         ## parse the expected table (unless taxonomy_level is specified, this should be
         ## collapsed on level 6 taxonomy)
@@ -294,7 +293,6 @@ def compute_pearson_spearman(result_tables,
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
         actual_table = actual_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
-        ### End code copied directly from compute_prfs.
 
         ## compute spearman and pearson correlations
         actual_vector, expected_vector = get_actual_and_expected_vectors(actual_table,
@@ -303,14 +301,11 @@ def compute_pearson_spearman(result_tables,
         pearson_r, pearson_p = pearsonr(actual_vector, expected_vector)
         spearman_r, spearman_p = spearmanr(actual_vector, expected_vector)
 
-        yield (dataset_id,
-               reference_id,
-               method_id,
-               params,
-               pearson_r,
-               pearson_p,
-               spearman_r,
-               spearman_p)
+        results.append((dataset_id, reference_id, method_id, params, pearson_r,
+                        pearson_p, spearman_r, spearman_p))
+    return pd.DataFrame(results, columns=["Dataset", "Reference", "Method",
+                                           "Parameters", "Pearson r", "Pearson p",
+                                           "Spearman rho", "Spearman p"])
 
 def distance_matrix_from_table(table, metric='braycurtis'):
     """Compute distances between all pairs of samples in table
@@ -428,6 +423,7 @@ def compute_mantel(result_tables,
         random_trials : number of Monte Carlo trials to run in Mantel test
     """
     collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
+    results = []
 
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
         ## load the table and collapse it at the specified taxonomic level
@@ -447,7 +443,10 @@ def compute_mantel(result_tables,
         full_dm = distance_matrix_from_table(full_table)
         mantel_r, p = mantel(collapsed_dm, full_dm)
 
-        yield (dataset_id, reference_id, method_id, params, mantel_r, p)
+        results.append((dataset_id, reference_id, method_id, params, mantel_r, p))
+
+    return pd.DataFrame(results, columns=["Dataset", "Reference", "Method",
+                                           "Parameters", "Mantel r", "Mantel p"])
 
 def generate_pr_scatter_plots(query_prf,
                               subject_prf,
@@ -521,165 +520,3 @@ def boxplot_from_data_frame(df,
              y_label = metric,
              y_min = y_min,
              y_max = y_max)
-
-def generate_correlation_box_plots(query_pearson_spearman,
-                                   subject_pearson_spearman,
-                                   metric,
-                                   x_label="Method"):
-    """ Generate box plots for correlation coefficient
-
-        query_pearson_spearman: pearson and spearman data as returned
-         from compute_pearson_spearman for query data
-        subject_pearson_spearman: pearson and spearman data as returned
-         from compute_pearson_spearman for subject data
-        metric: metric to generate plots for (choices are "pearson",
-         "spearman")
-        x_label: x axis label for the plot (default: "Method")
-    """
-    metric_lookup = {'pearson':(4,"r"),
-                     'spearman':(6,"rho")}
-
-    try:
-        metric_idx, y_label = metric_lookup[metric.lower()]
-    except KeyError:
-        available_metric_desc = ", ".join(metric_lookup.keys())
-        error_msg = "Unknown metric: %s. Available choices are: %s" % (metric, available_metric_desc)
-        raise KeyError, error_msg
-
-    distributions_by_method = defaultdict(list)
-    for e in query_pearson_spearman:
-        distributions_by_method[e[2]].append(e[metric_idx])
-    for e in subject_pearson_spearman:
-        distributions_by_method[e[2]].append(e[metric_idx])
-
-    x_tick_labels, distributions = zip(*distributions_by_method.items())
-    boxplots(distributions,
-                       x_tick_labels = x_tick_labels,
-                       x_label = x_label,
-                       y_label = y_label,
-                       y_min = -1.0,
-                       y_max = 1.0)
-
-def generate_pearson_box_plots(subject_pearson_spearman,
-                               query_pearson_spearman,
-                               x_label="Method"):
-    """ Generate box plots for pearson correlation coefficient
-
-        query_pearson_spearman: pearson and spearman data as returned
-         from compute_pearson_spearman for query data
-        subject_pearson_spearman: pearson and spearman data as returned
-         from compute_pearson_spearman for subject data
-        x_label: x axis label for the plot (default: "Method")
-    """
-    generate_correlation_box_plots(subject_pearson_spearman,
-                                   query_pearson_spearman,
-                                   "pearson",
-                                   x_label)
-
-def generate_spearman_box_plots(subject_pearson_spearman,
-                                query_pearson_spearman,
-                                x_label="Method"):
-    """ Generate box plots for spearman correlation coefficient
-
-        query_pearson_spearman: pearson and spearman data as returned
-         from compute_pearson_spearman for query data
-        subject_pearson_spearman: pearson and spearman data as returned
-         from compute_pearson_spearman for subject data
-        x_label: x axis label for the plot (default: "Method")
-    """
-    generate_correlation_box_plots(subject_pearson_spearman,
-                                   query_pearson_spearman,
-                                   "spearman",
-                                   x_label)
-
-def generate_pearson_spearman_table(query_pearson_spearman,
-                                    subject_pearson_spearman,
-                                    sort_metric="Pearson",
-                                    num_rows=50):
-    """ Generate table of pearson and spearman data
-
-        query_pearson_spearman: pearson and spearman data as returned
-         from compute_pearson_spearman for query data
-        subject_pearson_spearman: pearson and spearman data as returned
-         from compute_pearson_spearman for subject data
-        sort_metric: metric to sort rows on (choices are "pearson"
-         and "spearman")
-        num_rows: number of rows to include in table (default: 50)
-    """
-    metric_lookup = {'pearson':(4,"r"),
-                     'spearman':(6,"rho")}
-
-    try:
-        sort_metric_idx, _ = metric_lookup[sort_metric.lower()]
-    except KeyError:
-        available_metric_desc = ", ".join(metric_lookup.keys())
-        error_msg = "Unknown metric: %s. Available choices are: %s" % (sort_metric, available_metric_desc)
-        raise KeyError, error_msg
-
-    all_pearson_spearman = query_pearson_spearman + subject_pearson_spearman
-
-    pearson_idx, pearson_title = metric_lookup['pearson']
-    spearman_idx, spearman_title = metric_lookup['spearman']
-
-    # sort by the (-1 * sort_metric) to avoid having to
-    # reverse the list in a second step
-    all_pearson_spearman.sort(key=lambda x: -x[sort_metric_idx])
-
-    header_format = "{:^15} |{:^12} |{:^12} |{:^15} |{:^30}"
-    print header_format.format("Data set",
-                               pearson_title,
-                               spearman_title,
-                               "Method",
-                               "Parameters")
-    row_format = "{:<15} |{:>12} |{:>12} |{:<15} |{:<30}"
-    for e in all_pearson_spearman[:num_rows]:
-        data = [e[0],
-                '%1.3f' % e[pearson_idx],
-                '%1.3f' % e[spearman_idx],
-                e[2],
-                e[3]]
-        print row_format.format(*data)
-
-def generate_mantel_table(query_mantel,
-                              subject_mantel,
-                              sort_metric="Mantel",
-                              num_rows=50):
-    """ Generate table of pearson and spearman data
-
-        query_mantel: mantel data as returned
-         from compute_mantel for query data
-        subject_mantel: mantel data as returned
-         from compute_mantel for subject data
-        sort_metric: metric to sort rows on (choices are "mantel")
-         there is currently only one choice, but leaving this in place to
-         maintain consistent interface with related functions
-        num_rows: number of rows to include in table (default: 50)
-    """
-    metric_lookup = {'mantel':(4,"r")}
-
-    try:
-        sort_metric_idx, _ = metric_lookup[sort_metric.lower()]
-    except KeyError:
-        available_metric_desc = ", ".join(metric_lookup.keys())
-        error_msg = "Unknown metric: %s. Available choices are: %s" % (sort_metric, available_metric_desc)
-        raise KeyError, error_msg
-
-    all_mantel = query_mantel + subject_mantel
-
-    mantel_idx, mantel_title = metric_lookup['mantel']
-    # sort by negative test statistic to avoid having to reverse in an
-    # additional step
-    all_mantel.sort(key=lambda x: -x[sort_metric_idx])
-
-    header_format = "{:^15} |{:^12} |{:^15} |{:^30}"
-    print header_format.format("Data set",
-                               mantel_title,
-                               "Method",
-                               "Parameters")
-    row_format = "{:<15} |{:>12} |{:<15} |{:<30}"
-    for e in all_mantel[:num_rows]:
-        data = [e[0],
-                '%1.3f' % e[mantel_idx],
-                e[2],
-                e[3]]
-        print row_format.format(*data)
