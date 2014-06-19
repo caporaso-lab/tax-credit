@@ -162,7 +162,7 @@ def get_taxonomy_collapser(level):
         return result
     return f
 
-def compute_prfs(result_tables,
+def compute_mock_results(result_tables,
                  expected_table_lookup,
                  taxonomy_level=6):
     """ Compute precision, recall, and f-measure for result_tables at taxonomy_level
@@ -198,16 +198,27 @@ def compute_prfs(result_tables,
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
         actual_table = actual_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
 
-        ## compute precision, recall, and f-measure and yeild those values
+        ## compute precision, recall, and f-measure
         try:
             p,r,f = compute_prf(actual_table,
                                 expected_table)
         except ZeroDivisionError:
             p, r, f = -1., -1., -1.
-        results.append((dataset_id, reference_id, method_id, params, p, r, f))
+
+        # compute pearson and spearman
+        actual_vector, expected_vector = get_actual_and_expected_vectors(actual_table,
+                                                                         expected_table)
+
+        pearson_r, pearson_p = pearsonr(actual_vector, expected_vector)
+        spearman_r, spearman_p = spearmanr(actual_vector, expected_vector)
+
+        results.append((dataset_id, reference_id, method_id, params, p, r, f,
+                        pearson_r, pearson_p, spearman_r, spearman_p))
+
     return pd.DataFrame(results, columns=["Dataset", "Reference", "Method",
                                            "Parameters", "Precision", "Recall",
-                                           "F-measure"])
+                                           "F-measure", "Pearson r", "Pearson p",
+                                           "Spearman r", "Spearman p"])
 
 def get_actual_and_expected_vectors(actual_table,
                                     expected_table,
@@ -259,53 +270,6 @@ def get_actual_and_expected_vectors(actual_table,
 
     return actual_vector, expected_vector
 
-def compute_pearson_spearman(result_tables,
-                             expected_table_lookup,
-                             taxonomy_level=6):
-    """ Compute pearson and spearman correlations and non-parameteric p-values for a set of results
-
-        result_tables: 2d list of tables to be compared to expected tables,
-         where the data in the inner list is:
-          [dataset_id, reference_database_id, method_id,
-           parameter_combination_id, table_fp]
-        expected_table_lookup: 2d dict of dataset_id, reference_db_id to BIOM
-         table filepath, for the expected result tables
-        taxonomy_level: level to compute results
-    """
-    results = []
-    for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
-        ## parse the expected table (unless taxonomy_level is specified, this should be
-        ## collapsed on level 6 taxonomy)
-        try:
-            expected_table_fp = expected_table_lookup[dataset_id][reference_id]
-        except KeyError:
-            raise KeyError, "Can't find expected table for (%s, %s)." % (dataset_id, reference_id)
-
-        try:
-            expected_table = load_table(expected_table_fp)
-        except ValueError:
-            raise ValueError, "Couldn't parse BIOM table: %s" % expected_table_fp
-
-        ## parse the actual table and collapse it at the specified taxonomic level
-        try:
-            actual_table = load_table(actual_table_fp)
-        except ValueError:
-            raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
-        collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
-        actual_table = actual_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
-
-        ## compute spearman and pearson correlations
-        actual_vector, expected_vector = get_actual_and_expected_vectors(actual_table,
-                                                                         expected_table)
-
-        pearson_r, pearson_p = pearsonr(actual_vector, expected_vector)
-        spearman_r, spearman_p = spearmanr(actual_vector, expected_vector)
-
-        results.append((dataset_id, reference_id, method_id, params, pearson_r,
-                        pearson_p, spearman_r, spearman_p))
-    return pd.DataFrame(results, columns=["Dataset", "Reference", "Method",
-                                           "Parameters", "Pearson r", "Pearson p",
-                                           "Spearman rho", "Spearman p"])
 
 def distance_matrix_from_table(table, metric='braycurtis'):
     """Compute distances between all pairs of samples in table
