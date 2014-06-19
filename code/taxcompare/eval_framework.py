@@ -4,23 +4,14 @@ from glob import glob
 from os.path import abspath, join, exists, split
 from collections import defaultdict
 
-from numpy import asarray
-from pylab import scatter, xlabel, ylabel, xlim, ylim
-
 from biom.exception import UnknownIDError
 from biom import load_table
-
-from cogent.maths.stats.test import correlation_test
-from cogent.draw.distribution_plots import generate_box_plots
-from qiime.transform_coordinate_matrices import procrustes_monte_carlo,\
-    get_procrustes_results
-from qiime.principal_coordinates import pcoa
-from qiime.format import format_distance_matrix
-from cogent.maths.distance_transform import dist_bray_curtis
-
-from skbio import DistanceMatrix
-from numpy import zeros
+from numpy import asarray, zeros
+from pylab import scatter, xlabel, ylabel, xlim, ylim
 from scipy.spatial.distance import pdist
+from scipy.stats import pearsonr, spearmanr
+from skbio import DistanceMatrix
+from skbio.draw.distributions import boxplots
 from skbio.math.stats.distance import mantel
 
 __author__ = "Greg Caporaso"
@@ -31,9 +22,6 @@ __version__ = "1.6.0-dev"
 __maintainer__ = "Greg Caporaso"
 __email__ = "gregcaporaso@gmail.com"
 __status__ = "Development"
-
-"""Contains code to support the automated evaluation framework.
-"""
 
 def find_and_process_result_tables(start_dir,
                                    biom_processor=abspath,
@@ -305,29 +293,24 @@ def compute_pearson_spearman(result_tables,
         ## compute spearman and pearson correlations
         actual_vector, expected_vector = get_actual_and_expected_vectors(actual_table,
                                                                          expected_table)
-        (pearson_corr_coeff,
-         pearson_parametric_p_val,
-         pearson_permuted_corr_coeffs,
-         pearson_nonparametric_p_val,
-         pearson_ci) = \
-         correlation_test(actual_vector, expected_vector, method='pearson')
-        (spearman_corr_coeff,
-         spearman_parametric_p_val,
-         spearman_permuted_corr_coeffs,
-         spearman_nonparametric_p_val,
-         spearman_ci) = \
-         correlation_test(actual_vector, expected_vector, method='spearman')
+
+        pearson_r, pearson_p = pearson_r(actual_vector, expected_vector)
+        spearman_r, spearman_p = spearman_r(actual_vector, expected_vector)
+
         yield (dataset_id,
                reference_id,
                method_id,
                params,
-               pearson_corr_coeff,
-               pearson_nonparametric_p_val,
-               spearman_corr_coeff,
-               spearman_nonparametric_p_val)
+               pearson_r,
+               pearson_p,
+               spearman_r,
+               spearman_p)
 
 def distance_matrix_from_table(table, metric='braycurtis'):
     """Compute distances between all pairs of samples in table
+
+        This function was written by Greg Caporaso for scikit-bio. It is
+        temporarily here, but is under the BSD license.
 
         Parameters
         ----------
@@ -426,34 +409,30 @@ def distance_matrix_from_table(table, metric='braycurtis'):
             dm[i, j] = dm[j, i] = pdist([v1, v2], metric)
     return DistanceMatrix(dm, sample_ids)
 
-def compute_procrustes(result_tables,
-                       expected_pc_lookup,
-                       taxonomy_level=6,
-                       num_dimensions=3,
-                       random_trials=999):
-    """ Compute Procrustes M2 and p-values for a set of results
+def compute_mantel(result_tables,
+                   taxonomy_level=6,
+                   random_trials=999):
+    """ Compute mantel r and p-values for a set of results
 
-        result_tables: 2d list of tables to be compared to expected tables,
+        result_tables: 2d list of tables to be compared,
          where the data in the inner list is:
           [dataset_id, reference_database_id, method_id,
            parameter_combination_id, table_fp]
-        expected_pc_lookup: 2d dict of dataset_id, reference_db_id to principal
-         coordinate matrices, for the expected result coordinate matrices
         taxonomy_level: level to compute results
+        random_trials : number of Monte Carlo trials to run in Mantel test
     """
-    ### Start code copied ALMOST* directly from compute_prfs - some re-factoring for re-use is
-    ### in order here. *ALMOST refers to changes to parser and variable names since expected
-    ### is a pc matrix here.
 
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
-
         ## load the table and collapse it at the specified taxonomic level
         try:
             full_table = load_table(actual_table_fp)
         except ValueError:
-            raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
+            raise ValueError("Couldn't parse BIOM table: %s" % actual_table_fp)
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
-        collapsed_table = full_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
+        collapsed_table = full_table.collapse(collapse_by_taxonomy,
+                                              axis='observation',
+                                              min_group_size=1)
+
         ## Compute Bray-Curtis distances between samples in the full table and
         ## in the collapsed table, and compare them with Mantel.
         # This is way too compute-intensive because we're computing the actual
@@ -462,13 +441,7 @@ def compute_procrustes(result_tables,
         full_dm = distance_matrix_from_table(full_table)
         mantel_r, p = mantel(collapsed_dm, full_dm)
 
-        yield (dataset_id,
-               reference_id,
-               method_id,
-               params,
-               mantel_r,
-               p)
-
+        yield (dataset_id, reference_id, method_id, params, mantel_r, p)
 
 def generate_pr_scatter_plots(query_prf,
                               subject_prf,
@@ -546,7 +519,7 @@ def generate_prf_box_plots(query_prf,
         distributions_by_method[e[2]].append(e[metric_idx])
 
     x_tick_labels, distributions = zip(*distributions_by_method.items())
-    generate_box_plots(distributions,
+    boxplots(distributions,
                        x_tick_labels = x_tick_labels,
                        x_label = x_label,
                        y_label = y_label,
@@ -675,7 +648,7 @@ def generate_correlation_box_plots(query_pearson_spearman,
         distributions_by_method[e[2]].append(e[metric_idx])
 
     x_tick_labels, distributions = zip(*distributions_by_method.items())
-    generate_box_plots(distributions,
+    boxplots(distributions,
                        x_tick_labels = x_tick_labels,
                        x_label = x_label,
                        y_label = y_label,
@@ -762,22 +735,22 @@ def generate_pearson_spearman_table(query_pearson_spearman,
                 e[3]]
         print row_format.format(*data)
 
-def generate_procrustes_table(query_procrustes,
-                              subject_procrustes,
-                              sort_metric="Procrustes",
+def generate_mantel_table(query_mantel,
+                              subject_mantel,
+                              sort_metric="Mantel",
                               num_rows=50):
     """ Generate table of pearson and spearman data
 
-        query_procrustes: pearson and spearman data as returned
-         from compute_procrustes for query data
-        subject_procrustes: pearson and spearman data as returned
-         from compute_procrustes for subject data
-        sort_metric: metric to sort rows on (choices are "procrustes")
+        query_mantel: mantel data as returned
+         from compute_mantel for query data
+        subject_mantel: mantel data as returned
+         from compute_mantel for subject data
+        sort_metric: metric to sort rows on (choices are "mantel")
          there is currently only one choice, but leaving this in place to
          maintain consistent interface with related functions
         num_rows: number of rows to include in table (default: 50)
     """
-    metric_lookup = {'procrustes':(4,"M^2")}
+    metric_lookup = {'mantel':(4,"r")}
 
     try:
         sort_metric_idx, _ = metric_lookup[sort_metric.lower()]
@@ -786,23 +759,21 @@ def generate_procrustes_table(query_procrustes,
         error_msg = "Unknown metric: %s. Available choices are: %s" % (sort_metric, available_metric_desc)
         raise KeyError, error_msg
 
-    all_procrustes = query_procrustes + subject_procrustes
+    all_mantel = query_mantel + subject_mantel
 
-    procrustes_idx, procrustes_title = metric_lookup['procrustes']
+    mantel_idx, mantel_title = metric_lookup['mantel']
 
-    # sort by the (-1 * sort_metric) to avoid having to
-    # reverse the list in a second step
-    all_procrustes.sort(key=lambda x: x[sort_metric_idx])
+    all_mantel.sort(key=lambda x: x[sort_metric_idx])
 
     header_format = "{:^15} |{:^12} |{:^15} |{:^30}"
     print header_format.format("Data set",
-                               procrustes_title,
+                               mantel_title,
                                "Method",
                                "Parameters")
     row_format = "{:<15} |{:>12} |{:<15} |{:<30}"
-    for e in all_procrustes[:num_rows]:
+    for e in all_mantel[:num_rows]:
         data = [e[0],
-                '%1.3f' % e[procrustes_idx],
+                '%1.3f' % e[mantel_idx],
                 e[2],
                 e[3]]
         print row_format.format(*data)
