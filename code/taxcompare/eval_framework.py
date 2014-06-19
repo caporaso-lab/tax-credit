@@ -13,6 +13,8 @@ from scipy.stats import pearsonr, spearmanr
 from skbio import DistanceMatrix
 from skbio.draw.distributions import boxplots
 from skbio.math.stats.distance import mantel
+import pandas as pd
+import numpy as np
 
 __author__ = "Greg Caporaso"
 __copyright__ = "Copyright 2013, The QIIME project"
@@ -174,6 +176,7 @@ def compute_prfs(result_tables,
         taxonomy_level: level to compute results
 
     """
+    results = []
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
         ## parse the expected table (unless taxonomy_level is specified, this should be
         ## collapsed on level 6 taxonomy)
@@ -201,7 +204,10 @@ def compute_prfs(result_tables,
                                 expected_table)
         except ZeroDivisionError:
             p, r, f = -1., -1., -1.
-        yield (dataset_id, reference_id, method_id, params, p, r, f)
+        results.append((dataset_id, reference_id, method_id, params, p, r, f))
+    return pd.DataFrame(results, columns=["Dataset", "Reference", "Method",
+                                           "Parameters", "Precision", "Recall",
+                                           "F-measure"])
 
 def get_actual_and_expected_vectors(actual_table,
                                     expected_table,
@@ -422,7 +428,7 @@ def compute_mantel(result_tables,
         random_trials : number of Monte Carlo trials to run in Mantel test
     """
     collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
-    
+
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
         ## load the table and collapse it at the specified taxonomic level
         try:
@@ -451,29 +457,34 @@ def generate_pr_scatter_plots(query_prf,
                               y_label="Recall"):
     """ Generate scatter plot of precision versus recall for query and subject results
 
-        query_prf: precision, recall, and f-measure values as returned
-         from compute_prfs for query data
-        subject_prf: precision, recall, and f-measure values as returned
-         from compute_prfs for subject data
-        query_color: the color of the query points (defualt: blue)
-        subject_color: the color of the subject points (defualt: red)
-        x_label: x axis label for the plot (default: "Precision")
-        y_label: y axis label for the plot (default: "Recall")
+        query_prf : pandas.DataFrame
+         Precision, recall, and f-measure values as returned from compute_prfs
+         for query data
+        subject_prf : pandas.DataFrame
+         Precision, recall, and f-measure values as returned from compute_prfs
+         for subject data
+        query_color : str, optional
+         The color of the query points
+        subject_color : str, optional
+         The color of the subject points
+        x_label : str, optional
+         x axis label for the plot
+        y_label : str, optional
+         y axis label for the plot
 
     """
-
     # Extract the query precisions and recalls and
     # generate a scatter plot
-    query_precisions = [e[4] for e in query_prf]
-    query_recalls = [e[5] for e in query_prf]
+    query_precisions = query_prf['Precision']
+    query_recalls = query_prf['Recall']
     scatter(query_precisions,
             query_recalls,
             c=query_color)
 
     # Extract the subject precisions and recalls and
     # generate a scatter plot
-    subject_precisions = [e[4] for e in subject_prf]
-    subject_recalls = [e[5] for e in subject_prf]
+    subject_precisions = subject_prf['Precision']
+    subject_recalls = subject_prf['Recall']
     scatter(subject_precisions,
             subject_recalls,
             c=subject_color)
@@ -483,139 +494,33 @@ def generate_pr_scatter_plots(query_prf,
     xlabel(x_label)
     ylabel(y_label)
 
+def boxplot_from_data_frame(df,
+                            group_by,
+                            metric,
+                            y_min = 0.0,
+                            y_max = 1.0):
+    """Generate boxplot of metric by group
 
-def generate_prf_box_plots(query_prf,
-                           subject_prf,
-                           metric,
-                           x_label="Method"):
-    """ Generate box plots for precision, recall, or f-measure
-
-        query_prf: precision, recall, and f-measure values as returned
+        query_prf : precision, recall, and f-measure values as returned
          from compute_prfs for query data
-        subject_prf: precision, recall, and f-measure values as returned
+        subject_prf : precision, recall, and f-measure values as returned
          from compute_prfs for subject data
-        metric: metric to generate plots for (choices are "precision",
-         "recall", and "f-measure")
-        x_label: x axis label for the plot (default: "Method")
+        group_by :
     """
-    metric_lookup = {"precision":(4,"Precision"),
-                     "p":(4,"Precision"),
-                     "recall":(5,"Recall"),
-                     "r":(5,"Recall"),
-                     "f-measure":(6,"F-measure"),
-                     "f":(6,"F-measure")}
-    try:
-        metric_idx, y_label = metric_lookup[metric.lower()]
-    except KeyError:
-        available_metric_desc = ", ".join(metric_lookup.keys())
-        error_msg = "Unknown metric: %s. Available choices are: %s" % (metric, available_metric_desc)
-        raise KeyError, error_msg
 
+    distributions = []
+    x_tick_labels = df[group_by].unique()
+    x_tick_labels.sort()
+    for e in x_tick_labels:
+        distribution = df.ix[df[group_by] == e, metric]
+        distributions.append(distribution)
 
-    distributions_by_method = defaultdict(list)
-    for e in subject_prf:
-        distributions_by_method[e[2]].append(e[metric_idx])
-    for e in query_prf:
-        distributions_by_method[e[2]].append(e[metric_idx])
-
-    x_tick_labels, distributions = zip(*distributions_by_method.items())
     boxplots(distributions,
-                       x_tick_labels = x_tick_labels,
-                       x_label = x_label,
-                       y_label = y_label,
-                       y_min = 0.0,
-                       y_max = 1.0)
-
-def generate_precision_box_plots(query_prf,
-                                 subject_prf,
-                                 x_label="Method"):
-    """ Generate precision box plots
-
-        query_prf: precision, recall, and f-measure values as returned
-         from compute_prfs for query data
-        subject_prf: precision, recall, and f-measure values as returned
-         from compute_prfs for subject data
-        x_label: x axis label for the plot (default: "Method")
-    """
-    generate_prf_box_plots(query_prf, subject_prf,"Precision",x_label)
-
-def generate_recall_box_plots(query_prf,
-                              subject_prf,
-                              x_label="Method"):
-    """ Generate recall box plots
-
-        query_prf: precision, recall, and f-measure values as returned
-         from compute_prfs for query data
-        subject_prf: precision, recall, and f-measure values as returned
-         from compute_prfs for subject data
-        x_label: x axis label for the plot (default: "Method")
-    """
-    generate_prf_box_plots(query_prf, subject_prf,"Recall",x_label)
-
-def generate_fmeasure_box_plots(query_prf,
-                                subject_prf,
-                                x_label="Method"):
-    """ Generate f-measure box plots
-
-        query_prf: precision, recall, and f-measure values as returned
-         from compute_prfs for query data
-        subject_prf: precision, recall, and f-measure values as returned
-         from compute_prfs for subject data
-        x_label: x axis label for the plot (default: "Method")
-    """
-    generate_prf_box_plots(query_prf, subject_prf,"F-measure",x_label)
-
-def generate_prf_table(query_prf,
-                       subject_prf,
-                       sort_metric="F-measure",
-                       num_rows=50):
-    """ Generate table of precision, recall, and f-measure data
-
-        query_prf: precision, recall, and f-measure values as returned
-         from compute_prfs for query data
-        subject_prf: precision, recall, and f-measure values as returned
-         from compute_prfs for subject data
-        sort_metric: metric to sort rows on (choices are "precision",
-         "recall", and "f-measure")
-        num_rows: number of rows to include in table (default: 50)
-    """
-    metric_lookup = {"precision":(4,"Precision"),
-                     "p":(4,"Precision"),
-                     "recall":(5,"Recall"),
-                     "r":(5,"Recall"),
-                     "f-measure":(6,"F-measure"),
-                     "f":(6,"F-measure")}
-    try:
-        sort_metric_idx, _ = metric_lookup[sort_metric.lower()]
-    except KeyError:
-        available_metric_desc = ", ".join(metric_lookup.keys())
-        error_msg = "Unknown metric: %s. Available choices are: %s" % (sort_metric, available_metric_desc)
-        raise KeyError, error_msg
-
-    precision_idx, precision_title = metric_lookup['precision']
-    recall_idx, recall_title = metric_lookup['recall']
-    fmeasure_idx, fmeasure_title = metric_lookup['f-measure']
-
-    all_prf = query_prf + subject_prf
-    # sort by the (-1 * sort_metric) to avoid having to
-    # reverse the list in a second step
-    header_format = "{:^15} |{:^12} |{:^12} |{:^12} |{:^15} |{:^30}"
-    print header_format.format("Data set",
-                               precision_title,
-                               recall_title,
-                               fmeasure_title,
-                               "Method",
-                               "Parameters")
-    row_format = "{:<15} |{:>12} |{:>12} |{:>12} |{:<15} |{:<30}"
-    all_prf.sort(key=lambda x: -x[sort_metric_idx])
-    for e in all_prf[:num_rows]:
-        data = [e[0],
-                '%1.3f' % e[precision_idx],
-                '%1.3f' % e[recall_idx],
-                '%1.3f' % e[fmeasure_idx],
-                e[2],
-                e[3]]
-        print row_format.format(*data)
+             x_tick_labels = x_tick_labels,
+             x_label = group_by,
+             y_label = metric,
+             y_min = y_min,
+             y_max = y_max)
 
 def generate_correlation_box_plots(query_pearson_spearman,
                                    subject_pearson_spearman,
