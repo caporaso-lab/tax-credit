@@ -11,12 +11,17 @@ from biom.exception import UnknownIDError
 from biom import load_table
 
 from cogent.maths.stats.test import correlation_test
-from cogent.maths.distance_transform import dist_bray_curtis
 from cogent.draw.distribution_plots import generate_box_plots
 from qiime.transform_coordinate_matrices import procrustes_monte_carlo,\
     get_procrustes_results
 from qiime.principal_coordinates import pcoa
 from qiime.format import format_distance_matrix
+from cogent.maths.distance_transform import dist_bray_curtis
+
+from skbio import DistanceMatrix
+from numpy import zeros
+from scipy.spatial.distance import pdist
+from skbio.math.stats.distance import mantel
 
 __author__ = "Greg Caporaso"
 __copyright__ = "Copyright 2013, The QIIME project"
@@ -321,6 +326,106 @@ def compute_pearson_spearman(result_tables,
                spearman_corr_coeff,
                spearman_nonparametric_p_val)
 
+def distance_matrix_from_table(table, metric='braycurtis'):
+    """Compute distances between all pairs of samples in table
+
+        Parameters
+        ----------
+        table : biom.table.Table
+        metric : str
+            The name of the scipy pairwise distance (``pdist``) function
+            to use when generating pairwise distances.
+
+        Returns
+        -------
+        skbio.core.distance.DistanceMatrix
+
+        Examples
+        --------
+        Create a biom Table object containing 10 OTUs and 4 samples. This code was
+        pulled from http://biom-format.org/documentation/table_objects.html
+
+        >>> import numpy as np
+        >>> from biom.table import Table
+        >>> data = np.arange(40).reshape(10, 4)
+        >>> data[2,2] = 0
+        >>> sample_ids = ['S%d' % i for i in range(4)]
+        >>> observ_ids = ['O%d' % i for i in range(10)]
+        >>> sample_metadata = [{'environment': 'A'}, {'environment': 'B'},
+        ...                    {'environment': 'A'}, {'environment': 'B'}]
+        >>> observ_metadata = [{'taxonomy': ['Bacteria', 'Firmicutes']},
+        ...                    {'taxonomy': ['Bacteria', 'Firmicutes']},
+        ...                    {'taxonomy': ['Bacteria', 'Proteobacteria']},
+        ...                    {'taxonomy': ['Bacteria', 'Proteobacteria']},
+        ...                    {'taxonomy': ['Bacteria', 'Proteobacteria']},
+        ...                    {'taxonomy': ['Bacteria', 'Bacteroidetes']},
+        ...                    {'taxonomy': ['Bacteria', 'Bacteroidetes']},
+        ...                    {'taxonomy': ['Bacteria', 'Firmicutes']},
+        ...                    {'taxonomy': ['Bacteria', 'Firmicutes']},
+        ...                    {'taxonomy': ['Bacteria', 'Firmicutes']}]
+        >>> table = Table(data, observ_ids, sample_ids, observ_metadata,
+        ...               sample_metadata, table_id='Example Table')
+
+        Compute Bray-Curtis distances between all pairs of samples and return a
+        DistanceMatrix object
+
+        >>> bc_dm = distance_matrix_from_table(table)
+        >>> print bc_dm
+        4x4 distance matrix
+        IDs:
+        S0, S1, S2, S3
+        Data:
+        [[ 0.          0.02702703  0.05263158  0.07692308]
+         [ 0.02702703  0.          0.02564103  0.05      ]
+         [ 0.05263158  0.02564103  0.          0.02439024]
+         [ 0.07692308  0.05        0.02439024  0.        ]]
+
+        Compute Jaccard distances between all pairs of samples and return a
+        DistanceMatrix object. (Need a better example here.)
+
+        >>> j_dm = distance_matrix_from_table(table, "jaccard")
+        >>> print j_dm
+        4x4 distance matrix
+        IDs:
+        S0, S1, S2, S3
+        Data:
+        [[ 0.  1.  1.  1.]
+         [ 1.  0.  1.  1.]
+         [ 1.  1.  0.  1.]
+         [ 1.  1.  1.  0.]]
+
+        Determine if the resulting distance matrices are significantly correlated
+        by computing the Mantel correlation between them. (Including the p-value
+        won't work for doc testing as it's Monte Carlo-based, so exact matching
+        will fail.)
+
+        >>> from skbio.math.stats.distance import mantel
+        >>> print mantel(j_dm, bc_dm)
+        (nan, nan)
+
+        Compute PCoA for both distance matrices, and then find the Procrustes
+        M-squared value.
+        >>> bc_pc = PCoA(bc_dm).scores()
+        >>> j_pc = PCoA(j_dm).scores()
+        >>> print procrustes(bc_pc.site, j_pc.site)[2]
+        0.645043903715
+
+        Would be really cool to embed a 3d matplotlib scatter plot in here for
+        one of the PC matrices... That could make a really cool demo for SciPy.
+        I'm thinking one of these:
+        http://matplotlib.org/examples/mplot3d/scatter3d_demo.html
+
+    """
+    sample_ids = table.sample_ids
+    num_samples = len(sample_ids)
+    dm = zeros((num_samples, num_samples))
+    for i, sid1 in enumerate(sample_ids):
+        v1 = table.data(sid1)
+        for j, sid2 in enumerate(sample_ids[:i]):
+            v2 = table.data(sid2)
+            dm[i, j] = dm[j, i] = pdist([v1, v2], metric)
+    return DistanceMatrix(dm, sample_ids)
+
 def compute_procrustes(result_tables,
                        expected_pc_lookup,
                        taxonomy_level=6,
@@ -341,49 +446,28 @@ def compute_procrustes(result_tables,
     ### is a pc matrix here.
 
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
-        ## parse the expected table (unless taxonomy_level is specified, this should be
-        ## collapsed on level 6 taxonomy)
-        try:
-            expected_pc_fp = expected_pc_lookup[dataset_id][reference_id]
-        except KeyError:
-            raise KeyError, "Can't find expected table for (%s, %s)." % (dataset_id, reference_id)
 
-        ## parse the actual table and collapse it at the specified taxonomic level
+        ## load the table and collapse it at the specified taxonomic level
         try:
-            actual_table = load_table(actual_table_fp)
+            full_table = load_table(actual_table_fp)
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
-        actual_table = actual_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
-        ### End code copied directly from compute_prfs.
-
-        # Next block of code, how do I hate thee? Let me count the ways...
-        # (1) dist_bray_curtis doesn't take a BIOM Table object
-        # (2) pcoa takes a qiime-formatted distance matrix as a list of lines
-        # (3) pcoa return a qiime-formatted pc matrix
-        # (4) procrustes_monte_carlo needs to pass through the pc "file" multiple
-        #     times, so we actually *need* those the pcs that get passed in to be
-        #     lists of lines
-        dm = dist_bray_curtis(asarray([v for v in actual_table.iterSampleData()]))
-        formatted_dm = format_distance_matrix(actual_table.SampleIds,dm)
-        actual_pc = pcoa(formatted_dm.split('\n')).split('\n')
-        expected_pc = list(open(expected_pc_fp,'U'))
-
-        ## run Procrustes analysis with monte carlo simulation
-        actual_m_squared, trial_m_squareds, count_better, mc_p_value =\
-         procrustes_monte_carlo(expected_pc,
-                                actual_pc,
-                                trials=random_trials,
-                                max_dimensions=num_dimensions,
-                                sample_id_map=None,
-                                trial_output_dir=None)
+        collapsed_table = full_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
+        ## Compute Bray-Curtis distances between samples in the full table and
+        ## in the collapsed table, and compare them with Mantel.
+        # This is way too compute-intensive because we're computing the actual
+        # dm everytime, which doesn't need to happen.
+        collapsed_dm = distance_matrix_from_table(collapsed_table)
+        full_dm = distance_matrix_from_table(full_table)
+        mantel_r, p = mantel(collapsed_dm, full_dm)
 
         yield (dataset_id,
                reference_id,
                method_id,
                params,
-               actual_m_squared,
-               mc_p_value)
+               mantel_r,
+               p)
 
 
 def generate_pr_scatter_plots(query_prf,
