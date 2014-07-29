@@ -15,6 +15,7 @@ from skbio.draw.distributions import boxplots
 from skbio.math.stats.distance import mantel
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 __author__ = "Greg Caporaso"
 __copyright__ = "Copyright 2013, The QIIME project"
@@ -463,12 +464,6 @@ def boxplot_from_data_frame(df,
                             y_min = 0.0,
                             y_max = 1.0):
     """Generate boxplot of metric by group
-
-        query_prf : precision, recall, and f-measure values as returned
-         from compute_prfs for query data
-        subject_prf : precision, recall, and f-measure values as returned
-         from compute_prfs for subject data
-        group_by :
     """
 
     distributions = []
@@ -484,3 +479,26 @@ def boxplot_from_data_frame(df,
              y_label = metric,
              y_min = y_min,
              y_max = y_max)
+
+
+def heatmap_from_data_frame(df, metric):
+    """Generate heatmap of specified metric by (method, parameter) x dataset
+
+    df: pandas.DataFrame
+
+    metric: str
+        metric to plot in the heatmap
+
+    """
+    # there has to be a better way to build these tuples
+    tuples = zip(df["Method"], df["Parameters"])
+    index = pd.MultiIndex.from_tuples(tuples=tuples,
+                                      names=["Method", "Parameters"])
+    df = df.pivot_table(index=index, columns="Dataset", values=metric)
+    df.sort()
+
+    # Based on SO post: http://stackoverflow.com/a/12286958/3424666
+    plt.pcolor(df, cmap='YlGn', vmin=0, vmax=1)
+    plt.yticks(np.arange(0.5, len(df.index), 1), df.index)
+    plt.xticks(np.arange(0.5, len(df.columns), 1), df.columns, rotation=90)
+    plt.show()
