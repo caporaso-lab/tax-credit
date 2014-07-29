@@ -481,7 +481,7 @@ def boxplot_from_data_frame(df,
              y_max = y_max)
 
 
-def heatmap_from_data_frame(df, metric):
+def heatmap_from_data_frame(df, metric, vmin=0, vmax=1):
     """Generate heatmap of specified metric by (method, parameter) x dataset
 
     df: pandas.DataFrame
@@ -498,7 +498,7 @@ def heatmap_from_data_frame(df, metric):
     df.sort()
 
     # Based on SO post: http://stackoverflow.com/a/12286958/3424666
-    plt.pcolor(df, cmap='YlGn', vmin=0, vmax=1)
+    plt.pcolor(df, cmap='YlGn', vmin=vmin, vmax=vmax)
     plt.yticks(np.arange(0.5, len(df.index), 1), df.index)
     plt.xticks(np.arange(0.5, len(df.columns), 1), df.columns, rotation=90)
     plt.show()
