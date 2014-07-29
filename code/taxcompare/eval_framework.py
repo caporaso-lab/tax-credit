@@ -58,7 +58,8 @@ def find_and_process_result_tables(start_dir,
 
 def find_and_process_expected_tables(start_dir,
                                      biom_processor=abspath,
-                                     filename_pattern='table*biom'):
+                                     filename_pattern='table.L%d-taxa.biom',
+                                     level=6):
     """ given a start_dir, return list of tuples describing the table and containing the processed table
 
          start_dir: top-level directory to use when starting the walk
@@ -74,7 +75,8 @@ def find_and_process_expected_tables(start_dir,
                    ...
                   ]
     """
-    table_fps = glob(join(start_dir,'*','*','expected',filename_pattern))
+    filename = filename_pattern % level
+    table_fps = glob(join(start_dir,'*','*','expected', filename))
     results = []
     for table_fp in table_fps:
         expected_dir, _ = split(table_fp)
@@ -86,7 +88,8 @@ def find_and_process_expected_tables(start_dir,
 
 def get_expected_tables_lookup(start_dir,
                                biom_processor=abspath,
-                               filename_pattern='table*biom'):
+                               filename_pattern='table.L%d-taxa.biom',
+                               level=6):
     """ given a start_dir, return list of tuples describing the expected table and containing the processed table
 
          start_dir: top-level directory to use when starting the walk
@@ -100,7 +103,8 @@ def get_expected_tables_lookup(start_dir,
     """
 
     results = defaultdict(dict)
-    expected_tables = find_and_process_expected_tables(start_dir,biom_processor,filename_pattern)
+    expected_tables = find_and_process_expected_tables(
+        start_dir, biom_processor, filename_pattern, level)
     for dataset_id, reference_id, processed_table in expected_tables:
         results[dataset_id][reference_id] = processed_table
     return results
