@@ -172,7 +172,6 @@ def filter_table(table, min_count, taxonomy_level):
         enough_levels = len(metadata['taxonomy']) >= taxonomy_level
         sufficient_count = data_vector.sum() >= min_count
         return enough_levels and sufficient_count
-
     return table.filter(f, axis='observation', inplace=False)
 
 def compute_mock_results(result_tables, expected_table_lookup,

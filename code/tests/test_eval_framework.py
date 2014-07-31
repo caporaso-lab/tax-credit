@@ -38,12 +38,39 @@ class EvalFrameworkTests(TestCase):
         self.assertFalse(np.array([e.sum() < 10
             for e in filtered_table.iter_data(axis='observation')]).any())
 
+        self.assertTrue(np.array([e.sum() < 100
+            for e in self.table3.iter_data(axis='observation')]).any())
+        filtered_table = filter_table(self.table3, min_count=100,
+            taxonomy_level=0)
+        self.assertFalse(np.array([e.sum() < 100
+            for e in filtered_table.iter_data(axis='observation')]).any())
+
+        # prior to filtering, there are taxonomies with fewer than 4 levels
         md_levels = [len(md['taxonomy']) < 4
             for _, _, md in self.table3.iter(axis='observation')]
         self.assertTrue(np.array(md_levels).any())
         filtered_table = filter_table(self.table3, min_count=0,
             taxonomy_level=4)
+        # after filtering, there are no taxonomies with fewer than 4 levels
         md_levels = [len(md['taxonomy']) < 4
+            for _, _, md in filtered_table.iter(axis='observation')]
+        self.assertFalse(np.array(md_levels).any())
+
+        md_levels = [len(md['taxonomy']) < 5
+            for _, _, md in self.table3.iter(axis='observation')]
+        self.assertTrue(np.array(md_levels).any())
+        filtered_table = filter_table(self.table3, min_count=0,
+            taxonomy_level=5)
+        md_levels = [len(md['taxonomy']) < 5
+            for _, _, md in filtered_table.iter(axis='observation')]
+        self.assertFalse(np.array(md_levels).any())
+
+        md_levels = [len(md['taxonomy']) < 6
+            for _, _, md in self.table3.iter(axis='observation')]
+        self.assertTrue(np.array(md_levels).any())
+        filtered_table = filter_table(self.table3, min_count=0,
+            taxonomy_level=6)
+        md_levels = [len(md['taxonomy']) < 6
             for _, _, md in filtered_table.iter(axis='observation')]
         self.assertFalse(np.array(md_levels).any())
 
