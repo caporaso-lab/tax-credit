@@ -4,7 +4,7 @@ from glob import glob
 from os.path import abspath, join, exists, split
 from collections import defaultdict
 
-from biom.exception import UnknownIDError
+from biom.exception import UnknownIDError, TableException
 from biom import load_table
 from numpy import asarray, zeros
 from pylab import scatter, xlabel, ylabel, xlim, ylim
@@ -208,30 +208,36 @@ def compute_mock_results(result_tables, expected_table_lookup,
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
 
+        try:
+            actual_table = filter_table(actual_table, min_count, taxonomy_level)
+        except TableException:
+            # if all data is filtered out, move on to the next table
+            continue
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
-        # filter in place
-        filter_function = get_filter_function(min_count, excluded_taxa)
-        actual_table.filter(filter_function, axis='observation')
         actual_table = actual_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
 
-        ## compute precision, recall, and f-measure
-        try:
-            p,r,f = compute_prf(actual_table,
-                                expected_table)
-        except ZeroDivisionError:
-            p, r, f = -1., -1., -1.
+        for sample_id in actual_table.sample_ids:
+            ## compute precision, recall, and f-measure
+            try:
+                p,r,f = compute_prf(actual_table,
+                                    expected_table,
+                                    actual_sample_id=sample_id,
+                                    expected_sample_id=sample_id)
+            except ZeroDivisionError:
+                p, r, f = -1., -1., -1.
 
-        # compute pearson and spearman
-        actual_vector, expected_vector = get_actual_and_expected_vectors(actual_table,
-                                                                         expected_table)
+            # compute pearson and spearman
+            actual_vector, expected_vector =\
+                get_actual_and_expected_vectors(actual_table, expected_table,
+                    actual_sample_id=sample_id, expected_sample_id=sample_id)
 
-        pearson_r, pearson_p = pearsonr(actual_vector, expected_vector)
-        spearman_r, spearman_p = spearmanr(actual_vector, expected_vector)
+            pearson_r, pearson_p = pearsonr(actual_vector, expected_vector)
+            spearman_r, spearman_p = spearmanr(actual_vector, expected_vector)
 
-        results.append((dataset_id, reference_id, method_id, params, p, r, f,
-                        pearson_r, pearson_p, spearman_r, spearman_p))
+            results.append((dataset_id, sample_id, reference_id, method_id, params, p, r, f,
+                            pearson_r, pearson_p, spearman_r, spearman_p))
 
-    return pd.DataFrame(results, columns=["Dataset", "Reference", "Method",
+    return pd.DataFrame(results, columns=["Dataset", "SampleID", "Reference", "Method",
                                            "Parameters", "Precision", "Recall",
                                            "F-measure", "Pearson r", "Pearson p",
                                            "Spearman r", "Spearman p"])
