@@ -140,7 +140,6 @@ def compute_prf(actual_table,
         expected_sample_id: sample_id to test (default is first sample id in
          expected_table.SampleIds)
     """
-
     actual_obs_ids = get_observed_observation_ids(actual_table,
                                                   actual_sample_id)
     expected_obs_ids = get_observed_observation_ids(expected_table,
@@ -168,9 +167,16 @@ def get_taxonomy_collapser(level):
         return result
     return f
 
-def compute_mock_results(result_tables,
-                 expected_table_lookup,
-                 taxonomy_level=6):
+def filter_table(table, min_count, taxonomy_level):
+    def f(data_vector, id_, metadata):
+        enough_levels = len(metadata['taxonomy']) >= taxonomy_level
+        sufficient_count = data_vector.sum() >= min_count
+        return enough_levels and sufficient_count
+
+    return table.filter(f, axis='observation', inplace=False)
+
+def compute_mock_results(result_tables, expected_table_lookup,
+                         taxonomy_level=6, min_count=10):
     """ Compute precision, recall, and f-measure for result_tables at taxonomy_level
 
         result_tables: 2d list of tables to be compared to expected tables,
@@ -201,7 +207,11 @@ def compute_mock_results(result_tables,
             actual_table = load_table(actual_table_fp)
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
+
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
+        # filter in place
+        filter_function = get_filter_function(min_count, excluded_taxa)
+        actual_table.filter(filter_function, axis='observation')
         actual_table = actual_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
 
         ## compute precision, recall, and f-measure
