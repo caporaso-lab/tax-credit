@@ -1,1 +1,0 @@
-Unit tests for short-read-tax-assignment/code/
