@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 
-from __future__ import division
+# ----------------------------------------------------------------------------
+# Copyright (c) 2014--, taxcompare development team.
+#
+# Distributed under the terms of the Modified BSD License.
+#
+# The full license is in the file COPYING.txt, distributed with this software.
+# ----------------------------------------------------------------------------
 
-__author__ = "Greg Caporaso"
-__copyright__ = "Copyright 2012, The QIIME project"
-__credits__ = ["Greg Caporaso"]
-__license__ = "GPL"
-__version__ = "1.5.0-dev"
-__maintainer__ = "Greg Caporaso"
-__email__ = "gregcaporaso@gmail.com"
-__status__ = "Development"
+from __future__ import division
 
 from unittest import TestCase, main
 import json

@@ -1,5 +1,14 @@
 #!/usr/bin/env python
 from __future__ import division
+
+# ----------------------------------------------------------------------------
+# Copyright (c) 2014--, taxcompare development team.
+#
+# Distributed under the terms of the Modified BSD License.
+#
+# The full license is in the file COPYING.txt, distributed with this software.
+# ----------------------------------------------------------------------------
+
 from glob import glob
 from os.path import abspath, join, exists, split
 from collections import defaultdict
@@ -17,15 +26,6 @@ from mpl_toolkits.axes_grid1 import ImageGrid
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
-__author__ = "Greg Caporaso"
-__copyright__ = "Copyright 2013, The QIIME project"
-__credits__ = ["Greg Caporaso"]
-__license__ = "GPL"
-__version__ = "1.6.0-dev"
-__maintainer__ = "Greg Caporaso"
-__email__ = "gregcaporaso@gmail.com"
-__status__ = "Development"
 
 def find_and_process_result_tables(start_dir,
                                    biom_processor=abspath,
