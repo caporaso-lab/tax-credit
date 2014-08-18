@@ -11,8 +11,8 @@ from pylab import scatter, xlabel, ylabel, xlim, ylim
 from scipy.spatial.distance import pdist
 from scipy.stats import pearsonr, spearmanr
 from skbio import DistanceMatrix
-from skbio.draw.distributions import boxplots
-from skbio.math.stats.distance import mantel
+from skbio.draw import boxplots
+from skbio.stats.distance import mantel
 from mpl_toolkits.axes_grid1 import ImageGrid
 import pandas as pd
 import numpy as np
