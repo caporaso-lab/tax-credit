@@ -6,54 +6,37 @@ short read taxonomy assignment tools. Includes a framework to facilitate the
 evaluation and comparison of additional taxonomy assigners in the context of
 the results presented in (Bokulich, Rideout, et al. (Nature Methods, under review)).
 
-Installing
-----------
+Install
+-------
 
-To run the code in this repository, you will need the development version of
-[QIIME](http://www.qiime.org) (tested on 1.7.0-dev, master@dc1ca5e) and
-[IPython](http://ipython.org/) >= 1.0.0 installed, with
-```short-read-tax-assignment/code``` added to your ```PYTHONPATH``` and
-```short-read-tax-assignment/code/scripts``` added to your ```PATH```.
+To run the code in this repository, run the following commands:
 
-Testing your installation
--------------------------
+    git clone https://github.com/gregcaporaso/short-read-tax-assignment.git
+    cd short-read-tax-assignment/code
+    pip install numpy
+    pip install .
 
-To test your installation/setup, you can run the unit tests with the following
-commands (assuming you are in the ```short-read-tax-assignment``` directory and
-you have [nose](http://nose.readthedocs.org/en/latest/) installed):
+Testing
+-------
+
+To run the unit tests, you should install [nose](http://nose.readthedocs.org/en/latest/). Then change to the ```short-read-tax-assignment``` directory and run:
 
     nosetests code
 
 Using the IPython Notebooks included in this repository
 -------------------------------------------------------
 
-To view and interact with an [IPython Notebook](http://ipython.org/notebook.html), change into the directory containing the IPython Notebooks of interest, and start an IPython Notebook server. For example:
+To view and interact with an [IPython Notebook](http://ipython.org/notebook.html), change into the ``short-read-tax-assignment`` directory and launch the IPython Notebook server:
 
-```
-    cd short-read-tax-assignment/demo/eval-demo
     ipython notebook
-```
 
-This will launch a web browser. You can then open the notebook by clicking on its name, and execute the notebook.
+This will launch the IPython Notebook interface in a new web browser window. You can then navigate to the ``ipynbs`` directory, and open the notebook of interest.
 
 Evaluation workflows, for testing new taxonomic assignment methods
 ------------------------------------------------------------------
 
-Two [IPython Notebooks](http://ipython.org/notebook.html) are provided to illustrate how to run a parameter sweep on a concept design for a new taxonomic assigner, and then evaluate that in the context of pre-computed results (the evaluation data from this study). The notebooks can be found under ```short-read-tax-assignment/demo/eval-demo```
+Several [IPython Notebooks](http://ipython.org/notebook.html) are provided to illustrate how to run a parameter sweep on a concept design for a new taxonomic assigner, and then evaluate that in the context of pre-computed results (the evaluation data from this study). The notebooks can be found under ``short-read-tax-assignment/ipynbs``.
 
-Requirements for running the usearch example parameter sweep notebook, in addition to the code in this repository:
+The notebooks whose names begin with ``0`` illustrate how to generate results that can be analyzed using the evaluation framework presented here. These will likely have software requirements in addition to those  that are installed with ``short-read-tax-assignment``. Those will be listed in the top of each individual notebook.
 
-* Python 2.7
-* [IPython Notebook](http://ipython.org/notebook.html)
-* [usearch](http://www.drive5.com/usearch/) v5.2.236. 
-* [pyqi](http://bipy.github.io/pyqi/doc/index.html) 0.2.0
-* [biom-format](http://www.biom-format.org) 1.2.0
-* [uc_to_assignments](https://gist.github.com/gregcaporaso/6083538) (A gist written for use in this notebook)
-
-Requirements for running the evaluation framework notebook, in addition to the code in this repository:
-
-* Python 2.7
-* [IPython Notebook](http://ipython.org/notebook.html)
-* [QIIME](http://qiime.org/)
-* [PyCogent](https://github.com/pycogent/pycogent)
-* [matplotlib](http://matplotlib.org/)
+The notebooks whose names begin with ``1`` are used to run the analyses performed in our study, and which you can re-run to include your data. These do not have requirements beyond those included in the ``short-read-tax-assignment`` installation, though you will need to update filepaths in one cell in that notebook to refer to locations on the system where you are executing the notebook.
