@@ -2,9 +2,7 @@ short-read-tax-assignment
 =========================
 
 A repository for storing code and data related to a systematic comparison of
-short read taxonomy assignment tools. Includes a framework to facilitate the
-evaluation and comparison of additional taxonomy assigners in the context of
-the results presented in (Bokulich, Rideout, et al. (Nature Methods, under review)).
+short read taxonomy assignment tools.
 
 Install
 -------
@@ -40,3 +38,8 @@ Several [IPython Notebooks](http://ipython.org/notebook.html) are provided to il
 The notebooks whose names begin with ``0`` illustrate how to generate results that can be analyzed using the evaluation framework presented here. These will likely have software requirements in addition to those  that are installed with ``short-read-tax-assignment``. Those will be listed in the top of each individual notebook.
 
 The notebooks whose names begin with ``1`` are used to run the analyses performed in our study, and which you can re-run to include your data. These do not have requirements beyond those included in the ``short-read-tax-assignment`` installation, though you will need to update filepaths in one cell in that notebook to refer to locations on the system where you are executing the notebook.
+
+Citing
+------
+
+If you use any of the data or code included in this repository, please cite with the URL: https://github.com/gregcaporaso/short-read-tax-assignment.
