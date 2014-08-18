@@ -44,7 +44,7 @@ setup(name='taxcompare',
       test_suite='nose.collector',
       packages=find_packages(),
       install_requires=['scikit-bio == 0.2.0', 'ipython[all] >= 2.0.0',
-                        'biom-format == 2.0.1'],
+                        'biom-format == 2.0.1', 'xlrd'],
       extras_require={'test': ["nose >= 0.10.1"]},
       classifiers=classifiers,
       package_data={}
