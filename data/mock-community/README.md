@@ -1,1 +1,0 @@
-QIIME analysis of mock community data.
