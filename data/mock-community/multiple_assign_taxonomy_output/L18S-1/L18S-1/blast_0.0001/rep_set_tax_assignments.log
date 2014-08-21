@@ -1,9 +1,0 @@
-BlastTaxonAssigner parameters:
-Application:blastn/megablast
-Max E value:0.0001
-Min percent identity:90.0
-id_to_taxonomy_filepath:/home/nbokulic/ref_seq_dbs/Silva_108/taxa_mapping/Silva_RDP_taxa_mapping_Eukarya_only_species.txt
-reference_seqs_filepath:/home/nbokulic/ref_seq_dbs/Silva_108/rep_set/Silva_108_rep_set_Eukarya_only.fna
-Number of sequences inspected: 1395
-Number with no blast hits: 232
-Result path: "/scratch/assign-taxK0NROh0Q1e02rYbN5PDq.txt"

@@ -1,9 +1,0 @@
-MothurTaxonAssigner parameters:
-Application:Mothur
-Citation:Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
-Confidence:0.4
-Iterations:None
-KmerSize:None
-id_to_taxonomy_filepath:/home/nbokulic/ref_seq_dbs/UNITE/unite_rep_set_97-rdp-taxonomy.txt
-id_to_taxonomy_fp:/home/nbokulic/ref_seq_dbs/UNITE/unite_rep_set_97-rdp-taxonomy.txt
-reference_sequences_fp:/home/nbokulic/ref_seq_dbs/UNITE/align/rep_set_uclust_ref_97.fasta
