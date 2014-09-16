@@ -163,7 +163,8 @@ def get_taxonomy_collapser(level):
 
     """
     def f(id_, md):
-        result = ';'.join(md['taxonomy'][:level+1])
+        levels = [l.strip() for l in md['taxonomy'].split(';')]
+        result = ';'.join(levels[:level+1])
         return result
     return f
 
