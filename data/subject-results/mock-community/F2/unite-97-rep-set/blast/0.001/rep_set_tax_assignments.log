@@ -1,0 +1,9 @@
+BlastTaxonAssigner parameters:
+Application:blastn/megablast
+Max E value:0.001
+Min percent identity:90.0
+id_to_taxonomy_filepath:/data/unite-97-rep-set/97_otu_taxonomy.txt
+reference_seqs_filepath:/data/unite-97-rep-set/97_otus.fasta
+Number of sequences inspected: 145
+Number with no blast hits: 0
+Result path: /tmp/assign-taxScCFLj
