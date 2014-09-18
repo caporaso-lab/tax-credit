@@ -12,6 +12,7 @@ from __future__ import division
 from glob import glob
 from os.path import abspath, join, exists, split
 from collections import defaultdict
+from functools import partial
 
 from biom.exception import UnknownIDError, TableException
 from biom import load_table
@@ -241,6 +242,31 @@ def compute_mock_results(result_tables, expected_table_lookup,
                                            "Parameters", "Precision", "Recall",
                                            "F-measure", "Pearson r", "Pearson p",
                                            "Spearman r", "Spearman p"])
+
+def _is_first(df):
+    """used to filter df to contain only one row per method"""
+    observed = set()
+    result = []
+    for e in df['Method']:
+        result.append(e not in observed)
+        observed.add(e)
+    return result
+
+def method_by_dataset(df, dataset, sort_field, display_fields):
+    """ Generate summary of best parameter set for each method for single df
+    """
+    dataset_df = df.loc[df['Dataset'] == dataset]
+    sorted_dataset_df = dataset_df.sort(sort_field, ascending=False)
+    filtered_dataset_df = sorted_dataset_df[_is_first(sorted_dataset_df)]
+    return filtered_dataset_df.ix[:,display_fields]
+
+method_by_dataset_a1 = partial(method_by_dataset,
+                               sort_field="F-measure",
+                               display_fields=("Method", "Precision", "Recall",
+                                               "F-measure"))
+method_by_dataset_a2 = partial(method_by_dataset, sort_field="Pearson r",
+                               display_fields=("Method", "Pearson r",
+                                               "Spearman r"))
 
 def get_actual_and_expected_vectors(actual_table,
                                     expected_table,
