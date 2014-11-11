@@ -28,7 +28,29 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
+from scipy.stats import ranksums
 
+def performance_rank_distributions(df, metric):
+    sorted_df = df.sort(columns=metric, ascending=False)
+    results = {}
+    for method in sorted_df.Method.unique():
+        results[method] = []
+    for dataset in sorted_df.Dataset.unique():
+        x = method_by_dataset_a1(sorted_df, dataset).Method
+        for rank, method in enumerate(x, start=1):
+            results[method].append(rank)
+    return results
+
+def performance_rank_comparisons(df, metric):
+    rank_data = performance_rank_distributions(all_mock_results, metric)
+    result = {}
+    for k1, v1 in rank_data.iteritems():
+        result[k1] = {'ranks': v1, 'summed ranks': np.sum(v1)}
+        for k2, v2 in rank_data.iteritems():
+            stat, p = ranksums(v1, v2)
+            result[k1]['%s: wilcoxon p' % k2] = p
+            result[k1]['%s: wilcoxon stat' % k2] = stat
+    return pd.DataFrame(result).T
 
 def method_glm_from_df(df, method, metric, hack_dataset=False, dataset=None):
     if dataset is not None:
