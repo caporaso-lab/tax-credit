@@ -27,6 +27,41 @@ from mpl_toolkits.axes_grid1 import ImageGrid
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import statsmodels.api as sm
+
+
+def method_glm_from_df(df, method, metric, hack_dataset=False, dataset=None):
+    if dataset is not None:
+        method_df = df[np.logical_and(df['Method'] == method, df['Dataset'] == dataset)]
+        hack_dataset=False
+    else:
+        method_df = df[df['Method'] == method]
+    ds_lookup = dict([(v, i) for i, v in enumerate(df.Dataset, start=1)])
+    dep = np.array(method_df[metric])
+    indep = []
+    for v, ds in zip(list(method_df['Parameters']), list(method_df['Dataset'])):
+        current_indep = map(float, v.split(':'))
+        if hack_dataset:
+            current_indep.append(ds_lookup[ds])
+        indep.append(np.array(current_indep))
+    indep = np.array(indep)
+    glm = sm.GLM(dep, indep)
+    result = glm.fit()
+    return result
+
+def glm_df(df, method, param_names, metrics=['Precision', 'Recall', 'F-measure']):
+    columns = ['Dataset', 'Metric', 'LogLikelihood'] + \
+              ['%s: Coefficent' % n for n in param_names] + \
+              ['%s: p-value' % n for n in param_names]
+    results = []
+    for ds in df.Dataset.unique():
+        for metric in metrics:
+            glm = method_glm_from_df(df, method, metric, dataset=ds)
+            curr_row = [ds, metric, glm.llf]
+            curr_row.extend(glm.params)
+            curr_row.extend(glm.pvalues)
+            results.append(curr_row)
+    return pd.DataFrame(results, columns=columns)
 
 def find_and_process_result_tables(start_dir,
                                    biom_processor=abspath,
