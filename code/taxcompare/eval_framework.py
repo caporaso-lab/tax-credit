@@ -42,7 +42,7 @@ def performance_rank_distributions(df, metric):
     return results
 
 def performance_rank_comparisons(df, metric):
-    rank_data = performance_rank_distributions(all_mock_results, metric)
+    rank_data = performance_rank_distributions(df, metric)
     result = {}
     for k1, v1 in rank_data.iteritems():
         result[k1] = {'ranks': v1, 'summed ranks': np.sum(v1)}
