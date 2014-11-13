@@ -247,6 +247,12 @@ def compute_mock_results(result_tables, expected_table_lookup,
 
     """
     results = []
+    param_data = {}
+    param_ids = {'rdp': ['confidence'], 'blast': ['e-value'],
+                 'sortmerna': ['min consensus fraction', 'similarity',
+                               'best N alignments', 'coverage', 'e value'],
+                 'uclust': ['min consensus fraction', 'similarity',
+                            'max accepts']}
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
         ## parse the expected table (unless taxonomy_level is specified, this should be
         ## collapsed on level 6 taxonomy)
@@ -295,10 +301,15 @@ def compute_mock_results(result_tables, expected_table_lookup,
             results.append((dataset_id, sample_id, reference_id, method_id, params, p, r, f,
                             pearson_r, pearson_p, spearman_r, spearman_p))
 
-    return pd.DataFrame(results, columns=["Dataset", "SampleID", "Reference", "Method",
+            param_data[(method_id, params)] = dict(zip(param_ids[method_id], params.split(':')))
+
+    param_df = pd.DataFrame(param_data)
+    result = pd.DataFrame(results, columns=["Dataset", "SampleID", "Reference", "Method",
                                            "Parameters", "Precision", "Recall",
                                            "F-measure", "Pearson r", "Pearson p",
                                            "Spearman r", "Spearman p"])
+    result = result.merge(param_df.T, left_on=('Method', 'Parameters'), right_index=True)
+    return result
 
 def _is_first(df):
     """used to filter df to contain only one row per method"""
