@@ -301,7 +301,7 @@ def compute_mock_results(result_tables, expected_table_lookup,
             results.append((dataset_id, sample_id, reference_id, method_id, params, p, r, f,
                             pearson_r, pearson_p, spearman_r, spearman_p))
 
-            param_data[(method_id, params)] = dict(zip(param_ids[method_id], params.split(':')))
+            param_data[(method_id, params)] = dict(zip(param_ids[method_id], map(float, params.split(':'))))
 
     param_df = pd.DataFrame(param_data)
     result = pd.DataFrame(results, columns=["Dataset", "SampleID", "Reference", "Method",
