@@ -50,7 +50,17 @@ def performance_rank_comparisons(df, metric):
             stat, p = ranksums(v1, v2)
             result[k1]['%s: wilcoxon p' % k2] = p
             result[k1]['%s: wilcoxon stat' % k2] = stat
-    return pd.DataFrame(result).T
+    # build a DataFrame from the results; sort rows from best to
+    # worst; sort columns with "summed ranks" first, followed by
+    # stats from best to worst method, and finally ranks
+    result = pd.DataFrame(result).T.sort('summed ranks', axis=0)
+    column_order = ['summed ranks']
+    for e in result.index:
+        column_order.append('%s: wilcoxon stat' % e)
+        column_order.append('%s: wilcoxon p' % e)
+    column_order.append('ranks')
+
+    return result.reindex_axis(column_order, axis=1)
 
 def method_glm_from_df(df, method, metric, hack_dataset=False, dataset=None):
     if dataset is not None:
