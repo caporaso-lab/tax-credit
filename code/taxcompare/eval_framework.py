@@ -33,13 +33,31 @@ from scipy.stats import ranksums
 def performance_rank_distributions(df, metric):
     sorted_df = df.sort(columns=metric, ascending=False)
     results = {}
-    for method in sorted_df.Method.unique():
-        results[method] = []
+    metric_idx = sorted_df.columns.get_loc(metric)
+    method_idx = sorted_df.columns.get_loc('Method')
+
+    columns = ["Dataset", "SampleID", "Method",
+               metric, "Top Parameter Sets"]
+    performance_results = {}
+    top_performers = {}
+
     for dataset in sorted_df.Dataset.unique():
-        x = method_by_dataset_a1(sorted_df, dataset).Method
-        for rank, method in enumerate(x, start=1):
-            results[method].append(rank)
-    return results
+        dataset_df = sorted_df[sorted_df.Dataset == dataset]
+        for sid in dataset_df.SampleID.unique():
+            dataset_sid_results = dataset_df[dataset_df.SampleID == sid]
+            current_performance_results = {}
+            current_top_performers = {}
+            for method in sorted_df.Method.unique():
+                method_results = dataset_sid_results[dataset_sid_results.Method == method]
+                max_metric_value = method_results[metric].max()
+                tp = method_results[method_results[metric] == max_metric_value]
+                current_performance_results[method] = max_metric_value
+                current_top_performers[method] = list(tp.Parameters)
+            performance_results[(dataset, sid)] = current_performance_results
+            top_performers[(dataset, sid)] = current_top_performers
+    performance_results = pd.DataFrame(performance_results).T
+    top_performers = pd.DataFrame(top_performers).T
+    return performance_results, top_performers
 
 def performance_rank_comparisons(df, metric):
     rank_data = performance_rank_distributions(df, metric)
