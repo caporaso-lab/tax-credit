@@ -28,7 +28,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
-from scipy.stats import ranksums
+from scipy.stats import wilcoxon
 
 def performance_rank_distributions(df, metric):
     sorted_df = df.sort(columns=metric, ascending=False)
@@ -36,8 +36,6 @@ def performance_rank_distributions(df, metric):
     metric_idx = sorted_df.columns.get_loc(metric)
     method_idx = sorted_df.columns.get_loc('Method')
 
-    columns = ["Dataset", "SampleID", "Method",
-               metric, "Top Parameter Sets"]
     performance_results = {}
     top_performers = {}
 
@@ -53,6 +51,8 @@ def performance_rank_distributions(df, metric):
                 tp = method_results[method_results[metric] == max_metric_value]
                 current_performance_results[method] = max_metric_value
                 current_top_performers[method] = list(tp.Parameters)
+            top_score = max(current_performance_results.values())
+            current_performance_results['Top score'] = top_score
             performance_results[(dataset, sid)] = current_performance_results
             top_performers[(dataset, sid)] = current_top_performers
     performance_results = pd.DataFrame(performance_results).T
@@ -60,23 +60,26 @@ def performance_rank_distributions(df, metric):
     return performance_results, top_performers
 
 def performance_rank_comparisons(df, metric):
-    rank_data = performance_rank_distributions(df, metric)
-    result = {}
-    for k1, v1 in rank_data.iteritems():
-        result[k1] = {'ranks': v1, 'summed ranks': np.sum(v1)}
-        for k2, v2 in rank_data.iteritems():
-            stat, p = ranksums(v1, v2)
-            result[k1]['%s: wilcoxon p' % k2] = p
-            result[k1]['%s: wilcoxon stat' % k2] = stat
+    df1, _ = performance_rank_distributions(df, metric)
+    methods = list(df.Method.unique())
+    result = defaultdict(dict)
+    for i, method1 in enumerate(methods):
+        result[method1]['Count best'] = sum(df1[method1] == df1['Top score'])
+        for method2 in methods[i+1:]:
+            stat, p = wilcoxon(df1[method1], df1[method2])
+            result[method1]['%s: wilcoxon p' % method2] = p
+            result[method1]['%s: wilcoxon stat' % method2] = stat
+            result[method2]['%s: wilcoxon p' % method1] = p
+            result[method2]['%s: wilcoxon stat' % method1] = stat
     # build a DataFrame from the results; sort rows from best to
     # worst; sort columns with "summed ranks" first, followed by
     # stats from best to worst method, and finally ranks
-    result = pd.DataFrame(result).T.sort('summed ranks', axis=0)
-    column_order = ['summed ranks']
+    result = pd.DataFrame(result).T.sort('Count best', axis=0, ascending=False)
+    column_order = ['Count best']
     for e in result.index:
         column_order.append('%s: wilcoxon stat' % e)
         column_order.append('%s: wilcoxon p' % e)
-    column_order.append('ranks')
+    #column_order.append('ranks')
 
     return result.reindex_axis(column_order, axis=1)
 
