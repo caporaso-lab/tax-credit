@@ -102,12 +102,10 @@ def performance_rank_comparisons(df, metric, method_param):
 
     return result.reindex_axis(column_order, axis=1)
 
-
-
 def parameter_comparisons(df, method, metrics=['Precision', 'Recall', 'F-measure', 'Pearson r', 'Spearman r']):
     result = {}
     for metric in metrics:
-        df2 = get_sample_to_top_params(all_mock_results, "Precision")
+        df2 = get_sample_to_top_params(df, metric)
         current_result = defaultdict(int)
         for optimal_parameters in df2[method]:
             for optimal_parameter in optimal_parameters:
@@ -117,39 +115,6 @@ def parameter_comparisons(df, method, metrics=['Precision', 'Recall', 'F-measure
     result['Mean'] = np.mean(result.T[:])
     result = result.sort('Mean', ascending=False)
     return result
-
-def method_glm_from_df(df, method, metric, hack_dataset=False, dataset=None):
-    if dataset is not None:
-        method_df = df[np.logical_and(df['Method'] == method, df['Dataset'] == dataset)]
-        hack_dataset=False
-    else:
-        method_df = df[df['Method'] == method]
-    ds_lookup = dict([(v, i) for i, v in enumerate(df.Dataset, start=1)])
-    dep = np.array(method_df[metric])
-    indep = []
-    for v, ds in zip(list(method_df['Parameters']), list(method_df['Dataset'])):
-        current_indep = map(float, v.split(':'))
-        if hack_dataset:
-            current_indep.append(ds_lookup[ds])
-        indep.append(np.array(current_indep))
-    indep = np.array(indep)
-    glm = sm.GLM(dep, indep)
-    result = glm.fit()
-    return result
-
-def glm_df(df, method, param_names, metrics=['Precision', 'Recall', 'F-measure']):
-    columns = ['Dataset', 'Metric', 'LogLikelihood'] + \
-              ['%s: Coefficent' % n for n in param_names] + \
-              ['%s: p-value' % n for n in param_names]
-    results = []
-    for ds in df.Dataset.unique():
-        for metric in metrics:
-            glm = method_glm_from_df(df, method, metric, dataset=ds)
-            curr_row = [ds, metric, glm.llf]
-            curr_row.extend(glm.params)
-            curr_row.extend(glm.pvalues)
-            results.append(curr_row)
-    return pd.DataFrame(results, columns=columns)
 
 def find_and_process_result_tables(start_dir,
                                    biom_processor=abspath,
