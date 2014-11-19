@@ -30,58 +30,93 @@ import matplotlib.pyplot as plt
 import statsmodels.api as sm
 from scipy.stats import wilcoxon
 
-def performance_rank_distributions(df, metric):
+def get_sample_to_top_params(df, metric):
     sorted_df = df.sort(columns=metric, ascending=False)
-    results = {}
     metric_idx = sorted_df.columns.get_loc(metric)
     method_idx = sorted_df.columns.get_loc('Method')
-
-    performance_results = {}
-    top_performers = {}
+    result = {}
 
     for dataset in sorted_df.Dataset.unique():
         dataset_df = sorted_df[sorted_df.Dataset == dataset]
         for sid in dataset_df.SampleID.unique():
             dataset_sid_results = dataset_df[dataset_df.SampleID == sid]
-            current_performance_results = {}
-            current_top_performers = {}
+            current_results = {}
             for method in sorted_df.Method.unique():
                 method_results = dataset_sid_results[dataset_sid_results.Method == method]
                 max_metric_value = method_results[metric].max()
                 tp = method_results[method_results[metric] == max_metric_value]
-                current_performance_results[method] = max_metric_value
-                current_top_performers[method] = list(tp.Parameters)
-            top_score = max(current_performance_results.values())
-            current_performance_results['Top score'] = top_score
-            performance_results[(dataset, sid)] = current_performance_results
-            top_performers[(dataset, sid)] = current_top_performers
-    performance_results = pd.DataFrame(performance_results).T
-    top_performers = pd.DataFrame(top_performers).T
-    return performance_results, top_performers
+                current_results[method] = list(tp.Parameters)
+            result[(dataset, sid)] = current_results
+    result = pd.DataFrame(result).T
+    return result
 
-def performance_rank_comparisons(df, metric):
-    df1, _ = performance_rank_distributions(df, metric)
-    methods = list(df.Method.unique())
+def get_sample_to_top_scores(df, metric, method_param):
+    sorted_df = df.sort(columns=metric, ascending=False)
+    results = {}
+    metric_idx = sorted_df.columns.get_loc(metric)
+    method_idx = sorted_df.columns.get_loc('Method')
+
+    result = {}
+
+    for dataset in sorted_df.Dataset.unique():
+        dataset_df = sorted_df[sorted_df.Dataset == dataset]
+        for sid in dataset_df.SampleID.unique():
+            dataset_sid_results = dataset_df[dataset_df.SampleID == sid]
+            current_results = {}
+            for method in sorted_df.Method.unique():
+                method_results = dataset_sid_results[dataset_sid_results.Method == method]
+                mp_results = method_results[method_results.Parameters == method_param[method]]
+                max_metric_value = mp_results[metric].max()
+                current_results[method] = max_metric_value
+            top_score = max(current_results.values())
+            current_results['Top score'] = top_score
+            results[(dataset, sid)] = current_results
+    results = pd.DataFrame(results).T
+    return results
+
+def performance_rank_comparisons(df, metric, method_param):
+    df1 = get_sample_to_top_scores(df, metric, method_param)
     result = defaultdict(dict)
+    methods = df.Method.unique()
     for i, method1 in enumerate(methods):
         result[method1]['Count best'] = sum(df1[method1] == df1['Top score'])
         for method2 in methods[i+1:]:
-            stat, p = wilcoxon(df1[method1], df1[method2])
+            try:
+                stat, p = wilcoxon(df1[method1], df1[method2])
+            except ValueError:
+                # scores are identical
+                stat = 0.0
+                p = 1.0
             result[method1]['%s: wilcoxon p' % method2] = p
             result[method1]['%s: wilcoxon stat' % method2] = stat
             result[method2]['%s: wilcoxon p' % method1] = p
             result[method2]['%s: wilcoxon stat' % method1] = stat
     # build a DataFrame from the results; sort rows from best to
-    # worst; sort columns with "summed ranks" first, followed by
-    # stats from best to worst method, and finally ranks
+    # worst; sort columns with "Count best" first, followed by
+    # stats from best to worst method
     result = pd.DataFrame(result).T.sort('Count best', axis=0, ascending=False)
     column_order = ['Count best']
     for e in result.index:
         column_order.append('%s: wilcoxon stat' % e)
         column_order.append('%s: wilcoxon p' % e)
-    #column_order.append('ranks')
 
     return result.reindex_axis(column_order, axis=1)
+
+
+
+def parameter_comparisons(df, method, metrics=['Precision', 'Recall', 'F-measure', 'Pearson r', 'Spearman r']):
+    result = {}
+    for metric in metrics:
+        df2 = get_sample_to_top_params(all_mock_results, "Precision")
+        current_result = defaultdict(int)
+        for optimal_parameters in df2[method]:
+            for optimal_parameter in optimal_parameters:
+                current_result[optimal_parameter] += 1
+        result[metric] = current_result
+    result = pd.DataFrame.from_dict(result)
+    result['Mean'] = np.mean(result.T[:])
+    result = result.sort('Mean', ascending=False)
+    return result
 
 def method_glm_from_df(df, method, metric, hack_dataset=False, dataset=None):
     if dataset is not None:
@@ -282,6 +317,8 @@ def compute_mock_results(result_tables, expected_table_lookup,
     param_ids = {'rdp': ['confidence'], 'blast': ['e-value'],
                  'sortmerna': ['min consensus fraction', 'similarity',
                                'best N alignments', 'coverage', 'e value'],
+                 'sortmerna-w16': ['min consensus fraction', 'similarity',
+                              'best N alignments', 'coverage', 'e value'],
                  'uclust': ['min consensus fraction', 'similarity',
                             'max accepts']}
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
