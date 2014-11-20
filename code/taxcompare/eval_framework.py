@@ -31,6 +31,22 @@ import statsmodels.api as sm
 from scipy.stats import wilcoxon
 
 def get_sample_to_top_params(df, metric):
+    """ Identify the top-performing methods for a given metric
+
+    Parameters
+    ----------
+    df: pd.DataFrame
+    metric: Column header defining the metric to compare parameter combinations
+     with
+
+    Returns
+    -------
+    pd.DataFrame
+     Rows: Multi-index of (Dataset, SampleID)
+     Cols: Methods
+     Values: list of Parameters that achieve the highest performance for each
+      method
+    """
     sorted_df = df.sort(columns=metric, ascending=False)
     metric_idx = sorted_df.columns.get_loc(metric)
     method_idx = sorted_df.columns.get_loc('Method')
