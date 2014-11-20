@@ -21,7 +21,7 @@ from pylab import scatter, xlabel, ylabel, xlim, ylim
 from scipy.spatial.distance import pdist
 from scipy.stats import pearsonr, spearmanr
 from skbio import DistanceMatrix
-from seaborn import boxplot, violinplot
+from seaborn import boxplot, violinplot, heatmap
 from skbio.stats.distance import mantel
 from mpl_toolkits.axes_grid1 import ImageGrid
 import pandas as pd
@@ -724,22 +724,9 @@ def heatmap_from_data_frame(df, metric, vmin=0, vmax=1, cmap='Reds'):
 
     # Based on SO answer: http://stackoverflow.com/a/18238680
     fig = plt.figure(figsize=(width, height))
-    grid = ImageGrid(fig, 111, nrows_ncols=(1, 1),
-                     direction='row', axes_pad=0.05, add_all=True,
-                     label_mode='1', share_all=False,
-                     cbar_location='right', cbar_mode='single',
-                     cbar_size='5%', cbar_pad=0.05)
+    ax = heatmap(df, cmap=cmap)
 
-    ax = grid[0]
     ax.set_title(metric, fontsize=20)
     ax.tick_params(axis='both', direction='out', labelsize=12)
-    im = ax.imshow(df.values, interpolation='nearest', cmap=cmap,
-                   vmax=vmax, vmin=vmin)
-    ax.cax.colorbar(im)
-    ax.cax.tick_params(labelsize=12)
-    ax.set_xticks(np.arange(df.shape[1]))
-    ax.set_xticklabels(df.columns.tolist(), rotation=90)
-    ax.set_yticks(np.arange(df.shape[0]))
-    ax.set_yticklabels(df.index)
 
     fig.show()
