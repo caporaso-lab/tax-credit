@@ -15,13 +15,15 @@ import json
 from StringIO import StringIO
 import numpy as np
 import pandas as pd
+from scipy.stats import wilcoxon
 
 from biom import Table
 from taxcompare.eval_framework import (compute_prf, filter_table,
                                        get_observed_observation_ids,
                                        get_actual_and_expected_vectors,
                                        get_sample_to_top_params,
-                                       get_sample_to_top_scores)
+                                       get_sample_to_top_scores,
+                                       performance_rank_comparisons)
 
 class EvalFrameworkTests(TestCase):
 
@@ -66,6 +68,39 @@ class EvalFrameworkTests(TestCase):
                                           "Precision", method_param)
         self.assertEqual(actual['rdp'][('B1', 'm1')], 0.47826087)
         self.assertEqual(actual.shape, (3, 3))
+
+    def test_performance_rank_comparisons(self):
+        method_param = {"rdp": "0.1", "uclust": "0.51:0.8:3"}
+        actual = performance_rank_comparisons(self.mock_result_table1,
+                                              "Precision", method_param)
+        self.assertEqual(actual['Count best']['rdp'], 3)
+        self.assertEqual(actual['Count best']['uclust'], 1)
+        rdp_uc_stat, rdp_uc_p = wilcoxon([0.478261, 1.0, 1.0],
+                                         [0.478261, 0.777778 , 0.777778])
+        self.assertEqual(actual['uclust: wilcoxon stat']['rdp'], rdp_uc_stat)
+        self.assertEqual(actual['uclust: wilcoxon p']['rdp'], rdp_uc_p)
+        self.assertEqual(actual['rdp: wilcoxon stat']['uclust'], rdp_uc_stat)
+        self.assertEqual(actual['rdp: wilcoxon p']['uclust'], rdp_uc_p)
+        self.assertTrue(np.isnan(actual['rdp: wilcoxon stat']['rdp']))
+        self.assertTrue(np.isnan(actual['rdp: wilcoxon p']['rdp']))
+        self.assertTrue(np.isnan(actual['uclust: wilcoxon stat']['uclust']))
+        self.assertTrue(np.isnan(actual['uclust: wilcoxon p']['uclust']))
+        self.assertEqual(actual.shape, (2, 5))
+
+        actual = performance_rank_comparisons(self.mock_result_table1,
+                                              "Recall", method_param)
+        self.assertEqual(actual['Count best']['rdp'], 3)
+        self.assertEqual(actual['Count best']['uclust'], 3)
+        self.assertEqual(actual['uclust: wilcoxon stat']['rdp'], 0.0)
+        self.assertEqual(actual['uclust: wilcoxon p']['rdp'], 1.0)
+        self.assertEqual(actual['rdp: wilcoxon stat']['uclust'], 0.0)
+        self.assertEqual(actual['rdp: wilcoxon p']['uclust'], 1.0)
+        self.assertTrue(np.isnan(actual['rdp: wilcoxon stat']['rdp']))
+        self.assertTrue(np.isnan(actual['rdp: wilcoxon p']['rdp']))
+        self.assertTrue(np.isnan(actual['uclust: wilcoxon stat']['uclust']))
+        self.assertTrue(np.isnan(actual['uclust: wilcoxon p']['uclust']))
+
+
 
     def test_filter_table(self):
         # prior to filtering there are observations with count less than 10

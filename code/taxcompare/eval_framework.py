@@ -110,6 +110,24 @@ def get_sample_to_top_scores(df, metric, method_param):
     return results
 
 def performance_rank_comparisons(df, metric, method_param):
+    """
+    Parameters
+    ----------
+    df: pd.DataFrame
+    metric: str
+        Column header defining the metric to compare parameter combs with
+    method_param: dict
+        Mapping of method id to parameter set of interest
+
+    Returns
+    -------
+    pd.DataFrame
+     Rows: Method
+     Cols: Count best, method: wilcoxon stat, method: wilcoxon p
+     Values: Count best: number of times method achieved or tied for the top
+      score; method wilcoxon stat/p: comparison of methods based on their
+      scores
+    """
     df1 = get_sample_to_top_scores(df, metric, method_param)
     result = defaultdict(dict)
     methods = df.Method.unique()
