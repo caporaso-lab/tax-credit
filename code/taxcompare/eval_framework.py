@@ -21,13 +21,12 @@ from pylab import scatter, xlabel, ylabel, xlim, ylim
 from scipy.spatial.distance import pdist
 from scipy.stats import pearsonr, spearmanr
 from skbio import DistanceMatrix
-from skbio.draw import boxplots
+from seaborn import boxplot, violinplot
 from skbio.stats.distance import mantel
 from mpl_toolkits.axes_grid1 import ImageGrid
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import statsmodels.api as sm
 from scipy.stats import wilcoxon
 
 def get_sample_to_top_params(df, metric):
@@ -682,8 +681,12 @@ def boxplot_from_data_frame(df,
                             group_by,
                             metric,
                             y_min = 0.0,
-                            y_max = 1.0):
-    """Generate boxplot of metric by group
+                            y_max = 1.0,
+                            plotf=violinplot,
+                            color='grey'):
+    """Generate boxplot or violinplot of metric by group
+
+    To generate boxplots instead of violin plots, pass plotf=seaborn.boxplot
     """
 
     distributions = []
@@ -693,12 +696,11 @@ def boxplot_from_data_frame(df,
         distribution = df.ix[df[group_by] == e, metric]
         distributions.append(distribution)
 
-    boxplots(distributions,
-             x_tick_labels = x_tick_labels,
-             x_label = group_by,
-             y_label = metric,
-             y_min = y_min,
-             y_max = y_max)
+    ax = plotf(distributions, names = x_tick_labels, color=color)
+    ax.set_ylim(bottom=y_min, top=y_max)
+    ax.set_ylabel(metric)
+    ax.set_xlabel(group_by)
+    ax
 
 
 def heatmap_from_data_frame(df, metric, vmin=0, vmax=1, cmap='Reds'):
