@@ -66,6 +66,37 @@ def get_sample_to_top_params(df, metric):
     result = pd.DataFrame(result).T
     return result
 
+def parameter_comparisons(df, method, metrics=['Precision', 'Recall', 'F-measure', 'Pearson r', 'Spearman r']):
+    """ Count the number of times each parameter combination achieves the top score
+
+    Parameters
+    ----------
+    df: pd.DataFrame
+    method: method of interest
+    metrics: metrics to include as headers in the resulting DataFrame
+
+    Returns
+    -------
+    pd.DataFrame
+     Rows: Parameter combination
+     Cols: metrics, Mean
+     Values: Mean: average value of all other columns in row; metrics: count of
+      times a parameter combination achieved the best score for the given metric
+    """
+    result = {}
+    for metric in metrics:
+        df2 = get_sample_to_top_params(df, metric)
+        current_result = defaultdict(int)
+        for optimal_parameters in df2[method]:
+            for optimal_parameter in optimal_parameters:
+                current_result[optimal_parameter] += 1
+        result[metric] = current_result
+    result = pd.DataFrame.from_dict(result)
+    result.fillna(0, inplace=True)
+    result['Mean'] = np.mean(result.T[:])
+    result = result.sort('Mean', ascending=False)
+    return result
+
 def get_sample_to_top_scores(df, metric, method_param):
     """Identify the score that all method_param combinations achieved for metric
 
@@ -155,19 +186,7 @@ def performance_rank_comparisons(df, metric, method_param):
 
     return result.reindex_axis(column_order, axis=1)
 
-def parameter_comparisons(df, method, metrics=['Precision', 'Recall', 'F-measure', 'Pearson r', 'Spearman r']):
-    result = {}
-    for metric in metrics:
-        df2 = get_sample_to_top_params(df, metric)
-        current_result = defaultdict(int)
-        for optimal_parameters in df2[method]:
-            for optimal_parameter in optimal_parameters:
-                current_result[optimal_parameter] += 1
-        result[metric] = current_result
-    result = pd.DataFrame.from_dict(result)
-    result['Mean'] = np.mean(result.T[:])
-    result = result.sort('Mean', ascending=False)
-    return result
+
 
 def find_and_process_result_tables(start_dir,
                                    biom_processor=abspath,

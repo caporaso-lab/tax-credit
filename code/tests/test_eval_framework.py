@@ -23,7 +23,8 @@ from taxcompare.eval_framework import (compute_prf, filter_table,
                                        get_actual_and_expected_vectors,
                                        get_sample_to_top_params,
                                        get_sample_to_top_scores,
-                                       performance_rank_comparisons)
+                                       performance_rank_comparisons,
+                                       parameter_comparisons)
 
 class EvalFrameworkTests(TestCase):
 
@@ -99,6 +100,27 @@ class EvalFrameworkTests(TestCase):
         self.assertTrue(np.isnan(actual['rdp: wilcoxon p']['rdp']))
         self.assertTrue(np.isnan(actual['uclust: wilcoxon stat']['uclust']))
         self.assertTrue(np.isnan(actual['uclust: wilcoxon p']['uclust']))
+
+    def test_parameter_comparisons(self):
+        actual = parameter_comparisons(self.mock_result_table1, "rdp")
+        self.assertEqual(actual['F-measure']['0.1'], 2)
+        self.assertEqual(actual['F-measure']['0.2'], 1)
+        self.assertEqual(actual['F-measure']['0'], 1)
+        self.assertEqual(actual['F-measure']['0.3'], 0)
+        self.assertEqual(actual['Pearson r']['0.1'], 3)
+        self.assertEqual(actual['Pearson r']['0.2'], 0)
+        self.assertEqual(actual['Pearson r']['0'], 1)
+        self.assertEqual(actual['Pearson r']['0.3'], 0)
+        self.assertEqual(actual['Precision']['0.1'], 2)
+        self.assertEqual(actual['Recall']['0.1'], 3)
+        self.assertEqual(actual['Spearman r']['0.1'], 3)
+        self.assertEqual(actual['Mean']['0.1'], 2.6)
+        self.assertEqual(actual.shape, (6, 6))
+
+        actual = parameter_comparisons(self.mock_result_table1, "uclust")
+        self.assertEqual(actual['F-measure']['0.51:0.8:3'], 2)
+        self.assertEqual(actual['F-measure']['0.51:0.9:3'], 1)
+        self.assertEqual(actual.shape, (2, 6))
 
 
 
