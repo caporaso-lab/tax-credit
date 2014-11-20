@@ -20,7 +20,8 @@ from biom import Table
 from taxcompare.eval_framework import (compute_prf, filter_table,
                                        get_observed_observation_ids,
                                        get_actual_and_expected_vectors,
-                                       get_sample_to_top_params)
+                                       get_sample_to_top_params,
+                                       get_sample_to_top_scores)
 
 class EvalFrameworkTests(TestCase):
 
@@ -44,6 +45,27 @@ class EvalFrameworkTests(TestCase):
         actual = get_sample_to_top_params(self.mock_result_table1, "Pearson r")
         self.assertEqual(actual['rdp'][('B1', 'm1')], ['0.1'])
         self.assertEqual(actual.shape, (3, 2))
+
+    def test_get_sample_to_top_scores(self):
+        method_param = {"rdp": "0.1", "uclust": "0.51:0.8:3"}
+        actual = get_sample_to_top_scores(self.mock_result_table1,
+                                          "F-measure", method_param)
+        self.assertEqual(actual['rdp'][('B1', 'm1')], 0.628571429)
+        self.assertEqual(actual['rdp'][('F2', 'm2')], 1.0)
+        self.assertEqual(actual['rdp'][('F2', 'm3')], 1.0)
+        self.assertEqual(actual['uclust'][('B1', 'm1')], 0.628571429)
+        self.assertEqual(actual['uclust'][('F2', 'm2')], 0.875)
+        self.assertEqual(actual['uclust'][('F2', 'm3')], 0.875)
+        self.assertEqual(actual['Top score'][('B1', 'm1')], 0.628571429)
+        self.assertEqual(actual['Top score'][('F2', 'm2')], 1.0)
+        self.assertEqual(actual['Top score'][('F2', 'm3')], 1.0)
+        self.assertEqual(actual.shape, (3, 3))
+
+        method_param = {"rdp": "0.1", "uclust": "0.51:0.8:3"}
+        actual = get_sample_to_top_scores(self.mock_result_table1,
+                                          "Precision", method_param)
+        self.assertEqual(actual['rdp'][('B1', 'm1')], 0.47826087)
+        self.assertEqual(actual.shape, (3, 3))
 
     def test_filter_table(self):
         # prior to filtering there are observations with count less than 10

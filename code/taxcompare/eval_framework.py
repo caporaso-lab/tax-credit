@@ -43,7 +43,7 @@ def get_sample_to_top_params(df, metric):
     -------
     pd.DataFrame
      Rows: Multi-index of (Dataset, SampleID)
-     Cols: Methods
+     Cols: methods
      Values: list of Parameters that achieve the highest performance for each
       method
     """
@@ -67,6 +67,25 @@ def get_sample_to_top_params(df, metric):
     return result
 
 def get_sample_to_top_scores(df, metric, method_param):
+    """Identify the score that all method_param combinations achieved for metric
+
+    Parameters
+    ----------
+    df: pd.DataFrame
+    metric: str
+        Column header defining the metric to compare parameter combs with
+    method_param: dict
+        Mapping of method id to parameter set of interest
+
+    Returns
+    -------
+    pd.DataFrame
+     Rows: Multi-index of (Dataset, SampleID)
+     Cols: Top score, methods
+     Values: Top score of this metric (i.e., max across other columns in this
+      row); method scores (i.e., the score that each method achieved for the
+      given metric)
+    """
     sorted_df = df.sort(columns=metric, ascending=False)
     results = {}
     metric_idx = sorted_df.columns.get_loc(metric)
