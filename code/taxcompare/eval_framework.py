@@ -694,7 +694,7 @@ def boxplot_from_data_frame(df,
     x_tick_labels.sort()
     for e in x_tick_labels:
         distribution = df.ix[df[group_by] == e, metric]
-        distributions.append(distribution)
+        distributions.append([x for x in distribution if not np.isnan(x)])
 
     ax = plotf(distributions, names = x_tick_labels, color=color)
     ax.set_ylim(bottom=y_min, top=y_max)
@@ -724,9 +724,8 @@ def heatmap_from_data_frame(df, metric, vmin=0, vmax=1, cmap='Reds'):
 
     # Based on SO answer: http://stackoverflow.com/a/18238680
     fig = plt.figure(figsize=(width, height))
-    ax = heatmap(df, cmap=cmap)
+    ax = heatmap(df, cmap=cmap, linewidths=0, square=True, vmin=vmin, vmax=vmax)
 
     ax.set_title(metric, fontsize=20)
-    ax.tick_params(axis='both', direction='out', labelsize=12)
 
     fig.show()
