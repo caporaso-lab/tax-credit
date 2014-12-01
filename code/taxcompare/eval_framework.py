@@ -277,10 +277,10 @@ def get_observed_observation_ids(table,sample_id=None):
         sample_id: the sample_id to test (default is first sample id in table.SampleIds)
     """
     if sample_id is None:
-        sample_id = table.sample_ids[0]
+        sample_id = table.ids(axis="sample")[0]
 
     result = []
-    for observation_id in table.observation_ids:
+    for observation_id in table.ids(axis="observation"):
         if table.get_value_by_ids(observation_id, sample_id) > 0.0:
             result.append(observation_id)
 
@@ -323,7 +323,10 @@ def get_taxonomy_collapser(level):
 
     """
     def f(id_, md):
-        levels = [l.strip() for l in md['taxonomy'].split(';')]
+        try:
+            levels = [l.strip() for l in md['taxonomy'].split(';')]
+        except AttributeError:
+            levels = [l.strip() for l in md['taxonomy']]
         result = ';'.join(levels[:level])
         return result
     return f
@@ -382,9 +385,16 @@ def compute_mock_results(result_tables, expected_table_lookup,
             # if all data is filtered out, move on to the next table
             continue
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
-        actual_table = actual_table.collapse(collapse_by_taxonomy, axis='observation', min_group_size=1)
 
-        for sample_id in actual_table.sample_ids:
+        try:
+            actual_table = actual_table.collapse(collapse_by_taxonomy,
+                                                 axis='observation',
+                                                 min_group_size=1)
+        except TableException:
+            raise TableException, "Failure to collapse taxonomy for table at: %s" % (actual_table_fp)
+
+
+        for sample_id in actual_table.ids(axis="sample"):
             ## compute precision, recall, and f-measure
             try:
                 p,r,f = compute_prf(actual_table,
@@ -584,7 +594,7 @@ def distance_matrix_from_table(table, metric='braycurtis'):
         http://matplotlib.org/examples/mplot3d/scatter3d_demo.html
 
     """
-    sample_ids = table.sample_ids
+    sample_ids = table.ids(axis="sample")
     num_samples = len(sample_ids)
     dm = zeros((num_samples, num_samples))
     for i, sid1 in enumerate(sample_ids):
