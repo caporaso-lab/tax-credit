@@ -384,6 +384,10 @@ def compute_mock_results(result_tables, expected_table_lookup,
         except TableException:
             # if all data is filtered out, move on to the next table
             continue
+        except TypeError:
+            # missing taxonomic information in the table
+            raise TypeError, "Missing taxonomic information in table: %s" % (actual_table_fp)
+
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
 
         try:
