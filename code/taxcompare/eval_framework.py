@@ -333,7 +333,11 @@ def get_taxonomy_collapser(level):
 
 def filter_table(table, min_count, taxonomy_level):
     def f(data_vector, id_, metadata):
-        enough_levels = len(metadata['taxonomy']) >= taxonomy_level
+        # this observation has taxonomic information and
+        # there are a sufficient number of taxonomic levels
+        enough_levels = metadata['taxonomy'] is not None and \
+                        len(metadata['taxonomy']) >= taxonomy_level
+        # the count of this observation is at least min_count
         sufficient_count = data_vector.sum() >= min_count
         return enough_levels and sufficient_count
     return table.filter(f, axis='observation', inplace=False)
