@@ -386,7 +386,8 @@ def compute_mock_results(result_tables, expected_table_lookup,
             continue
         except TypeError:
             # missing taxonomic information in the table
-            raise TypeError, "Missing taxonomic information in table: %s" % (actual_table_fp)
+            print "Missing taxonomic information in table %s, skipping." % (actual_table_fp)
+            continue
 
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
 
