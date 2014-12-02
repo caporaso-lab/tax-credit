@@ -1,0 +1,9 @@
+BlastTaxonAssigner parameters:
+Application:blastn/megablast
+Max E value:1e-06
+Min percent identity:90.0
+id_to_taxonomy_filepath:/data/unite-nb-112614/97_tax.txt
+reference_seqs_filepath:/home/caporaso/code/short-read-tax-assignment/data/simulated-community/F1/ref.fasta
+Number of sequences inspected: 2020
+Number with no blast hits: 138
+Result path: /tmp/assign-taxeoeHGd
