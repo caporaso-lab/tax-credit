@@ -1,51 +1,51 @@
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/L18S-1/s_8_1_sequences.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/L18S-1/s_8_2_sequences.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/L18S-1/s_8_3_sequences.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/L18S-1/s_8_1_sequences.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/L18S-1/s_8_2_sequences.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/L18S-1/s_8_3_sequences.fastq.gz
 
 # The following file had to be split into three parts due to Amazon's 5GB limit
 # per file. To recombine, run:
 #   cat s_4_1_withindex_sequence.fastq.gz_part* > s_4_1_withindex_sequence.fastq.gz
 # And then gunzip the file and check the MD5 sum.
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence.fastq.gz_part0
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence.fastq.gz_part1
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence.fastq.gz_part2
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence_barcodes.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence.fastq.gz_part0
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence.fastq.gz_part1
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence.fastq.gz_part2
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/S16S-1/s_4_1_withindex_sequence_barcodes.fastq.gz
 
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/S16S-2/ISME_MiSeq_Index.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/S16S-2/ISME_MiSeq_Read1.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/S16S-2/ISME_MiSeq_Read2.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/S16S-2/ISME_MiSeq_Index.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/S16S-2/ISME_MiSeq_Read1.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/S16S-2/ISME_MiSeq_Read2.fastq.gz
 
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/S16S-3/MiSeqPhased.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/S16S-3/MiSeqPhased.index.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/S16S-3/MiSeqPhased.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/S16S-3/MiSeqPhased.index.fastq.gz
 
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Broad1/A0A3V.I1.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Broad1/A0A3V.R1.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Broad1/A0A3V.R2.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Broad1/A0A3V.I1.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Broad1/A0A3V.R1.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Broad1/A0A3V.R2.fastq.gz
 
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Broad2/s_G1_L001_I1_001.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Broad2/s_G1_L001_R1_001.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Broad2/s_G1_L001_R2_001.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Broad2/s_G1_L001_I1_001.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Broad2/s_G1_L001_R1_001.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Broad2/s_G1_L001_R2_001.fastq.gz
 
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Broad3/combined.i.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Broad3/combined.read1.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Broad3/combined.read2.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Broad3/combined.i.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Broad3/combined.read1.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Broad3/combined.read2.fastq.gz
 
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Turnbaugh1/s_6_1_sequences.fastq.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Turnbaugh1/s_6_1_sequences_barcodes.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Turnbaugh1/s_6_1_sequences.fastq.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Turnbaugh1/s_6_1_sequences_barcodes.fastq.gz
 
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_fwd.txt.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_rev.txt.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_run2_fwd.txt.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_run2_rev.txt.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_fwd.txt.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_rev.txt.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_run2_fwd.txt.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/Turnbaugh2/16SPOOL9_run2_rev.txt.gz
 
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/RDBW/RDBW_fwd.txt.gz
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/RDBW/RDBW_rev.txt.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/RDBW/RDBW_fwd.txt.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/RDBW/RDBW_rev.txt.gz
 
 # The following file had to be split into three parts due to Amazon's 5GB limit
 # per file. To recombine, run:
 #   cat ITS_SAG_fwd.txt.gz_part* > ITS_SAG_fwd.txt.gz
 # And then gunzip the file and check the MD5 sum.
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/ITS_SAG/ITS_SAG_fwd.txt.gz_parta
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/ITS_SAG/ITS_SAG_fwd.txt.gz_partb
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/ITS_SAG/ITS_SAG_fwd.txt.gz_partc
-https://s3.amazonaws.com/caporaso-lab-illumina-mock-communities-raw-data/ITS-SAG/SAG_rev.txt.gz
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/ITS_SAG/ITS_SAG_fwd.txt.gz_parta
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/ITS_SAG/ITS_SAG_fwd.txt.gz_partb
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/ITS_SAG/ITS_SAG_fwd.txt.gz_partc
+ftp://ftp.microbio.me/pub/illumina-mock-communities-raw-data/ITS-SAG/SAG_rev.txt.gz
