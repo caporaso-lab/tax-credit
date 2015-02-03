@@ -133,6 +133,8 @@ class EvalFrameworkTests(TestCase):
         # after filtering there are no observations with count less than 10
         self.assertFalse(np.array([e.sum() < 10
             for e in filtered_table.iter_data(axis='observation')]).any())
+        # but some observations are still present
+        self.assertTrue(filtered_table.shape[0] > 0)
 
         self.assertTrue(np.array([e.sum() < 100
             for e in self.table3.iter_data(axis='observation')]).any())
@@ -140,6 +142,8 @@ class EvalFrameworkTests(TestCase):
             taxonomy_level=0)
         self.assertFalse(np.array([e.sum() < 100
             for e in filtered_table.iter_data(axis='observation')]).any())
+        # but some observations are still present
+        self.assertTrue(filtered_table.shape[0] > 0)
 
         # prior to filtering, there are taxonomies with fewer than 4 levels
         md_levels = [len(md['taxonomy']) < 4
@@ -151,6 +155,8 @@ class EvalFrameworkTests(TestCase):
         md_levels = [len(md['taxonomy']) < 4
             for _, _, md in filtered_table.iter(axis='observation')]
         self.assertFalse(np.array(md_levels).any())
+        # but some observations are still present
+        self.assertTrue(filtered_table.shape[0] > 0)
 
         md_levels = [len(md['taxonomy']) < 5
             for _, _, md in self.table3.iter(axis='observation')]
@@ -160,6 +166,8 @@ class EvalFrameworkTests(TestCase):
         md_levels = [len(md['taxonomy']) < 5
             for _, _, md in filtered_table.iter(axis='observation')]
         self.assertFalse(np.array(md_levels).any())
+        # but some observations are still present
+        self.assertTrue(filtered_table.shape[0] > 0)
 
         md_levels = [len(md['taxonomy']) < 6
             for _, _, md in self.table3.iter(axis='observation')]
@@ -169,6 +177,15 @@ class EvalFrameworkTests(TestCase):
         md_levels = [len(md['taxonomy']) < 6
             for _, _, md in filtered_table.iter(axis='observation')]
         self.assertFalse(np.array(md_levels).any())
+        # but some observations are still present
+        self.assertTrue(filtered_table.shape[0] > 0)
+
+    def test_filter_table_taxa(self):
+        """ taxa-based filtering works as expected """
+        taxa_to_keep= ["k__Bacteria", "p__Firmicutes", "c__Bacilli"]
+        filtered_table = filter_table(self.table3, taxa_to_keep=taxa_to_keep)
+        self.assertTrue(0 < filtered_table.shape[0] < self.table3.shape[0])
+
 
     def test_compute_prf_default(self):
         """ p, r and f are computed correctly when defaulting to first sample ids"""

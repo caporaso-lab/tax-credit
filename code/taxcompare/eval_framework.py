@@ -331,15 +331,26 @@ def get_taxonomy_collapser(level):
         return result
     return f
 
-def filter_table(table, min_count, taxonomy_level):
+def filter_table(table, min_count=0, taxonomy_level=None,
+                 taxa_to_keep=None):
+    try:
+        _taxa_to_keep = ''.join(taxa_to_keep)
+    except TypeError:
+        _taxa_to_keep = None
     def f(data_vector, id_, metadata):
-        # this observation has taxonomic information and
+        # if filtering based on number of taxonomy levels, and this
+        # observation has taxonomic information, and
         # there are a sufficient number of taxonomic levels
-        enough_levels = metadata['taxonomy'] is not None and \
-                        len(metadata['taxonomy']) >= taxonomy_level
+        enough_levels = taxonomy_level is None or \
+                        (metadata['taxonomy'] is not None and \
+                         len(metadata['taxonomy']) >= taxonomy_level)
+        # if filtering to specific taxa, this OTU is assigned to that taxonomy
+        print metadata['taxonomy']
+        allowed_taxa = _taxa_to_keep is None or \
+                        ''.join(metadata['taxonomy']).startswith(_taxa_to_keep)
         # the count of this observation is at least min_count
         sufficient_count = data_vector.sum() >= min_count
-        return enough_levels and sufficient_count
+        return enough_levels and sufficient_count and allowed_taxa
     return table.filter(f, axis='observation', inplace=False)
 
 def compute_mock_results(result_tables, expected_table_lookup,
