@@ -345,7 +345,6 @@ def filter_table(table, min_count=0, taxonomy_level=None,
                         (metadata['taxonomy'] is not None and \
                          len(metadata['taxonomy']) >= taxonomy_level)
         # if filtering to specific taxa, this OTU is assigned to that taxonomy
-        print metadata['taxonomy']
         allowed_taxa = _taxa_to_keep is None or \
                         ''.join(metadata['taxonomy']).startswith(_taxa_to_keep)
         # the count of this observation is at least min_count

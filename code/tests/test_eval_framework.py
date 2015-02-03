@@ -184,7 +184,25 @@ class EvalFrameworkTests(TestCase):
         """ taxa-based filtering works as expected """
         taxa_to_keep= ["k__Bacteria", "p__Firmicutes", "c__Bacilli"]
         filtered_table = filter_table(self.table3, taxa_to_keep=taxa_to_keep)
-        self.assertTrue(0 < filtered_table.shape[0] < self.table3.shape[0])
+        # expected value determined with grep -c c__Bacilli
+        self.assertEqual(filtered_table.shape[0], 53)
+
+        taxa_to_keep= ["k__Bacteria", "p__Firmicutes", "c__Bacilli",
+                       "o__Bacillales", "f__Staphylococcaceae",
+                       "g__Staphylococcus"]
+        filtered_table = filter_table(self.table3, taxa_to_keep=taxa_to_keep)
+        # expected value determined with grep -c g__Staphylococcus
+        self.assertEqual(filtered_table.shape[0], 8)
+
+        taxa_to_keep= ["k__Bacteria"]
+        filtered_table = filter_table(self.table3, taxa_to_keep=taxa_to_keep)
+        # all observations are retained
+        self.assertEqual(filtered_table.shape[0], self.table3.shape[0])
+
+        taxa_to_keep= ["k__Archaea"]
+        filtered_table = filter_table(self.table3, taxa_to_keep=taxa_to_keep)
+        # no observations are retained
+        self.assertEqual(filtered_table.shape[0], 0)
 
 
     def test_compute_prf_default(self):
