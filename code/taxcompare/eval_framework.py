@@ -334,7 +334,7 @@ def get_taxonomy_collapser(level):
 def filter_table(table, min_count=0, taxonomy_level=None,
                  taxa_to_keep=None):
     try:
-        _taxa_to_keep = ''.join(taxa_to_keep)
+        _taxa_to_keep = ';'.join(taxa_to_keep)
     except TypeError:
         _taxa_to_keep = None
     def f(data_vector, id_, metadata):
@@ -346,14 +346,16 @@ def filter_table(table, min_count=0, taxonomy_level=None,
                          len(metadata['taxonomy']) >= taxonomy_level)
         # if filtering to specific taxa, this OTU is assigned to that taxonomy
         allowed_taxa = _taxa_to_keep is None or \
-                        ''.join(metadata['taxonomy']).startswith(_taxa_to_keep)
+                        id_.startswith(_taxa_to_keep) or \
+                        (metadata is not None and 'taxonomy' in metadata and
+                         ';'.join(metadata['taxonomy']).startswith(_taxa_to_keep))
         # the count of this observation is at least min_count
         sufficient_count = data_vector.sum() >= min_count
         return enough_levels and sufficient_count and allowed_taxa
     return table.filter(f, axis='observation', inplace=False)
 
 def compute_mock_results(result_tables, expected_table_lookup,
-                         taxonomy_level=6, min_count=10):
+                         taxonomy_level=6, min_count=10, taxa_to_keep=None):
     """ Compute precision, recall, and f-measure for result_tables at taxonomy_level
 
         result_tables: 2d list of tables to be compared to expected tables,
@@ -387,6 +389,9 @@ def compute_mock_results(result_tables, expected_table_lookup,
         except ValueError:
             raise ValueError, "Couldn't parse BIOM table: %s" % expected_table_fp
 
+        if taxa_to_keep is not None:
+            expected_table = filter_table(expected_table, taxa_to_keep=taxa_to_keep)
+
         ## parse the actual table and collapse it at the specified taxonomic level
         try:
             actual_table = load_table(actual_table_fp)
@@ -394,7 +399,7 @@ def compute_mock_results(result_tables, expected_table_lookup,
             raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
 
         try:
-            actual_table = filter_table(actual_table, min_count, taxonomy_level)
+            actual_table = filter_table(actual_table, min_count, taxonomy_level, taxa_to_keep)
         except TableException:
             # if all data is filtered out, move on to the next table
             continue
@@ -402,6 +407,9 @@ def compute_mock_results(result_tables, expected_table_lookup,
             # missing taxonomic information in the table
             print "Missing taxonomic information in table %s, skipping." % (actual_table_fp)
             continue
+
+        if actual_table.is_empty():
+            raise ValueError("Actual table is empty after filtering.")
 
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
 
