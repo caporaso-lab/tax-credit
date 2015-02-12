@@ -25,17 +25,28 @@ sudo chgrp ubuntu /mnt
 The library code and IPython Notebooks are then installed as follows:
 
 ```
-cd data
+cd $HOME/data
 git clone https://github.com/gregcaporaso/short-read-tax-assignment.git
-cd short-read-tax-assignment/code
+cd $HOME/data/short-read-tax-assignment/code
 sudo pip install .
 ```
 (If you are not running this on the QIIME 1.9.0 AWS instance, you may need to run ``sudo pip install numpy`` before ``sudo pip install .``.)
 
-To run the unit tests, you should install run
+To run the unit tests, you should install run:
 
 ```
+cd $HOME/data/short-read-tax-assignment/code
 nosetests .
+```
+
+Finally, download and unzip the reference databases:
+
+```
+cd $HOME/data/
+wget https://dl.dropboxusercontent.com/u/2868868/unite-97-rep-set.tgz
+wget ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
+tar -xzf unite-97-rep-set.tgz
+tar -xzf gg_13_8_otus.tar.gz
 ```
 
 Using the IPython Notebooks included in this repository
