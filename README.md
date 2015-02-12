@@ -2,33 +2,49 @@ short-read-tax-assignment
 =========================
 
 A repository for storing code and data related to a systematic comparison of
-short read taxonomy assignment tools.
+short read taxonomy assignment tools. This repository contains python code and
+IPython Notebooks designed to run on the QIIME 1.9.0 AWS instance. You can find
+that AMI on the [QIIME resources page](http://qiime.org/home_static/dataFiles.html).
 
-Install
--------
+Setup and install
+-----------------
 
-To run the code in this repository, run the following commands:
+The analyses presented in our paper were run on an m3.2xlarge instance. 
 
-    git clone https://github.com/gregcaporaso/short-read-tax-assignment.git
-    cd short-read-tax-assignment/code
-    pip install numpy
-    pip install .
+A 100GB EBS volume was mounted as ``$HOME/data`` (generic instructions for this are [here](http://qiime.org/tutorials/working_with_aws.html#creating-a-volume-for-persistent-storage-across-different-launches-of-an-instance-or-different-instances), but any instructions for mounting an EBS volume should suffice and others may be more up-to-date. 
 
-Testing
--------
+The ``$HOME/tmp`` directory was updated to be a symbolic link to ``/mnt/``, and ownership of ``/mnt`` was transferred to the ``ubuntu`` user. This was done as follows:
 
-To run the unit tests, you should install [nose](http://nose.readthedocs.org/en/latest/). Then change to the ```short-read-tax-assignment``` directory and run:
+```
+rm -r $HOME/temp/
+ln -s /mnt/ $HOME/temp
+sudo chown ubuntu /mnt
+sudo chgrp ubuntu /mnt
+```
 
-    nosetests code
+The library code and IPython Notebooks are then installed as follows:
+
+```
+cd data
+git clone https://github.com/gregcaporaso/short-read-tax-assignment.git
+cd short-read-tax-assignment/code
+sudo pip install .
+```
+(If you are not running this on the QIIME 1.9.0 AWS instance, you may need to run ``sudo pip install numpy`` before ``sudo pip install .``.)
+
+To run the unit tests, you should install run
+
+```
+nosetests .
+```
 
 Using the IPython Notebooks included in this repository
 -------------------------------------------------------
 
-To view and interact with an [IPython Notebook](http://ipython.org/notebook.html), change into the ``short-read-tax-assignment`` directory and launch the IPython Notebook server:
+To view and interact with an [IPython Notebook](http://ipython.org/notebook.html), change into the ``$HOME/data/short-read-tax-assignment/ipynbs`` directory and [start the IPython Notebook server in a screen session](http://qiime.org/tutorials/working_with_aws.html#connecting-to-your-qiime-ec2-instance-using-the-ipython-notebook).
 
-    ipython notebook
 
-This will launch the IPython Notebook interface in a new web browser window. You can then navigate to the ``ipynbs`` directory, and open the notebook of interest.
+**Everything below here needs to be updated after the re-analyses are completed.**
 
 Evaluation workflows, for testing new taxonomic assignment methods
 ------------------------------------------------------------------
