@@ -9,7 +9,7 @@ that AMI on the [QIIME resources page](http://qiime.org/home_static/dataFiles.ht
 Setup and install
 -----------------
 
-The analyses presented in our paper were run on an m3.2xlarge instance. 
+The analyses presented in our paper were run on an m2.4xlarge instance (some of the assignment procedures can require large amounts of memory, so this allows for use of 4 parallel engines). 
 
 A 100GB EBS volume was mounted as ``$HOME/data`` (generic instructions for this are [here](http://qiime.org/tutorials/working_with_aws.html#creating-a-volume-for-persistent-storage-across-different-launches-of-an-instance-or-different-instances), but any instructions for mounting an EBS volume should suffice and others may be more up-to-date. 
 
