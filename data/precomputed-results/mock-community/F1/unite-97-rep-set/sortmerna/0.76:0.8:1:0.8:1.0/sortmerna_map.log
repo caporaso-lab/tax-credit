@@ -1,13 +1,13 @@
- Tue Feb 24 01:42:20 2015
+ Wed Feb 25 03:31:10 2015
 
- Command: sortmerna --ref /home/ubuntu/data/unite-97-rep-set/97_otus.fasta,/tmp/tmpJIpgG6/97_otus -e 1.0 --aligned /home/ubuntu/data/2015.02.11-tax-parameter-sweep/mock-community/F1/unite-97-rep-set/sortmerna/0.76:0.8:1:0.8:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /home/ubuntu/data/short-read-tax-assignment/data/mock-community/F1/rep_set.fna -v --best 1 
- Process pid = 26593
+ Command: sortmerna --ref /home/ubuntu/data/unite-14.11/97_otus.fasta,/tmp/tmplD1Lwd/97_otus -e 1.0 --aligned /home/ubuntu/data/2015.02.24-tax-parameter-sweep/mock-community/F1/unite-97-rep-set/sortmerna/0.76:0.8:1:0.8:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /home/ubuntu/data/short-read-tax-assignment/data/mock-community/F1/rep_set.fna -v --best 1 
+ Process pid = 15601
  Parameters summary:
-    Index: /tmp/tmpJIpgG6/97_otus
+    Index: /tmp/tmplD1Lwd/97_otus
      Seed length = 18
      Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
-     Gumbel lambda = 0.617259
-     Gumbel K = 0.340284
+     Gumbel lambda = 0.617553
+     Gumbel K = 0.341122
      Minimal SW score based on E-value = 39
     Number of seeds = 2
     Edges = 4 (as integer)
@@ -28,4 +28,4 @@
     Maximum read length = 101
     Mean read length = 97
  By database:
-    /home/ubuntu/data/unite-97-rep-set/97_otus.fasta		81.91%
+    /home/ubuntu/data/unite-14.11/97_otus.fasta		81.91%

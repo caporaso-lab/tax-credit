@@ -12,13 +12,13 @@ metatranscriptomic data, Bioinformatics (2012) 28(24)
 
 best_N_alignments:5
 e_value:1.0
-id_to_taxonomy_filepath:/home/ubuntu/data/unite-97-rep-set/97_otu_taxonomy.txt
-id_to_taxonomy_fp:/home/ubuntu/data/unite-97-rep-set/97_otu_taxonomy.txt
+id_to_taxonomy_filepath:/home/ubuntu/data/unite-14.11/97_otu_taxonomy.txt
+id_to_taxonomy_fp:/home/ubuntu/data/unite-14.11/97_otu_taxonomy.txt
 min_consensus_fraction:1.0
 min_percent_cov:80.0
 min_percent_id:80.0
-reference_sequences_fp:/home/ubuntu/data/unite-97-rep-set/97_otus.fasta
+reference_sequences_fp:/home/ubuntu/data/unite-14.11/97_otus.fasta
 sortmerna_db:None
 threads:1
 unassignable_label:Unassigned
-Result path: /home/ubuntu/data/2015.02.11-tax-parameter-sweep/mock-community/F1/unite-97-rep-set/sortmerna/1.0:0.8:5:0.8:1.0/rep_set_tax_assignments.txt
+Result path: /home/ubuntu/data/2015.02.24-tax-parameter-sweep/mock-community/F1/unite-97-rep-set/sortmerna/1.0:0.8:5:0.8:1.0/rep_set_tax_assignments.txt
