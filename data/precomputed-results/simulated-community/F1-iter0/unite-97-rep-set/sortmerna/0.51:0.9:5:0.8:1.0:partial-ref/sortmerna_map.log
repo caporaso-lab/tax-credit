@@ -1,0 +1,31 @@
+ Sat Feb 28 14:57:56 2015
+
+ Command: sortmerna --ref /home/ubuntu/data/short-read-tax-assignment/data/simulated-community/F1-iter0/ref.fna,/tmp/tmpAG_xbz/ref -e 1.0 --aligned /home/ubuntu/data/2015.02.25-tax-parameter-sweep-simulated/simulated-community/F1-iter0/unite-97-rep-set/sortmerna/0.51:0.9:5:0.8:1.0:partial-ref/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /home/ubuntu/data/short-read-tax-assignment/data/simulated-community/F1-iter0/rep_set.fna -v --best 5 
+ Process pid = 27426
+ Parameters summary:
+    Index: /tmp/tmpAG_xbz/ref
+     Seed length = 18
+     Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
+     Gumbel lambda = 0.617406
+     Gumbel K = 0.340919
+     Minimal SW score based on E-value = 46
+    Number of seeds = 2
+    Edges = 4 (as integer)
+    SW match = 2
+    SW mismatch = -3
+    SW gap open penalty = 5
+    SW gap extend penalty = 2
+    SW ambiguous nucleotide = -3
+    SQ tags are not output
+    Number of threads = 1
+    Reads file = /home/ubuntu/data/short-read-tax-assignment/data/simulated-community/F1-iter0/rep_set.fna
+
+ Results:
+    Total reads = 2078
+    Total reads passing E-value threshold = 1987 (95.62%)
+    Total reads failing E-value threshold = 91 (4.38%)
+    Minimum read length = 1
+    Maximum read length = 1689
+    Mean read length = 223
+ By database:
+    /home/ubuntu/data/short-read-tax-assignment/data/simulated-community/F1-iter0/ref.fna		95.62%
