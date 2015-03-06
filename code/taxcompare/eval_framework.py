@@ -442,7 +442,15 @@ def compute_mock_results(result_tables, expected_table_lookup,
             results.append((dataset_id, sample_id, reference_id, method_id, params, p, r, f,
                             pearson_r, pearson_p, spearman_r, spearman_p))
 
-            param_data[(method_id, params)] = dict(zip(param_ids[method_id], map(float, params.split(':'))))
+            param_data[(method_id, params)] = {}
+            for k, v in zip(param_ids[method_id], params.split(':')):
+                v_ = []
+                for e in v:
+                    try:
+                       v_.append(float(e))
+                    except ValueError:
+                       v_.append(e)
+                param_data[(method_id, params)][k] = v_
 
     param_df = pd.DataFrame(param_data)
     result = pd.DataFrame(results, columns=["Dataset", "SampleID", "Reference", "Method",
@@ -720,7 +728,8 @@ def boxplot_from_data_frame(df,
                             y_min = 0.0,
                             y_max = 1.0,
                             plotf=violinplot,
-                            color='grey'):
+                            color='grey',
+                            x_tick_label_rotation=45):
     """Generate boxplot or violinplot of metric by group
 
     To generate boxplots instead of violin plots, pass plotf=seaborn.boxplot
@@ -733,12 +742,12 @@ def boxplot_from_data_frame(df,
         distribution = df.ix[df[group_by] == e, metric]
         distributions.append([x for x in distribution if not np.isnan(x)])
 
-    ax = plotf(distributions, names = x_tick_labels, color=color)
+    ax = plotf(distributions, color=color)
     ax.set_ylim(bottom=y_min, top=y_max)
     ax.set_ylabel(metric)
     ax.set_xlabel(group_by)
+    ax.set_xticklabels(x_tick_labels, rotation=x_tick_label_rotation)
     ax
-
 
 def heatmap_from_data_frame(df, metric, vmin=0, vmax=1, cmap='Reds'):
     """Generate heatmap of specified metric by (method, parameter) x dataset
