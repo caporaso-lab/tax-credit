@@ -1,9 +1,9 @@
-short-read-tax-assignment
-=========================
+A standardized and extensible evaluation framework for taxonomic classifiers
+============================================================================
 
-A repository for storing code and data related to a systematic comparison of
-short read taxonomy assignment tools. This repository contains python code and
-IPython Notebooks designed to run on the QIIME 1.9.0 AWS instance. You can find
+To view static versions of the reports presented in (Bokulich, Rideout, et al., (In preparation)), [start here](http://nbviewer.ipython.org/github/gregcaporaso/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
+
+This repository contains python code and IPython Notebooks designed to run on the QIIME 1.9.0 AWS instance. You can find
 that AMI on the [QIIME resources page](http://qiime.org/home_static/dataFiles.html).
 
 Setup and install
