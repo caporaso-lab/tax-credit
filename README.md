@@ -1,7 +1,7 @@
 A standardized and extensible evaluation framework for taxonomic classifiers
 ============================================================================
 
-To view static versions of the reports presented in (Bokulich, Rideout, et al., (In preparation)), [start here](http://nbviewer.ipython.org/github/gregcaporaso/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
+To view static versions of the reports presented in (Bokulich, et al., (In preparation)), [start here](http://nbviewer.ipython.org/github/gregcaporaso/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
 
 This repository contains python code and IPython Notebooks designed to run on the QIIME 1.9.0 AWS instance. You can find
 that AMI on the [QIIME resources page](http://qiime.org/home_static/dataFiles.html).
@@ -69,4 +69,8 @@ The notebooks whose names begin with ``1`` are used to run the analyses performe
 Citing
 ------
 
-If you use any of the data or code included in this repository, please cite with the URL: https://github.com/gregcaporaso/short-read-tax-assignment.
+If you use any of the data or code included in this repository, please cite with:
+
+A standardized, extensible framework for optimizing classification improves marker-gene taxonomic assignments
+Bokulich, Rideout, Kopylova, Bolyen, Patnode, Ellett, McDonald, Wolfe, Maurice, Dutton, Turnbaugh, Knight, and Caporaso.
+In preparation (2015).
