@@ -3,7 +3,7 @@ A standardized and extensible evaluation framework for taxonomic classifiers
 
 To view static versions of the reports presented in (Bokulich, et al., (In preparation)), [start here](http://nbviewer.ipython.org/github/gregcaporaso/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
 
-This repository contains python code and IPython Notebooks designed to run on the QIIME 1.9.0 AWS instance. You can find
+This repository contains python code and IPython Notebooks designed to run on the QIIME 1.9.1 AWS instance. You can find
 that AMI on the [QIIME resources page](http://qiime.org/home_static/dataFiles.html).
 
 Setup and install
@@ -30,7 +30,7 @@ git clone https://github.com/gregcaporaso/short-read-tax-assignment.git
 cd $HOME/data/short-read-tax-assignment/code
 sudo pip install .
 ```
-(If you are not running this on the QIIME 1.9.0 AWS instance, you may need to run ``sudo pip install numpy`` before ``sudo pip install .``.)
+(If you are not running this on the QIIME 1.9.1 AWS instance, you may need to run ``sudo pip install numpy`` before ``sudo pip install .``.)
 
 To run the unit tests, you should install run:
 
