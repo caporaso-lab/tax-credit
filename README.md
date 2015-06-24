@@ -52,7 +52,7 @@ tar -xzf gg_13_8_otus.tar.gz
 Using the IPython Notebooks included in this repository
 -------------------------------------------------------
 
-To view and interact with an [IPython Notebook](http://ipython.org/notebook.html), change into the ``$HOME/data/short-read-tax-assignment/ipynbs`` directory and [start the IPython Notebook server in a screen session](http://qiime.org/tutorials/working_with_aws.html#connecting-to-your-qiime-ec2-instance-using-the-ipython-notebook).
+To view and interact with an [IPython Notebook](http://ipython.org/notebook.html), change into the ``$HOME/data/short-read-tax-assignment/ipynb`` directory and [start the IPython Notebook server in a screen session](http://qiime.org/tutorials/working_with_aws.html#connecting-to-your-qiime-ec2-instance-using-the-ipython-notebook).
 
 
 **Everything below here needs to be updated after the re-analyses are completed.**
@@ -60,7 +60,7 @@ To view and interact with an [IPython Notebook](http://ipython.org/notebook.html
 Evaluation workflows, for testing new taxonomic assignment methods
 ------------------------------------------------------------------
 
-Several [IPython Notebooks](http://ipython.org/notebook.html) are provided to illustrate how to run a parameter sweep on a concept design for a new taxonomic assigner, and then evaluate that in the context of pre-computed results (the evaluation data from this study). The notebooks can be found under ``short-read-tax-assignment/ipynbs``.
+Several [IPython Notebooks](http://ipython.org/notebook.html) are provided to illustrate how to run a parameter sweep on a concept design for a new taxonomic assigner, and then evaluate that in the context of pre-computed results (the evaluation data from this study). The notebooks can be found under ``short-read-tax-assignment/ipynb``.
 
 The notebooks whose names begin with ``0`` illustrate how to generate results that can be analyzed using the evaluation framework presented here. These will likely have software requirements in addition to those  that are installed with ``short-read-tax-assignment``. Those will be listed in the top of each individual notebook.
 
