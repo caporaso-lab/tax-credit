@@ -355,7 +355,7 @@ def filter_table(table, min_count=0, taxonomy_level=None,
     return table.filter(f, axis='observation', inplace=False)
 
 def compute_mock_results(result_tables, expected_table_lookup,
-                         taxonomy_level=6, min_count=10, taxa_to_keep=None):
+                         taxonomy_level=6, min_count=10, taxa_to_keep=None, new_param_ids={}):
     """ Compute precision, recall, and f-measure for result_tables at taxonomy_level
 
         result_tables: 2d list of tables to be compared to expected tables,
@@ -376,6 +376,7 @@ def compute_mock_results(result_tables, expected_table_lookup,
                               'best N alignments', 'coverage', 'e value'],
                  'uclust': ['min consensus fraction', 'similarity',
                             'max accepts']}
+    param_ids.update(new_param_ids)
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
         ## parse the expected table (unless taxonomy_level is specified, this should be
         ## collapsed on level 6 taxonomy)
