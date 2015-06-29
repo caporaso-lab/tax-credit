@@ -59,7 +59,8 @@ def get_sample_to_top_params(df, metric):
             for method in sorted_df.Method.unique():
                 method_results = dataset_sid_results[dataset_sid_results.Method == method]
                 max_metric_value = method_results[metric].max()
-                tp = method_results[method_results[metric] == max_metric_value]
+                mad_metric_value = method_results[metric].mad()
+                tp = method_results[method_results[metric] >= (max_metric_value - mad_metric_value)]
                 current_results[method] = list(tp.Parameters)
             result[(dataset, sid)] = current_results
     result = pd.DataFrame(result).T
@@ -92,8 +93,7 @@ def parameter_comparisons(df, method, metrics=['Precision', 'Recall', 'F-measure
         result[metric] = current_result
     result = pd.DataFrame.from_dict(result)
     result.fillna(0, inplace=True)
-    result['Mean'] = np.mean(result.T[:])
-    result = result.sort('Mean', ascending=False)
+    result = result.sort(metrics[-1], ascending=False)
     return result
 
 def get_sample_to_top_scores(df, metric, method_param):
