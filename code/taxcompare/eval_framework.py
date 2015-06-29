@@ -486,6 +486,17 @@ method_by_dataset_a2 = partial(method_by_dataset, sort_field="Pearson r",
                                display_fields=("Method", "Pearson r",
                                                "Spearman r"))
 
+def method_by_dataset_iterations(df, dataset, parameters, sort_field, display_fields, num_iters=5):
+    """ Compute mean performance for given method, parameter combinations across simulated data set iterations
+    """
+    dataset_ids = ['%s-iter%d' % (dataset, iter_) for iter_ in range(num_iters)]
+    result = df.loc[df['Dataset'].isin(dataset_ids)]
+    m = result['Method'].isin([p[0] for p in parameters])
+    p = result['Parameters'].isin([p[1] for p in parameters])
+    result = result.loc[np.logical_and(m, p)]
+    result = result.ix[:,display_fields].groupby('Method')
+    return result.mean().sort(sort_field, ascending=False)
+
 def get_actual_and_expected_vectors(actual_table,
                                     expected_table,
                                     actual_sample_id=None,
