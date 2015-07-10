@@ -1,7 +1,7 @@
 A standardized and extensible evaluation framework for taxonomic classifiers
 ============================================================================
 
-To view static versions of the reports presented in (Bokulich, et al., (In preparation)), [start here](http://nbviewer.ipython.org/github/gregcaporaso/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
+To view static versions of the reports presented in [Bokulich, et al., (Microbiome, under review)](https://peerj.com/preprints/934/), [start here](http://nbviewer.ipython.org/github/gregcaporaso/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
 
 This repository contains python code and IPython Notebooks designed to run on the QIIME 1.9.1 AWS instance. You can find
 that AMI on the [QIIME resources page](http://qiime.org/home_static/dataFiles.html).
@@ -71,6 +71,4 @@ Citing
 
 If you use any of the data or code included in this repository, please cite with:
 
-A standardized, extensible framework for optimizing classification improves marker-gene taxonomic assignments
-Bokulich, Rideout, Kopylova, Bolyen, Patnode, Ellett, McDonald, Wolfe, Maurice, Dutton, Turnbaugh, Knight, and Caporaso.
-In preparation (2015).
+Bokulich NA, Rideout JR, Kopylova E, Bolyen E, Patnode J, Ellett Z, McDonald D, Wolfe B, Maurice CF, Dutton RJ, Turnbaugh PJ, Knight R, Caporaso JG. (2015) A standardized, extensible framework for optimizing classification improves marker-gene taxonomic assignments. PeerJ PrePrints 3:e1156 https://dx.doi.org/10.7287/peerj.preprints.934v1
