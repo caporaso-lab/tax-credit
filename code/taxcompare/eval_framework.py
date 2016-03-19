@@ -375,7 +375,9 @@ def compute_mock_results(result_tables, expected_table_lookup,
                  'sortmerna-w16': ['min consensus fraction', 'similarity',
                               'best N alignments', 'coverage', 'e value'],
                  'uclust': ['min consensus fraction', 'similarity',
-                            'max accepts']}
+                            'max accepts'],
+                 'vsearch': ['min consensus fraction', 'similarity',
+                             'max accepts']}
     param_ids.update(new_param_ids)
     for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
         ## parse the expected table (unless taxonomy_level is specified, this should be
