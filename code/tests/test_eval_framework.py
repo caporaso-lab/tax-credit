@@ -23,7 +23,6 @@ from taxcompare.eval_framework import (compute_prf, filter_table,
                                        get_actual_and_expected_vectors,
                                        get_sample_to_top_params,
                                        get_sample_to_top_scores,
-                                       performance_rank_comparisons,
                                        parameter_comparisons)
 
 class EvalFrameworkTests(TestCase):
@@ -70,37 +69,6 @@ class EvalFrameworkTests(TestCase):
         self.assertEqual(actual['rdp'][('B1', 'm1')], 0.47826087)
         self.assertEqual(actual.shape, (3, 3))
 
-    def test_performance_rank_comparisons(self):
-        method_param = {"rdp": "0.1", "uclust": "0.51:0.8:3"}
-        actual = performance_rank_comparisons(self.mock_result_table1,
-                                              "Precision", method_param)
-        self.assertEqual(actual['Count best']['rdp'], 3)
-        self.assertEqual(actual['Count best']['uclust'], 1)
-        rdp_uc_stat, rdp_uc_p = wilcoxon([0.478261, 1.0, 1.0],
-                                         [0.478261, 0.777778 , 0.777778])
-        self.assertEqual(actual['uclust: wilcoxon stat']['rdp'], rdp_uc_stat)
-        self.assertEqual(actual['uclust: wilcoxon p']['rdp'], rdp_uc_p)
-        self.assertEqual(actual['rdp: wilcoxon stat']['uclust'], rdp_uc_stat)
-        self.assertEqual(actual['rdp: wilcoxon p']['uclust'], rdp_uc_p)
-        self.assertTrue(np.isnan(actual['rdp: wilcoxon stat']['rdp']))
-        self.assertTrue(np.isnan(actual['rdp: wilcoxon p']['rdp']))
-        self.assertTrue(np.isnan(actual['uclust: wilcoxon stat']['uclust']))
-        self.assertTrue(np.isnan(actual['uclust: wilcoxon p']['uclust']))
-        self.assertEqual(actual.shape, (2, 5))
-
-        actual = performance_rank_comparisons(self.mock_result_table1,
-                                              "Recall", method_param)
-        self.assertEqual(actual['Count best']['rdp'], 3)
-        self.assertEqual(actual['Count best']['uclust'], 3)
-        self.assertEqual(actual['uclust: wilcoxon stat']['rdp'], 0.0)
-        self.assertEqual(actual['uclust: wilcoxon p']['rdp'], 1.0)
-        self.assertEqual(actual['rdp: wilcoxon stat']['uclust'], 0.0)
-        self.assertEqual(actual['rdp: wilcoxon p']['uclust'], 1.0)
-        self.assertTrue(np.isnan(actual['rdp: wilcoxon stat']['rdp']))
-        self.assertTrue(np.isnan(actual['rdp: wilcoxon p']['rdp']))
-        self.assertTrue(np.isnan(actual['uclust: wilcoxon stat']['uclust']))
-        self.assertTrue(np.isnan(actual['uclust: wilcoxon p']['uclust']))
-
     def test_parameter_comparisons(self):
         actual = parameter_comparisons(self.mock_result_table1, "rdp")
         self.assertEqual(actual['F-measure']['0.1'], 2)
@@ -114,13 +82,12 @@ class EvalFrameworkTests(TestCase):
         self.assertEqual(actual['Precision']['0.1'], 2)
         self.assertEqual(actual['Recall']['0.1'], 3)
         self.assertEqual(actual['Spearman r']['0.1'], 3)
-        self.assertEqual(actual['Mean']['0.1'], 2.6)
-        self.assertEqual(actual.shape, (6, 6))
+        self.assertEqual(actual.shape, (6, 5))
 
         actual = parameter_comparisons(self.mock_result_table1, "uclust")
         self.assertEqual(actual['F-measure']['0.51:0.8:3'], 2)
         self.assertEqual(actual['F-measure']['0.51:0.9:3'], 1)
-        self.assertEqual(actual.shape, (2, 6))
+        self.assertEqual(actual.shape, (2, 5))
 
 
 

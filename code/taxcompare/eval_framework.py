@@ -46,7 +46,7 @@ def get_sample_to_top_params(df, metric):
      Values: list of Parameters that achieve the highest performance for each
       method
     """
-    sorted_df = df.sort(columns=metric, ascending=False)
+    sorted_df = df.sort_values(by=metric, ascending=False)
     metric_idx = sorted_df.columns.get_loc(metric)
     method_idx = sorted_df.columns.get_loc('Method')
     result = {}
@@ -93,7 +93,7 @@ def parameter_comparisons(df, method, metrics=['Precision', 'Recall', 'F-measure
         result[metric] = current_result
     result = pd.DataFrame.from_dict(result)
     result.fillna(0, inplace=True)
-    result = result.sort(metrics[-1], ascending=False)
+    result = result.sort_values(by=metrics[-1], ascending=False)
     return result
 
 def get_sample_to_top_scores(df, metric, method_param):
@@ -116,7 +116,7 @@ def get_sample_to_top_scores(df, metric, method_param):
       row); method scores (i.e., the score that each method achieved for the
       given metric)
     """
-    sorted_df = df.sort(columns=metric, ascending=False)
+    sorted_df = df.sort_values(by=metric, ascending=False)
     results = {}
     metric_idx = sorted_df.columns.get_loc(metric)
     method_idx = sorted_df.columns.get_loc('Method')
@@ -140,50 +140,9 @@ def get_sample_to_top_scores(df, metric, method_param):
     return results
 
 def performance_rank_comparisons(df, metric, method_param):
-    """
-    Parameters
-    ----------
-    df: pd.DataFrame
-    metric: str
-        Column header defining the metric to compare parameter combs with
-    method_param: dict
-        Mapping of method id to parameter set of interest
-
-    Returns
-    -------
-    pd.DataFrame
-     Rows: Method
-     Cols: Count best, method: wilcoxon stat, method: wilcoxon p
-     Values: Count best: number of times method achieved or tied for the top
-      score; method wilcoxon stat/p: comparison of methods based on their
-      scores
-    """
-    df1 = get_sample_to_top_scores(df, metric, method_param)
-    result = defaultdict(dict)
-    methods = df.Method.unique()
-    for i, method1 in enumerate(methods):
-        result[method1]['Count best'] = sum(df1[method1] == df1['Top score'])
-        for method2 in methods[i+1:]:
-            try:
-                stat, p = wilcoxon(df1[method1], df1[method2])
-            except ValueError:
-                # scores are identical
-                stat = 0.0
-                p = 1.0
-            result[method1]['%s: wilcoxon p' % method2] = p
-            result[method1]['%s: wilcoxon stat' % method2] = stat
-            result[method2]['%s: wilcoxon p' % method1] = p
-            result[method2]['%s: wilcoxon stat' % method1] = stat
-    # build a DataFrame from the results; sort rows from best to
-    # worst; sort columns with "Count best" first, followed by
-    # stats from best to worst method
-    result = pd.DataFrame(result).T.sort('Count best', axis=0, ascending=False)
-    column_order = ['Count best']
-    for e in result.index:
-        column_order.append('%s: wilcoxon stat' % e)
-        column_order.append('%s: wilcoxon p' % e)
-
-    return result.reindex_axis(column_order, axis=1)
+    #TODO: remove notebook imports of this function
+    # Deleted this function - it's imported but not used anywhere.
+    raise NotImplementedError
 
 
 
@@ -476,7 +435,7 @@ def method_by_dataset(df, dataset, sort_field, display_fields):
     """ Generate summary of best parameter set for each method for single df
     """
     dataset_df = df.loc[df['Dataset'] == dataset]
-    sorted_dataset_df = dataset_df.sort(sort_field, ascending=False)
+    sorted_dataset_df = dataset_df.sort_values(by=sort_field, ascending=False)
     filtered_dataset_df = sorted_dataset_df[_is_first(sorted_dataset_df)]
     return filtered_dataset_df.ix[:,display_fields]
 
@@ -497,7 +456,7 @@ def method_by_dataset_iterations(df, dataset, parameters, sort_field, display_fi
     p = result['Parameters'].isin([p[1] for p in parameters])
     result = result.loc[np.logical_and(m, p)]
     result = result.ix[:,display_fields].groupby('Method')
-    return result.mean().sort(sort_field, ascending=False)
+    return result.mean().sort_values(by=sort_field, ascending=False)
 
 def get_actual_and_expected_vectors(actual_table,
                                     expected_table,
