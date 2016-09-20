@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from __future__ import division
+
 
 # ----------------------------------------------------------------------------
 # Copyright (c) 2014--, taxcompare development team.
@@ -344,12 +344,12 @@ def compute_mock_results(result_tables, expected_table_lookup,
         try:
             expected_table_fp = expected_table_lookup[dataset_id][reference_id]
         except KeyError:
-            raise KeyError, "Can't find expected table for (%s, %s)." % (dataset_id, reference_id)
+            raise KeyError("Can't find expected table for (%s, %s)." % (dataset_id, reference_id))
 
         try:
             expected_table = load_table(expected_table_fp)
         except ValueError:
-            raise ValueError, "Couldn't parse BIOM table: %s" % expected_table_fp
+            raise ValueError("Couldn't parse BIOM table: %s" % expected_table_fp)
 
         if taxa_to_keep is not None:
             expected_table = filter_table(expected_table, taxa_to_keep=taxa_to_keep)
@@ -358,7 +358,7 @@ def compute_mock_results(result_tables, expected_table_lookup,
         try:
             actual_table = load_table(actual_table_fp)
         except ValueError:
-            raise ValueError, "Couldn't parse BIOM table: %s" % actual_table_fp
+            raise ValueError("Couldn't parse BIOM table: %s" % actual_table_fp)
 
         try:
             actual_table = filter_table(actual_table, min_count, taxonomy_level, taxa_to_keep)
@@ -367,7 +367,7 @@ def compute_mock_results(result_tables, expected_table_lookup,
             continue
         except TypeError:
             # missing taxonomic information in the table
-            print "Missing taxonomic information in table %s, skipping." % (actual_table_fp)
+            print("Missing taxonomic information in table %s, skipping." % (actual_table_fp))
             continue
 
         if actual_table.is_empty():
@@ -380,7 +380,7 @@ def compute_mock_results(result_tables, expected_table_lookup,
                                                  axis='observation',
                                                  min_group_size=1)
         except TableException:
-            raise TableException, "Failure to collapse taxonomy for table at: %s" % (actual_table_fp)
+            raise TableException("Failure to collapse taxonomy for table at: %s" % (actual_table_fp))
 
 
         for sample_id in actual_table.ids(axis="sample"):
@@ -732,7 +732,7 @@ def heatmap_from_data_frame(df, metric, vmin=0, vmax=1, cmap='Reds'):
 
     """
     # there has to be a better way to build these tuples
-    tuples = zip(df["Method"], df["Parameters"])
+    tuples = list(zip(df["Method"], df["Parameters"]))
     index = pd.MultiIndex.from_tuples(tuples=tuples,
                                       names=["Method", "Parameters"])
     df = df.pivot_table(index=index, columns="Dataset", values=metric)

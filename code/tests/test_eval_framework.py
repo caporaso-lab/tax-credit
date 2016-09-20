@@ -8,11 +8,11 @@
 # The full license is in the file COPYING.txt, distributed with this software.
 # ----------------------------------------------------------------------------
 
-from __future__ import division
+
 
 from unittest import TestCase, main
 import json
-from StringIO import StringIO
+from io import StringIO
 import numpy as np
 import pandas as pd
 from scipy.stats import wilcoxon
@@ -207,12 +207,12 @@ class EvalFrameworkTests(TestCase):
 
         # We don't care about the order of the vector, just the
         # pairing of the values across the two vectors.
-        actual = zip(actual_actual_vector, actual_expected_vector)
+        actual = list(zip(actual_actual_vector, actual_expected_vector))
         actual.sort()
 
         expected_actual_vector = [1.0, 2.0, 9.0]
         expected_expected_vector = [1.0, 0.0, 9.0]
-        expected = zip(expected_actual_vector,expected_expected_vector)
+        expected = list(zip(expected_actual_vector,expected_expected_vector))
         expected.sort()
 
         self.assertEqual(actual,expected)
@@ -226,13 +226,13 @@ class EvalFrameworkTests(TestCase):
 
         # We don't care about the order of the vector, just the
         # pairing of the values across the two vectors.
-        actual = zip(actual_actual_vector, actual_expected_vector)
+        actual = list(zip(actual_actual_vector, actual_expected_vector))
         actual.sort()
 
         # o2 is not observed, so its value shouldn't show up in the vectors
         expected_actual_vector = [2.0, 10.0]
         expected_expected_vector = [0.001, 0.0]
-        expected = zip(expected_actual_vector,expected_expected_vector)
+        expected = list(zip(expected_actual_vector,expected_expected_vector))
         expected.sort()
 
         self.assertEqual(actual,expected)
