@@ -1,0 +1,1 @@
+Code developed for the short read taxonomy assigner project. This is a temporary holding ground for code that will eventually be ported into QIIME, but possibly code that is specific to this project such as custom workflow scripts.

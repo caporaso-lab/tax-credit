@@ -1,4 +1,0 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	1	2	uclust	1.0:0.9:3	DQ530224	Unassigned	Root;Ascomycota	misclassification	0
-F1-REF	1	2	uclust	1.0:0.9:3	AF272836	Unassigned	Root;Microsporidia	misclassification	0
-F1-REF	1	2	uclust	1.0:0.9:3	AJ972459	Unassigned	Root;Glomeromycota	misclassification	0

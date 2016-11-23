@@ -1,8 +1,0 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	2	rdp	0.1	811996	k__Bacteria;p__Spirochaetes;c__Brevinematae;o__Brevinematales;f__Brevinemataceae;g__Brevinema;s__andersonii	k__Bacteria; p__Thermi	overclassification	1
-B1-REF	1	2	rdp	0.1	4456787	k__Bacteria;p__Synergistetes;c__Synergistia;o__Synergistales;f__Dethiosulfovibrionaceae;g__Jonquetella;s__anthropi	k__Bacteria; p__Chlamydiae	overclassification	1
-B1-REF	1	2	rdp	0.1	15593	k__Bacteria;p__Chrysiogenetes;c__Chrysiogenetes;o__Chrysiogenales;f__Chrysiogenaceae;g__Chrysiogenes;s__arsenatis	k__Bacteria; p__Tenericutes	overclassification	1
-B1-REF	1	2	rdp	0.1	675678	k__Bacteria;p__Verrucomicrobia;c__Verrucomicrobiae;o__Verrucomicrobiales;f__Verrucomicrobiaceae;g__Haloferula;s__rosea	k__Bacteria; p__Proteobacteria	overclassification	1
-B1-REF	1	2	rdp	0.1	2136916	k__Bacteria;p__Spirochaetes;c__Spirochaetes;o__Spirochaetales;f__Spirochaetaceae;g__Spirochaeta;s__dissipatitropha	k__Bacteria; p__Lentisphaerae	overclassification	1
-B1-REF	1	2	rdp	0.1	3002161	k__Bacteria;p__Cyanobacteria;c__Chloroplast;o__Chlorophyta;f__Chlamydomonadaceae;g__Chlamydomonas;s__reinhardtii	k__Bacteria; p__Firmicutes	overclassification	1
-B1-REF	1	2	rdp	0.1	920852	k__Bacteria;p__Deferribacteres;c__Deferribacteres;o__Deferribacterales;f__Deferribacteraceae;g__Geovibrio;s__thiophilus	k__Bacteria; p__Actinobacteria	overclassification	1

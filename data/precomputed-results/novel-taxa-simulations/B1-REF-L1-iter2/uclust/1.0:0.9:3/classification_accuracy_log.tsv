@@ -1,8 +1,0 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	2	uclust	1.0:0.9:3	811996	Unassigned	k__Bacteria; p__Thermi	misclassification	0
-B1-REF	1	2	uclust	1.0:0.9:3	4456787	Unassigned	k__Bacteria; p__Chlamydiae	misclassification	0
-B1-REF	1	2	uclust	1.0:0.9:3	15593	Unassigned	k__Bacteria; p__Tenericutes	misclassification	0
-B1-REF	1	2	uclust	1.0:0.9:3	675678	Unassigned	k__Bacteria; p__Proteobacteria	misclassification	0
-B1-REF	1	2	uclust	1.0:0.9:3	2136916	Unassigned	k__Bacteria; p__Lentisphaerae	misclassification	0
-B1-REF	1	2	uclust	1.0:0.9:3	3002161	Unassigned	k__Bacteria; p__Firmicutes	misclassification	0
-B1-REF	1	2	uclust	1.0:0.9:3	920852	Unassigned	k__Bacteria; p__Actinobacteria	misclassification	0

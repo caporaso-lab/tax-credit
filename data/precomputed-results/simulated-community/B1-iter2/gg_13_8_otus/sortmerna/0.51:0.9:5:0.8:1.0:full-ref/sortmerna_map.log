@@ -1,0 +1,31 @@
+ Tue Mar  3 23:04:22 2015
+
+ Command: sortmerna --ref /home/ubuntu/data/gg_13_8_otus/rep_set/97_otus.fasta,/tmp/tmpG28jPr/97_otus -e 1.0 --aligned /home/ubuntu/data/2015.02.25-tax-parameter-sweep-simulated/simulated-community/B1-iter2/gg_13_8_otus/sortmerna/0.51:0.9:5:0.8:1.0:full-ref/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /home/ubuntu/data/short-read-tax-assignment/data/simulated-community/B1-iter2/rep_set.fna -v --best 5 
+ Process pid = 5554
+ Parameters summary:
+    Index: /tmp/tmpG28jPr/97_otus
+     Seed length = 18
+     Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
+     Gumbel lambda = 0.600470
+     Gumbel K = 0.327880
+     Minimal SW score based on E-value = 54
+    Number of seeds = 2
+    Edges = 4 (as integer)
+    SW match = 2
+    SW mismatch = -3
+    SW gap open penalty = 5
+    SW gap extend penalty = 2
+    SW ambiguous nucleotide = -3
+    SQ tags are not output
+    Number of threads = 1
+    Reads file = /home/ubuntu/data/short-read-tax-assignment/data/simulated-community/B1-iter2/rep_set.fna
+
+ Results:
+    Total reads = 9874
+    Total reads passing E-value threshold = 9873 (99.99%)
+    Total reads failing E-value threshold = 1 (0.01%)
+    Minimum read length = 1
+    Maximum read length = 1289
+    Mean read length = 302
+ By database:
+    /home/ubuntu/data/gg_13_8_otus/rep_set/97_otus.fasta		99.99%

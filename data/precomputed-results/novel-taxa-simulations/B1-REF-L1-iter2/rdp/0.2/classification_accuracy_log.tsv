@@ -1,8 +1,0 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	2	rdp	0.2	811996	k__Bacteria;p__Spirochaetes;c__Brevinematae;o__Brevinematales;f__Brevinemataceae;g__Brevinema;s__andersonii	k__Bacteria; p__Thermi	overclassification	1
-B1-REF	1	2	rdp	0.2	4456787	k__Bacteria	k__Bacteria; p__Chlamydiae	match	1
-B1-REF	1	2	rdp	0.2	15593	k__Bacteria;p__Chrysiogenetes;c__Chrysiogenetes;o__Chrysiogenales;f__Chrysiogenaceae;g__Chrysiogenes;s__arsenatis	k__Bacteria; p__Tenericutes	overclassification	1
-B1-REF	1	2	rdp	0.2	675678	k__Bacteria;p__Verrucomicrobia;c__Verrucomicrobiae;o__Verrucomicrobiales;f__Verrucomicrobiaceae;g__Haloferula;s__rosea	k__Bacteria; p__Proteobacteria	overclassification	1
-B1-REF	1	2	rdp	0.2	2136916	k__Bacteria	k__Bacteria; p__Lentisphaerae	match	1
-B1-REF	1	2	rdp	0.2	3002161	k__Bacteria;p__Cyanobacteria;c__Chloroplast;o__Chlorophyta;f__Chlamydomonadaceae;g__Chlamydomonas;s__reinhardtii	k__Bacteria; p__Firmicutes	overclassification	1
-B1-REF	1	2	rdp	0.2	920852	k__Bacteria	k__Bacteria; p__Actinobacteria	match	1

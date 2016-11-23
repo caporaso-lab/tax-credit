@@ -1,5 +1,3 @@
-# TAX CREdiT: TAXonomic ClassifieR Evaluation Tool
-
 A standardized and extensible evaluation framework for taxonomic classifiers
 ============================================================================
 

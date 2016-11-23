@@ -1,4 +1,0 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	1	2	rdp	0.0	DQ530224	Root;Basidiomycota;Agaricomycetes;Polyporales;Fomitopsidaceae;Sporotrichum;Sporotrichum_columbiense	Root;Ascomycota	overclassification	1
-F1-REF	1	2	rdp	0.0	AF272836	Root;Basidiomycota;Agaricomycetes;Agaricales;Agaricaceae;Morganella;Morganella_subincarnata	Root;Microsporidia	overclassification	1
-F1-REF	1	2	rdp	0.0	AJ972459	Root;Basidiomycota;Agaricomycetes;Russulales;Russulaceae;Russula;Russula_tawai	Root;Glomeromycota	overclassification	1
