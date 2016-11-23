@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	1	1	rdp	0.8	539567	k__Bacteria	k__Bacteria; p__Thermotogae	match	1
+B1-REF	1	1	rdp	0.8	47778	k__Bacteria	k__Archaea; p__Crenarchaeota	misclassification	0
+B1-REF	1	1	rdp	0.8	358757	k__Bacteria	k__Bacteria; p__Verrucomicrobia	match	1
+B1-REF	1	1	rdp	0.8	4459671	k__Bacteria	k__Bacteria; p__Spirochaetes	match	1
+B1-REF	1	1	rdp	0.8	1138255	k__Bacteria	k__Bacteria; p__Aquificae	match	1
+B1-REF	1	1	rdp	0.8	1875	k__Bacteria	k__Bacteria; p__Chrysiogenetes	match	1
+B1-REF	1	1	rdp	0.8	692586	k__Bacteria	k__Archaea; p__Euryarchaeota	misclassification	0
+B1-REF	1	1	rdp	0.8	4368159	k__Bacteria;p__Firmicutes	k__Bacteria; p__Synergistetes	overclassification	1
+B1-REF	1	1	rdp	0.8	125020	k__Bacteria	k__Archaea; p__Nanoarchaeota	misclassification	0
+B1-REF	1	1	rdp	0.8	2806523	k__Bacteria	k__Bacteria; p__Bacteroidetes	match	1
+B1-REF	1	1	rdp	0.8	141021	k__Bacteria	k__Bacteria; p__Chlorobi	match	1

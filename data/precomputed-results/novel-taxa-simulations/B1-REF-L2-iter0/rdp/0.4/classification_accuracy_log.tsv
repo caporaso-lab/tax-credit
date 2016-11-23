@@ -1,0 +1,16 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	2	0	rdp	0.4	1134675	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	match	2
+B1-REF	2	0	rdp	0.4	97840	k__Bacteria;p__Cyanobacteria;c__Oscillatoriophycideae	k__Bacteria; p__Cyanobacteria; c__Gloeobacterophycideae	overclassification	2
+B1-REF	2	0	rdp	0.4	4468915	k__Bacteria	k__Bacteria; p__Chloroflexi; c__Anaerolineae	underclassification	1
+B1-REF	2	0	rdp	0.4	467541	k__Archaea;p__Euryarchaeota	k__Archaea; p__Euryarchaeota; c__Methanomicrobia	match	2
+B1-REF	2	0	rdp	0.4	4352747	k__Bacteria;p__Bacteroidetes;c__Flavobacteriia;o__Flavobacteriales;f__Flavobacteriaceae	k__Bacteria; p__Bacteroidetes; c__Bacteroidia	overclassification	2
+B1-REF	2	0	rdp	0.4	1131014	k__Bacteria	k__Bacteria; p__Actinobacteria; c__Nitriliruptoria	underclassification	1
+B1-REF	2	0	rdp	0.4	369386	k__Bacteria;p__Cyanobacteria;c__Nostocophycideae;o__Nostocales	k__Bacteria; p__Cyanobacteria; c__Chloroplast	overclassification	2
+B1-REF	2	0	rdp	0.4	557548	k__Archaea;p__Euryarchaeota;c__Thermococci;o__Thermococcales;f__Thermococcaceae;g__Thermococcus	k__Archaea; p__Euryarchaeota; c__Archaeoglobi	overclassification	2
+B1-REF	2	0	rdp	0.4	4370637	k__Archaea;p__Crenarchaeota;c__Thermoprotei;o__Thermoproteales;f__Thermoproteaceae;g__Caldivirga;s__maquilingensis	k__Archaea; p__Crenarchaeota; c__Aigarchaeota	overclassification	2
+B1-REF	2	0	rdp	0.4	4436985	k__Bacteria	k__Bacteria; p__Planctomycetes; c__Phycisphaerae	underclassification	1
+B1-REF	2	0	rdp	0.4	4439195	k__Bacteria;p__Cyanobacteria;c__Oscillatoriophycideae	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae	overclassification	2
+B1-REF	2	0	rdp	0.4	4348329	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales	k__Bacteria; p__Actinobacteria; c__Acidimicrobiia	overclassification	2
+B1-REF	2	0	rdp	0.4	4459671	k__Bacteria	k__Bacteria; p__Spirochaetes; c__Spirochaetes	underclassification	1
+B1-REF	2	0	rdp	0.4	638076	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Peptococcaceae;g__Desulfosporosinus;s__meridiei	k__Bacteria; p__Firmicutes; c__Bacilli	overclassification	2
+B1-REF	2	0	rdp	0.4	1521670	k__Bacteria;p__Verrucomicrobia;c__Verrucomicrobiae;o__Verrucomicrobiales;f__Verrucomicrobiaceae;g__Haloferula	k__Bacteria; p__Verrucomicrobia; c__Methylacidiphilae	overclassification	2

@@ -1,0 +1,14 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	2	1	rdp	0.8	47778	k__Archaea;p__Crenarchaeota	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota	match	2
+B1-REF	2	1	rdp	0.8	555696	k__Bacteria;p__Cyanobacteria	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae	match	2
+B1-REF	2	1	rdp	0.8	358757	k__Bacteria	k__Bacteria; p__Verrucomicrobia; c__Verrucomicrobiae	underclassification	1
+B1-REF	2	1	rdp	0.8	4382	k__Bacteria	k__Bacteria; p__Spirochaetes; c__Leptospirae	underclassification	1
+B1-REF	2	1	rdp	0.8	1135040	k__Archaea;p__Euryarchaeota	k__Archaea; p__Euryarchaeota; c__Thermococci	match	2
+B1-REF	2	1	rdp	0.8	2990918	k__Bacteria	k__Bacteria; p__Actinobacteria; c__Coriobacteriia	underclassification	1
+B1-REF	2	1	rdp	0.8	109364	k__Bacteria;p__Bacteroidetes	k__Bacteria; p__Bacteroidetes; c__Sphingobacteriia	match	2
+B1-REF	2	1	rdp	0.8	350563	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria	underclassification	1
+B1-REF	2	1	rdp	0.8	101553	k__Archaea	k__Archaea; p__Euryarchaeota; c__Methanobacteria	underclassification	1
+B1-REF	2	1	rdp	0.8	4390966	k__Bacteria	k__Bacteria; p__Firmicutes; c__Clostridia	underclassification	1
+B1-REF	2	1	rdp	0.8	1277	k__Bacteria	k__Bacteria; p__Chloroflexi; c__Chloroflexi	underclassification	1
+B1-REF	2	1	rdp	0.8	156688	k__Bacteria	k__Bacteria; p__Planctomycetes; c__Brocadiae	underclassification	1
+B1-REF	2	1	rdp	0.8	58613	k__Bacteria;p__Bacteroidetes	k__Bacteria; p__Bacteroidetes; c__Cytophagia	match	2

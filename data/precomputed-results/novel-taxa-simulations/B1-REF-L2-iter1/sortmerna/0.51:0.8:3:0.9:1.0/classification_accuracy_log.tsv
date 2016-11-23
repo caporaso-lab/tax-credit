@@ -1,0 +1,14 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	47778	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota	overclassification	2
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	555696	k__Bacteria; p__Cyanobacteria; c__Nostocophycideae; o__Nostocales; f__Scytonemataceae	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae	overclassification	2
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	358757	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria	k__Bacteria; p__Verrucomicrobia; c__Verrucomicrobiae	misclassification	1
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	4382	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfobacterales; f__Desulfobacteraceae; g__Desulfococcus	k__Bacteria; p__Spirochaetes; c__Leptospirae	misclassification	1
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	1135040	k__Archaea; p__Euryarchaeota; c__Archaeoglobi; o__Archaeoglobales; f__Archaeoglobaceae; g__Archaeoglobus; s__veneficus	k__Archaea; p__Euryarchaeota; c__Thermococci	overclassification	2
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	2990918	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Streptomycetaceae; g__Streptomyces; s__radiopugnans	k__Bacteria; p__Actinobacteria; c__Coriobacteriia	overclassification	2
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	109364	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Porphyromonadaceae; g__Parabacteroides; s__distasonis	k__Bacteria; p__Bacteroidetes; c__Sphingobacteriia	overclassification	2
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	350563	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria	overclassification	2
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	101553	k__Archaea; p__Euryarchaeota; c__Thermoplasmata; o__Thermoplasmatales; f__Picrophilaceae	k__Archaea; p__Euryarchaeota; c__Methanobacteria	overclassification	2
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	4390966	k__Bacteria; p__Firmicutes; c__Bacilli	k__Bacteria; p__Firmicutes; c__Clostridia	overclassification	2
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	1277	k__Bacteria; p__Proteobacteria	k__Bacteria; p__Chloroflexi; c__Chloroflexi	misclassification	1
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	156688	k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Lactobacillaceae; g__Lactobacillus; s__agilis	k__Bacteria; p__Planctomycetes; c__Brocadiae	misclassification	1
+B1-REF	2	1	sortmerna	0.51:0.8:3:0.9:1.0	58613	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Porphyromonadaceae; g__Parabacteroides; s__distasonis	k__Bacteria; p__Bacteroidetes; c__Cytophagia	overclassification	2

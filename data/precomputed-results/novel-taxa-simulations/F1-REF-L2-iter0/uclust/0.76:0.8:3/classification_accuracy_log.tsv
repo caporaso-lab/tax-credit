@@ -1,0 +1,10 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	0	uclust	0.76:0.8:3	AF289074	Unassigned	Root;Ascomycota;Pezizomycetes	misclassification	0
+F1-REF	2	0	uclust	0.76:0.8:3	DQ645527	Unassigned	Root;Basidiomycota;Entorrhizomycetes	misclassification	0
+F1-REF	2	0	uclust	0.76:0.8:3	AF514292	Unassigned	Root;Ascomycota;Saccharomycetes	misclassification	0
+F1-REF	2	0	uclust	0.76:0.8:3	U33070	Unassigned	Root;Basidiomycota;Agaricomycetes	misclassification	0
+F1-REF	2	0	uclust	0.76:0.8:3	DQ497616	Unassigned	Root;Ascomycota;Taphrinomycetes	misclassification	0
+F1-REF	2	0	uclust	0.76:0.8:3	FJ195752	Unassigned	Root;Basidiomycota;Dacrymycetes	misclassification	0
+F1-REF	2	0	uclust	0.76:0.8:3	EF621920	Unassigned	Root;Basidiomycota;Microbotryomycetes	misclassification	0
+F1-REF	2	0	uclust	0.76:0.8:3	EF081374	Unassigned	Root;Ascomycota;Arthoniomycetes	misclassification	0
+F1-REF	2	0	uclust	0.76:0.8:3	AJ716305	Unassigned	Root;Ascomycota;Leotiomycetes	misclassification	0

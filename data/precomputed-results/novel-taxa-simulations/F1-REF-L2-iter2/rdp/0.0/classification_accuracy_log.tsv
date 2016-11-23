@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	2	rdp	0.0	FJ171861	Root;Ascomycota;Pezizomycetes;Pezizales;Pezizaceae;Peziza;Peziza_pseudoviolacea	Root;Ascomycota;Neolectomycetes	overclassification	2
+F1-REF	2	2	rdp	0.0	AF178417	Root;Ascomycota;Leotiomycetes;Helotiales;Vibrisseaceae;Phialocephala;Phialocephala_xalapensis	Root;Ascomycota;Sordariomycetes	overclassification	2
+F1-REF	2	2	rdp	0.0	AB260936	Root;Basidiomycota;Microbotryomycetes;Microbotryales;Microbotryaceae;Microbotryum;Microbotryum_pinguiculae	Root;Basidiomycota;Tremellomycetes	overclassification	2
+F1-REF	2	2	rdp	0.0	JF836021	Root;Ascomycota;Dothideomycetes;Pleosporales;Mytilinidiaceae;Taeniolella;Taeniolella_phialosperma	Root;Ascomycota;Archaeorhizomycetes	overclassification	2
+F1-REF	2	2	rdp	0.0	DQ832329	Root;Ascomycota;Lecanoromycetes;Lecanorales;Ramalinaceae;Lecania;Lecania_gerlachei	Root;Ascomycota;Lichinomycetes	overclassification	2
+F1-REF	2	2	rdp	0.0	JN882326	Root;Neocallimastigomycota;Neocallimastigomycetes;Neocallimastigales;Neocallimastigaceae;Neocallimastix;Neocallimastix_patriciarum	Root;Chytridiomycota;Monoblepharidomycetes	misclassification	1
+F1-REF	2	2	rdp	0.0	DQ681328	Root;Ascomycota;Leotiomycetes;Helotiales;Hyaloscyphaceae;Hyaloscypha;Hyaloscypha_albohyalina_var_albohyalina	Root;Ascomycota;Eurotiomycetes	overclassification	2
+F1-REF	2	2	rdp	0.0	L27658	Root;Basidiomycota;Microbotryomycetes;Microbotryales;Ustilentylomataceae;Ustilentyloma;Ustilentyloma_fluitans	Root;Ascomycota;Pneumocystidomycetes	misclassification	1
+F1-REF	2	2	rdp	0.0	DQ831010	Root;Basidiomycota;Agaricomycetes;Agaricales;Cortinariaceae;Phaeocollybia;Phaeocollybia_scatesiae	Root;Basidiomycota;Mixiomycetes	overclassification	2
+F1-REF	2	2	rdp	0.0	FJ167356	Root;Basidiomycota;Microbotryomycetes;Microbotryales;Microbotryaceae;Sphacelotheca;Sporisorium_andropogonis	Root;Basidiomycota;Ustilaginomycetes	overclassification	2
+F1-REF	2	2	rdp	0.0	DQ827707	Root;Basidiomycota;Agaricomycetes;Cantharellales;Clavulinaceae;Clavulina;Clavulina_castaneipes	Root;Basidiomycota;Exobasidiomycetes	overclassification	2

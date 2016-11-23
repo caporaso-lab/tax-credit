@@ -1,0 +1,8 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	1	2	rdp	0.9	811996	k__Bacteria	k__Bacteria; p__Thermi	match	1
+B1-REF	1	2	rdp	0.9	4456787	k__Bacteria	k__Bacteria; p__Chlamydiae	match	1
+B1-REF	1	2	rdp	0.9	15593	k__Bacteria	k__Bacteria; p__Tenericutes	match	1
+B1-REF	1	2	rdp	0.9	675678	k__Bacteria	k__Bacteria; p__Proteobacteria	match	1
+B1-REF	1	2	rdp	0.9	2136916	k__Bacteria	k__Bacteria; p__Lentisphaerae	match	1
+B1-REF	1	2	rdp	0.9	3002161	k__Bacteria	k__Bacteria; p__Firmicutes	match	1
+B1-REF	1	2	rdp	0.9	920852	k__Bacteria	k__Bacteria; p__Actinobacteria	match	1

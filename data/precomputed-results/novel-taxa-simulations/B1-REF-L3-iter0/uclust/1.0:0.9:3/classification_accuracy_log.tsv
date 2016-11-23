@@ -1,0 +1,26 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	3	0	uclust	1.0:0.9:3	811996	Unassigned	k__Bacteria; p__Thermi; c__Deinococci; o__Deinococcales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	3820	Unassigned	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Sphaerochaetales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	467541	Unassigned	k__Archaea; p__Euryarchaeota; c__Methanomicrobia; o__Methanosarcinales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	538695	Unassigned	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	194772	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhodobacterales; f__Rhodobacteraceae	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales	overclassification	3
+B1-REF	3	0	uclust	1.0:0.9:3	350563	Unassigned	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	776622	Unassigned	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	656307	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Nitrosomonadales; f__Nitrosomonadaceae; g__Nitrosomonas; s__halophila	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Rhodocyclales	overclassification	3
+B1-REF	3	0	uclust	1.0:0.9:3	8010	Unassigned	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	2140546	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales	overclassification	3
+B1-REF	3	0	uclust	1.0:0.9:3	3450	Unassigned	k__Bacteria; p__Cyanobacteria; c__Chloroplast; o__Cercozoa	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	814853	Unassigned	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Acidithiobacillales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	1129499	Unassigned	k__Bacteria; p__Chloroflexi; c__Anaerolineae; o__Anaerolineales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	953	Unassigned	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Sulfolobales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	347913	Unassigned	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	10660	Unassigned	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	4361424	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Neisseriales; f__Neisseriaceae	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales	overclassification	3
+B1-REF	3	0	uclust	1.0:0.9:3	555696	k__Bacteria; p__Cyanobacteria; c__Nostocophycideae; o__Nostocales; f__Scytonemataceae; g__Scytonema; s__fritschii	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Oscillatoriales	misclassification	2
+B1-REF	3	0	uclust	1.0:0.9:3	348517	Unassigned	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	538602	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Enterobacteriales; f__Enterobacteriaceae	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Vibrionales	overclassification	3
+B1-REF	3	0	uclust	1.0:0.9:3	4297688	Unassigned	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhodospirillales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	2267861	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Methylophilales	match	3
+B1-REF	3	0	uclust	1.0:0.9:3	746126	Unassigned	k__Bacteria; p__Tenericutes; c__Mollicutes; o__Entomoplasmatales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	1140636	Unassigned	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales	misclassification	0
+B1-REF	3	0	uclust	1.0:0.9:3	3772088	Unassigned	k__Bacteria; p__Planctomycetes; c__Planctomycetia; o__Pirellulales	misclassification	0

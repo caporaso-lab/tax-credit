@@ -1,0 +1,20 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	3	2	uclust	0.76:0.9:1	2058825	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae; g__Desulfurococcus; s__mucosus	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Thermoproteales	overclassification	3
+B1-REF	3	2	uclust	0.76:0.9:1	23520	Unassigned	k__Bacteria; p__Firmicutes; c__Clostridia; o__Natranaerobiales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	1134675	Unassigned	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	4390966	Unassigned	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	4064689	Unassigned	k__Bacteria; p__Chloroflexi; c__Anaerolineae; o__Ardenscatenales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	4416718	Unassigned	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	2000753	Unassigned	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Tremblayales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	109728	Unassigned	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Pseudomonadales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	15593	Unassigned	k__Bacteria; p__Tenericutes; c__Mollicutes; o__Acholeplasmatales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	369386	Unassigned	k__Bacteria; p__Cyanobacteria; c__Chloroplast; o__Chlorophyta	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	186867	Unassigned	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rickettsiales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	675678	Unassigned	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	4459671	Unassigned	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Spirochaetales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	4405546	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales; f__Oxalobacteraceae; g__Janthinobacterium; s__lividum	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Neisseriales	overclassification	3
+B1-REF	3	2	uclust	0.76:0.9:1	268353	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales; f__Bradyrhizobiaceae; g__Bosea; s__genosp.	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Caulobacterales	overclassification	3
+B1-REF	3	2	uclust	0.76:0.9:1	4429719	Unassigned	k__Bacteria; p__Tenericutes; c__Mollicutes; o__Anaeroplasmatales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	638076	Unassigned	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	920852	Unassigned	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	misclassification	0
+B1-REF	3	2	uclust	0.76:0.9:1	684018	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Vibrionales; f__Pseudoalteromonadaceae; g__Pseudoalteromonas; s__porphyrae	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Alteromonadales	overclassification	3
