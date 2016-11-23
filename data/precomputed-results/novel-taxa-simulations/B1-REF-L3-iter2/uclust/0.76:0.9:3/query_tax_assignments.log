@@ -1,0 +1,63 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L3-iter2/ref_taxa.tsv
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L3-iter2/ref_taxa.tsv
+max_accepts:3
+min_consensus_fraction:0.76
+reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L3-iter2/ref_seqs.fasta
+similarity:0.9
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxveO5X1
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L3-iter2/query.fasta --id 0.9 --rev --maxaccepts 3 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L3-iter2/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_MHCySU.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	250	*	*	*	*	*	920852	*
+L	272	250	*	*	*	*	*	567840	*
+H	272	250	90.4	+	0	0	250M	268353	567840
+L	1259	250	*	*	*	*	*	104129	*
+H	1259	250	90.4	+	0	0	250M	268353	104129
+L	143	250	*	*	*	*	*	709971	*
+H	143	250	90.0	+	0	0	250M	268353	709971
+N	*	250	*	*	*	*	*	186867	*
+N	*	250	*	*	*	*	*	109728	*
+N	*	250	*	*	*	*	*	23520	*
+N	*	250	*	*	*	*	*	15593	*
+N	*	250	*	*	*	*	*	638076	*
+L	2304	250	*	*	*	*	*	4315215	*
+H	2304	250	95.6	+	0	0	250M	684018	4315215
+L	2712	250	*	*	*	*	*	4465296	*
+H	2712	250	94.4	+	0	0	250M	684018	4465296
+L	913	250	*	*	*	*	*	211593	*
+H	913	250	93.2	+	0	0	250M	684018	211593
+N	*	250	*	*	*	*	*	2000753	*
+N	*	250	*	*	*	*	*	675678	*
+N	*	250	*	*	*	*	*	369386	*
+N	*	250	*	*	*	*	*	1134675	*
+N	*	250	*	*	*	*	*	4064689	*
+N	*	250	*	*	*	*	*	4390966	*
+L	1080	250	*	*	*	*	*	164523	*
+H	1080	250	93.6	+	0	0	250M	4405546	164523
+L	2430	250	*	*	*	*	*	4361424	*
+H	2430	250	93.6	+	0	0	250M	4405546	4361424
+L	88	250	*	*	*	*	*	832674	*
+H	88	250	93.2	+	0	0	250M	4405546	832674
+N	*	250	*	*	*	*	*	4416718	*
+N	*	250	*	*	*	*	*	4429719	*
+N	*	250	*	*	*	*	*	4459671	*
+L	2928	250	*	*	*	*	*	4359816	*
+H	2928	250	90.8	+	0	0	250M	2058825	4359816
+L	2823	250	*	*	*	*	*	186470	*
+H	2823	250	91.2	+	0	0	250M	2058825	186470
+L	2864	250	*	*	*	*	*	936	*
+H	2864	250	91.6	+	0	0	250M	2058825	936
+D	1259	2	*	*	*	*	90.4	104129	*
+D	2304	2	*	*	*	*	95.6	4315215	*
+D	2430	2	*	*	*	*	93.6	4361424	*
+D	2864	2	*	*	*	*	91.6	936	*

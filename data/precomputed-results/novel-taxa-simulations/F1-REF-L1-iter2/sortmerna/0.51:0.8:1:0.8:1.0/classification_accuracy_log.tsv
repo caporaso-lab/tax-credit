@@ -1,0 +1,4 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	1	2	sortmerna	0.51:0.8:1:0.8:1.0	DQ530224	Unassigned	Root;Ascomycota	misclassification	0
+F1-REF	1	2	sortmerna	0.51:0.8:1:0.8:1.0	AF272836	Unassigned	Root;Microsporidia	misclassification	0
+F1-REF	1	2	sortmerna	0.51:0.8:1:0.8:1.0	AJ972459	Root;Basidiomycota;Tremellomycetes;Tremellales;Tremellaceae;Tremella;Tremella_moriformis	Root;Glomeromycota	overclassification	1

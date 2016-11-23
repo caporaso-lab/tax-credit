@@ -1,0 +1,20 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	3	2	rdp	1.0	2058825	k__Archaea;p__Crenarchaeota;c__Thermoprotei	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Thermoproteales	match	3
+B1-REF	3	2	rdp	1.0	23520	k__Bacteria	k__Bacteria; p__Firmicutes; c__Clostridia; o__Natranaerobiales	underclassification	1
+B1-REF	3	2	rdp	1.0	1134675	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	underclassification	1
+B1-REF	3	2	rdp	1.0	4390966	Unclassified	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales	misclassification	0
+B1-REF	3	2	rdp	1.0	4064689	Unclassified	k__Bacteria; p__Chloroflexi; c__Anaerolineae; o__Ardenscatenales	misclassification	0
+B1-REF	3	2	rdp	1.0	4416718	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188	underclassification	1
+B1-REF	3	2	rdp	1.0	2000753	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Tremblayales	underclassification	1
+B1-REF	3	2	rdp	1.0	109728	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Pseudomonadales	underclassification	1
+B1-REF	3	2	rdp	1.0	15593	k__Bacteria	k__Bacteria; p__Tenericutes; c__Mollicutes; o__Acholeplasmatales	underclassification	1
+B1-REF	3	2	rdp	1.0	369386	k__Bacteria	k__Bacteria; p__Cyanobacteria; c__Chloroplast; o__Chlorophyta	underclassification	1
+B1-REF	3	2	rdp	1.0	186867	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rickettsiales	underclassification	1
+B1-REF	3	2	rdp	1.0	675678	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales	underclassification	1
+B1-REF	3	2	rdp	1.0	4459671	Unclassified	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Spirochaetales	misclassification	0
+B1-REF	3	2	rdp	1.0	4405546	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Neisseriales	underclassification	2
+B1-REF	3	2	rdp	1.0	268353	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Caulobacterales	match	3
+B1-REF	3	2	rdp	1.0	4429719	k__Bacteria	k__Bacteria; p__Tenericutes; c__Mollicutes; o__Anaeroplasmatales	underclassification	1
+B1-REF	3	2	rdp	1.0	638076	k__Bacteria	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales	underclassification	1
+B1-REF	3	2	rdp	1.0	920852	k__Bacteria	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	underclassification	1
+B1-REF	3	2	rdp	1.0	684018	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Alteromonadales	match	3

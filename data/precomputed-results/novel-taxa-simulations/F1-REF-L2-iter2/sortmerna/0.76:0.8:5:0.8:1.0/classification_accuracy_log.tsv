@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	2	sortmerna	0.76:0.8:5:0.8:1.0	FJ171861	Root;Basidiomycota;Agaricomycetes;Agaricales;Agaricaceae;Chlorophyllum	Root;Ascomycota;Neolectomycetes	misclassification	1
+F1-REF	2	2	sortmerna	0.76:0.8:5:0.8:1.0	AF178417	Root;Ascomycota;Dothideomycetes;Botryosphaeriales;Botryosphaeriaceae;Botryosphaeria;Botryosphaeria_corticola	Root;Ascomycota;Sordariomycetes	overclassification	2
+F1-REF	2	2	sortmerna	0.76:0.8:5:0.8:1.0	AB260936	Root;Ascomycota;Saccharomycetes;Saccharomycetales;Metschnikowiaceae;Metschnikowia;Metschnikowia_drosophilae	Root;Basidiomycota;Tremellomycetes	misclassification	1
+F1-REF	2	2	sortmerna	0.76:0.8:5:0.8:1.0	JF836021	Root	Root;Ascomycota;Archaeorhizomycetes	underclassification	1
+F1-REF	2	2	sortmerna	0.76:0.8:5:0.8:1.0	DQ832329	Unassigned	Root;Ascomycota;Lichinomycetes	misclassification	0
+F1-REF	2	2	sortmerna	0.76:0.8:5:0.8:1.0	JN882326	Root;Chytridiomycota;Chytridiomycetes	Root;Chytridiomycota;Monoblepharidomycetes	overclassification	2
+F1-REF	2	2	sortmerna	0.76:0.8:5:0.8:1.0	DQ681328	Unassigned	Root;Ascomycota;Eurotiomycetes	misclassification	0
+F1-REF	2	2	sortmerna	0.76:0.8:5:0.8:1.0	L27658	Root;Basidiomycota;Agaricomycetes;Agaricales	Root;Ascomycota;Pneumocystidomycetes	misclassification	1
+F1-REF	2	2	sortmerna	0.76:0.8:5:0.8:1.0	DQ831010	Root;Basidiomycota;Agaricomycetes;Boletales;Sclerodermataceae;Pisolithus	Root;Basidiomycota;Mixiomycetes	overclassification	2
+F1-REF	2	2	sortmerna	0.76:0.8:5:0.8:1.0	FJ167356	Root;Basidiomycota;Microbotryomycetes;Microbotryales;Microbotryaceae;Sphacelotheca	Root;Basidiomycota;Ustilaginomycetes	overclassification	2
+F1-REF	2	2	sortmerna	0.76:0.8:5:0.8:1.0	DQ827707	Root	Root;Basidiomycota;Exobasidiomycetes	underclassification	1

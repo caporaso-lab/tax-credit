@@ -1,0 +1,8 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	811996	Unassigned	k__Bacteria; p__Thermi	misclassification	0
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	4456787	Unassigned	k__Bacteria; p__Chlamydiae	misclassification	0
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	15593	Unassigned	k__Bacteria; p__Tenericutes	misclassification	0
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	675678	k__Bacteria; p__Verrucomicrobia; c__Verrucomicrobiae; o__Verrucomicrobiales; f__Verrucomicrobiaceae; g__Akkermansia; s__muciniphila	k__Bacteria; p__Proteobacteria	overclassification	1
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	2136916	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Hydrogenothermaceae; g__Hydrogenothermus; s__marinus	k__Bacteria; p__Lentisphaerae	overclassification	1
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	3002161	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae	k__Bacteria; p__Firmicutes	overclassification	1
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	920852	k__Bacteria	k__Bacteria; p__Actinobacteria	match	1

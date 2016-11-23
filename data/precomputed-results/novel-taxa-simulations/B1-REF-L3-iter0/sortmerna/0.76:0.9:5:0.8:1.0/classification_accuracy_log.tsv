@@ -1,0 +1,26 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	811996	Unassigned	k__Bacteria; p__Thermi; c__Deinococci; o__Deinococcales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	3820	Unassigned	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Sphaerochaetales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	467541	Unassigned	k__Archaea; p__Euryarchaeota; c__Methanomicrobia; o__Methanosarcinales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	538695	Unassigned	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	194772	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhodobacterales; f__Rhodobacteraceae	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales	overclassification	3
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	350563	Unassigned	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	776622	Unassigned	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	656307	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Nitrosomonadales; f__Nitrosomonadaceae; g__Nitrosomonas; s__halophila	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Rhodocyclales	overclassification	3
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	8010	Unassigned	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	2140546	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Peptococcaceae; g__Desulfosporosinus; s__meridiei	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales	misclassification	2
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	3450	Unassigned	k__Bacteria; p__Cyanobacteria; c__Chloroplast; o__Cercozoa	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	814853	Unassigned	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Acidithiobacillales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	1129499	Unassigned	k__Bacteria; p__Chloroflexi; c__Anaerolineae; o__Anaerolineales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	953	Unassigned	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Sulfolobales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	347913	Unassigned	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	10660	Unassigned	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	4361424	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Neisseriales; f__Neisseriaceae	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales	overclassification	3
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	555696	k__Bacteria; p__Cyanobacteria; c__Nostocophycideae; o__Nostocales; f__Scytonemataceae; g__Scytonema; s__fritschii	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Oscillatoriales	misclassification	2
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	348517	Unassigned	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	538602	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Vibrionales	match	3
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	4297688	Unassigned	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhodospirillales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	2267861	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Methylophilales	match	3
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	746126	Unassigned	k__Bacteria; p__Tenericutes; c__Mollicutes; o__Entomoplasmatales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	1140636	Unassigned	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales	misclassification	0
+B1-REF	3	0	sortmerna	0.76:0.9:5:0.8:1.0	3772088	Unassigned	k__Bacteria; p__Planctomycetes; c__Planctomycetia; o__Pirellulales	misclassification	0

@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	1	1	uclust	1.0:0.8:1	539567	Unassigned	k__Bacteria; p__Thermotogae	misclassification	0
+B1-REF	1	1	uclust	1.0:0.8:1	47778	Unassigned	k__Archaea; p__Crenarchaeota	misclassification	0
+B1-REF	1	1	uclust	1.0:0.8:1	358757	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Thiotrichales; f__Piscirickettsiaceae; g__Thiomicrospira; s__chilensis	k__Bacteria; p__Verrucomicrobia	overclassification	1
+B1-REF	1	1	uclust	1.0:0.8:1	4459671	Unassigned	k__Bacteria; p__Spirochaetes	misclassification	0
+B1-REF	1	1	uclust	1.0:0.8:1	1138255	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Caldicellulosiruptoraceae; g__Caldicellulosiruptor; s__saccharolyticus	k__Bacteria; p__Aquificae	overclassification	1
+B1-REF	1	1	uclust	1.0:0.8:1	1875	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	k__Bacteria; p__Chrysiogenetes	overclassification	1
+B1-REF	1	1	uclust	1.0:0.8:1	692586	Unassigned	k__Archaea; p__Euryarchaeota	misclassification	0
+B1-REF	1	1	uclust	1.0:0.8:1	4368159	k__Bacteria; p__Firmicutes; c__Clostridia; o__Natranaerobiales; f__Natranaerobiaceae; g__Natronoanaerobium; s__salstagnum	k__Bacteria; p__Synergistetes	overclassification	1
+B1-REF	1	1	uclust	1.0:0.8:1	125020	Unassigned	k__Archaea; p__Nanoarchaeota	misclassification	0
+B1-REF	1	1	uclust	1.0:0.8:1	2806523	Unassigned	k__Bacteria; p__Bacteroidetes	misclassification	0
+B1-REF	1	1	uclust	1.0:0.8:1	141021	Unassigned	k__Bacteria; p__Chlorobi	misclassification	0

@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	1	1	rdp	0.3	539567	k__Bacteria;p__Actinobacteria	k__Bacteria; p__Thermotogae	overclassification	1
+B1-REF	1	1	rdp	0.3	47778	k__Bacteria	k__Archaea; p__Crenarchaeota	misclassification	0
+B1-REF	1	1	rdp	0.3	358757	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Verrucomicrobia	overclassification	1
+B1-REF	1	1	rdp	0.3	4459671	k__Bacteria	k__Bacteria; p__Spirochaetes	match	1
+B1-REF	1	1	rdp	0.3	1138255	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Aquificae	overclassification	1
+B1-REF	1	1	rdp	0.3	1875	k__Bacteria;p__Firmicutes	k__Bacteria; p__Chrysiogenetes	overclassification	1
+B1-REF	1	1	rdp	0.3	692586	k__Bacteria	k__Archaea; p__Euryarchaeota	misclassification	0
+B1-REF	1	1	rdp	0.3	4368159	k__Bacteria;p__Firmicutes;c__Clostridia	k__Bacteria; p__Synergistetes	overclassification	1
+B1-REF	1	1	rdp	0.3	125020	k__Bacteria	k__Archaea; p__Nanoarchaeota	misclassification	0
+B1-REF	1	1	rdp	0.3	2806523	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria	k__Bacteria; p__Bacteroidetes	overclassification	1
+B1-REF	1	1	rdp	0.3	141021	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Bifidobacteriales;f__Bifidobacteriaceae;g__Bifidobacterium;s__animalis	k__Bacteria; p__Chlorobi	overclassification	1

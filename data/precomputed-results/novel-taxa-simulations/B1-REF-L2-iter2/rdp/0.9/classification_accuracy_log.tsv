@@ -1,0 +1,18 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	2	2	rdp	0.9	2998997	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria	underclassification	1
+B1-REF	2	2	rdp	0.9	64372	k__Archaea	k__Archaea; p__Euryarchaeota; c__Methanopyri	underclassification	1
+B1-REF	2	2	rdp	0.9	4476741	k__Bacteria	k__Bacteria; p__Chloroflexi; c__Thermobacula	underclassification	1
+B1-REF	2	2	rdp	0.9	556906	k__Bacteria;p__Bacteroidetes	k__Bacteria; p__Bacteroidetes; c__Saprospirae	match	2
+B1-REF	2	2	rdp	0.9	953	k__Archaea	k__Archaea; p__Crenarchaeota; c__Thermoprotei	underclassification	1
+B1-REF	2	2	rdp	0.9	3793	k__Bacteria	k__Bacteria; p__Spirochaetes; c__Brevinematae	underclassification	1
+B1-REF	2	2	rdp	0.9	1137725	k__Bacteria	k__Bacteria; p__Spirochaetes; c__Brachyspirae	underclassification	1
+B1-REF	2	2	rdp	0.9	3772088	k__Bacteria	k__Bacteria; p__Planctomycetes; c__Planctomycetia	underclassification	1
+B1-REF	2	2	rdp	0.9	186867	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	underclassification	1
+B1-REF	2	2	rdp	0.9	675678	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria	underclassification	1
+B1-REF	2	2	rdp	0.9	110879	k__Bacteria;p__Cyanobacteria	k__Bacteria; p__Cyanobacteria; c__Nostocophycideae	match	2
+B1-REF	2	2	rdp	0.9	4445049	k__Archaea;p__Euryarchaeota	k__Archaea; p__Euryarchaeota; c__Thermoplasmata	match	2
+B1-REF	2	2	rdp	0.9	692586	k__Archaea;p__Euryarchaeota	k__Archaea; p__Euryarchaeota; c__Halobacteria	match	2
+B1-REF	2	2	rdp	0.9	219691	k__Archaea;p__Euryarchaeota	k__Archaea; p__Euryarchaeota; c__Methanococci	match	2
+B1-REF	2	2	rdp	0.9	2806523	k__Bacteria;p__Bacteroidetes	k__Bacteria; p__Bacteroidetes; c__Flavobacteriia	match	2
+B1-REF	2	2	rdp	0.9	3002161	k__Bacteria	k__Bacteria; p__Firmicutes; c__Erysipelotrichi	underclassification	1
+B1-REF	2	2	rdp	0.9	920852	k__Bacteria	k__Bacteria; p__Actinobacteria; c__Actinobacteria	underclassification	1

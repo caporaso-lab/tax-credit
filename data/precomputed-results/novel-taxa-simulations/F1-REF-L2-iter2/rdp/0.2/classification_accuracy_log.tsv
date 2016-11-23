@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	2	rdp	0.2	FJ171861	Root;Ascomycota	Root;Ascomycota;Neolectomycetes	match	2
+F1-REF	2	2	rdp	0.2	AF178417	Root;Ascomycota;Leotiomycetes;Helotiales	Root;Ascomycota;Sordariomycetes	overclassification	2
+F1-REF	2	2	rdp	0.2	AB260936	Root;Basidiomycota	Root;Basidiomycota;Tremellomycetes	match	2
+F1-REF	2	2	rdp	0.2	JF836021	Root;Ascomycota	Root;Ascomycota;Archaeorhizomycetes	match	2
+F1-REF	2	2	rdp	0.2	DQ832329	Root;Ascomycota;Lecanoromycetes	Root;Ascomycota;Lichinomycetes	overclassification	2
+F1-REF	2	2	rdp	0.2	JN882326	Root	Root;Chytridiomycota;Monoblepharidomycetes	underclassification	1
+F1-REF	2	2	rdp	0.2	DQ681328	Root;Ascomycota;Leotiomycetes;Helotiales	Root;Ascomycota;Eurotiomycetes	overclassification	2
+F1-REF	2	2	rdp	0.2	L27658	Root;Basidiomycota	Root;Ascomycota;Pneumocystidomycetes	misclassification	1
+F1-REF	2	2	rdp	0.2	DQ831010	Root;Basidiomycota;Agaricomycetes;Agaricales	Root;Basidiomycota;Mixiomycetes	overclassification	2
+F1-REF	2	2	rdp	0.2	FJ167356	Root;Basidiomycota;Microbotryomycetes;Microbotryales;Microbotryaceae;Sphacelotheca;Sporisorium_andropogonis	Root;Basidiomycota;Ustilaginomycetes	overclassification	2
+F1-REF	2	2	rdp	0.2	DQ827707	Root;Basidiomycota;Agaricomycetes	Root;Basidiomycota;Exobasidiomycetes	overclassification	2

@@ -1,0 +1,93 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L3-iter0/ref_taxa.tsv
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L3-iter0/ref_taxa.tsv
+max_accepts:1
+min_consensus_fraction:0.76
+reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L3-iter0/ref_seqs.fasta
+similarity:0.8
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxWkWRdg
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L3-iter0/query.fasta --id 0.8 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L3-iter0/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_sEQ5tQ.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+L	2596	250	*	*	*	*	*	67341	*
+H	2596	250	89.2	+	0	0	250M	814853	67341
+L	468	250	*	*	*	*	*	572208	*
+H	468	250	81.2	+	0	0	250M	776622	572208
+L	2925	250	*	*	*	*	*	1005406	*
+H	2925	250	80.8	+	0	0	69MD180MI	746126	1005406
+L	3075	250	*	*	*	*	*	1801170	*
+H	3075	250	90.4	+	0	0	250M	555696	1801170
+L	2510	250	*	*	*	*	*	94941	*
+H	2510	250	84.4	+	0	0	250M	538695	94941
+L	3888	250	*	*	*	*	*	833475	*
+H	3888	250	92.0	+	0	0	250M	538602	833475
+L	2187	250	*	*	*	*	*	164660	*
+H	2187	250	88.8	+	0	0	150MD48MI16MI34MD	350563	164660
+L	5094	250	*	*	*	*	*	4433321	*
+H	5094	250	85.2	+	0	0	250M	348517	4433321
+L	4438	250	*	*	*	*	*	4318406	*
+H	4438	250	92.0	+	0	0	250M	194772	4318406
+L	4193	250	*	*	*	*	*	1129564	*
+H	4193	250	88.8	+	0	0	250M	10660	1129564
+L	2393	250	*	*	*	*	*	128429	*
+H	2393	250	84.0	+	0	0	250M	8010	128429
+L	2930	250	*	*	*	*	*	1522389	*
+H	2930	250	86.0	+	0	0	250M	3820	1522389
+L	2619	250	*	*	*	*	*	56680	*
+H	2619	250	81.2	+	0	0	77MD36MD135M2I	3450	56680
+L	2956	250	*	*	*	*	*	1141660	*
+H	2956	250	88.8	+	0	0	250M	656307	1141660
+L	5294	250	*	*	*	*	*	4468915	*
+H	5294	250	82.8	+	0	0	250M	1129499	4468915
+L	1503	250	*	*	*	*	*	265604	*
+H	1503	250	91.2	+	0	0	250M	2140546	265604
+L	2356	250	*	*	*	*	*	136773	*
+H	2356	250	80.4	+	0	0	250M	811996	136773
+L	4043	250	*	*	*	*	*	1111998	*
+H	4043	250	92.0	+	0	0	250M	2267861	1111998
+L	2957	250	*	*	*	*	*	1127851	*
+H	2957	250	80.0	+	0	0	250M	1140636	1127851
+N	*	250	*	*	*	*	*	3772088	*
+L	5373	250	*	*	*	*	*	4480819	*
+H	5373	250	87.2	+	0	0	250M	4297688	4480819
+L	4936	250	*	*	*	*	*	4405546	*
+H	4936	250	93.6	+	0	0	250M	4361424	4405546
+L	5426	250	*	*	*	*	*	158889	*
+H	5426	250	80.8	+	0	0	250M	467541	158889
+L	5506	250	*	*	*	*	*	4362614	*
+H	5506	250	84.8	+	0	0	250M	347913	4362614
+L	5413	250	*	*	*	*	*	559851	*
+H	5413	250	86.8	+	0	0	250M	953	559851
+D	468	2	*	*	*	*	81.2	572208	*
+D	1503	2	*	*	*	*	91.2	265604	*
+D	2187	2	*	*	*	*	88.8	164660	*
+D	2356	2	*	*	*	*	80.4	136773	*
+D	2393	2	*	*	*	*	84.0	128429	*
+D	2510	2	*	*	*	*	84.4	94941	*
+D	2596	2	*	*	*	*	89.2	67341	*
+D	2619	2	*	*	*	*	81.2	56680	*
+D	2925	2	*	*	*	*	80.8	1005406	*
+D	2930	2	*	*	*	*	86.0	1522389	*
+D	2956	2	*	*	*	*	88.8	1141660	*
+D	2957	2	*	*	*	*	80.0	1127851	*
+D	3075	2	*	*	*	*	90.4	1801170	*
+D	3888	2	*	*	*	*	92.0	833475	*
+D	4043	2	*	*	*	*	92.0	1111998	*
+D	4193	2	*	*	*	*	88.8	1129564	*
+D	4438	2	*	*	*	*	92.0	4318406	*
+D	4936	2	*	*	*	*	93.6	4405546	*
+D	5094	2	*	*	*	*	85.2	4433321	*
+D	5294	2	*	*	*	*	82.8	4468915	*
+D	5373	2	*	*	*	*	87.2	4480819	*
+D	5413	2	*	*	*	*	86.8	559851	*
+D	5426	2	*	*	*	*	80.8	158889	*
+D	5506	2	*	*	*	*	84.8	4362614	*

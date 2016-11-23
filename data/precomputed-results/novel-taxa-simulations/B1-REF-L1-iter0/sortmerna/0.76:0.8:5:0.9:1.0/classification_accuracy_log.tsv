@@ -1,0 +1,10 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.9:1.0	838467	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Lachnospiraceae; g__Blautia; s__producta	k__Bacteria; p__Fusobacteria	overclassification	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.9:1.0	313305	Unassigned	k__Bacteria; p__Nitrospirae	misclassification	0
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.9:1.0	3585	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Veillonellaceae; g__Megamonas; s__hypermegale	k__Bacteria; p__Fibrobacteres	overclassification	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.9:1.0	278595	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales	k__Bacteria; p__Elusimicrobia	overclassification	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.9:1.0	1277	k__Bacteria; p__Proteobacteria	k__Bacteria; p__Chloroflexi	overclassification	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.9:1.0	3772088	Unassigned	k__Bacteria; p__Planctomycetes	misclassification	0
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.9:1.0	111022	k__Bacteria	k__Bacteria; p__Deferribacteres	match	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.9:1.0	110879	k__Bacteria; p__Firmicutes; c__Erysipelotrichi; o__Erysipelotrichales; f__Erysipelotrichaceae; g__Eubacterium; s__dolichum	k__Bacteria; p__Cyanobacteria	overclassification	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.9:1.0	742260	k__Bacteria; p__Proteobacteria	k__Bacteria; p__Acidobacteria	overclassification	1
