@@ -22,9 +22,6 @@ from skbio.alignment import local_pairwise_align_ssw
 from skbio import io, DNA
 import pandas as pd
 import seaborn as sns
-
-import sys
-sys.path.append('/Users/nbokulich/Desktop/python_projects/taxoneval/taxoneval/')
 from tax_credit.taxa_manipulator import *
 
 
