@@ -1,10 +1,12 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	0	rdp	0.3	838467	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Fusobacteria	overclassification	1
-B1-REF	1	0	rdp	0.3	313305	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Legionellales;f__Francisellaceae;g__Francisella;s__cantonensis	k__Bacteria; p__Nitrospirae	overclassification	1
-B1-REF	1	0	rdp	0.3	3585	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Fibrobacteres	overclassification	1
-B1-REF	1	0	rdp	0.3	278595	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria	k__Bacteria; p__Elusimicrobia	overclassification	1
-B1-REF	1	0	rdp	0.3	1277	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales	k__Bacteria; p__Chloroflexi	overclassification	1
-B1-REF	1	0	rdp	0.3	3772088	k__Bacteria	k__Bacteria; p__Planctomycetes	match	1
-B1-REF	1	0	rdp	0.3	111022	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Chromatiales	k__Bacteria; p__Deferribacteres	overclassification	1
-B1-REF	1	0	rdp	0.3	110879	k__Bacteria;p__Firmicutes	k__Bacteria; p__Cyanobacteria	overclassification	1
-B1-REF	1	0	rdp	0.3	742260	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Acidobacteria	overclassification	1
+B1-REF	1	0	rdp	0.3	47778	k__Archaea;p__Euryarchaeota;c__Methanomicrobia;o__Methanosarcinales;f__Methanosarcinaceae	k__Archaea; p__Crenarchaeota	overclassification	1
+B1-REF	1	0	rdp	0.3	141021	k__Bacteria;p__Actinobacteria;c__Actinobacteria	k__Bacteria; p__Chlorobi	overclassification	1
+B1-REF	1	0	rdp	0.3	4456787	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria	k__Bacteria; p__Chlamydiae	overclassification	1
+B1-REF	1	0	rdp	0.3	1277	k__Bacteria;p__Deferribacteres;c__Deferribacteres;o__Deferribacterales;f__Deferribacteraceae;g__Calditerrivibrio;s__nitroreducens	k__Bacteria; p__Chloroflexi	overclassification	1
+B1-REF	1	0	rdp	0.3	1138255	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria	k__Bacteria; p__Aquificae	overclassification	1
+B1-REF	1	0	rdp	0.3	4459671	k__Bacteria	k__Bacteria; p__Spirochaetes	match	1
+B1-REF	1	0	rdp	0.3	742260	k__Bacteria	k__Bacteria; p__Acidobacteria	match	1
+B1-REF	1	0	rdp	0.3	125020	k__Archaea;p__Euryarchaeota;c__Methanopyri;o__Methanopyrales;f__Methanopyraceae;g__Methanopyrus;s__kandleri	k__Archaea; p__Nanoarchaeota	overclassification	1
+B1-REF	1	0	rdp	0.3	2136916	k__Bacteria	k__Bacteria; p__Lentisphaerae	match	1
+B1-REF	1	0	rdp	0.3	3002161	k__Bacteria;p__Tenericutes;c__Mollicutes;o__Acholeplasmatales;f__Acholeplasmataceae;g__Acholeplasma	k__Bacteria; p__Firmicutes	overclassification	1
+B1-REF	1	0	rdp	0.3	4368159	k__Bacteria;p__Cyanobacteria	k__Bacteria; p__Synergistetes	overclassification	1

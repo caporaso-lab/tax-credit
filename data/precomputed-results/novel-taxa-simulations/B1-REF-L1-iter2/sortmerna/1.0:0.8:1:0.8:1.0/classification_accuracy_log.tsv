@@ -1,8 +1,8 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	811996	Unassigned	k__Bacteria; p__Thermi	misclassification	0
-B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	4456787	Unassigned	k__Bacteria; p__Chlamydiae	misclassification	0
-B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	15593	Unassigned	k__Bacteria; p__Tenericutes	misclassification	0
-B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	675678	k__Bacteria; p__Verrucomicrobia; c__Methylacidiphilae; o__Methylacidiphilales; f__Methylacidiphilaceae; g__Candidatus Methylacidiphilum; s__infernorum	k__Bacteria; p__Proteobacteria	overclassification	1
-B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	2136916	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Hydrogenothermaceae; g__Hydrogenothermus; s__marinus	k__Bacteria; p__Lentisphaerae	overclassification	1
-B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	3002161	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Oscillatoriales; f__Phormidiaceae; g__Oscillatoria; s__spongeliae	k__Bacteria; p__Firmicutes	overclassification	1
-B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	920852	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Acidobacteriaceae; g__Acidicapsa; s__borealis	k__Bacteria; p__Actinobacteria	overclassification	1
+B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	838467	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Lachnospiraceae; g__Blautia; s__producta	k__Bacteria; p__Fusobacteria	overclassification	1
+B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	539567	Unassigned	k__Bacteria; p__Thermotogae	underclassification	0
+B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	3585	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Veillonellaceae; g__Megamonas; s__hypermegale	k__Bacteria; p__Fibrobacteres	overclassification	1
+B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	278595	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales; f__Pelobacteraceae; g__Pelobacter; s__carbinolicus	k__Bacteria; p__Elusimicrobia	overclassification	1
+B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	3772088	Unassigned	k__Bacteria; p__Planctomycetes	underclassification	0
+B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	111022	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfovibrionales; f__Desulfovibrionaceae; g__Desulfovibrio; s__aminophilus	k__Bacteria; p__Deferribacteres	overclassification	1
+B1-REF	1	2	sortmerna	1.0:0.8:1:0.8:1.0	2806523	Unassigned	k__Bacteria; p__Bacteroidetes	underclassification	0

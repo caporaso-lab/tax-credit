@@ -1,12 +1,10 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	1	rdp	0.4	539567	k__Bacteria	k__Bacteria; p__Thermotogae	match	1
-B1-REF	1	1	rdp	0.4	47778	k__Bacteria	k__Archaea; p__Crenarchaeota	misclassification	0
-B1-REF	1	1	rdp	0.4	358757	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria	k__Bacteria; p__Verrucomicrobia	overclassification	1
-B1-REF	1	1	rdp	0.4	4459671	k__Bacteria	k__Bacteria; p__Spirochaetes	match	1
-B1-REF	1	1	rdp	0.4	1138255	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Aquificae	overclassification	1
+B1-REF	1	1	rdp	0.4	313305	k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales	k__Bacteria; p__Nitrospirae	overclassification	1
+B1-REF	1	1	rdp	0.4	675678	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales	k__Bacteria; p__Proteobacteria	overclassification	1
+B1-REF	1	1	rdp	0.4	811996	k__Bacteria;p__Firmicutes	k__Bacteria; p__Thermi	overclassification	1
+B1-REF	1	1	rdp	0.4	358757	k__Bacteria;p__Firmicutes	k__Bacteria; p__Verrucomicrobia	overclassification	1
+B1-REF	1	1	rdp	0.4	15593	k__Bacteria;p__Firmicutes;c__Erysipelotrichi;o__Erysipelotrichales;f__Erysipelotrichaceae	k__Bacteria; p__Tenericutes	overclassification	1
 B1-REF	1	1	rdp	0.4	1875	k__Bacteria	k__Bacteria; p__Chrysiogenetes	match	1
-B1-REF	1	1	rdp	0.4	692586	k__Bacteria	k__Archaea; p__Euryarchaeota	misclassification	0
-B1-REF	1	1	rdp	0.4	4368159	k__Bacteria;p__Firmicutes;c__Clostridia	k__Bacteria; p__Synergistetes	overclassification	1
-B1-REF	1	1	rdp	0.4	125020	k__Bacteria	k__Archaea; p__Nanoarchaeota	misclassification	0
-B1-REF	1	1	rdp	0.4	2806523	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Bacteroidetes	overclassification	1
-B1-REF	1	1	rdp	0.4	141021	k__Bacteria;p__Actinobacteria;c__Actinobacteria	k__Bacteria; p__Chlorobi	overclassification	1
+B1-REF	1	1	rdp	0.4	110879	k__Bacteria;p__Firmicutes	k__Bacteria; p__Cyanobacteria	overclassification	1
+B1-REF	1	1	rdp	0.4	692586	k__Archaea;p__Crenarchaeota;c__Thermoprotei	k__Archaea; p__Euryarchaeota	overclassification	1
+B1-REF	1	1	rdp	0.4	920852	k__Bacteria;p__Firmicutes;c__Clostridia	k__Bacteria; p__Actinobacteria	overclassification	1

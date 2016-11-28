@@ -1,10 +1,12 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	838467	Unassigned	k__Bacteria; p__Fusobacteria	misclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	313305	Unassigned	k__Bacteria; p__Nitrospirae	misclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	3585	Unassigned	k__Bacteria; p__Fibrobacteres	misclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	278595	Unassigned	k__Bacteria; p__Elusimicrobia	misclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	1277	Unassigned	k__Bacteria; p__Chloroflexi	misclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	3772088	Unassigned	k__Bacteria; p__Planctomycetes	misclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	111022	Unassigned	k__Bacteria; p__Deferribacteres	misclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	110879	Unassigned	k__Bacteria; p__Cyanobacteria	misclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	742260	Unassigned	k__Bacteria; p__Acidobacteria	misclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	47778	Unassigned	k__Archaea; p__Crenarchaeota	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	141021	Unassigned	k__Bacteria; p__Chlorobi	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	4456787	Unassigned	k__Bacteria; p__Chlamydiae	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	1277	Unassigned	k__Bacteria; p__Chloroflexi	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	1138255	Unassigned	k__Bacteria; p__Aquificae	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	4459671	Unassigned	k__Bacteria; p__Spirochaetes	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	742260	Unassigned	k__Bacteria; p__Acidobacteria	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	125020	Unassigned	k__Archaea; p__Nanoarchaeota	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	2136916	Unassigned	k__Bacteria; p__Lentisphaerae	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	3002161	Unassigned	k__Bacteria; p__Firmicutes	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:5:0.9:1.0	4368159	Unassigned	k__Bacteria; p__Synergistetes	underclassification	0

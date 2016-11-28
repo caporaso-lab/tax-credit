@@ -1,12 +1,10 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	1	uclust	0.51:0.9:1	539567	Unassigned	k__Bacteria; p__Thermotogae	misclassification	0
-B1-REF	1	1	uclust	0.51:0.9:1	47778	Unassigned	k__Archaea; p__Crenarchaeota	misclassification	0
-B1-REF	1	1	uclust	0.51:0.9:1	358757	Unassigned	k__Bacteria; p__Verrucomicrobia	misclassification	0
-B1-REF	1	1	uclust	0.51:0.9:1	4459671	Unassigned	k__Bacteria; p__Spirochaetes	misclassification	0
-B1-REF	1	1	uclust	0.51:0.9:1	1138255	Unassigned	k__Bacteria; p__Aquificae	misclassification	0
-B1-REF	1	1	uclust	0.51:0.9:1	1875	Unassigned	k__Bacteria; p__Chrysiogenetes	misclassification	0
-B1-REF	1	1	uclust	0.51:0.9:1	692586	Unassigned	k__Archaea; p__Euryarchaeota	misclassification	0
-B1-REF	1	1	uclust	0.51:0.9:1	4368159	Unassigned	k__Bacteria; p__Synergistetes	misclassification	0
-B1-REF	1	1	uclust	0.51:0.9:1	125020	Unassigned	k__Archaea; p__Nanoarchaeota	misclassification	0
-B1-REF	1	1	uclust	0.51:0.9:1	2806523	Unassigned	k__Bacteria; p__Bacteroidetes	misclassification	0
-B1-REF	1	1	uclust	0.51:0.9:1	141021	Unassigned	k__Bacteria; p__Chlorobi	misclassification	0
+B1-REF	1	1	uclust	0.51:0.9:1	313305	Unassigned	k__Bacteria; p__Nitrospirae	underclassification	0
+B1-REF	1	1	uclust	0.51:0.9:1	675678	Unassigned	k__Bacteria; p__Proteobacteria	underclassification	0
+B1-REF	1	1	uclust	0.51:0.9:1	811996	Unassigned	k__Bacteria; p__Thermi	underclassification	0
+B1-REF	1	1	uclust	0.51:0.9:1	358757	Unassigned	k__Bacteria; p__Verrucomicrobia	underclassification	0
+B1-REF	1	1	uclust	0.51:0.9:1	15593	Unassigned	k__Bacteria; p__Tenericutes	underclassification	0
+B1-REF	1	1	uclust	0.51:0.9:1	1875	Unassigned	k__Bacteria; p__Chrysiogenetes	underclassification	0
+B1-REF	1	1	uclust	0.51:0.9:1	110879	Unassigned	k__Bacteria; p__Cyanobacteria	underclassification	0
+B1-REF	1	1	uclust	0.51:0.9:1	692586	Unassigned	k__Archaea; p__Euryarchaeota	underclassification	0
+B1-REF	1	1	uclust	0.51:0.9:1	920852	Unassigned	k__Bacteria; p__Actinobacteria	underclassification	0

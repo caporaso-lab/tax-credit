@@ -1,12 +1,10 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	1	rdp	0.1	539567	k__Bacteria;p__Actinobacteria;c__Coriobacteriia;o__Coriobacteriales;f__Coriobacteriaceae;g__Enterococcus;s__casseliflavus	k__Bacteria; p__Thermotogae	overclassification	1
-B1-REF	1	1	rdp	0.1	47778	k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Alicyclobacillaceae;g__Alicyclobacillus;s__tolerans	k__Archaea; p__Crenarchaeota	misclassification	0
-B1-REF	1	1	rdp	0.1	358757	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Myxococcales;f__Polyangiaceae	k__Bacteria; p__Verrucomicrobia	overclassification	1
-B1-REF	1	1	rdp	0.1	4459671	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales	k__Bacteria; p__Spirochaetes	overclassification	1
-B1-REF	1	1	rdp	0.1	1138255	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfovibrionales;f__Desulfovibrionaceae;g__Desulfovibrio;s__alaskensis	k__Bacteria; p__Aquificae	overclassification	1
-B1-REF	1	1	rdp	0.1	1875	k__Bacteria;p__Firmicutes;c__Bacilli	k__Bacteria; p__Chrysiogenetes	overclassification	1
-B1-REF	1	1	rdp	0.1	692586	k__Bacteria;p__Planctomycetes;c__Planctomycetia;o__Gemmatales;f__Isosphaeraceae;g__Singulisphaera;s__rosea	k__Archaea; p__Euryarchaeota	misclassification	0
-B1-REF	1	1	rdp	0.1	4368159	k__Bacteria;p__Firmicutes;c__Clostridia;o__Natranaerobiales;f__Natranaerobiaceae;g__Natronoanaerobium;s__salstagnum	k__Bacteria; p__Synergistetes	overclassification	1
-B1-REF	1	1	rdp	0.1	125020	k__Bacteria;p__Thermi;c__Deinococci;o__Thermales;f__Thermaceae;g__Marinithermus;s__hydrothermalis	k__Archaea; p__Nanoarchaeota	misclassification	0
-B1-REF	1	1	rdp	0.1	2806523	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfuromonadales;f__Desulfuromonadaceae;g__Desulfuromusa;s__bakii	k__Bacteria; p__Bacteroidetes	overclassification	1
-B1-REF	1	1	rdp	0.1	141021	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Bifidobacteriales;f__Bifidobacteriaceae;g__Bifidobacterium;s__animalis	k__Bacteria; p__Chlorobi	overclassification	1
+B1-REF	1	1	rdp	0.1	313305	k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Pasteuriaceae;g__Pasteuria;s__goettingianae	k__Bacteria; p__Nitrospirae	overclassification	1
+B1-REF	1	1	rdp	0.1	675678	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Peptococcaceae;g__Desulfitispora;s__alkaliphila	k__Bacteria; p__Proteobacteria	overclassification	1
+B1-REF	1	1	rdp	0.1	811996	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Symbiobacteriaceae;g__Symbiobacterium;s__thermophilum	k__Bacteria; p__Thermi	overclassification	1
+B1-REF	1	1	rdp	0.1	358757	k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Alicyclobacillaceae;g__Alicyclobacillus	k__Bacteria; p__Verrucomicrobia	overclassification	1
+B1-REF	1	1	rdp	0.1	15593	k__Bacteria;p__Firmicutes;c__Erysipelotrichi;o__Erysipelotrichales;f__Erysipelotrichaceae;g__Bulleidia;s__moorei	k__Bacteria; p__Tenericutes	overclassification	1
+B1-REF	1	1	rdp	0.1	1875	k__Bacteria;p__Bacteroidetes;c__Cytophagia;o__Cytophagales;f__Flammeovirgaceae;g__Sediminitomix;s__flava	k__Bacteria; p__Chrysiogenetes	overclassification	1
+B1-REF	1	1	rdp	0.1	110879	k__Bacteria;p__Firmicutes;c__Clostridia;o__Halanaerobiales;f__Halanaerobiaceae;g__Halothermothrix;s__orenii	k__Bacteria; p__Cyanobacteria	overclassification	1
+B1-REF	1	1	rdp	0.1	692586	k__Archaea;p__Crenarchaeota;c__Thermoprotei;o__Desulfurococcales;f__Desulfurococcaceae;g__Sulfophobococcus;s__zilligii	k__Archaea; p__Euryarchaeota	overclassification	1
+B1-REF	1	1	rdp	0.1	920852	k__Bacteria;p__Firmicutes;c__Clostridia;o__Halanaerobiales;f__Halanaerobiaceae;g__Halarsenatibacter;s__silvermanii	k__Bacteria; p__Actinobacteria	overclassification	1

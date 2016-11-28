@@ -1,8 +1,8 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	811996	Unassigned	k__Bacteria; p__Thermi	misclassification	0
-B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	4456787	Unassigned	k__Bacteria; p__Chlamydiae	misclassification	0
-B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	15593	Unassigned	k__Bacteria; p__Tenericutes	misclassification	0
-B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	675678	Unassigned	k__Bacteria; p__Proteobacteria	misclassification	0
-B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	2136916	Unassigned	k__Bacteria; p__Lentisphaerae	misclassification	0
-B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	3002161	Unassigned	k__Bacteria; p__Firmicutes	misclassification	0
-B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	920852	Unassigned	k__Bacteria; p__Actinobacteria	misclassification	0
+B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	838467	Unassigned	k__Bacteria; p__Fusobacteria	underclassification	0
+B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	539567	Unassigned	k__Bacteria; p__Thermotogae	underclassification	0
+B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	3585	Unassigned	k__Bacteria; p__Fibrobacteres	underclassification	0
+B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	278595	Unassigned	k__Bacteria; p__Elusimicrobia	underclassification	0
+B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	3772088	Unassigned	k__Bacteria; p__Planctomycetes	underclassification	0
+B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	111022	Unassigned	k__Bacteria; p__Deferribacteres	underclassification	0
+B1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	2806523	Unassigned	k__Bacteria; p__Bacteroidetes	underclassification	0

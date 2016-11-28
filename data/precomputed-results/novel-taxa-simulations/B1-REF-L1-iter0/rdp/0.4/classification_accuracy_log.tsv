@@ -1,10 +1,12 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	0	rdp	0.4	838467	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Fusobacteria	overclassification	1
-B1-REF	1	0	rdp	0.4	313305	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Nitrospirae	overclassification	1
-B1-REF	1	0	rdp	0.4	3585	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Fibrobacteres	overclassification	1
-B1-REF	1	0	rdp	0.4	278595	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria	k__Bacteria; p__Elusimicrobia	overclassification	1
+B1-REF	1	0	rdp	0.4	47778	k__Archaea;p__Euryarchaeota	k__Archaea; p__Crenarchaeota	overclassification	1
+B1-REF	1	0	rdp	0.4	141021	k__Bacteria;p__Actinobacteria	k__Bacteria; p__Chlorobi	overclassification	1
+B1-REF	1	0	rdp	0.4	4456787	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria	k__Bacteria; p__Chlamydiae	overclassification	1
 B1-REF	1	0	rdp	0.4	1277	k__Bacteria	k__Bacteria; p__Chloroflexi	match	1
-B1-REF	1	0	rdp	0.4	3772088	k__Bacteria	k__Bacteria; p__Planctomycetes	match	1
-B1-REF	1	0	rdp	0.4	111022	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Deferribacteres	overclassification	1
-B1-REF	1	0	rdp	0.4	110879	k__Bacteria	k__Bacteria; p__Cyanobacteria	match	1
-B1-REF	1	0	rdp	0.4	742260	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Acidobacteria	overclassification	1
+B1-REF	1	0	rdp	0.4	1138255	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria	k__Bacteria; p__Aquificae	overclassification	1
+B1-REF	1	0	rdp	0.4	4459671	k__Bacteria	k__Bacteria; p__Spirochaetes	match	1
+B1-REF	1	0	rdp	0.4	742260	k__Bacteria	k__Bacteria; p__Acidobacteria	match	1
+B1-REF	1	0	rdp	0.4	125020	k__Archaea;p__Euryarchaeota;c__Methanopyri;o__Methanopyrales;f__Methanopyraceae;g__Methanopyrus;s__kandleri	k__Archaea; p__Nanoarchaeota	overclassification	1
+B1-REF	1	0	rdp	0.4	2136916	k__Bacteria	k__Bacteria; p__Lentisphaerae	match	1
+B1-REF	1	0	rdp	0.4	3002161	k__Bacteria;p__Tenericutes;c__Mollicutes;o__Acholeplasmatales;f__Acholeplasmataceae;g__Acholeplasma	k__Bacteria; p__Firmicutes	overclassification	1
+B1-REF	1	0	rdp	0.4	4368159	k__Bacteria	k__Bacteria; p__Synergistetes	match	1

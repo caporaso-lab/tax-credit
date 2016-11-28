@@ -6,11 +6,11 @@ min_consensus_fraction:0.76
 reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L3-iter0/ref_seqs.fasta
 similarity:0.9
 unassignable_label:Unassigned
-Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-tax8D9EUj
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-tax2KXPlT
 
 .uc file contents:
 
-# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L3-iter0/query.fasta --id 0.9 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L3-iter0/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_lYtxoc.uc
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L3-iter0/query.fasta --id 0.9 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L3-iter0/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_y0sKsq.uc
 # version=1.2.22
 # Tab-separated fields:
 # 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
@@ -18,42 +18,42 @@ Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-tax8D9EUj
 # For C and D types, PctId is average id with seed.
 # QueryStart and SeedStart are zero-based relative to start of sequence.
 # If minus strand, SeedStart is relative to reverse-complemented seed.
-N	*	250	*	*	*	*	*	U33070	*
-N	*	179	*	*	*	*	*	DQ530224	*
-N	*	144	*	*	*	*	*	DQ521585	*
-N	*	222	*	*	*	*	*	AF116177	*
-N	*	218	*	*	*	*	*	AF395684	*
-L	4280	153	*	*	*	*	*	AM159634	*
-H	4280	152	90.8	+	0	0	34MI19MD71MI27M	AB260936	AM159634
-N	*	222	*	*	*	*	*	AJ716305	*
-N	*	210	*	*	*	*	*	DQ681328	*
-N	*	186	*	*	*	*	*	EF200014	*
-N	*	224	*	*	*	*	*	AB278192	*
-N	*	179	*	*	*	*	*	AB259844	*
-N	*	211	*	*	*	*	*	EF369523	*
-N	*	163	*	*	*	*	*	AB294737	*
-N	*	250	*	*	*	*	*	AF373978	*
-N	*	199	*	*	*	*	*	AF284447	*
+N	*	187	*	*	*	*	*	AF178417	*
+N	*	203	*	*	*	*	*	DQ525490	*
+N	*	234	*	*	*	*	*	DQ482007	*
+N	*	250	*	*	*	*	*	EF685093	*
+N	*	142	*	*	*	*	*	AJ972459	*
+N	*	231	*	*	*	*	*	AJ421007	*
+N	*	226	*	*	*	*	*	FJ010336	*
+N	*	211	*	*	*	*	*	AF243398	*
+N	*	193	*	*	*	*	*	DQ873660	*
+N	*	173	*	*	*	*	*	EF029241	*
+N	*	102	*	*	*	*	*	AJ390377	*
+N	*	174	*	*	*	*	*	EF191235	*
+N	*	166	*	*	*	*	*	AF291269	*
 N	*	214	*	*	*	*	*	DQ534474	*
-L	4019	214	*	*	*	*	*	AF462432	*
-H	4019	215	95.8	+	0	0	16MD198M	EU272483	AF462432
-N	*	222	*	*	*	*	*	EU118639	*
+N	*	206	*	*	*	*	*	EF989122	*
+N	*	201	*	*	*	*	*	GQ369593	*
+N	*	182	*	*	*	*	*	EF605270	*
 N	*	221	*	*	*	*	*	EU069498	*
 N	*	250	*	*	*	*	*	EF585663	*
-N	*	250	*	*	*	*	*	EU352771	*
+N	*	239	*	*	*	*	*	EU652341	*
+N	*	173	*	*	*	*	*	AB180368	*
 N	*	250	*	*	*	*	*	EU552133	*
-N	*	187	*	*	*	*	*	AF444555	*
+N	*	175	*	*	*	*	*	EF592116	*
+N	*	202	*	*	*	*	*	AF444630	*
 N	*	194	*	*	*	*	*	EU784223	*
-N	*	189	*	*	*	*	*	FJ748921	*
+L	3966	188	*	*	*	*	*	AY999136	*
+H	3966	189	94.7	+	0	0	12MI100MD14MD61M	FJ748921	AY999136
 N	*	250	*	*	*	*	*	FJ827711	*
 N	*	152	*	*	*	*	*	FJ887922	*
-L	2233	246	*	*	*	*	*	FR716677	*
-H	2233	246	92.7	+	0	0	246M	FR716679	FR716677
+N	*	250	*	*	*	*	*	GU187555	*
 N	*	194	*	*	*	*	*	JN998125	*
-N	*	206	*	*	*	*	*	HQ650635	*
-N	*	250	*	*	*	*	*	AY789363	*
+N	*	189	*	*	*	*	*	HQ414538	*
+N	*	157	*	*	*	*	*	DQ241463	*
 N	*	197	*	*	*	*	*	EU149807	*
+N	*	156	*	*	*	*	*	AY618669	*
+N	*	196	*	*	*	*	*	EU107257	*
 N	*	218	*	*	*	*	*	GU138865	*
-D	2233	2	*	*	*	*	92.7	FR716677	*
-D	4019	2	*	*	*	*	95.8	AF462432	*
-D	4280	2	*	*	*	*	90.8	AM159634	*
+N	*	229	*	*	*	*	*	HQ599592	*
+D	3966	2	*	*	*	*	94.7	AY999136	*

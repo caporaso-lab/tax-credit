@@ -1,2 +1,2 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	1	0	rdp	0.9	DQ536501	Root	Root;Chytridiomycota	match	1
+F1-REF	1	0	rdp	0.9	DQ530224	Root;Basidiomycota	Root;Ascomycota	overclassification	1

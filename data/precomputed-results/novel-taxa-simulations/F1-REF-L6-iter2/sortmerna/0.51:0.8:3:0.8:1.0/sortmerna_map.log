@@ -1,13 +1,13 @@
- Fri Nov 18 11:54:50 2016
+ Mon Nov 28 12:05:43 2016
 
- Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L6-iter2/ref_seqs.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpyvpItA/ref_seqs -e 1.0 --aligned /Users/nbokulich/Desktop/projects/novel-taxa-simulations/F1-REF-L6-iter2/F1-REF-L6-iter2/sortmerna/0.51:0.8:3:0.8:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L6-iter2/query.fasta -v --best 3 
- Process pid = 51291
+ Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L6-iter2/ref_seqs.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpGFUbYo/ref_seqs -e 1.0 --aligned /Users/nbokulich/Desktop/projects/novel-taxa-simulations/F1-REF-L6-iter2/F1-REF-L6-iter2/sortmerna/0.51:0.8:3:0.8:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L6-iter2/query.fasta -v --best 3 
+ Process pid = 94668
  Parameters summary:
-    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpyvpItA/ref_seqs
+    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpGFUbYo/ref_seqs
      Seed length = 18
      Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
-     Gumbel lambda = 0.616005
-     Gumbel K = 0.340745
+     Gumbel lambda = 0.615583
+     Gumbel K = 0.340399
      Minimal SW score based on E-value = 42
     Number of seeds = 2
     Edges = 4 (as integer)
@@ -21,11 +21,11 @@
     Reads file = /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L6-iter2/query.fasta
 
  Results:
-    Total reads = 2431
-    Total reads passing E-value threshold = 2420 (99.55%)
-    Total reads failing E-value threshold = 11 (0.45%)
+    Total reads = 2400
+    Total reads passing E-value threshold = 2387 (99.46%)
+    Total reads failing E-value threshold = 13 (0.54%)
     Minimum read length = 80
     Maximum read length = 250
-    Mean read length = 210
+    Mean read length = 209
  By database:
-    /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L6-iter2/ref_seqs.fasta		99.55%
+    /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L6-iter2/ref_seqs.fasta		99.46%

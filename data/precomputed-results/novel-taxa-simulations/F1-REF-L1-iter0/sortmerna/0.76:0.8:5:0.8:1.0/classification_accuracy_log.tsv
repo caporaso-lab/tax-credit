@@ -1,2 +1,2 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	1	0	sortmerna	0.76:0.8:5:0.8:1.0	DQ536501	Unassigned	Root;Chytridiomycota	misclassification	0
+F1-REF	1	0	sortmerna	0.76:0.8:5:0.8:1.0	DQ530224	Root	Root;Ascomycota	match	1

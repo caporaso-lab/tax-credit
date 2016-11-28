@@ -6,11 +6,11 @@ min_consensus_fraction:1.0
 reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter1/ref_seqs.fasta
 similarity:0.8
 unassignable_label:Unassigned
-Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxfbyrgL
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxbMvNCf
 
 .uc file contents:
 
-# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter1/query.fasta --id 0.8 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter1/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_fxvDBK.uc
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter1/query.fasta --id 0.8 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter1/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_LUAlBI.uc
 # version=1.2.22
 # Tab-separated fields:
 # 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
@@ -18,22 +18,20 @@ Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxfbyrgL
 # For C and D types, PctId is average id with seed.
 # QueryStart and SeedStart are zero-based relative to start of sequence.
 # If minus strand, SeedStart is relative to reverse-complemented seed.
-N	*	250	*	*	*	*	*	539567	*
-L	610	250	*	*	*	*	*	543364	*
-H	610	250	81.2	+	0	0	250M	358757	543364
-N	*	250	*	*	*	*	*	141021	*
-L	3117	250	*	*	*	*	*	2140546	*
-H	3117	250	80.0	+	0	0	250M	1875	2140546
-L	1037	250	*	*	*	*	*	332523	*
-H	1037	250	80.0	+	0	0	250M	1138255	332523
-N	*	250	*	*	*	*	*	2806523	*
-L	2549	250	*	*	*	*	*	23520	*
-H	2549	250	83.2	+	0	0	117MI132MD	4368159	23520
-N	*	250	*	*	*	*	*	4459671	*
-N	*	250	*	*	*	*	*	125020	*
-N	*	250	*	*	*	*	*	47778	*
+L	596	250	*	*	*	*	*	342612	*
+H	596	250	83.2	+	0	0	250M	920852	342612
+N	*	250	*	*	*	*	*	358757	*
+N	*	250	*	*	*	*	*	313305	*
+N	*	250	*	*	*	*	*	110879	*
+N	*	250	*	*	*	*	*	15593	*
+L	1921	250	*	*	*	*	*	2140546	*
+H	1921	250	80.0	+	0	0	250M	1875	2140546
+L	970	250	*	*	*	*	*	253241	*
+H	970	250	80.4	+	0	0	250M	811996	253241
+L	234	250	*	*	*	*	*	571805	*
+H	234	250	81.2	+	0	0	250M	675678	571805
 N	*	250	*	*	*	*	*	692586	*
-D	610	2	*	*	*	*	81.2	543364	*
-D	1037	2	*	*	*	*	80.0	332523	*
-D	2549	2	*	*	*	*	83.2	23520	*
-D	3117	2	*	*	*	*	80.0	2140546	*
+D	234	2	*	*	*	*	81.2	571805	*
+D	596	2	*	*	*	*	83.2	342612	*
+D	970	2	*	*	*	*	80.4	253241	*
+D	1921	2	*	*	*	*	80.0	2140546	*

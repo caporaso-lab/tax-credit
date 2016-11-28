@@ -29,6 +29,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import wilcoxon
 
+
 def get_sample_to_top_params(df, metric):
     """ Identify the top-performing methods for a given metric
 
@@ -57,17 +58,22 @@ def get_sample_to_top_params(df, metric):
             dataset_sid_results = dataset_df[dataset_df.SampleID == sid]
             current_results = {}
             for method in sorted_df.Method.unique():
-                method_results = dataset_sid_results[dataset_sid_results.Method == method]
+                method_results = dataset_sid_results[\
+                                          dataset_sid_results.Method == method]
                 max_metric_value = method_results[metric].max()
                 mad_metric_value = method_results[metric].mad()
-                tp = method_results[method_results[metric] >= (max_metric_value - mad_metric_value)]
+                tp = method_results[method_results[metric] >= (\
+                                          max_metric_value - mad_metric_value)]
                 current_results[method] = list(tp.Parameters)
             result[(dataset, sid)] = current_results
     result = pd.DataFrame(result).T
     return result
 
-def parameter_comparisons(df, method, metrics=['Precision', 'Recall', 'F-measure', 'Pearson r', 'Spearman r']):
-    """ Count the number of times each parameter combination achieves the top score
+
+def parameter_comparisons(df, method, metrics=['Precision', 'Recall',
+                          'F-measure', 'Pearson r', 'Spearman r']):
+    """ Count the number of times each parameter combination achieves the top
+    score
 
     Parameters
     ----------
@@ -81,7 +87,8 @@ def parameter_comparisons(df, method, metrics=['Precision', 'Recall', 'F-measure
      Rows: Parameter combination
      Cols: metrics, Mean
      Values: Mean: average value of all other columns in row; metrics: count of
-      times a parameter combination achieved the best score for the given metric
+      times a parameter combination achieved the best score for the given
+      metric
     """
     result = {}
     for metric in metrics:
@@ -96,8 +103,10 @@ def parameter_comparisons(df, method, metrics=['Precision', 'Recall', 'F-measure
     result = result.sort_values(by=metrics[-1], ascending=False)
     return result
 
+
 def get_sample_to_top_scores(df, metric, method_param):
-    """Identify the score that all method_param combinations achieved for metric
+    """Identify the score that all method_param combinations achieved for
+    metric
 
     Parameters
     ----------
@@ -129,8 +138,10 @@ def get_sample_to_top_scores(df, metric, method_param):
             dataset_sid_results = dataset_df[dataset_df.SampleID == sid]
             current_results = {}
             for method in sorted_df.Method.unique():
-                method_results = dataset_sid_results[dataset_sid_results.Method == method]
-                mp_results = method_results[method_results.Parameters == method_param[method]]
+                method_results = dataset_sid_results[\
+                                          dataset_sid_results.Method == method]
+                mp_results = method_results[method_results.Parameters\
+                                                       == method_param[method]]
                 max_metric_value = mp_results[metric].max()
                 current_results[method] = max_metric_value
             top_score = max(current_results.values())
@@ -139,17 +150,18 @@ def get_sample_to_top_scores(df, metric, method_param):
     results = pd.DataFrame(results).T
     return results
 
+
 def performance_rank_comparisons(df, metric, method_param):
     #TODO: remove notebook imports of this function
     # Deleted this function - it's imported but not used anywhere.
     raise NotImplementedError
 
 
-
 def find_and_process_result_tables(start_dir,
                                    biom_processor=abspath,
                                    filename_pattern='table*biom'):
-    """ given a start_dir, return list of tuples describing the table and containing the processed table
+    """ given a start_dir, return list of tuples describing the table and
+    containing the processed table
 
          start_dir: top-level directory to use when starting the walk
          biom_processor: takes a relative path to a biom file and does
@@ -160,7 +172,8 @@ def find_and_process_result_tables(start_dir,
         filename_pattern: pattern to use when matching filenames, can contain
          globbable (i.e., bash-style) wildcards (default: "table*biom")
 
-        results = [(data-set-id, reference-id, method-id, parameters-id, biom_processor(table_fp)),
+        results = [(data-set-id, reference-id, method-id, parameters-id,
+        biom_processor(table_fp)),
                    ...
                   ]
     """
@@ -173,14 +186,17 @@ def find_and_process_result_tables(start_dir,
         reference_dir, method_id = split(method_dir)
         dataset_dir, reference_id = split(reference_dir)
         _, dataset_id = split(dataset_dir)
-        results.append((dataset_id, reference_id, method_id, param_id, biom_processor(table_fp)))
+        results.append((dataset_id, reference_id, method_id, param_id,
+                        biom_processor(table_fp)))
     return results
+
 
 def find_and_process_expected_tables(start_dir,
                                      biom_processor=abspath,
-                                     filename_pattern='table.L%d-taxa.biom',
+                                     filename_pattern='table.L{0}-taxa.biom',
                                      level=6):
-    """ given a start_dir, return list of tuples describing the table and containing the processed table
+    """ given a start_dir, return list of tuples describing the table and
+    containing the processed table
 
          start_dir: top-level directory to use when starting the walk
          biom_processor: takes a relative path to a biom file and does
@@ -195,7 +211,7 @@ def find_and_process_expected_tables(start_dir,
                    ...
                   ]
     """
-    filename = filename_pattern % level
+    filename = filename_pattern.format(level)
     table_fps = glob(join(start_dir,'*','*','expected', filename))
     results = []
     for table_fp in table_fps:
@@ -206,11 +222,13 @@ def find_and_process_expected_tables(start_dir,
         results.append((dataset_id, reference_id, biom_processor(table_fp)))
     return results
 
+
 def get_expected_tables_lookup(start_dir,
                                biom_processor=abspath,
-                               filename_pattern='table.L%d-taxa.biom',
+                               filename_pattern='table.L{0}-taxa.biom',
                                level=6):
-    """ given a start_dir, return list of tuples describing the expected table and containing the processed table
+    """ given a start_dir, return list of tuples describing the expected table
+    and containing the processed table
 
          start_dir: top-level directory to use when starting the walk
          biom_processor: takes a relative path to a biom file and does
@@ -229,11 +247,13 @@ def get_expected_tables_lookup(start_dir,
         results[dataset_id][reference_id] = processed_table
     return results
 
+
 def get_observed_observation_ids(table,sample_id=None):
     """ Return the set of observation ids with count > 0 in sample_id
 
         table: the biom table object to analyze
-        sample_id: the sample_id to test (default is first sample id in table.SampleIds)
+        sample_id: the sample_id to test (default is first sample id in
+        table.SampleIds)
     """
     if sample_id is None:
         sample_id = table.ids(axis="sample")[0]
@@ -250,7 +270,8 @@ def compute_prf(actual_table,
                 expected_table,
                 actual_sample_id=None,
                 expected_sample_id=None):
-    """ Compute precision, recall, and f-measure based on presence/absence of observations
+    """ Compute precision, recall, and f-measure based on presence/absence of
+    observations
 
         actual_table: table containing results achieved for query
         expected_table: table containing expected results
@@ -274,6 +295,7 @@ def compute_prf(actual_table,
 
     return p, r, f
 
+
 def get_taxonomy_collapser(level):
     """ Returns fn to pass to table.collapse
 
@@ -289,6 +311,7 @@ def get_taxonomy_collapser(level):
         result = ';'.join(levels[:level])
         return result
     return f
+
 
 def filter_table(table, min_count=0, taxonomy_level=None,
                  taxa_to_keep=None):
@@ -307,15 +330,19 @@ def filter_table(table, min_count=0, taxonomy_level=None,
         allowed_taxa = _taxa_to_keep is None or \
                         id_.startswith(_taxa_to_keep) or \
                         (metadata is not None and 'taxonomy' in metadata and
-                         ';'.join(metadata['taxonomy']).startswith(_taxa_to_keep))
+                         ';'.join(metadata['taxonomy']).startswith(\
+                                                                _taxa_to_keep))
         # the count of this observation is at least min_count
         sufficient_count = data_vector.sum() >= min_count
         return enough_levels and sufficient_count and allowed_taxa
     return table.filter(f, axis='observation', inplace=False)
 
+
 def compute_mock_results(result_tables, expected_table_lookup,
-                         taxonomy_level=6, min_count=10, taxa_to_keep=None, new_param_ids={}):
-    """ Compute precision, recall, and f-measure for result_tables at taxonomy_level
+                         taxonomy_level=6, min_count=10, taxa_to_keep=None,
+                         new_param_ids={}):
+    """ Compute precision, recall, and f-measure for result_tables at
+    taxonomy_level
 
         result_tables: 2d list of tables to be compared to expected tables,
          where the data in the inner list is:
@@ -338,36 +365,44 @@ def compute_mock_results(result_tables, expected_table_lookup,
                  'vsearch': ['min consensus fraction', 'similarity',
                              'max accepts']}
     param_ids.update(new_param_ids)
-    for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
+    for dataset_id, reference_id, method_id, params, actual_table_fp\
+        in result_tables:
         ## parse the expected table (unless taxonomy_level is specified, this should be
         ## collapsed on level 6 taxonomy)
         try:
             expected_table_fp = expected_table_lookup[dataset_id][reference_id]
         except KeyError:
-            raise KeyError("Can't find expected table for (%s, %s)." % (dataset_id, reference_id))
+            raise KeyError("Can't find expected table for \
+                            ({0}, {1}).".format(dataset_id, reference_id))
 
         try:
             expected_table = load_table(expected_table_fp)
         except ValueError:
-            raise ValueError("Couldn't parse BIOM table: %s" % expected_table_fp)
+            raise ValueError("Couldn't parse BIOM table: \
+                             {0}".format(expected_table_fp))
 
         if taxa_to_keep is not None:
-            expected_table = filter_table(expected_table, taxa_to_keep=taxa_to_keep)
+            expected_table = filter_table(expected_table,
+                                          taxa_to_keep=taxa_to_keep)
 
-        ## parse the actual table and collapse it at the specified taxonomic level
+        ## parse the actual table and collapse it at the specified
+        ## taxonomic level
         try:
             actual_table = load_table(actual_table_fp)
         except ValueError:
-            raise ValueError("Couldn't parse BIOM table: %s" % actual_table_fp)
+            raise ValueError("Couldn't parse BIOM table:\
+                             {0}".format(actual_table_fp))
 
         try:
-            actual_table = filter_table(actual_table, min_count, taxonomy_level, taxa_to_keep)
+            actual_table = filter_table(actual_table, min_count,
+                                        taxonomy_level, taxa_to_keep)
         except TableException:
             # if all data is filtered out, move on to the next table
             continue
         except TypeError:
             # missing taxonomic information in the table
-            print("Missing taxonomic information in table %s, skipping." % (actual_table_fp))
+            print("Missing taxonomic information in table {0},\
+                   skipping.".format(actual_table_fp))
             continue
 
         if actual_table.is_empty():
@@ -380,7 +415,8 @@ def compute_mock_results(result_tables, expected_table_lookup,
                                                  axis='observation',
                                                  min_group_size=1)
         except TableException:
-            raise TableException("Failure to collapse taxonomy for table at: %s" % (actual_table_fp))
+            raise TableException("Failure to collapse taxonomy for table at: \
+                                 {0}".format(actual_table_fp))
 
 
         for sample_id in actual_table.ids(axis="sample"):
@@ -401,8 +437,9 @@ def compute_mock_results(result_tables, expected_table_lookup,
             pearson_r, pearson_p = pearsonr(actual_vector, expected_vector)
             spearman_r, spearman_p = spearmanr(actual_vector, expected_vector)
 
-            results.append((dataset_id, sample_id, reference_id, method_id, params, p, r, f,
-                            pearson_r, pearson_p, spearman_r, spearman_p))
+            results.append((dataset_id, sample_id, reference_id, method_id,
+                            params, p, r, f, pearson_r, pearson_p, spearman_r,
+                            spearman_p))
 
             param_data[(method_id, params)] = {}
             for k, v in zip(param_ids[method_id], params.split(':')):
@@ -415,12 +452,15 @@ def compute_mock_results(result_tables, expected_table_lookup,
                 param_data[(method_id, params)][k] = v_
 
     param_df = pd.DataFrame(param_data)
-    result = pd.DataFrame(results, columns=["Dataset", "SampleID", "Reference", "Method",
-                                           "Parameters", "Precision", "Recall",
-                                           "F-measure", "Pearson r", "Pearson p",
-                                           "Spearman r", "Spearman p"])
-    result = result.merge(param_df.T, left_on=('Method', 'Parameters'), right_index=True)
+    result = pd.DataFrame(results, columns=["Dataset", "SampleID", "Reference",
+                                            "Method", "Parameters",
+                                            "Precision", "Recall", "F-measure",
+                                            "Pearson r", "Pearson p",
+                                            "Spearman r", "Spearman p"])
+    result = result.merge(param_df.T, left_on=('Method', 'Parameters'),
+                          right_index=True)
     return result
+
 
 def _is_first(df):
     """used to filter df to contain only one row per method"""
@@ -430,6 +470,7 @@ def _is_first(df):
         result.append(e not in observed)
         observed.add(e)
     return result
+
 
 def method_by_dataset(df, dataset, sort_field, display_fields):
     """ Generate summary of best parameter set for each method for single df
@@ -447,16 +488,21 @@ method_by_dataset_a2 = partial(method_by_dataset, sort_field="Pearson r",
                                display_fields=("Method", "Pearson r",
                                                "Spearman r"))
 
-def method_by_dataset_iterations(df, dataset, parameters, sort_field, display_fields, num_iters=5):
-    """ Compute mean performance for given method, parameter combinations across simulated data set iterations
+
+def method_by_dataset_iterations(df, dataset, parameters, sort_field,
+                                 display_fields, num_iters=5):
+    """ Compute mean performance for given method, parameter combinations
+    across simulated data set iterations
     """
-    dataset_ids = ['%s-iter%d' % (dataset, iter_) for iter_ in range(num_iters)]
+    dataset_ids = ['{0}-iter{1}'.format(dataset, iter_)\
+                   for iter_ in range(num_iters)]
     result = df.loc[df['Dataset'].isin(dataset_ids)]
     m = result['Method'].isin([p[0] for p in parameters])
     p = result['Parameters'].isin([p[1] for p in parameters])
     result = result.loc[np.logical_and(m, p)]
     result = result.ix[:,display_fields].groupby('Method')
     return result.mean().sort_values(by=sort_field, ascending=False)
+
 
 def get_actual_and_expected_vectors(actual_table,
                                     expected_table,
@@ -485,7 +531,8 @@ def get_actual_and_expected_vectors(actual_table,
     if expected_sample_id is None:
         expected_sample_idx = 0
     else:
-        expected_sample_idx = expected_table.index(expected_sample_id, axis="sample")
+        expected_sample_idx = expected_table.index(expected_sample_id,
+                                                   axis="sample")
 
     actual_vector = []
     expected_vector = []
@@ -503,7 +550,8 @@ def get_actual_and_expected_vectors(actual_table,
         except UnknownIDError:
             expected_value = 0.0
         else:
-            expected_value = expected_table[expected_obs_idx,expected_sample_idx]
+            expected_value = expected_table[expected_obs_idx,
+                                            expected_sample_idx]
         expected_vector.append(expected_value)
 
     return actual_vector, expected_vector
@@ -528,8 +576,8 @@ def distance_matrix_from_table(table, metric='braycurtis'):
 
         Examples
         --------
-        Create a biom Table object containing 10 OTUs and 4 samples. This code was
-        pulled from http://biom-format.org/documentation/table_objects.html
+        Create a biom Table object containing 10 OTUs and 4 samples. This code
+        was pulled from http://biom-format.org/documentation/table_objects.html
 
         >>> import numpy as np
         >>> from biom.table import Table
@@ -580,10 +628,10 @@ def distance_matrix_from_table(table, metric='braycurtis'):
          [ 1.  1.  0.  1.]
          [ 1.  1.  1.  0.]]
 
-        Determine if the resulting distance matrices are significantly correlated
-        by computing the Mantel correlation between them. (Including the p-value
-        won't work for doc testing as it's Monte Carlo-based, so exact matching
-        will fail.)
+        Determine if the resulting distance matrices are significantly
+        correlated by computing the Mantel correlation between them. (Including
+        the p-value won't work for doc testing as it's Monte Carlo-based, so
+        exact matching will fail.)
 
         >>> from skbio.math.stats.distance import mantel
         >>> print mantel(j_dm, bc_dm)
@@ -612,6 +660,7 @@ def distance_matrix_from_table(table, metric='braycurtis'):
             dm[i, j] = dm[j, i] = pdist([v1, v2], metric)
     return DistanceMatrix(dm, sample_ids)
 
+
 def compute_mantel(result_tables,
                    taxonomy_level=6,
                    random_trials=999):
@@ -627,12 +676,14 @@ def compute_mantel(result_tables,
     collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
     results = []
 
-    for dataset_id, reference_id, method_id, params, actual_table_fp in result_tables:
+    for dataset_id, reference_id, method_id, params, actual_table_fp\
+    in result_tables:
         ## load the table and collapse it at the specified taxonomic level
         try:
             full_table = load_table(actual_table_fp)
         except ValueError:
-            raise ValueError("Couldn't parse BIOM table: %s" % actual_table_fp)
+            raise ValueError("Couldn't parse BIOM table:\
+                             {0}".format(actual_table_fp))
         collapsed_table = full_table.collapse(collapse_by_taxonomy,
                                               axis='observation',
                                               min_group_size=1)
@@ -645,10 +696,13 @@ def compute_mantel(result_tables,
         full_dm = distance_matrix_from_table(full_table)
         mantel_r, p = mantel(collapsed_dm, full_dm)
 
-        results.append((dataset_id, reference_id, method_id, params, mantel_r, p))
+        results.append((dataset_id, reference_id, method_id, params,
+                        mantel_r, p))
 
     return pd.DataFrame(results, columns=["Dataset", "Reference", "Method",
-                                           "Parameters", "Mantel r", "Mantel p"])
+                                           "Parameters", "Mantel r",
+                                           "Mantel p"])
+
 
 def generate_pr_scatter_plots(query_prf,
                               subject_prf,
@@ -656,7 +710,8 @@ def generate_pr_scatter_plots(query_prf,
                               subject_color="r",
                               x_label="Precision",
                               y_label="Recall"):
-    """ Generate scatter plot of precision versus recall for query and subject results
+    """ Generate scatter plot of precision versus recall for query and subject
+    results
 
         query_prf : pandas.DataFrame
          Precision, recall, and f-measure values as returned from compute_prfs
@@ -695,6 +750,7 @@ def generate_pr_scatter_plots(query_prf,
     xlabel(x_label)
     ylabel(y_label)
 
+
 def boxplot_from_data_frame(df,
                             group_by,
                             metric,
@@ -722,6 +778,7 @@ def boxplot_from_data_frame(df,
     ax.set_xticklabels(x_tick_labels, rotation=x_tick_label_rotation)
     ax
 
+
 def heatmap_from_data_frame(df, metric, vmin=0, vmax=1, cmap='Reds'):
     """Generate heatmap of specified metric by (method, parameter) x dataset
 
@@ -743,7 +800,8 @@ def heatmap_from_data_frame(df, metric, vmin=0, vmax=1, cmap='Reds'):
 
     # Based on SO answer: http://stackoverflow.com/a/18238680
     fig = plt.figure(figsize=(width, height))
-    ax = heatmap(df, cmap=cmap, linewidths=0, square=True, vmin=vmin, vmax=vmax)
+    ax = heatmap(df, cmap=cmap, linewidths=0, square=True, vmin=vmin,
+                 vmax=vmax)
 
     ax.set_title(metric, fontsize=20)
 

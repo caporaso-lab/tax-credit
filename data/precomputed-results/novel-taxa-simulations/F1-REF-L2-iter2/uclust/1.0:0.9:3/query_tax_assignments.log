@@ -6,11 +6,11 @@ min_consensus_fraction:1.0
 reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter2/ref_seqs.fasta
 similarity:0.9
 unassignable_label:Unassigned
-Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxYfY9Gk
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxRZRSh5
 
 .uc file contents:
 
-# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter2/query.fasta --id 0.9 --rev --maxaccepts 3 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter2/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_of4s4z.uc
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter2/query.fasta --id 0.9 --rev --maxaccepts 3 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter2/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_Y6B74X.uc
 # version=1.2.22
 # Tab-separated fields:
 # 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
@@ -18,14 +18,10 @@ Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxYfY9Gk
 # For C and D types, PctId is average id with seed.
 # QueryStart and SeedStart are zero-based relative to start of sequence.
 # If minus strand, SeedStart is relative to reverse-complemented seed.
-N	*	187	*	*	*	*	*	AF178417	*
-N	*	152	*	*	*	*	*	AB260936	*
-N	*	250	*	*	*	*	*	FJ167356	*
-N	*	126	*	*	*	*	*	DQ831010	*
-N	*	210	*	*	*	*	*	DQ681328	*
-N	*	115	*	*	*	*	*	DQ827707	*
+N	*	206	*	*	*	*	*	AF289074	*
+N	*	144	*	*	*	*	*	DQ521585	*
+N	*	222	*	*	*	*	*	AJ716305	*
 N	*	181	*	*	*	*	*	DQ832329	*
-N	*	211	*	*	*	*	*	L27658	*
-N	*	248	*	*	*	*	*	FJ171861	*
-N	*	99	*	*	*	*	*	JF836021	*
-N	*	124	*	*	*	*	*	JN882326	*
+L	8049	150	*	*	*	*	*	EU573353	*
+H	8049	148	93.9	+	0	0	4I9M2D27MI19MD90M	AB054050	EU573353
+D	8049	2	*	*	*	*	93.9	EU573353	*

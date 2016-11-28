@@ -2,7 +2,7 @@
 
 
 # ----------------------------------------------------------------------------
-# Copyright (c) 2014--, tax-credit development team.
+# Copyright (c) 2016--, tax-credit development team.
 #
 # Distributed under the terms of the Modified BSD License.
 #
@@ -409,24 +409,45 @@ def evaluate_novel_taxa_classification(obs_taxa, exp_taxa, level):
     # if observed has same assignment depth as expected and top level matches,
     # ==match. len(exp_taxa) - 1 because exp_taxa is actual taxonomy string,
     # L-1 is the actual expected taxonomy string
-    if len(obs_taxa) == len(exp_taxa) - 1 and \
-    obs_taxa[level - 1].strip() == exp_taxa[level - 1].strip():
+    if len(obs_taxa) == len(exp_taxa) - 1 \
+    and obs_taxa[level - 1].strip() == exp_taxa[level - 1].strip():
         result = 'match'
     # if deeper and assignemnt at L-1 is correct, count as overclassification
-    elif len(obs_taxa) >= len(exp_taxa) and \
-    obs_taxa[level - 1].strip() == exp_taxa[level - 1].strip():
+    elif len(obs_taxa) >= len(exp_taxa) \
+    and obs_taxa[level - 1].strip() == exp_taxa[level - 1].strip():
         result = 'overclassification'
     # if shallower and top-level assign correct, count as underclassification
-    elif len(obs_taxa) < len(exp_taxa) - 1 and \
-    obs_taxa[len(obs_taxa)-1].strip() == exp_taxa[len(obs_taxa)-1].strip():
+    elif len(obs_taxa) < len(exp_taxa) - 1 \
+    and obs_taxa[len(obs_taxa)-1].strip() == exp_taxa[len(obs_taxa)-1].strip()\
+    or obs_taxa[0] == 'Unclassified' or obs_taxa[0] == 'Unassigned':
         result = 'underclassification'
     # Otherwise, count as misclassification
     else:
         result = 'misclassification'
     return result
 
+
+def evaluate_cross_validated_classification(obs_taxa, exp_taxa):
+    '''Given an observed and actual taxonomy string corresponding to a cross-
+    validated simulated community, score as match, overclassification,
+    underclassification, or misclassification'''
+    # if  observed = expected, match
+    if len(obs_taxa) == len(exp_taxa)\
+    and obs_taxa[len(obs_taxa)-1].strip() == exp_taxa[len(obs_taxa)-1].strip():
+        result = 'match'
+    # if shallower and top-level assign correct, count as underclassification
+    elif len(obs_taxa) < len(exp_taxa) \
+    and obs_taxa[len(obs_taxa)-1].strip() == exp_taxa[len(obs_taxa)-1].strip()\
+    or obs_taxa[0] == 'Unclassified' or obs_taxa[0] == 'Unassigned':
+        result = 'underclassification'
+    # Otherwise, count as misclassification
+    else:
+        result = 'misclassification'
+    return result
+
+
 def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
-                                         summary_fp):
+                                         summary_fp, test_type='novel-taxa'):
     '''Input glob of novel taxa results, receive a summary of accuracy results.
     results_dirs = list or glob of novel taxa observed results in format:
                     precomputed_results_dir/dataset_id/method_id/params_id/
@@ -434,6 +455,7 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
                     format:
                     expected_results_dir/dataset_id/method_id/params_id/
     summary_fp = filepath to contain summary of results
+    test_type = 'novel-taxa' or 'cross-validated'
 
     Returns results as df, in addition to printing summary_fp
     '''
@@ -442,9 +464,14 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
     for results_dir in results_dirs:
         fields = results_dir.split(sep)
         dataset_id, method_id, params_id = fields[-3], fields[-2], fields[-1]
-        index = dataset_id.split('-L')[0]
-        level = int(dataset_id.split('-')[2].lstrip('L').strip())
-        iteration = dataset_id.split('iter')[1]
+
+        if test_type == 'novel-taxa':
+            index = dataset_id.split('-L')[0]
+            level = int(dataset_id.split('-')[2].lstrip('L').strip())
+            iteration = dataset_id.split('iter')[1]
+        elif test_type == 'cross-validated':
+            index, iteration = dataset_id.split('-iter')
+            level = 6
 
         obs_taxa_fp = join(results_dir, 'query_tax_assignments.txt')
         exp_taxa_fp = join(expected_results_dir, dataset_id, 'query_taxa.tsv')
@@ -464,7 +491,6 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
             for line in observations:
                 if line.startswith("#"):
                     continue
-                record_counter.update({'line_count': 1})
 
                 obs_id = line.split('\t')[0]
                 obs_taxonomy = line.split('\t')[1]
@@ -479,10 +505,17 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
                 mismatch_level_list[mismatch_level] += 1
 
                 # evaluate novel taxa classification
-                result = evaluate_novel_taxa_classification(obs_taxa, exp_taxa,
-                                                            level)
-                record_counter.update({result: 1})
+                if test_type == 'novel-taxa':
+                    result = evaluate_novel_taxa_classification(obs_taxa,
+                                                                exp_taxa,
+                                                                level)
 
+                elif test_type == 'cross-validated':
+                    result =  evaluate_cross_validated_classification(obs_taxa,
+                                                                      exp_taxa)
+
+                record_counter.update({'line_count': 1})
+                record_counter.update({result: 1})
                 log.append('\t'.join(map(str, [index, level, iteration,
                             method_id, params_id, obs_id, obs_taxonomy,
                             exp_taxonomy, result, mismatch_level])))
@@ -500,9 +533,9 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
         misclassification_ratio = record_counter['misclassification'] / count
 
         results.append((index, level, iteration, method_id,
-                        params_id, match_ratio, overclassification_ratio,
-                        underclassification_ratio, misclassification_ratio,
-                        mismatch_level_list))
+                        params_id, match_ratio,
+                        overclassification_ratio, underclassification_ratio,
+                        misclassification_ratio, mismatch_level_list))
 
     # send to dataframe, write to summary_fp
     result = pd.DataFrame(results, columns=["Dataset", "level", "iteration",
@@ -536,3 +569,56 @@ def pointplot_from_data_frame(df, x_axis, y_vars, group_by, color_by,
                              palette=color_pallette)
         grid = grid.map(sns.pointplot, x_axis, y_var, marker="o", ms=4)
     sns.plt.show()
+
+
+def per_level_accuracy_pointplot(df, group_by, color_by,
+                                 color_pallette, style_theme="whitegrid",
+                                 plot_type=sns.pointplot):
+    '''Generate seaborn pointplot from pandas dataframe, showing match ratio
+    at each taxonomic level.
+    df = pandas dataframe
+    x_axis = x axis variable
+    y_vars = LIST of variables to use for plotting y axis
+    group_by = df variable to use for separating plot panels with FacetGrid
+    color_by = df variable on which to plot and color subgroups within data
+    color_pallette = color palette to use for plotting. Either a dict mapping
+                     color_by groups to colors, or a named seaborn palette.
+    style_theme = seaborn plot style theme
+    plot_type = allows switching to other plot types, but this is untested
+    '''
+    results = []
+
+    for index, data in df.iterrows():
+        # If using precomputed results, mismatch_level_list is imported as
+        # string, hence must be converted back to list of integers.
+        if isinstance(data['mismatch_level_list'], str):
+            mismatch_list = list(map(int,
+                           data['mismatch_level_list'].strip('[]').split(',')))
+        else:
+            mismatch_list = data['mismatch_level_list']
+        line_count = sum(mismatch_list)
+        for level in range(1, 7):
+            cumulative_mismatches = sum(mismatch_list[0:level+1])
+            if cumulative_mismatches < line_count:
+                match_ratio = (line_count - cumulative_mismatches) / line_count
+            else:
+                match_ratio = 0
+            results.append((data['Dataset'],
+                            level,
+                            data['iteration'],
+                            data['Method'],
+                            data['Parameters'],
+                            match_ratio
+                           ))
+
+    result = pd.DataFrame(results, columns=["Dataset",
+                                            "level",
+                                            "iteration",
+                                            "Method",
+                                            "Parameters",
+                                            "match_ratio"
+                                            ])
+
+    pointplot_from_data_frame(result, "level", ["match_ratio"],
+                              group_by=group_by, color_by=color_by,
+                              color_pallette=color_pallette)

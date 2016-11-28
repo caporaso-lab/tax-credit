@@ -1,10 +1,12 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	0	uclust	0.51:0.8:3	838467	Unassigned	k__Bacteria; p__Fusobacteria	misclassification	0
-B1-REF	1	0	uclust	0.51:0.8:3	313305	Unassigned	k__Bacteria; p__Nitrospirae	misclassification	0
-B1-REF	1	0	uclust	0.51:0.8:3	3585	Unassigned	k__Bacteria; p__Fibrobacteres	misclassification	0
-B1-REF	1	0	uclust	0.51:0.8:3	278595	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales	k__Bacteria; p__Elusimicrobia	overclassification	1
-B1-REF	1	0	uclust	0.51:0.8:3	1277	Unassigned	k__Bacteria; p__Chloroflexi	misclassification	0
-B1-REF	1	0	uclust	0.51:0.8:3	3772088	Unassigned	k__Bacteria; p__Planctomycetes	misclassification	0
-B1-REF	1	0	uclust	0.51:0.8:3	111022	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhodobacterales; f__Rhodobacteraceae	k__Bacteria; p__Deferribacteres	overclassification	1
-B1-REF	1	0	uclust	0.51:0.8:3	110879	Unassigned	k__Bacteria; p__Cyanobacteria	misclassification	0
-B1-REF	1	0	uclust	0.51:0.8:3	742260	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Peptococcaceae; g__Desulfosporosinus; s__meridiei	k__Bacteria; p__Acidobacteria	overclassification	1
+B1-REF	1	0	uclust	0.51:0.8:3	47778	Unassigned	k__Archaea; p__Crenarchaeota	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	141021	Unassigned	k__Bacteria; p__Chlorobi	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	4456787	Unassigned	k__Bacteria; p__Chlamydiae	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	1277	Unassigned	k__Bacteria; p__Chloroflexi	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	1138255	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Chromatiales; f__Ectothiorhodospiraceae; g__Halorhodospira; s__halophila	k__Bacteria; p__Aquificae	overclassification	1
+B1-REF	1	0	uclust	0.51:0.8:3	4459671	Unassigned	k__Bacteria; p__Spirochaetes	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	742260	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfobacterales; f__Desulfobacteraceae; g__Desulfococcus	k__Bacteria; p__Acidobacteria	overclassification	1
+B1-REF	1	0	uclust	0.51:0.8:3	125020	Unassigned	k__Archaea; p__Nanoarchaeota	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	2136916	Unassigned	k__Bacteria; p__Lentisphaerae	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	3002161	k__Bacteria; p__Tenericutes; c__Mollicutes; o__Acholeplasmatales; f__Acholeplasmataceae; g__Acholeplasma	k__Bacteria; p__Firmicutes	overclassification	1
+B1-REF	1	0	uclust	0.51:0.8:3	4368159	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Chromatiales; f__Ectothiorhodospiraceae; g__Halorhodospira; s__halophila	k__Bacteria; p__Synergistetes	overclassification	1
