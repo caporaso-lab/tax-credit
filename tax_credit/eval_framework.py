@@ -30,7 +30,8 @@ import matplotlib.pyplot as plt
 from scipy.stats import wilcoxon
 
 
-def get_sample_to_top_params(df, metric):
+def get_sample_to_top_params(df, metric, sample_col='SampleID',
+                             method_col='Method', dataset_col='Dataset'):
     """ Identify the top-performing methods for a given metric
 
     Parameters
@@ -38,6 +39,9 @@ def get_sample_to_top_params(df, metric):
     df: pd.DataFrame
     metric: Column header defining the metric to compare parameter combinations
      with
+    sample_col: Column header defining the SampleID
+    method_col: Column header defining the method name
+    dataset_col: Column header defining the dataset name
 
     Returns
     -------
@@ -49,13 +53,13 @@ def get_sample_to_top_params(df, metric):
     """
     sorted_df = df.sort_values(by=metric, ascending=False)
     metric_idx = sorted_df.columns.get_loc(metric)
-    method_idx = sorted_df.columns.get_loc('Method')
+    method_idx = sorted_df.columns.get_loc(method_col)
     result = {}
 
-    for dataset in sorted_df.Dataset.unique():
-        dataset_df = sorted_df[sorted_df.Dataset == dataset]
-        for sid in dataset_df.SampleID.unique():
-            dataset_sid_results = dataset_df[dataset_df.SampleID == sid]
+    for dataset in sorted_df[dataset_col].unique():
+        dataset_df = sorted_df[sorted_df[dataset_col] == dataset]
+        for sid in dataset_df[sample_col].unique():
+            dataset_sid_results = dataset_df[dataset_df[sample_col] == sid]
             current_results = {}
             for method in sorted_df.Method.unique():
                 method_results = dataset_sid_results[\
@@ -71,7 +75,9 @@ def get_sample_to_top_params(df, metric):
 
 
 def parameter_comparisons(df, method, metrics=['Precision', 'Recall',
-                          'F-measure', 'Pearson r', 'Spearman r']):
+                          'F-measure', 'Pearson r', 'Spearman r'],
+                          sample_col='SampleID', method_col='Method',
+                          dataset_col='Dataset'):
     """ Count the number of times each parameter combination achieves the top
     score
 
@@ -92,7 +98,9 @@ def parameter_comparisons(df, method, metrics=['Precision', 'Recall',
     """
     result = {}
     for metric in metrics:
-        df2 = get_sample_to_top_params(df, metric)
+        df2 = get_sample_to_top_params(df, metric, sample_col=sample_col,
+                                       method_col=method_col,
+                                       dataset_col=dataset_col)
         current_result = defaultdict(int)
         for optimal_parameters in df2[method]:
             for optimal_parameter in optimal_parameters:
@@ -779,21 +787,21 @@ def boxplot_from_data_frame(df,
     ax
 
 
-def heatmap_from_data_frame(df, metric, vmin=0, vmax=1, cmap='Reds'):
+def heatmap_from_data_frame(df, metric, rows=["Method", "Parameters"],
+                            cols=["Dataset"], vmin=0, vmax=1, cmap='Reds'):
     """Generate heatmap of specified metric by (method, parameter) x dataset
 
     df: pandas.DataFrame
-
+    rows: list
+        df column names to use for categorizing heatmap rows
+    cols: list
+        df column names to use for categorizing heatmap rows
     metric: str
         metric to plot in the heatmap
 
     """
-    # there has to be a better way to build these tuples
-    tuples = list(zip(df["Method"], df["Parameters"]))
-    index = pd.MultiIndex.from_tuples(tuples=tuples,
-                                      names=["Method", "Parameters"])
-    df = df.pivot_table(index=index, columns="Dataset", values=metric)
-    df.sort()
+    df = df.pivot_table(index=rows, columns=cols, values=metric)
+    df.sort_index()
 
     height = len(df.index) * 0.35
     width = len(df.columns) * 1
@@ -805,4 +813,4 @@ def heatmap_from_data_frame(df, metric, vmin=0, vmax=1, cmap='Reds'):
 
     ax.set_title(metric, fontsize=20)
 
-    fig.show()
+    plt.show()

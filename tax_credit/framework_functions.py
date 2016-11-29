@@ -23,6 +23,9 @@ from skbio import io, DNA
 import pandas as pd
 import seaborn as sns
 from tax_credit.taxa_manipulator import *
+from scipy.stats import kruskal
+from statsmodels.sandbox.stats.multicomp import multipletests
+import numpy as np
 
 
 def parameter_sweep(data_dir, results_dir, reference_dbs,
@@ -571,9 +574,7 @@ def pointplot_from_data_frame(df, x_axis, y_vars, group_by, color_by,
     sns.plt.show()
 
 
-def per_level_accuracy_pointplot(df, group_by, color_by,
-                                 color_pallette, style_theme="whitegrid",
-                                 plot_type=sns.pointplot):
+def extract_per_level_accuracy(df, group_by):
     '''Generate seaborn pointplot from pandas dataframe, showing match ratio
     at each taxonomic level.
     df = pandas dataframe
@@ -618,7 +619,67 @@ def per_level_accuracy_pointplot(df, group_by, color_by,
                                             "Parameters",
                                             "match_ratio"
                                             ])
+    return result
 
-    pointplot_from_data_frame(result, "level", ["match_ratio"],
-                              group_by=group_by, color_by=color_by,
-                              color_pallette=color_pallette)
+
+def per_level_kruskal_wallis(df,
+                             vars,
+                             group_by,
+                             dataset_col='Dataset',
+                             level_name="level",
+                             alpha=0.05,
+                             pval_correction='fdr_bh'):
+
+    '''Test whether 2+ population medians are different.
+
+    Due to the assumption that H has a chi square distribution, the number of
+    samples in each group must not be too small. A typical rule is that each
+    sample must have at least 5 measurements.
+
+    df = pandas dataframe
+    vars = LIST of variables (df column names) to test
+    group_by = df variable to use for separating plot panels with FacetGrid
+    dataset_col = df variable to use for separating individual datasets to test
+    level_name = df variable name that specifies taxonomic level
+    alpha = level of alpha significance for test
+    pval_correction = type of p-value correction to use
+    '''
+    dataset_list = []
+    p_list = []
+    for dataset in df.Dataset.unique():
+        data_subset = df[dataset_col] == dataset
+        for var in vars:
+            dataset_list.append((dataset, var))
+            for level in range(1,7):
+                level_subset = df[level_name] == level
+
+                # group data by groups
+                group_list = []
+                for group in df[group_by].unique():
+                    group_data = df[group_by] == group
+                    group_results = df[data_subset & level_subset &\
+                                       group_data][var]
+                    group_list.append(group_results)
+
+                # kruskal-wallis tests
+                try:
+                    h_stat, p_val = kruskal(*group_list)
+                # default to p=1.0 if all values = 0
+                # this is not technically correct, from the standpoint of p-val
+                # correction below makes p-vals very slightly less significant
+                # than they should be
+                except ValueError:
+                    h_stat, p_val = ('na', 1)
+
+                p_list.append(p_val)
+
+    # correct p-values
+    rej, pval_corr, alphas, alphab = multipletests(np.array(p_list),
+                                                   alpha=0.05, method='fdr_bh')
+
+    results = [(dataset_list[i][0], dataset_list[i][1],
+                *[pval_corr[i*6+n] for n in range(0,6)])\
+                for i in range(0,len(dataset_list))]
+    result = pd.DataFrame(results, columns=["Dataset", "Variable",
+                                            *[n for n in range(1,7)]])
+    return result
