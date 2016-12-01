@@ -574,29 +574,34 @@ def pointplot_from_data_frame(df, x_axis, y_vars, group_by, color_by,
     sns.plt.show()
 
 
-def extract_per_level_accuracy(df, group_by):
-    '''Generate seaborn pointplot from pandas dataframe, showing match ratio
-    at each taxonomic level.
-    df = pandas dataframe
-    x_axis = x axis variable
-    y_vars = LIST of variables to use for plotting y axis
-    group_by = df variable to use for separating plot panels with FacetGrid
-    color_by = df variable on which to plot and color subgroups within data
-    color_pallette = color palette to use for plotting. Either a dict mapping
-                     color_by groups to colors, or a named seaborn palette.
-    style_theme = seaborn plot style theme
-    plot_type = allows switching to other plot types, but this is untested
+def extract_per_level_accuracy(df, column='mismatch_level_list'):
+    '''Generate new pandas dataframe, containing match ratios for taxonomic
+    assignments at each taxonomic level. Extracts mismatch_level_list from a
+    dataframe and splits this into separate df entries for plotting.
+
+    df: dataframe
+        pandas dataframe
+    column: str
+        column name containing mismatch_level_list or other list to be
+        separated into multiple dataframe entries for plotting.
+
+        mismatch_level_list reports mismatches at each level of taxonomic
+        assignment (8 levels).
+
+        Currently levels  are hardcoded, but could be adjusted
+        below in lines:
+            for level in range(1, 7):
     '''
     results = []
 
     for index, data in df.iterrows():
         # If using precomputed results, mismatch_level_list is imported as
         # string, hence must be converted back to list of integers.
-        if isinstance(data['mismatch_level_list'], str):
+        if isinstance(data[column], str):
             mismatch_list = list(map(int,
-                           data['mismatch_level_list'].strip('[]').split(',')))
+                           data[column].strip('[]').split(',')))
         else:
-            mismatch_list = data['mismatch_level_list']
+            mismatch_list = data[column]
         line_count = sum(mismatch_list)
         for level in range(1, 7):
             cumulative_mismatches = sum(mismatch_list[0:level+1])
