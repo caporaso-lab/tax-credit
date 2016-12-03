@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 # ----------------------------------------------------------------------------
 # Copyright (c) 2016--, taxcompare development team.
 #
@@ -9,15 +8,17 @@
 # The full license is in the file COPYING.txt, distributed with this software.
 # ----------------------------------------------------------------------------
 
-from os import path, makedirs, remove, rename
-from os.path import exists, join
+from os import path, makedirs
+from os.path import exists, join, basename
 from shutil import copyfile
 from urllib.request import urlretrieve
-
-from tax_credit.taxa_manipulator import import_taxonomy_to_dict
-
+from skbio import TreeNode
+import biom
+from biom.cli.util import write_biom_table
+import pandas as pd
 import qiime
 from qiime.plugins import feature_table, demux, dada2, alignment, phylogeny
+from tax_credit.taxa_manipulator import import_taxonomy_to_dict
 
 
 def extract_mockrobiota_dataset_metadata(mockrobiota_dir, communities):
@@ -302,8 +303,10 @@ def denoise_to_feature_table(demux_seqs,
 def seqs_to_tree(rep_seqs, community_dir, filename='phylogeny.qza'):
     '''FeatureData[Sequence] -> phylogeny
 
-    rep_seqs: representative sequences in qiime2 FeatureData[Sequence] Artifact
-    community_dir: destination directory to print results
+    rep_seqs: FeatureData[Sequence] Artifact
+        representative sequences from dada2
+    community_dir: path
+        destination directory to print results
     '''
     # aligned_seqs = alignment.methods.mafft(qiime.Artifact.load(join(\
     #                                      community_dir, 'rep_seqs.qza')))
@@ -312,3 +315,76 @@ def seqs_to_tree(rep_seqs, community_dir, filename='phylogeny.qza'):
     unrooted_tree = phylogeny.methods.fasttree(m_aln.masked_alignment)
     tree = phylogeny.methods.midpoint_root(unrooted_tree.tree)
     tree.rooted_tree.save(join(community_dir, filename))
+
+
+def transport_to_repo(communities,
+                      mock_data_dir,
+                      project_dir,
+                      sample_type_dirname='mock-community',
+                      rep_seqs_fn='rep_seqs.qza',
+                      feature_table_fn='feature_table.qza',
+                      tree_fn='phylogeny.qza',
+                      sample_md_fn='sample-metadata.tsv',
+                      biom_table_fn='feature_table.biom',
+                      fasta_fn='rep_seqs.fna',
+                      newick_fn='phylogeny.tre'):
+    '''Copy essential mock community data to tax-credit repo
+
+    communities: list
+        list of dir names in mock_data_dir, a.k.a. names of mock communities
+    mock_data_dir: path
+        source directory containing mock communities dirs of results
+    project_dir: path
+        path to tax-credit repo directory
+    sample_type_dirname: str
+        name of destination directory to contain communities dirs. The analog
+        of mock_data_dir in the repo, dirs for individual communities will be
+        located in project_dir/data/sample_type_dirname/community
+    rep_seqs_fn: str
+        name of rep seqs FeatureData[Sequence] Artifact in community_dir
+    feature_table_fn: str
+        name of rep seqs FeatureTable[Frequency] Artifact in community_dir
+    tree_fn: str
+        name of Phylogeny[Rooted] Artifact in community_dir
+    sample_md_fn: str
+        name of metadata mapping file in community_dir
+    biom_table_fn: str
+        destination name of biom table in project_dir
+    fasta_fn: str
+        destination name of fasta file in project_dir
+    newick_fn: str
+        destination name of newick format tree in project_dir
+    '''
+
+    for community in communities:
+        community_dir = join(mock_data_dir, community)
+
+        # Define base dir destination for mock community directories
+        repo_destination = join(project_dir, "data",
+                                sample_type_dirname, community)
+        if not exists(repo_destination):
+            makedirs(repo_destination)
+
+        # Files to move
+        rep_seqs = join(community_dir, rep_seqs_fn)
+        feature_table = join(community_dir, feature_table_fn)
+        tree = join(community_dir, tree_fn)
+        sample_md = join(community_dir, sample_md_fn)
+
+        biom_table_fp = join(community_dir, biom_table_fn)
+        rep_seqs_fp = join(community_dir, fasta_fn)
+        tree_fp = join(community_dir, newick_fn)
+
+        # Extract biom, tree, rep_seqs
+        biom_table = qiime.Artifact.load(feature_table).view(biom.Table)
+        write_biom_table(biom_table, 'hdf5', biom_table_fp)
+        qiime.Artifact.load(rep_seqs).view(pd.Series).to_csv(rep_seqs_fp,
+                                                             sep='\t')
+        if exists(tree):
+            qiime.Artifact.load(tree).view(TreeNode).write(tree_fp)
+
+        # Move to repo:
+        for f in [rep_seqs, feature_table, tree, sample_md,
+                     biom_table_fp, rep_seqs_fp, tree_fp]:
+            if exists(f):
+                copyfile(f, join(repo_destination, basename(f)))
