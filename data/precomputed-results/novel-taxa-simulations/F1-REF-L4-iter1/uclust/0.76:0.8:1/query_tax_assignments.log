@@ -1,0 +1,186 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L4-iter1/ref_taxa.tsv
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L4-iter1/ref_taxa.tsv
+max_accepts:1
+min_consensus_fraction:0.76
+reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L4-iter1/ref_seqs.fasta
+similarity:0.8
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxWJ_7P_
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L4-iter1/query.fasta --id 0.8 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L4-iter1/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_lVZOV2.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	206	*	*	*	*	*	AF289074	*
+L	174	221	*	*	*	*	*	EF373565	*
+H	174	238	85.5	+	0	0	106M2D19M14D29MD67M	DQ534469	EF373565
+N	*	83	*	*	*	*	*	DQ322080	*
+L	7341	250	*	*	*	*	*	GU234124	*
+H	7341	250	84.4	+	0	0	I129MD25M2I29MD15MI22MD26MD	EU525946	GU234124
+N	*	234	*	*	*	*	*	DQ482007	*
+N	*	200	*	*	*	*	*	DQ517417	*
+L	849	250	*	*	*	*	*	EU837225	*
+H	849	250	82.8	+	0	0	46M8D20M3I7MD15M2I24M3D48MD38MD20MD7M2D8M12I	DQ534567	EU837225
+N	*	250	*	*	*	*	*	AB221419	*
+N	*	137	*	*	*	*	*	DQ104734	*
+N	*	155	*	*	*	*	*	DQ789981	*
+L	6617	208	*	*	*	*	*	JQ946395	*
+H	6617	206	96.1	+	0	0	4I35MD16MD51MD16MI85M	FJ884179	JQ946395
+N	*	181	*	*	*	*	*	EU041821	*
+L	4336	194	*	*	*	*	*	AF294694	*
+H	4336	186	81.2	+	0	0	42M4I62M4I15MI16MD50M	EF200014	AF294694
+N	*	188	*	*	*	*	*	DQ826538	*
+N	*	192	*	*	*	*	*	DQ836786	*
+N	*	250	*	*	*	*	*	AB015696	*
+N	*	157	*	*	*	*	*	DQ789093	*
+N	*	213	*	*	*	*	*	AM087246	*
+N	*	224	*	*	*	*	*	AB278192	*
+N	*	218	*	*	*	*	*	EF010926	*
+N	*	245	*	*	*	*	*	AB257586	*
+N	*	250	*	*	*	*	*	AF272836	*
+N	*	197	*	*	*	*	*	FJ903327	*
+N	*	154	*	*	*	*	*	DQ873647	*
+N	*	250	*	*	*	*	*	DQ873655	*
+L	6112	199	*	*	*	*	*	EU938675	*
+H	6112	201	91.5	+	0	0	2I36M2D19MD88MD54M	EF029224	EU938675
+L	756	146	*	*	*	*	*	EU520134	*
+H	756	141	80.1	+	0	0	20M6D33MI6M5I41M3I9M2I26M	FM878021	EU520134
+L	4563	237	*	*	*	*	*	EU520249	*
+H	4563	81	97.5	+	0	0	156I81M	FJ805250	EU520249
+N	*	179	*	*	*	*	*	AB259844	*
+N	*	102	*	*	*	*	*	AJ390377	*
+N	*	250	*	*	*	*	*	EF026116	*
+N	*	174	*	*	*	*	*	EF191235	*
+N	*	126	*	*	*	*	*	EF081374	*
+N	*	250	*	*	*	*	*	EF441995	*
+N	*	205	*	*	*	*	*	AF444634	*
+N	*	227	*	*	*	*	*	AF336150	*
+N	*	180	*	*	*	*	*	AF383953	*
+L	2464	117	*	*	*	*	*	FN825912	*
+H	2464	116	89.7	+	0	0	42MI22MI16MD35M	FN423704	FN825912
+N	*	250	*	*	*	*	*	EF409766	*
+N	*	220	*	*	*	*	*	DQ534457	*
+N	*	250	*	*	*	*	*	DQ534463	*
+L	4484	203	*	*	*	*	*	AF448458	*
+H	4484	214	81.3	+	0	0	34MD67M9D39M2D9MD21M2I31M	DQ534474	AF448458
+L	4919	214	*	*	*	*	*	AY212813	*
+H	4919	215	83.6	+	0	0	38M2I34MD77M2D15MI18MD29M	DQ534479	AY212813
+L	4498	214	*	*	*	*	*	AF462432	*
+H	4498	215	95.8	+	0	0	16MD198M	EU272483	AF462432
+N	*	214	*	*	*	*	*	EF621920	*
+N	*	247	*	*	*	*	*	EU118622	*
+L	5054	224	*	*	*	*	*	AY542864	*
+H	5054	222	86.9	+	0	0	8MI43MI14MI49MD15MD62MI29M	EU118639	AY542864
+N	*	217	*	*	*	*	*	EF653987	*
+N	*	250	*	*	*	*	*	EU142931	*
+N	*	237	*	*	*	*	*	FJ903322	*
+N	*	224	*	*	*	*	*	EU233809	*
+N	*	244	*	*	*	*	*	AB097450	*
+N	*	102	*	*	*	*	*	EU551211	*
+N	*	250	*	*	*	*	*	AF310101	*
+N	*	250	*	*	*	*	*	EU423189	*
+N	*	250	*	*	*	*	*	EU557359	*
+L	1314	250	*	*	*	*	*	AY534118	*
+H	1314	250	94.4	+	0	0	2D28MD12MD15M2D19MI170M5I	EU598203	AY534118
+N	*	112	*	*	*	*	*	EU639582	*
+N	*	250	*	*	*	*	*	EU652349	*
+H	756	149	93.8	+	0	0	42M3D104M	EU520144	EU520134
+N	*	245	*	*	*	*	*	AY456376	*
+N	*	214	*	*	*	*	*	EU552123	*
+N	*	225	*	*	*	*	*	GQ328758	*
+N	*	202	*	*	*	*	*	EU819412	*
+N	*	229	*	*	*	*	*	EU918698	*
+N	*	117	*	*	*	*	*	EU930087	*
+N	*	232	*	*	*	*	*	AF396864	*
+N	*	250	*	*	*	*	*	DQ190735	*
+N	*	218	*	*	*	*	*	DQ497616	*
+N	*	198	*	*	*	*	*	FJ231440	*
+N	*	198	*	*	*	*	*	EU784186	*
+N	*	184	*	*	*	*	*	EU784254	*
+N	*	246	*	*	*	*	*	EU784366	*
+L	5071	250	*	*	*	*	*	GQ389624	*
+H	5071	250	83.6	+	0	0	35M3D82MD38MI18MD12MI5MI26M2D27M4I	EU784370	GQ389624
+N	*	199	*	*	*	*	*	U51435	*
+L	2813	219	*	*	*	*	*	DQ322217	*
+H	2813	216	84.7	+	0	0	91M9I20MD44M3D9MD13MD33M	FJ548834	DQ322217
+L	4227	250	*	*	*	*	*	AF122024	*
+H	4227	250	99.2	+	0	0	250M	FJ501570	AF122024
+N	*	214	*	*	*	*	*	DQ018098	*
+N	*	221	*	*	*	*	*	FJ588711	*
+L	5671	212	*	*	*	*	*	EU006543	*
+H	5671	229	80.2	+	0	0	33MD27M2D29M7D38M5D28M3D34MI22M	FJ839617	EU006543
+N	*	185	*	*	*	*	*	EU343817	*
+N	*	232	*	*	*	*	*	FJ708934	*
+N	*	184	*	*	*	*	*	GQ981520	*
+N	*	250	*	*	*	*	*	GQ981528	*
+N	*	241	*	*	*	*	*	AF019636	*
+L	6583	188	*	*	*	*	*	GQ303268	*
+H	6583	190	93.6	+	0	0	42MD49MI42MD18MD36M	GU214649	GQ303268
+L	5174	197	*	*	*	*	*	AY789345	*
+H	5174	197	90.9	+	0	0	197M	AB041243	AY789345
+N	*	206	*	*	*	*	*	AB551948	*
+N	*	95	*	*	*	*	*	EF444842	*
+N	*	203	*	*	*	*	*	HQ888720	*
+N	*	229	*	*	*	*	*	HQ650626	*
+N	*	189	*	*	*	*	*	HQ414538	*
+L	5851	182	*	*	*	*	*	FJ515894	*
+H	5851	217	82.4	+	0	0	73M12D13M19D17M2D28M2D51M	JF908711	FJ515894
+L	7106	201	*	*	*	*	*	HQ232963	*
+H	7106	220	85.6	+	0	0	30MD28MI30M8D10M6D15M2D18MI14M3D22MD32M	HQ232968	HQ232963
+N	*	137	*	*	*	*	*	U82454	*
+N	*	113	*	*	*	*	*	AY756492	*
+N	*	250	*	*	*	*	*	AY997095	*
+N	*	250	*	*	*	*	*	AF193379	*
+L	6241	181	*	*	*	*	*	FJ462760	*
+H	6241	176	88.6	+	0	0	43MI61MI6M2I34MI32M	DQ435529	FJ462760
+L	3486	172	*	*	*	*	*	EU012333	*
+H	3486	176	80.2	+	0	0	2I22MD60M7D22M3I15MD48M	AF260814	EU012333
+N	*	250	*	*	*	*	*	AJ581995	*
+L	7327	176	*	*	*	*	*	EU603292	*
+H	7327	183	98.9	+	0	0	7D176M	FJ786401	EU603292
+N	*	243	*	*	*	*	*	AY364089	*
+N	*	250	*	*	*	*	*	AY740040	*
+L	5333	250	*	*	*	*	*	DQ354521	*
+H	5333	250	92.0	+	0	0	4D15MD69MI48MI113M3I	GU058015	DQ354521
+N	*	227	*	*	*	*	*	DQ826741	*
+L	5529	237	*	*	*	*	*	EF110616	*
+H	5529	234	96.2	+	0	0	55MI113MI27MI39M	HM535599	EF110616
+N	*	215	*	*	*	*	*	HQ650640	*
+L	4085	236	*	*	*	*	*	AB509372	*
+H	4085	195	81.0	+	0	0	37M2I13MI32M23I16M11I28MI34M3I35M	FJ903316	AB509372
+N	*	250	*	*	*	*	*	JN882327	*
+D	174	2	*	*	*	*	85.5	EF373565	*
+D	756	3	*	*	*	*	87.0	EU520134	*
+D	849	2	*	*	*	*	82.8	EU837225	*
+D	1314	2	*	*	*	*	94.4	AY534118	*
+D	2464	2	*	*	*	*	89.7	FN825912	*
+D	2813	2	*	*	*	*	84.7	DQ322217	*
+D	3486	2	*	*	*	*	80.2	EU012333	*
+D	4085	2	*	*	*	*	81.0	AB509372	*
+D	4227	2	*	*	*	*	99.2	AF122024	*
+D	4336	2	*	*	*	*	81.2	AF294694	*
+D	4484	2	*	*	*	*	81.3	AF448458	*
+D	4498	2	*	*	*	*	95.8	AF462432	*
+D	4563	2	*	*	*	*	97.5	EU520249	*
+D	4919	2	*	*	*	*	83.6	AY212813	*
+D	5054	2	*	*	*	*	86.9	AY542864	*
+D	5071	2	*	*	*	*	83.6	GQ389624	*
+D	5174	2	*	*	*	*	90.9	AY789345	*
+D	5333	2	*	*	*	*	92.0	DQ354521	*
+D	5529	2	*	*	*	*	96.2	EF110616	*
+D	5671	2	*	*	*	*	80.2	EU006543	*
+D	5851	2	*	*	*	*	82.4	FJ515894	*
+D	6112	2	*	*	*	*	91.5	EU938675	*
+D	6241	2	*	*	*	*	88.6	FJ462760	*
+D	6583	2	*	*	*	*	93.6	GQ303268	*
+D	6617	2	*	*	*	*	96.1	JQ946395	*
+D	7106	2	*	*	*	*	85.6	HQ232963	*
+D	7327	2	*	*	*	*	98.9	EU603292	*
+D	7341	2	*	*	*	*	84.4	GU234124	*

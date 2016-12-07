@@ -1,0 +1,14 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	1	rdp	0.6	AF178417	Root;Ascomycota	Root;Ascomycota;Sordariomycetes	match	2
+F1-REF	2	1	rdp	0.6	AB054041	Root	Root;Ascomycota;Schizosaccharomycetes	underclassification	1
+F1-REF	2	1	rdp	0.6	L27658	Root	Root;Ascomycota;Pneumocystidomycetes	underclassification	1
+F1-REF	2	1	rdp	0.6	U33070	Root	Root;Basidiomycota;Agaricomycetes	underclassification	1
+F1-REF	2	1	rdp	0.6	DQ681328	Root;Ascomycota	Root;Ascomycota;Eurotiomycetes	match	2
+F1-REF	2	1	rdp	0.6	AF506435	Root;Ascomycota;Leotiomycetes;Helotiales;Dermateaceae;Cryptosporiopsis;Cryptosporiopsis_actinidiae	Root;Basidiomycota;Homobasidiomycetes	misclassification	1
+F1-REF	2	1	rdp	0.6	DQ497616	Root;Ascomycota	Root;Ascomycota;Taphrinomycetes	match	2
+F1-REF	2	1	rdp	0.6	DQ536501	Root;Ascomycota	Root;Chytridiomycota;Chytridiomycetes	misclassification	1
+F1-REF	2	1	rdp	0.6	AF444643	Root;Basidiomycota	Root;Basidiomycota;Cystobasidiomycetes	match	2
+F1-REF	2	1	rdp	0.6	EF621920	Root	Root;Basidiomycota;Microbotryomycetes	underclassification	1
+F1-REF	2	1	rdp	0.6	FJ167356	Root	Root;Basidiomycota;Ustilaginomycetes	underclassification	1
+F1-REF	2	1	rdp	0.6	AF514292	Root;Ascomycota	Root;Ascomycota;Saccharomycetes	match	2
+F1-REF	2	1	rdp	0.6	DQ827707	Root	Root;Basidiomycota;Exobasidiomycetes	underclassification	1

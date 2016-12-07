@@ -1,0 +1,6 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	2	rdp	0.0	DQ832329	Root;Ascomycota;Eurotiomycetes;Eurotiales;Trichocomaceae;Eurotium;Eurotium_leucocarpum	Root;Ascomycota;Lichinomycetes	overclassification	2
+F1-REF	2	2	rdp	0.0	AB054050	Root;Ascomycota;Sordariomycetes;Hypocreales;Ophiocordycipitaceae;Ophiocordyceps;Ophiocordyceps_filiformis	Root;Basidiomycota;Wallemiomycetes	misclassification	1
+F1-REF	2	2	rdp	0.0	AJ716305	Root;Basidiomycota;Agaricomycetes;Cantharellales;Ceratobasidiaceae;Ceratobasidium;Ceratobasidium_noxium	Root;Ascomycota;Leotiomycetes	misclassification	1
+F1-REF	2	2	rdp	0.0	AF289074	Root;Ascomycota;Eurotiomycetes;Chaetothyriales;Coccodiniaceae;Coccodinium;Coccodinium_bartschii	Root;Ascomycota;Pezizomycetes	overclassification	2
+F1-REF	2	2	rdp	0.0	DQ521585	Root;Ascomycota;Sordariomycetes;Chaetosphaeriales;Chaetosphaeriaceae;Kylindria;Kylindria_ellisii	Root;Basidiomycota;Pucciniomycetes	misclassification	1

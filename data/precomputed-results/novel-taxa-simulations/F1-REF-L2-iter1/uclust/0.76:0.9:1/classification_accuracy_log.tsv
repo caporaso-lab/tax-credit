@@ -1,0 +1,14 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	1	uclust	0.76:0.9:1	AF178417	Unassigned	Root;Ascomycota;Sordariomycetes	underclassification	0
+F1-REF	2	1	uclust	0.76:0.9:1	AB054041	Unassigned	Root;Ascomycota;Schizosaccharomycetes	underclassification	0
+F1-REF	2	1	uclust	0.76:0.9:1	L27658	Unassigned	Root;Ascomycota;Pneumocystidomycetes	underclassification	0
+F1-REF	2	1	uclust	0.76:0.9:1	U33070	Unassigned	Root;Basidiomycota;Agaricomycetes	underclassification	0
+F1-REF	2	1	uclust	0.76:0.9:1	DQ681328	Unassigned	Root;Ascomycota;Eurotiomycetes	underclassification	0
+F1-REF	2	1	uclust	0.76:0.9:1	AF506435	Root;Ascomycota;Leotiomycetes;Helotiales;Dermateaceae;Cryptosporiopsis;Cryptosporiopsis_actinidiae	Root;Basidiomycota;Homobasidiomycetes	misclassification	1
+F1-REF	2	1	uclust	0.76:0.9:1	DQ497616	Unassigned	Root;Ascomycota;Taphrinomycetes	underclassification	0
+F1-REF	2	1	uclust	0.76:0.9:1	DQ536501	Unassigned	Root;Chytridiomycota;Chytridiomycetes	underclassification	0
+F1-REF	2	1	uclust	0.76:0.9:1	AF444643	Unassigned	Root;Basidiomycota;Cystobasidiomycetes	underclassification	0
+F1-REF	2	1	uclust	0.76:0.9:1	EF621920	Unassigned	Root;Basidiomycota;Microbotryomycetes	underclassification	0
+F1-REF	2	1	uclust	0.76:0.9:1	FJ167356	Unassigned	Root;Basidiomycota;Ustilaginomycetes	underclassification	0
+F1-REF	2	1	uclust	0.76:0.9:1	AF514292	Unassigned	Root;Ascomycota;Saccharomycetes	underclassification	0
+F1-REF	2	1	uclust	0.76:0.9:1	DQ827707	Unassigned	Root;Basidiomycota;Exobasidiomycetes	underclassification	0

@@ -1,5 +1,6 @@
-A standardized and extensible evaluation framework for taxonomic classifiers
-============================================================================
+# TAX CREdiT: TAXonomic ClassifieR Evaluation Tool
+
+### A standardized and extensible evaluation framework for taxonomic classifiers
 
 To view static versions of the reports presented in [Bokulich, et al., (Microbiome, under review)](https://peerj.com/preprints/934/), [start here](http://nbviewer.ipython.org/github/gregcaporaso/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
 

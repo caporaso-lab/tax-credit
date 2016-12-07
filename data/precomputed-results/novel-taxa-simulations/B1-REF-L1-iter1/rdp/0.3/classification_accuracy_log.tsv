@@ -1,0 +1,10 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	1	1	rdp	0.3	313305	k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Pasteuriaceae;g__Pasteuria;s__goettingianae	k__Bacteria; p__Nitrospirae	overclassification	1
+B1-REF	1	1	rdp	0.3	675678	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales	k__Bacteria; p__Proteobacteria	overclassification	1
+B1-REF	1	1	rdp	0.3	811996	k__Bacteria;p__Firmicutes;c__Clostridia	k__Bacteria; p__Thermi	overclassification	1
+B1-REF	1	1	rdp	0.3	358757	k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales	k__Bacteria; p__Verrucomicrobia	overclassification	1
+B1-REF	1	1	rdp	0.3	15593	k__Bacteria;p__Firmicutes;c__Erysipelotrichi;o__Erysipelotrichales;f__Erysipelotrichaceae	k__Bacteria; p__Tenericutes	overclassification	1
+B1-REF	1	1	rdp	0.3	1875	k__Bacteria	k__Bacteria; p__Chrysiogenetes	match	1
+B1-REF	1	1	rdp	0.3	110879	k__Bacteria;p__Firmicutes;c__Clostridia	k__Bacteria; p__Cyanobacteria	overclassification	1
+B1-REF	1	1	rdp	0.3	692586	k__Archaea;p__Crenarchaeota;c__Thermoprotei	k__Archaea; p__Euryarchaeota	overclassification	1
+B1-REF	1	1	rdp	0.3	920852	k__Bacteria;p__Firmicutes;c__Clostridia	k__Bacteria; p__Actinobacteria	overclassification	1

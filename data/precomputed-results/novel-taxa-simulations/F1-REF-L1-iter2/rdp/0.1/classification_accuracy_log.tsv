@@ -1,0 +1,5 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	1	2	rdp	0.1	EU330178	Root;Ascomycota;Lecanoromycetes;Peltigerales;Peltigeraceae;Peltigera;Peltigera_kristinssonii	Root;Neocallimastigomycota	overclassification	1
+F1-REF	1	2	rdp	0.1	AJ972459	Root;Ascomycota	Root;Glomeromycota	overclassification	1
+F1-REF	1	2	rdp	0.1	AF272836	Root;Ascomycota;Pezizomycetes;Pezizales;Tuberaceae;Tuber	Root;Microsporidia	overclassification	1
+F1-REF	1	2	rdp	0.1	U33070	Root;Ascomycota;Pezizomycetes;Pezizales;Pezizaceae;Peziza	Root;Basidiomycota	overclassification	1

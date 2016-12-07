@@ -1,0 +1,14 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	1	rdp	0.1	AF178417	Root;Ascomycota;Leotiomycetes;Helotiales;Vibrisseaceae;Phialocephala	Root;Ascomycota;Sordariomycetes	overclassification	2
+F1-REF	2	1	rdp	0.1	AB054041	Root;Neocallimastigomycota;Neocallimastigomycetes;Neocallimastigales;Neocallimastigaceae;Orpinomyces;Orpinomyces_joyonii	Root;Ascomycota;Schizosaccharomycetes	misclassification	1
+F1-REF	2	1	rdp	0.1	L27658	Root;Glomeromycota;Glomeromycetes	Root;Ascomycota;Pneumocystidomycetes	misclassification	1
+F1-REF	2	1	rdp	0.1	U33070	Root;Basidiomycota;Pucciniomycetes;Pucciniales;Cronartiaceae;Cronartium	Root;Basidiomycota;Agaricomycetes	overclassification	2
+F1-REF	2	1	rdp	0.1	DQ681328	Root;Ascomycota;Leotiomycetes;Helotiales	Root;Ascomycota;Eurotiomycetes	overclassification	2
+F1-REF	2	1	rdp	0.1	AF506435	Root;Ascomycota;Leotiomycetes;Helotiales;Dermateaceae;Cryptosporiopsis;Cryptosporiopsis_actinidiae	Root;Basidiomycota;Homobasidiomycetes	misclassification	1
+F1-REF	2	1	rdp	0.1	DQ497616	Root;Ascomycota	Root;Ascomycota;Taphrinomycetes	match	2
+F1-REF	2	1	rdp	0.1	DQ536501	Root;Ascomycota;Dothideomycetes	Root;Chytridiomycota;Chytridiomycetes	misclassification	1
+F1-REF	2	1	rdp	0.1	AF444643	Root;Basidiomycota;Entorrhizomycetes;Entorrhizales;Entorrhizaceae;Entorrhiza;Entorrhiza_aff_fineranae_PDD70949	Root;Basidiomycota;Cystobasidiomycetes	overclassification	2
+F1-REF	2	1	rdp	0.1	EF621920	Root;Basidiomycota;Agaricostilbomycetes;Agaricostilbales;Agaricostilbaceae;Bensingtonia;Bensingtonia_yamatoana	Root;Basidiomycota;Microbotryomycetes	overclassification	2
+F1-REF	2	1	rdp	0.1	FJ167356	Root;Chytridiomycota;Monoblepharidomycetes;Monoblepharidales;Monoblepharidaceae;Monoblepharis;Monoblepharis_polymorpha	Root;Basidiomycota;Ustilaginomycetes	misclassification	1
+F1-REF	2	1	rdp	0.1	AF514292	Root;Ascomycota;Lecanoromycetes	Root;Ascomycota;Saccharomycetes	overclassification	2
+F1-REF	2	1	rdp	0.1	DQ827707	Root;Chytridiomycota;Monoblepharidomycetes;Monoblepharidales;Gonapodyaceae;Gonapodya;Gonapodya_prolifera	Root;Basidiomycota;Exobasidiomycetes	misclassification	1

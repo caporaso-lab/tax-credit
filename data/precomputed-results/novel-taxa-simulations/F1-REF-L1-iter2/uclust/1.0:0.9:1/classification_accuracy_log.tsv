@@ -1,0 +1,5 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	1	2	uclust	1.0:0.9:1	EU330178	Unassigned	Root;Neocallimastigomycota	underclassification	0
+F1-REF	1	2	uclust	1.0:0.9:1	AJ972459	Unassigned	Root;Glomeromycota	underclassification	0
+F1-REF	1	2	uclust	1.0:0.9:1	AF272836	Unassigned	Root;Microsporidia	underclassification	0
+F1-REF	1	2	uclust	1.0:0.9:1	U33070	Unassigned	Root;Basidiomycota	underclassification	0

@@ -1,0 +1,23 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	811996	Unassigned	k__Bacteria; p__Thermi; c__Deinococci; o__Deinococcales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	3820	Unassigned	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Sphaerochaetales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	109728	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales; f__Endozoicimonaceae; g__Endozoicomonas; s__montiporae	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Pseudomonadales	overclassification	3
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	350563	Unassigned	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	10430	Unassigned	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfovibrionales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	4429719	Unassigned	k__Bacteria; p__Tenericutes; c__Mollicutes; o__Anaeroplasmatales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	3450	Unassigned	k__Bacteria; p__Cyanobacteria; c__Chloroplast; o__Cercozoa	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	814853	Unassigned	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Acidithiobacillales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	347913	Unassigned	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	15593	Unassigned	k__Bacteria; p__Tenericutes; c__Mollicutes; o__Acholeplasmatales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	10660	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales; f__Brucellaceae; g__Ochrobactrum; s__intermedium	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales	misclassification	2
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	186470	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Thermoproteales; f__Thermoproteaceae; g__Vulcanisaeta; s__distributa	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales	overclassification	3
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	555696	k__Bacteria; p__Cyanobacteria; c__Nostocophycideae; o__Nostocales; f__Scytonemataceae; g__Scytonema; s__fritschii	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Oscillatoriales	misclassification	2
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	3852220	Unassigned	k__Archaea; p__Euryarchaeota; c__Methanomicrobia; o__Methanomicrobiales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	186867	Unassigned	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rickettsiales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	538602	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Enterobacteriales; f__Enterobacteriaceae; g__Baumannia; s__cicadellinicola	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Vibrionales	overclassification	3
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	4416718	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales; f__Oceanospirillaceae; g__Balneatrix; s__alpica	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188	overclassification	3
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	4064689	Unassigned	k__Bacteria; p__Chloroflexi; c__Anaerolineae; o__Ardenscatenales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	4390966	Unassigned	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	638076	Unassigned	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	920852	Unassigned	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	underclassification	0
+B1-REF	3	0	sortmerna	1.0:0.9:1:0.9:1.0	684018	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Enterobacteriales; f__Enterobacteriaceae; g__Plesiomonas; s__shigelloides	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Alteromonadales	overclassification	3

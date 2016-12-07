@@ -1,0 +1,5 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	1	2	rdp	0.8	EU330178	Root;Ascomycota	Root;Neocallimastigomycota	overclassification	1
+F1-REF	1	2	rdp	0.8	AJ972459	Root;Ascomycota	Root;Glomeromycota	overclassification	1
+F1-REF	1	2	rdp	0.8	AF272836	Root;Ascomycota	Root;Microsporidia	overclassification	1
+F1-REF	1	2	rdp	0.8	U33070	Root;Ascomycota	Root;Basidiomycota	overclassification	1

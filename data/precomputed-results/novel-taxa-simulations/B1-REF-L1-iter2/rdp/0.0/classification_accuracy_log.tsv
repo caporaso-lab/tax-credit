@@ -1,0 +1,8 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	1	2	rdp	0.0	838467	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Syntrophobacterales;f__Syntrophobacteraceae;g__Desulfovirga;s__adipica	k__Bacteria; p__Fusobacteria	overclassification	1
+B1-REF	1	2	rdp	0.0	539567	k__Bacteria;p__Actinobacteria;c__Coriobacteriia;o__Coriobacteriales;f__Coriobacteriaceae;g__Enterococcus;s__casseliflavus	k__Bacteria; p__Thermotogae	overclassification	1
+B1-REF	1	2	rdp	0.0	3585	k__Bacteria;p__Lentisphaerae;c__Lentisphaeria;o__Victivallales;f__Victivallaceae;g__Victivallis;s__vadensis	k__Bacteria; p__Fibrobacteres	overclassification	1
+B1-REF	1	2	rdp	0.0	278595	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Rhodospirillales;f__Acetobacteraceae;g__Commensalibacter;s__intestini	k__Bacteria; p__Elusimicrobia	overclassification	1
+B1-REF	1	2	rdp	0.0	3772088	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Thermomonosporaceae;g__Actinomadura;s__echinospora	k__Bacteria; p__Planctomycetes	overclassification	1
+B1-REF	1	2	rdp	0.0	111022	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Chromatiales;f__Chromatiaceae;g__Isochromatium;s__buderi	k__Bacteria; p__Deferribacteres	overclassification	1
+B1-REF	1	2	rdp	0.0	2806523	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfuromonadales;f__Desulfuromonadaceae;g__Desulfuromusa;s__bakii	k__Bacteria; p__Bacteroidetes	overclassification	1

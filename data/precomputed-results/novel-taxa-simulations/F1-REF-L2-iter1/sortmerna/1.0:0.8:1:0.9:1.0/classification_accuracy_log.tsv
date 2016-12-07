@@ -1,0 +1,14 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	AF178417	Unassigned	Root;Ascomycota;Sordariomycetes	underclassification	0
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	AB054041	Root;Glomeromycota;Glomeromycetes;Glomerales;Glomeraceae;Glomus;Glomus_intraradices	Root;Ascomycota;Schizosaccharomycetes	misclassification	1
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	L27658	Root;Basidiomycota;Tremellomycetes;Tremellales;Exidiaceae;Sebacina;Sebacina_vermifera	Root;Ascomycota;Pneumocystidomycetes	misclassification	1
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	U33070	Root;Basidiomycota;Tremellomycetes;Filobasidiales;Filobasidiaceae;Filobasidium;Filobasidium_uniguttulatum	Root;Basidiomycota;Agaricomycetes	overclassification	2
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	DQ681328	Unassigned	Root;Ascomycota;Eurotiomycetes	underclassification	0
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	AF506435	Root;Ascomycota;Leotiomycetes;Helotiales;Dermateaceae;Cryptosporiopsis;Cryptosporiopsis_actinidiae	Root;Basidiomycota;Homobasidiomycetes	misclassification	1
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	DQ497616	Unassigned	Root;Ascomycota;Taphrinomycetes	underclassification	0
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	DQ536501	Unassigned	Root;Chytridiomycota;Chytridiomycetes	underclassification	0
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	AF444643	Root;Basidiomycota;Tremellomycetes;Tremellales;Tremellaceae;Tremella;Tremella_indecorata	Root;Basidiomycota;Cystobasidiomycetes	overclassification	2
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	EF621920	Unassigned	Root;Basidiomycota;Microbotryomycetes	underclassification	0
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	FJ167356	Unassigned	Root;Basidiomycota;Ustilaginomycetes	underclassification	0
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	AF514292	Root;Basidiomycota;Pucciniomycetes;Pucciniales;Pileolariaceae;Pileolaria;Pileolaria_terebinthi	Root;Ascomycota;Saccharomycetes	misclassification	1
+F1-REF	2	1	sortmerna	1.0:0.8:1:0.9:1.0	DQ827707	Unassigned	Root;Basidiomycota;Exobasidiomycetes	underclassification	0

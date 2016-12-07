@@ -1,0 +1,13 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	0	rdp	0.1	FJ171861	Root;Ascomycota;Pezizomycetes;Pezizales;Pezizaceae	Root;Ascomycota;Neolectomycetes	overclassification	2
+F1-REF	2	0	rdp	0.1	AB260936	Root;Basidiomycota;Microbotryomycetes	Root;Basidiomycota;Tremellomycetes	overclassification	2
+F1-REF	2	0	rdp	0.1	JF836021	Root;Ascomycota;Eurotiomycetes;Eurotiales;Trichocomaceae;Penicillium;Penicillium_camemberti	Root;Ascomycota;Archaeorhizomycetes	overclassification	2
+F1-REF	2	0	rdp	0.1	DQ645527	Root;Basidiomycota	Root;Basidiomycota;Entorrhizomycetes	match	2
+F1-REF	2	0	rdp	0.1	EF445991	Root;Ascomycota;Sordariomycetes;Xylariales;Xylariaceae	Root;Ascomycota;Orbiliomycetes	overclassification	2
+F1-REF	2	0	rdp	0.1	AF444634	Root;Basidiomycota;Microbotryomycetes;Leucosporidiales;Leucosporidiaceae;Leucosporidium	Root;Basidiomycota;Agaricostilbomycetes	overclassification	2
+F1-REF	2	0	rdp	0.1	DQ530224	Root;Ascomycota;Eurotiomycetes;Chaetothyriales;Herpotrichiellaceae;Racodium;Racodium_rupestre	Root;Ascomycota;Dothideomycetes	overclassification	2
+F1-REF	2	0	rdp	0.1	AF116177	Root;Ascomycota;Eurotiomycetes	Root;Ascomycota;Lecanoromycetes	overclassification	2
+F1-REF	2	0	rdp	0.1	FJ195752	Root;Basidiomycota;Agaricomycetes;Hymenochaetales;Hymenochaetaceae	Root;Basidiomycota;Dacrymycetes	overclassification	2
+F1-REF	2	0	rdp	0.1	JN882326	Root;Neocallimastigomycota;Neocallimastigomycetes;Neocallimastigales;Neocallimastigaceae;Neocallimastix;Neocallimastix_patriciarum	Root;Chytridiomycota;Monoblepharidomycetes	misclassification	1
+F1-REF	2	0	rdp	0.1	EF081374	Root;Ascomycota;Saccharomycetes;Saccharomycetales;Pichiaceae	Root;Ascomycota;Arthoniomycetes	overclassification	2
+F1-REF	2	0	rdp	0.1	DQ831010	Root;Basidiomycota;Agaricomycetes;Agaricales	Root;Basidiomycota;Mixiomycetes	overclassification	2

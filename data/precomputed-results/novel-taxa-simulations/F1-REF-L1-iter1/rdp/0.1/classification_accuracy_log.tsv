@@ -1,0 +1,3 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	1	1	rdp	0.1	HQ888720	Root;Basidiomycota;Agaricomycetes;Agaricales	Root;Blastocladiomycota	overclassification	1
+F1-REF	1	1	rdp	0.1	DQ536501	Root;Basidiomycota;Agaricomycetes;Boletales	Root;Chytridiomycota	overclassification	1
