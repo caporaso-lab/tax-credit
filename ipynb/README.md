@@ -7,8 +7,11 @@ Questions should be posted as issues on the tax-credit repository issue tracker
 
 ## Contents
 [Mock community analyses](./mock-community/)
+
 [Simulated community analyses](./simulated-community)
+
 [Novel taxa analyses](./novel-taxa)
+
 [Runtime analyses](./runtime)
 
 ## Extending the analyses to include evaluation of new taxonomic assignment methods
