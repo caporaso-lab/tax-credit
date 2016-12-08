@@ -2,7 +2,7 @@
 
 
 # ----------------------------------------------------------------------------
-# Copyright (c) 2016--, taxcompare development team.
+# Copyright (c) 2016--, tax-credit development team.
 #
 # Distributed under the terms of the Modified BSD License.
 #
