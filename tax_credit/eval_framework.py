@@ -414,7 +414,8 @@ def compute_mock_results(result_tables, expected_table_lookup,
             continue
 
         if actual_table.is_empty():
-            raise ValueError("Actual table is empty after filtering.")
+            raise ValueError("Actual table is empty after filtering at: \
+                             {0}".format(actual_table_fp))
 
         collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
 

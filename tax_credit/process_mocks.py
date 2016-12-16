@@ -14,6 +14,7 @@ from shutil import copyfile
 from urllib.request import urlretrieve
 from skbio import TreeNode, io
 import biom
+from biom import load_table
 from biom.cli.util import write_biom_table
 import pandas as pd
 import qiime
@@ -46,7 +47,7 @@ def extract_mockrobiota_dataset_metadata(mockrobiota_dir, communities):
 
 def extract_mockrobiota_data(communities, community_metadata, reference_dbs,
                              mockrobiota_dir, mock_data_dir,
-                             expected_data_dir):
+                             expected_data_dir, biom_fn='table.L6-taxa.biom'):
     '''Extract sample metadata, raw data files, and expected taxonomy
 
     from mockrobiota, copy to new destination
@@ -88,10 +89,14 @@ def extract_mockrobiota_data(communities, community_metadata, reference_dbs,
                                  ref_dest_dir, "expected")
         if not exists(expected_taxa_dir):
             makedirs(expected_taxa_dir)
-        # copy expected taxonomy.tsv --- convert to biom???
+        # copy expected taxonomy.tsv and convert to biom
+        exp_taxa_fp = join(expected_taxa_dir, 'expected-taxonomy.tsv')
+        exp_biom_fp = join(expected_taxa_dir, biom_fn)
         copyfile(join(mockrobiota_community_dir, ref_source_dir,
-                      ref_version, 'expected-taxonomy.tsv'),
-                 join(expected_taxa_dir, 'expected-taxonomy.tsv'))
+                      ref_version, 'expected-taxonomy.tsv'), exp_taxa_fp)
+        newbiom = biom.load_table(exp_taxa_fp)
+        write_biom_table(newbiom, 'hdf5', exp_biom_fp)
+
 
 
 def batch_demux(communities,
