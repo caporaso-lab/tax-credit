@@ -6,11 +6,11 @@ min_consensus_fraction:1.0
 reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter2/ref_seqs.fasta
 similarity:0.9
 unassignable_label:Unassigned
-Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxCt8CkR
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxGfO1yh
 
 .uc file contents:
 
-# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter2/query.fasta --id 0.9 --rev --maxaccepts 5 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter2/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_DrFQ5D.uc
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter2/query.fasta --id 0.9 --rev --maxaccepts 5 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter2/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_KmoSSx.uc
 # version=1.2.22
 # Tab-separated fields:
 # 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
@@ -18,10 +18,12 @@ Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxCt8CkR
 # For C and D types, PctId is average id with seed.
 # QueryStart and SeedStart are zero-based relative to start of sequence.
 # If minus strand, SeedStart is relative to reverse-complemented seed.
-N	*	206	*	*	*	*	*	AF289074	*
-N	*	144	*	*	*	*	*	DQ521585	*
-N	*	222	*	*	*	*	*	AJ716305	*
-N	*	181	*	*	*	*	*	DQ832329	*
-L	8049	150	*	*	*	*	*	EU573353	*
-H	8049	148	93.9	+	0	0	4I9M2D27MI19MD90M	AB054050	EU573353
-D	8049	2	*	*	*	*	93.9	EU573353	*
+N	*	250	*	*	*	*	*	SH076443.07FU_FJ362291_reps	*
+N	*	141	*	*	*	*	*	SH076456.07FU_GQ927301_reps	*
+N	*	161	*	*	*	*	*	SH076993.07FU_FM205629_refs	*
+N	*	210	*	*	*	*	*	SH077302.07FU_AB011514_refs	*
+N	*	250	*	*	*	*	*	SH092147.07FU_FJ171856_reps	*
+N	*	250	*	*	*	*	*	SH097403.07FU_JN882331_reps	*
+N	*	175	*	*	*	*	*	SH102037.07FU_AF444292_refs	*
+N	*	250	*	*	*	*	*	SH538886.07FU_KP413075_reps	*
+N	*	250	*	*	*	*	*	SH549973.07FU_KT767195_reps	*

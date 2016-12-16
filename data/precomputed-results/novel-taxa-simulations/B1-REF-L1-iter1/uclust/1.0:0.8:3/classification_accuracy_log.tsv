@@ -1,10 +1,11 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	1	uclust	1.0:0.8:3	313305	Unassigned	k__Bacteria; p__Nitrospirae	underclassification	0
-B1-REF	1	1	uclust	1.0:0.8:3	675678	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales	k__Bacteria; p__Proteobacteria	overclassification	1
-B1-REF	1	1	uclust	1.0:0.8:3	811996	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Alicyclobacillaceae; g__Alicyclobacillus; s__ferripilum	k__Bacteria; p__Thermi	overclassification	1
-B1-REF	1	1	uclust	1.0:0.8:3	358757	Unassigned	k__Bacteria; p__Verrucomicrobia	underclassification	0
-B1-REF	1	1	uclust	1.0:0.8:3	15593	Unassigned	k__Bacteria; p__Tenericutes	underclassification	0
-B1-REF	1	1	uclust	1.0:0.8:3	1875	k__Bacteria	k__Bacteria; p__Chrysiogenetes	match	1
-B1-REF	1	1	uclust	1.0:0.8:3	110879	Unassigned	k__Bacteria; p__Cyanobacteria	underclassification	0
-B1-REF	1	1	uclust	1.0:0.8:3	692586	Unassigned	k__Archaea; p__Euryarchaeota	underclassification	0
-B1-REF	1	1	uclust	1.0:0.8:3	920852	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Ruminococcaceae; g__Ruminococcus; s__flavefaciens	k__Bacteria; p__Actinobacteria	overclassification	1
+B1-REF	1	1	uclust	1.0:0.8:3	344813	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Ruminococcaceae; g__Faecalibacterium; s__prausnitzii	k__Bacteria; p__Chlorobi	overclassification	1
+B1-REF	1	1	uclust	1.0:0.8:3	4183921	k__Bacteria; p__Firmicutes	k__Bacteria; p__Chloroflexi	overclassification	1
+B1-REF	1	1	uclust	1.0:0.8:3	583935	Unassigned	k__Bacteria; p__Bacteroidetes	underclassification	0
+B1-REF	1	1	uclust	1.0:0.8:3	4471401	Unassigned	k__Bacteria; p__Planctomycetes	underclassification	0
+B1-REF	1	1	uclust	1.0:0.8:3	824872	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Cellulomonadaceae	k__Bacteria; p__Thermi	overclassification	1
+B1-REF	1	1	uclust	1.0:0.8:3	278595	k__Bacteria	k__Bacteria; p__Elusimicrobia	match	1
+B1-REF	1	1	uclust	1.0:0.8:3	56204	Unassigned	k__Bacteria; p__Nitrospirae	underclassification	0
+B1-REF	1	1	uclust	1.0:0.8:3	1550344	Unassigned	k__Bacteria; p__Thermotogae	underclassification	0
+B1-REF	1	1	uclust	1.0:0.8:3	1871	Unassigned	k__Bacteria; p__Deferribacteres	underclassification	0
+B1-REF	1	1	uclust	1.0:0.8:3	2136916	k__Bacteria; p__Firmicutes; c__Erysipelotrichi; o__Erysipelotrichales; f__Erysipelotrichaceae; g__Bulleidia	k__Bacteria; p__Lentisphaerae	overclassification	1

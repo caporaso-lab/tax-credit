@@ -1,12 +1,7 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	0	rdp	0.0	47778	k__Archaea;p__Euryarchaeota;c__Methanomicrobia;o__Methanosarcinales;f__Methanosarcinaceae;g__Methanohalophilus;s__halophilus	k__Archaea; p__Crenarchaeota	overclassification	1
-B1-REF	1	0	rdp	0.0	141021	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Bifidobacteriales;f__Bifidobacteriaceae;g__Bifidobacterium;s__animalis	k__Bacteria; p__Chlorobi	overclassification	1
-B1-REF	1	0	rdp	0.0	4456787	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Xenorhabdus;s__cabanillasii	k__Bacteria; p__Chlamydiae	overclassification	1
-B1-REF	1	0	rdp	0.0	1277	k__Bacteria;p__Deferribacteres;c__Deferribacteres;o__Deferribacterales;f__Deferribacteraceae;g__Calditerrivibrio;s__nitroreducens	k__Bacteria; p__Chloroflexi	overclassification	1
-B1-REF	1	0	rdp	0.0	1138255	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfovibrionales;f__Desulfovibrionaceae;g__Desulfovibrio;s__alaskensis	k__Bacteria; p__Aquificae	overclassification	1
-B1-REF	1	0	rdp	0.0	4459671	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Intrasporangiaceae;g__Kribbia;s__dieselivorans	k__Bacteria; p__Spirochaetes	overclassification	1
-B1-REF	1	0	rdp	0.0	742260	k__Bacteria;p__Deferribacteres;c__Deferribacteres;o__Deferribacterales;f__Deferribacteraceae;g__Denitrovibrio;s__acetiphilus	k__Bacteria; p__Acidobacteria	overclassification	1
-B1-REF	1	0	rdp	0.0	125020	k__Archaea;p__Euryarchaeota;c__Methanopyri;o__Methanopyrales;f__Methanopyraceae;g__Methanopyrus;s__kandleri	k__Archaea; p__Nanoarchaeota	overclassification	1
-B1-REF	1	0	rdp	0.0	2136916	k__Bacteria;p__Tenericutes;c__Mollicutes;o__Entomoplasmatales;f__Entomoplasmataceae;g__Entomoplasma;s__luminosum	k__Bacteria; p__Lentisphaerae	overclassification	1
-B1-REF	1	0	rdp	0.0	3002161	k__Bacteria;p__Tenericutes;c__Mollicutes;o__Acholeplasmatales;f__Acholeplasmataceae;g__Acholeplasma;s__brassicae	k__Bacteria; p__Firmicutes	overclassification	1
-B1-REF	1	0	rdp	0.0	4368159	k__Bacteria;p__Cyanobacteria;c__Synechococcophycideae;o__Pseudanabaenales;f__Pseudanabaenaceae;g__Haloleptolyngbya;s__alcalis	k__Bacteria; p__Synergistetes	overclassification	1
+B1-REF	1	0	rdp	0.0	46167	k__Archaea;p__Euryarchaeota;c__Methanobacteria;o__Methanobacteriales;f__Methanobacteriaceae;g__Methanothermobacter;s__tenebrarum	k__Archaea; p__Crenarchaeota	overclassification	1
+B1-REF	1	0	rdp	0.0	1120396	k__Bacteria;p__Firmicutes;c__Clostridia;o__Thermoanaerobacterales;f__Thermoanaerobacteraceae;g__Desulforudis;s__audaxviator	k__Bacteria; p__Synergistetes	overclassification	1
+B1-REF	1	0	rdp	0.0	563323	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Aeromonadales;f__Succinivibrionaceae;g__Succinatimonas;s__hippei	k__Bacteria; p__Spirochaetes	overclassification	1
+B1-REF	1	0	rdp	0.0	816056	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfobacterales;f__Desulfobacteraceae;g__Desulfocella;s__halophila	k__Bacteria; p__Acidobacteria	overclassification	1
+B1-REF	1	0	rdp	0.0	1138255	k__Bacteria;p__Chloroflexi;c__Thermobacula;o__Thermobaculales;f__Thermobaculaceae;g__Thermobaculum;s__terrenum	k__Bacteria; p__Aquificae	overclassification	1
+B1-REF	1	0	rdp	0.0	3623950	k__Bacteria;p__Firmicutes;c__Clostridia;o__Thermoanaerobacterales;f__Thermoanaerobacteraceae;g__Thermanaeromonas;s__toyohensis	k__Bacteria; p__Dictyoglomi	overclassification	1

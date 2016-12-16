@@ -290,7 +290,7 @@ def stratify_taxonomy_subsets(infile, number_of_splits, basedir,
 
     # Generate output files, write N lines, where N=lines_per_file
     for i in range(0, len(chunks)):
-        outdir = ''.join(map(str, [basedir, '/', basename, '-iter', i]))
+        outdir = path.join(basedir, '{0}-iter{1}'.format(basename, i))
         if not exists(outdir):
             makedirs(outdir)
         export_list_to_file(chunks[i], path.join(outdir, 'query_taxa.tsv'))
@@ -323,7 +323,7 @@ def file_splitter(infile, number_of_splits, basedir, basename, random=True):
 
     # Generate output files, write N lines, where N=lines_per_file
     for i in range(0, len(file_chunks)):
-        outdir = ''.join(map(str, [basedir, '/', basename, '-iter', i]))
+        outdir = path.join(basedir, '{0}-iter{1}'.format(basename, i))
         if not exists(outdir):
             makedirs(outdir)
         export_list_to_file(file_chunks[i], path.join(outdir, 'query_taxa.tsv'))

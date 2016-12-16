@@ -1,12 +1,7 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	0	uclust	1.0:0.8:3	47778	Unassigned	k__Archaea; p__Crenarchaeota	underclassification	0
-B1-REF	1	0	uclust	1.0:0.8:3	141021	Unassigned	k__Bacteria; p__Chlorobi	underclassification	0
-B1-REF	1	0	uclust	1.0:0.8:3	4456787	Unassigned	k__Bacteria; p__Chlamydiae	underclassification	0
-B1-REF	1	0	uclust	1.0:0.8:3	1277	Unassigned	k__Bacteria; p__Chloroflexi	underclassification	0
-B1-REF	1	0	uclust	1.0:0.8:3	1138255	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Chromatiales	k__Bacteria; p__Aquificae	overclassification	1
-B1-REF	1	0	uclust	1.0:0.8:3	4459671	Unassigned	k__Bacteria; p__Spirochaetes	underclassification	0
-B1-REF	1	0	uclust	1.0:0.8:3	742260	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfobacterales; f__Desulfobacteraceae	k__Bacteria; p__Acidobacteria	overclassification	1
-B1-REF	1	0	uclust	1.0:0.8:3	125020	Unassigned	k__Archaea; p__Nanoarchaeota	underclassification	0
-B1-REF	1	0	uclust	1.0:0.8:3	2136916	Unassigned	k__Bacteria; p__Lentisphaerae	underclassification	0
-B1-REF	1	0	uclust	1.0:0.8:3	3002161	k__Bacteria; p__Tenericutes; c__Mollicutes	k__Bacteria; p__Firmicutes	overclassification	1
-B1-REF	1	0	uclust	1.0:0.8:3	4368159	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	k__Bacteria; p__Synergistetes	overclassification	1
+B1-REF	1	0	uclust	1.0:0.8:3	46167	Unassigned	k__Archaea; p__Crenarchaeota	underclassification	0
+B1-REF	1	0	uclust	1.0:0.8:3	1120396	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Ruminococcaceae; g__Ruminococcus; s__flavefaciens	k__Bacteria; p__Synergistetes	overclassification	1
+B1-REF	1	0	uclust	1.0:0.8:3	563323	Unassigned	k__Bacteria; p__Spirochaetes	underclassification	0
+B1-REF	1	0	uclust	1.0:0.8:3	816056	k__Bacteria	k__Bacteria; p__Acidobacteria	match	1
+B1-REF	1	0	uclust	1.0:0.8:3	1138255	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Caldicellulosiruptoraceae; g__Caldicellulosiruptor; s__saccharolyticus	k__Bacteria; p__Aquificae	overclassification	1
+B1-REF	1	0	uclust	1.0:0.8:3	3623950	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Thermoanaerobacteraceae; g__Thermoanaerobacter; s__uzonensis	k__Bacteria; p__Dictyoglomi	overclassification	1

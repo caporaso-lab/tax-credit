@@ -1,8 +1,13 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	838467	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Lachnospiraceae; g__Blautia; s__producta	k__Bacteria; p__Fusobacteria	overclassification	1
-B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	539567	Unassigned	k__Bacteria; p__Thermotogae	underclassification	0
-B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	3585	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Veillonellaceae; g__Megamonas; s__hypermegale	k__Bacteria; p__Fibrobacteres	overclassification	1
-B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	278595	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales	k__Bacteria; p__Elusimicrobia	overclassification	1
-B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	3772088	Unassigned	k__Bacteria; p__Planctomycetes	underclassification	0
-B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	111022	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfovibrionales; f__Desulfovibrionaceae; g__Desulfovibrio	k__Bacteria; p__Deferribacteres	overclassification	1
-B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	2806523	Unassigned	k__Bacteria; p__Bacteroidetes	underclassification	0
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	299518	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Acidobacteriaceae; g__Granulicella	k__Bacteria; p__Verrucomicrobia	overclassification	1
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	317426	Unassigned	k__Bacteria; p__Fibrobacteres	underclassification	0
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	746126	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Acidobacteriaceae	k__Bacteria; p__Tenericutes	overclassification	1
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	835202	Unassigned	k__Bacteria; p__Fusobacteria	underclassification	0
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	773133	Unassigned	k__Archaea; p__Euryarchaeota	underclassification	0
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	89370	k__Bacteria; p__Chloroflexi	k__Bacteria; p__Firmicutes	overclassification	1
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	2884179	Unassigned	k__Bacteria; p__Cyanobacteria	underclassification	0
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	1875	k__Bacteria; p__Bacteroidetes; c__Cytophagia; o__Cytophagales; f__Flammeovirgaceae; g__Sediminitomix; s__flava	k__Bacteria; p__Chrysiogenetes	overclassification	1
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	370251	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Acidobacteriaceae	k__Bacteria; p__Proteobacteria	overclassification	1
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	125020	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae	k__Archaea; p__Nanoarchaeota	overclassification	1
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	820546	Unassigned	k__Bacteria; p__Chlamydiae	underclassification	0
+B1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	4321924	Unassigned	k__Bacteria; p__Actinobacteria	underclassification	0

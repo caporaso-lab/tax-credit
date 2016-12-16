@@ -1,12 +1,7 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	0	rdp	0.7	47778	k__Archaea;p__Euryarchaeota	k__Archaea; p__Crenarchaeota	overclassification	1
-B1-REF	1	0	rdp	0.7	141021	k__Bacteria	k__Bacteria; p__Chlorobi	match	1
-B1-REF	1	0	rdp	0.7	4456787	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Chlamydiae	overclassification	1
-B1-REF	1	0	rdp	0.7	1277	k__Bacteria	k__Bacteria; p__Chloroflexi	match	1
+B1-REF	1	0	rdp	0.7	46167	k__Archaea;p__Euryarchaeota	k__Archaea; p__Crenarchaeota	overclassification	1
+B1-REF	1	0	rdp	0.7	1120396	k__Bacteria	k__Bacteria; p__Synergistetes	match	1
+B1-REF	1	0	rdp	0.7	563323	k__Bacteria	k__Bacteria; p__Spirochaetes	match	1
+B1-REF	1	0	rdp	0.7	816056	k__Bacteria	k__Bacteria; p__Acidobacteria	match	1
 B1-REF	1	0	rdp	0.7	1138255	k__Bacteria	k__Bacteria; p__Aquificae	match	1
-B1-REF	1	0	rdp	0.7	4459671	k__Bacteria	k__Bacteria; p__Spirochaetes	match	1
-B1-REF	1	0	rdp	0.7	742260	k__Bacteria	k__Bacteria; p__Acidobacteria	match	1
-B1-REF	1	0	rdp	0.7	125020	k__Archaea;p__Euryarchaeota	k__Archaea; p__Nanoarchaeota	overclassification	1
-B1-REF	1	0	rdp	0.7	2136916	k__Bacteria	k__Bacteria; p__Lentisphaerae	match	1
-B1-REF	1	0	rdp	0.7	3002161	k__Bacteria;p__Tenericutes;c__Mollicutes	k__Bacteria; p__Firmicutes	overclassification	1
-B1-REF	1	0	rdp	0.7	4368159	k__Bacteria	k__Bacteria; p__Synergistetes	match	1
+B1-REF	1	0	rdp	0.7	3623950	k__Bacteria;p__Firmicutes;c__Clostridia;o__Thermoanaerobacterales;f__Thermoanaerobacteraceae	k__Bacteria; p__Dictyoglomi	overclassification	1

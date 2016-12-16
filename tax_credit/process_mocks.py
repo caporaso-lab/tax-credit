@@ -12,12 +12,14 @@ from os import path, makedirs
 from os.path import exists, join, basename
 from shutil import copyfile
 from urllib.request import urlretrieve
-from skbio import TreeNode
+from skbio import TreeNode, io
 import biom
 from biom.cli.util import write_biom_table
 import pandas as pd
 import qiime
 from qiime.plugins import feature_table, demux, dada2, alignment, phylogeny
+from q2_types import DNAIterator
+
 from tax_credit.taxa_manipulator import import_taxonomy_to_dict
 
 
@@ -291,6 +293,10 @@ def denoise_to_feature_table(demux_seqs,
                                                  trim_left = trim_left,
                                                  trunc_len = trunc_len)
     rep_seqs.save(join(community_dir, rep_seqs_fn))
+    rep_seqs.view(DNAIterator)
+    io.write(rep_seqs.view(DNAIterator).generator, format='fasta',
+             into=test_out)
+
     biom_table.save(join(community_dir, feature_table_fn))
 
     # summarize feature table

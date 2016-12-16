@@ -73,14 +73,16 @@ def add_metadata_to_biom_table(biom_input_fp, taxonomy_map_fp, biom_output_fp):
     write_biom_table(newbiom, 'hdf5', biom_output_fp)
 
 
-def generate_per_method_biom_tables(taxonomy_glob, data_dir):
+def generate_per_method_biom_tables(taxonomy_glob, data_dir,
+                                    biom_input_fn='feature_table.biom',
+                                    biom_output_fn='table.biom'):
     '''Create biom tables from glob of taxonomy assignment results'''
     taxonomy_map_fps = glob(expandvars(taxonomy_glob))
     for taxonomy_map_fp in taxonomy_map_fps:
         dataset_id = taxonomy_map_fp.split(sep)[-5]
-        biom_input_fp = join(data_dir, dataset_id, 'table-no-tax.biom')
+        biom_input_fp = join(data_dir, dataset_id, biom_input_fn)
         output_dir = split(taxonomy_map_fp)[0]
-        biom_output_fp = join(output_dir, 'table.biom')
+        biom_output_fp = join(output_dir, biom_output_fn)
         if exists(biom_output_fp):
             remove(biom_output_fp)
         add_metadata_to_biom_table(biom_input_fp, taxonomy_map_fp,
@@ -90,11 +92,11 @@ def generate_per_method_biom_tables(taxonomy_glob, data_dir):
 def move_results_to_repository(method_dirs, precomputed_results_dir):
     '''Move new taxonomy assignment results to git repository'''
     for method_dir in method_dirs:
-        fields = method_dir.split(sep)
-        dataset_id, database_id, method_id = fields[-3], fields[-2], fields[-1]
+        f = method_dir.split(sep)
+        dataset_id, db_id, method_id, param_id = f[-4], f[-3], f[-2], f[-1]
 
-        new_location = join(precomputed_results_dir, dataset_id, database_id,
-                            method_id)
+        new_location = join(precomputed_results_dir, dataset_id, db_id,
+                            method_id, param_id)
         if exists(new_location):
             rmtree(new_location)
         move(method_dir, new_location)
@@ -102,13 +104,14 @@ def move_results_to_repository(method_dirs, precomputed_results_dir):
 
 def clean_database(taxa_in, seqs_in, db_dir):
     '''Remove ambiguous and empty taxonomies from reference seqs/taxonomy'''
-    clean_taxa = ''.join(map(str, [db_dir, '/', basename(splitext(taxa_in)[0]),
-                          '_clean.tsv']))
-    clean_fasta = ''.join(map(str, [db_dir, '/', basename(splitext(seqs_in)[0]),
-                          '_clean.fasta']))
+    clean_taxa = join(db_dir,
+                      '{0}_clean.tsv'.format(basename(splitext(taxa_in)[0])))
+    clean_fasta = join(db_dir,
+                      '{0}_clean.fasta'.format(basename(splitext(seqs_in)[0])))
 
     # Remove empty taxa from ref taxonomy
-    taxa = string_search(taxa_in, '__;|__$|_sp_|Incertae', discard=True)
+    taxa = string_search(taxa_in, '__;|__$|_sp_|Incertae|unknown|unidentified',
+                         discard=True)
     # Remove brackets (and other special characters causing problems)
     clean_list = [line.translate(str.maketrans('', '', '[]()'))\
                   for line in taxa]
@@ -138,7 +141,7 @@ def extract_amplicons(seqs_in, amplicons_out, reads_out, fwd_primer,
         with open(reads_out, 'w') as reads:
             for seq in io.read(seqs_in, format='fasta'):
                 # Align forward and reverse primers onto input sequence
-                seq_DNA = DNA(seq)
+                seq_DNA = DNA(seq, lowercase=True)
                 fwd_primer_start = find_primer_site(fwd_primer, seq_DNA)[1][0]
                 rev_primer_end = find_primer_site(rev_primer, seq_DNA)[1][1]
                 # Trim seq to amplicon
@@ -170,17 +173,31 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations):
             makedirs(db_dir)
 
         # Clean taxonomy/sequences, to remove empty/ambiguous taxonomies
-        clean_taxa, clean_fasta = clean_database(data['Reference tax path'],
-                                                 data['Reference file path'],
-                                                 db_dir)
+        clean_fasta = join(db_dir, '{0}_clean.fasta'.format(basename(splitext(\
+                                             data['Reference file path'])[0])))
+        if not exists(clean_fasta):
+            clean_taxa, clean_fasta = clean_database(data['Reference tax path'],
+                                                    data['Reference file path'],
+                                                    db_dir)
 
         # Trim reference sequences to amplicon target
-        amplicons_fp = path.join(db_dir, "simulated_amplicons.fna")
-        simulated_reads_fp = path.join(db_dir, "simulated_reads.fna")
+        primer_pair = '{0}-{1}'.format(data['Fwd primer id'],
+                                       data['Rev primer id'])
+        base, ext = splitext(clean_fasta)
+        amplicons_fp = join(db_dir, '{0}_{1}{2}'.format(base, primer_pair, ext))
+        simulated_reads_fp = join(db_dir, '{0}_{1}_trim{2}{3}'.format(base,
+                                                               primer_pair,
+                                                               read_length,
+                                                               ext))
+
+        #amplicons_fp = path.join(db_dir, "simulated_amplicons.fna")
+        #simulated_reads_fp = path.join(db_dir, "simulated_reads.fna")
         if not exists(simulated_reads_fp):
             extract_amplicons(clean_fasta, amplicons_fp, simulated_reads_fp,
                           DNA(data['Fwd primer']), DNA(data['Rev primer']),
                           read_length, min_read_length=80)
+        else:
+            print('simulated reads and amplicons exist: skipping extraction')
 
         # Filter taxonomy strings to match read sequences
         valid_taxa = '^' + '$|^'.join(list(extract_fasta_ids(\
@@ -234,15 +251,15 @@ def generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
 
     # Create QUERY / REF pairs
         # Create QUERY TAXONOMY as subsets of branched taxa lists
-        basename = ''.join(map(str, [index, '-L', level]))
+        basename = '{0}-L{1}'.format(index, level)
         # stratify at level-1, since we want to stratify the branches, not tips
         stratify_taxonomy_subsets(branched_taxa, iterations, data_dir,
                                   basename, level=level-1)
 
         # Create REF and TAXONOMY files paired to QUERY files:
         for iteration in range(0, iterations):
-            db_iter_dir = ''.join(map(str, [data_dir, '/', basename,
-                                            '-iter', iteration]))
+            db_iter_dir = join(data_dir, '{0}-iter{1}'.format(basename,
+                                                              iteration))
             novel_query_taxonomy_fp = path.join(db_iter_dir,
                                                 'query_taxa.tsv')
             novel_query_fp = path.join(db_iter_dir, 'query.fasta')
@@ -288,8 +305,7 @@ def generate_simulated_communities(read_taxa, simulated_reads_fp, index,
                               level=1, delim='\t')
     # generate pairs of train/test fastas/taxonomies for each CV subset
     for iteration in range(0, iterations):
-        db_iter_dir = ''.join(map(str, [data_dir, '/', index, '-iter',
-                                        iteration]))
+        db_iter_dir = join(data_dir, '{0}-iter{1}'.format(index, iteration))
         query_taxa_fp = path.join(db_iter_dir, 'query_taxa.tsv')
         query_fp = path.join(db_iter_dir, 'query.fasta')
         ref_fp = path.join(db_iter_dir, 'ref_seqs.fasta')
@@ -313,8 +329,8 @@ def test_simulated_communities(dataframe, data_dir, iterations):
     simulated_dir = join(data_dir, 'simulated-community')
     for index, data in dataframe.iterrows():
         for iteration in range(0, iterations):
-            db_iter_dir = ''.join(map(str, [simulated_dir, '/', index, '-iter',
-                                            iteration]))
+            db_iter_dir = join(simulated_dir, '{0}-iter{1}'.format(index,
+                                                                   iteration))
             query_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
                                                            'query_taxa.tsv'))
             ref_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
@@ -334,8 +350,9 @@ def test_novel_taxa_datasets(dataframe, data_dir, iterations):
     for index, data in dataframe.iterrows():
         for level in range(6, 0, -1):
             for iteration in range(0, iterations):
-                db_iter_dir = ''.join(map(str, [novel_dir, '/', index, '-L',
-                                                level, '-iter', iteration]))
+                db_iter_dir = join(novel_dir, '{0}-L{1}-iter{2}'.format(index,
+                                                                    level,
+                                                                    iteration))
                 query_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
                                                              'query_taxa.tsv'))
                 ref_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
@@ -377,11 +394,11 @@ def recall_novel_taxa_dirs(data_dir, databases, iterations,
         for level in range(max_level, min_level, -1):
             for iteration in range(0, iterations):
                 if multilevel is True:
-                    dataset_name = ''.join(map(str, [database, '-L', level,
-                                                     '-iter', iteration]))
+                    dataset_name = '{0}-L{1}-iter{2}'.format(database,
+                                                             level,
+                                                             iteration)
                 else:
-                    dataset_name = ''.join(map(str, [database, '-iter',
-                                                     iteration]))
+                    dataset_name = '{0}-iter{2}'.format(database, iteration)
                 dataset_reference_combinations.append((dataset_name,
                                                        dataset_name))
                 reference_dbs[dataset_name] = (join(data_dir, dataset_name,

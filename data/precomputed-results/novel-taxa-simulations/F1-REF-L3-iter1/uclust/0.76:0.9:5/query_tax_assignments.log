@@ -6,11 +6,11 @@ min_consensus_fraction:0.76
 reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L3-iter1/ref_seqs.fasta
 similarity:0.9
 unassignable_label:Unassigned
-Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-tax2VHXoE
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxr3TTOo
 
 .uc file contents:
 
-# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L3-iter1/query.fasta --id 0.9 --rev --maxaccepts 5 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L3-iter1/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_HQD5Rd.uc
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L3-iter1/query.fasta --id 0.9 --rev --maxaccepts 5 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L3-iter1/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_lRgTPE.uc
 # version=1.2.22
 # Tab-separated fields:
 # 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
@@ -18,41 +18,49 @@ Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-tax2VHXoE
 # For C and D types, PctId is average id with seed.
 # QueryStart and SeedStart are zero-based relative to start of sequence.
 # If minus strand, SeedStart is relative to reverse-complemented seed.
-N	*	250	*	*	*	*	*	U33070	*
-N	*	179	*	*	*	*	*	DQ530224	*
-N	*	218	*	*	*	*	*	AF395684	*
-L	4441	153	*	*	*	*	*	AM159634	*
-H	4441	152	90.8	+	0	0	34MI19MD71MI27M	AB260936	AM159634
-N	*	250	*	*	*	*	*	FJ167356	*
-L	1196	249	*	*	*	*	*	EU375546	*
-H	1196	123	93.5	+	0	0	127I33MD89M	U19954	EU375546
-N	*	157	*	*	*	*	*	DQ789093	*
-N	*	210	*	*	*	*	*	FJ462759	*
-N	*	223	*	*	*	*	*	AB246766	*
-N	*	168	*	*	*	*	*	AM397678	*
-N	*	127	*	*	*	*	*	EF025406	*
-N	*	224	*	*	*	*	*	AB278192	*
-N	*	250	*	*	*	*	*	DQ873601	*
-N	*	211	*	*	*	*	*	EF369523	*
-N	*	116	*	*	*	*	*	FN423704	*
-L	4162	214	*	*	*	*	*	AF462432	*
-H	4162	215	95.8	+	0	0	16MD198M	EU272483	AF462432
-N	*	224	*	*	*	*	*	EU233809	*
-N	*	250	*	*	*	*	*	EU352771	*
-N	*	202	*	*	*	*	*	EU819412	*
-N	*	187	*	*	*	*	*	AF444555	*
-N	*	140	*	*	*	*	*	FJ172292	*
-N	*	213	*	*	*	*	*	EU149802	*
-N	*	200	*	*	*	*	*	GQ922522	*
-N	*	241	*	*	*	*	*	AF019636	*
-L	2307	246	*	*	*	*	*	FR716676	*
-H	2307	246	97.2	+	0	0	246M	FR716677	FR716676
-H	2307	246	91.5	+	0	0	246M	FR716679	FR716676
-H	2307	246	93.5	+	0	0	246M	FR716683	FR716676
-N	*	160	*	*	*	*	*	AY292453	*
-N	*	148	*	*	*	*	*	AJ012112	*
-N	*	195	*	*	*	*	*	AJ133431	*
-D	1196	2	*	*	*	*	93.5	EU375546	*
-D	2307	4	*	*	*	*	94.0	FR716676	*
-D	4162	2	*	*	*	*	95.8	AF462432	*
-D	4441	2	*	*	*	*	90.8	AM159634	*
+N	*	185	*	*	*	*	*	SH076392.07FU_EU636699_reps	*
+N	*	250	*	*	*	*	*	SH076443.07FU_FJ362291_reps	*
+N	*	141	*	*	*	*	*	SH076456.07FU_GQ927301_reps	*
+N	*	250	*	*	*	*	*	SH076743.07FU_FJ861983_reps	*
+N	*	250	*	*	*	*	*	SH077637.07FU_KJ410695_reps	*
+N	*	136	*	*	*	*	*	SH077750.07FU_HM484548_refs	*
+N	*	184	*	*	*	*	*	SH078623.07FU_KF528010_reps	*
+N	*	175	*	*	*	*	*	SH078987.07FU_AF310176_reps	*
+N	*	191	*	*	*	*	*	SH079415.07FU_UDB004158_reps	*
+N	*	250	*	*	*	*	*	SH080206.07FU_EF652088_refs	*
+N	*	250	*	*	*	*	*	SH080427.07FU_EU139156_reps	*
+N	*	250	*	*	*	*	*	SH083443.07FU_JX392812_refs	*
+N	*	250	*	*	*	*	*	SH086124.07FU_KC582003_reps	*
+N	*	219	*	*	*	*	*	SH086524.07FU_JX646791_refs	*
+N	*	102	*	*	*	*	*	SH088356.07FU_AB520470_reps	*
+N	*	250	*	*	*	*	*	SH089194.07FU_KC345725_reps	*
+N	*	170	*	*	*	*	*	SH090838.07FU_EF635906_refs	*
+N	*	162	*	*	*	*	*	SH097994.07FU_AF332110_reps	*
+N	*	250	*	*	*	*	*	SH098725.07FU_JQ002681_refs	*
+N	*	250	*	*	*	*	*	SH099787.07FU_KF849588_reps	*
+N	*	250	*	*	*	*	*	SH100598.07FU_JN882334_refs	*
+N	*	188	*	*	*	*	*	SH102183.07FU_KC683427_reps	*
+N	*	250	*	*	*	*	*	SH103324.07FU_FN665415_reps	*
+N	*	189	*	*	*	*	*	SH105762.07FU_AB180354_reps	*
+L	6627	170	*	*	*	*	*	SH471030.07FU_AJ292290_reps	*
+H	6627	174	94.1	+	0	0	170M4D	SH106379.07FU_KC152127_reps	SH471030.07FU_AJ292290_reps
+L	1557	174	*	*	*	*	*	SH091738.07FU_AJ408361_reps	*
+H	1557	174	93.7	+	0	0	160M2I12M2D	SH106379.07FU_KC152127_reps	SH091738.07FU_AJ408361_reps
+L	3473	250	*	*	*	*	*	SH118543.07FU_KC581318_reps	*
+H	3473	174	92.5	+	0	0	155MI19M75I	SH106379.07FU_KC152127_reps	SH118543.07FU_KC581318_reps
+L	6496	250	*	*	*	*	*	SH129292.07FU_AJ408393_reps	*
+H	6496	174	92.0	+	0	0	26I157M3I17M47I	SH106379.07FU_KC152127_reps	SH129292.07FU_AJ408393_reps
+L	2297	167	*	*	*	*	*	SH100410.07FU_KF308584_reps	*
+H	2297	174	91.6	+	0	0	167M7D	SH106379.07FU_KC152127_reps	SH100410.07FU_KF308584_reps
+N	*	250	*	*	*	*	*	SH117938.07FU_AF223966_reps	*
+N	*	250	*	*	*	*	*	SH112306.07FU_DQ400300_reps	*
+N	*	250	*	*	*	*	*	SH113355.07FU_JF927786_reps	*
+N	*	247	*	*	*	*	*	SH118343.07FU_JX242880_refs	*
+N	*	202	*	*	*	*	*	SH116071.07FU_EU367446_refs	*
+N	*	250	*	*	*	*	*	SH116157.07FU_EF596819_refs	*
+N	*	250	*	*	*	*	*	SH116327.07FU_AF444362_refs	*
+N	*	250	*	*	*	*	*	SH119878.07FU_EU735849_reps	*
+N	*	250	*	*	*	*	*	SH121946.07FU_EU040213_reps	*
+N	*	240	*	*	*	*	*	SH545748.07FU_KP814206_reps	*
+N	*	145	*	*	*	*	*	SH101713.07FU_KF690377_reps	*
+D	6627	2	*	*	*	*	94.1	SH471030.07FU_AJ292290_reps	*

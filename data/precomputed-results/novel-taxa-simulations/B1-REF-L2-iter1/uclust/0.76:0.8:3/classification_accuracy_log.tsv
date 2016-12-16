@@ -1,19 +1,19 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	2	1	uclust	0.76:0.8:3	2998997	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria	overclassification	2
-B1-REF	2	1	uclust	0.76:0.8:3	2990918	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Streptomycetaceae; g__Streptomyces; s__scabrisporus	k__Bacteria; p__Actinobacteria; c__Coriobacteriia	overclassification	2
-B1-REF	2	1	uclust	0.76:0.8:3	4382	k__Bacteria	k__Bacteria; p__Spirochaetes; c__Leptospirae	underclassification	1
-B1-REF	2	1	uclust	0.76:0.8:3	1135040	k__Archaea; p__Euryarchaeota; c__Archaeoglobi; o__Archaeoglobales; f__Archaeoglobaceae; g__Archaeoglobus; s__veneficus	k__Archaea; p__Euryarchaeota; c__Thermococci	overclassification	2
-B1-REF	2	1	uclust	0.76:0.8:3	186867	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Streptomycetaceae; g__Streptomyces	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	misclassification	1
-B1-REF	2	1	uclust	0.76:0.8:3	3793	Unassigned	k__Bacteria; p__Spirochaetes; c__Brevinematae	underclassification	0
-B1-REF	2	1	uclust	0.76:0.8:3	1277	Unassigned	k__Bacteria; p__Chloroflexi; c__Chloroflexi	underclassification	0
-B1-REF	2	1	uclust	0.76:0.8:3	350563	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria	overclassification	2
-B1-REF	2	1	uclust	0.76:0.8:3	101553	Unassigned	k__Archaea; p__Euryarchaeota; c__Methanobacteria	underclassification	0
-B1-REF	2	1	uclust	0.76:0.8:3	110879	k__Bacteria; p__Cyanobacteria	k__Bacteria; p__Cyanobacteria; c__Nostocophycideae	match	2
-B1-REF	2	1	uclust	0.76:0.8:3	1131014	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Thermoactinomycetaceae	k__Bacteria; p__Actinobacteria; c__Nitriliruptoria	misclassification	1
-B1-REF	2	1	uclust	0.76:0.8:3	4352747	k__Bacteria; p__Bacteroidetes; c__Sphingobacteriia; o__Sphingobacteriales; f__Sphingobacteriaceae; g__Sphingobacterium; s__multivorum	k__Bacteria; p__Bacteroidetes; c__Bacteroidia	overclassification	2
-B1-REF	2	1	uclust	0.76:0.8:3	219691	k__Archaea; p__Euryarchaeota	k__Archaea; p__Euryarchaeota; c__Methanococci	match	2
-B1-REF	2	1	uclust	0.76:0.8:3	369386	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales	k__Bacteria; p__Cyanobacteria; c__Chloroplast	misclassification	1
-B1-REF	2	1	uclust	0.76:0.8:3	156688	k__Bacteria	k__Bacteria; p__Planctomycetes; c__Brocadiae	underclassification	1
-B1-REF	2	1	uclust	0.76:0.8:3	3002161	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales	k__Bacteria; p__Firmicutes; c__Erysipelotrichi	overclassification	2
-B1-REF	2	1	uclust	0.76:0.8:3	58613	k__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacteriales	k__Bacteria; p__Bacteroidetes; c__Cytophagia	overclassification	2
+B1-REF	2	1	uclust	0.76:0.8:3	2480449	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae	k__Bacteria; p__Cyanobacteria; c__Nostocophycideae	overclassification	2
+B1-REF	2	1	uclust	0.76:0.8:3	816056	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Peptococcaceae; g__Desulfosporosinus; s__meridiei	k__Bacteria; p__Acidobacteria; c__Acidobacteriia	misclassification	1
+B1-REF	2	1	uclust	0.76:0.8:3	4471401	Unassigned	k__Bacteria; p__Planctomycetes; c__Planctomycetia	underclassification	0
+B1-REF	2	1	uclust	0.76:0.8:3	2621281	k__Bacteria; p__Bacteroidetes; c__Sphingobacteriia; o__Sphingobacteriales; f__Sphingobacteriaceae; g__Solitalea; s__koreensis	k__Bacteria; p__Bacteroidetes; c__Flavobacteriia	overclassification	2
+B1-REF	2	1	uclust	0.76:0.8:3	144391	k__Archaea	k__Archaea; p__Euryarchaeota; c__Archaeoglobi	underclassification	1
+B1-REF	2	1	uclust	0.76:0.8:3	1145893	k__Bacteria; p__Bacteroidetes; c__Sphingobacteriia; o__Sphingobacteriales; f__Sphingobacteriaceae; g__Pedobacter; s__cryoconitis	k__Bacteria; p__Bacteroidetes; c__Cytophagia	overclassification	2
+B1-REF	2	1	uclust	0.76:0.8:3	563323	Unassigned	k__Bacteria; p__Spirochaetes; c__Spirochaetes	underclassification	0
+B1-REF	2	1	uclust	0.76:0.8:3	2919166	Unassigned	k__Bacteria; p__Actinobacteria; c__Coriobacteriia	underclassification	0
+B1-REF	2	1	uclust	0.76:0.8:3	1131014	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Chromatiales; f__Ectothiorhodospiraceae; g__Thioalkalivibrio	k__Bacteria; p__Actinobacteria; c__Nitriliruptoria	misclassification	1
+B1-REF	2	1	uclust	0.76:0.8:3	38566	k__Bacteria; p__Verrucomicrobia; c__Verrucomicrobiae; o__Verrucomicrobiales; f__Verrucomicrobiaceae; g__Prosthecobacter; s__debontii	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria	misclassification	1
+B1-REF	2	1	uclust	0.76:0.8:3	89370	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Peptococcaceae; g__Desulfosporosinus; s__meridiei	k__Bacteria; p__Firmicutes; c__Bacilli	overclassification	2
+B1-REF	2	1	uclust	0.76:0.8:3	295454	k__Bacteria	k__Bacteria; p__Verrucomicrobia; c__Methylacidiphilae	underclassification	1
+B1-REF	2	1	uclust	0.76:0.8:3	1137725	Unassigned	k__Bacteria; p__Spirochaetes; c__Brachyspirae	underclassification	0
+B1-REF	2	1	uclust	0.76:0.8:3	545968	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria	overclassification	2
+B1-REF	2	1	uclust	0.76:0.8:3	794040	k__Archaea	k__Archaea; p__Euryarchaeota; c__Thermococci	underclassification	1
+B1-REF	2	1	uclust	0.76:0.8:3	273661	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Enterobacteriales; f__Enterobacteriaceae; g__Candidatus Blochmannia; s__floridanus	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria	overclassification	2
+B1-REF	2	1	uclust	0.76:0.8:3	547165	Unassigned	k__Bacteria; p__Chloroflexi; c__Chloroflexi	underclassification	0
 B1-REF	2	1	uclust	0.76:0.8:3	4370637	k__Archaea; p__Crenarchaeota; c__Thermoprotei	k__Archaea; p__Crenarchaeota; c__Aigarchaeota	overclassification	2

@@ -6,11 +6,11 @@ min_consensus_fraction:0.51
 reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L2-iter1/ref_seqs.fasta
 similarity:0.9
 unassignable_label:Unassigned
-Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxSxEAaO
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxMf4rrU
 
 .uc file contents:
 
-# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L2-iter1/query.fasta --id 0.9 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L2-iter1/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_PLbH6y.uc
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L2-iter1/query.fasta --id 0.9 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L2-iter1/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_YRKd5T.uc
 # version=1.2.22
 # Tab-separated fields:
 # 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
@@ -18,21 +18,21 @@ Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxSxEAaO
 # For C and D types, PctId is average id with seed.
 # QueryStart and SeedStart are zero-based relative to start of sequence.
 # If minus strand, SeedStart is relative to reverse-complemented seed.
-N	*	250	*	*	*	*	*	350563	*
-N	*	250	*	*	*	*	*	186867	*
-N	*	250	*	*	*	*	*	156688	*
-N	*	250	*	*	*	*	*	110879	*
-N	*	250	*	*	*	*	*	58613	*
-N	*	250	*	*	*	*	*	4382	*
-N	*	250	*	*	*	*	*	3793	*
-N	*	250	*	*	*	*	*	1277	*
+N	*	250	*	*	*	*	*	563323	*
+N	*	250	*	*	*	*	*	547165	*
+N	*	250	*	*	*	*	*	545968	*
+N	*	250	*	*	*	*	*	295454	*
+N	*	250	*	*	*	*	*	273661	*
+N	*	250	*	*	*	*	*	89370	*
+N	*	250	*	*	*	*	*	38566	*
+N	*	250	*	*	*	*	*	1137725	*
 N	*	250	*	*	*	*	*	1131014	*
-N	*	250	*	*	*	*	*	369386	*
-N	*	250	*	*	*	*	*	2990918	*
-N	*	250	*	*	*	*	*	2998997	*
-N	*	250	*	*	*	*	*	3002161	*
-N	*	250	*	*	*	*	*	4352747	*
-N	*	250	*	*	*	*	*	219691	*
-N	*	250	*	*	*	*	*	101553	*
-N	*	250	*	*	*	*	*	1135040	*
+N	*	250	*	*	*	*	*	816056	*
+N	*	250	*	*	*	*	*	2480449	*
+N	*	250	*	*	*	*	*	2621281	*
+N	*	250	*	*	*	*	*	2919166	*
+N	*	250	*	*	*	*	*	1145893	*
+N	*	250	*	*	*	*	*	4471401	*
+N	*	250	*	*	*	*	*	144391	*
+N	*	250	*	*	*	*	*	794040	*
 N	*	250	*	*	*	*	*	4370637	*

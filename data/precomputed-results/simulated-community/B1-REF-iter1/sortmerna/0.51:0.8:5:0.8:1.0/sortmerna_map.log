@@ -1,14 +1,14 @@
- Wed Nov 23 09:42:40 2016
+ Thu Dec 15 14:41:38 2016
 
- Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/simulated-community/B1-REF-iter1/ref_seqs.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmplqqpQT/ref_seqs -e 1.0 --aligned /Users/nbokulich/Desktop/projects/simulated-community/B1-REF-iter1/B1-REF-iter1/sortmerna/0.51:0.8:5:0.8:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/simulated-community/B1-REF-iter1/query.fasta -v --best 5 
- Process pid = 19295
+ Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/simulated-community/B1-REF-iter1/ref_seqs.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpYsKsz2/ref_seqs -e 1.0 --aligned /Users/nbokulich/Desktop/projects/simulated-community/B1-REF-iter1/B1-REF-iter1/sortmerna/0.51:0.8:5:0.8:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/simulated-community/B1-REF-iter1/query.fasta -v --best 5 
+ Process pid = 16939
  Parameters summary:
-    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmplqqpQT/ref_seqs
+    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpYsKsz2/ref_seqs
      Seed length = 18
      Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
-     Gumbel lambda = 0.586139
-     Gumbel K = 0.315116
-     Minimal SW score based on E-value = 40
+     Gumbel lambda = 0.585937
+     Gumbel K = 0.314228
+     Minimal SW score based on E-value = 43
     Number of seeds = 2
     Edges = 4 (as integer)
     SW match = 2
@@ -21,8 +21,8 @@
     Reads file = /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/simulated-community/B1-REF-iter1/query.fasta
 
  Results:
-    Total reads = 181
-    Total reads passing E-value threshold = 181 (100.00%)
+    Total reads = 377
+    Total reads passing E-value threshold = 377 (100.00%)
     Total reads failing E-value threshold = 0 (0.00%)
     Minimum read length = 250
     Maximum read length = 250

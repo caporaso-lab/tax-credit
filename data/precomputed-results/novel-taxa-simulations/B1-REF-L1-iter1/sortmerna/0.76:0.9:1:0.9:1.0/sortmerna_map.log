@@ -1,14 +1,14 @@
- Wed Nov 23 11:49:31 2016
+ Thu Dec 15 19:25:56 2016
 
- Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter1/ref_seqs.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpcsbFmL/ref_seqs -e 1.0 --aligned /Users/nbokulich/Desktop/projects/novel-taxa-simulations/B1-REF-L1-iter1/B1-REF-L1-iter1/sortmerna/0.76:0.9:1:0.9:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter1/query.fasta -v --best 1 
- Process pid = 56720
+ Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter1/ref_seqs.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmptIDwzI/ref_seqs -e 1.0 --aligned /Users/nbokulich/Desktop/projects/novel-taxa-simulations/B1-REF-L1-iter1/B1-REF-L1-iter1/sortmerna/0.76:0.9:1:0.9:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter1/query.fasta -v --best 1 
+ Process pid = 58920
  Parameters summary:
-    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpcsbFmL/ref_seqs
+    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmptIDwzI/ref_seqs
      Seed length = 18
      Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
-     Gumbel lambda = 0.588828
-     Gumbel K = 0.322925
-     Minimal SW score based on E-value = 34
+     Gumbel lambda = 0.582026
+     Gumbel K = 0.311433
+     Minimal SW score based on E-value = 37
     Number of seeds = 2
     Edges = 4 (as integer)
     SW match = 2
@@ -21,8 +21,8 @@
     Reads file = /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter1/query.fasta
 
  Results:
-    Total reads = 9
-    Total reads passing E-value threshold = 9 (100.00%)
+    Total reads = 10
+    Total reads passing E-value threshold = 10 (100.00%)
     Total reads failing E-value threshold = 0 (0.00%)
     Minimum read length = 250
     Maximum read length = 250
