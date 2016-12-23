@@ -1,12 +1,7 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	47778	Unassigned	k__Archaea; p__Crenarchaeota	underclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	141021	Unassigned	k__Bacteria; p__Chlorobi	underclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	4456787	Unassigned	k__Bacteria; p__Chlamydiae	underclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	1277	Unassigned	k__Bacteria; p__Chloroflexi	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	46167	Unassigned	k__Archaea; p__Crenarchaeota	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	1120396	Unassigned	k__Bacteria; p__Synergistetes	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	563323	Unassigned	k__Bacteria; p__Spirochaetes	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	816056	Unassigned	k__Bacteria; p__Acidobacteria	underclassification	0
 B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	1138255	Unassigned	k__Bacteria; p__Aquificae	underclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	4459671	Unassigned	k__Bacteria; p__Spirochaetes	underclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	742260	Unassigned	k__Bacteria; p__Acidobacteria	underclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	125020	Unassigned	k__Archaea; p__Nanoarchaeota	underclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	2136916	Unassigned	k__Bacteria; p__Lentisphaerae	underclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	3002161	Unassigned	k__Bacteria; p__Firmicutes	underclassification	0
-B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	4368159	Unassigned	k__Bacteria; p__Synergistetes	underclassification	0
+B1-REF	1	0	sortmerna	0.51:0.9:1:0.8:1.0	3623950	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Thermoanaerobacteraceae; g__Thermoanaerobacter; s__uzonensis	k__Bacteria; p__Dictyoglomi	overclassification	1

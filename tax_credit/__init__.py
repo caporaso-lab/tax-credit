@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ----------------------------------------------------------------------------
-# Copyright (c) 2014--, taxcompare development team.
+# Copyright (c) 2014--, tax-credit development team.
 #
 # Distributed under the terms of the Modified BSD License.
 #

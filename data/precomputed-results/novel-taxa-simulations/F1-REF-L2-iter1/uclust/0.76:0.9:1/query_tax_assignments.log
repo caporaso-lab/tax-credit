@@ -6,11 +6,11 @@ min_consensus_fraction:0.76
 reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter1/ref_seqs.fasta
 similarity:0.9
 unassignable_label:Unassigned
-Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxStxBb5
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-tax8AedO_
 
 .uc file contents:
 
-# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter1/query.fasta --id 0.9 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter1/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_n5V0OP.uc
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter1/query.fasta --id 0.9 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter1/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_BMctYg.uc
 # version=1.2.22
 # Tab-separated fields:
 # 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
@@ -18,18 +18,12 @@ Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxStxBb5
 # For C and D types, PctId is average id with seed.
 # QueryStart and SeedStart are zero-based relative to start of sequence.
 # If minus strand, SeedStart is relative to reverse-complemented seed.
-N	*	250	*	*	*	*	*	U33070	*
-N	*	187	*	*	*	*	*	AF178417	*
-N	*	250	*	*	*	*	*	FJ167356	*
-N	*	250	*	*	*	*	*	DQ536501	*
-N	*	113	*	*	*	*	*	AF514292	*
-N	*	210	*	*	*	*	*	DQ681328	*
-N	*	115	*	*	*	*	*	DQ827707	*
-N	*	250	*	*	*	*	*	AB054041	*
-N	*	214	*	*	*	*	*	EF621920	*
-N	*	218	*	*	*	*	*	DQ497616	*
-L	3554	250	*	*	*	*	*	HM595594	*
-H	3554	250	90.0	+	0	0	5I202MD43M4D	AF506435	HM595594
-N	*	211	*	*	*	*	*	L27658	*
-N	*	172	*	*	*	*	*	AF444643	*
-D	3554	2	*	*	*	*	90.0	HM595594	*
+N	*	196	*	*	*	*	*	SH076634.07FU_AB476496_reps	*
+N	*	164	*	*	*	*	*	SH077292.07FU_JQ256426_refs	*
+N	*	184	*	*	*	*	*	SH078623.07FU_KF528010_reps	*
+N	*	175	*	*	*	*	*	SH078987.07FU_AF310176_reps	*
+N	*	250	*	*	*	*	*	SH079920.07FU_AY997079_refs	*
+N	*	250	*	*	*	*	*	SH088503.07FU_KF192890_reps	*
+N	*	220	*	*	*	*	*	SH099594.07FU_DQ494348_reps	*
+N	*	178	*	*	*	*	*	SH114212.07FU_AB712468_reps	*
+N	*	247	*	*	*	*	*	SH118343.07FU_JX242880_refs	*

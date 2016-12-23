@@ -1,13 +1,13 @@
- Wed Nov 23 11:59:28 2016
+ Thu Dec 15 19:36:25 2016
 
- Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter2/ref_seqs.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmp_Xu9fL/ref_seqs -e 1.0 --aligned /Users/nbokulich/Desktop/projects/novel-taxa-simulations/B1-REF-L1-iter2/B1-REF-L1-iter2/sortmerna/1.0:0.8:5:0.8:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter2/query.fasta -v --best 5 
- Process pid = 59061
+ Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter2/ref_seqs.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmp0dbmKK/ref_seqs -e 1.0 --aligned /Users/nbokulich/Desktop/projects/novel-taxa-simulations/B1-REF-L1-iter2/B1-REF-L1-iter2/sortmerna/1.0:0.8:5:0.8:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter2/query.fasta -v --best 5 
+ Process pid = 61255
  Parameters summary:
-    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmp_Xu9fL/ref_seqs
+    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmp0dbmKK/ref_seqs
      Seed length = 18
      Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
-     Gumbel lambda = 0.583402
-     Gumbel K = 0.313201
+     Gumbel lambda = 0.598356
+     Gumbel K = 0.325218
      Minimal SW score based on E-value = 34
     Number of seeds = 2
     Edges = 4 (as integer)
@@ -21,8 +21,8 @@
     Reads file = /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter2/query.fasta
 
  Results:
-    Total reads = 7
-    Total reads passing E-value threshold = 7 (100.00%)
+    Total reads = 12
+    Total reads passing E-value threshold = 12 (100.00%)
     Total reads failing E-value threshold = 0 (0.00%)
     Minimum read length = 250
     Maximum read length = 250

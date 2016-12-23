@@ -1,14 +1,14 @@
- Mon Nov 28 15:33:25 2016
+ Fri Dec 16 09:18:46 2016
 
- Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L1-iter0/ref_seqs.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpn6qS97/ref_seqs -e 1.0 --aligned /Users/nbokulich/Desktop/projects/novel-taxa-simulations/F1-REF-L1-iter0/F1-REF-L1-iter0/sortmerna/0.51:0.9:3:0.9:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L1-iter0/query.fasta -v --best 3 
- Process pid = 22036
+ Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L1-iter0/ref_seqs.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpJP4YJI/ref_seqs -e 1.0 --aligned /Users/nbokulich/Desktop/projects/novel-taxa-simulations/F1-REF-L1-iter0/F1-REF-L1-iter0/sortmerna/0.51:0.9:3:0.9:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L1-iter0/query.fasta -v --best 3 
+ Process pid = 3874
  Parameters summary:
-    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpn6qS97/ref_seqs
+    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpJP4YJI/ref_seqs
      Seed length = 18
      Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
-     Gumbel lambda = 0.603403
-     Gumbel K = 0.330279
-     Minimal SW score based on E-value = 29
+     Gumbel lambda = 0.614335
+     Gumbel K = 0.338610
+     Minimal SW score based on E-value = 30
     Number of seeds = 2
     Edges = 4 (as integer)
     SW match = 2
@@ -24,8 +24,8 @@
     Total reads = 1
     Total reads passing E-value threshold = 1 (100.00%)
     Total reads failing E-value threshold = 0 (0.00%)
-    Minimum read length = 179
-    Maximum read length = 179
-    Mean read length = 179
+    Minimum read length = 250
+    Maximum read length = 250
+    Mean read length = 250
  By database:
     /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L1-iter0/ref_seqs.fasta		100.00%

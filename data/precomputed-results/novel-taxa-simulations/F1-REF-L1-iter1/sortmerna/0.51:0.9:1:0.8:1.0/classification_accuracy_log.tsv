@@ -1,3 +1,2 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	1	1	sortmerna	0.51:0.9:1:0.8:1.0	HQ888720	Root;Basidiomycota;Agaricomycetes;Agaricales;Cortinariaceae;Inocybe;Inocybe_napipes	Root;Blastocladiomycota	overclassification	1
-F1-REF	1	1	sortmerna	0.51:0.9:1:0.8:1.0	DQ536501	Unassigned	Root;Chytridiomycota	underclassification	0
+F1-REF	1	1	sortmerna	0.51:0.9:1:0.8:1.0	SH077429.07FU_JQ782549_reps	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Diversisporales;f__Diversisporaceae;g__Diversispora;s__Diversispora_spurca	k__Fungi;p__Neocallimastigomycota	overclassification	1

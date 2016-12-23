@@ -2,7 +2,7 @@
 
 ### A standardized and extensible evaluation framework for taxonomic classifiers
 
-To view static versions of the reports presented in [Bokulich, et al., (Microbiome, under review)](https://peerj.com/preprints/934/), [start here](http://nbviewer.ipython.org/github/gregcaporaso/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
+To view static versions of the reports presented in [Bokulich, et al., (Microbiome, under review)](https://peerj.com/preprints/934/), [start here](https://github.com/nbokulich/short-read-tax-assignment/tree/master/ipynb).
 
 This repository contains python code and IPython Notebooks designed to run on the QIIME 1.9.1 AWS instance. You can find
 that AMI on the [QIIME resources page](http://qiime.org/home_static/dataFiles.html).
@@ -50,10 +50,10 @@ tar -xzf unite-97-rep-set.tgz
 tar -xzf gg_13_8_otus.tar.gz
 ```
 
-Using the IPython Notebooks included in this repository
+Using the Jupyter Notebooks included in this repository
 -------------------------------------------------------
 
-To view and interact with an [IPython Notebook](http://ipython.org/notebook.html), change into the ``$HOME/data/short-read-tax-assignment/ipynb`` directory and [start the IPython Notebook server in a screen session](http://qiime.org/tutorials/working_with_aws.html#connecting-to-your-qiime-ec2-instance-using-the-ipython-notebook).
+To view and interact with Jupyter Notebook, change into the ``/short-read-tax-assignment/ipynb`` directory and [start the IPython Notebook server in a screen session](http://qiime.org/tutorials/working_with_aws.html#connecting-to-your-qiime-ec2-instance-using-the-ipython-notebook).
 
 
 **Everything below here needs to be updated after the re-analyses are completed.**

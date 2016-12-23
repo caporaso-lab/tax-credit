@@ -1,6 +1,10 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	2	2	uclust	0.51:0.9:3	DQ832329	Unassigned	Root;Ascomycota;Lichinomycetes	underclassification	0
-F1-REF	2	2	uclust	0.51:0.9:3	AB054050	Root;Ascomycota;Sordariomycetes;Hypocreales;Ophiocordycipitaceae;Ophiocordyceps;Ophiocordyceps_filiformis	Root;Basidiomycota;Wallemiomycetes	misclassification	1
-F1-REF	2	2	uclust	0.51:0.9:3	AJ716305	Unassigned	Root;Ascomycota;Leotiomycetes	underclassification	0
-F1-REF	2	2	uclust	0.51:0.9:3	AF289074	Unassigned	Root;Ascomycota;Pezizomycetes	underclassification	0
-F1-REF	2	2	uclust	0.51:0.9:3	DQ521585	Unassigned	Root;Basidiomycota;Pucciniomycetes	underclassification	0
+F1-REF	2	2	uclust	0.51:0.9:3	SH538886.07FU_KP413075_reps	Unassigned	k__Fungi;p__Basidiomycota;c__Entorrhizomycetes	underclassification	0
+F1-REF	2	2	uclust	0.51:0.9:3	SH076456.07FU_GQ927301_reps	Unassigned	k__Fungi;p__Ascomycota;c__Lecanoromycetes	underclassification	0
+F1-REF	2	2	uclust	0.51:0.9:3	SH076993.07FU_FM205629_refs	Unassigned	k__Fungi;p__Ascomycota;c__Pezizomycetes	underclassification	0
+F1-REF	2	2	uclust	0.51:0.9:3	SH092147.07FU_FJ171856_reps	Unassigned	k__Fungi;p__Ascomycota;c__Neolectomycetes	underclassification	0
+F1-REF	2	2	uclust	0.51:0.9:3	SH077302.07FU_AB011514_refs	Unassigned	k__Fungi;p__Ascomycota;c__Saccharomycetes	underclassification	0
+F1-REF	2	2	uclust	0.51:0.9:3	SH076443.07FU_FJ362291_reps	Unassigned	k__Fungi;p__Basidiomycota;c__Agaricomycetes	underclassification	0
+F1-REF	2	2	uclust	0.51:0.9:3	SH097403.07FU_JN882331_reps	Unassigned	k__Fungi;p__Chytridiomycota;c__Monoblepharidomycetes	underclassification	0
+F1-REF	2	2	uclust	0.51:0.9:3	SH549973.07FU_KT767195_reps	Unassigned	k__Fungi;p__Ascomycota;c__Schizosaccharomycetes	underclassification	0
+F1-REF	2	2	uclust	0.51:0.9:3	SH102037.07FU_AF444292_refs	Unassigned	k__Fungi;p__Basidiomycota;c__Cystobasidiomycetes	underclassification	0

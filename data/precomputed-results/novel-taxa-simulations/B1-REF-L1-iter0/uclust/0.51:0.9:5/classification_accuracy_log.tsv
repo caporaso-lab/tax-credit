@@ -1,12 +1,7 @@
 dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	0	uclust	0.51:0.9:5	47778	Unassigned	k__Archaea; p__Crenarchaeota	underclassification	0
-B1-REF	1	0	uclust	0.51:0.9:5	141021	Unassigned	k__Bacteria; p__Chlorobi	underclassification	0
-B1-REF	1	0	uclust	0.51:0.9:5	4456787	Unassigned	k__Bacteria; p__Chlamydiae	underclassification	0
-B1-REF	1	0	uclust	0.51:0.9:5	1277	Unassigned	k__Bacteria; p__Chloroflexi	underclassification	0
+B1-REF	1	0	uclust	0.51:0.9:5	46167	Unassigned	k__Archaea; p__Crenarchaeota	underclassification	0
+B1-REF	1	0	uclust	0.51:0.9:5	1120396	Unassigned	k__Bacteria; p__Synergistetes	underclassification	0
+B1-REF	1	0	uclust	0.51:0.9:5	563323	Unassigned	k__Bacteria; p__Spirochaetes	underclassification	0
+B1-REF	1	0	uclust	0.51:0.9:5	816056	Unassigned	k__Bacteria; p__Acidobacteria	underclassification	0
 B1-REF	1	0	uclust	0.51:0.9:5	1138255	Unassigned	k__Bacteria; p__Aquificae	underclassification	0
-B1-REF	1	0	uclust	0.51:0.9:5	4459671	Unassigned	k__Bacteria; p__Spirochaetes	underclassification	0
-B1-REF	1	0	uclust	0.51:0.9:5	742260	Unassigned	k__Bacteria; p__Acidobacteria	underclassification	0
-B1-REF	1	0	uclust	0.51:0.9:5	125020	Unassigned	k__Archaea; p__Nanoarchaeota	underclassification	0
-B1-REF	1	0	uclust	0.51:0.9:5	2136916	Unassigned	k__Bacteria; p__Lentisphaerae	underclassification	0
-B1-REF	1	0	uclust	0.51:0.9:5	3002161	Unassigned	k__Bacteria; p__Firmicutes	underclassification	0
-B1-REF	1	0	uclust	0.51:0.9:5	4368159	Unassigned	k__Bacteria; p__Synergistetes	underclassification	0
+B1-REF	1	0	uclust	0.51:0.9:5	3623950	Unassigned	k__Bacteria; p__Dictyoglomi	underclassification	0
