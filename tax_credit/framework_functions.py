@@ -68,7 +68,8 @@ def parameter_sweep(data_dir, results_dir, reference_dbs,
 def add_metadata_to_biom_table(biom_input_fp, taxonomy_map_fp, biom_output_fp):
     '''Load biom, add metadata, write to new table'''
     newbiom = load_table(biom_input_fp)
-    metadata = MetadataMap.from_file(taxonomy_map_fp, header='taxonomy')
+    metadata = MetadataMap.from_file(taxonomy_map_fp,
+                                     header=['Sample ID', 'taxonomy', 'c'])
     newbiom.add_metadata(metadata, 'observation')
     write_biom_table(newbiom, 'hdf5', biom_output_fp)
 
@@ -645,10 +646,11 @@ def extract_per_level_accuracy(df, column='mismatch_level_list'):
 
 
 def per_level_kruskal_wallis(df,
-                             vars,
+                             y_vars,
                              group_by,
                              dataset_col='Dataset',
                              level_name="level",
+                             levelrange=range(1,7),
                              alpha=0.05,
                              pval_correction='fdr_bh'):
 
@@ -659,20 +661,21 @@ def per_level_kruskal_wallis(df,
     sample must have at least 5 measurements.
 
     df = pandas dataframe
-    vars = LIST of variables (df column names) to test
+    y_vars = LIST of variables (df column names) to test
     group_by = df variable to use for separating plot panels with FacetGrid
     dataset_col = df variable to use for separating individual datasets to test
     level_name = df variable name that specifies taxonomic level
+    levelrange = range of taxonomic levels to test.
     alpha = level of alpha significance for test
     pval_correction = type of p-value correction to use
     '''
     dataset_list = []
     p_list = []
-    for dataset in df.Dataset.unique():
+    for dataset in df[dataset_col].unique():
         data_subset = df[dataset_col] == dataset
-        for var in vars:
+        for var in y_vars:
             dataset_list.append((dataset, var))
-            for level in range(1,7):
+            for level in levelrange:
                 level_subset = df[level_name] == level
 
                 # group data by groups
@@ -685,7 +688,7 @@ def per_level_kruskal_wallis(df,
 
                 # kruskal-wallis tests
                 try:
-                    h_stat, p_val = kruskal(*group_list)
+                    h_stat, p_val = kruskal(*group_list, nan_policy='omit')
                 # default to p=1.0 if all values = 0
                 # this is not technically correct, from the standpoint of p-val
                 # correction below makes p-vals very slightly less significant
@@ -697,11 +700,13 @@ def per_level_kruskal_wallis(df,
 
     # correct p-values
     rej, pval_corr, alphas, alphab = multipletests(np.array(p_list),
-                                                   alpha=0.05, method='fdr_bh')
+                                                   alpha=alpha,
+                                                   method=pval_correction)
 
+    range_len = len([i for i in levelrange])
     results = [(dataset_list[i][0], dataset_list[i][1],
-                *[pval_corr[i*6+n] for n in range(0,6)])\
+                *[pval_corr[i*range_len+n] for n in range(0,range_len)])\
                 for i in range(0,len(dataset_list))]
     result = pd.DataFrame(results, columns=["Dataset", "Variable",
-                                            *[n for n in range(1,7)]])
+                                            *[n for n in levelrange]])
     return result

@@ -45,6 +45,27 @@ def extract_mockrobiota_dataset_metadata(mockrobiota_dir, communities):
     return dataset_metadata_dict
 
 
+def amend_biom_taxonomy_ids(biom_table,
+                            empty_taxonomy=['k__', 'p__','c__','o__',
+                                            'f__','g__','s__']
+                           ):
+    '''Convert biom table taxonomy strings so that strings with incomplete
+    taxonomies are filled out with ambiguous labels
+    '''
+    new_ids = {}
+    for taxa in biom_table.ids(axis='observation'):
+        old_taxonomy = taxa.split(';')
+        if len(old_taxonomy) < len(empty_taxonomy):
+            new_taxonomy = empty_taxonomy
+            for i in range(len(old_taxonomy)):
+                new_taxonomy[i] = old_taxonomy[i]
+            new_ids[taxa] = ';'.join(new_taxonomy)
+        else:
+            new_ids[taxa] = ';'.join(old_taxonomy)
+
+    return biom_table.update_ids(new_ids, axis='observation')
+
+
 def extract_mockrobiota_data(communities, community_metadata, reference_dbs,
                              mockrobiota_dir, mock_data_dir,
                              expected_data_dir, biom_fn='table.L6-taxa.biom'):
@@ -63,8 +84,8 @@ def extract_mockrobiota_data(communities, community_metadata, reference_dbs,
         # extract dataset metadata/params
         forward_read_url, index_read_url, marker_gene = \
                                                   community_metadata[community]
-        ref_dest_dir, ref_source_dir, ref_version = \
-                                                reference_dbs[marker_gene][0:3]
+        ref_dest_dir, ref_source_dir, ref_version, otu_id = \
+                                                reference_dbs[marker_gene][0:4]
 
         # mockrobiota source directory
         mockrobiota_community_dir = join(mockrobiota_dir, "data", community)
@@ -93,10 +114,14 @@ def extract_mockrobiota_data(communities, community_metadata, reference_dbs,
         exp_taxa_fp = join(expected_taxa_dir, 'expected-taxonomy.tsv')
         exp_biom_fp = join(expected_taxa_dir, biom_fn)
         copyfile(join(mockrobiota_community_dir, ref_source_dir,
-                      ref_version, 'expected-taxonomy.tsv'), exp_taxa_fp)
-        newbiom = biom.load_table(exp_taxa_fp)
+                      ref_version, otu_id, 'expected-taxonomy.tsv'),
+                 exp_taxa_fp)
+        newbiom = amend_biom_taxonomy_ids(biom.load_table(exp_taxa_fp))
+        # add taxonomy ids (names) as observation metadata
+        metadata = {sid : {'taxonomy': sid.split(';')}\
+                    for sid in newbiom.ids(axis='observation')}
+        newbiom.add_metadata(metadata, 'observation')
         write_biom_table(newbiom, 'hdf5', exp_biom_fp)
-
 
 
 def batch_demux(communities,
