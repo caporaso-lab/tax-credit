@@ -28,23 +28,15 @@ from statsmodels.sandbox.stats.multicomp import multipletests
 import numpy as np
 
 
-def parameter_sweep(data_dir, results_dir, reference_dbs,
+def gen_param_sweep(data_dir, results_dir, reference_dbs,
                     dataset_reference_combinations,
                     method_parameters_combinations,
-                    command_template=None, infile='rep_set.fna',
                     output_name='rep_set_tax_assignments.txt'):
     '''Create list of commands from input dictionaries of method_parameter and
     dataset_reference_combinations
     '''
-
-    if command_template is None:
-        # default to qiime1 command template
-        command_template = "mkdir -p {0} ; assign_taxonomy.py -v -i {1} -o {0}\
-                            -r {2} -t {3} -m {4} {5} --rdp_max_memory 16000"
-
-    commands = []
     for dataset, reference in dataset_reference_combinations:
-        query_seqs = join(data_dir, dataset, infile)
+        input_dir = join(data_dir, dataset)
         reference_seqs, reference_tax = reference_dbs[reference]
         for method, parameters in method_parameters_combinations.items():
             parameter_ids = sorted(parameters.keys())
@@ -54,14 +46,36 @@ def parameter_sweep(data_dir, results_dir, reference_dbs,
                 parameter_output_dir = join(results_dir, dataset, reference,
                                             method, parameter_comb_id)
                 if not exists(join(parameter_output_dir, output_name)):
-                    parameter_str = ' '.join(['--%s %s' % e for e in zip(\
-                                        parameter_ids, parameter_combination)])
-                    command = command_template.format(parameter_output_dir,
-                                                      query_seqs,
-                                                      reference_seqs,
-                                                      reference_tax, method,
-                                                      parameter_str)
-                    commands.append(command)
+                    params = dict(zip(parameter_ids, parameter_combination))
+                    yield (parameter_output_dir, input_dir, reference_seqs,
+                           reference_tax, method, params)
+
+
+def parameter_sweep(data_dir, results_dir, reference_dbs,
+                    dataset_reference_combinations,
+                    method_parameters_combinations,
+                    command_template="mkdir -p {0} ; assign_taxonomy.py -v -i "
+                                     "{1} -o {0} -r {2} -t {3} -m {4} {5} "
+                                     "--rdp_max_memory 16000",
+                    infile='rep_set.fna',
+                    output_name='rep_set_tax_assignments.txt'):
+    '''Create list of commands from input dictionaries of method_parameter and
+    dataset_reference_combinations
+    '''
+    sweep = gen_param_sweep(data_dir, results_dir, reference_dbs,
+                            dataset_reference_combinations,
+                            method_parameters_combinations, in_file,
+                            output_name)
+    commands = []
+    for assignment in sweep:
+        (parameter_output_dir, input_dir, reference_seqs, reference_tax,
+         method, params) = assignment
+        query_seqs = join(input_dir, infile)
+        parameter_str = ' '.join(['--%s %s' % e for e in params.items()])
+        command = command_template.format(parameter_output_dir, query_seqs,
+                                          reference_seqs, reference_tax,
+                                          method, parameter_str)
+        commands.append(command)
     return commands
 
 
