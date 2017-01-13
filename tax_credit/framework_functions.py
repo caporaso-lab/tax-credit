@@ -11,7 +11,6 @@
 
 from os.path import join, exists, split, sep, expandvars, basename, splitext
 from os import makedirs, remove
-from tempfile import mkstemp
 from glob import glob
 from itertools import product
 from shutil import rmtree, move
@@ -22,7 +21,18 @@ from skbio.alignment import local_pairwise_align_ssw
 from skbio import io, DNA
 import pandas as pd
 import seaborn as sns
-from tax_credit.taxa_manipulator import *
+from collections import Counter
+from tax_credit.taxa_manipulator import (import_taxonomy_to_dict,
+                                         export_list_to_file,
+                                         extract_rownames,
+                                         filter_sequences,
+                                         extract_fasta_ids,
+                                         string_search,
+                                         trim_taxonomy_strings,
+                                         unique_lines,
+                                         branching_taxa,
+                                         stratify_taxonomy_subsets,
+                                         extract_taxa_names)
 from scipy.stats import kruskal
 from statsmodels.sandbox.stats.multicomp import multipletests
 import numpy as np
@@ -103,16 +113,33 @@ def move_results_to_repository(method_dirs, precomputed_results_dir):
         move(method_dir, new_location)
 
 
-def clean_database(taxa_in, seqs_in, db_dir):
-    '''Remove ambiguous and empty taxonomies from reference seqs/taxonomy'''
+def clean_database(taxa_in, seqs_in, db_dir,
+                   junk='__;|__$|_sp_|unknown|unidentified'):
+
+    '''Remove ambiguous and empty taxonomies from reference seqs/taxonomy.
+
+    taxa_in: path
+        File containing taxonomy strings in tab-separated format:
+        <SequenceID>    <taxonomy string>
+
+    seqs_in: path
+        File containing sequences corresponding to taxa_in, in fasta format.
+
+    db_dir: dir path
+        Output directory.
+
+    junk: str
+        '|'-separated list of search terms. Taxonomies containing these terms
+        will be removed from the database.
+    '''
+
     clean_taxa = join(db_dir,
                       '{0}_clean.tsv'.format(basename(splitext(taxa_in)[0])))
     clean_fasta = join(db_dir,
                       '{0}_clean.fasta'.format(basename(splitext(seqs_in)[0])))
 
     # Remove empty taxa from ref taxonomy
-    taxa = string_search(taxa_in, '__;|__$|_sp_|Incertae|unknown|unidentified',
-                         discard=True)
+    taxa = string_search(taxa_in, junk, discard=True)
     # Remove brackets (and other special characters causing problems)
     clean_list = [line.translate(str.maketrans('', '', '[]()'))\
                   for line in taxa]
@@ -454,11 +481,12 @@ def evaluate_cross_validated_classification(obs_taxa, exp_taxa):
     underclassification, or misclassification'''
     # if  observed = expected, match
     if len(obs_taxa) == len(exp_taxa)\
-    and obs_taxa[len(obs_taxa)-1].strip() == exp_taxa[len(obs_taxa)-1].strip():
-        result = 'match'
+        and obs_taxa[len(obs_taxa)-1].strip() == exp_taxa[len(obs_taxa)-1].strip():
+            result = 'match'
     # if shallower and top-level assign correct, count as underclassification
     elif len(obs_taxa) < len(exp_taxa) \
-    and obs_taxa[len(obs_taxa)-1].strip() == exp_taxa[len(obs_taxa)-1].strip()\
+    and obs_taxa[len(obs_taxa)-1].strip() == \
+    exp_taxa[len(obs_taxa)-1].strip()\
     or obs_taxa[0] == 'Unclassified' or obs_taxa[0] == 'Unassigned':
         result = 'underclassification'
     # Otherwise, count as misclassification
@@ -498,7 +526,7 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
         exp_taxa_fp = join(expected_results_dir, dataset_id, 'query_taxa.tsv')
 
         # Create empty list of levels at which first mismatch occurs
-        mismatch_level_list = [0, 0 , 0, 0, 0, 0, 0, 0]
+        mismatch_level_list = [0, 0, 0, 0, 0, 0, 0, 0]
 
         # import expected taxonomies to list
         expectations = import_taxonomy_to_dict(exp_taxa_fp)
@@ -532,14 +560,16 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
                                                                 level)
 
                 elif test_type == 'cross-validated':
-                    result =  evaluate_cross_validated_classification(obs_taxa,
-                                                                      exp_taxa)
+                    result = evaluate_cross_validated_classification(obs_taxa,
+                                                                     exp_taxa)
 
                 record_counter.update({'line_count': 1})
                 record_counter.update({result: 1})
                 log.append('\t'.join(map(str, [index, level, iteration,
-                            method_id, params_id, obs_id, obs_taxonomy,
-                            exp_taxonomy, result, mismatch_level])))
+                                               method_id, params_id, obs_id,
+                                               obs_taxonomy,
+                                               exp_taxonomy, result,
+                                               mismatch_level])))
 
         # Create log file
         log_fp = join(results_dir, 'classification_accuracy_log.tsv')
@@ -550,7 +580,7 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
         match_ratio = record_counter['match'] / count
         overclassification_ratio = record_counter['overclassification'] / count
         underclassification_ratio = \
-                                record_counter['underclassification'] / count
+            record_counter['underclassification'] / count
         misclassification_ratio = record_counter['misclassification'] / count
 
         results.append((index, level, iteration, method_id,
@@ -616,8 +646,7 @@ def extract_per_level_accuracy(df, column='mismatch_level_list'):
         # If using precomputed results, mismatch_level_list is imported as
         # string, hence must be converted back to list of integers.
         if isinstance(data[column], str):
-            mismatch_list = list(map(int,
-                           data[column].strip('[]').split(',')))
+            mismatch_list = list(map(int, data[column].strip('[]').split(',')))
         else:
             mismatch_list = data[column]
         line_count = sum(mismatch_list)
@@ -632,8 +661,7 @@ def extract_per_level_accuracy(df, column='mismatch_level_list'):
                             data['iteration'],
                             data['Method'],
                             data['Parameters'],
-                            match_ratio
-                           ))
+                            match_ratio))
 
     result = pd.DataFrame(results, columns=["Dataset",
                                             "level",
@@ -650,7 +678,7 @@ def per_level_kruskal_wallis(df,
                              group_by,
                              dataset_col='Dataset',
                              level_name="level",
-                             levelrange=range(1,7),
+                             levelrange=range(1, 7),
                              alpha=0.05,
                              pval_correction='fdr_bh'):
 
@@ -682,7 +710,7 @@ def per_level_kruskal_wallis(df,
                 group_list = []
                 for group in df[group_by].unique():
                     group_data = df[group_by] == group
-                    group_results = df[data_subset & level_subset &\
+                    group_results = df[data_subset & level_subset &
                                        group_data][var]
                     group_list.append(group_results)
 
@@ -705,8 +733,8 @@ def per_level_kruskal_wallis(df,
 
     range_len = len([i for i in levelrange])
     results = [(dataset_list[i][0], dataset_list[i][1],
-                *[pval_corr[i*range_len+n] for n in range(0,range_len)])\
-                for i in range(0,len(dataset_list))]
+                *[pval_corr[i*range_len+n] for n in range(0, range_len)])
+               for i in range(0, len(dataset_list))]
     result = pd.DataFrame(results, columns=["Dataset", "Variable",
                                             *[n for n in levelrange]])
     return result
