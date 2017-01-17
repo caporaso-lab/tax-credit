@@ -1,0 +1,35 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter0/ref_taxa.tsv
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter0/ref_taxa.tsv
+max_accepts:1
+min_consensus_fraction:0.76
+reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter0/ref_seqs.fasta
+similarity:0.8
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxS7M5Vl
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter0/query.fasta --id 0.8 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/B1-REF-L1-iter0/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_PsSWUl.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	250	*	*	*	*	*	746126	*
+N	*	250	*	*	*	*	*	583935	*
+N	*	250	*	*	*	*	*	563323	*
+L	2366	250	*	*	*	*	*	2834269	*
+H	2366	250	82.8	+	0	0	250M	370251	2834269
+N	*	250	*	*	*	*	*	317426	*
+L	315	250	*	*	*	*	*	851594	*
+H	315	250	81.2	+	0	0	111MD138MI	278595	851594
+L	2269	250	*	*	*	*	*	1136687	*
+H	2269	250	81.2	+	0	0	250M	89370	1136687
+N	*	250	*	*	*	*	*	1875	*
+N	*	250	*	*	*	*	*	1871	*
+D	315	2	*	*	*	*	81.2	851594	*
+D	2269	2	*	*	*	*	81.2	1136687	*
+D	2366	2	*	*	*	*	82.8	2834269	*

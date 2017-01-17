@@ -10,17 +10,18 @@
 # ----------------------------------------------------------------------------
 
 from os.path import join, exists, split, sep, expandvars, basename, splitext
-from os import makedirs, remove
+from os import makedirs, remove, system
 from glob import glob
 from itertools import product
 from shutil import rmtree, move
+from random import sample
 from biom import load_table
 from biom.cli.util import write_biom_table
 from biom.parse import MetadataMap
 from skbio.alignment import local_pairwise_align_ssw
 from skbio import io, DNA
+from time import time
 import pandas as pd
-import seaborn as sns
 from collections import Counter
 from tax_credit.taxa_manipulator import (import_taxonomy_to_dict,
                                          export_list_to_file,
@@ -33,7 +34,7 @@ from tax_credit.taxa_manipulator import (import_taxonomy_to_dict,
                                          branching_taxa,
                                          stratify_taxonomy_subsets,
                                          extract_taxa_names)
-from scipy.stats import kruskal
+from scipy.stats import kruskal, linregress
 from statsmodels.sandbox.stats.multicomp import multipletests
 import numpy as np
 
@@ -42,7 +43,7 @@ def parameter_sweep(data_dir, results_dir, reference_dbs,
                     dataset_reference_combinations,
                     method_parameters_combinations,
                     command_template=None, infile='rep_set.fna',
-                    output_name='rep_set_tax_assignments.txt'):
+                    output_name='rep_set_tax_assignments.txt', force=False):
     '''Create list of commands from input dictionaries of method_parameter and
     dataset_reference_combinations
     '''
@@ -63,7 +64,8 @@ def parameter_sweep(data_dir, results_dir, reference_dbs,
                 parameter_comb_id = ':'.join(map(str, parameter_combination))
                 parameter_output_dir = join(results_dir, dataset, reference,
                                             method, parameter_comb_id)
-                if not exists(join(parameter_output_dir, output_name)):
+                if not exists(join(parameter_output_dir, output_name))\
+                  or force is True:
                     parameter_str = ' '.join(['--%s %s' % e for e in zip(\
                                         parameter_ids, parameter_combination)])
                     command = command_template.format(parameter_output_dir,
@@ -81,7 +83,7 @@ def add_metadata_to_biom_table(biom_input_fp, taxonomy_map_fp, biom_output_fp):
     metadata = MetadataMap.from_file(taxonomy_map_fp,
                                      header=['Sample ID', 'taxonomy', 'c'])
     newbiom.add_metadata(metadata, 'observation')
-    write_biom_table(newbiom, 'hdf5', biom_output_fp)
+    write_biom_table(newbiom, 'json', biom_output_fp)
 
 
 def generate_per_method_biom_tables(taxonomy_glob, data_dir,
@@ -196,7 +198,7 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations):
     dataframe = pandas dataframe
     '''
     for index, data in dataframe.iterrows():
-        db_dir = path.join(data_dir, 'ref_dbs', data['Reference id'])
+        db_dir = join(data_dir, 'ref_dbs', data['Reference id'])
         if not exists(db_dir):
             makedirs(db_dir)
 
@@ -218,8 +220,8 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations):
                                                                read_length,
                                                                ext))
 
-        #amplicons_fp = path.join(db_dir, "simulated_amplicons.fna")
-        #simulated_reads_fp = path.join(db_dir, "simulated_reads.fna")
+        #amplicons_fp = join(db_dir, "simulated_amplicons.fna")
+        #simulated_reads_fp = join(db_dir, "simulated_reads.fna")
         if not exists(simulated_reads_fp):
             extract_amplicons(clean_fasta, amplicons_fp, simulated_reads_fp,
                           DNA(data['Fwd primer']), DNA(data['Rev primer']),
@@ -288,11 +290,11 @@ def generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
         for iteration in range(0, iterations):
             db_iter_dir = join(data_dir, '{0}-iter{1}'.format(basename,
                                                               iteration))
-            novel_query_taxonomy_fp = path.join(db_iter_dir,
+            novel_query_taxonomy_fp = join(db_iter_dir,
                                                 'query_taxa.tsv')
-            novel_query_fp = path.join(db_iter_dir, 'query.fasta')
-            novel_ref_fp = path.join(db_iter_dir, 'ref_seqs.fasta')
-            novel_ref_taxonomy_fp = path.join(db_iter_dir, 'ref_taxa.tsv')
+            novel_query_fp = join(db_iter_dir, 'query.fasta')
+            novel_ref_fp = join(db_iter_dir, 'ref_seqs.fasta')
+            novel_ref_taxonomy_fp = join(db_iter_dir, 'ref_taxa.tsv')
 
             # 1) Create REF TAXONOMY from list of taxonomies that
             #    DO NOT match QUERY taxonomies
@@ -334,10 +336,10 @@ def generate_simulated_communities(read_taxa, simulated_reads_fp, index,
     # generate pairs of train/test fastas/taxonomies for each CV subset
     for iteration in range(0, iterations):
         db_iter_dir = join(data_dir, '{0}-iter{1}'.format(index, iteration))
-        query_taxa_fp = path.join(db_iter_dir, 'query_taxa.tsv')
-        query_fp = path.join(db_iter_dir, 'query.fasta')
-        ref_fp = path.join(db_iter_dir, 'ref_seqs.fasta')
-        ref_taxa_fp = path.join(db_iter_dir, 'ref_taxa.tsv')
+        query_taxa_fp = join(db_iter_dir, 'query_taxa.tsv')
+        query_fp = join(db_iter_dir, 'query.fasta')
+        ref_fp = join(db_iter_dir, 'ref_seqs.fasta')
+        ref_taxa_fp = join(db_iter_dir, 'ref_taxa.tsv')
 
         # 1) Create REF taxa that do not match query IDs
         ids = '^' + '$|^'.join(list(extract_rownames(query_taxa_fp))) + '$'
@@ -359,9 +361,9 @@ def test_simulated_communities(dataframe, data_dir, iterations):
         for iteration in range(0, iterations):
             db_iter_dir = join(simulated_dir, '{0}-iter{1}'.format(index,
                                                                    iteration))
-            query_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
+            query_taxa = import_taxonomy_to_dict(join(db_iter_dir,
                                                            'query_taxa.tsv'))
-            ref_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
+            ref_taxa = import_taxonomy_to_dict(join(db_iter_dir,
                                                          'ref_taxa.tsv'))
             for key, value in query_taxa.items():
                 if key in ref_taxa:
@@ -381,9 +383,9 @@ def test_novel_taxa_datasets(dataframe, data_dir, iterations):
                 db_iter_dir = join(novel_dir, '{0}-L{1}-iter{2}'.format(index,
                                                                     level,
                                                                     iteration))
-                query_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
+                query_taxa = import_taxonomy_to_dict(join(db_iter_dir,
                                                              'query_taxa.tsv'))
-                ref_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
+                ref_taxa = import_taxonomy_to_dict(join(db_iter_dir,
                                                              'ref_taxa.tsv'))
                 taxa = [t.split(';')[level-1] for t in ref_taxa.values()]
                 for key, value in query_taxa.items():
@@ -426,7 +428,7 @@ def recall_novel_taxa_dirs(data_dir, databases, iterations,
                                                              level,
                                                              iteration)
                 else:
-                    dataset_name = '{0}-iter{2}'.format(database, iteration)
+                    dataset_name = '{0}-iter{1}'.format(database, iteration)
                 dataset_reference_combinations.append((dataset_name,
                                                        dataset_name))
                 reference_dbs[dataset_name] = (join(data_dir, dataset_name,
@@ -577,11 +579,23 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
 
         # tally score ratios
         count = record_counter['line_count']
-        match_ratio = record_counter['match'] / count
-        overclassification_ratio = record_counter['overclassification'] / count
-        underclassification_ratio = \
-            record_counter['underclassification'] / count
-        misclassification_ratio = record_counter['misclassification'] / count
+        try:
+            match_ratio = record_counter['match'] / count
+        except ZeroDivisionError:
+            match_ratio = 0
+        try:
+            overclassification_ratio = record_counter['overclassification'] / count
+        except ZeroDivisionError:
+            overclassification_ratio = 0
+        try:
+            underclassification_ratio = \
+                record_counter['underclassification'] / count
+        except ZeroDivisionError:
+            underclassification_ratio = 0
+        try:
+            misclassification_ratio = record_counter['misclassification'] / count
+        except ZeroDivisionError:
+            misclassification_ratio = 0
 
         results.append((index, level, iteration, method_id,
                         params_id, match_ratio,
@@ -598,28 +612,6 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
                                             "mismatch_level_list"])
     result.to_csv(summary_fp)
     return result
-
-
-def pointplot_from_data_frame(df, x_axis, y_vars, group_by, color_by,
-                              color_pallette, style_theme="whitegrid",
-                              plot_type=sns.pointplot):
-    '''Generate seaborn pointplot from pandas dataframe.
-    df = pandas dataframe
-    x_axis = x axis variable
-    y_vars = LIST of variables to use for plotting y axis
-    group_by = df variable to use for separating plot panels with FacetGrid
-    color_by = df variable on which to plot and color subgroups within data
-    color_pallette = color palette to use for plotting. Either a dict mapping
-                     color_by groups to colors, or a named seaborn palette.
-    style_theme = seaborn plot style theme
-    plot_type = allows switching to other plot types, but this is untested
-    '''
-    sns.set_style(style_theme)
-    for y_var in y_vars:
-        grid = sns.FacetGrid(df, col=group_by, hue=color_by,
-                             palette=color_pallette)
-        grid = grid.map(sns.pointplot, x_axis, y_var, marker="o", ms=4)
-    sns.plt.show()
 
 
 def extract_per_level_accuracy(df, column='mismatch_level_list'):
@@ -738,3 +730,95 @@ def per_level_kruskal_wallis(df,
     result = pd.DataFrame(results, columns=["Dataset", "Variable",
                                             *[n for n in levelrange]])
     return result
+
+
+def runtime_make_test_data(seqs_in, results_dir, sampling_depths):
+    '''Repeatedly subsample a fasta sequence file at multiple sequence depths
+    to generate query/test data for testing method runtimes.
+
+    seqs_in: path
+        fasta format reference sequences.
+    results_dir: path
+        Output directory.
+    sampling_depths: list of integers
+        Number of sequences to subsample from seqs.
+    '''
+    if not exists(results_dir):
+        makedirs(results_dir)
+
+    seqs = [seq for seq in io.read(seqs_in, format='fasta')]
+    for depth in sampling_depths:
+        subset = sample(seqs, depth)
+        tmpfile = join(results_dir, str(depth)) + '.fna'
+        with open(tmpfile, "w") as output_fasta:
+            for s in subset:
+                s.write(output_fasta, format='fasta')
+
+
+def runtime_make_commands(input_dir, results_dir, methods,
+                          ref_taxa, sampling_depths, num_iters=1,
+                          subsample_ref=True):
+    '''Generate list of commands to benchmark method runtimes.
+
+    input_dir: path
+        Input directory, containing query/ref sequences.
+    results_dir: path
+        Output directory.
+    methods: dict
+        Dictionary of method:parameters pairs in format:
+            {'method' : (command-template, method-specific-parameters)}
+    ref_taxa: path
+        Taxonomy map for ref sequences in tab-separated format:
+            seqID   ACGTGTAGTCGATGCTAGCTACG
+    sampling_depths: list of integers
+        Number of sequences to subsample from seqs.
+    num_iters: int
+        Number of iterations to perform.
+    subsample_ref: bool
+        If True (default), ref seqs are subsampled at depths defined in
+        sampling_depths, and query seqs default to smallest depth. If false,
+        query seqs are subsampled at these depths, and ref defaults to largest
+        sampling depth.
+    '''
+
+    commands = []
+    for iteration in range(num_iters):
+        for method, template in methods.items():
+            for depth in sampling_depths:
+                # default: subsample ref seqs, query = smallest sample
+                if subsample_ref is True:
+                    q_depth = str(sampling_depths[0])
+                    r_depth = str(depth)
+                # or subsample query seqs, ref = largest sample
+                else:
+                    q_depth = str(depth)
+                    r_depth = str(sampling_depths[-1])
+                query = join(input_dir, q_depth) + '.fna'
+                ref = join(input_dir, r_depth) + '.fna'
+                command = (template[0].format(results_dir, query, ref,
+                                              ref_taxa, method, template[1]),
+                           method, q_depth, r_depth, iteration)
+                commands.append(command)
+    return commands
+
+
+def clock_runtime(command, results_fp, force=True):
+    '''Execute a command and record the runtime.
+
+    command: str
+        Command to be executed.
+    results_fp: path
+        Output file
+    force: bool
+        Overwrite results? If false, will append to any existing results
+    '''
+    if force is True:
+        remove(results_fp)
+
+    _command, method, q_frac, r_frac, iteration = command
+    start = time()
+    system(_command)
+    end = time()
+    results = [method, q_frac, r_frac, iteration, end - start]
+    with open(results_fp, 'a') as timeout:
+        timeout.write('\t'.join(map(str,results)) + '\n')

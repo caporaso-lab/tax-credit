@@ -1,7 +1,0 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	0	rdp	0.4	46167	k__Archaea;p__Euryarchaeota	k__Archaea; p__Crenarchaeota	overclassification	1
-B1-REF	1	0	rdp	0.4	1120396	k__Bacteria;p__Firmicutes;c__Clostridia	k__Bacteria; p__Synergistetes	overclassification	1
-B1-REF	1	0	rdp	0.4	563323	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Spirochaetes	overclassification	1
-B1-REF	1	0	rdp	0.4	816056	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria	k__Bacteria; p__Acidobacteria	overclassification	1
-B1-REF	1	0	rdp	0.4	1138255	k__Bacteria	k__Bacteria; p__Aquificae	match	1
-B1-REF	1	0	rdp	0.4	3623950	k__Bacteria;p__Firmicutes;c__Clostridia;o__Thermoanaerobacterales;f__Thermoanaerobacteraceae;g__Thermanaeromonas;s__toyohensis	k__Bacteria; p__Dictyoglomi	overclassification	1

@@ -1,0 +1,15 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	1	uclust	1.0:0.8:5	SH099594.07FU_DQ494348_reps	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Lecanorales;f__Parmeliaceae;g__Bryoria	k__Fungi;p__Ascomycota;c__Orbiliomycetes	overclassification	2
+F1-REF	2	1	uclust	1.0:0.8:5	SH079086.07FU_AB125261_refs	Unassigned	k__Fungi;p__Basidiomycota;c__Ustilaginomycotina_cls_Incertae_sedis	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH080085.07FU_HQ667544_reps	Unassigned	k__Fungi;p__Ascomycota;c__Pezizomycotina_cls_Incertae_sedis	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH088486.07FU_JF779663_reps	Unassigned	k__Fungi;p__Basidiomycota;c__Tritirachiomycetes	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH076631.07FU_DQ914672_reps	Unassigned	k__Fungi;p__Ascomycota;c__Leotiomycetes	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH079920.07FU_AY997079_refs	Unassigned	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH079880.07FU_JN942679_reps	Unassigned	k__Fungi;p__Zygomycota;c__Kickxellomycotina_cls_Incertae_sedis	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH077503.07FU_KC222806_reps	Unassigned	k__Fungi;p__Ascomycota;c__Archaeorhizomycetes	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH098262.07FU_AF444540_refs	Unassigned	k__Fungi;p__Basidiomycota;c__Cystobasidiomycetes	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH088503.07FU_KF192890_reps	Unassigned	k__Fungi;p__Ascomycota;c__Laboulbeniomycetes	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH076443.07FU_FJ362291_reps	Unassigned	k__Fungi;p__Basidiomycota;c__Agaricomycetes	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH114212.07FU_AB712468_reps	Unassigned	k__Fungi;p__Basidiomycota;c__Dacrymycetes	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH129947.07FU_HM488753_refs	Unassigned	k__Fungi;p__Basidiomycota;c__Agaricomycotina_cls_Incertae_sedis	underclassification	0
+F1-REF	2	1	uclust	1.0:0.8:5	SH100610.07FU_AF492118_reps	Unassigned	k__Fungi;p__Ascomycota;c__Taphrinomycetes	underclassification	0

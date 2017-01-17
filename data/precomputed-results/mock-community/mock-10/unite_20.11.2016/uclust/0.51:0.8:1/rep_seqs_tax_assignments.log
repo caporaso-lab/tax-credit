@@ -3,14 +3,14 @@ id_to_taxonomy_filepath:/Users/nbokulich/Desktop/projects/short-read-tax-assignm
 id_to_taxonomy_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_taxonomy_qiime_ver7_99_20.11.2016_dev_clean.tsv
 max_accepts:1
 min_consensus_fraction:0.51
-reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_BITSf-B58S3r_trim250.fasta
+reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_ITS1Ff-ITS2r_trim250.fasta
 similarity:0.8
 unassignable_label:Unassigned
-Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxZxwaPq
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxrRMrux
 
 .uc file contents:
 
-# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-10/rep_seqs.fna --id 0.8 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_BITSf-B58S3r_trim250.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_6IAYjx.uc
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-10/rep_seqs.fna --id 0.8 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_ITS1Ff-ITS2r_trim250.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_4sjOf0.uc
 # version=1.2.22
 # Tab-separated fields:
 # 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
@@ -18,25 +18,51 @@ Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxZxwaPq
 # For C and D types, PctId is average id with seed.
 # QueryStart and SeedStart are zero-based relative to start of sequence.
 # If minus strand, SeedStart is relative to reverse-complemented seed.
-N	*	100	*	*	*	*	*	171be7c96c0335f324d4944988c595c5	*
-N	*	100	*	*	*	*	*	d374c2f3352092dd2c1ecf3aabe74277	*
-N	*	100	*	*	*	*	*	d03ca5e8f74dbdfd8c0bb07de9049815	*
+L	628	175	*	*	*	*	*	SH084341.07FU_JN974286_reps	*
+H	628	100	93.0	+	0	0	22I100M53I	171be7c96c0335f324d4944988c595c5	SH084341.07FU_JN974286_reps
+L	627	173	*	*	*	*	*	SH084342.07FU_KJ706602_reps	*
+H	627	100	93.0	+	0	0	22I100M51I	d374c2f3352092dd2c1ecf3aabe74277	SH084342.07FU_KJ706602_reps
+H	627	100	94.0	+	0	0	22I100M51I	d03ca5e8f74dbdfd8c0bb07de9049815	SH084342.07FU_KJ706602_reps
 N	*	100	*	*	*	*	*	47ac2d324e41fb682b0f47d211b737c7	*
-N	*	100	*	*	*	*	*	65300481deec02196e65f2f7d7e4b9b7	*
+L	3411	200	*	*	*	*	*	SH122369.07FU_AB278163_reps	*
+H	3411	100	86.0	+	0	0	8I56M7I19M7D18M92I	65300481deec02196e65f2f7d7e4b9b7	SH122369.07FU_AB278163_reps
 N	*	100	*	*	*	*	*	74cbdaeaced6bd3a886efe2a40dbb783	*
-N	*	100	*	*	*	*	*	1836a383f4d66000688d33087c6608ae	*
-N	*	100	*	*	*	*	*	d48eeaecb871518ba4e11d1aa1d8bcbb	*
-N	*	100	*	*	*	*	*	2cc5e8a108cbbe4c1dfe3126e6192d98	*
-N	*	100	*	*	*	*	*	79c30328522455fabacd8f04fd2479d8	*
-N	*	100	*	*	*	*	*	805835e9bf3bd3095815b9483ff9ed30	*
-N	*	100	*	*	*	*	*	638ba109fec2bb27d5564f2ba95523cb	*
-N	*	100	*	*	*	*	*	9af25943261b01c1fe84b8c617b23078	*
-N	*	100	*	*	*	*	*	d735827e8c9fbe5b6cb8d60976076416	*
-N	*	100	*	*	*	*	*	7ff7f9832be57dc8108fd6390e8e905c	*
-N	*	100	*	*	*	*	*	ea10825e5788bd2b72e64642e7d0d397	*
-N	*	100	*	*	*	*	*	bd81f00fac7cfe112949c77cd943bbad	*
-N	*	100	*	*	*	*	*	06e9965863cbd2673071e43ea32612d9	*
+L	4449	250	*	*	*	*	*	SH538209.07FU_LN850779_reps	*
+H	4449	100	91.0	+	0	0	7I85MI15M142I	1836a383f4d66000688d33087c6608ae	SH538209.07FU_LN850779_reps
+L	311	166	*	*	*	*	*	SH080023.07FU_GU246267_refs	*
+H	311	100	100.0	+	0	0	10I100M56I	d48eeaecb871518ba4e11d1aa1d8bcbb	SH080023.07FU_GU246267_refs
+H	627	100	95.0	+	0	0	22I100M51I	2cc5e8a108cbbe4c1dfe3126e6192d98	SH084342.07FU_KJ706602_reps
+L	2790	173	*	*	*	*	*	SH113140.07FU_EU714323_refs	*
+H	2790	100	100.0	+	0	0	8I100M65I	79c30328522455fabacd8f04fd2479d8	SH113140.07FU_EU714323_refs
+H	628	100	96.0	+	0	0	22I100M53I	805835e9bf3bd3095815b9483ff9ed30	SH084341.07FU_JN974286_reps
+L	1521	250	*	*	*	*	*	SH096261.07FU_JN942657_refs	*
+H	1521	100	100.0	+	0	0	8I100M142I	638ba109fec2bb27d5564f2ba95523cb	SH096261.07FU_JN942657_refs
+L	3922	250	*	*	*	*	*	SH129798.07FU_AB011509_reps	*
+H	3922	100	87.0	+	0	0	22I22MD50M3I27M126I	9af25943261b01c1fe84b8c617b23078	SH129798.07FU_AB011509_reps
+L	752	213	*	*	*	*	*	SH086107.07FU_HG518629_refs	*
+H	752	100	80.0	+	0	0	22I55M19I19M20I26M52I	d735827e8c9fbe5b6cb8d60976076416	SH086107.07FU_HG518629_refs
+L	2728	250	*	*	*	*	*	SH112075.07FU_HQ283378_refs	*
+H	2728	100	86.0	+	0	0	22I54M10I10MI21M6I15M111I	7ff7f9832be57dc8108fd6390e8e905c	SH112075.07FU_HQ283378_refs
+L	1179	239	*	*	*	*	*	SH091504.07FU_AJ874123_reps	*
+H	1179	100	91.0	+	0	0	8I28MD26M3D42M135I	ea10825e5788bd2b72e64642e7d0d397	SH091504.07FU_AJ874123_reps
+L	1931	250	*	*	*	*	*	SH113649.07FU_GU721838_reps	*
+H	1931	100	99.0	+	0	0	22I86MD13M129I	bd81f00fac7cfe112949c77cd943bbad	SH113649.07FU_GU721838_reps
+L	5085	250	*	*	*	*	*	SH086758.07FU_HQ608084_reps	*
+H	5085	100	99.0	+	0	0	8I90MI10M141I	06e9965863cbd2673071e43ea32612d9	SH086758.07FU_HQ608084_reps
 N	*	100	*	*	*	*	*	205f6ef616578d01de786903537b64a9	*
-N	*	100	*	*	*	*	*	0f30c81d2e95cdb37d44661270d73d3a	*
-N	*	100	*	*	*	*	*	87911359940e653775ec69e92ce60108	*
-N	*	100	*	*	*	*	*	3b7b9fa2c7520ded4f910be5e93836bb	*
+H	627	100	91.0	+	0	0	22I100M51I	0f30c81d2e95cdb37d44661270d73d3a	SH084342.07FU_KJ706602_reps
+H	3411	100	86.0	+	0	0	8I56M7I21MI23M84I	87911359940e653775ec69e92ce60108	SH122369.07FU_AB278163_reps
+H	3411	100	86.0	+	0	0	8I56M7I19M7D18M92I	3b7b9fa2c7520ded4f910be5e93836bb	SH122369.07FU_AB278163_reps
+D	311	2	*	*	*	*	100.0	SH080023.07FU_GU246267_refs	*
+D	627	5	*	*	*	*	93.3	SH084342.07FU_KJ706602_reps	*
+D	628	3	*	*	*	*	94.5	SH084341.07FU_JN974286_reps	*
+D	752	2	*	*	*	*	80.0	SH086107.07FU_HG518629_refs	*
+D	1179	2	*	*	*	*	91.0	SH091504.07FU_AJ874123_reps	*
+D	1521	2	*	*	*	*	100.0	SH096261.07FU_JN942657_refs	*
+D	1931	2	*	*	*	*	99.0	SH113649.07FU_GU721838_reps	*
+D	2728	2	*	*	*	*	86.0	SH112075.07FU_HQ283378_refs	*
+D	2790	2	*	*	*	*	100.0	SH113140.07FU_EU714323_refs	*
+D	3411	4	*	*	*	*	86.0	SH122369.07FU_AB278163_reps	*
+D	3922	2	*	*	*	*	87.0	SH129798.07FU_AB011509_reps	*
+D	4449	2	*	*	*	*	91.0	SH538209.07FU_LN850779_reps	*
+D	5085	2	*	*	*	*	99.0	SH086758.07FU_HQ608084_reps	*

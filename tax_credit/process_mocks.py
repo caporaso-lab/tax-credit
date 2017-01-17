@@ -348,7 +348,7 @@ def denoise_to_feature_table(demux_seqs,
                              trim_left,
                              trunc_len,
                              community_dir,
-                             rep_seqs_fn='rep_seqs.qza',
+                             rep_seqs_fn='rep_seqs',
                              feature_table_fn='feature_table.qza',
                              summary_fn='feature_table_summary.qzv'):
     '''SampleData[SequencesWithQuality] -> FeatureData[Sequence] +
@@ -374,11 +374,14 @@ def denoise_to_feature_table(demux_seqs,
     biom_table, rep_seqs = dada2.methods.denoise(demux_seqs,
                                                  trim_left = trim_left,
                                                  trunc_len = trunc_len)
+    # save Artifact
     rep_seqs.save(join(community_dir, rep_seqs_fn))
-    rep_seqs.view(DNAIterator)
-    io.write(rep_seqs.view(DNAIterator).generator, format='fasta',
-             into=test_out)
 
+    # save fasta
+    rep_seqs_fna = rep_seqs.view(DNAIterator)
+    io.write(rep_seqs_fna.generator, format='fasta', into=rep_seqs_fn + '.fna')
+
+    # save biom Artifact
     biom_table.save(join(community_dir, feature_table_fn))
 
     # summarize feature table
@@ -464,10 +467,19 @@ def transport_to_repo(communities,
         tree_fp = join(community_dir, newick_fn)
 
         # Extract biom, tree, rep_seqs
-        biom_table = qiime.Artifact.load(feature_table).view(biom.Table)
-        write_biom_table(biom_table, 'hdf5', biom_table_fp)
-        qiime.Artifact.load(rep_seqs).view(pd.Series).to_csv(rep_seqs_fp,
-                                                             sep='\t')
+
+        # biom and rep_seqs are already written out in denoise_to_feature_table
+        # The rep_seqs below also do not print as fasta.
+        # perhaps rep_seqs printing should be replaced with:
+            # rep_seqs = qiime.Artifact.load(rep_seqs)
+            # rep_seqs_fna = rep_seqs.view(DNAIterator)
+            # io.write(rep_seqs_fna.generator, format='fasta', into=rep_seqs_fn + '.fna')
+
+        # biom_table = qiime.Artifact.load(feature_table).view(biom.Table)
+        # write_biom_table(biom_table, 'hdf5', biom_table_fp)
+        # qiime.Artifact.load(rep_seqs).view(pd.Series).to_csv(rep_seqs_fp,
+        #                                                     sep='\t')
+
         if exists(tree):
             qiime.Artifact.load(tree).view(TreeNode).write(tree_fp)
 
