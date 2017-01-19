@@ -1,14 +1,14 @@
- Fri Dec 16 11:42:03 2016
+ Fri Jan 13 20:22:49 2017
 
- Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_BITSf-B58S3r_trim250.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmptwN9qr/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_BITSf-B58S3r_trim250 -e 1.0 --aligned /Users/nbokulich/Desktop/projects/mock-community/mock-9/unite_20.11.2016/sortmerna/0.51:0.8:1:0.9:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-9/rep_seqs.fna -v --best 1 
- Process pid = 26196
+ Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_ITS1Ff-ITS2r_trim250.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpKZIg1k/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_ITS1Ff-ITS2r_trim250 -e 1.0 --aligned /Users/nbokulich/Desktop/projects/mock-community/mock-9/unite_20.11.2016/sortmerna/0.51:0.8:1:0.9:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-9/rep_seqs.fna -v --best 1 
+ Process pid = 21013
  Parameters summary:
-    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmptwN9qr/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_BITSf-B58S3r_trim250
+    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpKZIg1k/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_ITS1Ff-ITS2r_trim250
      Seed length = 18
      Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
-     Gumbel lambda = 0.614281
-     Gumbel K = 0.337717
-     Minimal SW score based on E-value = 34
+     Gumbel lambda = 0.613152
+     Gumbel K = 0.337197
+     Minimal SW score based on E-value = 33
     Number of seeds = 2
     Edges = 4 (as integer)
     SW match = 2
@@ -28,4 +28,4 @@
     Maximum read length = 100
     Mean read length = 100
  By database:
-    /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_BITSf-B58S3r_trim250.fasta		75.86%
+    /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_ITS1Ff-ITS2r_trim250.fasta		75.86%

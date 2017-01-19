@@ -1,7 +1,0 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	0	uclust	0.76:0.8:5	46167	Unassigned	k__Archaea; p__Crenarchaeota	underclassification	0
-B1-REF	1	0	uclust	0.76:0.8:5	1120396	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Ruminococcaceae; g__Ruminococcus; s__flavefaciens	k__Bacteria; p__Synergistetes	overclassification	1
-B1-REF	1	0	uclust	0.76:0.8:5	563323	Unassigned	k__Bacteria; p__Spirochaetes	underclassification	0
-B1-REF	1	0	uclust	0.76:0.8:5	816056	k__Bacteria	k__Bacteria; p__Acidobacteria	match	1
-B1-REF	1	0	uclust	0.76:0.8:5	1138255	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Caldicellulosiruptoraceae; g__Caldicellulosiruptor; s__saccharolyticus	k__Bacteria; p__Aquificae	overclassification	1
-B1-REF	1	0	uclust	0.76:0.8:5	3623950	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Thermoanaerobacteraceae; g__Thermoanaerobacter; s__uzonensis	k__Bacteria; p__Dictyoglomi	overclassification	1

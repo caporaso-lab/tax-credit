@@ -1,0 +1,4 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	1	0	sortmerna	0.76:0.8:3:0.8:1.0	SH079920.07FU_AY997079_refs	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis;o__Mortierellales;f__Mortierellaceae;g__Mortierella	k__Fungi;p__Chytridiomycota	overclassification	1
+F1-REF	1	0	sortmerna	0.76:0.8:3:0.8:1.0	SH076443.07FU_FJ362291_reps	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis;o__Mortierellales;f__Mortierellaceae;g__Mortierella	k__Fungi;p__Basidiomycota	overclassification	1
+F1-REF	1	0	sortmerna	0.76:0.8:3:0.8:1.0	SH076588.07FU_KF206484_reps	k__Fungi;p__Ascomycota;c__Pezizomycetes;o__Pezizales;f__Tuberaceae;g__Tuber	k__Fungi;p__Glomeromycota	overclassification	1

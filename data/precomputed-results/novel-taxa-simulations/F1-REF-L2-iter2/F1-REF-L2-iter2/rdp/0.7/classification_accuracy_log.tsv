@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+F1-REF	2	2	rdp	0.7	SH112538.07FU_JF442091_reps	k__Fungi	k__Fungi;p__Ascomycota;c__Pneumocystidomycetes	underclassification	1
+F1-REF	2	2	rdp	0.7	SH538886.07FU_KP413075_reps	k__Fungi	k__Fungi;p__Basidiomycota;c__Entorrhizomycetes	underclassification	1
+F1-REF	2	2	rdp	0.7	SH076392.07FU_EU636699_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes	match	2
+F1-REF	2	2	rdp	0.7	SH078987.07FU_AF310176_reps	k__Fungi	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes	underclassification	1
+F1-REF	2	2	rdp	0.7	SH540908.07FU_JX312524_reps	k__Fungi	k__Fungi;p__Zygomycota;c__Zoopagomycotina_cls_Incertae_sedis	underclassification	1
+F1-REF	2	2	rdp	0.7	SH083638.07FU_HQ630308_refs	k__Fungi	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis	underclassification	1
+F1-REF	2	2	rdp	0.7	SH076715.07FU_JN053490_reps	k__Fungi	k__Fungi;p__Basidiomycota;c__Tremellomycetes	underclassification	1
+F1-REF	2	2	rdp	0.7	SH077302.07FU_AB011514_refs	k__Fungi	k__Fungi;p__Ascomycota;c__Saccharomycetes	underclassification	1
+F1-REF	2	2	rdp	0.7	SH093343.07FU_KC107954_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Arthoniomycetes	match	2
+F1-REF	2	2	rdp	0.7	SH118343.07FU_JX242880_refs	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Wallemiomycetes	overclassification	2
+F1-REF	2	2	rdp	0.7	SH136168.07FU_JN943014_reps	k__Fungi	k__Fungi;p__Chytridiomycota;c__Blastocladiomycetes	underclassification	1

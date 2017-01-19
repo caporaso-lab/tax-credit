@@ -17,7 +17,7 @@ id_to_taxonomy_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/da
 min_consensus_fraction:0.76
 min_percent_cov:90.0
 min_percent_id:90.0
-reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_BITSf-B58S3r_trim250.fasta
+reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_ITS1Ff-ITS2r_trim250.fasta
 sortmerna_db:None
 threads:1
 unassignable_label:Unassigned

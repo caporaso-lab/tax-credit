@@ -1,0 +1,26 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	3	2	rdp	0.4	822699	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Pseudomonadales	overclassification	3
+B1-REF	3	2	rdp	0.4	23520	k__Bacteria	k__Bacteria; p__Firmicutes; c__Clostridia; o__Natranaerobiales	underclassification	1
+B1-REF	3	2	rdp	0.4	89370	k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Aerococcaceae;g__Abiotrophia;s__defectiva	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales	overclassification	3
+B1-REF	3	2	rdp	0.4	6602	k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__Rhodocyclales;f__Rhodocyclaceae;g__Georgfuchsia;s__toluolica	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Nitrosomonadales	overclassification	3
+B1-REF	3	2	rdp	0.4	4183921	k__Bacteria;p__Firmicutes	k__Bacteria; p__Chloroflexi; c__Anaerolineae; o__Anaerolineales	misclassification	1
+B1-REF	3	2	rdp	0.4	4321924	k__Bacteria	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	underclassification	1
+B1-REF	3	2	rdp	0.4	16094	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales	overclassification	3
+B1-REF	3	2	rdp	0.4	4369464	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales	match	3
+B1-REF	3	2	rdp	0.4	28400	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Alteromonadales	match	3
+B1-REF	3	2	rdp	0.4	38566	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Bdellovibrionales	underclassification	1
+B1-REF	3	2	rdp	0.4	4359816	k__Archaea;p__Crenarchaeota;c__Thermoprotei;o__Thermoproteales;f__Thermoproteaceae;g__Caldivirga;s__maquilingensis	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales	overclassification	3
+B1-REF	3	2	rdp	0.4	1128670	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Methylococcales	match	3
+B1-REF	3	2	rdp	0.4	4446822	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Sphingomonadales;f__Sphingomonadaceae	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhodobacterales	overclassification	3
+B1-REF	3	2	rdp	0.4	814161	k__Bacteria;p__Cyanobacteria	k__Bacteria; p__Cyanobacteria; c__Chloroplast; o__Chlorophyta	underclassification	2
+B1-REF	3	2	rdp	0.4	818834	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales	match	3
+B1-REF	3	2	rdp	0.4	517456	k__Bacteria;p__Planctomycetes;c__Planctomycetia;o__Pirellulales;f__Pirellulaceae;g__planctomycete;s__DWL3I2	k__Bacteria; p__Planctomycetes; c__Planctomycetia; o__Gemmatales	overclassification	3
+B1-REF	3	2	rdp	0.4	1105864	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Acidithiobacillales	match	3
+B1-REF	3	2	rdp	0.4	4392252	k__Bacteria;p__Cyanobacteria;c__Synechococcophycideae	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	misclassification	2
+B1-REF	3	2	rdp	0.4	746126	k__Bacteria	k__Bacteria; p__Tenericutes; c__Mollicutes; o__Entomoplasmatales	underclassification	1
+B1-REF	3	2	rdp	0.4	1140636	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales	underclassification	2
+B1-REF	3	2	rdp	0.4	10759	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Syntrophobacterales	match	3
+B1-REF	3	2	rdp	0.4	981957	k__Bacteria;p__Proteobacteria;c__Betaproteobacteria;o__Burkholderiales;f__Oxalobacteraceae;g__Pseudoburkholderia;s__malthae	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Neisseriales	overclassification	3
+B1-REF	3	2	rdp	0.4	4391457	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Sphingomonadales;f__Erythrobacteraceae;g__Erythrobacter	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kordiimonadales	overclassification	3
+B1-REF	3	2	rdp	0.4	4456895	k__Bacteria	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfurellales	underclassification	1
+B1-REF	3	2	rdp	0.4	3820	k__Bacteria;p__Spirochaetes;c__Spirochaetes;o__Spirochaetales;f__Spirochaetaceae;g__Spirochaeta	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Sphaerochaetales	overclassification	3

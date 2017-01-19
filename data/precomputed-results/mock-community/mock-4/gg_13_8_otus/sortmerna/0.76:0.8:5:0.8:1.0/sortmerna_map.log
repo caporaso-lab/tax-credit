@@ -1,9 +1,9 @@
- Fri Dec 16 10:21:52 2016
+ Fri Jan 13 16:14:36 2017
 
- Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/gg_13_8_otus/99_otus_clean_515f-806r_trim250.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmp9Qp9wr/99_otus_clean_515f-806r_trim250 -e 1.0 --aligned /Users/nbokulich/Desktop/projects/mock-community/mock-4/gg_13_8_otus/sortmerna/0.76:0.8:5:0.8:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-4/rep_seqs.fna -v --best 5 
- Process pid = 16351
+ Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/gg_13_8_otus/99_otus_clean_515f-806r_trim250.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpzq7dDU/99_otus_clean_515f-806r_trim250 -e 1.0 --aligned /Users/nbokulich/Desktop/projects/mock-community/mock-4/gg_13_8_otus/sortmerna/0.76:0.8:5:0.8:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-4/rep_seqs.fna -v --best 5 
+ Process pid = 50524
  Parameters summary:
-    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmp9Qp9wr/99_otus_clean_515f-806r_trim250
+    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpzq7dDU/99_otus_clean_515f-806r_trim250
      Seed length = 18
      Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
      Gumbel lambda = 0.585806
