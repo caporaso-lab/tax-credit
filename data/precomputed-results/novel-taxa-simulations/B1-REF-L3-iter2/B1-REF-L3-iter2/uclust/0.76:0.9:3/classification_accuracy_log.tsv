@@ -1,0 +1,26 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	3	2	uclust	0.76:0.9:3	822699	Unassigned	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Pseudomonadales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	23520	Unassigned	k__Bacteria; p__Firmicutes; c__Clostridia; o__Natranaerobiales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	89370	k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales	overclassification	3
+B1-REF	3	2	uclust	0.76:0.9:3	6602	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales; f__Oxalobacteraceae; g__Massilia	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Nitrosomonadales	overclassification	3
+B1-REF	3	2	uclust	0.76:0.9:3	4183921	Unassigned	k__Bacteria; p__Chloroflexi; c__Anaerolineae; o__Anaerolineales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	4321924	Unassigned	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	16094	Unassigned	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	4369464	Unassigned	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	28400	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Alteromonadales	match	3
+B1-REF	3	2	uclust	0.76:0.9:3	38566	Unassigned	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Bdellovibrionales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	4359816	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Thermoproteales; f__Thermoproteaceae	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales	overclassification	3
+B1-REF	3	2	uclust	0.76:0.9:3	1128670	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Chromatiales; f__Chromatiaceae; g__Thiohalocapsa; s__marina	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Methylococcales	overclassification	3
+B1-REF	3	2	uclust	0.76:0.9:3	4446822	Unassigned	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhodobacterales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	814161	Unassigned	k__Bacteria; p__Cyanobacteria; c__Chloroplast; o__Chlorophyta	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	818834	Unassigned	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	517456	Unassigned	k__Bacteria; p__Planctomycetes; c__Planctomycetia; o__Gemmatales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	1105864	Unassigned	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Acidithiobacillales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	4392252	Unassigned	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	746126	Unassigned	k__Bacteria; p__Tenericutes; c__Mollicutes; o__Entomoplasmatales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	1140636	Unassigned	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	10759	Unassigned	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Syntrophobacterales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	981957	Unassigned	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Neisseriales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	4391457	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Sphingomonadales; f__Erythrobacteraceae; g__Erythrobacter	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kordiimonadales	overclassification	3
+B1-REF	3	2	uclust	0.76:0.9:3	4456895	Unassigned	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfurellales	underclassification	0
+B1-REF	3	2	uclust	0.76:0.9:3	3820	Unassigned	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Sphaerochaetales	underclassification	0

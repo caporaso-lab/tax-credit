@@ -2,7 +2,7 @@
 
 
 # ----------------------------------------------------------------------------
-# Copyright (c) 2014--, taxcompare development team.
+# Copyright (c) 2014--, tax-credit development team.
 #
 # Distributed under the terms of the Modified BSD License.
 #
@@ -13,6 +13,7 @@ from glob import glob
 from os.path import abspath, join, exists, split
 from collections import defaultdict
 from functools import partial
+from random import shuffle
 
 from biom.exception import UnknownIDError, TableException
 from biom import load_table
@@ -256,7 +257,7 @@ def get_expected_tables_lookup(start_dir,
     return results
 
 
-def get_observed_observation_ids(table,sample_id=None):
+def get_observed_observation_ids(table, sample_id=None, ws_strip=False):
     """ Return the set of observation ids with count > 0 in sample_id
 
         table: the biom table object to analyze
@@ -269,6 +270,9 @@ def get_observed_observation_ids(table,sample_id=None):
     result = []
     for observation_id in table.ids(axis="observation"):
         if table.get_value_by_ids(observation_id, sample_id) > 0.0:
+            # remove all whitespace from observation_id
+            if ws_strip is True:
+                observation_id = "".join(observation_id.split())
             result.append(observation_id)
 
     return set(result)
@@ -289,22 +293,27 @@ def compute_prf(actual_table,
          expected_table.SampleIds)
     """
     actual_obs_ids = get_observed_observation_ids(actual_table,
-                                                  actual_sample_id)
+                                                  actual_sample_id,
+                                                  ws_strip=True)
     expected_obs_ids = get_observed_observation_ids(expected_table,
-                                                    expected_sample_id)
+                                                    expected_sample_id,
+                                                    ws_strip=True)
 
     tp = len(actual_obs_ids & expected_obs_ids)
     fp = len(actual_obs_ids - expected_obs_ids)
     fn = len(expected_obs_ids - actual_obs_ids)
 
-    p = tp / (tp + fp)
-    r = tp / (tp + fn)
-    f = (2 * p * r) / (p + r)
+    if tp > 0:
+        p = tp / (tp + fp)
+        r = tp / (tp + fn)
+        f = (2 * p * r) / (p + r)
+    else:
+        p, r, f = 0, 0, 0
 
     return p, r, f
 
 
-def get_taxonomy_collapser(level):
+def get_taxonomy_collapser(level, md_key='taxonomy'):
     """ Returns fn to pass to table.collapse
 
         level: the level to collapse on in the "taxonomy" observation
@@ -313,16 +322,16 @@ def get_taxonomy_collapser(level):
     """
     def f(id_, md):
         try:
-            levels = [l.strip() for l in md['taxonomy'].split(';')]
+            levels = [l.strip() for l in md[md_key].split(';')]
         except AttributeError:
-            levels = [l.strip() for l in md['taxonomy']]
-        result = ';'.join(levels[:level])
+            levels = [l.strip() for l in md[md_key]]
+        result = ';'.join(levels[:level+1])
         return result
     return f
 
 
 def filter_table(table, min_count=0, taxonomy_level=None,
-                 taxa_to_keep=None):
+                 taxa_to_keep=None, md_key='taxonomy'):
     try:
         _taxa_to_keep = ';'.join(taxa_to_keep)
     except TypeError:
@@ -331,23 +340,137 @@ def filter_table(table, min_count=0, taxonomy_level=None,
         # if filtering based on number of taxonomy levels, and this
         # observation has taxonomic information, and
         # there are a sufficient number of taxonomic levels
-        enough_levels = taxonomy_level is None or \
-                        (metadata['taxonomy'] is not None and \
-                         len(metadata['taxonomy']) >= taxonomy_level)
+
+        # We should not filter out taxa, as this incorrectly adjusts fp/fn rate
+        #enough_levels = taxonomy_level is None or \
+        #                (metadata[md_key] is not None and \
+        #                 len(metadata[md_key]) >= taxonomy_level+1)
         # if filtering to specific taxa, this OTU is assigned to that taxonomy
         allowed_taxa = _taxa_to_keep is None or \
                         id_.startswith(_taxa_to_keep) or \
-                        (metadata is not None and 'taxonomy' in metadata and
-                         ';'.join(metadata['taxonomy']).startswith(\
-                                                                _taxa_to_keep))
+                        (metadata is not None and md_key in metadata and
+                         ';'.join(metadata[md_key]).startswith(_taxa_to_keep))
         # the count of this observation is at least min_count
         sufficient_count = data_vector.sum() >= min_count
-        return enough_levels and sufficient_count and allowed_taxa
+        return sufficient_count and allowed_taxa
     return table.filter(f, axis='observation', inplace=False)
 
 
-def compute_mock_results(result_tables, expected_table_lookup,
-                         taxonomy_level=6, min_count=10, taxa_to_keep=None,
+def evaluate_results(results_dirs, expected_results_dir, results_fp,
+                     taxonomy_level_range=range(2,7), min_count=0,
+                     taxa_to_keep=None, md_key='taxonomy', new_param_ids={},
+                     results_dirname="mock-community", subsample=False,
+                     size=10, force=False):
+    '''Load observed and expected observations from tax-credit, compute
+        precision, recall, F-measure, and correlations, and return results
+        as dataframe.
+
+        results_dirs: list of directories containing precomputed taxonomy
+            assignment results to evaluate. Must be in format:
+                results_dirs/mock_results_dirname/<dataset name>/
+                    <reference name>/<method>/<parameters>/
+        expected_results_dir: directory containing expected composition data in
+            the structure:
+            expected_results_dir/<dataset name>/<reference name>/expected/
+        results_fp: path to output file containing evaluation results summary.
+        taxonomy_level_range: RANGE of taxonomic levels to evaluate.
+        min_count: int
+            Minimum abundance threshold for filtering taxonomic features.
+        taxa_to_keep: list of taxonomies to retain, others are removed before
+            evaluation.
+        md_key: metadata key containing taxonomy metadata in observed taxonomy
+            biom tables.
+        new_param_ids: dictionary of lists of parameters for taxonomy
+            classifiers to test. In format:
+                {classifier_name: [params1, params2]}
+        results_dirname: name of directory(s) within results_dirs that contains
+            dataset results to sweep. See results_dirs for path structure.
+        subsample: bool
+            Randomly subsample results for test runs.
+        size: int
+            Size of subsample to take.
+        force: bool
+            Overwrite pre-existing results_fp?
+    '''
+
+    # Define the subdirectories where the query mock community data should be
+    mock_results_dirs = [join(results_dir, results_dirname)\
+                         for results_dir in results_dirs]
+
+    # Confirm that mock results exist and process tables of observations
+    results = []
+    for mock_results_dir in mock_results_dirs:
+        assert exists(mock_results_dir), '''Mock community result directory
+            does not exist: {0}'''.format(mock_results_dir)
+        results += find_and_process_result_tables(mock_results_dir)
+    if subsample is True:
+        shuffle(results)
+        results = results[:size]
+
+    # Process tables of expected taxonomy composition
+    expected_tables = get_expected_tables_lookup(expected_results_dir)
+
+    # Compute accuracy results OR read in pre-existing mock_results_fp
+    if not exists(results_fp) or force is True:
+        mock_results = compute_mock_results(results,
+                                            expected_tables,
+                                            results_fp,
+                                            taxonomy_level_range,
+                                            min_count = min_count,
+                                            taxa_to_keep = taxa_to_keep,
+                                            md_key = md_key,
+                                            new_param_ids = new_param_ids)
+    else:
+        print("{0} already exists.".format(results_fp))
+        print("Reading in pre-computed evaluation results.")
+        print("To overwrite, set force=True")
+        mock_results = pd.DataFrame.from_csv(results_fp, sep='\t')
+
+    return mock_results
+
+
+def mount_observations(table_fp, min_count=0, taxonomy_level=6,
+                       taxa_to_keep=None, md_key='taxonomy'):
+    '''load biom table, filter by abundance, collapse taxonomy, return biom'''
+
+    try:
+        table = load_table(table_fp)
+    except ValueError:
+        raise ValueError("Couldn't parse BIOM table: {0}".format(table_fp))
+
+    if min_count > 0 and taxa_to_keep is not None:
+        try:
+            table = filter_table(table, min_count, taxonomy_level, taxa_to_keep,
+                                 md_key=md_key)
+        except TableException:
+            # if all data is filtered out, move on to the next table
+            #continue
+            pass
+        except TypeError:
+            # missing taxonomic information in the table
+            print("Missing taxonomic information in table {0}".format(table_fp))
+            #continue
+
+        if table.is_empty():
+            raise ValueError("Table is empty after filtering at"
+                             " {0}".format(table_fp))
+
+    collapse_taxonomy = get_taxonomy_collapser(taxonomy_level, md_key=md_key)
+
+    try:
+        table = table.collapse(collapse_taxonomy, axis='observation',
+                               min_group_size=1)
+    except TableException:
+        raise TableException("Failure to collapse taxonomy for table at:"
+                             " {0}".format(table_fp))
+    except TypeError:
+        raise TypeError("Failure to collapse taxonomy in: {0}".format(table_fp))
+    return table
+
+
+def compute_mock_results(result_tables, expected_table_lookup, results_fp,
+                         taxonomy_level_range=range(2,7), min_count=0,
+                         taxa_to_keep=None, md_key='taxonomy',
                          new_param_ids={}):
     """ Compute precision, recall, and f-measure for result_tables at
     taxonomy_level
@@ -358,7 +481,8 @@ def compute_mock_results(result_tables, expected_table_lookup,
            parameter_combination_id, table_fp]
         expected_table_lookup: 2d dict of dataset_id, reference_db_id to BIOM
          table filepath, for the expected result tables
-        taxonomy_level: level to compute results
+        taxonomy_level_range: range of levels to compute results
+        results_fp: path to output file containing evaluation results summary
 
     """
     results = []
@@ -375,98 +499,78 @@ def compute_mock_results(result_tables, expected_table_lookup,
     param_ids.update(new_param_ids)
     for dataset_id, reference_id, method_id, params, actual_table_fp\
         in result_tables:
-        ## parse the expected table (unless taxonomy_level is specified, this should be
-        ## collapsed on level 6 taxonomy)
+
+        # Find expected results
         try:
-            expected_table_fp = expected_table_lookup[dataset_id][reference_id]
+            expected_table_fp = \
+                expected_table_lookup[dataset_id][reference_id]
         except KeyError:
             raise KeyError("Can't find expected table for \
                             ({0}, {1}).".format(dataset_id, reference_id))
 
-        try:
-            expected_table = load_table(expected_table_fp)
-        except ValueError:
-            raise ValueError("Couldn't parse BIOM table: \
-                             {0}".format(expected_table_fp))
+        for taxonomy_level in taxonomy_level_range:
+            ## parse the expected table (unless taxonomy_level is specified,
+            ## this should be collapsed on level 6 taxonomy)
+            expected_table = mount_observations(expected_table_fp,
+                                                min_count=min_count,
+                                                taxonomy_level=taxonomy_level,
+                                                taxa_to_keep=taxa_to_keep)
 
-        if taxa_to_keep is not None:
-            expected_table = filter_table(expected_table,
-                                          taxa_to_keep=taxa_to_keep)
+            ## parse the actual table and collapse it at the specified
+            ## taxonomic level
+            actual_table = mount_observations(actual_table_fp,
+                                              min_count=min_count,
+                                              taxonomy_level=taxonomy_level,
+                                              taxa_to_keep=taxa_to_keep,
+                                              md_key=md_key)
 
-        ## parse the actual table and collapse it at the specified
-        ## taxonomic level
-        try:
-            actual_table = load_table(actual_table_fp)
-        except ValueError:
-            raise ValueError("Couldn't parse BIOM table:\
-                             {0}".format(actual_table_fp))
+            for sample_id in actual_table.ids(axis="sample"):
+                ## compute precision, recall, and f-measure
+                try:
+                    p,r,f = compute_prf(actual_table,
+                                        expected_table,
+                                        actual_sample_id=sample_id,
+                                        expected_sample_id=sample_id)
+                except ZeroDivisionError:
+                    p, r, f = -1., -1., -1.
 
-        try:
-            actual_table = filter_table(actual_table, min_count,
-                                        taxonomy_level, taxa_to_keep)
-        except TableException:
-            # if all data is filtered out, move on to the next table
-            continue
-        except TypeError:
-            # missing taxonomic information in the table
-            print("Missing taxonomic information in table {0},\
-                   skipping.".format(actual_table_fp))
-            continue
+                # compute pearson and spearman
+                actual_vector, expected_vector =\
+                    get_actual_and_expected_vectors(actual_table,
+                                                    expected_table,
+                                                    actual_sample_id=sample_id,
+                                                    expected_sample_id=\
+                                                    sample_id)
 
-        if actual_table.is_empty():
-            raise ValueError("Actual table is empty after filtering.")
+                pearson_r, pearson_p = pearsonr(actual_vector, expected_vector)
+                spearman_r, spearman_p = spearmanr(actual_vector,
+                                                   expected_vector)
 
-        collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
+                results.append((dataset_id, taxonomy_level, sample_id,
+                                reference_id, method_id, params, p, r, f,
+                                pearson_r, pearson_p, spearman_r, spearman_p))
 
-        try:
-            actual_table = actual_table.collapse(collapse_by_taxonomy,
-                                                 axis='observation',
-                                                 min_group_size=1)
-        except TableException:
-            raise TableException("Failure to collapse taxonomy for table at: \
-                                 {0}".format(actual_table_fp))
-
-
-        for sample_id in actual_table.ids(axis="sample"):
-            ## compute precision, recall, and f-measure
-            try:
-                p,r,f = compute_prf(actual_table,
-                                    expected_table,
-                                    actual_sample_id=sample_id,
-                                    expected_sample_id=sample_id)
-            except ZeroDivisionError:
-                p, r, f = -1., -1., -1.
-
-            # compute pearson and spearman
-            actual_vector, expected_vector =\
-                get_actual_and_expected_vectors(actual_table, expected_table,
-                    actual_sample_id=sample_id, expected_sample_id=sample_id)
-
-            pearson_r, pearson_p = pearsonr(actual_vector, expected_vector)
-            spearman_r, spearman_p = spearmanr(actual_vector, expected_vector)
-
-            results.append((dataset_id, sample_id, reference_id, method_id,
-                            params, p, r, f, pearson_r, pearson_p, spearman_r,
-                            spearman_p))
-
-            param_data[(method_id, params)] = {}
-            for k, v in zip(param_ids[method_id], params.split(':')):
-                v_ = []
-                for e in v:
-                    try:
-                       v_.append(float(e))
-                    except ValueError:
-                       v_.append(e)
-                param_data[(method_id, params)][k] = v_
+        # record parameter data
+        param_data[(method_id, params)] = {}
+        for k, v in zip(param_ids[method_id], params.split(':')):
+            v_ = []
+            for e in v:
+                try:
+                   v_.append(float(e))
+                except ValueError:
+                   v_.append(e)
+            param_data[(method_id, params)][k] = v_
 
     param_df = pd.DataFrame(param_data)
-    result = pd.DataFrame(results, columns=["Dataset", "SampleID", "Reference",
-                                            "Method", "Parameters",
-                                            "Precision", "Recall", "F-measure",
+    result = pd.DataFrame(results, columns=["Dataset", "Level", "SampleID",
+                                            "Reference", "Method",
+                                            "Parameters", "Precision",
+                                            "Recall", "F-measure",
                                             "Pearson r", "Pearson p",
                                             "Spearman r", "Spearman p"])
     result = result.merge(param_df.T, left_on=('Method', 'Parameters'),
                           right_index=True)
+    result.to_csv(results_fp, sep='\t')
     return result
 
 
@@ -480,10 +584,11 @@ def _is_first(df):
     return result
 
 
-def method_by_dataset(df, dataset, sort_field, display_fields):
+def method_by_dataset(df, dataset, sort_field, display_fields,
+                      group_by = 'Dataset'):
     """ Generate summary of best parameter set for each method for single df
     """
-    dataset_df = df.loc[df['Dataset'] == dataset]
+    dataset_df = df.loc[df[group_by] == dataset]
     sorted_dataset_df = dataset_df.sort_values(by=sort_field, ascending=False)
     filtered_dataset_df = sorted_dataset_df[_is_first(sorted_dataset_df)]
     return filtered_dataset_df.ix[:,display_fields]
@@ -710,107 +815,3 @@ def compute_mantel(result_tables,
     return pd.DataFrame(results, columns=["Dataset", "Reference", "Method",
                                            "Parameters", "Mantel r",
                                            "Mantel p"])
-
-
-def generate_pr_scatter_plots(query_prf,
-                              subject_prf,
-                              query_color="b",
-                              subject_color="r",
-                              x_label="Precision",
-                              y_label="Recall"):
-    """ Generate scatter plot of precision versus recall for query and subject
-    results
-
-        query_prf : pandas.DataFrame
-         Precision, recall, and f-measure values as returned from compute_prfs
-         for query data
-        subject_prf : pandas.DataFrame
-         Precision, recall, and f-measure values as returned from compute_prfs
-         for subject data
-        query_color : str, optional
-         The color of the query points
-        subject_color : str, optional
-         The color of the subject points
-        x_label : str, optional
-         x axis label for the plot
-        y_label : str, optional
-         y axis label for the plot
-
-    """
-    # Extract the query precisions and recalls and
-    # generate a scatter plot
-    query_precisions = query_prf['Precision']
-    query_recalls = query_prf['Recall']
-    scatter(query_precisions,
-            query_recalls,
-            c=query_color)
-
-    # Extract the subject precisions and recalls and
-    # generate a scatter plot
-    subject_precisions = subject_prf['Precision']
-    subject_recalls = subject_prf['Recall']
-    scatter(subject_precisions,
-            subject_recalls,
-            c=subject_color)
-
-    xlim(0,1)
-    ylim(0,1)
-    xlabel(x_label)
-    ylabel(y_label)
-
-
-def boxplot_from_data_frame(df,
-                            group_by,
-                            metric,
-                            y_min = 0.0,
-                            y_max = 1.0,
-                            plotf=violinplot,
-                            color='grey',
-                            x_tick_label_rotation=45):
-    """Generate boxplot or violinplot of metric by group
-
-    To generate boxplots instead of violin plots, pass plotf=seaborn.boxplot
-    """
-
-    distributions = []
-    x_tick_labels = df[group_by].unique()
-    x_tick_labels.sort()
-    for e in x_tick_labels:
-        distribution = df.ix[df[group_by] == e, metric]
-        distributions.append([x for x in distribution if not np.isnan(x)])
-
-    ax = plotf(distributions, color=color)
-    ax.set_ylim(bottom=y_min, top=y_max)
-    ax.set_ylabel(metric)
-    ax.set_xlabel(group_by)
-    ax.set_xticklabels(x_tick_labels, rotation=x_tick_label_rotation)
-    ax
-
-
-def heatmap_from_data_frame(df, metric, rows=["Method", "Parameters"],
-                            cols=["Dataset"], vmin=0, vmax=1, cmap='Reds'):
-    """Generate heatmap of specified metric by (method, parameter) x dataset
-
-    df: pandas.DataFrame
-    rows: list
-        df column names to use for categorizing heatmap rows
-    cols: list
-        df column names to use for categorizing heatmap rows
-    metric: str
-        metric to plot in the heatmap
-
-    """
-    df = df.pivot_table(index=rows, columns=cols, values=metric)
-    df.sort_index()
-
-    height = len(df.index) * 0.35
-    width = len(df.columns) * 1
-
-    # Based on SO answer: http://stackoverflow.com/a/18238680
-    fig = plt.figure(figsize=(width, height))
-    ax = heatmap(df, cmap=cmap, linewidths=0, square=True, vmin=vmin,
-                 vmax=vmax)
-
-    ax.set_title(metric, fontsize=20)
-
-    plt.show()

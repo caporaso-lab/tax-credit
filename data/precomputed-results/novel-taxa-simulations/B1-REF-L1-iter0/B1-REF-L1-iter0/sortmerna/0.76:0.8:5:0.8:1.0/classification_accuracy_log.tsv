@@ -1,0 +1,10 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.8:1.0	583935	Unassigned	k__Bacteria; p__Bacteroidetes	underclassification	0
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.8:1.0	746126	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Acidobacteriaceae; g__Granulicella; s__tundricola	k__Bacteria; p__Tenericutes	overclassification	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.8:1.0	563323	Unassigned	k__Bacteria; p__Spirochaetes	underclassification	0
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.8:1.0	278595	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Streptomycetaceae; g__Streptomyces; s__lanatus	k__Bacteria; p__Elusimicrobia	overclassification	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.8:1.0	89370	k__Bacteria	k__Bacteria; p__Firmicutes	match	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.8:1.0	1875	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	k__Bacteria; p__Chrysiogenetes	overclassification	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.8:1.0	370251	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Acidobacteriaceae	k__Bacteria; p__Proteobacteria	overclassification	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.8:1.0	1871	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Nocardiaceae	k__Bacteria; p__Deferribacteres	overclassification	1
+B1-REF	1	0	sortmerna	0.76:0.8:5:0.8:1.0	317426	Unassigned	k__Bacteria; p__Fibrobacteres	underclassification	0

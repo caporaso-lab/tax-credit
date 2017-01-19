@@ -1,8 +1,0 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	2	rdp	0.4	838467	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Fusobacteria	overclassification	1
-B1-REF	1	2	rdp	0.4	539567	k__Bacteria	k__Bacteria; p__Thermotogae	match	1
-B1-REF	1	2	rdp	0.4	3585	k__Bacteria	k__Bacteria; p__Fibrobacteres	match	1
-B1-REF	1	2	rdp	0.4	278595	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria	k__Bacteria; p__Elusimicrobia	overclassification	1
-B1-REF	1	2	rdp	0.4	3772088	k__Bacteria	k__Bacteria; p__Planctomycetes	match	1
-B1-REF	1	2	rdp	0.4	111022	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Deferribacteres	overclassification	1
-B1-REF	1	2	rdp	0.4	2806523	k__Bacteria;p__Proteobacteria	k__Bacteria; p__Bacteroidetes	overclassification	1

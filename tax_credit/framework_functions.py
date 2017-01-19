@@ -10,19 +10,30 @@
 # ----------------------------------------------------------------------------
 
 from os.path import join, exists, split, sep, expandvars, basename, splitext
-from os import makedirs, remove
-from tempfile import mkstemp
+from os import makedirs, remove, system
 from glob import glob
 from itertools import product
 from shutil import rmtree, move
+from random import sample
 from biom import load_table
 from biom.cli.util import write_biom_table
 from biom.parse import MetadataMap
 from skbio.alignment import local_pairwise_align_ssw
 from skbio import io, DNA
+from time import time
 import pandas as pd
-import seaborn as sns
-from tax_credit.taxa_manipulator import *
+from collections import Counter
+from tax_credit.taxa_manipulator import (import_taxonomy_to_dict,
+                                         export_list_to_file,
+                                         extract_rownames,
+                                         filter_sequences,
+                                         extract_fasta_ids,
+                                         string_search,
+                                         trim_taxonomy_strings,
+                                         unique_lines,
+                                         branching_taxa,
+                                         stratify_taxonomy_subsets,
+                                         extract_taxa_names)
 from scipy.stats import kruskal
 from statsmodels.sandbox.stats.multicomp import multipletests
 import numpy as np
@@ -31,7 +42,7 @@ import numpy as np
 def gen_param_sweep(data_dir, results_dir, reference_dbs,
                     dataset_reference_combinations,
                     method_parameters_combinations,
-                    output_name='rep_set_tax_assignments.txt'):
+                    output_name='rep_set_tax_assignments.txt', force=False):
     '''Create list of commands from input dictionaries of method_parameter and
     dataset_reference_combinations
     '''
@@ -40,12 +51,13 @@ def gen_param_sweep(data_dir, results_dir, reference_dbs,
         reference_seqs, reference_tax = reference_dbs[reference]
         for method, parameters in method_parameters_combinations.items():
             parameter_ids = sorted(parameters.keys())
-            for parameter_combination in product(*[parameters[id_]\
+            for parameter_combination in product(*[parameters[id_]
                                                  for id_ in parameter_ids]):
                 parameter_comb_id = ':'.join(map(str, parameter_combination))
                 parameter_output_dir = join(results_dir, dataset, reference,
                                             method, parameter_comb_id)
-                if not exists(join(parameter_output_dir, output_name)):
+                if not exists(join(parameter_output_dir, output_name)) \
+                        or force:
                     params = dict(zip(parameter_ids, parameter_combination))
                     yield (parameter_output_dir, input_dir, reference_seqs,
                            reference_tax, method, params)
@@ -58,14 +70,14 @@ def parameter_sweep(data_dir, results_dir, reference_dbs,
                                      "{1} -o {0} -r {2} -t {3} -m {4} {5} "
                                      "--rdp_max_memory 16000",
                     infile='rep_set.fna',
-                    output_name='rep_set_tax_assignments.txt'):
+                    output_name='rep_set_tax_assignments.txt', force=False):
     '''Create list of commands from input dictionaries of method_parameter and
     dataset_reference_combinations
     '''
     sweep = gen_param_sweep(data_dir, results_dir, reference_dbs,
                             dataset_reference_combinations,
-                            method_parameters_combinations, in_file,
-                            output_name)
+                            method_parameters_combinations, infile,
+                            output_name, force)
     commands = []
     for assignment in sweep:
         (parameter_output_dir, input_dir, reference_seqs, reference_tax,
@@ -82,19 +94,22 @@ def parameter_sweep(data_dir, results_dir, reference_dbs,
 def add_metadata_to_biom_table(biom_input_fp, taxonomy_map_fp, biom_output_fp):
     '''Load biom, add metadata, write to new table'''
     newbiom = load_table(biom_input_fp)
-    metadata = MetadataMap.from_file(taxonomy_map_fp, header='taxonomy')
+    metadata = MetadataMap.from_file(taxonomy_map_fp,
+                                     header=['Sample ID', 'taxonomy', 'c'])
     newbiom.add_metadata(metadata, 'observation')
-    write_biom_table(newbiom, 'hdf5', biom_output_fp)
+    write_biom_table(newbiom, 'json', biom_output_fp)
 
 
-def generate_per_method_biom_tables(taxonomy_glob, data_dir):
+def generate_per_method_biom_tables(taxonomy_glob, data_dir,
+                                    biom_input_fn='feature_table.biom',
+                                    biom_output_fn='table.biom'):
     '''Create biom tables from glob of taxonomy assignment results'''
     taxonomy_map_fps = glob(expandvars(taxonomy_glob))
     for taxonomy_map_fp in taxonomy_map_fps:
         dataset_id = taxonomy_map_fp.split(sep)[-5]
-        biom_input_fp = join(data_dir, dataset_id, 'table-no-tax.biom')
+        biom_input_fp = join(data_dir, dataset_id, biom_input_fn)
         output_dir = split(taxonomy_map_fp)[0]
-        biom_output_fp = join(output_dir, 'table.biom')
+        biom_output_fp = join(output_dir, biom_output_fn)
         if exists(biom_output_fp):
             remove(biom_output_fp)
         add_metadata_to_biom_table(biom_input_fp, taxonomy_map_fp,
@@ -104,27 +119,45 @@ def generate_per_method_biom_tables(taxonomy_glob, data_dir):
 def move_results_to_repository(method_dirs, precomputed_results_dir):
     '''Move new taxonomy assignment results to git repository'''
     for method_dir in method_dirs:
-        fields = method_dir.split(sep)
-        dataset_id, database_id, method_id = fields[-3], fields[-2], fields[-1]
+        f = method_dir.split(sep)
+        dataset_id, db_id, method_id, param_id = f[-4], f[-3], f[-2], f[-1]
 
-        new_location = join(precomputed_results_dir, dataset_id, database_id,
-                            method_id)
+        new_location = join(precomputed_results_dir, dataset_id, db_id,
+                            method_id, param_id)
         if exists(new_location):
             rmtree(new_location)
         move(method_dir, new_location)
 
 
-def clean_database(taxa_in, seqs_in, db_dir):
-    '''Remove ambiguous and empty taxonomies from reference seqs/taxonomy'''
-    clean_taxa = ''.join(map(str, [db_dir, '/', basename(splitext(taxa_in)[0]),
-                          '_clean.tsv']))
-    clean_fasta = ''.join(map(str, [db_dir, '/', basename(splitext(seqs_in)[0]),
-                          '_clean.fasta']))
+def clean_database(taxa_in, seqs_in, db_dir,
+                   junk='__;|__$|_sp_|unknown|unidentified'):
+
+    '''Remove ambiguous and empty taxonomies from reference seqs/taxonomy.
+
+    taxa_in: path
+        File containing taxonomy strings in tab-separated format:
+        <SequenceID>    <taxonomy string>
+
+    seqs_in: path
+        File containing sequences corresponding to taxa_in, in fasta format.
+
+    db_dir: dir path
+        Output directory.
+
+    junk: str
+        '|'-separated list of search terms. Taxonomies containing these terms
+        will be removed from the database.
+    '''
+
+    clean_taxa = join(db_dir,
+                      '{0}_clean.tsv'.format(basename(splitext(taxa_in)[0])))
+    clean_fasta = join(db_dir, '{0}_clean.fasta'.format(
+        basename(splitext(seqs_in)[0])))
 
     # Remove empty taxa from ref taxonomy
-    taxa = string_search(taxa_in, '__;|__$|_sp_|Incertae', discard=True)
+    taxa = string_search(taxa_in, junk, discard=True)
     # Remove brackets (and other special characters causing problems)
-    clean_list = [line.translate(str.maketrans('', '', '[]()'))\
+    clean_list = [line.translate(str.maketrans('', '', '[]()'))
                   for line in taxa]
     export_list_to_file(clean_list, clean_taxa)
     # Remove corresponding seqs from ref fasta
@@ -137,8 +170,8 @@ def find_primer_site(query_seq, target_seq):
     '''Align primer to target DNA using striped Smith-Waterman, return site'''
     # Increase gap extend penalty to avoid large gaps, short alignments
     # try:
-    aln, score, start_end_positions = local_pairwise_align_ssw(query_seq,
-                                        target_seq, gap_extend_penalty=10)
+    aln, score, start_end_positions = \
+        local_pairwise_align_ssw(query_seq, target_seq, gap_extend_penalty=10)
     # except IndexError:
     #    continue
     return start_end_positions
@@ -152,7 +185,7 @@ def extract_amplicons(seqs_in, amplicons_out, reads_out, fwd_primer,
         with open(reads_out, 'w') as reads:
             for seq in io.read(seqs_in, format='fasta'):
                 # Align forward and reverse primers onto input sequence
-                seq_DNA = DNA(seq)
+                seq_DNA = DNA(seq, lowercase=True)
                 fwd_primer_start = find_primer_site(fwd_primer, seq_DNA)[1][0]
                 rev_primer_end = find_primer_site(rev_primer, seq_DNA)[1][1]
                 # Trim seq to amplicon
@@ -179,27 +212,41 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations):
     dataframe = pandas dataframe
     '''
     for index, data in dataframe.iterrows():
-        db_dir = path.join(data_dir, 'ref_dbs', data['Reference id'])
+        db_dir = join(data_dir, 'ref_dbs', data['Reference id'])
         if not exists(db_dir):
             makedirs(db_dir)
 
         # Clean taxonomy/sequences, to remove empty/ambiguous taxonomies
-        clean_taxa, clean_fasta = clean_database(data['Reference tax path'],
-                                                 data['Reference file path'],
-                                                 db_dir)
+        clean_fasta = join(db_dir, '{0}_clean.fasta'.format(basename(splitext(
+                                             data['Reference file path'])[0])))
+        if not exists(clean_fasta):
+            clean_taxa, clean_fasta = \
+                clean_database(data['Reference tax path'],
+                               data['Reference file path'], db_dir)
 
         # Trim reference sequences to amplicon target
-        amplicons_fp = path.join(db_dir, "simulated_amplicons.fna")
-        simulated_reads_fp = path.join(db_dir, "simulated_reads.fna")
+        primer_pair = '{0}-{1}'.format(data['Fwd primer id'],
+                                       data['Rev primer id'])
+        base, ext = splitext(clean_fasta)
+        amplicons_fp = \
+            join(db_dir, '{0}_{1}{2}'.format(base, primer_pair, ext))
+        simulated_reads_fp = \
+            join(db_dir, '{0}_{1}_trim{2}{3}'.format(base, primer_pair,
+                                                     read_length, ext))
+
+        # amplicons_fp = join(db_dir, "simulated_amplicons.fna")
+        # simulated_reads_fp = join(db_dir, "simulated_reads.fna")
         if not exists(simulated_reads_fp):
             extract_amplicons(clean_fasta, amplicons_fp, simulated_reads_fp,
-                          DNA(data['Fwd primer']), DNA(data['Rev primer']),
-                          read_length, min_read_length=80)
+                              DNA(data['Fwd primer']), DNA(data['Rev primer']),
+                              read_length, min_read_length=80)
+        else:
+            print('simulated reads and amplicons exist: skipping extraction')
 
         # Filter taxonomy strings to match read sequences
-        valid_taxa = '^' + '$|^'.join(list(extract_fasta_ids(\
+        valid_taxa = '^' + '$|^'.join(list(extract_fasta_ids(
                                             simulated_reads_fp))) + '$'
-        read_taxa = string_search(clean_taxa, valid_taxa, discard = False,
+        read_taxa = string_search(clean_taxa, valid_taxa, discard=False,
                                   field=slice(0, 1), delim='\t')
 
         # Print sequence counts to see how many seqs were filtered
@@ -217,7 +264,7 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations):
         # Generate simulated community query and reference seqs/taxa pairs
         simulated_dir = join(data_dir, 'simulated-community')
         generate_simulated_communities(read_taxa, simulated_reads_fp, index,
-                                     iterations, simulated_dir)
+                                       iterations, simulated_dir)
 
 
 def generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
@@ -248,28 +295,28 @@ def generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
 
     # Create QUERY / REF pairs
         # Create QUERY TAXONOMY as subsets of branched taxa lists
-        basename = ''.join(map(str, [index, '-L', level]))
+        basename = '{0}-L{1}'.format(index, level)
         # stratify at level-1, since we want to stratify the branches, not tips
         stratify_taxonomy_subsets(branched_taxa, iterations, data_dir,
                                   basename, level=level-1)
 
         # Create REF and TAXONOMY files paired to QUERY files:
         for iteration in range(0, iterations):
-            db_iter_dir = ''.join(map(str, [data_dir, '/', basename,
-                                            '-iter', iteration]))
-            novel_query_taxonomy_fp = path.join(db_iter_dir,
-                                                'query_taxa.tsv')
-            novel_query_fp = path.join(db_iter_dir, 'query.fasta')
-            novel_ref_fp = path.join(db_iter_dir, 'ref_seqs.fasta')
-            novel_ref_taxonomy_fp = path.join(db_iter_dir, 'ref_taxa.tsv')
+            db_iter_dir = join(data_dir, '{0}-iter{1}'.format(basename,
+                                                              iteration))
+            novel_query_taxonomy_fp = join(db_iter_dir,
+                                           'query_taxa.tsv')
+            novel_query_fp = join(db_iter_dir, 'query.fasta')
+            novel_ref_fp = join(db_iter_dir, 'ref_seqs.fasta')
+            novel_ref_taxonomy_fp = join(db_iter_dir, 'ref_taxa.tsv')
 
             # 1) Create REF TAXONOMY from list of taxonomies that
             #    DO NOT match QUERY taxonomies
-            name_list = '^' + '$|^'.join(list(extract_taxa_names(\
+            name_list = '^' + '$|^'.join(list(extract_taxa_names(
                          novel_query_taxonomy_fp, slice(1, level+1)))) + '$'
             novel_ref_taxonomy = string_search(read_taxa, name_list,
-                                             discard = True,
-                                             field = slice(1, level+1))
+                                               discard=True,
+                                               field=slice(1, level+1))
             export_list_to_file(novel_ref_taxonomy, novel_ref_taxonomy_fp)
 
             # 2) Create REF: Filter ref database to contain only seqs that
@@ -302,22 +349,22 @@ def generate_simulated_communities(read_taxa, simulated_reads_fp, index,
                               level=1, delim='\t')
     # generate pairs of train/test fastas/taxonomies for each CV subset
     for iteration in range(0, iterations):
-        db_iter_dir = ''.join(map(str, [data_dir, '/', index, '-iter',
-                                        iteration]))
-        query_taxa_fp = path.join(db_iter_dir, 'query_taxa.tsv')
-        query_fp = path.join(db_iter_dir, 'query.fasta')
-        ref_fp = path.join(db_iter_dir, 'ref_seqs.fasta')
-        ref_taxa_fp = path.join(db_iter_dir, 'ref_taxa.tsv')
+        db_iter_dir = join(data_dir, '{0}-iter{1}'.format(index, iteration))
+        query_taxa_fp = join(db_iter_dir, 'query_taxa.tsv')
+        query_fp = join(db_iter_dir, 'query.fasta')
+        ref_fp = join(db_iter_dir, 'ref_seqs.fasta')
+        ref_taxa_fp = join(db_iter_dir, 'ref_taxa.tsv')
 
         # 1) Create REF taxa that do not match query IDs
         ids = '^' + '$|^'.join(list(extract_rownames(query_taxa_fp))) + '$'
         ref_taxa = string_search(read_taxa, ids, discard=True,
-                                 field=slice(0,1), delim='\t')
+                                 field=slice(0, 1), delim='\t')
         export_list_to_file(ref_taxa, ref_taxa_fp)
         # 2) Create REF: seqs that match ref taxonomy
         filter_sequences(simulated_reads_fp, ref_fp, ref_taxa_fp, keep=True)
         # 3) Create QUERY: seqs that match QUERY TAXONOMY
-        filter_sequences(simulated_reads_fp, query_fp, query_taxa_fp, keep=True)
+        filter_sequences(simulated_reads_fp, query_fp, query_taxa_fp,
+                         keep=True)
 
 
 def test_simulated_communities(dataframe, data_dir, iterations):
@@ -327,12 +374,12 @@ def test_simulated_communities(dataframe, data_dir, iterations):
     simulated_dir = join(data_dir, 'simulated-community')
     for index, data in dataframe.iterrows():
         for iteration in range(0, iterations):
-            db_iter_dir = ''.join(map(str, [simulated_dir, '/', index, '-iter',
-                                            iteration]))
-            query_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
-                                                           'query_taxa.tsv'))
-            ref_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
-                                                         'ref_taxa.tsv'))
+            db_iter_dir = join(simulated_dir, '{0}-iter{1}'.format(index,
+                                                                   iteration))
+            query_taxa = import_taxonomy_to_dict(join(db_iter_dir,
+                                                      'query_taxa.tsv'))
+            ref_taxa = import_taxonomy_to_dict(join(db_iter_dir,
+                                                    'ref_taxa.tsv'))
             for key, value in query_taxa.items():
                 if key in ref_taxa:
                     print('key duplicate: ', key)
@@ -348,12 +395,13 @@ def test_novel_taxa_datasets(dataframe, data_dir, iterations):
     for index, data in dataframe.iterrows():
         for level in range(6, 0, -1):
             for iteration in range(0, iterations):
-                db_iter_dir = ''.join(map(str, [novel_dir, '/', index, '-L',
-                                                level, '-iter', iteration]))
-                query_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
-                                                             'query_taxa.tsv'))
-                ref_taxa = import_taxonomy_to_dict(path.join(db_iter_dir,
-                                                             'ref_taxa.tsv'))
+                db_iter_dir = \
+                    join(novel_dir,
+                         '{0}-L{1}-iter{2}'.format(index, level, iteration))
+                query_taxa = import_taxonomy_to_dict(join(db_iter_dir,
+                                                          'query_taxa.tsv'))
+                ref_taxa = import_taxonomy_to_dict(join(db_iter_dir,
+                                                        'ref_taxa.tsv'))
                 taxa = [t.split(';')[level-1] for t in ref_taxa.values()]
                 for key, value in query_taxa.items():
                     if key in ref_taxa:
@@ -391,18 +439,16 @@ def recall_novel_taxa_dirs(data_dir, databases, iterations,
         for level in range(max_level, min_level, -1):
             for iteration in range(0, iterations):
                 if multilevel is True:
-                    dataset_name = ''.join(map(str, [database, '-L', level,
-                                                     '-iter', iteration]))
+                    dataset_name = '{0}-L{1}-iter{2}'.format(database,
+                                                             level,
+                                                             iteration)
                 else:
-                    dataset_name = ''.join(map(str, [database, '-iter',
-                                                     iteration]))
+                    dataset_name = '{0}-iter{1}'.format(database, iteration)
                 dataset_reference_combinations.append((dataset_name,
                                                        dataset_name))
-                reference_dbs[dataset_name] = (join(data_dir, dataset_name,
-                                                   ref_seqs),
-                                               join(data_dir, dataset_name,
-                                                   ref_taxa)
-                                              )
+                reference_dbs[dataset_name] = \
+                    (join(data_dir, dataset_name, ref_seqs),
+                     join(data_dir, dataset_name, ref_taxa))
     return dataset_reference_combinations, reference_dbs
 
 
@@ -427,16 +473,17 @@ def evaluate_novel_taxa_classification(obs_taxa, exp_taxa, level):
     # ==match. len(exp_taxa) - 1 because exp_taxa is actual taxonomy string,
     # L-1 is the actual expected taxonomy string
     if len(obs_taxa) == len(exp_taxa) - 1 \
-    and obs_taxa[level - 1].strip() == exp_taxa[level - 1].strip():
+            and obs_taxa[level - 1].strip() == exp_taxa[level - 1].strip():
         result = 'match'
     # if deeper and assignemnt at L-1 is correct, count as overclassification
     elif len(obs_taxa) >= len(exp_taxa) \
-    and obs_taxa[level - 1].strip() == exp_taxa[level - 1].strip():
+            and obs_taxa[level - 1].strip() == exp_taxa[level - 1].strip():
         result = 'overclassification'
     # if shallower and top-level assign correct, count as underclassification
     elif len(obs_taxa) < len(exp_taxa) - 1 \
-    and obs_taxa[len(obs_taxa)-1].strip() == exp_taxa[len(obs_taxa)-1].strip()\
-    or obs_taxa[0] == 'Unclassified' or obs_taxa[0] == 'Unassigned':
+            and (obs_taxa[len(obs_taxa)-1].strip() ==
+                 exp_taxa[len(obs_taxa)-1].strip()) \
+            or obs_taxa[0] == 'Unclassified' or obs_taxa[0] == 'Unassigned':
         result = 'underclassification'
     # Otherwise, count as misclassification
     else:
@@ -449,13 +496,14 @@ def evaluate_cross_validated_classification(obs_taxa, exp_taxa):
     validated simulated community, score as match, overclassification,
     underclassification, or misclassification'''
     # if  observed = expected, match
-    if len(obs_taxa) == len(exp_taxa)\
-    and obs_taxa[len(obs_taxa)-1].strip() == exp_taxa[len(obs_taxa)-1].strip():
-        result = 'match'
+    if len(obs_taxa) == len(exp_taxa) and (obs_taxa[len(obs_taxa)-1].strip() ==
+                                           exp_taxa[len(obs_taxa)-1].strip()):
+            result = 'match'
     # if shallower and top-level assign correct, count as underclassification
     elif len(obs_taxa) < len(exp_taxa) \
-    and obs_taxa[len(obs_taxa)-1].strip() == exp_taxa[len(obs_taxa)-1].strip()\
-    or obs_taxa[0] == 'Unclassified' or obs_taxa[0] == 'Unassigned':
+        and (obs_taxa[len(obs_taxa)-1].strip() ==
+             exp_taxa[len(obs_taxa)-1].strip()) \
+            or obs_taxa[0] == 'Unclassified' or obs_taxa[0] == 'Unassigned':
         result = 'underclassification'
     # Otherwise, count as misclassification
     else:
@@ -494,7 +542,7 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
         exp_taxa_fp = join(expected_results_dir, dataset_id, 'query_taxa.tsv')
 
         # Create empty list of levels at which first mismatch occurs
-        mismatch_level_list = [0, 0 , 0, 0, 0, 0, 0, 0]
+        mismatch_level_list = [0, 0, 0, 0, 0, 0, 0, 0]
 
         # import expected taxonomies to list
         expectations = import_taxonomy_to_dict(exp_taxa_fp)
@@ -528,14 +576,16 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
                                                                 level)
 
                 elif test_type == 'cross-validated':
-                    result =  evaluate_cross_validated_classification(obs_taxa,
-                                                                      exp_taxa)
+                    result = evaluate_cross_validated_classification(obs_taxa,
+                                                                     exp_taxa)
 
                 record_counter.update({'line_count': 1})
                 record_counter.update({result: 1})
                 log.append('\t'.join(map(str, [index, level, iteration,
-                            method_id, params_id, obs_id, obs_taxonomy,
-                            exp_taxonomy, result, mismatch_level])))
+                                               method_id, params_id, obs_id,
+                                               obs_taxonomy,
+                                               exp_taxonomy, result,
+                                               mismatch_level])))
 
         # Create log file
         log_fp = join(results_dir, 'classification_accuracy_log.tsv')
@@ -543,11 +593,25 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
 
         # tally score ratios
         count = record_counter['line_count']
-        match_ratio = record_counter['match'] / count
-        overclassification_ratio = record_counter['overclassification'] / count
-        underclassification_ratio = \
-                                record_counter['underclassification'] / count
-        misclassification_ratio = record_counter['misclassification'] / count
+        try:
+            match_ratio = record_counter['match'] / count
+        except ZeroDivisionError:
+            match_ratio = 0
+        try:
+            overclassification_ratio = \
+                record_counter['overclassification'] / count
+        except ZeroDivisionError:
+            overclassification_ratio = 0
+        try:
+            underclassification_ratio = \
+                record_counter['underclassification'] / count
+        except ZeroDivisionError:
+            underclassification_ratio = 0
+        try:
+            misclassification_ratio = \
+                record_counter['misclassification'] / count
+        except ZeroDivisionError:
+            misclassification_ratio = 0
 
         results.append((index, level, iteration, method_id,
                         params_id, match_ratio,
@@ -564,28 +628,6 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
                                             "mismatch_level_list"])
     result.to_csv(summary_fp)
     return result
-
-
-def pointplot_from_data_frame(df, x_axis, y_vars, group_by, color_by,
-                              color_pallette, style_theme="whitegrid",
-                              plot_type=sns.pointplot):
-    '''Generate seaborn pointplot from pandas dataframe.
-    df = pandas dataframe
-    x_axis = x axis variable
-    y_vars = LIST of variables to use for plotting y axis
-    group_by = df variable to use for separating plot panels with FacetGrid
-    color_by = df variable on which to plot and color subgroups within data
-    color_pallette = color palette to use for plotting. Either a dict mapping
-                     color_by groups to colors, or a named seaborn palette.
-    style_theme = seaborn plot style theme
-    plot_type = allows switching to other plot types, but this is untested
-    '''
-    sns.set_style(style_theme)
-    for y_var in y_vars:
-        grid = sns.FacetGrid(df, col=group_by, hue=color_by,
-                             palette=color_pallette)
-        grid = grid.map(sns.pointplot, x_axis, y_var, marker="o", ms=4)
-    sns.plt.show()
 
 
 def extract_per_level_accuracy(df, column='mismatch_level_list'):
@@ -612,8 +654,7 @@ def extract_per_level_accuracy(df, column='mismatch_level_list'):
         # If using precomputed results, mismatch_level_list is imported as
         # string, hence must be converted back to list of integers.
         if isinstance(data[column], str):
-            mismatch_list = list(map(int,
-                           data[column].strip('[]').split(',')))
+            mismatch_list = list(map(int, data[column].strip('[]').split(',')))
         else:
             mismatch_list = data[column]
         line_count = sum(mismatch_list)
@@ -628,8 +669,7 @@ def extract_per_level_accuracy(df, column='mismatch_level_list'):
                             data['iteration'],
                             data['Method'],
                             data['Parameters'],
-                            match_ratio
-                           ))
+                            match_ratio))
 
     result = pd.DataFrame(results, columns=["Dataset",
                                             "level",
@@ -642,10 +682,11 @@ def extract_per_level_accuracy(df, column='mismatch_level_list'):
 
 
 def per_level_kruskal_wallis(df,
-                             vars,
+                             y_vars,
                              group_by,
                              dataset_col='Dataset',
                              level_name="level",
+                             levelrange=range(1, 7),
                              alpha=0.05,
                              pval_correction='fdr_bh'):
 
@@ -656,49 +697,144 @@ def per_level_kruskal_wallis(df,
     sample must have at least 5 measurements.
 
     df = pandas dataframe
-    vars = LIST of variables (df column names) to test
+    y_vars = LIST of variables (df column names) to test
     group_by = df variable to use for separating plot panels with FacetGrid
     dataset_col = df variable to use for separating individual datasets to test
     level_name = df variable name that specifies taxonomic level
+    levelrange = range of taxonomic levels to test.
     alpha = level of alpha significance for test
     pval_correction = type of p-value correction to use
     '''
     dataset_list = []
     p_list = []
-    for dataset in df.Dataset.unique():
+    for dataset in df[dataset_col].unique():
         data_subset = df[dataset_col] == dataset
-        for var in vars:
+        for var in y_vars:
             dataset_list.append((dataset, var))
-            for level in range(1,7):
+            for level in levelrange:
                 level_subset = df[level_name] == level
 
                 # group data by groups
                 group_list = []
                 for group in df[group_by].unique():
                     group_data = df[group_by] == group
-                    group_results = df[data_subset & level_subset &\
+                    group_results = df[data_subset & level_subset &
                                        group_data][var]
                     group_list.append(group_results)
 
                 # kruskal-wallis tests
                 try:
-                    h_stat, p_val = kruskal(*group_list)
+                    h_stat, p_val = kruskal(*group_list, nan_policy='omit')
                 # default to p=1.0 if all values = 0
                 # this is not technically correct, from the standpoint of p-val
                 # correction below makes p-vals very slightly less significant
                 # than they should be
                 except ValueError:
-                    h_stat, p_val = ('na', 1)
+                    h_stat, p_val = ('na', 1)  # noqa
 
                 p_list.append(p_val)
 
     # correct p-values
     rej, pval_corr, alphas, alphab = multipletests(np.array(p_list),
-                                                   alpha=0.05, method='fdr_bh')
+                                                   alpha=alpha,
+                                                   method=pval_correction)
 
+    range_len = len([i for i in levelrange])
     results = [(dataset_list[i][0], dataset_list[i][1],
-                *[pval_corr[i*6+n] for n in range(0,6)])\
-                for i in range(0,len(dataset_list))]
+                *[pval_corr[i*range_len+n] for n in range(0, range_len)])
+               for i in range(0, len(dataset_list))]
     result = pd.DataFrame(results, columns=["Dataset", "Variable",
-                                            *[n for n in range(1,7)]])
+                                            *[n for n in levelrange]])
     return result
+
+
+def runtime_make_test_data(seqs_in, results_dir, sampling_depths):
+    '''Repeatedly subsample a fasta sequence file at multiple sequence depths
+    to generate query/test data for testing method runtimes.
+
+    seqs_in: path
+        fasta format reference sequences.
+    results_dir: path
+        Output directory.
+    sampling_depths: list of integers
+        Number of sequences to subsample from seqs.
+    '''
+    if not exists(results_dir):
+        makedirs(results_dir)
+
+    seqs = [seq for seq in io.read(seqs_in, format='fasta')]
+    for depth in sampling_depths:
+        subset = sample(seqs, depth)
+        tmpfile = join(results_dir, str(depth)) + '.fna'
+        with open(tmpfile, "w") as output_fasta:
+            for s in subset:
+                s.write(output_fasta, format='fasta')
+
+
+def runtime_make_commands(input_dir, results_dir, methods,
+                          ref_taxa, sampling_depths, num_iters=1,
+                          subsample_ref=True):
+    '''Generate list of commands to benchmark method runtimes.
+
+    input_dir: path
+        Input directory, containing query/ref sequences.
+    results_dir: path
+        Output directory.
+    methods: dict
+        Dictionary of method:parameters pairs in format:
+            {'method' : (command-template, method-specific-parameters)}
+    ref_taxa: path
+        Taxonomy map for ref sequences in tab-separated format:
+            seqID   ACGTGTAGTCGATGCTAGCTACG
+    sampling_depths: list of integers
+        Number of sequences to subsample from seqs.
+    num_iters: int
+        Number of iterations to perform.
+    subsample_ref: bool
+        If True (default), ref seqs are subsampled at depths defined in
+        sampling_depths, and query seqs default to smallest depth. If false,
+        query seqs are subsampled at these depths, and ref defaults to largest
+        sampling depth.
+    '''
+
+    commands = []
+    for iteration in range(num_iters):
+        for method, template in methods.items():
+            for depth in sampling_depths:
+                # default: subsample ref seqs, query = smallest sample
+                if subsample_ref is True:
+                    q_depth = str(sampling_depths[0])
+                    r_depth = str(depth)
+                # or subsample query seqs, ref = largest sample
+                else:
+                    q_depth = str(depth)
+                    r_depth = str(sampling_depths[-1])
+                query = join(input_dir, q_depth) + '.fna'
+                ref = join(input_dir, r_depth) + '.fna'
+                command = (template[0].format(results_dir, query, ref,
+                                              ref_taxa, method, template[1]),
+                           method, q_depth, r_depth, iteration)
+                commands.append(command)
+    return commands
+
+
+def clock_runtime(command, results_fp, force=True):
+    '''Execute a command and record the runtime.
+
+    command: str
+        Command to be executed.
+    results_fp: path
+        Output file
+    force: bool
+        Overwrite results? If false, will append to any existing results
+    '''
+    if force is True:
+        remove(results_fp)
+
+    _command, method, q_frac, r_frac, iteration = command
+    start = time()
+    system(_command)
+    end = time()
+    results = [method, q_frac, r_frac, iteration, end - start]
+    with open(results_fp, 'a') as timeout:
+        timeout.write('\t'.join(map(str, results)) + '\n')

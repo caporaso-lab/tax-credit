@@ -1,0 +1,34 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter1/ref_taxa.tsv
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter1/ref_taxa.tsv
+max_accepts:1
+min_consensus_fraction:0.51
+reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter1/ref_seqs.fasta
+similarity:0.9
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxqoKap0
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter1/query.fasta --id 0.9 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter1/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_8y2nrc.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	250	*	*	*	*	*	SH076443.07FU_FJ362291_reps	*
+N	*	194	*	*	*	*	*	SH076631.07FU_DQ914672_reps	*
+N	*	250	*	*	*	*	*	SH077503.07FU_KC222806_reps	*
+N	*	210	*	*	*	*	*	SH079086.07FU_AB125261_refs	*
+N	*	250	*	*	*	*	*	SH079880.07FU_JN942679_reps	*
+N	*	250	*	*	*	*	*	SH079920.07FU_AY997079_refs	*
+N	*	138	*	*	*	*	*	SH080085.07FU_HQ667544_reps	*
+N	*	96	*	*	*	*	*	SH088486.07FU_JF779663_reps	*
+N	*	250	*	*	*	*	*	SH088503.07FU_KF192890_reps	*
+N	*	250	*	*	*	*	*	SH098262.07FU_AF444540_refs	*
+N	*	220	*	*	*	*	*	SH099594.07FU_DQ494348_reps	*
+N	*	170	*	*	*	*	*	SH100610.07FU_AF492118_reps	*
+N	*	178	*	*	*	*	*	SH114212.07FU_AB712468_reps	*
+N	*	192	*	*	*	*	*	SH129947.07FU_HM488753_refs	*

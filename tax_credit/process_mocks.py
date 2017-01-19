@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ----------------------------------------------------------------------------
-# Copyright (c) 2016--, taxcompare development team.
+# Copyright (c) 2016--, tax-credit development team.
 #
 # Distributed under the terms of the Modified BSD License.
 #
@@ -10,14 +10,18 @@
 
 from os import path, makedirs
 from os.path import exists, join, basename
-from shutil import copyfile
+from shutil import copyfile, rmtree
 from urllib.request import urlretrieve
-from skbio import TreeNode
+from urllib.error import URLError
+from skbio import TreeNode, io
 import biom
+from biom import load_table
 from biom.cli.util import write_biom_table
 import pandas as pd
 import qiime
 from qiime.plugins import feature_table, demux, dada2, alignment, phylogeny
+from q2_types import DNAIterator
+
 from tax_credit.taxa_manipulator import import_taxonomy_to_dict
 
 
@@ -42,9 +46,30 @@ def extract_mockrobiota_dataset_metadata(mockrobiota_dir, communities):
     return dataset_metadata_dict
 
 
+def amend_biom_taxonomy_ids(biom_table,
+                            empty_taxonomy=['k__', 'p__','c__','o__',
+                                            'f__','g__','s__']
+                           ):
+    '''Convert biom table taxonomy strings so that strings with incomplete
+    taxonomies are filled out with ambiguous labels
+    '''
+    new_ids = {}
+    for taxa in biom_table.ids(axis='observation'):
+        old_taxonomy = taxa.split(';')
+        if len(old_taxonomy) < len(empty_taxonomy):
+            new_taxonomy = empty_taxonomy
+            for i in range(len(old_taxonomy)):
+                new_taxonomy[i] = old_taxonomy[i]
+            new_ids[taxa] = ';'.join(new_taxonomy)
+        else:
+            new_ids[taxa] = ';'.join(old_taxonomy)
+
+    return biom_table.update_ids(new_ids, axis='observation')
+
+
 def extract_mockrobiota_data(communities, community_metadata, reference_dbs,
                              mockrobiota_dir, mock_data_dir,
-                             expected_data_dir):
+                             expected_data_dir, biom_fn='table.L6-taxa.biom'):
     '''Extract sample metadata, raw data files, and expected taxonomy
 
     from mockrobiota, copy to new destination
@@ -60,8 +85,8 @@ def extract_mockrobiota_data(communities, community_metadata, reference_dbs,
         # extract dataset metadata/params
         forward_read_url, index_read_url, marker_gene = \
                                                   community_metadata[community]
-        ref_dest_dir, ref_source_dir, ref_version = \
-                                                reference_dbs[marker_gene][0:3]
+        ref_dest_dir, ref_source_dir, ref_version, otu_id = \
+                                                reference_dbs[marker_gene][0:4]
 
         # mockrobiota source directory
         mockrobiota_community_dir = join(mockrobiota_dir, "data", community)
@@ -78,18 +103,29 @@ def extract_mockrobiota_data(communities, community_metadata, reference_dbs,
         for file_url_dest in [(forward_read_url, 'sequences.fastq.gz'),
                               (index_read_url, 'barcodes.fastq.gz')]:
             destination = join(seqs_dir, file_url_dest[1])
-            if not exists(destination):
-                urlretrieve(file_url_dest[0], destination)
+            if not exists(destination) and file_url_dest[0] != 'NA':
+                try:
+                    urlretrieve(file_url_dest[0], destination)
+                except ValueError:
+                    print('Error retrieving {0}'.format(file_url_dest[0]))
 
         # new directory containing expected taxonomy assignments at each level
         expected_taxa_dir = join(expected_data_dir, community,
                                  ref_dest_dir, "expected")
         if not exists(expected_taxa_dir):
             makedirs(expected_taxa_dir)
-        # copy expected taxonomy.tsv --- convert to biom???
+        # copy expected taxonomy.tsv and convert to biom
+        exp_taxa_fp = join(expected_taxa_dir, 'expected-taxonomy.tsv')
+        exp_biom_fp = join(expected_taxa_dir, biom_fn)
         copyfile(join(mockrobiota_community_dir, ref_source_dir,
-                      ref_version, 'expected-taxonomy.tsv'),
-                 join(expected_taxa_dir, 'expected-taxonomy.tsv'))
+                      ref_version, otu_id, 'expected-taxonomy.tsv'),
+                 exp_taxa_fp)
+        newbiom = amend_biom_taxonomy_ids(biom.load_table(exp_taxa_fp))
+        # add taxonomy ids (names) as observation metadata
+        metadata = {sid : {'taxonomy': sid.split(';')}\
+                    for sid in newbiom.ids(axis='observation')}
+        newbiom.add_metadata(metadata, 'observation')
+        write_biom_table(newbiom, 'hdf5', exp_biom_fp)
 
 
 def batch_demux(communities,
@@ -140,16 +176,20 @@ def batch_demux(communities,
         sample_md = join(community_dir, metadata_fn)
 
         # demultiplex
-        demux_to_plot_quality(seqs_dir = seqs_dir,
-                              sample_md = sample_md,
-                              community_dir = community_dir,
-                              index_col = index_col,
-                              rc_barcodes = demux_params[community][0],
-                              rc_map_barcodes = demux_params[community][1],
-                              demux_fn = demux_fn,
-                              summary_fn = summary_fn,
-                              qual_plot_fn = qual_plot_fn,
-                              n_qual_plots = n_qual_plots)
+        if demux_params[community][0] is True:
+            demux_to_plot_quality(seqs_dir = seqs_dir,
+                                  sample_md = sample_md,
+                                  community_dir = community_dir,
+                                  index_col = index_col,
+                                  rc_barcodes = demux_params[community][1],
+                                  rc_map_barcodes = demux_params[community][2],
+                                  demux_fn = demux_fn,
+                                  summary_fn = summary_fn,
+                                  qual_plot_fn = qual_plot_fn,
+                                  n_qual_plots = n_qual_plots)
+
+        else:
+            load_demux_seqs(community_dir, seqs_dir, demux_fn, sample_md)
 
         print("{0} complete".format(community))
 
@@ -164,6 +204,7 @@ def demux_to_plot_quality(seqs_dir,
                           summary_fn='demux_summary.qzv',
                           qual_plot_fn='demux_plot_qual.qzv',
                           n_qual_plots=1):
+
     '''raw fastq -> SampleData[SequencesWithQuality]
 
     Demultiplex raw fastq files, summarize demux, and plot qual scores.
@@ -201,6 +242,15 @@ def demux_to_plot_quality(seqs_dir,
                                    rev_comp_mapping_barcodes = rc_map_barcodes)
     demux_seqs.per_sample_sequences.save(join(community_dir, demux_fn))
 
+    visualize_qual(demux_seqs, community_dir, summary_fn,
+                   qual_plot_fn, n_qual_plots)
+
+
+def visualize_qual(demux_seqs, community_dir, summary_fn,
+                   qual_plot_fn, n_qual_plots=1):
+
+    '''visualize demux summary and fastq quality plots.'''
+
     # demultiplexing summary
     try:
         dsum = demux.visualizers.summarize(demux_seqs.per_sample_sequences)
@@ -215,6 +265,39 @@ def demux_to_plot_quality(seqs_dir,
     qualplot.visualization.save(join(community_dir, qual_plot_fn))
 
 
+def load_demux_seqs(community_dir, seqs_dir, demux_fn, sample_md):
+    '''Load demultiplexed sequences into artifact and write artifact.'''
+
+    # extract sample name
+    with open(sample_md, 'r') as md_in:
+        md_in.readline()
+        sample_id = md_in.readline().strip().split('\t')[0]
+
+    # assemble artifact components
+    tmpdir = join(seqs_dir, 'tmp')
+    seq_fn = '{0}_1_L001_R1_001.fastq.gz'.format(sample_id)
+    if not exists(tmpdir):
+        makedirs(tmpdir)
+    copyfile(join(seqs_dir, 'sequences.fastq.gz'),
+             join(tmpdir, seq_fn))
+    with open(join(tmpdir, 'MANIFEST'), 'w') as manifest:
+        manifest.write('sample-id,filename,direction\n')
+        manifest.write('{0},{1},forward'.format(sample_id, seq_fn))
+    with open(join(tmpdir, 'metadata.yml'), 'w') as yml:
+        yml.write('\n')
+
+    seqs = qiime.Artifact.import_data(\
+        "SampleData[SequencesWithQuality]", tmpdir)
+    rmtree(tmpdir)
+
+    seqs.save(join(community_dir, demux_fn))
+
+    # Visualize currently fails on artifacts containing single sample
+    # (seqs has no attribute 'per_sample_sequences')
+    # visualize_qual(seqs, community_dir, summary_fn,
+    #               qual_plot_fn, n_qual_plots)
+
+
 def denoise_to_phylogeny(communities,
                          mock_data_dir,
                          trim_params,
@@ -222,6 +305,7 @@ def denoise_to_phylogeny(communities,
                          rep_seqs_fn='rep_seqs.qza',
                          feature_table_fn='feature_table.qza',
                          summary_fn='feature_table_summary.qzv'):
+
     '''SampleData[SequencesWithQuality] -> FeatureData[Sequence] +
                                            FeatureTable[Frequency]
         denoise fastqs with dada2, create feature table, rep_seqs,
@@ -264,7 +348,7 @@ def denoise_to_feature_table(demux_seqs,
                              trim_left,
                              trunc_len,
                              community_dir,
-                             rep_seqs_fn='rep_seqs.qza',
+                             rep_seqs_fn='rep_seqs',
                              feature_table_fn='feature_table.qza',
                              summary_fn='feature_table_summary.qzv'):
     '''SampleData[SequencesWithQuality] -> FeatureData[Sequence] +
@@ -290,7 +374,14 @@ def denoise_to_feature_table(demux_seqs,
     biom_table, rep_seqs = dada2.methods.denoise(demux_seqs,
                                                  trim_left = trim_left,
                                                  trunc_len = trunc_len)
+    # save Artifact
     rep_seqs.save(join(community_dir, rep_seqs_fn))
+
+    # save fasta
+    rep_seqs_fna = rep_seqs.view(DNAIterator)
+    io.write(rep_seqs_fna.generator, format='fasta', into=rep_seqs_fn + '.fna')
+
+    # save biom Artifact
     biom_table.save(join(community_dir, feature_table_fn))
 
     # summarize feature table
@@ -376,10 +467,19 @@ def transport_to_repo(communities,
         tree_fp = join(community_dir, newick_fn)
 
         # Extract biom, tree, rep_seqs
-        biom_table = qiime.Artifact.load(feature_table).view(biom.Table)
-        write_biom_table(biom_table, 'hdf5', biom_table_fp)
-        qiime.Artifact.load(rep_seqs).view(pd.Series).to_csv(rep_seqs_fp,
-                                                             sep='\t')
+
+        # biom and rep_seqs are already written out in denoise_to_feature_table
+        # The rep_seqs below also do not print as fasta.
+        # perhaps rep_seqs printing should be replaced with:
+            # rep_seqs = qiime.Artifact.load(rep_seqs)
+            # rep_seqs_fna = rep_seqs.view(DNAIterator)
+            # io.write(rep_seqs_fna.generator, format='fasta', into=rep_seqs_fn + '.fna')
+
+        # biom_table = qiime.Artifact.load(feature_table).view(biom.Table)
+        # write_biom_table(biom_table, 'hdf5', biom_table_fp)
+        # qiime.Artifact.load(rep_seqs).view(pd.Series).to_csv(rep_seqs_fp,
+        #                                                     sep='\t')
+
         if exists(tree):
             qiime.Artifact.load(tree).view(TreeNode).write(tree_fp)
 

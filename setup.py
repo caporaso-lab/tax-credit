@@ -20,5 +20,5 @@ setup(
     author="Nicholas Bokulich",
     author_email="nbokulich@gmail.com",
     description="Systematic benchmarking of taxonomic classification methods",
-    url="https://github.com/nbokulich/short-read-tax-assignment"
+    url="https://github.com/caporaso-lab/short-read-tax-assignment"
 )

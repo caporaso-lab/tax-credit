@@ -1,0 +1,10 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	1	0	uclust	0.51:0.8:3	583935	Unassigned	k__Bacteria; p__Bacteroidetes	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	746126	Unassigned	k__Bacteria; p__Tenericutes	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	563323	Unassigned	k__Bacteria; p__Spirochaetes	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	278595	k__Bacteria; p__Actinobacteria; c__Coriobacteriia; o__Coriobacteriales; f__Coriobacteriaceae; g__Atopobium; s__vaginae	k__Bacteria; p__Elusimicrobia	overclassification	1
+B1-REF	1	0	uclust	0.51:0.8:3	89370	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Thermomonosporaceae; g__Actinomadura	k__Bacteria; p__Firmicutes	overclassification	1
+B1-REF	1	0	uclust	0.51:0.8:3	1875	Unassigned	k__Bacteria; p__Chrysiogenetes	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	370251	k__Bacteria	k__Bacteria; p__Proteobacteria	match	1
+B1-REF	1	0	uclust	0.51:0.8:3	1871	Unassigned	k__Bacteria; p__Deferribacteres	underclassification	0
+B1-REF	1	0	uclust	0.51:0.8:3	317426	Unassigned	k__Bacteria; p__Fibrobacteres	underclassification	0

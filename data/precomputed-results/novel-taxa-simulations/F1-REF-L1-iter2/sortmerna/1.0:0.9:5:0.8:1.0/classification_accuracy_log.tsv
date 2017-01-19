@@ -1,5 +1,0 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	EU330178	Root	Root;Neocallimastigomycota	match	1
-F1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	AJ972459	Root;Ascomycota	Root;Glomeromycota	overclassification	1
-F1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	AF272836	Unassigned	Root;Microsporidia	underclassification	0
-F1-REF	1	2	sortmerna	1.0:0.9:5:0.8:1.0	U33070	Unassigned	Root;Basidiomycota	underclassification	0
