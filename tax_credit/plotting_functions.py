@@ -11,10 +11,22 @@
 
 import pandas as pd
 import seaborn as sns
+import numpy as np
 from seaborn import violinplot, heatmap
 from pylab import scatter, xlabel, ylabel, xlim, ylim
 import matplotlib.pyplot as plt
-from scipy.stats import kruskal, linregress
+from scipy.stats import kruskal, linregress, mannwhitneyu
+from statsmodels.sandbox.stats.multicomp import multipletests
+from skbio.diversity import beta_diversity
+from skbio.stats.ordination import pcoa
+from skbio.stats.distance import anosim
+from skbio import DistanceMatrix
+from biom import load_table
+import biom
+from glob import glob
+from os.path import join, split
+from itertools import combinations
+from IPython.display import display
 
 
 def lmplot_from_data_frame(df, x, y, group_by, style_theme="whitegrid",
@@ -187,3 +199,266 @@ def calculate_linear_regress(df, x, y, group_by):
     result = pd.DataFrame(results, columns=[group_by, "Slope", "Intercept",
                                             "R", "P-val", "Std Error"])
     return result
+
+
+def per_level_kruskal_wallis(df,
+                             y_vars,
+                             group_by,
+                             dataset_col='Dataset',
+                             level_name="level",
+                             levelrange=range(1, 7),
+                             alpha=0.05,
+                             pval_correction='fdr_bh'):
+
+    '''Test whether 2+ population medians are different.
+
+    Due to the assumption that H has a chi square distribution, the number of
+    samples in each group must not be too small. A typical rule is that each
+    sample must have at least 5 measurements.
+
+    df = pandas dataframe
+    y_vars = LIST of variables (df column names) to test
+    group_by = df variable to use for separating subgroups to compare
+    dataset_col = df variable to use for separating individual datasets to test
+    level_name = df variable name that specifies taxonomic level
+    levelrange = range of taxonomic levels to test.
+    alpha = level of alpha significance for test
+    pval_correction = type of p-value correction to use
+    '''
+    dataset_list = []
+    p_list = []
+    for dataset in df[dataset_col].unique():
+        df1 = df[df[dataset_col] == dataset]
+        for var in y_vars:
+            dataset_list.append((dataset, var))
+            for level in levelrange:
+                level_subset = df1[level_name] == level
+
+                # group data by groups
+                group_list = []
+                for group in df1[group_by].unique():
+                    group_data = df1[group_by] == group
+                    group_results = df1[level_subset & group_data][var]
+                    group_list.append(group_results)
+
+                # kruskal-wallis tests
+                try:
+                    h_stat, p_val = kruskal(*group_list, nan_policy='omit')
+                # default to p=1.0 if all values = 0
+                # this is not technically correct, from the standpoint of p-val
+                # correction below makes p-vals very slightly less significant
+                # than they should be
+                except ValueError:
+                    h_stat, p_val = ('na', 1)
+
+                p_list.append(p_val)
+
+    # correct p-values
+    rej, pval_corr, alphas, alphab = multipletests(np.array(p_list),
+                                                   alpha=alpha,
+                                                   method=pval_correction)
+
+    range_len = len([i for i in levelrange])
+    results = [(dataset_list[i][0], dataset_list[i][1],
+                *[pval_corr[i*range_len+n] for n in range(0, range_len)])
+               for i in range(0, len(dataset_list))]
+    result = pd.DataFrame(results, columns=[dataset_col, "Variable",
+                                            *[n for n in levelrange]])
+    return result
+
+
+def seek_tables(expected_results_dir, table_fn='merged_table.biom'):
+    '''Find and deliver merged biom tables'''
+    table_fps = glob(join(expected_results_dir,'*','*', table_fn))
+    for table in table_fps:
+        reference_dir, _ = split(table)
+        dataset_dir, reference_id = split(reference_dir)
+        _, dataset_id = split(dataset_dir)
+        yield table, dataset_id, reference_id
+
+
+def batch_beta_diversity(expected_results_dir, method="braycurtis",
+                         permutations=99, col='method'):
+    '''Find merged biom tables and run beta_diversity_through_plots'''
+    for table, dataset_id, reference_id in seek_tables(expected_results_dir):
+        print(dataset_id, reference_id)
+        s, r, pc, dm = beta_diversity_pcoa(table, method=method, col=col,
+                                           permutations=permutations,)
+        sns.plt.show()
+        sns.plt.clf()
+
+
+def make_distance_matrix(biom_fp, method="braycurtis"):
+    '''biom table --> skbio distance matrix'''
+    table = load_table(biom_fp)
+
+    # extract sample metadata from table, put in df
+    table_md = {s_id : dict(table.metadata(s_id)) for s_id in table.ids()}
+    s_md = pd.DataFrame.from_dict(table_md, orient='index')
+
+    # extract data from table and multiply, assuming that table contains
+    # relative abundances (which cause beta_diversity to fail)
+    table_data = [[int(num * 100000) for num in table.data(s_id)]
+                  for s_id in table.ids()]
+
+    # beta diversity
+    dm = beta_diversity(method, table_data, table.ids())
+
+    return dm, s_md
+
+
+def beta_diversity_pcoa(biom_fp, method="braycurtis", permutations=99,
+                        col='method'):
+    '''From biom table, compute Bray-Curtis distance; generate PCoA plot;
+    and calculate adonis differences'''
+
+    dm, s_md = make_distance_matrix(biom_fp, method=method)
+
+    # pcoa
+    pc = pcoa(dm)
+
+    # anosim tests
+    results = anosim(dm, s_md, column=col, permutations=permutations)
+    print('R = ', results['test statistic'], '; P = ', results['p-value'])
+
+    # make labels for PCoA plot
+    pcl = ['PC {0} ({1:.2f})'.format(d + 1, pc.proportion_explained[d])
+           for d in range(0,3)]
+    fig = pc.plot(s_md, col, axis_labels=(pcl[0], pcl[1], pcl[2]),
+                  cmap='jet', s=50)
+    fig
+
+    return s_md, results, pc, dm
+
+
+def fastlane_boxplots(expected_results_dir, group_by="method",
+                      standard='expected', metric="distance", hue=None,
+                      plotf=violinplot, x_tick_label_rotation=45,
+                      y_min=0.0, y_max=1.0, color=None, beta="braycurtis"):
+
+    '''per_method_boxplots for those who don't have time to wait.'''
+
+    for table, dataset_id, reference_id in seek_tables(expected_results_dir):
+        print('\n\n', dataset_id, reference_id)
+
+        dm, sample_md = make_distance_matrix(table, method=beta)
+
+        per_method_boxplots(dm, sample_md, group_by=group_by, metric=metric,
+                            standard=standard, hue=hue, y_min=y_min,
+                            y_max=y_max, plotf=plotf, color=color,
+                            x_tick_label_rotation=x_tick_label_rotation)
+
+
+def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
+                        metric="distance", hue=None, y_min=0.0, y_max=1.0,
+                        plotf=violinplot, x_tick_label_rotation=45,
+                        color=None):
+    '''Generate distance boxplots and Mann-Whitney U tests on distance matrix.
+
+    dm: skbio distance matrix
+    sample_md: pandas dataframe containing sample metadata
+    group_by: str
+        df category to use for grouping samples
+    standard: str
+        group name in group_by category to which all other groups are compared.
+    metric: str
+        name of distance column in output.
+
+    To generate boxplots instead of violin plots, pass plotf=seaborn.boxplot
+
+    hue, color variables all pass directly to equivalently named variables in
+        seaborn.violinplot().
+    '''
+
+    within_between = within_between_category_distance(dm, sample_md, 'method')
+
+    per_method = per_method_distance(dm, sample_md, group_by=group_by,
+                                             standard=standard, metric=metric)
+
+    for d, g, s in [(within_between, 'Comparison', '1: Within- vs. Between-'),
+                    (per_method, group_by, '2: Pairwise ')]:
+
+        print('Comparison {0} Distance'.format(s + group_by))
+        boxplot_from_data_frame(d, group_by=g, color=color, metric=metric,
+                                y_min=None, y_max=None, hue=hue, plotf=plotf,
+                                x_tick_label_rotation=x_tick_label_rotation)
+
+        results = per_method_mann_whitney(d, group_by=g, metric=metric)
+
+        sns.plt.show()
+        sns.plt.clf()
+        display(results)
+
+
+def per_method_distance(dm, md, group_by='method', standard='expected',
+                        metric='distance'):
+    '''Compile list of distances between groups of samples in distance matrix.
+    returns dataframe of distances and group metadata.
+
+    dm: skbio distance matrix
+    md: pandas dataframe containing sample metadata
+    group_by: str
+        df category to use for grouping samples
+    standard: str
+        group name in group_by category to which all other groups are compared.
+    metric: str
+        name of distance column in output.
+    '''
+    results = []
+    expected = md[md[group_by] == standard]
+    observed = md[md[group_by] != standard]
+    for group in observed[group_by].unique():
+        group_md = observed[observed[group_by] == group]
+        for i in list(expected.index.values):
+            for j in list(group_md.index.values):
+                results.append((group, dm[i, j]))
+    return pd.DataFrame(results, columns=[group_by, metric])
+
+
+def within_between_category_distance(dm, md, md_category, distance='distance'):
+    '''Compile list of distances between groups of samples and within groups
+    of samples.
+
+    dm: skbio distance matrix
+    md: pandas dataframe containing sample metadata
+    md_category: str
+        df category to use for grouping samples
+    '''
+    distances = []
+    for i, sample_id1 in enumerate(dm.ids):
+        sample_md1 = md[md_category][sample_id1]
+        for sample_id2 in dm.ids[:i]:
+            sample_md2 = md[md_category][sample_id2]
+            if sample_md1 == sample_md2:
+                comp = 'within'
+                group = sample_md1
+            else:
+                comp = 'between'
+                group = sample_md1 + '_' + sample_md2
+            distances.append((comp, group, dm[sample_id1, sample_id2]))
+    return pd.DataFrame(distances, columns=["Comparison", md_category, distance])
+
+
+def per_method_mann_whitney(df, group_by='method', metric='distance'):
+    '''Perform mann whitney U tests between group distance distributions,
+    followed by FDR correction. Returns pandas dataframe of p-values.
+    df: pandas dataframe
+        results from per_method_distance()
+    group_by: str
+        df category to use for grouping samples
+    metric: str
+        df category to use as variable for comparison.
+    '''
+    pvals = []
+    groups = [group for group in df[group_by].unique()]
+    combos = [a for a in combinations(groups, 2)]
+    for a in combos:
+        u, p = mannwhitneyu(df[df[group_by] == a[0]][metric],
+                            df[df[group_by] == a[1]][metric],
+                            alternative='two-sided')
+        pvals.append(p)
+    rej, pval_corr, alphas, alphab = multipletests(pvals)
+    res = [(combos[a][0], combos[a][1], pval_corr[a])
+               for a in range(len(combos))]
+
+    return pd.DataFrame(res, columns=[group_by + " A", group_by + " B", "P"])

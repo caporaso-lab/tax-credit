@@ -48,11 +48,15 @@ def extract_mockrobiota_dataset_metadata(mockrobiota_dir, communities):
 
 def amend_biom_taxonomy_ids(biom_table,
                             empty_taxonomy=['k__', 'p__','c__','o__',
-                                            'f__','g__','s__']
+                                            'f__','g__','s__'],
+                            clean_obs_ids=True
                            ):
     '''Convert biom table taxonomy strings so that strings with incomplete
     taxonomies are filled out with ambiguous labels
     '''
+    if clean_obs_ids is True:
+        clean_taxonomy_ids(biom_table)
+
     new_ids = {}
     for taxa in biom_table.ids(axis='observation'):
         old_taxonomy = taxa.split(';')
@@ -65,6 +69,12 @@ def amend_biom_taxonomy_ids(biom_table,
             new_ids[taxa] = ';'.join(old_taxonomy)
 
     return biom_table.update_ids(new_ids, axis='observation')
+
+
+def clean_taxonomy_ids(table, delete_chars='[]()'):
+    new_ids = {obs_id: obs_id.translate(str.maketrans('', '', delete_chars))
+               for obs_id in table.ids(axis="observation")}
+    return table.update_ids(new_ids, axis='observation')
 
 
 def extract_mockrobiota_data(communities, community_metadata, reference_dbs,
@@ -378,8 +388,11 @@ def denoise_to_feature_table(demux_seqs,
     rep_seqs.save(join(community_dir, rep_seqs_fn))
 
     # save fasta
-    rep_seqs_fna = rep_seqs.view(DNAIterator)
-    io.write(rep_seqs_fna.generator, format='fasta', into=rep_seqs_fn + '.fna')
+    # Tagging for removal: does not appear to output true fasta!
+    # Instead, now save as fasta in transport_to_repo.
+    # rep_seqs_fna = rep_seqs.view(DNAIterator)
+    # io.write(rep_seqs_fna.generator, format='fasta',
+    #          into=rep_seqs_fn + '.fna')
 
     # save biom Artifact
     biom_table.save(join(community_dir, feature_table_fn))
@@ -467,14 +480,10 @@ def transport_to_repo(communities,
         tree_fp = join(community_dir, newick_fn)
 
         # Extract biom, tree, rep_seqs
+        rep_seqs_fna = qiime.Artifact.load(rep_seqs).view(DNAIterator)
+        io.write(rep_seqs_fna.generator, format='fasta', into=rep_seqs_fp)
 
-        # biom and rep_seqs are already written out in denoise_to_feature_table
-        # The rep_seqs below also do not print as fasta.
-        # perhaps rep_seqs printing should be replaced with:
-            # rep_seqs = qiime.Artifact.load(rep_seqs)
-            # rep_seqs_fna = rep_seqs.view(DNAIterator)
-            # io.write(rep_seqs_fna.generator, format='fasta', into=rep_seqs_fn + '.fna')
-
+        # biom is already written out in denoise_to_feature_table
         # biom_table = qiime.Artifact.load(feature_table).view(biom.Table)
         # write_biom_table(biom_table, 'hdf5', biom_table_fp)
         # qiime.Artifact.load(rep_seqs).view(pd.Series).to_csv(rep_seqs_fp,

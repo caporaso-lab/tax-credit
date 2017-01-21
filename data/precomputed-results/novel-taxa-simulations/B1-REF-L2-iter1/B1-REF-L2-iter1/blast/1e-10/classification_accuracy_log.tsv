@@ -1,0 +1,17 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	2	1	blast	1e-10	2480449	k__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacteriales; f__Flavobacteriaceae; g__Winogradskyella; s__poriferorum	k__Bacteria; p__Cyanobacteria; c__Nostocophycideae	misclassification	1
+B1-REF	2	1	blast	1e-10	814161	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae; o__Synechococcales; f__Chamaesiphonaceae; g__Chamaesiphon; s__minutus	k__Bacteria; p__Cyanobacteria; c__Chloroplast	overclassification	2
+B1-REF	2	1	blast	1e-10	4471401	No blast hit	k__Bacteria; p__Planctomycetes; c__Planctomycetia	misclassification	0
+B1-REF	2	1	blast	1e-10	144391	No blast hit	k__Archaea; p__Euryarchaeota; c__Archaeoglobi	misclassification	0
+B1-REF	2	1	blast	1e-10	2834269	No blast hit	k__Bacteria; p__Acidobacteria; c__Holophagae	misclassification	0
+B1-REF	2	1	blast	1e-10	370251	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales; f__Oxalobacteraceae; g__Janthinobacterium; s__lividum	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	overclassification	2
+B1-REF	2	1	blast	1e-10	4370637	No blast hit	k__Archaea; p__Crenarchaeota; c__Aigarchaeota	misclassification	0
+B1-REF	2	1	blast	1e-10	370253	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Aquificaceae; g__Hydrogenobacter; s__hydrogenophilus	k__Bacteria; p__Firmicutes; c__Clostridia	misclassification	1
+B1-REF	2	1	blast	1e-10	1137725	k__Bacteria; p__Thermotogae; c__Thermotogae; o__Thermotogales; f__Thermotogaceae; g__Kosmotoga; s__mrcj	k__Bacteria; p__Spirochaetes; c__Brachyspirae	misclassification	1
+B1-REF	2	1	blast	1e-10	547165	k__Bacteria; p__Chloroflexi; c__Anaerolineae; o__Anaerolineales; f__Anaerolinaceae; g__Levilinea; s__saccharolytica	k__Bacteria; p__Chloroflexi; c__Chloroflexi	overclassification	2
+B1-REF	2	1	blast	1e-10	299518	k__Bacteria; p__Verrucomicrobia; c__Methylacidiphilae; o__Methylacidiphilales; f__Methylacidiphilaceae; g__Candidatus Methylacidiphilum; s__infernorum	k__Bacteria; p__Verrucomicrobia; c__Verrucomicrobiae	overclassification	2
+B1-REF	2	1	blast	1e-10	1105271	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Micromonosporaceae; g__Micromonospora; s__echinospora	k__Bacteria; p__Actinobacteria; c__Thermoleophilia	overclassification	2
+B1-REF	2	1	blast	1e-10	583935	k__Bacteria; p__Bacteroidetes; c__Cytophagia; o__Cytophagales; f__Cyclobacteriaceae; g__Indibacter; s__alkaliphilus	k__Bacteria; p__Bacteroidetes; c__Bacteroidia	overclassification	2
+B1-REF	2	1	blast	1e-10	563323	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales; f__Desulfuromonadaceae; g__Desulfuromusa; s__bakii	k__Bacteria; p__Spirochaetes; c__Spirochaetes	misclassification	1
+B1-REF	2	1	blast	1e-10	2919166	k__Bacteria; p__Actinobacteria; c__Nitriliruptoria; o__Nitriliruptorales; f__Nitriliruptoraceae; g__Nitriliruptor; s__alkaliphilus	k__Bacteria; p__Actinobacteria; c__Coriobacteriia	overclassification	2
+B1-REF	2	1	blast	1e-10	773133	No blast hit	k__Archaea; p__Euryarchaeota; c__Halobacteria	misclassification	0
