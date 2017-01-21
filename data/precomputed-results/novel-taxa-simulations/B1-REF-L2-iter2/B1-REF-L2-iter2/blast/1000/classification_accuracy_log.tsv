@@ -1,0 +1,16 @@
+dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
+B1-REF	2	2	blast	1000	12524	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Dermabacteraceae; g__Brachybacterium; s__conglomeratum	k__Bacteria; p__Actinobacteria; c__Acidimicrobiia	overclassification	2
+B1-REF	2	2	blast	1000	198054	No blast hit	k__Bacteria; p__Firmicutes; c__Erysipelotrichi	misclassification	0
+B1-REF	2	2	blast	1000	4369464	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Listeriaceae; g__Brochothrix; s__thermosphacta	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	misclassification	1
+B1-REF	2	2	blast	1000	1108035	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Porphyromonadaceae; g__Parabacteroides; s__distasonis	k__Bacteria; p__Bacteroidetes; c__Sphingobacteriia	overclassification	2
+B1-REF	2	2	blast	1000	263575	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales; f__SUP05; g__Vesicomyosocius; s__okutanii	k__Bacteria; p__Bacteroidetes; c__Saprospirae	misclassification	1
+B1-REF	2	2	blast	1000	4348445	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Paenibacillaceae; g__Paenibacillus; s__chondroitinus	k__Bacteria; p__Chloroflexi; c__Ktedonobacteria	misclassification	1
+B1-REF	2	2	blast	1000	4308306	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Lachnospiraceae; g__Ruminococcus; s__gnavus	k__Bacteria; p__Spirochaetes; c__Leptospirae	misclassification	1
+B1-REF	2	2	blast	1000	816056	No blast hit	k__Bacteria; p__Acidobacteria; c__Acidobacteriia	misclassification	0
+B1-REF	2	2	blast	1000	565906	k__Archaea; p__Euryarchaeota; c__Archaeoglobi; o__Archaeoglobales; f__Archaeoglobaceae; g__Archaeoglobus; s__veneficus	k__Archaea; p__Euryarchaeota; c__Methanobacteria	overclassification	2
+B1-REF	2	2	blast	1000	46167	No blast hit	k__Archaea; p__Crenarchaeota; c__Thermoprotei	misclassification	0
+B1-REF	2	2	blast	1000	219119	k__Bacteria; p__Cyanobacteria; c__Chloroplast; o__Chlorophyta; f__Ulvophyceae; g__Rhipiliopsis; s__profunda	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae	overclassification	2
+B1-REF	2	2	blast	1000	4436985	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Pseudomonadales; f__Pseudomonadaceae; g__Pseudomonas; s__fragi	k__Bacteria; p__Planctomycetes; c__Phycisphaerae	misclassification	1
+B1-REF	2	2	blast	1000	4183921	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Clostridiaceae; g__Clostridium; s__perfringens	k__Bacteria; p__Chloroflexi; c__Anaerolineae	misclassification	1
+B1-REF	2	2	blast	1000	219691	k__Archaea; p__Euryarchaeota; c__Archaeoglobi; o__Archaeoglobales; f__Archaeoglobaceae; g__Archaeoglobus; s__veneficus	k__Archaea; p__Euryarchaeota; c__Methanococci	overclassification	2
+B1-REF	2	2	blast	1000	794040	k__Archaea; p__Euryarchaeota; c__Halobacteria; o__Halobacteriales; f__Halobacteriaceae; g__Halorussus; s__rarus	k__Archaea; p__Euryarchaeota; c__Thermococci	overclassification	2

@@ -34,9 +34,6 @@ from tax_credit.taxa_manipulator import (import_taxonomy_to_dict,
                                          branching_taxa,
                                          stratify_taxonomy_subsets,
                                          extract_taxa_names)
-from scipy.stats import kruskal, linregress
-from statsmodels.sandbox.stats.multicomp import multipletests
-import numpy as np
 
 
 def parameter_sweep(data_dir, results_dir, reference_dbs,
@@ -298,8 +295,8 @@ def generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
 
             # 1) Create REF TAXONOMY from list of taxonomies that
             #    DO NOT match QUERY taxonomies
-            name_list = '^' + '$|^'.join(list(extract_taxa_names(\
-                         novel_query_taxonomy_fp, slice(1, level+1)))) + '$'
+            name_list = '^' + '$|^'.join(list(set(extract_taxa_names(\
+                         novel_query_taxonomy_fp, slice(1, level+1))))) + '$'
             novel_ref_taxonomy = string_search(read_taxa, name_list,
                                              discard = True,
                                              field = slice(1, level+1))
@@ -662,73 +659,6 @@ def extract_per_level_accuracy(df, column='mismatch_level_list'):
                                             "Parameters",
                                             "match_ratio"
                                             ])
-    return result
-
-
-def per_level_kruskal_wallis(df,
-                             y_vars,
-                             group_by,
-                             dataset_col='Dataset',
-                             level_name="level",
-                             levelrange=range(1, 7),
-                             alpha=0.05,
-                             pval_correction='fdr_bh'):
-
-    '''Test whether 2+ population medians are different.
-
-    Due to the assumption that H has a chi square distribution, the number of
-    samples in each group must not be too small. A typical rule is that each
-    sample must have at least 5 measurements.
-
-    df = pandas dataframe
-    y_vars = LIST of variables (df column names) to test
-    group_by = df variable to use for separating plot panels with FacetGrid
-    dataset_col = df variable to use for separating individual datasets to test
-    level_name = df variable name that specifies taxonomic level
-    levelrange = range of taxonomic levels to test.
-    alpha = level of alpha significance for test
-    pval_correction = type of p-value correction to use
-    '''
-    dataset_list = []
-    p_list = []
-    for dataset in df[dataset_col].unique():
-        data_subset = df[dataset_col] == dataset
-        for var in y_vars:
-            dataset_list.append((dataset, var))
-            for level in levelrange:
-                level_subset = df[level_name] == level
-
-                # group data by groups
-                group_list = []
-                for group in df[group_by].unique():
-                    group_data = df[group_by] == group
-                    group_results = df[data_subset & level_subset &
-                                       group_data][var]
-                    group_list.append(group_results)
-
-                # kruskal-wallis tests
-                try:
-                    h_stat, p_val = kruskal(*group_list, nan_policy='omit')
-                # default to p=1.0 if all values = 0
-                # this is not technically correct, from the standpoint of p-val
-                # correction below makes p-vals very slightly less significant
-                # than they should be
-                except ValueError:
-                    h_stat, p_val = ('na', 1)
-
-                p_list.append(p_val)
-
-    # correct p-values
-    rej, pval_corr, alphas, alphab = multipletests(np.array(p_list),
-                                                   alpha=alpha,
-                                                   method=pval_correction)
-
-    range_len = len([i for i in levelrange])
-    results = [(dataset_list[i][0], dataset_list[i][1],
-                *[pval_corr[i*range_len+n] for n in range(0, range_len)])
-               for i in range(0, len(dataset_list))]
-    result = pd.DataFrame(results, columns=["Dataset", "Variable",
-                                            *[n for n in levelrange]])
     return result
 
 

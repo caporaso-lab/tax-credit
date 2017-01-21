@@ -19,21 +19,27 @@ from os import path, makedirs
 
 
 # Sniff object: if file import to list, if list returns list, else error
-def accept_list_or_file(infile):
+def accept_list_or_file(infile, field=None, delim='\t'):
     '''if file return list, if list return list, else error'''
     if isinstance(infile, list):
-        listout = infile
+        if field is not None:
+            listout = [line.split(delim)[field].strip() for line in infile]
+        else:
+            listout = infile
     elif isfile(infile):
-        listout = import_to_list(infile)
+        listout = import_to_list(infile, field=field, delim=delim)
     return listout
 
 
 # Import lines of text file into list object
-def import_to_list(infile):
+def import_to_list(infile, field=None, delim='\t'):
     '''File -> list object'''
 
     with open(infile, "r") as inputfile:
-        lines = [line.strip() for line in inputfile]
+        if field is None:
+            lines = [line.strip() for line in inputfile]
+        else:
+            lines = [line.strip().split(delim)[field] for line in inputfile]
     return lines
 
 
@@ -329,7 +335,8 @@ def file_splitter(infile, number_of_splits, basedir, basename, random=True):
         export_list_to_file(file_chunks[i], path.join(outdir, 'query_taxa.tsv'))
 
 
-def extract_taxa_names(infile, field=slice(6, 7), delim=';'):
+def extract_taxa_names(infile, level=slice(6, 7), l_delim=';', field=None,
+                       f_delim='\t'):
     '''Extract taxon names at a given level from taxonomy file OR LIST
     field = taxonomic level of interest. 0 = kingdom, 1 = phylum, 2 = class,
     3 = order, 4 = family, 5 = genus, 6 = species.
@@ -337,9 +344,9 @@ def extract_taxa_names(infile, field=slice(6, 7), delim=';'):
     NOT UNIT TESTED
     '''
     # sniff filtermap and import to list if file
-    line_list = accept_list_or_file(infile)
+    line_list = accept_list_or_file(infile, field=field, delim=f_delim)
 
     # Truncate taxonomies and pass to set
-    name_list = {delim.join(line.split(delim)[field]).rstrip()\
-                 for line in line_list}
+    name_list = [l_delim.join(line.split(l_delim)[level]).strip()\
+                 for line in line_list]
     return name_list
