@@ -331,6 +331,43 @@ def beta_diversity_pcoa(biom_fp, method="braycurtis", permutations=99,
     return s_md, results, pc, dm
 
 
+def average_distance_boxplots(expected_results_dir, group_by="method",
+                                standard='expected', metric="distance",
+                                params='params', beta="braycurtis",
+                                plotf=violinplot, x_tick_label_rotation=45,
+                                y_min=0.0, y_max=1.0, color=None, hue=None):
+
+    '''Distance boxplots that aggregate and average results across multiple
+    mock community datasets'''
+
+    archive = pd.DataFrame()
+    for table, dataset_id, reference_id in seek_tables(expected_results_dir):
+        dm, sample_md = make_distance_matrix(table, method=beta)
+        per_method = per_method_distance(dm, sample_md, group_by=group_by,
+                                         standard=standard, metric=metric)
+        archive = pd.concat([archive, per_method])
+
+    # for each method find best average method/parameter config
+    best = pd.DataFrame()
+    param_report = []
+    for group in archive[group_by].unique():
+        subset = archive[archive[group_by] == group]
+        avg = subset.groupby(params).mean().reset_index()
+        sorted_avg = avg.sort_values(by=metric, ascending=True)
+        top_param = sorted_avg.reset_index()[params][0]
+        param_report.append((group, top_param))
+        best = pd.concat([best, subset[subset[params] == top_param]])
+
+    display(pd.DataFrame(param_report, columns=[group_by, params]))
+
+    boxplot_from_data_frame(best, group_by=group_by, color=color, hue=hue,
+                            metric=metric, y_min=None, y_max=None, plotf=plotf,
+                            x_tick_label_rotation=x_tick_label_rotation)
+
+    results = per_method_mann_whitney(best, group_by=group_by, metric=metric)
+    return results
+
+
 def fastlane_boxplots(expected_results_dir, group_by="method",
                       standard='expected', metric="distance", hue=None,
                       plotf=violinplot, x_tick_label_rotation=45,
@@ -373,7 +410,7 @@ def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
     within_between = within_between_category_distance(dm, sample_md, 'method')
 
     per_method = per_method_distance(dm, sample_md, group_by=group_by,
-                                             standard=standard, metric=metric)
+                                     standard=standard, metric=metric)
 
     for d, g, s in [(within_between, 'Comparison', '1: Within- vs. Between-'),
                     (per_method, group_by, '2: Pairwise ')]:
@@ -411,8 +448,9 @@ def per_method_distance(dm, md, group_by='method', standard='expected',
         group_md = observed[observed[group_by] == group]
         for i in list(expected.index.values):
             for j in list(group_md.index.values):
-                results.append((group, dm[i, j]))
-    return pd.DataFrame(results, columns=[group_by, metric])
+                results.append((*[n for n in group_md.loc[j]], dm[i, j]))
+    return pd.DataFrame(results, columns=[*[n for n in md.columns.values],
+                                          metric])
 
 
 def within_between_category_distance(dm, md, md_category, distance='distance'):
