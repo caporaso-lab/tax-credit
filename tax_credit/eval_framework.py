@@ -690,23 +690,24 @@ def merge_expected_and_observed_tables(expected_results_dir, results_dirs,
                              'hdf5', biom_destination)
 
 
-def _is_first(df):
+def _is_first(df, test_field='Method'):
     """used to filter df to contain only one row per method"""
     observed = set()
     result = []
-    for e in df['Method']:
+    for e in df[test_field]:
         result.append(e not in observed)
         observed.add(e)
     return result
 
 
 def method_by_dataset(df, dataset, sort_field, display_fields,
-                      group_by='Dataset'):
+                      group_by='Dataset', test_field='Method'):
     """ Generate summary of best parameter set for each method for single df
     """
     dataset_df = df.loc[df[group_by] == dataset]
     sorted_dataset_df = dataset_df.sort_values(by=sort_field, ascending=False)
-    filtered_dataset_df = sorted_dataset_df[_is_first(sorted_dataset_df)]
+    filtered_dataset_df = sorted_dataset_df[_is_first(sorted_dataset_df,
+                                                      test_field)]
     return filtered_dataset_df.ix[:,display_fields]
 
 method_by_dataset_a1 = partial(method_by_dataset,
