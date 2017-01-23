@@ -1,3 +1,3 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	1	2	rdp	0.6	SH077873.07FU_JN205814_refs	k__Fungi	k__Fungi;p__Zygomycota	match	1
-F1-REF	1	2	rdp	0.6	SH092404.07FU_KF887147_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Fungi_phy_Incertae_sedis	overclassification	1
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	1	2	rdp	0.6	k__Fungi	k__Fungi;p__Zygomycota	match	1	0.5	0.5	0.5
+F1-REF	1	2	rdp	0.6	k__Fungi;p__Ascomycota	k__Fungi;p__Fungi_phy_Incertae_sedis	overclassification	1	0.5	0.5	0.5

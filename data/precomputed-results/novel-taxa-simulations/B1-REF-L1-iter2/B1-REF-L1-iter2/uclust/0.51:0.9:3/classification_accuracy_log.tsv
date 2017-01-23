@@ -1,8 +1,8 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	2	uclust	0.51:0.9:3	299518	Unassigned	k__Bacteria; p__Verrucomicrobia	underclassification	0
-B1-REF	1	2	uclust	0.51:0.9:3	344813	Unassigned	k__Bacteria; p__Chlorobi	underclassification	0
-B1-REF	1	2	uclust	0.51:0.9:3	4471401	Unassigned	k__Bacteria; p__Planctomycetes	underclassification	0
-B1-REF	1	2	uclust	0.51:0.9:3	46167	Unassigned	k__Archaea; p__Crenarchaeota	underclassification	0
-B1-REF	1	2	uclust	0.51:0.9:3	56204	Unassigned	k__Bacteria; p__Nitrospirae	underclassification	0
-B1-REF	1	2	uclust	0.51:0.9:3	3623950	Unassigned	k__Bacteria; p__Dictyoglomi	underclassification	0
-B1-REF	1	2	uclust	0.51:0.9:3	125020	Unassigned	k__Archaea; p__Nanoarchaeota	underclassification	0
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	1	2	uclust	0.51:0.9:3	Unassigned	k__Archaea;p__Nanoarchaeota	underclassification	0	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.51:0.9:3	Unassigned	k__Bacteria;p__Verrucomicrobia	underclassification	0	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.51:0.9:3	Unassigned	k__Bacteria;p__Chlorobi	underclassification	0	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.51:0.9:3	Unassigned	k__Bacteria;p__Dictyoglomi	underclassification	0	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.51:0.9:3	Unassigned	k__Bacteria;p__Planctomycetes	underclassification	0	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.51:0.9:3	Unassigned	k__Archaea;p__Crenarchaeota	underclassification	0	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.51:0.9:3	Unassigned	k__Bacteria;p__Nitrospirae	underclassification	0	0.0	0.0	0.0

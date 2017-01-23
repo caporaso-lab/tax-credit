@@ -1,56 +1,56 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	3	1	rdp	0.4	SH126256.07FU_UDB015006_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Lecanoromycetidae_ord_Incertae_sedis	underclassification	2
-F1-REF	3	1	rdp	0.4	SH536292.07FU_AB758893_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Trypetheliales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH096001.07FU_JQ005238_refs	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Hypocreales;f__Hypocreales_fam_Incertae_sedis	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Sordariomycetidae_ord_Incertae_sedis	overclassification	3
-F1-REF	3	1	rdp	0.4	SH111430.07FU_EU379203_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Rhizophlyctidales	misclassification	1
-F1-REF	3	1	rdp	0.4	SH129937.07FU_AB665764_reps	k__Fungi;p__Basidiomycota	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Olpidiales	misclassification	1
-F1-REF	3	1	rdp	0.4	SH542080.07FU_KM591585_refs	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Ustilaginomycetes;o__Ustilaginomycetes_ord_Incertae_sedis	underclassification	2
-F1-REF	3	1	rdp	0.4	SH087649.07FU_EU913721_refs	k__Fungi;p__Ascomycota;c__Sordariomycetes	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Ophiostomatales	match	3
-F1-REF	3	1	rdp	0.4	SH083383.07FU_DQ317625_refs	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Microstromatales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH090269.07FU_DQ374125_reps	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Candelariales;f__Candelariaceae;g__Candelariella;s__Candelariella_coralliza	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Acarosporales	overclassification	3
-F1-REF	3	1	rdp	0.4	SH083443.07FU_JX392812_refs	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Trechisporales	match	3
-F1-REF	3	1	rdp	0.4	SH101234.07FU_EF600943_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Myriangiales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH083493.07FU_AB669679_reps	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Sebacinales	match	3
-F1-REF	3	1	rdp	0.4	SH084028.07FU_JN942896_reps	k__Fungi	k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Tremellomycetes_ord_Incertae_sedis	underclassification	1
-F1-REF	3	1	rdp	0.4	SH083584.07FU_UDB007624_reps	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Cantharellales	match	3
-F1-REF	3	1	rdp	0.4	SH100598.07FU_JN882334_refs	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Microbotryomycetes;o__Heterogastridiales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH128173.07FU_FJ755832_reps	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Wallemiomycetes;o__Wallemiales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH121424.07FU_KC965265_reps	k__Fungi;p__Ascomycota;c__Lecanoromycetes	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Baeomycetales	match	3
-F1-REF	3	1	rdp	0.4	SH099082.07FU_AY603123_refs	k__Fungi;p__Ascomycota;c__Eurotiomycetes	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Umbilicariales	misclassification	2
-F1-REF	3	1	rdp	0.4	SH084383.07FU_GU827614_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Pleosporales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH085399.07FU_HQ445028_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Coniochaetales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH545748.07FU_KP814206_reps	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Polyporales;f__Phanerochaetaceae	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Amylocorticiales	overclassification	3
-F1-REF	3	1	rdp	0.4	SH093810.07FU_AY259054_reps	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Entylomatales;f__Entylomataceae;g__Entyloma;s__Entyloma_sp	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Exobasidiomycetidae_ord_Incertae_sedis	overclassification	3
-F1-REF	3	1	rdp	0.4	SH103017.07FU_HQ263354_reps	k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Tremellales;f__Tremellales_fam_Incertae_sedis;g__Tremella	k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Trichosporonales	overclassification	3
-F1-REF	3	1	rdp	0.4	SH538842.07FU_KP881704_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Coryneliales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH118640.07FU_GQ981513_refs	k__Fungi;p__Ascomycota	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Phallales	misclassification	1
-F1-REF	3	1	rdp	0.4	SH076683.07FU_FR799221_reps	k__Fungi;p__Ascomycota;c__Lecanoromycetes	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Lecanorales	match	3
-F1-REF	3	1	rdp	0.4	SH115470.07FU_FN428896_reps	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Cystobasidiomycetes;o__Cystobasidiomycetes_ord_Incertae_sedis	misclassification	2
-F1-REF	3	1	rdp	0.4	SH078718.07FU_AY661686_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Ostropales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH105762.07FU_AB180354_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Exobasidiales	misclassification	1
-F1-REF	3	1	rdp	0.4	SH080427.07FU_EU139156_reps	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Verrucariales;f__Verrucariaceae;g__Verrucaria	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Chaetothyriales	overclassification	3
-F1-REF	3	1	rdp	0.4	SH100816.07FU_AY212987_refs	k__Fungi;p__Basidiomycota;c__Microbotryomycetes	k__Fungi;p__Basidiomycota;c__Microbotryomycetes;o__Leucosporidiales	match	3
-F1-REF	3	1	rdp	0.4	SH076679.07FU_JQ647448_refs	k__Fungi;p__Ascomycota;c__Sordariomycetes	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Hypocreomycetidae_ord_Incertae_sedis	match	3
-F1-REF	3	1	rdp	0.4	SH103597.07FU_GU083077_reps	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Microthyriales;f__Microthyriaceae;g__Tothia;s__Tothia_fuscella	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Venturiales	overclassification	3
-F1-REF	3	1	rdp	0.4	SH097021.07FU_KF664177_reps	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Atheliales;f__Atheliaceae;g__Cora;s__Cora_cyphellifera	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricomycetidae_ord_Incertae_sedis	overclassification	3
-F1-REF	3	1	rdp	0.4	SH098725.07FU_JQ002681_refs	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Cystofilobasidiales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH119878.07FU_EU735849_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Lulworthiales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH078623.07FU_KF528010_reps	k__Fungi	k__Fungi;p__Basidiomycota;c__Pucciniomycetes;o__Pucciniales	underclassification	1
-F1-REF	3	1	rdp	0.4	SH107679.07FU_KJ706674_reps	k__Fungi;p__Basidiomycota;c__Microbotryomycetes;o__Sporidiobolales;f__Sporidiobolales_fam_Incertae_sedis;g__Rhodotorula;s__Rhodotorula_ferulica	k__Fungi;p__Basidiomycota;c__Microbotryomycetes;o__Microbotryomycetes_ord_Incertae_sedis	overclassification	3
-F1-REF	3	1	rdp	0.4	SH103391.07FU_JF700867_refs	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Capnodiales;f__Mycosphaerellaceae;g__Passalora;s__Passalora_sp	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Dothideomycetes_ord_Incertae_sedis	overclassification	3
-F1-REF	3	1	rdp	0.4	SH081929.07FU_AB525920_refs	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Leotiomycetes;o__Erysiphales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH084689.07FU_JF431295_refs	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Diaporthales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH121946.07FU_EU040213_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Valsariales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH080641.07FU_KF227809_reps	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Xylariales;f__Amphisphaeriaceae	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Trichosphaeriales	overclassification	3
-F1-REF	3	1	rdp	0.4	SH116460.07FU_NR_077116_refs	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Georgefischeriales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH117222.07FU_GQ433628_refs	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Dothideomycetidae_ord_Incertae_sedis	underclassification	2
-F1-REF	3	1	rdp	0.4	SH077499.07FU_HQ599386_refs	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Pyrenulales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH079374.07FU_GU973799_reps	k__Fungi;p__Ascomycota;c__Pezizomycotina_cls_Incertae_sedis;o__Pezizomycotina_ord_Incertae_sedis;f__Pezizomycotina_fam_Incertae_sedis;g__Pseudolachnea;s__Pseudolachnea_hispidula	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Chaetosphaeriales	misclassification	2
-F1-REF	3	1	rdp	0.4	SH076743.07FU_FJ861983_reps	k__Fungi;p__Ascomycota;c__Leotiomycetes	k__Fungi;p__Ascomycota;c__Leotiomycetes;o__Rhytismatales	match	3
-F1-REF	3	1	rdp	0.4	SH107883.07FU_JX625261_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Hysteriales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH076464.07FU_AM882971_refs	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales	match	3
-F1-REF	3	1	rdp	0.4	SH089853.07FU_DQ900583_reps	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Corticiales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH097994.07FU_AF332110_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Pertusariales	underclassification	2
-F1-REF	3	1	rdp	0.4	SH088356.07FU_AB520470_reps	k__Fungi	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Spizellomycetales	underclassification	1
-F1-REF	3	1	rdp	0.4	SH078065.07FU_JN417525_reps	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Diversisporales	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Glomerales	overclassification	3
-F1-REF	3	1	rdp	0.4	SH102183.07FU_KC683427_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Phyllachorales	underclassification	2
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales	match	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Sordariomycetes	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Hypocreomycetidae_ord_Incertae_sedis	match	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Lecanoromycetes	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Lecanorales	match	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Leotiomycetes	k__Fungi;p__Ascomycota;c__Leotiomycetes;o__Rhytismatales	match	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Pyrenulales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Diversisporales	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Glomerales	overclassification	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi	k__Fungi;p__Basidiomycota;c__Pucciniomycetes;o__Pucciniales	underclassification	1	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Ostropales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Pezizomycotina_cls_Incertae_sedis;o__Pezizomycotina_ord_Incertae_sedis;f__Pezizomycotina_fam_Incertae_sedis;g__Pseudolachnea;s__Pseudolachnea_hispidula	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Chaetosphaeriales	misclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Verrucariales;f__Verrucariaceae;g__Verrucaria	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Chaetothyriales	overclassification	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Xylariales;f__Amphisphaeriaceae	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Trichosphaeriales	overclassification	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Leotiomycetes;o__Erysiphales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Microstromatales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Trechisporales	match	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Sebacinales	match	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Cantharellales	match	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi	k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Tremellomycetes_ord_Incertae_sedis	underclassification	1	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Pleosporales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Diaporthales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Coniochaetales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Sordariomycetes	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Ophiostomatales	match	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Spizellomycetales	underclassification	1	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Corticiales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Candelariales;f__Candelariaceae;g__Candelariella;s__Candelariella_coralliza	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Acarosporales	overclassification	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Entylomatales;f__Entylomataceae;g__Entyloma;s__Entyloma_sp	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Exobasidiomycetidae_ord_Incertae_sedis	overclassification	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Hypocreales;f__Hypocreales_fam_Incertae_sedis	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Sordariomycetidae_ord_Incertae_sedis	overclassification	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Atheliales;f__Atheliaceae;g__Cora;s__Cora_cyphellifera	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricomycetidae_ord_Incertae_sedis	overclassification	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Pertusariales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Cystofilobasidiales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Eurotiomycetes	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Umbilicariales	misclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Microbotryomycetes;o__Heterogastridiales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota;c__Microbotryomycetes	k__Fungi;p__Basidiomycota;c__Microbotryomycetes;o__Leucosporidiales	match	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Myriangiales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Phyllachorales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Tremellales;f__Tremellales_fam_Incertae_sedis;g__Tremella	k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Trichosporonales	overclassification	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Capnodiales;f__Mycosphaerellaceae;g__Passalora;s__Passalora_sp	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Dothideomycetes_ord_Incertae_sedis	overclassification	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Microthyriales;f__Microthyriaceae;g__Tothia;s__Tothia_fuscella	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Venturiales	overclassification	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Exobasidiales	misclassification	1	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota;c__Microbotryomycetes;o__Sporidiobolales;f__Sporidiobolales_fam_Incertae_sedis;g__Rhodotorula;s__Rhodotorula_ferulica	k__Fungi;p__Basidiomycota;c__Microbotryomycetes;o__Microbotryomycetes_ord_Incertae_sedis	overclassification	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Hysteriales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Rhizophlyctidales	misclassification	1	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Cystobasidiomycetes;o__Cystobasidiomycetes_ord_Incertae_sedis	misclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Georgefischeriales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Dothideomycetidae_ord_Incertae_sedis	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Phallales	misclassification	1	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Lulworthiales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota;c__Lecanoromycetes	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Baeomycetales	match	3	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Valsariales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Lecanoromycetidae_ord_Incertae_sedis	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Wallemiomycetes;o__Wallemiales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Olpidiales	misclassification	1	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Trypetheliales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Coryneliales	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Ustilaginomycetes;o__Ustilaginomycetes_ord_Incertae_sedis	underclassification	2	0.4	0.181818181818	0.25
+F1-REF	3	1	rdp	0.4	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Polyporales;f__Phanerochaetaceae	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Amylocorticiales	overclassification	3	0.4	0.181818181818	0.25

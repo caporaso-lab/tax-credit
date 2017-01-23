@@ -1,27 +1,27 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH076706.07FU_UDB015985_reps	Unassigned	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Russulales	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH103324.07FU_FN665415_reps	Unassigned	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Dothideales	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH077637.07FU_KJ410695_reps	Unassigned	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Polyporales	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH082040.07FU_JX905535_reps	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Eurotiales;f__Trichocomaceae;g__Aspergillus	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Chytridiales	misclassification	1
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH093982.07FU_GU328623_reps	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Filobasidiales	underclassification	2
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH079367.07FU_KF477224_refs	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Onygenales	underclassification	2
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH086524.07FU_JX646791_refs	Unassigned	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Botryosphaeriales	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH077679.07FU_KC681817_reps	Unassigned	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Teloschistales	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH113831.07FU_KC457179_reps	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Mycenaceae;g__Mycena	k__Fungi;p__Basidiomycota;c__Pucciniomycetes;o__Platygloeales	misclassification	2
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH076524.07FU_KF879505_reps	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Thelephorales	overclassification	3
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH119477.07FU_JQ761877_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Boliniales	underclassification	2
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH102037.07FU_AF444292_refs	Unassigned	k__Fungi;p__Basidiomycota;c__Cystobasidiomycetes;o__Cystobasidiales	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH103786.07FU_JN040515_refs	Unassigned	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Eurotiomycetes_ord_Incertae_sedis	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH079415.07FU_UDB004158_reps	Unassigned	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Sordariales	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH076704.07FU_GU292819_reps	Unassigned	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Xylariales	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH077439.07FU_UDB013419_reps	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Gomphales	overclassification	3
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH116157.07FU_EF596819_refs	Unassigned	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Mytilinidiales	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH076588.07FU_KF206484_reps	k__Fungi;p__Glomeromycota;c__Glomeromycetes	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Diversisporales	match	3
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH108225.07FU_AF201728_refs	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Jahnulales	misclassification	1
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH077750.07FU_HM484548_refs	Unassigned	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Hypocreales	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH079059.07FU_HM069380_reps	Unassigned	k__Fungi;p__Basidiomycota;c__Microbotryomycetes;o__Sporidiobolales	underclassification	0
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH076443.07FU_FJ362291_reps	k__Fungi	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Boletales	underclassification	1
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH093788.07FU_AY854966_reps	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Exobasidiomycetidae_ord_Incertae_sedis;f__Exobasidiomycetidae_fam_Incertae_sedis;g__Tilletiopsis;s__Tilletiopsis_sp	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Entylomatales	overclassification	3
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH077873.07FU_JN205814_refs	k__Fungi;p__Ascomycota	k__Fungi;p__Zygomycota;c__Mucoromycotina_cls_Incertae_sedis;o__Mucorales	misclassification	1
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH090838.07FU_EF635906_refs	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Cantharellales;f__Ceratobasidiaceae	k__Fungi;p__Basidiomycota;c__Ustilaginomycetes;o__Urocystidales	misclassification	2
-F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	SH077295.07FU_KC595259_reps	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Acarosporales;f__Acarosporaceae;g__Sarcogyne;s__Sarcogyne_hypophaeoides	k__Fungi;p__Ascomycota;c__Leotiomycetes;o__Leotiales	misclassification	2
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Boletales	underclassification	1	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Thelephorales	overclassification	3	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Glomeromycota;c__Glomeromycetes	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Diversisporales	match	3	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Xylariales	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Russulales	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Acarosporales;f__Acarosporaceae;g__Sarcogyne;s__Sarcogyne_hypophaeoides	k__Fungi;p__Ascomycota;c__Leotiomycetes;o__Leotiales	misclassification	2	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Gomphales	overclassification	3	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Polyporales	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Teloschistales	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Hypocreales	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Ascomycota	k__Fungi;p__Zygomycota;c__Mucoromycotina_cls_Incertae_sedis;o__Mucorales	misclassification	1	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Basidiomycota;c__Microbotryomycetes;o__Sporidiobolales	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Onygenales	underclassification	2	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Sordariales	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Eurotiales;f__Trichocomaceae;g__Aspergillus	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Chytridiales	misclassification	1	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Botryosphaeriales	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Cantharellales;f__Ceratobasidiaceae	k__Fungi;p__Basidiomycota;c__Ustilaginomycetes;o__Urocystidales	misclassification	2	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Exobasidiomycetidae_ord_Incertae_sedis;f__Exobasidiomycetidae_fam_Incertae_sedis;g__Tilletiopsis;s__Tilletiopsis_sp	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Entylomatales	overclassification	3	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Basidiomycota	k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Filobasidiales	underclassification	2	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Basidiomycota;c__Cystobasidiomycetes;o__Cystobasidiales	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Dothideales	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Eurotiomycetes_ord_Incertae_sedis	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Jahnulales	misclassification	1	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Mycenaceae;g__Mycena	k__Fungi;p__Basidiomycota;c__Pucciniomycetes;o__Platygloeales	misclassification	2	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	Unassigned	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Mytilinidiales	underclassification	0	0.111111111111	0.0384615384615	0.0571428571429
+F1-REF	3	0	sortmerna	1.0:0.9:5:0.8:1.0	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Boliniales	underclassification	2	0.111111111111	0.0384615384615	0.0571428571429

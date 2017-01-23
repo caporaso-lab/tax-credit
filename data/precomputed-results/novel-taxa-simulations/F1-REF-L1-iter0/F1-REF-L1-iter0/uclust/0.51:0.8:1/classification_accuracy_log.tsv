@@ -1,4 +1,4 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	1	0	uclust	0.51:0.8:1	SH079920.07FU_AY997079_refs	Unassigned	k__Fungi;p__Chytridiomycota	underclassification	0
-F1-REF	1	0	uclust	0.51:0.8:1	SH076443.07FU_FJ362291_reps	Unassigned	k__Fungi;p__Basidiomycota	underclassification	0
-F1-REF	1	0	uclust	0.51:0.8:1	SH076588.07FU_KF206484_reps	Unassigned	k__Fungi;p__Glomeromycota	underclassification	0
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	1	0	uclust	0.51:0.8:1	Unassigned	k__Fungi;p__Basidiomycota	underclassification	0	0.0	0.0	0.0
+F1-REF	1	0	uclust	0.51:0.8:1	Unassigned	k__Fungi;p__Glomeromycota	underclassification	0	0.0	0.0	0.0
+F1-REF	1	0	uclust	0.51:0.8:1	Unassigned	k__Fungi;p__Chytridiomycota	underclassification	0	0.0	0.0	0.0
