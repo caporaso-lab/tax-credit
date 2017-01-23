@@ -1,18 +1,18 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	2	0	uclust	0.76:0.8:3	SH078630.07FU_FJ515182_reps	Unassigned	k__Fungi;p__Basidiomycota;c__Ustilaginomycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH096911.07FU_KC197021_refs	Unassigned	k__Fungi;p__Ascomycota;c__Ascomycota_cls_Incertae_sedis	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH076782.07FU_EF600956_reps	k__Fungi;p__Ascomycota;c__Pezizomycotina_cls_Incertae_sedis;o__Pezizomycotina_ord_Incertae_sedis;f__Pezizomycotina_fam_Incertae_sedis;g__Trochophora;s__Trochophora_fasciculata	k__Fungi;p__Ascomycota;c__Dothideomycetes	overclassification	2
-F1-REF	2	0	uclust	0.76:0.8:3	SH076993.07FU_FM205629_refs	Unassigned	k__Fungi;p__Ascomycota;c__Pezizomycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH107478.07FU_KC965137_reps	Unassigned	k__Fungi;p__Ascomycota;c__Lichinomycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH080277.07FU_AF444519_refs	Unassigned	k__Fungi;p__Basidiomycota;c__Agaricostilbomycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH077499.07FU_HQ599386_refs	Unassigned	k__Fungi;p__Ascomycota;c__Eurotiomycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH078623.07FU_KF528010_reps	Unassigned	k__Fungi;p__Basidiomycota;c__Pucciniomycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH077357.07FU_DQ640065_refs	Unassigned	k__Fungi;p__Basidiomycota;c__Microbotryomycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH097403.07FU_JN882331_reps	Unassigned	k__Fungi;p__Chytridiomycota;c__Monoblepharidomycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH076456.07FU_GQ927301_reps	Unassigned	k__Fungi;p__Ascomycota;c__Lecanoromycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH077292.07FU_JQ256426_refs	Unassigned	k__Fungi;p__Ascomycota;c__Geoglossomycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH130381.07FU_DQ486692_refs	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Lyophyllaceae;g__Termitomyces	k__Fungi;p__Basidiomycota;c__Basidiomycota_cls_Incertae_sedis	overclassification	2
-F1-REF	2	0	uclust	0.76:0.8:3	SH549973.07FU_KT767195_reps	Unassigned	k__Fungi;p__Ascomycota;c__Schizosaccharomycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH118495.07FU_EF137934_refs	Unassigned	k__Fungi;p__Zygomycota;c__Entomophthoromycotina_cls_Incertae_sedis	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH092147.07FU_FJ171856_reps	Unassigned	k__Fungi;p__Ascomycota;c__Neolectomycetes	underclassification	0
-F1-REF	2	0	uclust	0.76:0.8:3	SH077873.07FU_JN205814_refs	Unassigned	k__Fungi;p__Zygomycota;c__Mucoromycotina_cls_Incertae_sedis	underclassification	0
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Lecanoromycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	k__Fungi;p__Ascomycota;c__Pezizomycotina_cls_Incertae_sedis;o__Pezizomycotina_ord_Incertae_sedis;f__Pezizomycotina_fam_Incertae_sedis;g__Trochophora;s__Trochophora_fasciculata	k__Fungi;p__Ascomycota;c__Dothideomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Pezizomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Geoglossomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Basidiomycota;c__Microbotryomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Eurotiomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Zygomycota;c__Mucoromycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Basidiomycota;c__Pucciniomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Basidiomycota;c__Ustilaginomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Basidiomycota;c__Agaricostilbomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Neolectomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Ascomycota_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Chytridiomycota;c__Monoblepharidomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Lichinomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Zygomycota;c__Entomophthoromycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Lyophyllaceae;g__Termitomyces	k__Fungi;p__Basidiomycota;c__Basidiomycota_cls_Incertae_sedis	overclassification	2	0.0	0.0	0.0
+F1-REF	2	0	uclust	0.76:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Schizosaccharomycetes	underclassification	0	0.0	0.0	0.0

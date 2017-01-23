@@ -1,16 +1,16 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	2	2	uclust	0.51:0.8:3	12524	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Dermabacteraceae; g__Brachybacterium; s__conglomeratum	k__Bacteria; p__Actinobacteria; c__Acidimicrobiia	overclassification	2
-B1-REF	2	2	uclust	0.51:0.8:3	4348445	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Bacillaceae; g__Bacillus	k__Bacteria; p__Chloroflexi; c__Ktedonobacteria	misclassification	1
-B1-REF	2	2	uclust	0.51:0.8:3	4369464	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales; f__Desulfuromonadaceae; g__Pelobacter	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	overclassification	2
-B1-REF	2	2	uclust	0.51:0.8:3	1108035	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Alkaliflexus; s__imshenetskii	k__Bacteria; p__Bacteroidetes; c__Sphingobacteriia	overclassification	2
-B1-REF	2	2	uclust	0.51:0.8:3	263575	k__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacteriales; f__Flavobacteriaceae	k__Bacteria; p__Bacteroidetes; c__Saprospirae	overclassification	2
-B1-REF	2	2	uclust	0.51:0.8:3	198054	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Staphylococcaceae; g__Staphylococcus; s__aureus	k__Bacteria; p__Firmicutes; c__Erysipelotrichi	overclassification	2
-B1-REF	2	2	uclust	0.51:0.8:3	4308306	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfobacterales; f__Desulfobacteraceae	k__Bacteria; p__Spirochaetes; c__Leptospirae	misclassification	1
-B1-REF	2	2	uclust	0.51:0.8:3	816056	k__Bacteria; p__Firmicutes	k__Bacteria; p__Acidobacteria; c__Acidobacteriia	misclassification	1
-B1-REF	2	2	uclust	0.51:0.8:3	565906	Unassigned	k__Archaea; p__Euryarchaeota; c__Methanobacteria	underclassification	0
-B1-REF	2	2	uclust	0.51:0.8:3	46167	Unassigned	k__Archaea; p__Crenarchaeota; c__Thermoprotei	underclassification	0
-B1-REF	2	2	uclust	0.51:0.8:3	219119	k__Bacteria; p__Cyanobacteria; c__Gloeobacterophycideae; o__Gloeobacterales; f__Gloeobacteraceae; g__Gloeobacter; s__violaceus	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae	overclassification	2
-B1-REF	2	2	uclust	0.51:0.8:3	4436985	Unassigned	k__Bacteria; p__Planctomycetes; c__Phycisphaerae	underclassification	0
-B1-REF	2	2	uclust	0.51:0.8:3	4183921	k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Leuconostocaceae; g__Weissella	k__Bacteria; p__Chloroflexi; c__Anaerolineae	misclassification	1
-B1-REF	2	2	uclust	0.51:0.8:3	219691	k__Archaea; p__Euryarchaeota; c__Archaeoglobi; o__Archaeoglobales; f__Archaeoglobaceae; g__Archaeoglobus; s__veneficus	k__Archaea; p__Euryarchaeota; c__Methanococci	overclassification	2
-B1-REF	2	2	uclust	0.51:0.8:3	794040	k__Archaea; p__Euryarchaeota; c__Archaeoglobi; o__Archaeoglobales; f__Archaeoglobaceae; g__Archaeoglobus; s__veneficus	k__Archaea; p__Euryarchaeota; c__Thermococci	overclassification	2
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	2	2	uclust	0.51:0.8:3	k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Marinilabiaceae;g__Alkaliflexus;s__imshenetskii	k__Bacteria;p__Bacteroidetes;c__Sphingobacteriia	overclassification	2	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Dermabacteraceae;g__Brachybacterium;s__conglomeratum	k__Bacteria;p__Actinobacteria;c__Acidimicrobiia	overclassification	2	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Staphylococcaceae;g__Staphylococcus;s__aureus	k__Bacteria;p__Firmicutes;c__Erysipelotrichi	overclassification	2	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	k__Bacteria;p__Cyanobacteria;c__Gloeobacterophycideae;o__Gloeobacterales;f__Gloeobacteraceae;g__Gloeobacter;s__violaceus	k__Bacteria;p__Cyanobacteria;c__Synechococcophycideae	overclassification	2	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	k__Archaea;p__Euryarchaeota;c__Archaeoglobi;o__Archaeoglobales;f__Archaeoglobaceae;g__Archaeoglobus;s__veneficus	k__Archaea;p__Euryarchaeota;c__Methanococci	overclassification	2	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	k__Bacteria;p__Bacteroidetes;c__Flavobacteriia;o__Flavobacteriales;f__Flavobacteriaceae	k__Bacteria;p__Bacteroidetes;c__Saprospirae	overclassification	2	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	k__Bacteria;p__Firmicutes;c__Bacilli;o__Lactobacillales;f__Leuconostocaceae;g__Weissella	k__Bacteria;p__Chloroflexi;c__Anaerolineae	misclassification	1	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfobacterales;f__Desulfobacteraceae	k__Bacteria;p__Spirochaetes;c__Leptospirae	misclassification	1	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Bacillaceae;g__Bacillus	k__Bacteria;p__Chloroflexi;c__Ktedonobacteria	misclassification	1	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfuromonadales;f__Desulfuromonadaceae;g__Pelobacter	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria	overclassification	2	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	Unassigned	k__Bacteria;p__Planctomycetes;c__Phycisphaerae	underclassification	0	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	Unassigned	k__Archaea;p__Crenarchaeota;c__Thermoprotei	underclassification	0	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	Unassigned	k__Archaea;p__Euryarchaeota;c__Methanobacteria	underclassification	0	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	k__Archaea;p__Euryarchaeota;c__Archaeoglobi;o__Archaeoglobales;f__Archaeoglobaceae;g__Archaeoglobus;s__veneficus	k__Archaea;p__Euryarchaeota;c__Thermococci	overclassification	2	0.0	0.0	0.0
+B1-REF	2	2	uclust	0.51:0.8:3	k__Bacteria;p__Firmicutes	k__Bacteria;p__Acidobacteria;c__Acidobacteriia	misclassification	1	0.0	0.0	0.0
