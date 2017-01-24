@@ -712,11 +712,12 @@ def method_by_dataset(df, dataset, sort_field, display_fields,
 
 method_by_dataset_a1 = partial(method_by_dataset,
                                sort_field="F-measure",
-                               display_fields=("Method", "Precision", "Recall",
-                                               "F-measure"))
+                               display_fields=("Method", "Parameters",
+                                                "Precision", "Recall",
+                                                "F-measure"))
 method_by_dataset_a2 = partial(method_by_dataset, sort_field="Pearson r",
-                               display_fields=("Method", "Pearson r",
-                                               "Spearman r"))
+                               display_fields=("Method", "Parameters",
+                                               "Pearson r", "Spearman r"))
 
 
 def method_by_dataset_iterations(df, dataset, parameters, sort_field,
@@ -827,150 +828,3 @@ def get_actual_and_expected_vectors(actual_table,
         expected_vector.append(expected_value)
 
     return actual_vector, expected_vector
-
-
-def distance_matrix_from_table(table, metric='braycurtis'):
-    """Compute distances between all pairs of samples in table
-
-        This function was written by Greg Caporaso for scikit-bio. It is
-        temporarily here, but is under the BSD license.
-
-        Parameters
-        ----------
-        table : biom.table.Table
-        metric : str
-            The name of the scipy pairwise distance (``pdist``) function
-            to use when generating pairwise distances.
-
-        Returns
-        -------
-        skbio.core.distance.DistanceMatrix
-
-        Examples
-        --------
-        Create a biom Table object containing 10 OTUs and 4 samples. This code
-        was pulled from http://biom-format.org/documentation/table_objects.html
-
-        >>> import numpy as np
-        >>> from biom.table import Table
-        >>> data = np.arange(40).reshape(10, 4)
-        >>> data[2,2] = 0
-        >>> sample_ids = ['S%d' % i for i in range(4)]
-        >>> observ_ids = ['O%d' % i for i in range(10)]
-        >>> sample_metadata = [{'environment': 'A'}, {'environment': 'B'},
-        ...                    {'environment': 'A'}, {'environment': 'B'}]
-        >>> observ_metadata = [{'taxonomy': ['Bacteria', 'Firmicutes']},
-        ...                    {'taxonomy': ['Bacteria', 'Firmicutes']},
-        ...                    {'taxonomy': ['Bacteria', 'Proteobacteria']},
-        ...                    {'taxonomy': ['Bacteria', 'Proteobacteria']},
-        ...                    {'taxonomy': ['Bacteria', 'Proteobacteria']},
-        ...                    {'taxonomy': ['Bacteria', 'Bacteroidetes']},
-        ...                    {'taxonomy': ['Bacteria', 'Bacteroidetes']},
-        ...                    {'taxonomy': ['Bacteria', 'Firmicutes']},
-        ...                    {'taxonomy': ['Bacteria', 'Firmicutes']},
-        ...                    {'taxonomy': ['Bacteria', 'Firmicutes']}]
-        >>> table = Table(data, observ_ids, sample_ids, observ_metadata,
-        ...               sample_metadata, table_id='Example Table')
-
-        Compute Bray-Curtis distances between all pairs of samples and return a
-        DistanceMatrix object
-
-        >>> bc_dm = distance_matrix_from_table(table)
-        >>> print bc_dm
-        4x4 distance matrix
-        IDs:
-        S0, S1, S2, S3
-        Data:
-        [[ 0.          0.02702703  0.05263158  0.07692308]
-         [ 0.02702703  0.          0.02564103  0.05      ]
-         [ 0.05263158  0.02564103  0.          0.02439024]
-         [ 0.07692308  0.05        0.02439024  0.        ]]
-
-        Compute Jaccard distances between all pairs of samples and return a
-        DistanceMatrix object. (Need a better example here.)
-
-        >>> j_dm = distance_matrix_from_table(table, "jaccard")
-        >>> print j_dm
-        4x4 distance matrix
-        IDs:
-        S0, S1, S2, S3
-        Data:
-        [[ 0.  1.  1.  1.]
-         [ 1.  0.  1.  1.]
-         [ 1.  1.  0.  1.]
-         [ 1.  1.  1.  0.]]
-
-        Determine if the resulting distance matrices are significantly
-        correlated by computing the Mantel correlation between them. (Including
-        the p-value won't work for doc testing as it's Monte Carlo-based, so
-        exact matching will fail.)
-
-        >>> from skbio.math.stats.distance import mantel
-        >>> print mantel(j_dm, bc_dm)
-        (nan, nan)
-
-        Compute PCoA for both distance matrices, and then find the Procrustes
-        M-squared value.
-        >>> bc_pc = PCoA(bc_dm).scores()
-        >>> j_pc = PCoA(j_dm).scores()
-        >>> print procrustes(bc_pc.site, j_pc.site)[2]
-        0.645043903715
-
-        Would be really cool to embed a 3d matplotlib scatter plot in here for
-        one of the PC matrices... That could make a really cool demo for SciPy.
-        I'm thinking one of these:
-        http://matplotlib.org/examples/mplot3d/scatter3d_demo.html
-
-    """
-    sample_ids = table.ids(axis="sample")
-    num_samples = len(sample_ids)
-    dm = zeros((num_samples, num_samples))
-    for i, sid1 in enumerate(sample_ids):
-        v1 = table.data(sid1)
-        for j, sid2 in enumerate(sample_ids[:i]):
-            v2 = table.data(sid2)
-            dm[i, j] = dm[j, i] = pdist([v1, v2], metric)
-    return DistanceMatrix(dm, sample_ids)
-
-
-def compute_mantel(result_tables,
-                   taxonomy_level=6,
-                   random_trials=999):
-    """ Compute mantel r and p-values for a set of results
-
-        result_tables: 2d list of tables to be compared,
-         where the data in the inner list is:
-          [dataset_id, reference_database_id, method_id,
-           parameter_combination_id, table_fp]
-        taxonomy_level: level to compute results
-        random_trials : number of Monte Carlo trials to run in Mantel test
-    """
-    collapse_by_taxonomy = get_taxonomy_collapser(taxonomy_level)
-    results = []
-
-    for dataset_id, reference_id, method_id, params, actual_table_fp\
-    in result_tables:
-        ## load the table and collapse it at the specified taxonomic level
-        try:
-            full_table = load_table(actual_table_fp)
-        except ValueError:
-            raise ValueError("Couldn't parse BIOM table:\
-                             {0}".format(actual_table_fp))
-        collapsed_table = full_table.collapse(collapse_by_taxonomy,
-                                              axis='observation',
-                                              min_group_size=1)
-
-        ## Compute Bray-Curtis distances between samples in the full table and
-        ## in the collapsed table, and compare them with Mantel.
-        # This is way too compute-intensive because we're computing the actual
-        # dm everytime, which doesn't need to happen.
-        collapsed_dm = distance_matrix_from_table(collapsed_table)
-        full_dm = distance_matrix_from_table(full_table)
-        mantel_r, p = mantel(collapsed_dm, full_dm)
-
-        results.append((dataset_id, reference_id, method_id, params,
-                        mantel_r, p))
-
-    return pd.DataFrame(results, columns=["Dataset", "Reference", "Method",
-                                           "Parameters", "Mantel r",
-                                           "Mantel p"])
