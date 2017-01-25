@@ -25,13 +25,19 @@ from statsmodels.sandbox.stats.multicomp import multipletests
 from skbio.diversity import beta_diversity
 from skbio.stats.ordination import pcoa
 from skbio.stats.distance import anosim
-from skbio import DistanceMatrix
 from biom import load_table
-import biom
 from glob import glob
 from os.path import join, split
 from itertools import combinations
 from IPython.display import display
+from bokeh.plotting import figure, show, output_file
+from bokeh.models import (HoverTool,
+                          WheelZoomTool,
+                          PanTool,
+                          ResetTool,
+                          SaveTool,
+                          ColumnDataSource)
+from bokeh.io import output_notebook
 
 
 def lmplot_from_data_frame(df, x, y, group_by, style_theme="whitegrid",
@@ -138,6 +144,7 @@ def boxplot_from_data_frame(df,
     ax
 
 
+# tag for removal: do we want to keep this fn? Not used currently.
 def generate_pr_scatter_plots(query_prf,
                               subject_prf,
                               query_color="b",
@@ -254,7 +261,7 @@ def per_level_kruskal_wallis(df,
                 # correction below makes p-vals very slightly less significant
                 # than they should be
                 except ValueError:
-                    h_stat, p_val = ('na', 1)
+                    h_stat, p_val = ('na', 1)  # noqa
 
                 p_list.append(p_val)
 
@@ -265,7 +272,7 @@ def per_level_kruskal_wallis(df,
 
     range_len = len([i for i in levelrange])
     results = [(dataset_list[i][0], dataset_list[i][1],
-                *[pval_corr[i*range_len+n] for n in range(0, range_len)])
+                *[pval_corr[i * range_len + n] for n in range(0, range_len)])
                for i in range(0, len(dataset_list))]
     result = pd.DataFrame(results, columns=[dataset_col, "Variable",
                                             *[n for n in levelrange]])
@@ -274,7 +281,7 @@ def per_level_kruskal_wallis(df,
 
 def seek_tables(expected_results_dir, table_fn='merged_table.biom'):
     '''Find and deliver merged biom tables'''
-    table_fps = glob(join(expected_results_dir,'*','*', table_fn))
+    table_fps = glob(join(expected_results_dir, '*', '*', table_fn))
     for table in table_fps:
         reference_dir, _ = split(table)
         dataset_dir, reference_id = split(reference_dir)
@@ -283,12 +290,17 @@ def seek_tables(expected_results_dir, table_fn='merged_table.biom'):
 
 
 def batch_beta_diversity(expected_results_dir, method="braycurtis",
-                         permutations=99, col='method'):
+                         permutations=99, col='method', dim=2,
+                         colormap={'expected': 'red', 'rdp': 'seagreen',
+                                   'sortmerna': 'gray', 'uclust': 'blue',
+                                   'blast': 'purple'}):
+
     '''Find merged biom tables and run beta_diversity_through_plots'''
     for table, dataset_id, reference_id in seek_tables(expected_results_dir):
         print(dataset_id, reference_id)
         s, r, pc, dm = beta_diversity_pcoa(table, method=method, col=col,
-                                           permutations=permutations,)
+                                           permutations=permutations, dim=dim,
+                                           colormap=colormap)
         sns.plt.show()
         sns.plt.clf()
 
@@ -298,7 +310,7 @@ def make_distance_matrix(biom_fp, method="braycurtis"):
     table = load_table(biom_fp)
 
     # extract sample metadata from table, put in df
-    table_md = {s_id : dict(table.metadata(s_id)) for s_id in table.ids()}
+    table_md = {s_id: dict(table.metadata(s_id)) for s_id in table.ids()}
     s_md = pd.DataFrame.from_dict(table_md, orient='index')
 
     # extract data from table and multiply, assuming that table contains
@@ -312,10 +324,30 @@ def make_distance_matrix(biom_fp, method="braycurtis"):
     return dm, s_md
 
 
-def beta_diversity_pcoa(biom_fp, method="braycurtis", permutations=99,
-                        col='method'):
+def beta_diversity_pcoa(biom_fp, method="braycurtis", permutations=99, dim=2,
+                        col='method', colormap={'expected': 'red',
+                                                'rdp': 'seagreen',
+                                                'sortmerna': 'gray',
+                                                'uclust': 'blue',
+                                                'blast': 'purple'}):
+
     '''From biom table, compute Bray-Curtis distance; generate PCoA plot;
-    and calculate adonis differences'''
+    and calculate adonis differences.
+
+    biom_fp: path
+        Path to biom.Table containing sample metadata.
+    method: str
+        skbio.Diversity method to use for ordination.
+    permutations: int
+        Number of permutations to perform for anosim tests.
+    dim: int
+        Number of dimensions to plot. Currently supports only 2-3 dimensions.
+    col: str
+        metadata name to use for distinguishing groups for anosim tests and
+        pcoa plots.
+    colormap: dict
+        map groups names (must be group names in col) to colors used for plots.
+    '''
 
     dm, s_md = make_distance_matrix(biom_fp, method=method)
 
@@ -326,14 +358,92 @@ def beta_diversity_pcoa(biom_fp, method="braycurtis", permutations=99,
     results = anosim(dm, s_md, column=col, permutations=permutations)
     print('R = ', results['test statistic'], '; P = ', results['p-value'])
 
+    if dim == 2:
+        # bokeh pcoa plots
+        pc123 = pc.samples.ix[:, ["PC1", "PC2", "PC3"]]
+        smd_merge = s_md.merge(pc123, left_index=True, right_index=True)
+        smd_merge['Color'] = [colormap[x] for x in smd_merge['method']]
+        title = smd_merge['reference'][0]
+        labels = ['PC {0} ({1:.2f})'.format(d + 1, pc.proportion_explained[d])
+                  for d in range(0, 2)]
+        circle_plot_from_dataframe(smd_merge, "PC1", "PC2", title, color="Color",
+                                   columns=["method", "sample_id", "params"],
+                                   labels=labels)
+    else:
+        # skbio pcoa plots
+        pcoa_plot_skbio(pc, s_md, col='method')
+
+    return s_md, results, pc, dm
+
+
+def circle_plot_from_dataframe(df, x, y, title=None, color="Color",
+                               columns=["method", "sample_id", "params"],
+                               labels=None, plot_width=400, plot_height=400,
+                               fill_alpha=0.2, size=10, output_fn=None):
+    '''Make bokeh circle plot from dataframe, use df columns for hover tool.
+    df: pandas.DataFrame
+        Containing all sample data, including color categories.
+    x: str
+        df category to use for x-axis coordinates.
+    y: str
+        df category to use for y-axis coordinates.
+    title: str
+        Title to print above plot.
+    color: str
+        df category to use for coloring data points.
+    columns: list
+        df categories to add as hovertool metadata.
+    labels: list
+        Axis labels for x and y axes. If none, default to column names.
+    output_fn: path
+        Filepath for output file. Defaults to None.
+
+    Other parameters feed directly to bokeh.plotting.
+    '''
+    if labels is None:
+        labels = [x, y]
+
+    source = ColumnDataSource(df)
+    hover = HoverTool(tooltips=[(c, '@' + c) for c in columns])
+
+    TOOLS = [hover, WheelZoomTool(), PanTool(), ResetTool(), SaveTool()]
+
+    fig = figure(title=title, tools=TOOLS, plot_width=plot_width,
+                 plot_height=plot_height)
+
+    # Set asix labels
+    fig.xaxis.axis_label = labels[0]
+    fig.yaxis.axis_label = labels[1]
+
+    # Plot x and y axes
+    fig.circle(x, y, source=source, color=color, fill_alpha=fill_alpha,
+               size=size)
+
+    if output_fn is not None:
+        output_file(output_fn)
+
+    output_notebook()
+    show(fig)
+
+
+# tag for removal: do we want the 3d plots?
+def pcoa_plot_skbio(pc, s_md, col='method'):
+    '''Input principal coordinates, display figure.
+
+    pc: skbio.OrdinationResults
+        Sample coordinates.
+    s_md: pandas.DataFrame
+        Sample metadata.
+    col: str
+        Category in s_md to use for coloring groups.
+    '''
+
     # make labels for PCoA plot
     pcl = ['PC {0} ({1:.2f})'.format(d + 1, pc.proportion_explained[d])
-           for d in range(0,3)]
+           for d in range(0, 3)]
     fig = pc.plot(s_md, col, axis_labels=(pcl[0], pcl[1], pcl[2]),
                   cmap='jet', s=50)
     fig
-
-    return s_md, results, pc, dm
 
 
 def average_distance_boxplots(expected_results_dir, group_by="method",
@@ -412,8 +522,7 @@ def fastlane_boxplots(expected_results_dir, group_by="method",
 
 def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
                         metric="distance", hue=None, y_min=0.0, y_max=1.0,
-                        plotf=violinplot, label_rotation=45,
-                        color=None):
+                        plotf=violinplot, label_rotation=45, color=None):
     '''Generate distance boxplots and Mann-Whitney U tests on distance matrix.
 
     dm: skbio.DistanceMatrix
@@ -504,7 +613,8 @@ def within_between_category_distance(dm, md, md_category, distance='distance'):
                 comp = 'between'
                 group = sample_md1 + '_' + sample_md2
             distances.append((comp, group, dm[sample_id1, sample_id2]))
-    return pd.DataFrame(distances, columns=["Comparison", md_category, distance])
+    return pd.DataFrame(distances, columns=["Comparison", md_category,
+                                            distance])
 
 
 def per_method_pairwise_tests(df, group_by='method', metric='distance',
@@ -556,7 +666,7 @@ def per_method_pairwise_tests(df, group_by='method', metric='distance',
         # are clustered into one group and hence there is only one P-val=1.0.
         ZeroDivisionError
     res = [(combos[a][0], combos[a][1], pval_corr[a])
-               for a in range(len(combos))]
+           for a in range(len(combos))]
 
     return pd.DataFrame(res, columns=[group_by + " A", group_by + " B", "P"])
 
@@ -591,7 +701,7 @@ def rank_optimized_method_performance_by_dataset(df,
                                                  params="Parameters",
                                                  metric="F-measure",
                                                  level="Level",
-                                                 level_range=range(5,7),
+                                                 level_range=range(5, 7),
                                                  display_fields=["Method",
                                                                  "Parameters",
                                                                  "Precision",
@@ -655,14 +765,14 @@ def rank_optimized_method_performance_by_dataset(df,
             avg_best = best.groupby([method, params]).mean().reset_index()
             avg_best_sorted = avg_best.sort_values(by=metric,
                                                    ascending=ascending)
-            method_rank = avg_best_sorted.ix[:,display_fields]
+            method_rank = avg_best_sorted.ix[:, display_fields]
             display(method_rank)
             results = per_method_pairwise_tests(best, group_by=method,
                                                 metric=metric, paired=paired,
                                                 parametric=parametric)
             display(results)
-            boxplot_from_data_frame(best, group_by=method, color=color, hue=hue,
+            boxplot_from_data_frame(best, group_by=method, color=color,
                                     metric=metric, y_min=y_min, y_max=y_max,
-                                    label_rotation=label_rotation,
+                                    label_rotation=label_rotation, hue=hue,
                                     plotf=plotf)
             sns.plt.show()

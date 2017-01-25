@@ -14,22 +14,11 @@ from os.path import abspath, join, exists, split
 from collections import defaultdict
 from functools import partial
 from random import shuffle
-
 from biom.exception import UnknownIDError, TableException
 from biom import load_table
 from biom.cli.util import write_biom_table
-from numpy import asarray, zeros
-from pylab import scatter, xlabel, ylabel, xlim, ylim
-from scipy.spatial.distance import pdist
 from scipy.stats import pearsonr, spearmanr
-from skbio import DistanceMatrix
-from seaborn import boxplot, violinplot, heatmap
-from skbio.stats.distance import mantel
-from mpl_toolkits.axes_grid1 import ImageGrid
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.stats import wilcoxon
 
 
 def get_sample_to_top_params(df, metric, sample_col='SampleID',
@@ -54,22 +43,18 @@ def get_sample_to_top_params(df, metric, sample_col='SampleID',
       method
     """
     sorted_df = df.sort_values(by=metric, ascending=False)
-    metric_idx = sorted_df.columns.get_loc(metric)
-    method_idx = sorted_df.columns.get_loc(method_col)
     result = {}
 
     for dataset in sorted_df[dataset_col].unique():
         dataset_df = sorted_df[sorted_df[dataset_col] == dataset]
         for sid in dataset_df[sample_col].unique():
-            dataset_sid_results = dataset_df[dataset_df[sample_col] == sid]
+            dataset_sid_res = dataset_df[dataset_df[sample_col] == sid]
             current_results = {}
             for method in sorted_df.Method.unique():
-                method_results = dataset_sid_results[\
-                                          dataset_sid_results.Method == method]
-                max_metric_value = method_results[metric].max()
-                mad_metric_value = method_results[metric].mad()
-                tp = method_results[method_results[metric] >= (\
-                                          max_metric_value - mad_metric_value)]
+                m_res = dataset_sid_res[dataset_sid_res.Method == method]
+                max_val = m_res[metric].max()
+                mad_metric_value = m_res[metric].mad()
+                tp = m_res[m_res[metric] >= (max_val - mad_metric_value)]
                 current_results[method] = list(tp.Parameters)
             result[(dataset, sid)] = current_results
     result = pd.DataFrame(result).T
@@ -114,53 +99,6 @@ def parameter_comparisons(df, method, metrics=['Precision', 'Recall',
     return result
 
 
-def get_sample_to_top_scores(df, metric, method_param):
-    """Identify the score that all method_param combinations achieved for
-    metric
-
-    Parameters
-    ----------
-    df: pd.DataFrame
-    metric: str
-        Column header defining the metric to compare parameter combs with
-    method_param: dict
-        Mapping of method id to parameter set of interest
-
-    Returns
-    -------
-    pd.DataFrame
-     Rows: Multi-index of (Dataset, SampleID)
-     Cols: Top score, methods
-     Values: Top score of this metric (i.e., max across other columns in this
-      row); method scores (i.e., the score that each method achieved for the
-      given metric)
-    """
-    sorted_df = df.sort_values(by=metric, ascending=False)
-    results = {}
-    metric_idx = sorted_df.columns.get_loc(metric)
-    method_idx = sorted_df.columns.get_loc('Method')
-
-    result = {}
-
-    for dataset in sorted_df.Dataset.unique():
-        dataset_df = sorted_df[sorted_df.Dataset == dataset]
-        for sid in dataset_df.SampleID.unique():
-            dataset_sid_results = dataset_df[dataset_df.SampleID == sid]
-            current_results = {}
-            for method in sorted_df.Method.unique():
-                method_results = dataset_sid_results[\
-                                          dataset_sid_results.Method == method]
-                mp_results = method_results[method_results.Parameters\
-                                                       == method_param[method]]
-                max_metric_value = mp_results[metric].max()
-                current_results[method] = max_metric_value
-            top_score = max(current_results.values())
-            current_results['Top score'] = top_score
-            results[(dataset, sid)] = current_results
-    results = pd.DataFrame(results).T
-    return results
-
-
 def find_and_process_result_tables(start_dir,
                                    biom_processor=abspath,
                                    filename_pattern='table*biom'):
@@ -182,7 +120,7 @@ def find_and_process_result_tables(start_dir,
                   ]
     """
 
-    table_fps = glob(join(start_dir,'*','*','*','*',filename_pattern))
+    table_fps = glob(join(start_dir, '*', '*', '*', '*', filename_pattern))
     results = []
     for table_fp in table_fps:
         param_dir, _ = split(table_fp)
@@ -216,7 +154,7 @@ def find_and_process_expected_tables(start_dir,
                   ]
     """
     filename = filename_pattern.format(level)
-    table_fps = glob(join(start_dir,'*','*','expected', filename))
+    table_fps = glob(join(start_dir, '*', '*', 'expected', filename))
     results = []
     for table_fp in table_fps:
         expected_dir, _ = split(table_fp)
@@ -331,24 +269,24 @@ def filter_table(table, min_count=0, taxonomy_level=None,
         _taxa_to_keep = ';'.join(taxa_to_keep)
     except TypeError:
         _taxa_to_keep = None
+
     def f(data_vector, id_, metadata):
         # if filtering based on number of taxonomy levels, and this
         # observation has taxonomic information, and
         # there are a sufficient number of taxonomic levels
-
-        # We should not filter out taxa, as this incorrectly adjusts fp/fn rate
         # Table filtering here removed taxa that have insufficient levels
         enough_levels = taxonomy_level is None or \
-                        (metadata[md_key] is not None and \
+                        (metadata[md_key] is not None and
                          len(metadata[md_key]) >= taxonomy_level+1)
         # if filtering to specific taxa, this OTU is assigned to that taxonomy
         allowed_taxa = _taxa_to_keep is None or \
-                        id_.startswith(_taxa_to_keep) or \
-                        (metadata is not None and md_key in metadata and
-                         ';'.join(metadata[md_key]).startswith(_taxa_to_keep))
+            id_.startswith(_taxa_to_keep) or \
+            (metadata is not None and md_key in metadata and
+             ';'.join(metadata[md_key]).startswith(_taxa_to_keep))
         # the count of this observation is at least min_count
         sufficient_count = data_vector.sum() >= min_count
         return sufficient_count and allowed_taxa and enough_levels
+
     return table.filter(f, axis='observation', inplace=False)
 
 
@@ -366,7 +304,7 @@ def seek_results(results_dirs):
 
 
 def evaluate_results(results_dirs, expected_results_dir, results_fp,
-                     taxonomy_level_range=range(2,7), min_count=0,
+                     taxonomy_level_range=range(2, 7), min_count=0,
                      taxa_to_keep=None, md_key='taxonomy', new_param_ids=None,
                      subsample=False,
                      size=10, force=False):
@@ -416,10 +354,10 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp,
                                             expected_tables,
                                             results_fp,
                                             taxonomy_level_range,
-                                            min_count = min_count,
-                                            taxa_to_keep = taxa_to_keep,
-                                            md_key = md_key,
-                                            new_param_ids = new_param_ids)
+                                            min_count=min_count,
+                                            taxa_to_keep=taxa_to_keep,
+                                            md_key=md_key,
+                                            new_param_ids=new_param_ids)
     else:
         print("{0} already exists.".format(results_fp))
         print("Reading in pre-computed evaluation results.")
@@ -486,7 +424,7 @@ def mount_observations(table_fp, min_count=0, taxonomy_level=6,
         raise TableException("Failure to collapse taxonomy for table at:"
                              " {0}".format(table_fp))
     except TypeError:
-        raise TypeError("Failure to collapse taxonomy in: {0}".format(table_fp))
+        raise TypeError("Failure to collapse taxonomy: {0}".format(table_fp))
 
     if normalize is True:
         table.norm(axis='sample')
@@ -495,7 +433,7 @@ def mount_observations(table_fp, min_count=0, taxonomy_level=6,
 
 
 def compute_mock_results(result_tables, expected_table_lookup, results_fp,
-                         taxonomy_level_range=range(2,7), min_count=0,
+                         taxonomy_level_range=range(2, 7), min_count=0,
                          taxa_to_keep=None, md_key='taxonomy',
                          new_param_ids=None):
     """ Compute precision, recall, and f-measure for result_tables at
@@ -518,33 +456,32 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
                  'sortmerna': ['min consensus fraction', 'similarity',
                                'best N alignments', 'coverage', 'e value'],
                  'sortmerna-w16': ['min consensus fraction', 'similarity',
-                              'best N alignments', 'coverage', 'e value'],
+                                   'best N alignments', 'coverage', 'e value'],
                  'uclust': ['min consensus fraction', 'similarity',
                             'max accepts'],
                  'vsearch': ['min consensus fraction', 'similarity',
                              'max accepts']}
     param_ids.update(new_param_ids)
-    for dataset_id, reference_id, method_id, params, actual_table_fp\
-        in result_tables:
+    for dataset_id, ref_id, method, params, actual_table_fp in result_tables:
 
         # Find expected results
         try:
-            expected_table_fp = expected_table_lookup[dataset_id][reference_id]
+            expected_table_fp = expected_table_lookup[dataset_id][ref_id]
         except KeyError:
             raise KeyError("Can't find expected table for \
-                            ({0}, {1}).".format(dataset_id, reference_id))
+                            ({0}, {1}).".format(dataset_id, ref_id))
 
         for taxonomy_level in taxonomy_level_range:
-            ## parse the expected table (unless taxonomy_level is specified,
-            ## this should be collapsed on level 6 taxonomy)
+            # parse the expected table (unless taxonomy_level is specified,
+            # this should be collapsed on level 6 taxonomy)
             expected_table = mount_observations(expected_table_fp,
                                                 min_count=0,
                                                 taxonomy_level=taxonomy_level,
                                                 taxa_to_keep=taxa_to_keep,
                                                 filter_obs=False)
 
-            ## parse the actual table and collapse it at the specified
-            ## taxonomic level
+            # parse the actual table and collapse it at the specified
+            # taxonomic level
             actual_table = mount_observations(actual_table_fp,
                                               min_count=min_count,
                                               taxonomy_level=taxonomy_level,
@@ -552,12 +489,12 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
                                               md_key=md_key)
 
             for sample_id in actual_table.ids(axis="sample"):
-                ## compute precision, recall, and f-measure
+                # compute precision, recall, and f-measure
                 try:
-                    p,r,f = compute_prf(actual_table,
-                                        expected_table,
-                                        actual_sample_id=sample_id,
-                                        expected_sample_id=sample_id)
+                    p, r, f = compute_prf(actual_table,
+                                          expected_table,
+                                          actual_sample_id=sample_id,
+                                          expected_sample_id=sample_id)
                 except ZeroDivisionError:
                     p, r, f = -1., -1., -1.
 
@@ -565,8 +502,7 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
                 actual_vector, expected_vector =\
                     get_actual_and_expected_vectors(actual_table,
                                                     expected_table,
-                                                    actual_sample_id=sample_id,
-                                                    expected_sample_id=\
+                                                    sample_id,
                                                     sample_id)
 
                 pearson_r, pearson_p = pearsonr(actual_vector, expected_vector)
@@ -574,19 +510,19 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
                                                    expected_vector)
 
                 results.append((dataset_id, taxonomy_level, sample_id,
-                                reference_id, method_id, params, p, r, f,
+                                ref_id, method, params, p, r, f,
                                 pearson_r, pearson_p, spearman_r, spearman_p))
 
         # record parameter data
-        param_data[(method_id, params)] = {}
-        for k, v in zip(param_ids[method_id], params.split(':')):
+        param_data[(method, params)] = {}
+        for k, v in zip(param_ids[method], params.split(':')):
             v_ = []
             for e in v:
                 try:
-                   v_.append(float(e))
+                    v_.append(float(e))
                 except ValueError:
-                   v_.append(e)
-            param_data[(method_id, params)][k] = v_
+                    v_.append(e)
+            param_data[(method, params)][k] = v_
 
     param_df = pd.DataFrame(param_data)
     result = pd.DataFrame(results, columns=["Dataset", "Level", "SampleID",
@@ -612,11 +548,11 @@ def add_sample_metadata_to_table(table_fp, dataset_id, reference_id,
     table = mount_observations(table_fp, min_count=min_count,
                                taxonomy_level=taxonomy_level,
                                taxa_to_keep=taxa_to_keep, md_key=md_key)
-    metadata = {s_id : {'sample_id': s_id,
-                        'dataset' : dataset_id,
-                        'reference' : reference_id,
-                        'method' : method,
-                        'params' : params}
+    metadata = {s_id: {'sample_id': s_id,
+                       'dataset': dataset_id,
+                       'reference': reference_id,
+                       'method': method,
+                       'params': params}
                 for s_id in table.ids(axis='sample')}
     table.add_metadata(metadata, 'sample')
     new_ids = {s_id: '_'.join([method, params, s_id])
@@ -625,7 +561,7 @@ def add_sample_metadata_to_table(table_fp, dataset_id, reference_id,
 
 
 def merge_expected_and_observed_tables(expected_results_dir, results_dirs,
-                                       md_key = 'taxonomy', min_count=0,
+                                       md_key='taxonomy', min_count=0,
                                        taxonomy_level=6, taxa_to_keep=None,
                                        biom_fp='merged_table.biom',
                                        force=False):
@@ -644,49 +580,48 @@ def merge_expected_and_observed_tables(expected_results_dir, results_dirs,
                                reference_id, biom_fp)) or force is True:
                 expected_tables[dataset_id][reference_id] = \
                     add_sample_metadata_to_table(expected_table_fp,
-                                             dataset_id=dataset_id,
-                                             reference_id=reference_id,
-                                             min_count=min_count,
-                                             taxonomy_level=taxonomy_level,
-                                             taxa_to_keep=taxa_to_keep,
-                                             md_key='taxonomy',
-                                             method='expected',
-                                             params='expected')
+                                                 dataset_id=dataset_id,
+                                                 reference_id=reference_id,
+                                                 min_count=min_count,
+                                                 taxonomy_level=taxonomy_level,
+                                                 taxa_to_keep=taxa_to_keep,
+                                                 md_key='taxonomy',
+                                                 method='expected',
+                                                 params='expected')
 
     # Find observed results tables, add sample metadata
     result_tables = seek_results(results_dirs)
 
-    for dataset_id, reference_id, method_id, params, actual_table_fp\
-        in result_tables:
+    for dataset_id, ref_id, method, params, actual_table_fp in result_tables:
 
-        biom_destination = join(expected_results_dir, dataset_id, reference_id,
+        biom_destination = join(expected_results_dir, dataset_id, ref_id,
                                 biom_fp)
         if not exists(biom_destination) or force is True:
             try:
                 expected_table_fp = \
-                    expected_table_lookup[dataset_id][reference_id]
+                    expected_table_lookup[dataset_id][ref_id]
             except KeyError:
                 raise KeyError("Can't find expected table for \
-                                ({0}, {1}).".format(dataset_id, reference_id))
+                                ({0}, {1}).".format(dataset_id, ref_id))
 
-            #import expected table, amend sample ids
+            # import expected table, amend sample ids
             actual_table = \
                 add_sample_metadata_to_table(actual_table_fp,
                                              dataset_id=dataset_id,
-                                             reference_id=reference_id,
+                                             reference_id=ref_id,
                                              min_count=min_count,
                                              taxonomy_level=taxonomy_level,
                                              taxa_to_keep=taxa_to_keep,
                                              md_key='taxonomy',
-                                             method=method_id,
+                                             method=method,
                                              params=params)
 
             # merge expected and resutls tables
-            expected_tables[dataset_id][reference_id] = \
-                expected_tables[dataset_id][reference_id].merge(actual_table)
+            expected_tables[dataset_id][ref_id] = \
+                expected_tables[dataset_id][ref_id].merge(actual_table)
 
             # write biom table to destination
-            write_biom_table(expected_tables[dataset_id][reference_id],
+            write_biom_table(expected_tables[dataset_id][ref_id],
                              'hdf5', biom_destination)
 
 
@@ -708,35 +643,20 @@ def method_by_dataset(df, dataset, sort_field, display_fields,
     sorted_dataset_df = dataset_df.sort_values(by=sort_field, ascending=False)
     filtered_dataset_df = sorted_dataset_df[_is_first(sorted_dataset_df,
                                                       test_field)]
-    return filtered_dataset_df.ix[:,display_fields]
+    return filtered_dataset_df.ix[:, display_fields]
 
 method_by_dataset_a1 = partial(method_by_dataset,
                                sort_field="F-measure",
                                display_fields=("Method", "Parameters",
-                                                "Precision", "Recall",
-                                                "F-measure"))
+                                               "Precision", "Recall",
+                                               "F-measure"))
 method_by_dataset_a2 = partial(method_by_dataset, sort_field="Pearson r",
                                display_fields=("Method", "Parameters",
                                                "Pearson r", "Spearman r"))
 
 
-def method_by_dataset_iterations(df, dataset, parameters, sort_field,
-                                 display_fields, num_iters=5):
-    """ Compute mean performance for given method, parameter combinations
-    across simulated data set iterations
-    """
-    dataset_ids = ['{0}-iter{1}'.format(dataset, iter_)\
-                   for iter_ in range(num_iters)]
-    result = df.loc[df['Dataset'].isin(dataset_ids)]
-    m = result['Method'].isin([p[0] for p in parameters])
-    p = result['Parameters'].isin([p[1] for p in parameters])
-    result = result.loc[np.logical_and(m, p)]
-    result = result.ix[:,display_fields].groupby('Method')
-    return result.mean().sort_values(by=sort_field, ascending=False)
-
-
 def method_by_reference_comparison(df, group_by='Reference', dataset='Dataset',
-                                   level_range=range(4,7), lv="Level",
+                                   level_range=range(4, 7), lv="Level",
                                    sort_field="F-measure",
                                    display_fields=("Reference", "Level",
                                                    "Method", "Parameters",
@@ -767,13 +687,12 @@ def method_by_reference_comparison(df, group_by='Reference', dataset='Dataset',
         df1 = df[df[dataset] == ds]
         for level in level_range:
             for group in df1[group_by].unique():
-                rank = pd.concat([rank,
-                                  method_by_dataset(df1[df1[lv] == level],
-                                                    group_by=group_by,
-                                                    dataset=group,
-                                                    sort_field=sort_field,
-                                                    display_fields=\
-                                                    display_fields)])
+                a = method_by_dataset(df1[df1[lv] == level],
+                                      group_by=group_by,
+                                      dataset=group,
+                                      sort_field=sort_field,
+                                      display_fields=display_fields)
+                rank = pd.concat([rank, a])
     return rank
 
 
@@ -796,35 +715,33 @@ def get_actual_and_expected_vectors(actual_table,
                                                     expected_sample_id)
     all_obs_ids = list(actual_obs_ids | expected_obs_ids)
 
-    if actual_sample_id is None:
-        actual_sample_idx = 0
-    else:
-        actual_sample_idx = actual_table.index(actual_sample_id, axis="sample")
+    # retrieve sample_id index
+    actual_sample_idx = get_sample_idx(actual_table, actual_sample_id)
+    exp_sample_idx = get_sample_idx(expected_table, expected_sample_id)
 
-    if expected_sample_id is None:
-        expected_sample_idx = 0
-    else:
-        expected_sample_idx = expected_table.index(expected_sample_id,
-                                                   axis="sample")
-
-    actual_vector = []
-    expected_vector = []
-    for obs_id in all_obs_ids:
-        try:
-            actual_obs_idx = actual_table.index(obs_id, axis="observation")
-        except UnknownIDError:
-            actual_value = 0.0
-        else:
-            actual_value = actual_table[actual_obs_idx, actual_sample_idx]
-        actual_vector.append(actual_value)
-
-        try:
-            expected_obs_idx = expected_table.index(obs_id, axis="observation")
-        except UnknownIDError:
-            expected_value = 0.0
-        else:
-            expected_value = expected_table[expected_obs_idx,
-                                            expected_sample_idx]
-        expected_vector.append(expected_value)
+    actual_vector = [get_index_value(actual_table, obs_id, actual_sample_idx)
+                     for obs_id in all_obs_ids]
+    expected_vector = [get_index_value(expected_table, obs_id, exp_sample_idx)
+                       for obs_id in all_obs_ids]
 
     return actual_vector, expected_vector
+
+
+def get_index_value(df, obs_id, sample_idx):
+    '''Retrieve value from df at sample/obs index.'''
+    try:
+        obs_idx = df.index(obs_id, axis="observation")
+    except UnknownIDError:
+        value = 0.0
+    else:
+        value = df[obs_idx, sample_idx]
+    return value
+
+
+def get_sample_idx(df, sample_id, axis="sample"):
+    '''Get index of sample in df, given id'''
+    if sample_id is None:
+        sample_idx = 0
+    else:
+        sample_idx = df.index(sample_id, axis=axis)
+    return sample_idx
