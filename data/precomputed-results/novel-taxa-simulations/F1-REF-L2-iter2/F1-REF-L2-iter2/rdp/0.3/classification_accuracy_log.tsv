@@ -1,12 +1,12 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-F1-REF	2	2	rdp	0.3	SH112538.07FU_JF442091_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Pneumocystidomycetes	match	2
-F1-REF	2	2	rdp	0.3	SH538886.07FU_KP413075_reps	k__Fungi	k__Fungi;p__Basidiomycota;c__Entorrhizomycetes	underclassification	1
-F1-REF	2	2	rdp	0.3	SH076392.07FU_EU636699_reps	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes	match	2
-F1-REF	2	2	rdp	0.3	SH078987.07FU_AF310176_reps	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes	overclassification	2
-F1-REF	2	2	rdp	0.3	SH540908.07FU_JX312524_reps	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Zygomycota;c__Zoopagomycotina_cls_Incertae_sedis	misclassification	1
-F1-REF	2	2	rdp	0.3	SH083638.07FU_HQ630308_refs	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis	misclassification	1
-F1-REF	2	2	rdp	0.3	SH076715.07FU_JN053490_reps	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Tremellomycetes	overclassification	2
-F1-REF	2	2	rdp	0.3	SH077302.07FU_AB011514_refs	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Saccharomycetes	match	2
-F1-REF	2	2	rdp	0.3	SH093343.07FU_KC107954_reps	k__Fungi;p__Ascomycota;c__Lecanoromycetes	k__Fungi;p__Ascomycota;c__Arthoniomycetes	overclassification	2
-F1-REF	2	2	rdp	0.3	SH118343.07FU_JX242880_refs	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Polyporales;f__Fomitopsidaceae;g__Postia;s__Postia_dissecta	k__Fungi;p__Basidiomycota;c__Wallemiomycetes	overclassification	2
-F1-REF	2	2	rdp	0.3	SH136168.07FU_JN943014_reps	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Diversisporales;f__Acaulosporaceae;g__Acaulospora	k__Fungi;p__Chytridiomycota;c__Blastocladiomycetes	misclassification	1
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	2	rdp	0.3	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes	match	2	0.3	0.272727272727	0.285714285714
+F1-REF	2	2	rdp	0.3	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Tremellomycetes	overclassification	2	0.3	0.272727272727	0.285714285714
+F1-REF	2	2	rdp	0.3	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Saccharomycetes	match	2	0.3	0.272727272727	0.285714285714
+F1-REF	2	2	rdp	0.3	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes	overclassification	2	0.3	0.272727272727	0.285714285714
+F1-REF	2	2	rdp	0.3	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis	misclassification	1	0.3	0.272727272727	0.285714285714
+F1-REF	2	2	rdp	0.3	k__Fungi;p__Ascomycota;c__Lecanoromycetes	k__Fungi;p__Ascomycota;c__Arthoniomycetes	overclassification	2	0.3	0.272727272727	0.285714285714
+F1-REF	2	2	rdp	0.3	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Pneumocystidomycetes	match	2	0.3	0.272727272727	0.285714285714
+F1-REF	2	2	rdp	0.3	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Polyporales;f__Fomitopsidaceae;g__Postia;s__Postia_dissecta	k__Fungi;p__Basidiomycota;c__Wallemiomycetes	overclassification	2	0.3	0.272727272727	0.285714285714
+F1-REF	2	2	rdp	0.3	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Diversisporales;f__Acaulosporaceae;g__Acaulospora	k__Fungi;p__Chytridiomycota;c__Blastocladiomycetes	misclassification	1	0.3	0.272727272727	0.285714285714
+F1-REF	2	2	rdp	0.3	k__Fungi	k__Fungi;p__Basidiomycota;c__Entorrhizomycetes	underclassification	1	0.3	0.272727272727	0.285714285714
+F1-REF	2	2	rdp	0.3	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Zygomycota;c__Zoopagomycotina_cls_Incertae_sedis	misclassification	1	0.3	0.272727272727	0.285714285714

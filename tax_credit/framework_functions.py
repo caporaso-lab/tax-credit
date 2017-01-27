@@ -9,6 +9,7 @@
 # The full license is in the file COPYING.txt, distributed with this software.
 # ----------------------------------------------------------------------------
 
+from sys import exit
 from os.path import join, exists, split, sep, expandvars, basename, splitext
 from os import makedirs, remove, system
 from glob import glob
@@ -23,7 +24,9 @@ from skbio import io, DNA
 from time import time
 import pandas as pd
 from collections import Counter
-from tax_credit.taxa_manipulator import (import_taxonomy_to_dict,
+from sklearn.metrics import precision_recall_fscore_support
+from tax_credit.taxa_manipulator import (accept_list_or_file,
+                                         import_taxonomy_to_dict,
                                          export_list_to_file,
                                          extract_rownames,
                                          filter_sequences,
@@ -34,9 +37,6 @@ from tax_credit.taxa_manipulator import (import_taxonomy_to_dict,
                                          branching_taxa,
                                          stratify_taxonomy_subsets,
                                          extract_taxa_names)
-from scipy.stats import kruskal
-from statsmodels.sandbox.stats.multicomp import multipletests
-import numpy as np
 
 
 def gen_param_sweep(data_dir, results_dir, reference_dbs,
@@ -511,7 +511,199 @@ def evaluate_cross_validated_classification(obs_taxa, exp_taxa):
     return result
 
 
+def load_taxa(obs_fp, level=slice(0, 7), field=1):
+    '''Mount observed/expected taxonomy observations.
+    obs_fp: path
+        Input file containing taxonomy strings and IDs.
+    level: slice
+        Taxonomic range of interest. 0 = kingdom, 1 = phylum, 2 = class,
+        3 = order, 4 = family, 5 = genus, 6 = species.
+        Must use slice notation. For species, use level=slice(6, 7)
+    field: int
+        ab-delimited field containing taxonomy strings.
+    '''
+    obs = extract_taxa_names(sorted(accept_list_or_file(obs_fp)), field=field,
+                             level=level)
+    obs = [';'.join([l.strip() for l in line.split(';')]) for line in obs
+           if not line.startswith('taxonomy')]
+    return obs
+
+
+def count_records(record_counter, record_name, line_count):
+    '''Tally ratio of results in record counter.
+    record_counter: counter
+        Name of counter containing record_name and line_count counts.
+    record_name: str
+        Key name for record to tally.
+    count: str
+        Key name for record of total lines, used as denominator.
+    '''
+    count = record_counter[line_count]
+    try:
+        ratio = record_counter[record_name] / count
+    except ZeroDivisionError:
+        ratio = 0
+    return ratio
+
+
+def compute_prf(exp, obs, avg='micro', test_type='cross-validated',
+                l_range=range(1,7), level=6):
+    '''Compute precision, recall, and F-measure using sklearn.
+    exp_taxa: list
+        Expected observations for each sample (sequence).
+    obs_taxa: list
+        Predicted observations for each sample (sequence).
+    avg: str
+        Score averaging method using in sklearn. 'micro', 'weighted', or
+        'macro'.
+    test_type: str
+        'novel-taxa' or 'cross-validated'.
+    l_range: range
+        Range of taxonomic levels to test is test_type = 'cross-validated'.
+    level:
+        Level of taxonomic assignment used if test_type = 'novel-taxa'
+    '''
+
+    prf = precision_recall_fscore_support
+
+    # p = tp / (tp + fp)
+    # r = tp / (tp + fn)
+    # f = (2 * p * r) / (p + r)
+    # with labels, null classifications can be FN but not TP or FP.
+    # Hence, nulls affect recall but not precision.
+
+    def lab(exp, obs, level):
+        # use set or else multiple counts weight observations.
+        # Remove all labels < level. Hence, underclassifcation becomes null,
+        # and can only be FN, but overclassification is still counted as FP.
+        return [t for t in set(exp + obs) if not len(t.split(';')) < level]
+
+    if test_type == 'novel-taxa':
+        exp = extract_taxa_names(exp, level=slice(0, level))
+            # slice at level, so that exp=level-1 (otherwise exp = true label,
+            # not novel taxa label)
+        p, r, f, s = prf(exp, obs, average=avg, labels=lab(exp, obs, level))
+    elif test_type == 'cross-validated':
+        # initialize p/r/f as lists of 0s, representing each taxonomic level.
+        p, r, f = [0] * 7, [0] * 7, [0] * 7
+        # iterate over multiple taxonomic levels
+        for level in l_range:
+            _obs = extract_taxa_names(obs, level=slice(0, level+1))
+            _exp = extract_taxa_names(exp, level=slice(0, level+1))
+            # Here use level+1 to slice actual level
+            p[level], r[level], f[level], s = prf(_exp, _obs, average='micro',
+                                                  labels=lab(_exp, _obs,
+                                                  level+1))
+    else:
+        print('FAIL: test_type must == "novel-taxa" or "cross-validated"')
+
+    return p, r, f
+
+
 def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
+                                         summary_fp, test_type='novel-taxa'):
+    '''Input glob of novel taxa results, receive a summary of accuracy results.
+    results_dirs = list or glob of novel taxa observed results in format:
+                    precomputed_results_dir/dataset_id/method_id/params_id/
+    expected_results_dir = directory containing expected novel-taxa results in
+                    format:
+                    expected_results_dir/dataset_id/method_id/params_id/
+    summary_fp = filepath to contain summary of results
+    test_type = 'novel-taxa' or 'cross-validated'
+
+    Returns results as df, in addition to printing summary_fp
+    '''
+    results = []
+
+    for results_dir in results_dirs:
+        fields = results_dir.split(sep)
+        dataset_id, method_id, params_id = fields[-3], fields[-2], fields[-1]
+
+        if test_type == 'novel-taxa':
+            index = dataset_id.split('-L')[0]
+            level = int(dataset_id.split('-')[2].lstrip('L').strip())
+            iteration = dataset_id.split('iter')[1]
+        elif test_type == 'cross-validated':
+            index, iteration = dataset_id.split('-iter')
+            level = 6
+
+        # import observed and expected taxonomies to list; order both by ID
+        obs_fp = join(results_dir, 'query_tax_assignments.txt')
+        exp_fp = join(expected_results_dir, dataset_id, 'query_taxa.tsv')
+        exp_taxa = load_taxa(exp_fp, level=slice(0, 7))
+        obs_taxa = load_taxa(obs_fp, level=slice(0, 7))
+
+        # Exit if obs_taxa and exp_taxa are not same length
+        if len(obs_taxa) != len(exp_taxa):
+            exit('''FAIL: Lengths of expected and observed taxa do not match.
+                 Check inputs: {0}, {1}'''.format(obs_fp, exp_fp))
+
+        p, r, f = compute_prf(exp_taxa, obs_taxa, test_type=test_type,
+                              level=level)
+
+        # Create empty list of levels at which first mismatch occurs
+        mismatch_level_list = [0] * 8
+        log = ['dataset\tlevel\titeration\tmethod\tparameters\
+               \tobserved_taxonomy\texpected_taxonomy\tresult\tmismatch_level\
+               \tPrecision\tRecall\tF-measure']
+
+        # loop through observations, store results to counter
+        record_counter = Counter()
+        for obs, exp in zip(obs_taxa, exp_taxa):
+            # access "expected taxonomy"
+            o = obs.split(';')
+            e = exp.split(';')
+
+            # Find shallowest level of mismatch
+            mismatch_level = find_last_common_ancestor(o, e)
+            mismatch_level_list[mismatch_level] += 1
+
+            # evaluate novel taxa classification
+            if test_type == 'novel-taxa':
+                result = evaluate_novel_taxa_classification(o, e, level)
+
+            elif test_type == 'cross-validated':
+                result = evaluate_cross_validated_classification(o, e)
+
+            record_counter.update({'line_count': 1})
+            record_counter.update({result: 1})
+            log.append('\t'.join(map(str, [index, level, iteration,
+                                           method_id, params_id,
+                                           obs, exp, result,
+                                           mismatch_level, p, r, f])))
+
+        # Create log file
+        log_fp = join(results_dir, 'classification_accuracy_log.tsv')
+        export_list_to_file(log, log_fp)
+
+        # tally score ratios
+        match_ratio = count_records(record_counter, 'match', 'line_count')
+        overclass = count_records(record_counter, 'overclassification',
+                                  'line_count')
+        underclass = count_records(record_counter, 'underclassification',
+                                   'line_count')
+        misclass = count_records(record_counter, 'misclassification',
+                                 'line_count')
+
+        # add everything to results
+        results.append((index, level, iteration, method_id, params_id,
+                        match_ratio, overclass, underclass, misclass,
+                        mismatch_level_list, p, r, f))
+
+    # send to dataframe, write to summary_fp
+    result = pd.DataFrame(results, columns=["Dataset", "level", "iteration",
+                                            "Method", "Parameters",
+                                            "match_ratio",
+                                            "overclassification_ratio",
+                                            "underclassification_ratio",
+                                            "misclassification_ratio",
+                                            "mismatch_level_list", "Precision",
+                                            "Recall", "F-measure"])
+    result.to_csv(summary_fp)
+    return result
+
+
+def novel_taxa_classification_evaluation_old(results_dirs, expected_results_dir,
                                          summary_fp, test_type='novel-taxa'):
     '''Input glob of novel taxa results, receive a summary of accuracy results.
     results_dirs = list or glob of novel taxa observed results in format:
@@ -630,15 +822,16 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
     return result
 
 
-def extract_per_level_accuracy(df, column='mismatch_level_list'):
+def extract_per_level_accuracy(df, columns=['Precision', 'Recall', 'F-measure',
+                                            'mismatch_level_list']):
     '''Generate new pandas dataframe, containing match ratios for taxonomic
     assignments at each taxonomic level. Extracts mismatch_level_list from a
     dataframe and splits this into separate df entries for plotting.
 
     df: dataframe
         pandas dataframe
-    column: str
-        column name containing mismatch_level_list or other list to be
+    column: list
+        column names containing mismatch_level_list or other lists to be
         separated into multiple dataframe entries for plotting.
 
         mismatch_level_list reports mismatches at each level of taxonomic
@@ -651,100 +844,42 @@ def extract_per_level_accuracy(df, column='mismatch_level_list'):
     results = []
 
     for index, data in df.iterrows():
-        # If using precomputed results, mismatch_level_list is imported as
-        # string, hence must be converted back to list of integers.
-        if isinstance(data[column], str):
-            mismatch_list = list(map(int, data[column].strip('[]').split(',')))
-        else:
-            mismatch_list = data[column]
-        line_count = sum(mismatch_list)
         for level in range(1, 7):
-            cumulative_mismatches = sum(mismatch_list[0:level+1])
-            if cumulative_mismatches < line_count:
-                match_ratio = (line_count - cumulative_mismatches) / line_count
-            else:
-                match_ratio = 0
-            results.append((data['Dataset'],
-                            level,
-                            data['iteration'],
-                            data['Method'],
-                            data['Parameters'],
-                            match_ratio))
+            level_results = []
+            col_names = []
+            for column in columns:
+                # If using precomputed results, mismatch_level_list is imported as
+                # string, hence must be converted back to list of integers.
+                if isinstance(data[column], str):
+                    col = list(map(float, data[column].strip('[]').split(',')))
+                else:
+                    col = data[column]
+                # 'mismatch_level_list' contains level of first mismatch for
+                # each observation; hence, matches at level L = total
+                # observations - cumulative mismatches / total observations
+                if column == 'mismatch_level_list':
+                    linecount = sum(col)
+                    col_names.append("match_ratio")
+                    cumulative_mismatches = sum(col[0:level+1])
+                    if cumulative_mismatches < linecount:
+                        score = (linecount - cumulative_mismatches) / linecount
+                    else:
+                        score = col[0]
+                # Otherwise just extract score at level index.
+                else:
+                    score = col[level]
+                    col_names.append(column)
 
-    result = pd.DataFrame(results, columns=["Dataset",
-                                            "level",
-                                            "iteration",
-                                            "Method",
-                                            "Parameters",
-                                            "match_ratio"
-                                            ])
-    return result
+                # add column score for level to level_results
+                level_results.append(score)
 
+            results.append((data['Dataset'], level, data['iteration'],
+                            data['Method'], data['Parameters'],
+                            *[s for s in level_results]))
 
-def per_level_kruskal_wallis(df,
-                             y_vars,
-                             group_by,
-                             dataset_col='Dataset',
-                             level_name="level",
-                             levelrange=range(1, 7),
-                             alpha=0.05,
-                             pval_correction='fdr_bh'):
-
-    '''Test whether 2+ population medians are different.
-
-    Due to the assumption that H has a chi square distribution, the number of
-    samples in each group must not be too small. A typical rule is that each
-    sample must have at least 5 measurements.
-
-    df = pandas dataframe
-    y_vars = LIST of variables (df column names) to test
-    group_by = df variable to use for separating plot panels with FacetGrid
-    dataset_col = df variable to use for separating individual datasets to test
-    level_name = df variable name that specifies taxonomic level
-    levelrange = range of taxonomic levels to test.
-    alpha = level of alpha significance for test
-    pval_correction = type of p-value correction to use
-    '''
-    dataset_list = []
-    p_list = []
-    for dataset in df[dataset_col].unique():
-        data_subset = df[dataset_col] == dataset
-        for var in y_vars:
-            dataset_list.append((dataset, var))
-            for level in levelrange:
-                level_subset = df[level_name] == level
-
-                # group data by groups
-                group_list = []
-                for group in df[group_by].unique():
-                    group_data = df[group_by] == group
-                    group_results = df[data_subset & level_subset &
-                                       group_data][var]
-                    group_list.append(group_results)
-
-                # kruskal-wallis tests
-                try:
-                    h_stat, p_val = kruskal(*group_list, nan_policy='omit')
-                # default to p=1.0 if all values = 0
-                # this is not technically correct, from the standpoint of p-val
-                # correction below makes p-vals very slightly less significant
-                # than they should be
-                except ValueError:
-                    h_stat, p_val = ('na', 1)  # noqa
-
-                p_list.append(p_val)
-
-    # correct p-values
-    rej, pval_corr, alphas, alphab = multipletests(np.array(p_list),
-                                                   alpha=alpha,
-                                                   method=pval_correction)
-
-    range_len = len([i for i in levelrange])
-    results = [(dataset_list[i][0], dataset_list[i][1],
-                *[pval_corr[i*range_len+n] for n in range(0, range_len)])
-               for i in range(0, len(dataset_list))]
-    result = pd.DataFrame(results, columns=["Dataset", "Variable",
-                                            *[n for n in levelrange]])
+    result = pd.DataFrame(results, columns=["Dataset", "level", "iteration",
+                                            "Method", "Parameters",
+                                            *[s for s in col_names]])
     return result
 
 

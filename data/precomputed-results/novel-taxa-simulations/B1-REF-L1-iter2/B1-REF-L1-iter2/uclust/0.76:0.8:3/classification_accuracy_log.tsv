@@ -1,8 +1,8 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	1	2	uclust	0.76:0.8:3	299518	k__Bacteria; p__Proteobacteria	k__Bacteria; p__Verrucomicrobia	overclassification	1
-B1-REF	1	2	uclust	0.76:0.8:3	344813	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Ruminococcaceae; g__Faecalibacterium; s__prausnitzii	k__Bacteria; p__Chlorobi	overclassification	1
-B1-REF	1	2	uclust	0.76:0.8:3	4471401	Unassigned	k__Bacteria; p__Planctomycetes	underclassification	0
-B1-REF	1	2	uclust	0.76:0.8:3	46167	Unassigned	k__Archaea; p__Crenarchaeota	underclassification	0
-B1-REF	1	2	uclust	0.76:0.8:3	56204	Unassigned	k__Bacteria; p__Nitrospirae	underclassification	0
-B1-REF	1	2	uclust	0.76:0.8:3	3623950	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Thermoanaerobacteraceae; g__Thermoanaerobacter; s__uzonensis	k__Bacteria; p__Dictyoglomi	overclassification	1
-B1-REF	1	2	uclust	0.76:0.8:3	125020	Unassigned	k__Archaea; p__Nanoarchaeota	underclassification	0
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	1	2	uclust	0.76:0.8:3	Unassigned	k__Archaea;p__Nanoarchaeota	underclassification	0	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.76:0.8:3	k__Bacteria;p__Proteobacteria	k__Bacteria;p__Verrucomicrobia	overclassification	1	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.76:0.8:3	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Ruminococcaceae;g__Faecalibacterium;s__prausnitzii	k__Bacteria;p__Chlorobi	overclassification	1	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.76:0.8:3	k__Bacteria;p__Firmicutes;c__Clostridia;o__Thermoanaerobacterales;f__Thermoanaerobacteraceae;g__Thermoanaerobacter;s__uzonensis	k__Bacteria;p__Dictyoglomi	overclassification	1	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.76:0.8:3	Unassigned	k__Bacteria;p__Planctomycetes	underclassification	0	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.76:0.8:3	Unassigned	k__Archaea;p__Crenarchaeota	underclassification	0	0.0	0.0	0.0
+B1-REF	1	2	uclust	0.76:0.8:3	Unassigned	k__Bacteria;p__Nitrospirae	underclassification	0	0.0	0.0	0.0

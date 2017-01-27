@@ -1,0 +1,10 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	1	0	blast	0.001	k__Bacteria;p__Cyanobacteria;c__Nostocophycideae;o__Nostocales;f__Nostocaceae;g__Anabaena;s__cylindrica	k__Bacteria;p__Deferribacteres	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	blast	0.001	k__Bacteria;p__Acidobacteria;c__Acidobacteriia;o__Acidobacteriales;f__Acidobacteriaceae;g__Acidopila;s__rosea	k__Bacteria;p__Chrysiogenetes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	blast	0.001	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Glycomycetaceae;g__Glycomyces;s__harbinensis	k__Bacteria;p__Elusimicrobia	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	blast	0.001	k__Bacteria;p__Acidobacteria;c__Acidobacteriia;o__Acidobacteriales;f__Acidobacteriaceae;g__Acidicapsa;s__ligni	k__Bacteria;p__Fibrobacteres	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	blast	0.001	k__Bacteria;p__Thermi;c__Deinococci;o__Deinococcales;f__Deinococcaceae;g__Deinococcus;s__aquatilis	k__Bacteria;p__Proteobacteria	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	blast	0.001	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Dermabacteraceae;g__Brachybacterium;s__conglomeratum	k__Bacteria;p__Spirochaetes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	blast	0.001	k__Bacteria;p__Cyanobacteria;c__Gloeobacterophycideae;o__Gloeobacterales;f__Gloeobacteraceae;g__Gloeobacter;s__violaceus	k__Bacteria;p__Bacteroidetes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	blast	0.001	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Bifidobacteriales;f__Bifidobacteriaceae;g__Bifidobacterium;s__adolescentis	k__Bacteria;p__Tenericutes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	blast	0.001	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Thermomonosporaceae;g__Actinoallomurus;s__iriomotensis	k__Bacteria;p__Firmicutes	overclassification	1	0.0	0.0	0.0

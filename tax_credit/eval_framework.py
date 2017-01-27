@@ -17,6 +17,7 @@ from random import shuffle
 
 from biom.exception import UnknownIDError, TableException
 from biom import load_table
+from biom.cli.util import write_biom_table
 from numpy import asarray, zeros
 from pylab import scatter, xlabel, ylabel, xlim, ylim
 from scipy.spatial.distance import pdist
@@ -158,12 +159,6 @@ def get_sample_to_top_scores(df, metric, method_param):
             results[(dataset, sid)] = current_results
     results = pd.DataFrame(results).T
     return results
-
-
-def performance_rank_comparisons(df, metric, method_param):
-    #TODO: remove notebook imports of this function
-    # Deleted this function - it's imported but not used anywhere.
-    raise NotImplementedError
 
 
 def find_and_process_result_tables(start_dir,
@@ -342,9 +337,10 @@ def filter_table(table, min_count=0, taxonomy_level=None,
         # there are a sufficient number of taxonomic levels
 
         # We should not filter out taxa, as this incorrectly adjusts fp/fn rate
-        #enough_levels = taxonomy_level is None or \
-        #                (metadata[md_key] is not None and \
-        #                 len(metadata[md_key]) >= taxonomy_level+1)
+        # Table filtering here removed taxa that have insufficient levels
+        enough_levels = taxonomy_level is None or \
+                        (metadata[md_key] is not None and \
+                         len(metadata[md_key]) >= taxonomy_level+1)
         # if filtering to specific taxa, this OTU is assigned to that taxonomy
         allowed_taxa = _taxa_to_keep is None or \
                         id_.startswith(_taxa_to_keep) or \
@@ -352,14 +348,27 @@ def filter_table(table, min_count=0, taxonomy_level=None,
                          ';'.join(metadata[md_key]).startswith(_taxa_to_keep))
         # the count of this observation is at least min_count
         sufficient_count = data_vector.sum() >= min_count
-        return sufficient_count and allowed_taxa
+        return sufficient_count and allowed_taxa and enough_levels
     return table.filter(f, axis='observation', inplace=False)
+
+
+def seek_results(results_dirs):
+    '''Iterate over a list of directories to find results files and pass these
+    to find_and_process_result_tables
+    '''
+    # Confirm that mock results exist and process tables of observations
+    results = []
+    for results_dir in results_dirs:
+        assert exists(results_dir), '''Mock community result directory
+            does not exist: {0}'''.format(results_dir)
+        results += find_and_process_result_tables(results_dir)
+    return results
 
 
 def evaluate_results(results_dirs, expected_results_dir, results_fp,
                      taxonomy_level_range=range(2,7), min_count=0,
-                     taxa_to_keep=None, md_key='taxonomy', new_param_ids={},
-                     results_dirname="mock-community", subsample=False,
+                     taxa_to_keep=None, md_key='taxonomy', new_param_ids=None,
+                     subsample=False,
                      size=10, force=False):
     '''Load observed and expected observations from tax-credit, compute
         precision, recall, F-measure, and correlations, and return results
@@ -367,7 +376,7 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp,
 
         results_dirs: list of directories containing precomputed taxonomy
             assignment results to evaluate. Must be in format:
-                results_dirs/mock_results_dirname/<dataset name>/
+                results_dirs/<dataset name>/
                     <reference name>/<method>/<parameters>/
         expected_results_dir: directory containing expected composition data in
             the structure:
@@ -383,8 +392,6 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp,
         new_param_ids: dictionary of lists of parameters for taxonomy
             classifiers to test. In format:
                 {classifier_name: [params1, params2]}
-        results_dirname: name of directory(s) within results_dirs that contains
-            dataset results to sweep. See results_dirs for path structure.
         subsample: bool
             Randomly subsample results for test runs.
         size: int
@@ -394,15 +401,8 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp,
     '''
 
     # Define the subdirectories where the query mock community data should be
-    mock_results_dirs = [join(results_dir, results_dirname)\
-                         for results_dir in results_dirs]
+    results = seek_results(results_dirs)
 
-    # Confirm that mock results exist and process tables of observations
-    results = []
-    for mock_results_dir in mock_results_dirs:
-        assert exists(mock_results_dir), '''Mock community result directory
-            does not exist: {0}'''.format(mock_results_dir)
-        results += find_and_process_result_tables(mock_results_dir)
     if subsample is True:
         shuffle(results)
         results = results[:size]
@@ -430,26 +430,48 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp,
 
 
 def mount_observations(table_fp, min_count=0, taxonomy_level=6,
-                       taxa_to_keep=None, md_key='taxonomy'):
-    '''load biom table, filter by abundance, collapse taxonomy, return biom'''
+                       taxa_to_keep=None, md_key='taxonomy', normalize=True,
+                       clean_obs_ids=True, filter_obs=True):
+    '''load biom table, filter by abundance, collapse taxonomy, return biom.
+
+    table_fp: path
+        Input biom table.
+    min_count: int
+        Minimum abundance threshold; features detected at lower abundance are
+        removed from table.
+    taxonomy_level: int
+        Taxonomic level at which to collapse table.
+    taxa_to_keep: list of taxonomies to retain, others are removed before
+        evaluation.
+    md_key: str
+        biom observation metadata key on which to collapse and filter.
+    normalize: bool
+        Normalize table to relative abundance across sample rows?
+    clean_obs_ids: bool
+        Remove '[]()' characters from observation ids? (these are removed from
+        the ref db during filtering/cleaning steps, and should be removed from
+        expected taxonomy files to avoid mismatches).
+    filter_obs: bool
+        Filter observations? filter_table will remove observations if taxonomy
+        strings are shorter than taxonomic_level, count is less than min_count,
+        or observation is not included in taxa_to_keep.
+    '''
 
     try:
         table = load_table(table_fp)
     except ValueError:
         raise ValueError("Couldn't parse BIOM table: {0}".format(table_fp))
 
-    if min_count > 0 and taxa_to_keep is not None:
+    if filter_obs is True and min_count > 0 and taxa_to_keep is not None:
         try:
-            table = filter_table(table, min_count, taxonomy_level, taxa_to_keep,
-                                 md_key=md_key)
+            table = filter_table(table, min_count, taxonomy_level,
+                                 taxa_to_keep, md_key=md_key)
         except TableException:
             # if all data is filtered out, move on to the next table
-            #continue
             pass
+
         except TypeError:
-            # missing taxonomic information in the table
-            print("Missing taxonomic information in table {0}".format(table_fp))
-            #continue
+            print("Missing taxonomic information in table " + table_fp)
 
         if table.is_empty():
             raise ValueError("Table is empty after filtering at"
@@ -465,13 +487,17 @@ def mount_observations(table_fp, min_count=0, taxonomy_level=6,
                              " {0}".format(table_fp))
     except TypeError:
         raise TypeError("Failure to collapse taxonomy in: {0}".format(table_fp))
+
+    if normalize is True:
+        table.norm(axis='sample')
+
     return table
 
 
 def compute_mock_results(result_tables, expected_table_lookup, results_fp,
                          taxonomy_level_range=range(2,7), min_count=0,
                          taxa_to_keep=None, md_key='taxonomy',
-                         new_param_ids={}):
+                         new_param_ids=None):
     """ Compute precision, recall, and f-measure for result_tables at
     taxonomy_level
 
@@ -486,6 +512,7 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
 
     """
     results = []
+    new_param_ids = {}
     param_data = {}
     param_ids = {'rdp': ['confidence'], 'blast': ['e-value'],
                  'sortmerna': ['min consensus fraction', 'similarity',
@@ -502,8 +529,7 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
 
         # Find expected results
         try:
-            expected_table_fp = \
-                expected_table_lookup[dataset_id][reference_id]
+            expected_table_fp = expected_table_lookup[dataset_id][reference_id]
         except KeyError:
             raise KeyError("Can't find expected table for \
                             ({0}, {1}).".format(dataset_id, reference_id))
@@ -512,9 +538,10 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
             ## parse the expected table (unless taxonomy_level is specified,
             ## this should be collapsed on level 6 taxonomy)
             expected_table = mount_observations(expected_table_fp,
-                                                min_count=min_count,
+                                                min_count=0,
                                                 taxonomy_level=taxonomy_level,
-                                                taxa_to_keep=taxa_to_keep)
+                                                taxa_to_keep=taxa_to_keep,
+                                                filter_obs=False)
 
             ## parse the actual table and collapse it at the specified
             ## taxonomic level
@@ -574,23 +601,113 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
     return result
 
 
-def _is_first(df):
+def add_sample_metadata_to_table(table_fp, dataset_id, reference_id,
+                                 min_count=0, taxonomy_level=6,
+                                 taxa_to_keep=None, md_key='taxonomy',
+                                 method='expected', params='expected'):
+    '''load biom table and populate with sample metadata, then change sample
+    names.
+    '''
+
+    table = mount_observations(table_fp, min_count=min_count,
+                               taxonomy_level=taxonomy_level,
+                               taxa_to_keep=taxa_to_keep, md_key=md_key)
+    metadata = {s_id : {'sample_id': s_id,
+                        'dataset' : dataset_id,
+                        'reference' : reference_id,
+                        'method' : method,
+                        'params' : params}
+                for s_id in table.ids(axis='sample')}
+    table.add_metadata(metadata, 'sample')
+    new_ids = {s_id: '_'.join([method, params, s_id])
+               for s_id in table.ids(axis='sample')}
+    return table.update_ids(new_ids, axis='sample')
+
+
+def merge_expected_and_observed_tables(expected_results_dir, results_dirs,
+                                       md_key = 'taxonomy', min_count=0,
+                                       taxonomy_level=6, taxa_to_keep=None,
+                                       biom_fp='merged_table.biom',
+                                       force=False):
+    '''For each dataset in expected_results_dir, merge expected and observed
+    taxonomy compositions.
+    '''
+
+    # Find expected tables, add sample metadata
+    expected_table_lookup = get_expected_tables_lookup(expected_results_dir)
+
+    expected_tables = {}
+    for dataset_id, expected_dict in expected_table_lookup.items():
+        expected_tables[dataset_id] = {}
+        for reference_id, expected_table_fp in expected_dict.items():
+            if not exists(join(expected_results_dir, dataset_id,
+                               reference_id, biom_fp)) or force is True:
+                expected_tables[dataset_id][reference_id] = \
+                    add_sample_metadata_to_table(expected_table_fp,
+                                             dataset_id=dataset_id,
+                                             reference_id=reference_id,
+                                             min_count=min_count,
+                                             taxonomy_level=taxonomy_level,
+                                             taxa_to_keep=taxa_to_keep,
+                                             md_key='taxonomy',
+                                             method='expected',
+                                             params='expected')
+
+    # Find observed results tables, add sample metadata
+    result_tables = seek_results(results_dirs)
+
+    for dataset_id, reference_id, method_id, params, actual_table_fp\
+        in result_tables:
+
+        biom_destination = join(expected_results_dir, dataset_id, reference_id,
+                                biom_fp)
+        if not exists(biom_destination) or force is True:
+            try:
+                expected_table_fp = \
+                    expected_table_lookup[dataset_id][reference_id]
+            except KeyError:
+                raise KeyError("Can't find expected table for \
+                                ({0}, {1}).".format(dataset_id, reference_id))
+
+            #import expected table, amend sample ids
+            actual_table = \
+                add_sample_metadata_to_table(actual_table_fp,
+                                             dataset_id=dataset_id,
+                                             reference_id=reference_id,
+                                             min_count=min_count,
+                                             taxonomy_level=taxonomy_level,
+                                             taxa_to_keep=taxa_to_keep,
+                                             md_key='taxonomy',
+                                             method=method_id,
+                                             params=params)
+
+            # merge expected and resutls tables
+            expected_tables[dataset_id][reference_id] = \
+                expected_tables[dataset_id][reference_id].merge(actual_table)
+
+            # write biom table to destination
+            write_biom_table(expected_tables[dataset_id][reference_id],
+                             'hdf5', biom_destination)
+
+
+def _is_first(df, test_field='Method'):
     """used to filter df to contain only one row per method"""
     observed = set()
     result = []
-    for e in df['Method']:
+    for e in df[test_field]:
         result.append(e not in observed)
         observed.add(e)
     return result
 
 
 def method_by_dataset(df, dataset, sort_field, display_fields,
-                      group_by = 'Dataset'):
+                      group_by='Dataset', test_field='Method'):
     """ Generate summary of best parameter set for each method for single df
     """
     dataset_df = df.loc[df[group_by] == dataset]
     sorted_dataset_df = dataset_df.sort_values(by=sort_field, ascending=False)
-    filtered_dataset_df = sorted_dataset_df[_is_first(sorted_dataset_df)]
+    filtered_dataset_df = sorted_dataset_df[_is_first(sorted_dataset_df,
+                                                      test_field)]
     return filtered_dataset_df.ix[:,display_fields]
 
 method_by_dataset_a1 = partial(method_by_dataset,
@@ -615,6 +732,48 @@ def method_by_dataset_iterations(df, dataset, parameters, sort_field,
     result = result.loc[np.logical_and(m, p)]
     result = result.ix[:,display_fields].groupby('Method')
     return result.mean().sort_values(by=sort_field, ascending=False)
+
+
+def method_by_reference_comparison(df, group_by='Reference', dataset='Dataset',
+                                   level_range=range(4,7), lv="Level",
+                                   sort_field="F-measure",
+                                   display_fields=("Reference", "Level",
+                                                   "Method", "Parameters",
+                                                   "Precision", "Recall",
+                                                   "F-measure")):
+    '''Compute mean performance for a given reference/method/parameter
+    combination across multiple taxonomic levels.
+
+    df: pandas df
+    group_by: str
+        Category in df. Means will be averaged across these groups.
+    dataset: str
+        Category in df. df will be separated by datasets prior to computing
+        means.
+    level_range: range
+        Taxonomy levels to iterate.
+    lv: str
+        Category in df that contains taxonomic level information.
+    sort_field: str
+        Category in df. Results within each group/level combination will be
+        sorted by this field.
+    display_fields: tuple
+        Categories in df that should be printed to results table.
+    '''
+
+    rank = pd.DataFrame()
+    for ds in df[dataset].unique():
+        df1 = df[df[dataset] == ds]
+        for level in level_range:
+            for group in df1[group_by].unique():
+                rank = pd.concat([rank,
+                                  method_by_dataset(df1[df1[lv] == level],
+                                                    group_by=group_by,
+                                                    dataset=group,
+                                                    sort_field=sort_field,
+                                                    display_fields=\
+                                                    display_fields)])
+    return rank
 
 
 def get_actual_and_expected_vectors(actual_table,

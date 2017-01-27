@@ -1,19 +1,19 @@
-dataset	level	iteration	method	parameters	seq_id               	observed_taxonomy	expected_taxonomy	result	mismatch_level
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	4476741	Unassigned	k__Bacteria; p__Chloroflexi; c__Thermobacula	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	97840	Unassigned	k__Bacteria; p__Cyanobacteria; c__Gloeobacterophycideae	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	2621281	Unassigned	k__Bacteria; p__Bacteroidetes; c__Flavobacteriia	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	2884179	Unassigned	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	4445049	Unassigned	k__Archaea; p__Euryarchaeota; c__Thermoplasmata	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	1145893	Unassigned	k__Bacteria; p__Bacteroidetes; c__Cytophagia	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	347913	Unassigned	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	1131014	Unassigned	k__Bacteria; p__Actinobacteria; c__Nitriliruptoria	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	38566	Unassigned	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	89370	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Peptococcaceae; g__Desulfosporosinus; s__meridiei	k__Bacteria; p__Firmicutes; c__Bacilli	overclassification	2
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	295454	Unassigned	k__Bacteria; p__Verrucomicrobia; c__Methylacidiphilae	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	312765	Unassigned	k__Bacteria; p__Planctomycetes; c__Brocadiae	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	545968	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Enterobacteriales; f__Enterobacteriaceae; g__Serratia; s__marcescens	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria	overclassification	2
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	439	Unassigned	k__Archaea; p__Euryarchaeota; c__Methanomicrobia	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	273661	Unassigned	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	4321924	Unassigned	k__Bacteria; p__Actinobacteria; c__Actinobacteria	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	239922	Unassigned	k__Archaea; p__Euryarchaeota; c__Methanopyri	underclassification	0
-B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	672322	Unassigned	k__Bacteria; p__Spirochaetes; c__Brevinematae	underclassification	0
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Actinobacteria;c__Nitriliruptoria	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Bacteroidetes;c__Cytophagia	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Archaea;p__Euryarchaeota;c__Methanopyri	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Bacteroidetes;c__Flavobacteriia	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Proteobacteria;c__Epsilonproteobacteria	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Cyanobacteria;c__Oscillatoriophycideae	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Verrucomicrobia;c__Methylacidiphilae	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Planctomycetes;c__Brocadiae	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Archaea;p__Crenarchaeota;c__Thaumarchaeota	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Actinobacteria;c__Actinobacteria	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Archaea;p__Euryarchaeota;c__Methanomicrobia	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Archaea;p__Euryarchaeota;c__Thermoplasmata	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Chloroflexi;c__Thermobacula	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacteriales;f__Enterobacteriaceae;g__Serratia;s__marcescens	k__Bacteria;p__Proteobacteria;c__Betaproteobacteria	overclassification	2	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Spirochaetes;c__Brevinematae	underclassification	0	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Peptococcaceae;g__Desulfosporosinus;s__meridiei	k__Bacteria;p__Firmicutes;c__Bacilli	overclassification	2	0.0	0.0	0.0
+B1-REF	2	0	sortmerna	1.0:0.9:5:0.9:1.0	Unassigned	k__Bacteria;p__Cyanobacteria;c__Gloeobacterophycideae	underclassification	0	0.0	0.0	0.0
