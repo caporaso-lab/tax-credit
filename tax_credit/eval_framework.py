@@ -306,7 +306,7 @@ def seek_results(results_dirs):
 def evaluate_results(results_dirs, expected_results_dir, results_fp,
                      taxonomy_level_range=range(2, 7), min_count=0,
                      taxa_to_keep=None, md_key='taxonomy', new_param_ids=None,
-                     subsample=False,
+                     subsample=False, filename_pattern='table.L{0}-taxa.biom',
                      size=10, force=False):
     '''Load observed and expected observations from tax-credit, compute
         precision, recall, F-measure, and correlations, and return results
@@ -346,7 +346,8 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp,
         results = results[:size]
 
     # Process tables of expected taxonomy composition
-    expected_tables = get_expected_tables_lookup(expected_results_dir)
+    expected_tables = get_expected_tables_lookup(
+        expected_results_dir, filename_pattern=filename_pattern)
 
     # Compute accuracy results OR read in pre-existing mock_results_fp
     if not exists(results_fp) or force is True:
@@ -564,13 +565,15 @@ def merge_expected_and_observed_tables(expected_results_dir, results_dirs,
                                        md_key='taxonomy', min_count=0,
                                        taxonomy_level=6, taxa_to_keep=None,
                                        biom_fp='merged_table.biom',
+                                       filename_pattern='table.L{0}-taxa.biom',
                                        force=False):
     '''For each dataset in expected_results_dir, merge expected and observed
     taxonomy compositions.
     '''
 
     # Find expected tables, add sample metadata
-    expected_table_lookup = get_expected_tables_lookup(expected_results_dir)
+    expected_table_lookup = get_expected_tables_lookup(
+        expected_results_dir, filename_pattern=filename_pattern)
 
     expected_tables = {}
     for dataset_id, expected_dict in expected_table_lookup.items():

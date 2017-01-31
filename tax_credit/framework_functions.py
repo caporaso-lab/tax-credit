@@ -246,9 +246,9 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations):
                                      iterations, novel_dir)
 
         # Generate simulated community query and reference seqs/taxa pairs
-        simulated_dir = join(data_dir, 'simulated-community')
-        generate_simulated_communities(read_taxa, simulated_reads_fp, index,
-                                       iterations, simulated_dir)
+        simulated_dir = join(data_dir, 'cross-validated')
+        generate_crossvalidated_sequences(read_taxa, simulated_reads_fp, index,
+                                          iterations, simulated_dir)
 
 
 def generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
@@ -313,8 +313,8 @@ def generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
                              novel_query_taxonomy_fp, keep=True)
 
 
-def generate_simulated_communities(read_taxa, simulated_reads_fp, index,
-                                   iterations, data_dir):
+def generate_crossvalidated_sequences(read_taxa, simulated_reads_fp, index,
+                                      iterations, data_dir):
     '''Generates simulated community files (fasta and taxonomy) as subsets of
     simulated amplicons/taxa for cross-validated taxonomy assignment. Selects
     duplicated taxa names, evenly allocates these among subsets as query taxa
@@ -350,11 +350,11 @@ def generate_simulated_communities(read_taxa, simulated_reads_fp, index,
                          keep=True)
 
 
-def test_simulated_communities(dataframe, data_dir, iterations):
+def test_crossvalidated_sequences(dataframe, data_dir, iterations):
     '''confirm that test (query) taxa IDs are not in training (ref) set, but
     that all taxonomy strings are.
     '''
-    simulated_dir = join(data_dir, 'simulated-community')
+    simulated_dir = join(data_dir, 'cross-validated')
     for index, data in dataframe.iterrows():
         for iteration in range(0, iterations):
             db_iter_dir = join(simulated_dir, '{0}-iter{1}'.format(index,

@@ -16,6 +16,8 @@ from collections import OrderedDict, Counter
 from random import shuffle, choice
 from os.path import isfile, exists
 from os import path, makedirs
+from biom import load_table
+from biom.cli.util import write_biom_table
 
 
 # Sniff object: if file import to list, if list returns list, else error
@@ -122,7 +124,7 @@ def string_search(infile, pattern, discard=False, field=slice(None),
     [file ->] list -> list
     '''
 
-    # sniff filtermap and import to list if file
+    # sniff infile and import to list if file
     search_list = accept_list_or_file(infile)
 
     # Keep or discard lines matching pattern
@@ -310,3 +312,28 @@ def extract_taxa_names(infile, level=slice(6, 7), l_delim=';', field=None,
     name_list = [l_delim.join(line.split(l_delim)[level]).strip()
                  for line in line_list]
     return name_list
+
+
+def compile_reference_taxa(ref_taxa_fp, delim='\t'):
+    '''Extract taxa names as dict {taxon: id}. Accepts list or path as input'''
+    ref_taxa = {}
+    ref = accept_list_or_file(ref_taxa_fp)
+    for l in ref:
+        i, t = l.strip().split(delim)
+        if t not in ref_taxa.keys():
+            ref_taxa[t] = [i]
+        else:
+            ref_taxa[t].append(i)
+    return ref_taxa
+
+
+def convert_tsv_to_biom(infile, outfile, transpose=True,
+                        obs_ids_to_metadata=False):
+    table = load_table(infile)
+    if transpose is True:
+        table = table.transpose()
+    if obs_ids_to_metadata is True:
+        metadata = {sid: {'taxonomy': sid.split(';')}
+                    for sid in table.ids(axis='observation')}
+        table.add_metadata(metadata, 'observation')
+    write_biom_table(table, 'hdf5', outfile)
