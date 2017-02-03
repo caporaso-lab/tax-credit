@@ -13,7 +13,7 @@ from unittest import TestCase, main
 import pandas as pd
 from shutil import rmtree
 from os import remove, makedirs
-from os.path import exists
+from os.path import exists, join
 from tax_credit.framework_functions import (generate_simulated_datasets,
                                             find_last_common_ancestor,
                                             novel_taxa_classification_evaluation,
@@ -23,21 +23,27 @@ from tax_credit.taxa_manipulator import (import_to_list,
                                          compile_reference_taxa,
                                          extract_taxa_names)
 
-
 class EvalFrameworkTests(TestCase):
     @classmethod
     def setUpClass(self):
-        if not exists('test_tmp/B1-REF-L6-iter0/B1-REF-L6-iter0/method1/param1/'):
-            makedirs('test_tmp/B1-REF-L6-iter0/B1-REF-L6-iter0/method1/param1/')
-        with open('test_tmp/ref1.txt', 'w') as out:
+        self.tmpdir = 'test_tmp'
+        name = 'B1-REF-L6-iter0'
+        self.query_fp = join(self.tmpdir, name, 'query_taxa.tsv')
+        self.paramdir = join(self.tmpdir, name, name, 'method1', 'param1')
+        self.obs_taxa_fp = join(self.paramdir, 'query_tax_assignments.txt')
+        refpath = join(self.tmpdir, 'ref1.txt')
+        self.cvdir = join(self.tmpdir, 'cross-validated')
+        self.ntdir = join(self.tmpdir, 'novel-taxa-simulations')
+        if not exists(self.paramdir):
+            makedirs(self.paramdir)
+        with open(refpath, 'w') as out:
             out.write(ref1)
-        with open('test_tmp/B1-REF-L6-iter0/query_taxa.tsv', 'w') as out:
+        with open(self.query_fp, 'w') as out:
             out.write(taxa1)
-        with open('test_tmp/B1-REF-L6-iter0/B1-REF-L6-iter0/method1/param1/query_tax_assignments.txt', 'w') as out:
+        with open(self.obs_taxa_fp, 'w') as out:
             out.write(taxa2)
 
-        self.databases = {'B1-REF': ['test_tmp/ref1.txt',
-                                     'test_tmp/B1-REF-L6-iter0/query_taxa.tsv',
+        self.databases = {'B1-REF': [refpath, self.query_fp,
                                      "ref1", "GTGCCAGCMGCCGCGGTAA",
                                      "ATTAGAWACCCBDGTAGTCC", "515f", "806r"]}
         self.ref_data = pd.DataFrame.from_dict(self.databases, orient="index")
@@ -53,29 +59,40 @@ class EvalFrameworkTests(TestCase):
         self.exp_m = [0, 0, 0, 1, 1, 1, 3, 2]
 
     def test_generate_simulated_datasets(self):
-        generate_simulated_datasets(self.ref_data, 'test_tmp', 100, 2, range(6, 5, -1))
-        # cross-validated should include only acidilacti and brevis, one rep in both query and ref
-        cv_taxa = set(import_to_list('test_tmp/cross-validated/B1-REF-iter0/query_taxa.tsv', field=1) +
-                      import_to_list('test_tmp/cross-validated/B1-REF-iter1/query_taxa.tsv', field=1))
-        cv_ref = set(import_to_list('test_tmp/cross-validated/B1-REF-iter0/ref_taxa.tsv', field=1) +
-                     import_to_list('test_tmp/cross-validated/B1-REF-iter1/ref_taxa.tsv', field=1))
+        generate_simulated_datasets(
+            self.ref_data, 'test_tmp', 100, 2, range(6, 5, -1))
+        # cross-validated should include only acidilacti and brevis,
+        # one rep in both query and ref
+        cv_taxa = set(import_to_list(join(self.cvdir,
+            'B1-REF-iter0/query_taxa.tsv'), field=1) +
+            import_to_list(join(self.cvdir,
+            'B1-REF-iter1/query_taxa.tsv'), field=1))
+        cv_ref = set(import_to_list(join(self.cvdir,
+            'B1-REF-iter0/ref_taxa.tsv'), field=1) +
+            import_to_list(join(self.cvdir,
+            'B1-REF-iter1/ref_taxa.tsv'), field=1))
         self.assertEqual(cv_taxa, {'k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Lactobacillaceae; g__Lactobacillus; s__brevis',
                                    'k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Lactobacillaceae; g__Pediococcus; s__acidilactici'})
         self.assertEqual(cv_taxa & cv_ref, {'k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Lactobacillaceae; g__Lactobacillus; s__brevis',
                                             'k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Lactobacillaceae; g__Pediococcus; s__acidilactici'})
         # confirm that query seq IDs are not in ref for cross-val
         for i in [0, 1]:
-            # test that cross-validated queries have pair in ref, but keys do not match
-            query_taxa = import_taxonomy_to_dict('test_tmp/cross-validated/B1-REF-iter{0}/query_taxa.tsv'.format(i))
-            ref_taxa = import_taxonomy_to_dict('test_tmp/cross-validated/B1-REF-iter{0}/ref_taxa.tsv'.format(i))
+            # test that cross-validated queries have pair in ref,
+            # but keys do not match
+            query_taxa = import_taxonomy_to_dict(
+                join(self.cvdir, 'B1-REF-iter{0}/query_taxa.tsv'.format(i)))
+            ref_taxa = import_taxonomy_to_dict(
+                join(self.cvdir, 'B1-REF-iter{0}/ref_taxa.tsv'.format(i)))
             for key, value in query_taxa.items():
                 # seq ID keys do not match
                 self.assertNotIn(key, ref_taxa)
                 # but matching taxonomy is present for each query taxon.
                 self.assertIn(value, ref_taxa.values())
             # test that novel-taxa queries have no match in ref
-            query_taxa = import_taxonomy_to_dict('test_tmp/novel-taxa-simulations/B1-REF-L6-iter{0}/query_taxa.tsv'.format(i))
-            ref_taxa = import_taxonomy_to_dict('test_tmp/novel-taxa-simulations/B1-REF-L6-iter{0}/ref_taxa.tsv'.format(i))
+            query_taxa = import_taxonomy_to_dict(
+                join(self.ntdir, 'B1-REF-L6-iter{0}/query_taxa.tsv'.format(i)))
+            ref_taxa = import_taxonomy_to_dict(
+                join(self.ntdir, 'B1-REF-L6-iter{0}/ref_taxa.tsv'.format(i)))
             taxa = [t.split(';')[5] for t in ref_taxa.values()]
             for key, value in query_taxa.items():
                 self.assertNotIn(key, ref_taxa)
@@ -83,8 +100,8 @@ class EvalFrameworkTests(TestCase):
                 self.assertIn(value.split(';')[5], taxa)
 
     def test_find_last_common_ancestor(self):
-        taxa1 = import_to_list('test_tmp/B1-REF-L6-iter0/query_taxa.tsv')
-        taxa2 = import_to_list('test_tmp/B1-REF-L6-iter0/B1-REF-L6-iter0/method1/param1/query_tax_assignments.txt')
+        taxa1 = import_to_list(self.query_fp)
+        taxa2 = import_to_list(self.obs_taxa_fp)
         t1 = extract_taxa_names(taxa1, level=slice(None), field=1)
         t2 = extract_taxa_names(taxa2, level=slice(None), field=1)
         for i, n in zip(range(8), [7, 6, 5, 4, 7, 3, 6, 6]):
@@ -94,8 +111,8 @@ class EvalFrameworkTests(TestCase):
     def test_novel_taxa_classification_evaluation(self):
         # test novel taxa evaluation
         results = novel_taxa_classification_evaluation(
-            ['test_tmp/B1-REF-L6-iter0/B1-REF-L6-iter0/method1/param1'],
-            'test_tmp', 'test_tmp/summary.txt', test_type='novel-taxa')
+            [self.paramdir], self.tmpdir, join(self.tmpdir, 'summary.txt'),
+            test_type='novel-taxa')
         self.assertEqual(results.iloc[0]['Dataset'], 'B1-REF')
         self.assertEqual(int(results.iloc[0]['level']), 6)
         self.assertEqual(int(results.iloc[0]['iteration']), 0)
@@ -111,8 +128,8 @@ class EvalFrameworkTests(TestCase):
         self.assertEqual(results.iloc[0]['mismatch_level_list'], self.exp_m)
         # test cross-validated evaluation
         results = novel_taxa_classification_evaluation(
-            ['test_tmp/B1-REF-L6-iter0/B1-REF-L6-iter0/method1/param1'],
-            'test_tmp', 'test_tmp/summary.txt', test_type='cross-validated')
+            [self.paramdir], self.tmpdir, join(self.tmpdir, 'summary.txt'),
+            test_type='cross-validated')
         self.assertEqual(results.iloc[0]['Dataset'], 'B1-REF-L6')
         self.assertEqual(int(results.iloc[0]['iteration']), 0)
         self.assertEqual(results.iloc[0]['Method'], 'method1')
@@ -128,8 +145,8 @@ class EvalFrameworkTests(TestCase):
 
     def test_extract_per_level_accuracy(self):
         results = novel_taxa_classification_evaluation(
-            ['test_tmp/B1-REF-L6-iter0/B1-REF-L6-iter0/method1/param1'],
-            'test_tmp', 'test_tmp/summary.txt', test_type='cross-validated')
+            [self.paramdir], self.tmpdir, join(self.tmpdir, 'summary.txt'),
+            test_type='cross-validated')
         pla = extract_per_level_accuracy(results)
         # confirm that method/dataset data propagate properly
         self.assertEqual(pla['Dataset'].unique(), ['B1-REF-L6'])
@@ -146,7 +163,7 @@ class EvalFrameworkTests(TestCase):
 
     @classmethod
     def tearDownClass(self):
-        rmtree('test_tmp/')
+        rmtree(self.tmpdir)
 
 
 

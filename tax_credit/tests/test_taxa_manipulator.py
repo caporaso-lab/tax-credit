@@ -33,23 +33,22 @@ class EvalFrameworkTests(TestCase):
         self.table3 = table3.split('\n')
 
     def test_string_search(self):
-        self.assertEqual(string_search(self.table1, '203525'), op11)
+        self.assertEqual(string_search(self.table1, '203525'), [op11])
         self.assertEqual(string_search(self.table1, '229854|367523|239330',
-                                       discard=True), op11)
-        self.assertEqual(string_search(self.table1, 'OP11-1'), op11)
-        self.assertEqual(string_search(self.table1, 'OP11-1'), op11)
+                                       discard=True), [op11])
+        self.assertEqual(string_search(self.table1, 'OP11-1'), [op11])
+        self.assertEqual(string_search(self.table1, 'OP11-1'), [op11])
 
     def test_unique_lines(self):
         self.assertEqual(unique_lines(self.table2), self.table1)
-        self.assertEqual(unique_lines(self.table2, 'u'), op11)
+        self.assertEqual(unique_lines(self.table2, 'u'), [op11])
         self.assertEqual(unique_lines(self.table2, 'u', field=1,
-                                      printfield=True),
-            ['k__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__'])
+                                      printfield=True), [op11_t])
         self.assertEqual(set(unique_lines(self.table2, 'd')), set(self.table3))
 
     def test_trim_taxonomy_strings(self):
-        self.assertEqual(trim_taxonomy_strings(op11, level=6), op11)
-        self.assertEqual(trim_taxonomy_strings(op11, level=0),
+        self.assertEqual(trim_taxonomy_strings([op11], level=6), [op11])
+        self.assertEqual(trim_taxonomy_strings([op11], level=0),
             ['203525	k__Bacteria'])
 
     def test_branching_taxa(self):
@@ -61,14 +60,16 @@ class EvalFrameworkTests(TestCase):
                  '239330	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__']))
 
     def test_extract_taxa_names(self):
-        self.assertEqual(extract_taxa_names(self.table1), ['s__', 's__', 's__', 's__'])
-        self.assertEqual(extract_taxa_names(self.table1, level=slice(0, 1), field=1),
+        self.assertEqual(extract_taxa_names(
+            self.table1), ['s__', 's__', 's__', 's__'])
+        self.assertEqual(extract_taxa_names(
+            self.table1, level=slice(0, 1), field=1),
             ['k__Bacteria', 'k__Bacteria', 'k__Bacteria', 'k__Bacteria'])
 
     def test_compile_reference_taxa(self):
-        self.assertEqual(compile_reference_taxa(op11),
-            {'k__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__': ['203525']})
-        self.assertEqual(compile_reference_taxa(self.table1)['k__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__'], ['203525'])
+        self.assertEqual(compile_reference_taxa([op11]), {op11_t: ['203525']})
+        self.assertEqual(compile_reference_taxa(
+            self.table1)[op11_t], ['203525'])
 
     def test_extract_rownames(self):
         self.assertEqual(extract_rownames(self.table1),
@@ -84,7 +85,7 @@ class EvalFrameworkTests(TestCase):
         filter_sequences('seqs1.tmp', 'seqs.tmp', self.table3)
         with open('seqs.tmp', 'r') as sq:
             self.assertEqual(sq.read(), seqs2)
-        filter_sequences('seqs1.tmp', 'seqs.tmp', op11, keep=False)
+        filter_sequences('seqs1.tmp', 'seqs.tmp', [op11], keep=False)
         with open('seqs.tmp', 'r') as sq:
             self.assertEqual(sq.read(), seqs2)
         remove('seqs.tmp')
@@ -99,7 +100,8 @@ class EvalFrameworkTests(TestCase):
         rmtree('test-iter1')
 
 
-op11 = ['203525	k__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__']
+op11 = '203525	k__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__'
+op11_t = 'k__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__'
 
 table1 = """229854	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales; f__Legionellaceae; g__Legionella; s__
 367523	k__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__

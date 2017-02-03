@@ -29,7 +29,8 @@ class EvalFrameworkTests(TestCase):
         self.table2 = Table.from_json(json.load(StringIO(table2)))
         self.table3 = Table.from_json(json.load(StringIO(table3)))
 
-        self.mock_result_table1 = pd.DataFrame.from_csv(StringIO(mock_result_table1))
+        self.mock_result_table1 = pd.DataFrame.from_csv(
+            StringIO(mock_result_table1))
 
     def test_get_sample_to_top_params(self):
         actual = get_sample_to_top_params(self.mock_result_table1, "F-measure")
