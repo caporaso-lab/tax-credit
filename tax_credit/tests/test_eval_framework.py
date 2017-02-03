@@ -14,12 +14,10 @@ import json
 from io import StringIO
 import numpy as np
 import pandas as pd
-from scipy.stats import wilcoxon
 
 from biom import Table
 from tax_credit.eval_framework import (compute_prf,
                                        filter_table,
-                                       get_observed_observation_ids,
                                        get_actual_and_expected_vectors,
                                        get_sample_to_top_params,
                                        parameter_comparisons)

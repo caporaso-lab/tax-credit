@@ -366,9 +366,9 @@ def beta_diversity_pcoa(biom_fp, method="braycurtis", permutations=99, dim=2,
         title = smd_merge['reference'][0]
         labels = ['PC {0} ({1:.2f})'.format(d + 1, pc.proportion_explained[d])
                   for d in range(0, 2)]
-        circle_plot_from_dataframe(smd_merge, "PC1", "PC2", title, color="Color",
+        circle_plot_from_dataframe(smd_merge, "PC1", "PC2", title,
                                    columns=["method", "sample_id", "params"],
-                                   labels=labels)
+                                   color="Color", labels=labels)
     else:
         # skbio pcoa plots
         pcoa_plot_skbio(pc, s_md, col='method')

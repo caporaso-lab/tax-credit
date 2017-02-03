@@ -191,12 +191,17 @@ def seq_count(infile):
     return count
 
 
-def generate_simulated_datasets(dataframe, data_dir, read_length, iterations):
+def generate_simulated_datasets(dataframe, data_dir, read_length, iterations,
+                                levelrange=range(6, 0, -1)):
     '''From a dataframe of sequence reference databases, build training/test
     sets of "novel taxa" queries, taxonomies, and reference seqs/taxonomies.
 
-    dataframe = pandas dataframe
+    dataframe: pandas.DataFrame
     '''
+    if iterations < 2:
+        exit('''FAIL: Must perform two or more iterations for construction of
+             cross-validated datasets.''')
+
     for index, data in dataframe.iterrows():
         db_dir = join(data_dir, 'ref_dbs', data['Reference id'])
         if not exists(db_dir):
@@ -205,6 +210,8 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations):
         # Clean taxonomy/sequences, to remove empty/ambiguous taxonomies
         clean_fasta = join(db_dir, '{0}_clean.fasta'.format(
             basename(splitext(data['Reference file path'])[0])))
+        clean_taxa = join(db_dir, '{0}_clean.tsv'.format(
+            basename(splitext(data['Reference tax path'])[0])))
         if not exists(clean_fasta):
             clean_taxa, clean_fasta = clean_database(
               data['Reference tax path'], data['Reference file path'], db_dir)
@@ -213,9 +220,9 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations):
         primer_pair = '{0}-{1}'.format(data['Fwd primer id'],
                                        data['Rev primer id'])
         base, ext = splitext(clean_fasta)
-        amplicons_fp = join(db_dir, '{0}_{1}{2}'.format(
+        amplicons_fp = join('{0}_{1}{2}'.format(
             base, primer_pair, ext))
-        simulated_reads_fp = join(db_dir, '{0}_{1}_trim{2}{3}'.format(
+        simulated_reads_fp = join('{0}_{1}_trim{2}{3}'.format(
             base, primer_pair, read_length, ext))
 
         # amplicons_fp = join(db_dir, "simulated_amplicons.fna")
@@ -243,7 +250,8 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations):
         # Generate novel query and reference seqs/taxa pairs
         novel_dir = join(data_dir, 'novel-taxa-simulations')
         generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
-                                     iterations, novel_dir)
+                                     iterations, novel_dir,
+                                     levelrange=levelrange)
 
         # Generate simulated community query and reference seqs/taxa pairs
         simulated_dir = join(data_dir, 'cross-validated')
@@ -252,20 +260,30 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations):
 
 
 def generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
-                                 iterations, data_dir):
+                                 iterations, data_dir,
+                                 levelrange=range(6, 0, -1)):
     '''Generate paired query/reference fastas and taxonomies for novel taxa
     analysis, given an input of simulated amplicon taxonomies (read_taxa)
     and fastas (simulated_reads_fp), the index (database) name, # of
     iterations to perform (cross-validated data subsets), the output dir
     (data_dir).
-    read_taxa = list or file of taxonomies corresponding to simulated_reads_fp
-    simulated_reads_fp = simulated amplicon reads (fasta format file)
-    index = reference database name
-    iterations = number of subsets to create
-    data_dir = base output directory to contain simulated datasets
+    read_taxa: list or path
+        list or file of taxonomies corresponding to simulated_reads_fp
+    simulated_reads_fp: path
+        simulated amplicon reads (fasta format file)
+    index: str
+        reference database name
+    iterations: int >= 2
+        number of subsets to create
+    data_dir: path
+        base output directory to contain simulated datasets
     '''
+    if iterations < 2:
+        exit('''FAIL: Must perform two or more iterations for construction of
+             cross-validated datasets.''')
+
     # Remove non-branching taxa
-    for level in range(6, 0, -1):
+    for level in levelrange:
         # Trim taxonomy strings to level X
         expected_taxa = trim_taxonomy_strings(read_taxa, level)
         # sample unique representative taxa
@@ -288,29 +306,28 @@ def generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
         for iteration in range(0, iterations):
             db_iter_dir = join(data_dir, '{0}-iter{1}'.format(basename,
                                                               iteration))
-            novel_query_taxonomy_fp = join(db_iter_dir, 'query_taxa.tsv')
-            novel_query_fp = join(db_iter_dir, 'query.fasta')
-            novel_ref_fp = join(db_iter_dir, 'ref_seqs.fasta')
-            novel_ref_taxonomy_fp = join(db_iter_dir, 'ref_taxa.tsv')
+            query_taxonomy_fp = join(db_iter_dir, 'query_taxa.tsv')
+            query_fp = join(db_iter_dir, 'query.fasta')
+            ref_fp = join(db_iter_dir, 'ref_seqs.fasta')
+            ref_taxonomy_fp = join(db_iter_dir, 'ref_taxa.tsv')
 
             # 1) Create REF TAXONOMY from list of taxonomies that
             #    DO NOT match QUERY taxonomies
             name_list = '^' + '$|^'.join(list(set(extract_taxa_names(
-                novel_query_taxonomy_fp, slice(1, level+1))))) + '$'
-            novel_ref_taxonomy = string_search(read_taxa, name_list,
-                                               discard=True,
-                                               field=slice(1, level+1))
-            export_list_to_file(novel_ref_taxonomy, novel_ref_taxonomy_fp)
+                query_taxonomy_fp, slice(1, level+1), stripchars='')))) + '$'
+            ref_taxonomy = string_search(read_taxa, name_list,
+                                         discard=True, field=slice(1, level+1))
+            export_list_to_file(ref_taxonomy, ref_taxonomy_fp)
 
             # 2) Create REF: Filter ref database to contain only seqs that
             #    match non-matching taxonomy strings
-            filter_sequences(simulated_reads_fp, novel_ref_fp,
-                             novel_ref_taxonomy_fp, keep=True)
+            filter_sequences(simulated_reads_fp, ref_fp,
+                             ref_taxonomy_fp, keep=True)
 
             # 3) Create QUERY: Filter ref database to contain only seqs
             #    that match QUERY TAXONOMY
-            filter_sequences(simulated_reads_fp, novel_query_fp,
-                             novel_query_taxonomy_fp, keep=True)
+            filter_sequences(simulated_reads_fp, query_fp,
+                             query_taxonomy_fp, keep=True)
 
 
 def generate_crossvalidated_sequences(read_taxa, simulated_reads_fp, index,
@@ -320,12 +337,21 @@ def generate_crossvalidated_sequences(read_taxa, simulated_reads_fp, index,
     duplicated taxa names, evenly allocates these among subsets as query taxa
     (test set), generates ref taxa (training set) that do not match query fasta
     IDs, and creates fasta files to match each of these sets.
-    read_taxa = list or file of taxonomies corresponding to simulated_reads_fp
-    simulated_reads_fp = simulated amplicon reads (fasta format file)
-    index = reference database name
-    iterations = number of subsets to create
-    data_dir = base output directory to contain simulated datasets
+    read_taxa: list or path
+        list or file of taxonomies corresponding to simulated_reads_fp
+    simulated_reads_fp: path
+        simulated amplicon reads (fasta format file)
+    index: str
+        reference database name
+    iterations: int >= 2
+        number of subsets to create
+    data_dir: path
+        base output directory to contain simulated datasets
     '''
+    if iterations < 2:
+        exit('''FAIL: Must perform two or more iterations for construction of
+             cross-validated datasets.''')
+
     # Subset amplicons so that taxa are evenly distributed between train/test
     duplicated_taxa = unique_lines(read_taxa, mode='d', field=1)
     stratify_taxonomy_subsets(duplicated_taxa, iterations, data_dir, index,
@@ -370,13 +396,14 @@ def test_crossvalidated_sequences(dataframe, data_dir, iterations):
                     print('missing value: ', value)
 
 
-def test_novel_taxa_datasets(dataframe, data_dir, iterations):
+def test_novel_taxa_datasets(dataframe, data_dir, iterations,
+                             levelrange=range(6, 0, -1)):
     '''confirm that test (query) taxa IDs and taxonomies are not in training
     (ref) set, but sister branch taxa are.
     '''
     novel_dir = join(data_dir, 'novel-taxa-simulations')
     for index, data in dataframe.iterrows():
-        for level in range(6, 0, -1):
+        for level in levelrange:
             for itr in range(0, iterations):
                 db_iter_dir = join(novel_dir, '{0}-L{1}-iter{2}'.format(index,
                                                                         level,
@@ -455,22 +482,27 @@ def evaluate_novel_taxa_classification(obs_taxa, exp_taxa, level):
     misclassification'''
 
     # compare observations at level
-    obs = obs_taxa[level - 1].strip()
-    exp = exp_taxa[level - 1].strip()
+    def lev(t):
+        return t[level - 1].strip()
+    # obs = obs_taxa[level - 1].strip()
+    # exp = exp_taxa[level - 1].strip()
+
     # or at top level of observed
-    obs_top = obs_taxa[level - 1].strip()
-    exp_top = exp_taxa[level - 1].strip()
+    def top(t):
+        return t[len(obs_taxa)-1].strip()
+    # obs_top = obs_taxa[level - 1].strip()
+    # exp_top = exp_taxa[level - 1].strip()
 
     # if observed has same assignment depth as expected-1 and top level match,
     # ==match. len(exp_taxa) - 1 because exp_taxa is actual taxonomy string,
     # L-1 is the actual expected taxonomy string
-    if len(obs_taxa) == len(exp_taxa) - 1 and obs == exp:
+    if len(obs_taxa) == len(exp_taxa) - 1 and lev(obs_taxa) == lev(exp_taxa):
         result = 'match'
     # if deeper and assignemnt at L-1 is correct, count as overclassification
-    elif len(obs_taxa) >= len(exp_taxa) and obs == exp:
+    elif len(obs_taxa) >= len(exp_taxa) and lev(obs_taxa) == lev(exp_taxa):
         result = 'overclassification'
     # if shallower and top-level assign correct, count as underclassification
-    elif (len(obs_taxa) < len(exp_taxa) - 1 and obs_top == exp_top or
+    elif (len(obs_taxa) < len(exp_taxa) - 1 and top(obs_taxa) == top(exp_taxa) or
           obs_taxa[0] == 'Unclassified' or obs_taxa[0] == 'Unassigned'):
         result = 'underclassification'
     # Otherwise, count as misclassification
