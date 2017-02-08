@@ -11,7 +11,6 @@
 
 from unittest import TestCase, main
 import json
-from io import StringIO
 import pandas as pd
 from biom.cli.util import write_biom_table
 from biom import Table
@@ -56,7 +55,7 @@ class EvalFrameworkTests(TestCase):
         # o3    9.0 10.0    11.0    12.0
 
         self.tmpdir = mkdtemp()
-        self.table2 = Table.from_json(json.load(StringIO(self.table2)))
+        self.table2 = Table.from_json(json.loads(self.table2))
         write_biom_table(self.table2, 'hdf5', join(self.tmpdir, 'table2.biom'))
         self.dm, self.s_md = make_distance_matrix(
             join(self.tmpdir, 'table2.biom'), method="braycurtis")

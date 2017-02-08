@@ -11,7 +11,6 @@
 
 from unittest import TestCase, main
 import json
-from io import StringIO
 from biom import Table
 from tax_credit.process_mocks import (amend_biom_taxonomy_ids)
 
@@ -26,7 +25,7 @@ class EvalFrameworkTests(TestCase):
         # k__Bacteria    2.0 0.0 7.0 8.0
         # k__[Fungi]    9.0 10.0    11.0    12.0
 
-        self.table1 = Table.from_json(json.load(StringIO(_table1)))
+        self.table1 = Table.from_json(json.loads(_table1))
 
     def test_amend_biom_taxonomy_ids(self):
         self.assertEqual(set(amend_biom_taxonomy_ids(self.table1,

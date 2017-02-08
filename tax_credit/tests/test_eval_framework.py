@@ -65,9 +65,9 @@ class EvalFrameworkTests(TestCase):
 76,B1,0.594594595,uclust,0.51:0.9:3,0.006571463,0.519167888,0.44,0.916666667,gg_13_8_otus,m1,0.00097195,0.608520351,,,,,,3,0.51,0.9
 """
 
-        self.table1 = Table.from_json(json.load(StringIO(_table1)))
-        self.table2 = Table.from_json(json.load(StringIO(_table2)))
-        self.table3 = Table.from_json(json.load(StringIO(_table3)))
+        self.table1 = Table.from_json(json.loads(_table1))
+        self.table2 = Table.from_json(json.loads(_table2))
+        self.table3 = Table.from_json(json.loads(_table3))
 
         self.mock_result_table1 = pd.DataFrame.from_csv(StringIO(_mock_result_table1))
 
