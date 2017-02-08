@@ -14,8 +14,10 @@ from re import search
 from math import ceil
 from collections import OrderedDict, Counter
 from random import shuffle, choice
-from os.path import isfile, exists, join, basename
+from os.path import isfile, exists
 from os import path, makedirs
+from biom import load_table
+from biom.cli.util import write_biom_table
 
 
 # Sniff object: if file import to list, if list returns list, else error
@@ -47,7 +49,7 @@ def import_to_list(infile, field=None, delim='\t'):
 def import_taxonomy_to_dict(infile):
     ''' taxonomy file -> dict'''
     with open(infile, "r") as inputfile:
-        lines = {line.strip().split('\t')[0] : line.strip().split('\t')[1]\
+        lines = {line.strip().split('\t')[0]: line.strip().split('\t')[1]
                  for line in inputfile}
     return lines
 
@@ -58,14 +60,6 @@ def export_list_to_file(input_list, outfile):
 
     with open(outfile, "w") as printout:
         printout.write('\n'.join(str(v) for v in input_list))
-
-
-def output_list_or_file(listin, outfile):
-    '''return list as list or file'''
-    if outfile is not False:
-        export_list_to_file(listin, outfile)
-    else:
-        return listin
 
 
 def extract_rownames(infile):
@@ -91,8 +85,8 @@ def filter_sequences(infile, outfile, filtermap, keep=True):
     # Loop infile, only keep (or exclude) sequences with matching IDs
     with open(outfile, 'w') as output_fasta:
         for seq in io.read(infile, format='fasta'):
-            if seq.metadata['id'] in id_list and keep is True \
-               or seq.metadata['id'] not in id_list and keep is False:
+            if (seq.metadata['id'] in id_list and keep is True or
+                    seq.metadata['id'] not in id_list and keep is False):
                 seq.write(output_fasta, format='fasta')
 
 
@@ -130,15 +124,15 @@ def string_search(infile, pattern, discard=False, field=slice(None),
     [file ->] list -> list
     '''
 
-    # sniff filtermap and import to list if file
+    # sniff infile and import to list if file
     search_list = accept_list_or_file(infile)
 
     # Keep or discard lines matching pattern
     keep_list = [line for line in search_list
-                 if search(pattern, delim.join(line.split(delim)[field]))\
-                 and discard is False \
-                 or not search(pattern, delim.join(line.split(delim)[field]))\
-                 and discard is True]
+                 if search(pattern, delim.join(line.split(delim)[field])) and
+                 discard is False or
+                 not search(pattern, delim.join(line.split(delim)[field])) and
+                 discard is True]
 
     return keep_list
 
@@ -154,7 +148,7 @@ def trim_taxonomy_strings(infile, level, delim=';'):
     5 = genus, 6 = species.
 
     infile = file OR list
-    filestem = filestem/basename without extension; will append '-L[level].tsv'
+    filestem = filestem/base without extension; will append '-L[level].tsv'
         if filestem = False, output defaults to nested list
     '''
 
@@ -203,9 +197,10 @@ def unique_lines(infile, mode='n', field=None, delimiter='\t',
         if line not in record:
             record[line] = printline
 
-    print_list = [record[key] for key, value in record.items() if mode == 'n' \
-                  or (mode == 'd' and record_counter[key] > 1) \
-                  or (mode == 'u' and record_counter[key] == 1)]
+    print_list = [record[key] for key, value in record.items()
+                  if mode == 'n' or
+                  (mode == 'd' and record_counter[key] > 1) or
+                  (mode == 'u' and record_counter[key] == 1)]
 
     return print_list
 
@@ -260,7 +255,7 @@ def branching_taxa(infile, field=None, delim=';'):
 
 
 def stratify_taxonomy_subsets(infile, number_of_splits, basedir,
-                              basename, level, delim=';'):
+                              base, level, delim=';'):
     '''[file] -> list -> files
     Split an input file or list into x parts, where x = number of splits.
     Do so in such a way that taxa at 'delim'-delimited field 'level' are
@@ -268,8 +263,8 @@ def stratify_taxonomy_subsets(infile, number_of_splits, basedir,
     contain an even number of lines, though randomness should smooth this out.
 
     basedir = output directory that will contain output directories
-    basename = name of directories that will be created in basedir in format
-               basedir/basename-iter0/
+    base = name of directories that will be created in basedir in format
+               basedir/base-iter0/
     '''
     # sniff filtermap and import to list if file
     line_list = accept_list_or_file(infile)
@@ -296,43 +291,10 @@ def stratify_taxonomy_subsets(infile, number_of_splits, basedir,
 
     # Generate output files, write N lines, where N=lines_per_file
     for i in range(0, len(chunks)):
-        outdir = path.join(basedir, '{0}-iter{1}'.format(basename, i))
+        outdir = path.join(basedir, '{0}-iter{1}'.format(base, i))
         if not exists(outdir):
             makedirs(outdir)
         export_list_to_file(chunks[i], path.join(outdir, 'query_taxa.tsv'))
-
-
-def file_splitter(infile, number_of_splits, basedir, basename, random=True):
-    '''Split an input file OR LIST into x parts, where x = number_of_splits.
-    If random=True, lines will be randomly split to output files.
-    If random=False, lines will be split into x contiguous chunks.
-
-    basedir = output directory that will contain output directories
-    basename = name of directories that will be created in basedir in format
-               basedir/basename-iter0/
-
-    NOT UNIT TESTED
-    '''
-
-    # sniff filtermap and import to list if file
-    line_list = accept_list_or_file(infile)
-
-    # Define number of lines to write to each split
-    lines_per_file = ceil(len(line_list) / number_of_splits)
-
-    if random is True:
-        shuffle(line_list)
-
-    # Break list into chunks
-    file_chunks = [line_list[i:i + lines_per_file]
-                   for i in range(0, len(line_list), lines_per_file)]
-
-    # Generate output files, write N lines, where N=lines_per_file
-    for i in range(0, len(file_chunks)):
-        outdir = path.join(basedir, '{0}-iter{1}'.format(basename, i))
-        if not exists(outdir):
-            makedirs(outdir)
-        export_list_to_file(file_chunks[i], path.join(outdir, 'query_taxa.tsv'))
 
 
 def extract_taxa_names(infile, level=slice(6, 7), l_delim=';', field=None,
@@ -347,6 +309,31 @@ def extract_taxa_names(infile, level=slice(6, 7), l_delim=';', field=None,
     line_list = accept_list_or_file(infile, field=field, delim=f_delim)
 
     # Truncate taxonomies and pass to set
-    name_list = [l_delim.join(line.split(l_delim)[level]).strip()\
+    name_list = [l_delim.join(line.split(l_delim)[level]).strip()
                  for line in line_list]
     return name_list
+
+
+def compile_reference_taxa(ref_taxa_fp, delim='\t'):
+    '''Extract taxa names as dict {taxon: id}. Accepts list or path as input'''
+    ref_taxa = {}
+    ref = accept_list_or_file(ref_taxa_fp)
+    for l in ref:
+        i, t = l.strip().split(delim)
+        if t not in ref_taxa.keys():
+            ref_taxa[t] = [i]
+        else:
+            ref_taxa[t].append(i)
+    return ref_taxa
+
+
+def convert_tsv_to_biom(infile, outfile, transpose=True,
+                        obs_ids_to_metadata=False):
+    table = load_table(infile)
+    if transpose is True:
+        table = table.transpose()
+    if obs_ids_to_metadata is True:
+        metadata = {sid: {'taxonomy': sid.split(';')}
+                    for sid in table.ids(axis='observation')}
+        table.add_metadata(metadata, 'observation')
+    write_biom_table(table, 'hdf5', outfile)
