@@ -11,9 +11,8 @@
 
 from skbio import io
 from re import search
-from math import ceil
 from collections import OrderedDict, Counter
-from random import shuffle, choice
+from random import choice
 from os.path import isfile, exists
 from os import path, makedirs
 from biom import load_table
@@ -36,7 +35,6 @@ def accept_list_or_file(infile, field=None, delim='\t'):
 # Import lines of text file into list object
 def import_to_list(infile, field=None, delim='\t'):
     '''File -> list object'''
-
     with open(infile, "r") as inputfile:
         if field is None:
             lines = [line.strip() for line in inputfile]
@@ -57,14 +55,12 @@ def import_taxonomy_to_dict(infile):
 # Write text file from dictionary
 def export_list_to_file(input_list, outfile):
     '''list -> file'''
-
     with open(outfile, "w") as printout:
         printout.write('\n'.join(str(v) for v in input_list))
 
 
 def extract_rownames(infile):
     '''Extract seq ids (rownames) from file OR LIST'''
-    # sniff filtermap and import to list if file
     line_list = accept_list_or_file(infile)
 
     # Extract rownames from list and pass to set
@@ -95,7 +91,6 @@ def extract_fasta_ids(infile):
     '''Gather sequence IDs from the header lines of a fasta file and output
     as a set. file -> set
     '''
-
     id_list = set()
     for sequence in io.read(infile, format='fasta'):
         id_list.add(sequence.metadata['id'])
@@ -104,7 +99,7 @@ def extract_fasta_ids(infile):
 
 # filter taxonomy strings on fasta (seq ID) or taxonomy (search terms)
 def string_search(infile, pattern, discard=False, field=slice(None),
-                  delim=';'):
+                  delim=';', f_field=None, f_delim='\t'):
     '''Search lines of file for pattern(s). Retain (default) or discard
     (discard = True) matching lines. Returns a new file containing matching /
     non-matching lines.
@@ -117,15 +112,17 @@ def string_search(infile, pattern, discard=False, field=slice(None),
         only search delim-delimited field. Otherwise will search whole line by
         default.
 
+    f_field: f_delim-delimited field to search. If field is not None (default),
+        whole lines will be extracted from infile, prior to delimited/searching
+        with field and delim.
+
     FIELD MUST USE SLICE NOTATION or will FAIL. E.g., to search field 6, use:
         field = slice(6,7)
 
     infile = file or list object
     [file ->] list -> list
     '''
-
-    # sniff infile and import to list if file
-    search_list = accept_list_or_file(infile)
+    search_list = accept_list_or_file(infile, field=f_field, delim=f_delim)
 
     # Keep or discard lines matching pattern
     keep_list = [line for line in search_list
@@ -151,8 +148,6 @@ def trim_taxonomy_strings(infile, level, delim=';'):
     filestem = filestem/base without extension; will append '-L[level].tsv'
         if filestem = False, output defaults to nested list
     '''
-
-    # sniff filtermap and import to list if file
     input_list = accept_list_or_file(infile)
     # Generate expected taxonomies by slicing to level
     taxa_list = [delim.join(line.split(delim)[0:level+1])
@@ -177,8 +172,6 @@ def unique_lines(infile, mode='n', field=None, delimiter='\t',
     printfield: print only matching field (True) or whole line (False).
         If field = None, printfield will always print whole line.
     '''
-
-    # sniff filtermap and import to list if file
     input_list = accept_list_or_file(infile)
 
     record = OrderedDict()
@@ -227,11 +220,7 @@ def branching_taxa(infile, field=None, delim=';'):
     4) Print printline if search line is duplicated.
         U33070	Root;Basidiomycota;Agaricomycetes;Agaricales
         U33090	Root;Basidiomycota;Agaricomycetes;Atheliales
-
-        NOT YET UNIT TESTED
     '''
-
-    # sniff filtermap and import to list if file
     input_list = accept_list_or_file(infile)
 
     record = OrderedDict()
@@ -266,7 +255,6 @@ def stratify_taxonomy_subsets(infile, number_of_splits, basedir,
     base = name of directories that will be created in basedir in format
                basedir/base-iter0/
     '''
-    # sniff filtermap and import to list if file
     line_list = accept_list_or_file(infile)
 
     # input list is split into N chunks,
@@ -298,18 +286,20 @@ def stratify_taxonomy_subsets(infile, number_of_splits, basedir,
 
 
 def extract_taxa_names(infile, level=slice(6, 7), l_delim=';', field=None,
-                       f_delim='\t'):
+                       f_delim='\t', stripchars=None):
     '''Extract taxon names at a given level from taxonomy file OR LIST
     field = taxonomic level of interest. 0 = kingdom, 1 = phylum, 2 = class,
     3 = order, 4 = family, 5 = genus, 6 = species.
     Must use slice notation. For species, use level=slice(6, 7)
-    NOT UNIT TESTED
+
+    stripchars: str
+        Default, None, will strip leading and trailing whitespace. Set to ""
+        to turn off character stripping.
     '''
-    # sniff filtermap and import to list if file
     line_list = accept_list_or_file(infile, field=field, delim=f_delim)
 
     # Truncate taxonomies and pass to set
-    name_list = [l_delim.join(line.split(l_delim)[level]).strip()
+    name_list = [l_delim.join(line.split(l_delim)[level]).strip(stripchars)
                  for line in line_list]
     return name_list
 

@@ -22,7 +22,8 @@ import pandas as pd
 
 
 def get_sample_to_top_params(df, metric, sample_col='SampleID',
-                             method_col='Method', dataset_col='Dataset'):
+                             method_col='Method', dataset_col='Dataset',
+                             ascending=False):
     """ Identify the top-performing methods for a given metric
 
     Parameters
@@ -52,9 +53,15 @@ def get_sample_to_top_params(df, metric, sample_col='SampleID',
             current_results = {}
             for method in sorted_df.Method.unique():
                 m_res = dataset_sid_res[dataset_sid_res.Method == method]
-                max_val = m_res[metric].max()
                 mad_metric_value = m_res[metric].mad()
-                tp = m_res[m_res[metric] >= (max_val - mad_metric_value)]
+                # if higher values are better, find params within MAD of max
+                if ascending is False:
+                    max_val = m_res[metric].max()
+                    tp = m_res[m_res[metric] >= (max_val - mad_metric_value)]
+                # if lower values are better, find params within MAD of min
+                else:
+                    min_val = m_res[metric].min()
+                    tp = m_res[m_res[metric] <= (min_val + mad_metric_value)]
                 current_results[method] = list(tp.Parameters)
             result[(dataset, sid)] = current_results
     result = pd.DataFrame(result).T
@@ -64,7 +71,7 @@ def get_sample_to_top_params(df, metric, sample_col='SampleID',
 def parameter_comparisons(df, method, metrics=['Precision', 'Recall',
                           'F-measure', 'Pearson r', 'Spearman r'],
                           sample_col='SampleID', method_col='Method',
-                          dataset_col='Dataset'):
+                          dataset_col='Dataset', ascending=None):
     """ Count the number of times each parameter combination achieves the top
     score
 
@@ -84,10 +91,16 @@ def parameter_comparisons(df, method, metrics=['Precision', 'Recall',
       metric
     """
     result = {}
+
+    # Default to descending sort for all metrics
+    if ascending is None:
+        ascending = {m: False for m in metrics}
+
     for metric in metrics:
         df2 = get_sample_to_top_params(df, metric, sample_col=sample_col,
                                        method_col=method_col,
-                                       dataset_col=dataset_col)
+                                       dataset_col=dataset_col,
+                                       ascending=ascending[metric])
         current_result = defaultdict(int)
         for optimal_parameters in df2[method]:
             for optimal_parameter in optimal_parameters:
