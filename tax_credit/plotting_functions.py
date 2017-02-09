@@ -27,9 +27,9 @@ from skbio.stats.ordination import pcoa
 from skbio.stats.distance import anosim
 from biom import load_table
 from glob import glob
-from os.path import join, split
+from os.path import join, split, dirname, relpath
 from itertools import combinations
-from IPython.display import display
+from IPython.display import display, Markdown
 from bokeh.plotting import figure, show, output_file
 from bokeh.models import (HoverTool,
                           WheelZoomTool,
@@ -103,7 +103,6 @@ def heatmap_from_data_frame(df, metric, rows=["Method", "Parameters"],
     height = len(df.index) * 0.35
     width = len(df.columns) * 1
 
-    # Based on SO answer: http://stackoverflow.com/a/18238680
     ax = plt.figure(figsize=(width, height))
     ax = heatmap(df, cmap=cmap, linewidths=0, square=True, vmin=vmin,
                  vmax=vmax)
@@ -121,6 +120,7 @@ def boxplot_from_data_frame(df,
                             y_max=1.0,
                             plotf=violinplot,
                             color='grey',
+                            color_pallette=None,
                             label_rotation=45):
     """Generate boxplot or violinplot of metric by group
 
@@ -136,60 +136,13 @@ def boxplot_from_data_frame(df,
     x_tick_labels = df[group_by].unique()
     x_tick_labels.sort()
 
-    ax = violinplot(x=group_by, y=metric, hue=hue, data=df, color=color)
+    ax = violinplot(x=group_by, y=metric, hue=hue, data=df, color=color,
+                    palette=color_pallette)
     ax.set_ylim(bottom=y_min, top=y_max)
     ax.set_ylabel(metric)
     ax.set_xlabel(group_by)
     ax.set_xticklabels(x_tick_labels, rotation=label_rotation)
     ax
-
-
-# tag for removal: do we want to keep this fn? Not used currently.
-def generate_pr_scatter_plots(query_prf,
-                              subject_prf,
-                              query_color="b",
-                              subject_color="r",
-                              x_label="Precision",
-                              y_label="Recall"):
-    """ Generate scatter plot of precision versus recall for query and subject
-    results
-
-        query_prf : pandas.DataFrame
-         Precision, recall, and f-measure values as returned from compute_prfs
-         for query data
-        subject_prf : pandas.DataFrame
-         Precision, recall, and f-measure values as returned from compute_prfs
-         for subject data
-        query_color : str, optional
-         The color of the query points
-        subject_color : str, optional
-         The color of the subject points
-        x_label : str, optional
-         x axis label for the plot
-        y_label : str, optional
-         y axis label for the plot
-
-    """
-    # Extract the query precisions and recalls and
-    # generate a scatter plot
-    query_precisions = query_prf['Precision']
-    query_recalls = query_prf['Recall']
-    scatter(query_precisions,
-            query_recalls,
-            c=query_color)
-
-    # Extract the subject precisions and recalls and
-    # generate a scatter plot
-    subject_precisions = subject_prf['Precision']
-    subject_recalls = subject_prf['Recall']
-    scatter(subject_precisions,
-            subject_recalls,
-            c=subject_color)
-
-    xlim(0, 1)
-    ylim(0, 1)
-    xlabel(x_label)
-    ylabel(y_label)
 
 
 def calculate_linear_regress(df, x, y, group_by):
@@ -297,7 +250,7 @@ def batch_beta_diversity(expected_results_dir, method="braycurtis",
 
     '''Find merged biom tables and run beta_diversity_through_plots'''
     for table, dataset_id, reference_id in seek_tables(expected_results_dir):
-        print(dataset_id, reference_id)
+        display(Markdown('## {0} {1}'.format(dataset_id, reference_id)))
         s, r, pc, dm = beta_diversity_pcoa(table, method=method, col=col,
                                            permutations=permutations, dim=dim,
                                            colormap=colormap)
@@ -358,7 +311,10 @@ def beta_diversity_pcoa(biom_fp, method="braycurtis", permutations=99, dim=2,
     results = anosim(dm, s_md, column=col, permutations=permutations)
     print('R = ', results['test statistic'], '; P = ', results['p-value'])
 
+    p = join(dirname(biom_fp), 'pcoa.html')
+
     if dim == 2:
+        display(Markdown('View static file [here]({0})'.format(relpath(p))))
         # bokeh pcoa plots
         pc123 = pc.samples.ix[:, ["PC1", "PC2", "PC3"]]
         smd_merge = s_md.merge(pc123, left_index=True, right_index=True)
@@ -366,9 +322,11 @@ def beta_diversity_pcoa(biom_fp, method="braycurtis", permutations=99, dim=2,
         title = smd_merge['reference'][0]
         labels = ['PC {0} ({1:.2f})'.format(d + 1, pc.proportion_explained[d])
                   for d in range(0, 2)]
-        circle_plot_from_dataframe(smd_merge, "PC1", "PC2", title, color="Color",
+        circle_plot_from_dataframe(smd_merge, "PC1", "PC2", title,
                                    columns=["method", "sample_id", "params"],
-                                   labels=labels)
+                                   color="Color", labels=labels,
+                                   output_fn=p)
+
     else:
         # skbio pcoa plots
         pcoa_plot_skbio(pc, s_md, col='method')
@@ -426,7 +384,6 @@ def circle_plot_from_dataframe(df, x, y, title=None, color="Color",
     show(fig)
 
 
-# tag for removal: do we want the 3d plots?
 def pcoa_plot_skbio(pc, s_md, col='method'):
     '''Input principal coordinates, display figure.
 
@@ -453,7 +410,8 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
                               references=['gg_13_8_otus', 'unite_20.11.2016'],
                               paired=True, use_best=True, parametric=True,
                               plotf=violinplot, label_rotation=45,
-                              y_min=0.0, y_max=1.0, color=None, hue=None):
+                              color_pallette=None, y_min=0.0, y_max=1.0,
+                              color=None, hue=None):
 
     '''Distance boxplots that aggregate and average results across multiple
     mock community datasets.
@@ -495,7 +453,8 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
 
     boxplot_from_data_frame(best, group_by=group_by, color=color, hue=hue,
                             metric=metric, y_min=None, y_max=None, plotf=plotf,
-                            label_rotation=label_rotation)
+                            label_rotation=label_rotation,
+                            color_pallette=color_pallette)
 
     results = per_method_pairwise_tests(best, group_by=group_by, metric=metric,
                                         paired=paired, parametric=parametric)
@@ -510,7 +469,7 @@ def fastlane_boxplots(expected_results_dir, group_by="method",
     '''per_method_boxplots for those who don't have time to wait.'''
 
     for table, dataset_id, reference_id in seek_tables(expected_results_dir):
-        print('\n\n', dataset_id, reference_id)
+        display(Markdown('## {0} {1}'.format(dataset_id, reference_id)))
 
         dm, sample_md = make_distance_matrix(table, method=beta)
 
@@ -522,7 +481,8 @@ def fastlane_boxplots(expected_results_dir, group_by="method",
 
 def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
                         metric="distance", hue=None, y_min=0.0, y_max=1.0,
-                        plotf=violinplot, label_rotation=45, color=None):
+                        plotf=violinplot, label_rotation=45, color=None,
+                        color_pallette=None):
     '''Generate distance boxplots and Mann-Whitney U tests on distance matrix.
 
     dm: skbio.DistanceMatrix
@@ -549,10 +509,11 @@ def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
     for d, g, s in [(within_between, 'Comparison', '1: Within- vs. Between-'),
                     (per_method, group_by, '2: Pairwise ')]:
 
-        print('Comparison {0} Distance'.format(s + group_by))
+        display(Markdown('## Comparison {0} Distance'.format(s + group_by)))
         boxplot_from_data_frame(d, group_by=g, color=color, metric=metric,
                                 y_min=None, y_max=None, hue=hue, plotf=plotf,
-                                label_rotation=label_rotation)
+                                label_rotation=label_rotation,
+                                color_pallette=color_pallette)
 
         results = per_method_pairwise_tests(d, group_by=g, metric=metric)
 
@@ -715,7 +676,8 @@ def rank_optimized_method_performance_by_dataset(df,
                                                  y_max=1.0,
                                                  plotf=violinplot,
                                                  label_rotation=45,
-                                                 color=None):
+                                                 color=None,
+                                                 color_pallette=None):
 
     '''Rank the performance of methods using optimized parameter configuration
     within each dataset in dataframe. Optimal methods are computed from the
@@ -757,7 +719,7 @@ def rank_optimized_method_performance_by_dataset(df,
 
     for d in df[dataset].unique():
         for lv in level_range:
-            print("{0} level {1}".format(d, lv))
+            display(Markdown("## {0} level {1}".format(d, lv)))
             df_l = df[df[level] == lv]
             best, param_report = isolate_top_params(df_l[df_l[dataset] == d],
                                                     method, params, metric,
@@ -774,5 +736,5 @@ def rank_optimized_method_performance_by_dataset(df,
             boxplot_from_data_frame(best, group_by=method, color=color,
                                     metric=metric, y_min=y_min, y_max=y_max,
                                     label_rotation=label_rotation, hue=hue,
-                                    plotf=plotf)
+                                    plotf=plotf, color_pallette=color_pallette)
             sns.plt.show()
