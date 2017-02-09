@@ -311,10 +311,7 @@ def beta_diversity_pcoa(biom_fp, method="braycurtis", permutations=99, dim=2,
     results = anosim(dm, s_md, column=col, permutations=permutations)
     print('R = ', results['test statistic'], '; P = ', results['p-value'])
 
-    p = join(dirname(biom_fp), 'pcoa.html')
-
     if dim == 2:
-        display(Markdown('View static file [here]({0})'.format(relpath(p))))
         # bokeh pcoa plots
         pc123 = pc.samples.ix[:, ["PC1", "PC2", "PC3"]]
         smd_merge = s_md.merge(pc123, left_index=True, right_index=True)
@@ -324,8 +321,7 @@ def beta_diversity_pcoa(biom_fp, method="braycurtis", permutations=99, dim=2,
                   for d in range(0, 2)]
         circle_plot_from_dataframe(smd_merge, "PC1", "PC2", title,
                                    columns=["method", "sample_id", "params"],
-                                   color="Color", labels=labels,
-                                   output_fn=p)
+                                   color="Color", labels=labels)
 
     else:
         # skbio pcoa plots
