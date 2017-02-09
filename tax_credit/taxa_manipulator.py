@@ -35,7 +35,6 @@ def accept_list_or_file(infile, field=None, delim='\t'):
 # Import lines of text file into list object
 def import_to_list(infile, field=None, delim='\t'):
     '''File -> list object'''
-
     with open(infile, "r") as inputfile:
         if field is None:
             lines = [line.strip() for line in inputfile]
@@ -56,14 +55,12 @@ def import_taxonomy_to_dict(infile):
 # Write text file from dictionary
 def export_list_to_file(input_list, outfile):
     '''list -> file'''
-
     with open(outfile, "w") as printout:
         printout.write('\n'.join(str(v) for v in input_list))
 
 
 def extract_rownames(infile):
     '''Extract seq ids (rownames) from file OR LIST'''
-    # sniff filtermap and import to list if file
     line_list = accept_list_or_file(infile)
 
     # Extract rownames from list and pass to set
@@ -94,7 +91,6 @@ def extract_fasta_ids(infile):
     '''Gather sequence IDs from the header lines of a fasta file and output
     as a set. file -> set
     '''
-
     id_list = set()
     for sequence in io.read(infile, format='fasta'):
         id_list.add(sequence.metadata['id'])
@@ -126,8 +122,6 @@ def string_search(infile, pattern, discard=False, field=slice(None),
     infile = file or list object
     [file ->] list -> list
     '''
-
-    # sniff infile and import to list if file
     search_list = accept_list_or_file(infile, field=f_field, delim=f_delim)
 
     # Keep or discard lines matching pattern
@@ -154,8 +148,6 @@ def trim_taxonomy_strings(infile, level, delim=';'):
     filestem = filestem/base without extension; will append '-L[level].tsv'
         if filestem = False, output defaults to nested list
     '''
-
-    # sniff filtermap and import to list if file
     input_list = accept_list_or_file(infile)
     # Generate expected taxonomies by slicing to level
     taxa_list = [delim.join(line.split(delim)[0:level+1])
@@ -180,8 +172,6 @@ def unique_lines(infile, mode='n', field=None, delimiter='\t',
     printfield: print only matching field (True) or whole line (False).
         If field = None, printfield will always print whole line.
     '''
-
-    # sniff filtermap and import to list if file
     input_list = accept_list_or_file(infile)
 
     record = OrderedDict()
@@ -231,8 +221,6 @@ def branching_taxa(infile, field=None, delim=';'):
         U33070	Root;Basidiomycota;Agaricomycetes;Agaricales
         U33090	Root;Basidiomycota;Agaricomycetes;Atheliales
     '''
-
-    # sniff filtermap and import to list if file
     input_list = accept_list_or_file(infile)
 
     record = OrderedDict()
@@ -267,7 +255,6 @@ def stratify_taxonomy_subsets(infile, number_of_splits, basedir,
     base = name of directories that will be created in basedir in format
                basedir/base-iter0/
     '''
-    # sniff filtermap and import to list if file
     line_list = accept_list_or_file(infile)
 
     # input list is split into N chunks,
@@ -309,7 +296,6 @@ def extract_taxa_names(infile, level=slice(6, 7), l_delim=';', field=None,
         Default, None, will strip leading and trailing whitespace. Set to ""
         to turn off character stripping.
     '''
-    # sniff filtermap and import to list if file
     line_list = accept_list_or_file(infile, field=field, delim=f_delim)
 
     # Truncate taxonomies and pass to set

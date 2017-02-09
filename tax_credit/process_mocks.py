@@ -350,6 +350,7 @@ def denoise_to_feature_table(demux_seqs,
                              community_dir,
                              rep_seqs_fn='rep_seqs',
                              feature_table_fn='feature_table.qza',
+                             biom_table_fn='feature_table.biom',
                              summary_fn='feature_table_summary.qzv'):
     '''SampleData[SequencesWithQuality] -> FeatureData[Sequence] +
                                            FeatureTable[Frequency]
@@ -376,15 +377,10 @@ def denoise_to_feature_table(demux_seqs,
     # save Artifact
     rep_seqs.save(join(community_dir, rep_seqs_fn))
 
-    # save fasta
-    # Tagging for removal: does not appear to output true fasta!
-    # Instead, now save as fasta in transport_to_repo.
-    # rep_seqs_fna = rep_seqs.view(DNAIterator)
-    # io.write(rep_seqs_fna.generator, format='fasta',
-    #          into=rep_seqs_fn + '.fna')
-
     # save biom Artifact
     biom_table.save(join(community_dir, feature_table_fn))
+    biom_table_fp = join(community_dir, biom_table_fn)
+    write_biom_table(biom_table.view(biom.Table), 'hdf5', biom_table_fp)
 
     # summarize feature table
     feature_table_summary = feature_table.visualizers.summarize(biom_table)
@@ -401,8 +397,6 @@ def seqs_to_tree(rep_seqs, community_dir, filename='phylogeny.qza'):
     community_dir: path
         destination directory to print results
     '''
-    # aligned_seqs = alignment.methods.mafft(qiime.Artifact.load(join(\
-    #                                      community_dir, 'rep_seqs.qza')))
     aligned_seqs = alignment.methods.mafft(rep_seqs)
     m_aln = alignment.methods.mask(aligned_seqs.alignment)
     unrooted_tree = phylogeny.methods.fasttree(m_aln.masked_alignment)
@@ -471,12 +465,6 @@ def transport_to_repo(communities,
         # Extract biom, tree, rep_seqs
         rep_seqs_fna = qiime.Artifact.load(rep_seqs).view(DNAIterator)
         io.write(rep_seqs_fna.generator, format='fasta', into=rep_seqs_fp)
-
-        # biom is already written out in denoise_to_feature_table
-        # biom_table = qiime.Artifact.load(feature_table).view(biom.Table)
-        # write_biom_table(biom_table, 'hdf5', biom_table_fp)
-        # qiime.Artifact.load(rep_seqs).view(pd.Series).to_csv(rep_seqs_fp,
-        #                                                     sep='\t')
 
         if exists(tree):
             qiime.Artifact.load(tree).view(TreeNode).write(tree_fp)

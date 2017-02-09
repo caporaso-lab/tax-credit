@@ -30,25 +30,41 @@ class EvalFrameworkTests(TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.op11 = '203525\tk__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__'
+        self.op11 = \
+            '203525\tk__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__'
         self.op11_t = 'k__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__'
 
-        self.table1 = ['229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales; f__Legionellaceae; g__Legionella; s__',
-                       '367523\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__',
-                       '239330\tk__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__',
-                       '203525\tk__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__']
+        self.table1 = [
+            '229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; '
+            'o__Legionellales; f__Legionellaceae; g__Legionella; s__',
+            '367523\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flav'
+            'obacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__',
+            '239330\tk__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; '
+            'o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__',
+            '203525\tk__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__']
 
-        self.table2 = ['229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales; f__Legionellaceae; g__Legionella; s__',
-                       '229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales; f__Legionellaceae; g__Legionella; s__',
-                       '367523\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__',
-                       '367523\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__',
-                       '239330\tk__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__',
-                       '203525\tk__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__',
-                       '239330\tk__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__']
+        self.table2 = [
+            '229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; '
+            'o__Legionellales; f__Legionellaceae; g__Legionella; s__',
+            '229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; '
+            'o__Legionellales; f__Legionellaceae; g__Legionella; s__',
+            '367523\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flav'
+            'obacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__',
+            '367523\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flav'
+            'obacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__',
+            '239330\tk__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; '
+            'o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__',
+            '203525\tk__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__',
+            '239330\tk__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; '
+            'o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__']
 
-        self.table3 = ['229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales; f__Legionellaceae; g__Legionella; s__',
-                       '367523\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__',
-                       '239330\tk__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__']
+        self.table3 = [
+            '229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; '
+            'o__Legionellales; f__Legionellaceae; g__Legionella; s__',
+            '367523\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flav'
+            'obacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__',
+            '239330\tk__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; '
+            'o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__']
 
         self.seqs1 = '\n'.join(['>229854',
                                 'ACTAGTAGTTGAC',
@@ -93,8 +109,12 @@ class EvalFrameworkTests(TestCase):
         self.assertEqual(set(branching_taxa(self.table1, field=1)),
                          set(self.table1))
         self.assertEqual(set(branching_taxa(self.table1, field=2)),
-                         set(['229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales; f__Legionellaceae; g__Legionella; s__',
-                              '239330\tk__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__']))
+                         set(['229854\tk__Bacteria; p__Proteobacteria; '
+                              'c__Gammaproteobacteria; o__Legionellales; '
+                              'f__Legionellaceae; g__Legionella; s__',
+                              '239330\tk__Bacteria; p__Proteobacteria; '
+                              'c__Deltaproteobacteria; o__Desulfuromonadales; '
+                              'f__Geobacteraceae; g__Geobacter; s__']))
 
     def test_extract_taxa_names(self):
         self.assertEqual(extract_taxa_names(

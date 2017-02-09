@@ -21,16 +21,23 @@ class EvalFrameworkTests(TestCase):
 
     @classmethod
     def setUpClass(self):
-        _table1 = '\n'.join(['#SampleID\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales; f__Legionellaceae; g__Legionella; s__\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__',
-                             's1\t0.5\t0.5',
-                             's2\t0.1\t0.9'])
+        _table1 = '\n'.join([
+            '#SampleID\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria'
+            '; o__Legionellales; f__Legionellaceae; g__Legionella; s__\t'
+            'k__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacter'
+            'iales; f__Flavobacteriaceae; g__Flavobacterium; s__',
+            's1\t0.5\t0.5',
+            's2\t0.1\t0.9'])
 
         self.table2 = '\n'.join(['#SampleID\t0001\t0003',
                                  's1\t0.5\t0.5',
                                  's2\t0.1\t0.9\n'])
 
-        _ref1 = '\n'.join(['0001\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales; f__Legionellaceae; g__Legionella; s__',
-                           '0003\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__'])
+        _ref1 = '\n'.join([
+            '0001\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; '
+            'o__Legionellales; f__Legionellaceae; g__Legionella; s__',
+            '0003\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavo'
+            'bacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__'])
 
         self.seqs1 = '\n'.join(['>0001',
                                 'ACTAGTAGTTGAC',

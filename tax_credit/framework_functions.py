@@ -50,8 +50,9 @@ def parameter_sweep(data_dir, results_dir, reference_dbs,
 
     if command_template is None:
         # default to qiime1 command template
-        command_template = "mkdir -p {0} ; assign_taxonomy.py -v -i {1} -o {0}\
-                            -r {2} -t {3} -m {4} {5} --rdp_max_memory 16000"
+        command_template = ''.join(
+            "mkdir -p {0} ; assign_taxonomy.py -v -i {1} -o {0} -r {2} -t {3}",
+            " -m {4} {5} --rdp_max_memory 16000")
 
     commands = []
     for dataset, reference in dataset_reference_combinations:
@@ -155,11 +156,8 @@ def clean_database(taxa_in, seqs_in, db_dir,
 def find_primer_site(query_seq, target_seq):
     '''Align primer to target DNA using striped Smith-Waterman, return site'''
     # Increase gap extend penalty to avoid large gaps, short alignments
-    # try:
     aln, score, start_end_positions = local_pairwise_align_ssw(
         query_seq, target_seq, gap_extend_penalty=10)
-    # except IndexError:
-    #    continue
     return start_end_positions
 
 
@@ -225,8 +223,7 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations,
         simulated_reads_fp = join('{0}_{1}_trim{2}{3}'.format(
             base, primer_pair, read_length, ext))
 
-        # amplicons_fp = join(db_dir, "simulated_amplicons.fna")
-        # simulated_reads_fp = join(db_dir, "simulated_reads.fna")
+        # Extract amplicons
         if not exists(simulated_reads_fp):
             extract_amplicons(clean_fasta, amplicons_fp, simulated_reads_fp,
                               DNA(data['Fwd primer']), DNA(data['Rev primer']),
@@ -484,14 +481,10 @@ def evaluate_novel_taxa_classification(obs_taxa, exp_taxa, level):
     # compare observations at level
     def lev(t):
         return t[level - 1].strip()
-    # obs = obs_taxa[level - 1].strip()
-    # exp = exp_taxa[level - 1].strip()
 
     # or at top level of observed
     def top(t):
         return t[len(obs_taxa)-1].strip()
-    # obs_top = obs_taxa[level - 1].strip()
-    # exp_top = exp_taxa[level - 1].strip()
 
     # if observed has same assignment depth as expected-1 and top level match,
     # ==match. len(exp_taxa) - 1 because exp_taxa is actual taxonomy string,
@@ -502,7 +495,8 @@ def evaluate_novel_taxa_classification(obs_taxa, exp_taxa, level):
     elif len(obs_taxa) >= len(exp_taxa) and lev(obs_taxa) == lev(exp_taxa):
         result = 'overclassification'
     # if shallower and top-level assign correct, count as underclassification
-    elif (len(obs_taxa) < len(exp_taxa) - 1 and top(obs_taxa) == top(exp_taxa) or
+    elif (len(obs_taxa) < len(exp_taxa) - 1 and
+          top(obs_taxa) == top(exp_taxa) or
           obs_taxa[0] == 'Unclassified' or obs_taxa[0] == 'Unassigned'):
         result = 'underclassification'
     # Otherwise, count as misclassification
@@ -588,12 +582,8 @@ def compute_prf(exp, obs, avg='micro', test_type='cross-validated',
 
     prf = precision_recall_fscore_support
 
-    # p = tp / (tp + fp)
-    # r = tp / (tp + fn)
-    # f = (2 * p * r) / (p + r)
     # with labels, null classifications can be FN but not TP or FP.
     # Hence, nulls affect recall but not precision.
-
     def lab(exp, obs, level):
         # use set or else multiple counts weight observations.
         # Remove all labels < level. Hence, underclassifcation becomes null,
