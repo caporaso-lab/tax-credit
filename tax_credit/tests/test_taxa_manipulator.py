@@ -29,12 +29,12 @@ from tax_credit.taxa_manipulator import (string_search,
 class EvalFrameworkTests(TestCase):
 
     @classmethod
-    def setUpClass(self):
-        self.op11 = \
+    def setUpClass(cls):
+        cls.op11 = \
             '203525\tk__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__'
-        self.op11_t = 'k__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__'
+        cls.op11_t = 'k__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__'
 
-        self.table1 = [
+        cls.table1 = [
             '229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; '
             'o__Legionellales; f__Legionellaceae; g__Legionella; s__',
             '367523\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flav'
@@ -43,7 +43,7 @@ class EvalFrameworkTests(TestCase):
             'o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__',
             '203525\tk__Bacteria; p__OP11; c__OP11-1; o__; f__; g__; s__']
 
-        self.table2 = [
+        cls.table2 = [
             '229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; '
             'o__Legionellales; f__Legionellaceae; g__Legionella; s__',
             '229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; '
@@ -58,7 +58,7 @@ class EvalFrameworkTests(TestCase):
             '239330\tk__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; '
             'o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__']
 
-        self.table3 = [
+        cls.table3 = [
             '229854\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; '
             'o__Legionellales; f__Legionellaceae; g__Legionella; s__',
             '367523\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flav'
@@ -66,7 +66,7 @@ class EvalFrameworkTests(TestCase):
             '239330\tk__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; '
             'o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__']
 
-        self.seqs1 = '\n'.join(['>229854',
+        cls.seqs1 = '\n'.join(['>229854',
                                 'ACTAGTAGTTGAC',
                                 '>367523',
                                 'ATCGATGCATGCA',
@@ -75,14 +75,14 @@ class EvalFrameworkTests(TestCase):
                                 '>203525',
                                 'TGTATGCTGATGC\n'])
 
-        self.seqs2 = '\n'.join(['>229854',
+        cls.seqs2 = '\n'.join(['>229854',
                                 'ACTAGTAGTTGAC',
                                 '>367523',
                                 'ATCGATGCATGCA',
                                 '>239330',
                                 'TGTGTGCTGGTAGTTAC\n'])
 
-        self.tmpdir = mkdtemp()
+        cls.tmpdir = mkdtemp()
 
     def test_string_search(self):
         self.assertEqual(string_search(self.table1, '203525'), [self.op11])
@@ -159,8 +159,8 @@ class EvalFrameworkTests(TestCase):
         self.assertEqual(set(iter0) & set(iter1), set(self.table3))
 
     @classmethod
-    def tearDownClass(self):
-        rmtree(self.tmpdir)
+    def tearDownClass(cls):
+        rmtree(cls.tmpdir)
 
 
 if __name__ == "__main__":
