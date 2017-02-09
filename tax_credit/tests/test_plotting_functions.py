@@ -30,26 +30,26 @@ class EvalFrameworkTests(TestCase):
     @classmethod
     def setUpClass(self):
         _table1 = ['a\ta\t1\t0.0\t0.5\t0.1',
-        'a\ta\t1\t1.0\t1.0\t0.2',
-        'a\ta\t1\t2.0\t1.5\t0.2',
-        'a\tb\t1\t3.0\t2.0\t8.',
-        'a\tb\t1\t4.0\t2.5\t9.',
-        'a\tb\t1\t5.0\t3.0\t10.',
-        'b\ta\t1\t0.0\t2.0\t0.1',
-        'b\ta\t1\t1.0\t3.0\t0.3',
-        'b\ta\t1\t2.0\t4.0\t0.1',
-        'b\tb\t1\t3.0\t5.0\t9.',
-        'b\tb\t1\t4.0\t6.0\t11.',
-        'b\tb\t1\t5.0\t7.0\t10.']
+                   'a\ta\t1\t1.0\t1.0\t0.2',
+                   'a\ta\t1\t2.0\t1.5\t0.2',
+                   'a\tb\t1\t3.0\t2.0\t8.',
+                   'a\tb\t1\t4.0\t2.5\t9.',
+                   'a\tb\t1\t5.0\t3.0\t10.',
+                   'b\ta\t1\t0.0\t2.0\t0.1',
+                   'b\ta\t1\t1.0\t3.0\t0.3',
+                   'b\ta\t1\t2.0\t4.0\t0.1',
+                   'b\tb\t1\t3.0\t5.0\t9.',
+                   'b\tb\t1\t4.0\t6.0\t11.',
+                   'b\tb\t1\t5.0\t7.0\t10.']
 
         self.table1 = pd.DataFrame(
             [(n.split('\t')) for n in _table1],
-            columns=['group', 'dataset','level', 'x', 'y', 'c'], dtype=float)
+            columns=['group', 'dataset', 'level', 'x', 'y', 'c'], dtype=float)
 
         self.table2 = """{"id": "None","format": "Biological Observation Matrix 1.0.0","format_url": "http://biom-format.org","type": "OTU table","generated_by": "greg","date": "2013-08-22T13:10:23.907145","matrix_type": "sparse","matrix_element_type": "float","shape": [3, 4],"data": [[0,0,1.0],[0,1,2.0],[0,2,3.0],[0,3,4.0],[1,0,2.0],[1,1,0.0],[1,2,7.0],[1,3,8.0],[2,0,9.0],[2,1,10.0],[2,2,11.0],[2,3,12.0]],"rows": [{"id": "o1", "metadata": {"domain": "Archaea"}},{"id": "o2", "metadata": {"domain": "Bacteria"}},{"id": "o3", "metadata": {"domain": "Bacteria"}}],"columns": [{"id": "s1", "metadata": {"method": "A", "Sample": "A", "parameters": "A"}},{"id": "s2", "metadata": {"method": "A", "Sample": "A", "parameters": "B"}},{"id": "s3", "metadata": {"method": "A", "Sample": "A", "parameters": "C"}},{"id": "s4", "metadata": {"method": "B", "Sample": "A", "parameters": "D"}}]}"""
 
-        ## table 2
-        #OTU ID	s1	s2	s3	s4
+        # table 2
+        # OTU ID	s1	s2	s3	s4
         # o1    1.0 2.0 3.0 4.0
         # o2    2.0 0.0 7.0 8.0
         # o3    9.0 10.0    11.0    12.0

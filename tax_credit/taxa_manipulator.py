@@ -277,7 +277,6 @@ def stratify_taxonomy_subsets(infile, number_of_splits, basedir,
     # evenly distribute taxa at specified level among chunks
     taxon_dict = dict()
     for taxonomy in line_list:
-        # taxon = delim.join(taxonomy.split(delim)[:level])
         taxon = taxonomy.split(delim)[level]
         # assign taxon to random chunk
         chunk_choice = choice(list(chunk_choices))

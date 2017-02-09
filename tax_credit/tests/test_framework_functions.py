@@ -21,8 +21,8 @@ from tax_credit.framework_functions import (generate_simulated_datasets,
                                             extract_per_level_accuracy)
 from tax_credit.taxa_manipulator import (import_to_list,
                                          import_taxonomy_to_dict,
-                                         compile_reference_taxa,
                                          extract_taxa_names)
+
 
 class EvalFrameworkTests(TestCase):
 
@@ -100,14 +100,16 @@ class EvalFrameworkTests(TestCase):
             self.ref_data, self.tmpdir, 100, 2, range(6, 5, -1))
         # cross-validated should include only acidilacti and brevis,
         # one rep in both query and ref
-        cv_taxa = set(import_to_list(join(self.cvdir,
-            'B1-REF-iter0/query_taxa.tsv'), field=1) +
-            import_to_list(join(self.cvdir,
-            'B1-REF-iter1/query_taxa.tsv'), field=1))
-        cv_ref = set(import_to_list(join(self.cvdir,
-            'B1-REF-iter0/ref_taxa.tsv'), field=1) +
-            import_to_list(join(self.cvdir,
-            'B1-REF-iter1/ref_taxa.tsv'), field=1))
+        q0 = import_to_list(
+            join(self.cvdir, 'B1-REF-iter0/query_taxa.tsv'), field=1)
+        q1 = import_to_list(
+            join(self.cvdir, 'B1-REF-iter1/query_taxa.tsv'), field=1)
+        cv_taxa = set(q0 + q1)
+        ref0 = import_to_list(
+            join(self.cvdir, 'B1-REF-iter0/ref_taxa.tsv'), field=1)
+        ref1 = import_to_list(
+            join(self.cvdir, 'B1-REF-iter1/ref_taxa.tsv'), field=1)
+        cv_ref = set(ref0 + ref1)
         self.assertEqual(cv_taxa, {'k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Lactobacillaceae; g__Lactobacillus; s__brevis',
                                    'k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Lactobacillaceae; g__Pediococcus; s__acidilactici'})
         self.assertEqual(cv_taxa & cv_ref, {'k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Lactobacillaceae; g__Lactobacillus; s__brevis',
