@@ -11,7 +11,7 @@
 
 from sys import exit
 from os.path import join, exists, split, sep, expandvars, basename, splitext
-from os import makedirs, remove, system
+from os import makedirs, remove, system, stat
 from glob import glob
 from itertools import product
 from shutil import rmtree, move
@@ -94,8 +94,11 @@ def parameter_sweep(data_dir, results_dir, reference_dbs,
 def add_metadata_to_biom_table(biom_input_fp, taxonomy_map_fp, biom_output_fp):
     '''Load biom, add metadata, write to new table'''
     newbiom = load_table(biom_input_fp)
-    metadata = MetadataMap.from_file(taxonomy_map_fp,
-                                     header=['Sample ID', 'taxonomy', 'c'])
+    if stat(taxonomy_map_fp).st_size == 0:
+        metadata = {}
+    else:
+        metadata = MetadataMap.from_file(
+            taxonomy_map_fp, header=['Sample ID', 'taxonomy', 'c'])
     newbiom.add_metadata(metadata, 'observation')
     write_biom_table(newbiom, 'json', biom_output_fp)
 
