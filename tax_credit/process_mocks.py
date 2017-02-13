@@ -13,11 +13,11 @@ from os.path import exists, join, basename
 from shutil import copyfile, rmtree
 from urllib.request import urlretrieve
 from skbio import TreeNode, io
-from biom import load_table
+from biom import load_table, Table
 from biom.cli.util import write_biom_table
-import qiime
-from qiime.plugins import feature_table, demux, dada2, alignment, phylogeny
-from q2_types import DNAIterator
+import qiime2
+from qiime2.plugins import feature_table, demux, dada2, alignment, phylogeny
+from q2_types.feature_data import DNAIterator
 
 from tax_credit.taxa_manipulator import import_taxonomy_to_dict
 
@@ -231,11 +231,11 @@ def demux_to_plot_quality(seqs_dir,
             number of fastq quality plots to print
     '''
 
-    # import fastq to qiime artifact
-    seq_artifact = qiime.Artifact.import_data("RawSequences", seqs_dir)
+    # import fastq to qiime2 artifact
+    seq_artifact = qiime2.Artifact.import_data("RawSequences", seqs_dir)
 
     # demultiplex
-    barcodes = qiime.metadata.MetadataCategory.load(sample_md, index_col)
+    barcodes = qiime2.metadata.MetadataCategory.load(sample_md, index_col)
     demux_seqs = demux.methods.emp(seqs=seq_artifact,
                                    barcodes=barcodes,
                                    rev_comp_barcodes=rc_barcodes,
@@ -286,7 +286,7 @@ def load_demux_seqs(community_dir, seqs_dir, demux_fn, sample_md):
     with open(join(tmpdir, 'metadata.yml'), 'w') as yml:
         yml.write('\n')
 
-    seqs = qiime.Artifact.import_data(
+    seqs = qiime2.Artifact.import_data(
         "SampleData[SequencesWithQuality]", tmpdir)
     rmtree(tmpdir)
 
@@ -333,7 +333,7 @@ def denoise_to_phylogeny(communities,
         community_dir = join(mock_data_dir, community)
 
         # denoise with dada2
-        demux_seqs = qiime.Artifact.load(join(community_dir, demux_seqs_fn))
+        demux_seqs = qiime2.Artifact.load(join(community_dir, demux_seqs_fn))
         biom_table, rep_seqs = denoise_to_feature_table(
             demux_seqs, trim_left, trunc_len, community_dir)
 
@@ -358,7 +358,7 @@ def denoise_to_feature_table(demux_seqs,
         and view stats.
 
         demux_seqs = SampleData[SequencesWithQuality]
-            demultiplexed seqs output from qiime.demux.methods.emp()
+            demultiplexed seqs output from qiime2.demux.methods.emp()
         trim_left = int
             trim X bases from 5' end
         trunc_len = int
@@ -380,7 +380,7 @@ def denoise_to_feature_table(demux_seqs,
     # save biom Artifact
     biom_table.save(join(community_dir, feature_table_fn))
     biom_table_fp = join(community_dir, biom_table_fn)
-    write_biom_table(biom_table.view(biom.Table), 'hdf5', biom_table_fp)
+    write_biom_table(biom_table.view(Table), 'hdf5', biom_table_fp)
 
     # summarize feature table
     feature_table_summary = feature_table.visualizers.summarize(biom_table)
@@ -463,11 +463,11 @@ def transport_to_repo(communities,
         tree_fp = join(community_dir, newick_fn)
 
         # Extract biom, tree, rep_seqs
-        rep_seqs_fna = qiime.Artifact.load(rep_seqs).view(DNAIterator)
+        rep_seqs_fna = qiime2.Artifact.load(rep_seqs).view(DNAIterator)
         io.write(rep_seqs_fna.generator, format='fasta', into=rep_seqs_fp)
 
         if exists(tree):
-            qiime.Artifact.load(tree).view(TreeNode).write(tree_fp)
+            qiime2.Artifact.load(tree).view(TreeNode).write(tree_fp)
 
         # Move to repo:
         for f in [rep_seqs, feature_table, tree, sample_md,

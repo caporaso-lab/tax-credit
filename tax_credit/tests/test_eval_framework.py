@@ -208,7 +208,7 @@ class EvalFrameworkTests(TestCase):
         self.assertEqual(actual, expected)
 
     @classmethod
-    def setUpClass(self):
+    def setUpClass(cls):
         _table1 = """{"id": "None",
                       "format": "Biological Observation Matrix 1.0.0",
                       "format_url": "http:\/\/biom-format.org",
@@ -2278,11 +2278,11 @@ class EvalFrameworkTests(TestCase):
              '0.44,0.916666667,gg_13_8_otus,m1,0.00097195,0.608520351,,,,,,'
              '3,0.51,0.9'])
 
-        self.table1 = Table.from_json(json.loads(_table1))
-        self.table2 = Table.from_json(json.loads(_table2))
-        self.table3 = Table.from_json(json.loads(_table3))
+        cls.table1 = Table.from_json(json.loads(_table1))
+        cls.table2 = Table.from_json(json.loads(_table2))
+        cls.table3 = Table.from_json(json.loads(_table3))
 
-        self.mock_result_table1 = pd.DataFrame.from_csv(
+        cls.mock_result_table1 = pd.DataFrame.from_csv(
             StringIO(_mock_result_table1))
 
 

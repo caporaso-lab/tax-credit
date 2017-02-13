@@ -11,7 +11,7 @@
 
 from sys import exit
 from os.path import join, exists, split, sep, expandvars, basename, splitext
-from os import makedirs, remove, system
+from os import makedirs, remove, system, stat
 from glob import glob
 from itertools import product
 from shutil import rmtree, move
@@ -39,50 +39,66 @@ from tax_credit.taxa_manipulator import (accept_list_or_file,
                                          extract_taxa_names)
 
 
-def parameter_sweep(data_dir, results_dir, reference_dbs,
+def gen_param_sweep(data_dir, results_dir, reference_dbs,
                     dataset_reference_combinations,
                     method_parameters_combinations,
-                    command_template=None, infile='rep_set.fna',
-                    output_fn='rep_set_tax_assignments.txt', force=False):
+                    output_name='rep_set_tax_assignments.txt', force=False):
     '''Create list of commands from input dictionaries of method_parameter and
     dataset_reference_combinations
     '''
-
-    if command_template is None:
-        # default to qiime1 command template
-        command_template = ''.join(
-            "mkdir -p {0} ; assign_taxonomy.py -v -i {1} -o {0} -r {2} -t {3}",
-            " -m {4} {5} --rdp_max_memory 16000")
-
-    commands = []
     for dataset, reference in dataset_reference_combinations:
-        query_seqs = join(data_dir, dataset, infile)
+        input_dir = join(data_dir, dataset)
         reference_seqs, reference_tax = reference_dbs[reference]
         for method, parameters in method_parameters_combinations.items():
             parameter_ids = sorted(parameters.keys())
             for parameter_combination in product(*[parameters[id_]
-                                                   for id_ in parameter_ids]):
+                                                 for id_ in parameter_ids]):
                 parameter_comb_id = ':'.join(map(str, parameter_combination))
-                param_outdir = join(results_dir, dataset, reference,
-                                    method, parameter_comb_id)
-                if not exists(join(param_outdir, output_fn)) or force is True:
-                    parameter_str = ' '.join(['--%s %s' % e for e in
-                                              zip(parameter_ids,
-                                                  parameter_combination)])
-                    command = command_template.format(param_outdir,
-                                                      query_seqs,
-                                                      reference_seqs,
-                                                      reference_tax, method,
-                                                      parameter_str)
-                    commands.append(command)
+                parameter_output_dir = join(results_dir, dataset, reference,
+                                            method, parameter_comb_id)
+                if not exists(join(parameter_output_dir, output_name)) \
+                        or force:
+                    params = dict(zip(parameter_ids, parameter_combination))
+                    yield (parameter_output_dir, input_dir, reference_seqs,
+                           reference_tax, method, params)
+
+
+def parameter_sweep(data_dir, results_dir, reference_dbs,
+                    dataset_reference_combinations,
+                    method_parameters_combinations,
+                    command_template="mkdir -p {0} ; assign_taxonomy.py -v -i "
+                                     "{1} -o {0} -r {2} -t {3} -m {4} {5} "
+                                     "--rdp_max_memory 16000",
+                    infile='rep_set.fna',
+                    output_name='rep_set_tax_assignments.txt', force=False):
+    '''Create list of commands from input dictionaries of method_parameter and
+    dataset_reference_combinations
+    '''
+    sweep = gen_param_sweep(data_dir, results_dir, reference_dbs,
+                            dataset_reference_combinations,
+                            method_parameters_combinations, infile,
+                            output_name, force)
+    commands = []
+    for assignment in sweep:
+        (parameter_output_dir, input_dir, reference_seqs, reference_tax,
+         method, params) = assignment
+        query_seqs = join(input_dir, infile)
+        parameter_str = ' '.join(['--%s %s' % e for e in params.items()])
+        command = command_template.format(parameter_output_dir, query_seqs,
+                                          reference_seqs, reference_tax,
+                                          method, parameter_str)
+        commands.append(command)
     return commands
 
 
 def add_metadata_to_biom_table(biom_input_fp, taxonomy_map_fp, biom_output_fp):
     '''Load biom, add metadata, write to new table'''
     newbiom = load_table(biom_input_fp)
-    metadata = MetadataMap.from_file(taxonomy_map_fp,
-                                     header=['Sample ID', 'taxonomy', 'c'])
+    if stat(taxonomy_map_fp).st_size == 0:
+        metadata = {}
+    else:
+        metadata = MetadataMap.from_file(
+            taxonomy_map_fp, header=['Sample ID', 'taxonomy', 'c'])
     newbiom.add_metadata(metadata, 'observation')
     write_biom_table(newbiom, 'json', biom_output_fp)
 
