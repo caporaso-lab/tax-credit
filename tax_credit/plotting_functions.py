@@ -13,7 +13,6 @@ import pandas as pd
 import seaborn as sns
 import numpy as np
 from seaborn import violinplot, heatmap
-from pylab import scatter, xlabel, ylabel, xlim, ylim
 import matplotlib.pyplot as plt
 from scipy.stats import (kruskal,
                          linregress,

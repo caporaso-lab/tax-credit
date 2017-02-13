@@ -20,7 +20,7 @@ from tax_credit.simulated_communities import (generate_simulated_communities)
 class EvalFrameworkTests(TestCase):
 
     @classmethod
-    def setUpClass(self):
+    def setUpClass(cls):
         _table1 = '\n'.join([
             '#SampleID\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria'
             '; o__Legionellales; f__Legionellaceae; g__Legionella; s__\t'
@@ -29,7 +29,7 @@ class EvalFrameworkTests(TestCase):
             's1\t0.5\t0.5',
             's2\t0.1\t0.9'])
 
-        self.table2 = '\n'.join(['#SampleID\t0001\t0003',
+        cls.table2 = '\n'.join(['#SampleID\t0001\t0003',
                                  's1\t0.5\t0.5',
                                  's2\t0.1\t0.9\n'])
 
@@ -39,29 +39,29 @@ class EvalFrameworkTests(TestCase):
             '0003\tk__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavo'
             'bacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__'])
 
-        self.seqs1 = '\n'.join(['>0001',
+        cls.seqs1 = '\n'.join(['>0001',
                                 'ACTAGTAGTTGAC',
                                 '>0003',
                                 'ATCGATGCATGCA\n'])
 
-        self.tmpdir = mkdtemp()
-        testdir = join(self.tmpdir, 'sim_test')
+        cls.tmpdir = mkdtemp()
+        testdir = join(cls.tmpdir, 'sim_test')
         comm_dir = 'blob'
-        self.testpath = join(testdir, comm_dir)
-        if not exists(self.testpath):
-            makedirs(self.testpath)
+        cls.testpath = join(testdir, comm_dir)
+        if not exists(cls.testpath):
+            makedirs(cls.testpath)
 
-        tab_fp = join(self.testpath, 'expected-composition.txt')
+        tab_fp = join(cls.testpath, 'expected-composition.txt')
         with open(tab_fp, 'w') as out:
             out.write(_table1)
 
-        ref_fp = join(self.testpath, 'ref1.tmp')
+        ref_fp = join(cls.testpath, 'ref1.tmp')
         with open(ref_fp, 'w') as out:
             out.write(_ref1)
 
-        seqs_fp = join(self.testpath, 'seqs1.tmp')
+        seqs_fp = join(cls.testpath, 'seqs1.tmp')
         with open(seqs_fp, 'w') as out:
-            out.write(self.seqs1)
+            out.write(cls.seqs1)
 
         refs = {'ref1': (seqs_fp, ref_fp)}
         generate_simulated_communities(testdir, [(comm_dir, 'ref1')], refs, 1)
@@ -73,8 +73,8 @@ class EvalFrameworkTests(TestCase):
             self.assertEqual(sq.read(), self.seqs1)
 
     @classmethod
-    def tearDownClass(self):
-        rmtree(self.tmpdir)
+    def tearDownClass(cls):
+        rmtree(cls.tmpdir)
 
 
 if __name__ == "__main__":

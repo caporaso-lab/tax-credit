@@ -145,7 +145,7 @@ class EvalFrameworkTests(TestCase):
             self.assertEqual(pla.iloc[i]['match_ratio'], self.exp_r[i + 1])
 
     @classmethod
-    def setUpClass(self):
+    def setUpClass(cls):
         _ref1 = '\n'.join([
             '>179419',
             'TGAGAGTTTGATCCTGGCTCAGGACGAACGCTGGCGGCATGCCTAATACATGCAAGTCGAACGAG'
@@ -376,41 +376,41 @@ class EvalFrameworkTests(TestCase):
             '1136710	k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacil'
             'lales; f__Lactobacillaceae; g__Pediococcus'])
 
-        self.tmpdir = mkdtemp()
+        cls.tmpdir = mkdtemp()
         name = 'B1-REF-L6-iter0'
-        self.query_fp = join(self.tmpdir, name, 'query_taxa.tsv')
-        self.paramdir = join(self.tmpdir, name, name, 'method1', 'param1')
-        self.obs_taxa_fp = join(self.paramdir, 'query_tax_assignments.txt')
-        refpath = join(self.tmpdir, 'ref1.txt')
-        self.cvdir = join(self.tmpdir, 'cross-validated')
-        self.ntdir = join(self.tmpdir, 'novel-taxa-simulations')
-        if not exists(self.paramdir):
-            makedirs(self.paramdir)
+        cls.query_fp = join(cls.tmpdir, name, 'query_taxa.tsv')
+        cls.paramdir = join(cls.tmpdir, name, name, 'method1', 'param1')
+        cls.obs_taxa_fp = join(cls.paramdir, 'query_tax_assignments.txt')
+        refpath = join(cls.tmpdir, 'ref1.txt')
+        cls.cvdir = join(cls.tmpdir, 'cross-validated')
+        cls.ntdir = join(cls.tmpdir, 'novel-taxa-simulations')
+        if not exists(cls.paramdir):
+            makedirs(cls.paramdir)
         with open(refpath, 'w') as out:
             out.write(_ref1)
-        with open(self.query_fp, 'w') as out:
+        with open(cls.query_fp, 'w') as out:
             out.write(_taxa1)
-        with open(self.obs_taxa_fp, 'w') as out:
+        with open(cls.obs_taxa_fp, 'w') as out:
             out.write(_taxa2)
 
-        self.databases = {'B1-REF': [refpath, self.query_fp,
+        cls.databases = {'B1-REF': [refpath, cls.query_fp,
                                      "ref1", "GTGCCAGCMGCCGCGGTAA",
                                      "ATTAGAWACCCBDGTAGTCC", "515f", "806r"]}
-        self.ref_data = pd.DataFrame.from_dict(self.databases, orient="index")
-        self.ref_data.columns = ["Reference file path", "Reference tax path",
+        cls.ref_data = pd.DataFrame.from_dict(cls.databases, orient="index")
+        cls.ref_data.columns = ["Reference file path", "Reference tax path",
                                  "Reference id", "Fwd primer", "Rev primer",
                                  "Fwd primer id", "Rev primer id"]
 
-        self.exp_p = [0, 1.0, 1.0, 0.875, 0.8571428571428571,
+        cls.exp_p = [0, 1.0, 1.0, 0.875, 0.8571428571428571,
                       0.83333333333333337, 0.66666666666666663]
-        self.exp_r = [0, 1.0, 1.0, 0.875, 0.75, 0.625, 0.25]
-        self.exp_f = [0, 1.0, 1.0, 0.875, 0.79999999999999993,
+        cls.exp_r = [0, 1.0, 1.0, 0.875, 0.75, 0.625, 0.25]
+        cls.exp_f = [0, 1.0, 1.0, 0.875, 0.79999999999999993,
                       0.7142857142857143, 0.36363636363636365]
-        self.exp_m = [0, 0, 0, 1, 1, 1, 3, 2]
+        cls.exp_m = [0, 0, 0, 1, 1, 1, 3, 2]
 
     @classmethod
-    def tearDownClass(self):
-        rmtree(self.tmpdir)
+    def tearDownClass(cls):
+        rmtree(cls.tmpdir)
 
 
 if __name__ == "__main__":

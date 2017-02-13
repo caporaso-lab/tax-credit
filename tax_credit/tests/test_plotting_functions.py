@@ -89,7 +89,7 @@ class EvalFrameworkTests(TestCase):
         self.assertAlmostEqual(best.iloc[0]['distance'], 0.33333333333333331)
 
     @classmethod
-    def setUpClass(self):
+    def setUpClass(cls):
         _table1 = ['a\ta\t1\t0.0\t0.5\t0.1',
                    'a\ta\t1\t1.0\t1.0\t0.2',
                    'a\ta\t1\t2.0\t1.5\t0.2',
@@ -103,11 +103,11 @@ class EvalFrameworkTests(TestCase):
                    'b\tb\t1\t4.0\t6.0\t11.',
                    'b\tb\t1\t5.0\t7.0\t10.']
 
-        self.table1 = pd.DataFrame(
+        cls.table1 = pd.DataFrame(
             [(n.split('\t')) for n in _table1],
             columns=['group', 'dataset', 'level', 'x', 'y', 'c'], dtype=float)
 
-        self.table2 = """{"id": "None",
+        cls.table2 = """{"id": "None",
                           "format": "Biological Observation Matrix 1.0.0",
                           "format_url": "http:\/\/biom-format.org",
                           "type": "OTU table",
@@ -242,18 +242,18 @@ class EvalFrameworkTests(TestCase):
         # o2    2.0 0.0 7.0 8.0
         # o3    9.0 10.0    11.0    12.0
 
-        self.tmpdir = mkdtemp()
-        self.table2 = Table.from_json(json.loads(self.table2))
-        write_biom_table(self.table2, 'hdf5', join(self.tmpdir, 'table2.biom'))
-        self.dm, self.s_md = make_distance_matrix(
-            join(self.tmpdir, 'table2.biom'), method="braycurtis")
-        self.dist = per_method_distance(self.dm, self.s_md, group_by='method',
+        cls.tmpdir = mkdtemp()
+        cls.table2 = Table.from_json(json.loads(cls.table2))
+        write_biom_table(cls.table2, 'hdf5', join(cls.tmpdir, 'table2.biom'))
+        cls.dm, cls.s_md = make_distance_matrix(
+            join(cls.tmpdir, 'table2.biom'), method="braycurtis")
+        cls.dist = per_method_distance(cls.dm, cls.s_md, group_by='method',
                                         standard='B', metric='distance',
                                         sample='Sample')
 
     @classmethod
-    def tearDownClass(self):
-        rmtree(self.tmpdir)
+    def tearDownClass(cls):
+        rmtree(cls.tmpdir)
 
 
 if __name__ == "__main__":
