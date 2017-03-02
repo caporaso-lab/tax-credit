@@ -1,0 +1,4 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	1	0	blast+	0.001:10:0.99:0.8	Unassigned	k__Fungi;p__Basidiomycota	underclassification	0	0.666666666667	0.666666666667	0.666666666667
+F1-REF	1	0	blast+	0.001:10:0.99:0.8	k__Fungi	k__Fungi;p__Glomeromycota	match	1	0.666666666667	0.666666666667	0.666666666667
+F1-REF	1	0	blast+	0.001:10:0.99:0.8	k__Fungi	k__Fungi;p__Chytridiomycota	match	1	0.666666666667	0.666666666667	0.666666666667

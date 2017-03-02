@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	2	vsearch	10:0.99:0.99	k__Fungi	k__Fungi;p__Ascomycota;c__Sordariomycetes	underclassification	1	0.25	0.0909090909091	0.133333333333
+F1-REF	2	2	vsearch	10:0.99:0.99	Unassigned	k__Fungi;p__Basidiomycota;c__Tremellomycetes	underclassification	0	0.25	0.0909090909091	0.133333333333
+F1-REF	2	2	vsearch	10:0.99:0.99	k__Fungi	k__Fungi;p__Ascomycota;c__Saccharomycetes	underclassification	1	0.25	0.0909090909091	0.133333333333
+F1-REF	2	2	vsearch	10:0.99:0.99	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Rhizophydiales;f__Alphamycetaceae;g__Alphamyces;s__Alphamyces_chaetifer	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes	misclassification	1	0.25	0.0909090909091	0.133333333333
+F1-REF	2	2	vsearch	10:0.99:0.99	Unassigned	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis	underclassification	0	0.25	0.0909090909091	0.133333333333
+F1-REF	2	2	vsearch	10:0.99:0.99	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Arthoniomycetes	match	2	0.25	0.0909090909091	0.133333333333
+F1-REF	2	2	vsearch	10:0.99:0.99	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Ascomycota;c__Pneumocystidomycetes	misclassification	1	0.25	0.0909090909091	0.133333333333
+F1-REF	2	2	vsearch	10:0.99:0.99	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Wallemiomycetes	overclassification	2	0.25	0.0909090909091	0.133333333333
+F1-REF	2	2	vsearch	10:0.99:0.99	Unassigned	k__Fungi;p__Chytridiomycota;c__Blastocladiomycetes	underclassification	0	0.25	0.0909090909091	0.133333333333
+F1-REF	2	2	vsearch	10:0.99:0.99	Unassigned	k__Fungi;p__Basidiomycota;c__Entorrhizomycetes	underclassification	0	0.25	0.0909090909091	0.133333333333
+F1-REF	2	2	vsearch	10:0.99:0.99	Unassigned	k__Fungi;p__Zygomycota;c__Zoopagomycotina_cls_Incertae_sedis	underclassification	0	0.25	0.0909090909091	0.133333333333
