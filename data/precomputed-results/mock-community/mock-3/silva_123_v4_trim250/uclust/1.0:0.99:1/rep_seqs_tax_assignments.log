@@ -1,0 +1,89 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/ref_dbs/SILVA123_QIIME_release/taxonomy/16S_only/99/majority_taxonomy_7_levels.txt
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/ref_dbs/SILVA123_QIIME_release/taxonomy/16S_only/99/majority_taxonomy_7_levels.txt
+max_accepts:1
+min_consensus_fraction:1.0
+reference_sequences_fp:/Users/nbokulich/Desktop/ref_dbs/SILVA123_QIIME_release/rep_set/rep_set_16S_only/99/99_otus_16S/dna-sequences.fasta
+similarity:0.99
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-tax4fACiS
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-3/rep_seqs.fna --id 0.99 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/ref_dbs/SILVA123_QIIME_release/rep_set/rep_set_16S_only/99/99_otus_16S/dna-sequences.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_7wakDn.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+L	32444	250	*	*	*	*	*	EF508895.1.1478	*
+H	32444	150	100.0	+	0	0	150M100I	bc23d2ee539bf2f52faf789289af7879	EF508895.1.1478
+L	21627	250	*	*	*	*	*	CAJS01000030.370.1894	*
+H	21627	150	100.0	+	0	0	150M100I	dcb7b288381ec22163253cc31ca4bb57	CAJS01000030.370.1894
+L	369427	250	*	*	*	*	*	JQ471505.1.1413	*
+H	369427	150	100.0	+	0	0	150M100I	c4269a6e9bd66eca53e710c9f9d9ad4f	JQ471505.1.1413
+L	191363	250	*	*	*	*	*	DQ801158.1.1348	*
+H	191363	150	99.3	+	0	0	150M100I	194be3a565245d51b6d1182d4d8c7e5b	DQ801158.1.1348
+L	294314	250	*	*	*	*	*	AF506794.1.1466	*
+H	294314	150	100.0	+	0	0	150M100I	4e9b3c8dd9808d6a78936ceaf96dc0d5	AF506794.1.1466
+L	353220	250	*	*	*	*	*	KF079871.1.1371	*
+H	353220	150	100.0	+	0	0	150M100I	aebf2a74a3aa9e5876c479b1db88985f	KF079871.1.1371
+N	*	150	*	*	*	*	*	d8505780c03879a277eb71fe2c852192	*
+L	156799	250	*	*	*	*	*	JF198516.1.1372	*
+H	156799	150	100.0	+	0	0	150M100I	075614efc7d3dd61cd64a4e5f17078ae	JF198516.1.1372
+L	233138	250	*	*	*	*	*	HM359120.1.1455	*
+H	233138	150	99.3	+	0	0	150M100I	92e3a73c9006d7a85d3112558daf2576	HM359120.1.1455
+L	419113	250	*	*	*	*	*	JQ245044.1.1052	*
+H	419113	150	99.3	+	0	0	150M100I	d9e724faff24eeeb7ac7fcc5cc7885b6	JQ245044.1.1052
+L	380706	250	*	*	*	*	*	GQ289380.1.1483	*
+H	380706	150	100.0	+	0	0	150M100I	7a8d29c59b803baaed9cc1f04ce0dc33	GQ289380.1.1483
+L	192447	250	*	*	*	*	*	EU451649.1.1430	*
+H	192447	150	100.0	+	0	0	150M100I	b3fef1e26b7b6ac20847ede4da68547a	EU451649.1.1430
+L	129417	250	*	*	*	*	*	AE000513.2285518.2287019	*
+H	129417	150	100.0	+	0	0	150M100I	86adb6193435090318cf24df07770d07	AE000513.2285518.2287019
+N	*	150	*	*	*	*	*	94b000e59b7ac160b0416c9ab45ff0bf	*
+L	356229	250	*	*	*	*	*	JF681402.1.1252	*
+H	356229	150	100.0	+	0	0	150M100I	74c5523929f4d53f7928f15bc7751994	JF681402.1.1252
+N	*	150	*	*	*	*	*	b7269ca8dbd01fc77b163d64ff1caf90	*
+L	219843	250	*	*	*	*	*	GU370084.1.1473	*
+H	219843	150	100.0	+	0	0	150M100I	e25836661b81c9cc3aa99c8b2c7ca14d	GU370084.1.1473
+L	312686	250	*	*	*	*	*	JF682990.1.1262	*
+H	312686	150	100.0	+	0	0	150M100I	1c86153e1b13ab5322c96f2602b73513	JF682990.1.1262
+L	228335	250	*	*	*	*	*	JF205770.1.1372	*
+H	228335	150	100.0	+	0	0	150M100I	47ad35356a9bfec68416d32e4f039021	JF205770.1.1372
+L	380840	250	*	*	*	*	*	JQ477699.1.1403	*
+H	380840	150	99.3	+	0	0	150M100I	29f6e97a2ed3b8abe26bb45acba8451f	JQ477699.1.1403
+L	256314	248	*	*	*	*	*	GQ156555.1.1354	*
+H	256314	150	99.3	+	0	0	150M98I	04195686f2b70585790ec75320de0d6f	GQ156555.1.1354
+L	181294	250	*	*	*	*	*	JF967629.1.1514	*
+H	181294	150	100.0	+	0	0	150M100I	5642c43966bbd7f41c2f0cbe988205ff	JF967629.1.1514
+L	133179	250	*	*	*	*	*	HQ758064.1.1459	*
+H	133179	150	100.0	+	0	0	150M100I	9ac5fec396208e598ab2e2d26985d0df	HQ758064.1.1459
+L	227236	250	*	*	*	*	*	KF097892.1.1346	*
+H	227236	150	100.0	+	0	0	150M100I	33b601a7a8295e7a6c8f413504129220	KF097892.1.1346
+L	202947	250	*	*	*	*	*	FJ370089.1.1364	*
+H	202947	150	99.3	+	0	0	150M100I	ac5402de1ddf427ab8d2b0a8a0a44f19	FJ370089.1.1364
+D	21627	2	*	*	*	*	100.0	CAJS01000030.370.1894	*
+D	32444	2	*	*	*	*	100.0	EF508895.1.1478	*
+D	129417	2	*	*	*	*	100.0	AE000513.2285518.2287019	*
+D	133179	2	*	*	*	*	100.0	HQ758064.1.1459	*
+D	156799	2	*	*	*	*	100.0	JF198516.1.1372	*
+D	181294	2	*	*	*	*	100.0	JF967629.1.1514	*
+D	191363	2	*	*	*	*	99.3	DQ801158.1.1348	*
+D	192447	2	*	*	*	*	100.0	EU451649.1.1430	*
+D	202947	2	*	*	*	*	99.3	FJ370089.1.1364	*
+D	219843	2	*	*	*	*	100.0	GU370084.1.1473	*
+D	227236	2	*	*	*	*	100.0	KF097892.1.1346	*
+D	228335	2	*	*	*	*	100.0	JF205770.1.1372	*
+D	233138	2	*	*	*	*	99.3	HM359120.1.1455	*
+D	256314	2	*	*	*	*	99.3	GQ156555.1.1354	*
+D	294314	2	*	*	*	*	100.0	AF506794.1.1466	*
+D	312686	2	*	*	*	*	100.0	JF682990.1.1262	*
+D	353220	2	*	*	*	*	100.0	KF079871.1.1371	*
+D	356229	2	*	*	*	*	100.0	JF681402.1.1252	*
+D	369427	2	*	*	*	*	100.0	JQ471505.1.1413	*
+D	380706	2	*	*	*	*	100.0	GQ289380.1.1483	*
+D	380840	2	*	*	*	*	99.3	JQ477699.1.1403	*
+D	419113	2	*	*	*	*	99.3	JQ245044.1.1052	*
