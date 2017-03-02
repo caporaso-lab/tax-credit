@@ -29,6 +29,8 @@ def accept_list_or_file(infile, field=None, delim='\t'):
             listout = infile
     elif isfile(infile):
         listout = import_to_list(infile, field=field, delim=delim)
+    else:
+        raise RuntimeError('unknown file type in ' + infile)
     return listout
 
 
