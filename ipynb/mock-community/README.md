@@ -22,7 +22,10 @@ results_dir/
 This directory structure is identical to that for the [precomputed results](https://github.com/caporaso-lab/short-read-tax-assignment/tree/master/data/precomputed-results). You can review that directory structure for an example of how this should look.
 
 ## Contents
-* [Data Generation](./mock-dataset-generation.ipynb): retrieve and process mock community data sets for analysis. (These data are stored in tax-credit and will not need to be performed again, unless if preparing new mock community data sets for analysis.)
-* [Taxonomy Assignment](./generate-tax-assignments.ipynb): Creates and executes commands for generating taxonomic assignments for the mock community contained in this package. The results of running this notebook are included in the repository, so it's not necessary to re-run this.
+* [Data Generation](./dataset-generation.ipynb): retrieve and process mock community data sets for analysis. (These data are stored in tax-credit and will not need to be performed again, unless if preparing new mock community data sets for analysis.)
+* [Taxonomy Assignment](./taxonomy-assignment-template.ipynb): Creates and executes commands for generating taxonomic assignments for the mock community contained in this package. The results of running this notebook are included in the repository, so it's not necessary to re-run this. Start [here](./taxonomy-assignment-template.ipynb) for testing new methods. Examples are provided for the following methods:
+    * [Qiime 2](./taxonomy-assignment-q2-feature-classifier.ipynb): ``q2-feature-classifier``.
+    * [Qiime 1](./taxonomy-assignment-qiime1.ipynb): RDP, sortmerna, uclust, and BLAST wrappers.
+    * [Reference database comparison](./evaluate-classification-database-comparison.ipynb): and example of taxonomy assignment using different reference databases, this is the taxonomy generation step preceding the [comparative evaluation](./evaluate-classification-database-comparison.ipynb).
 * [Analysis](./evaluate-classification-accuracy.ipynb): Template for mock community analysis at multiple taxonomic levels.
 * Comparison of taxonomic assignment with different reference databases, for example, can be performed through modifications of the above notebooks to [format reference databases](./format-reference-databases.ipynb) to different specifications, [assign taxonomy](./generate-tax-assignments-trimmed-dbs.ipynb) with these databases, and [compare classification](./evaluate-classification-database-comparison.ipynb) of mock communities assigned with different reference databases.

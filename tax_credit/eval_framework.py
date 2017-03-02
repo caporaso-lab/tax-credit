@@ -9,6 +9,7 @@
 # The full license is in the file COPYING.txt, distributed with this software.
 # ----------------------------------------------------------------------------
 
+from sys import exit
 from glob import glob
 from os.path import abspath, join, exists, split
 from collections import defaultdict
@@ -583,6 +584,19 @@ def merge_expected_and_observed_tables(expected_results_dir, results_dirs,
     '''For each dataset in expected_results_dir, merge expected and observed
     taxonomy compositions.
     '''
+    # Quick and dirty way to keep merge from running automatically in notebooks
+    # when users "run all" cells. This is really just a convenience function
+    # that is meant to be called from the tax-credit notebooks and causing
+    # force=False to kill the function is the best simple control. The
+    # alternative is to work out a way to weed out expected_tables that have a
+    # merged biom, and just load that biom instead of overwriting if
+    # force=False. Then do the same for result_tables. If any new result_tables
+    # exist, perform merge if force=True. The only time force=False should
+    # result in a new table is when a new mock community/reference dataset
+    # combo is added — so just let users set force=True if that's the case.
+    if force is False:
+        exit('Skipping merge. Set force=True if you intend to generate new '
+             'merged tables.')
 
     # Find expected tables, add sample metadata
     expected_table_lookup = get_expected_tables_lookup(
