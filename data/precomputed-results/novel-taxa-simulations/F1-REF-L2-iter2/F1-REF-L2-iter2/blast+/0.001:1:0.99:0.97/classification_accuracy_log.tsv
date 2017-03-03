@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	2	blast+	0.001:1:0.99:0.97	k__Fungi;p__Ascomycota;c__Geoglossomycetes;o__Geoglossales;f__Geoglossaceae;g__Geoglossum;s__Geoglossum_umbratile	k__Fungi;p__Ascomycota;c__Sordariomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.99:0.97	Unassigned	k__Fungi;p__Basidiomycota;c__Tremellomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.99:0.97	k__Fungi;p__Ascomycota;c__Leotiomycetes;o__Helotiales;f__Helotiales_fam_Incertae_sedis;g__Tetracladium;s__Tetracladium_marchalianum	k__Fungi;p__Ascomycota;c__Saccharomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.99:0.97	Unassigned	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.99:0.97	Unassigned	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.99:0.97	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Lecanorales;f__Lecanorales_fam_Incertae_sedis;g__Lecania;s__Lecania_cyrtella	k__Fungi;p__Ascomycota;c__Arthoniomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.99:0.97	Unassigned	k__Fungi;p__Ascomycota;c__Pneumocystidomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.99:0.97	Unassigned	k__Fungi;p__Basidiomycota;c__Wallemiomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.99:0.97	Unassigned	k__Fungi;p__Chytridiomycota;c__Blastocladiomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.99:0.97	Unassigned	k__Fungi;p__Basidiomycota;c__Entorrhizomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.99:0.97	Unassigned	k__Fungi;p__Zygomycota;c__Zoopagomycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0

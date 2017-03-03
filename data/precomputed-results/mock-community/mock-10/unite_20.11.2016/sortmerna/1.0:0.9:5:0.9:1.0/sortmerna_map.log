@@ -1,14 +1,14 @@
- Fri Jan 13 20:28:30 2017
+ Wed Feb 15 20:08:11 2017
 
- Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_ITS1Ff-ITS2r_trim250.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpssrwE9/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_ITS1Ff-ITS2r_trim250 -e 1.0 --aligned /Users/nbokulich/Desktop/projects/mock-community/mock-10/unite_20.11.2016/sortmerna/1.0:0.9:5:0.9:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-10/rep_seqs.fna -v --best 5 
- Process pid = 24091
+ Command: sortmerna --ref /Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_refs_qiime_ver7_99_20.11.2016_dev_ITS1Ff-ITS2r_trim250/dna-sequences.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmp2ALqbB/dna-sequences -e 1.0 --aligned /Users/nbokulich/Desktop/projects/mock-community/mock-10/unite_20.11.2016/sortmerna/1.0:0.9:5:0.9:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-10/rep_seqs.fna -v --best 5 
+ Process pid = 51880
  Parameters summary:
-    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpssrwE9/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_ITS1Ff-ITS2r_trim250
+    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmp2ALqbB/dna-sequences
      Seed length = 18
      Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
-     Gumbel lambda = 0.613152
-     Gumbel K = 0.337197
-     Minimal SW score based on E-value = 33
+     Gumbel lambda = 0.612001
+     Gumbel K = 0.336308
+     Minimal SW score based on E-value = 32
     Number of seeds = 2
     Edges = 4 (as integer)
     SW match = 2
@@ -28,4 +28,4 @@
     Maximum read length = 100
     Mean read length = 100
  By database:
-    /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/unite_20.11.2016/sh_refs_qiime_ver7_99_20.11.2016_dev_clean_ITS1Ff-ITS2r_trim250.fasta		100.00%
+    /Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_refs_qiime_ver7_99_20.11.2016_dev_ITS1Ff-ITS2r_trim250/dna-sequences.fasta		100.00%

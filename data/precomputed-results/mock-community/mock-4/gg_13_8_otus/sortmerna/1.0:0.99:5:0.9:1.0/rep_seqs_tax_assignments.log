@@ -1,0 +1,24 @@
+SortMeRNATaxonAssigner parameters:
+Application:SortMeRNA
+Citation:SortMeRNA is hosted at:
+http://bioinfo.lifl.fr/RNA/sortmerna
+https://github.com/biocore/sortmerna
+
+The following paper should be cited if this resource is used:
+
+Kopylova, E., Noe L. and Touzet, H.,
+SortMeRNA: fast and accurate filtering of ribosomal RNAs in
+metatranscriptomic data, Bioinformatics (2012) 28(24)
+
+best_N_alignments:5
+e_value:1.0
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+min_consensus_fraction:1.0
+min_percent_cov:90.0
+min_percent_id:99.0
+reference_sequences_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta
+sortmerna_db:None
+threads:1
+unassignable_label:Unassigned
+Result path: /Users/nbokulich/Desktop/projects/mock-community/mock-4/gg_13_8_otus/sortmerna/1.0:0.99:5:0.9:1.0/rep_seqs_tax_assignments.txt

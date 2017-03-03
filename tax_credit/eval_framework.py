@@ -260,7 +260,8 @@ def compute_prf(actual_table,
     return p, r, f
 
 
-def get_taxonomy_collapser(level, md_key='taxonomy'):
+def get_taxonomy_collapser(level, md_key='taxonomy',
+                           unassignable_label='unassigned'):
     """ Returns fn to pass to table.collapse
 
         level: the level to collapse on in the "taxonomy" observation
@@ -271,7 +272,11 @@ def get_taxonomy_collapser(level, md_key='taxonomy'):
         try:
             levels = [l.strip() for l in md[md_key].split(';')]
         except AttributeError:
-            levels = [l.strip() for l in md[md_key]]
+            try:
+                levels = [l.strip() for l in md[md_key]]
+            # if no metadata is listed for observation, group as Unassigned
+            except TypeError:
+                levels = [unassignable_label]
         result = ';'.join(levels[:level+1])
         return result
     return f
@@ -474,8 +479,11 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
                                    'best N alignments', 'coverage', 'e value'],
                  'uclust': ['min consensus fraction', 'similarity',
                             'max accepts'],
-                 'vsearch': ['min consensus fraction', 'similarity',
-                             'max accepts']}
+                 'vsearch': ['max accepts', 'similarity',
+                             'min consensus fraction'],
+                 'blast+': ['e-value', 'max accepts', 'similarity',
+                            'min consensus fraction'],
+                 'q2-nb': ['confidence']}
     param_ids.update(new_param_ids)
     for dataset_id, ref_id, method, params, actual_table_fp in result_tables:
 

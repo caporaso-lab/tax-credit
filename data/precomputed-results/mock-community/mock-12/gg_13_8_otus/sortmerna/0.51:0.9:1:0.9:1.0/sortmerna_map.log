@@ -1,14 +1,14 @@
- Fri Jan 13 20:31:24 2017
+ Wed Feb 15 20:15:56 2017
 
- Command: sortmerna --ref /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/gg_13_8_otus/99_otus_clean_515f-806r_trim250.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpvZk5LQ/99_otus_clean_515f-806r_trim250 -e 1.0 --aligned /Users/nbokulich/Desktop/projects/mock-community/mock-12/gg_13_8_otus/sortmerna/0.51:0.9:1:0.9:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-12/rep_seqs.fna -v --best 1 
- Process pid = 24739
+ Command: sortmerna --ref /Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpXUG2N9/dna-sequences -e 1.0 --aligned /Users/nbokulich/Desktop/projects/mock-community/mock-12/gg_13_8_otus/sortmerna/0.51:0.9:1:0.9:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-12/rep_seqs.fna -v --best 1 
+ Process pid = 53225
  Parameters summary:
-    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpvZk5LQ/99_otus_clean_515f-806r_trim250
+    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpXUG2N9/dna-sequences
      Seed length = 18
      Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
-     Gumbel lambda = 0.585806
-     Gumbel K = 0.315166
-     Minimal SW score based on E-value = 41
+     Gumbel lambda = 0.579768
+     Gumbel K = 0.309510
+     Minimal SW score based on E-value = 45
     Number of seeds = 2
     Edges = 4 (as integer)
     SW match = 2
@@ -28,4 +28,4 @@
     Maximum read length = 230
     Mean read length = 230
  By database:
-    /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/gg_13_8_otus/99_otus_clean_515f-806r_trim250.fasta		98.96%
+    /Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta		98.96%
