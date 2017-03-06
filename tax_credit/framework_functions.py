@@ -9,7 +9,6 @@
 # The full license is in the file COPYING.txt, distributed with this software.
 # ----------------------------------------------------------------------------
 
-from sys import exit
 from os.path import join, exists, split, sep, expandvars, basename, splitext
 from os import makedirs, remove, system, stat
 from glob import glob
@@ -76,7 +75,7 @@ def parameter_sweep(data_dir, results_dir, reference_dbs,
     '''
     sweep = gen_param_sweep(data_dir, results_dir, reference_dbs,
                             dataset_reference_combinations,
-                            method_parameters_combinations, infile,
+                            method_parameters_combinations,
                             output_name, force)
     commands = []
     for assignment in sweep:
@@ -213,8 +212,8 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations,
     dataframe: pandas.DataFrame
     '''
     if iterations < 2:
-        exit('''FAIL: Must perform two or more iterations for construction of
-             cross-validated datasets.''')
+        raise ValueError('Must perform two or more iterations for '
+                         'construction of cross-validated datasets.')
 
     for index, data in dataframe.iterrows():
         db_dir = join(data_dir, 'ref_dbs', data['Reference id'])
@@ -292,8 +291,8 @@ def generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
         base output directory to contain simulated datasets
     '''
     if iterations < 2:
-        exit('''FAIL: Must perform two or more iterations for construction of
-             cross-validated datasets.''')
+        raise ValueError('Must perform two or more iterations for '
+                         'construction of cross-validated datasets.')
 
     # Remove non-branching taxa
     for level in levelrange:
@@ -362,8 +361,8 @@ def generate_crossvalidated_sequences(read_taxa, simulated_reads_fp, index,
         base output directory to contain simulated datasets
     '''
     if iterations < 2:
-        exit('''FAIL: Must perform two or more iterations for construction of
-             cross-validated datasets.''')
+        raise ValueError('Must perform two or more iterations for '
+                         'construction of cross-validated datasets.')
 
     # Subset amplicons so that taxa are evenly distributed between train/test
     duplicated_taxa = unique_lines(read_taxa, mode='d', field=1)
@@ -557,7 +556,7 @@ def load_taxa(obs_fp, level=slice(0, 7), field=1):
     obs = extract_taxa_names(sorted(accept_list_or_file(obs_fp)), field=field,
                              level=level)
     obs = [';'.join([l.strip() for l in line.split(';')]) for line in obs
-           if not line.startswith('taxonomy')]
+           if not line.startswith(('taxonomy', 'Taxon'))]
     return obs
 
 
@@ -623,7 +622,7 @@ def compute_prf(exp, obs, avg='micro', test_type='cross-validated',
                                                   labels=lab(_exp, _obs,
                                                              level+1))
     else:
-        print('FAIL: test_type must == "novel-taxa" or "cross-validated"')
+        raise ValueError('test_type must == "novel-taxa" or "cross-validated"')
 
     return p, r, f
 
@@ -661,10 +660,11 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
         exp_taxa = load_taxa(exp_fp, level=slice(0, 7))
         obs_taxa = load_taxa(obs_fp, level=slice(0, 7))
 
-        # Exit if obs_taxa and exp_taxa are not same length
+        # raise error if obs_taxa and exp_taxa are not same length
         if len(obs_taxa) != len(exp_taxa):
-            exit('''FAIL: Lengths of expected and observed taxa do not match.
-                 Check inputs: {0}, {1}'''.format(obs_fp, exp_fp))
+            raise RuntimeError(
+                'Lengths of expected and observed taxa do not match. '
+                'Check inputs: {0}, {1}'.format(obs_fp, exp_fp))
 
         p, r, f = compute_prf(exp_taxa, obs_taxa, test_type=test_type,
                               level=level)
@@ -863,7 +863,7 @@ def runtime_make_commands(input_dir, results_dir, methods,
     return commands
 
 
-def clock_runtime(command, results_fp, force=True):
+def clock_runtime(command, results_fp, force=False):
     '''Execute a command and record the runtime.
 
     command: str

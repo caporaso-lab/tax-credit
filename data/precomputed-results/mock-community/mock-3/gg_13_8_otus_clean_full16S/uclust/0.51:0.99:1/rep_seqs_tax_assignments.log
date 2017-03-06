@@ -1,0 +1,71 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/gg_13_8_otus/99_otu_taxonomy_clean.tsv
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/gg_13_8_otus/99_otu_taxonomy_clean.tsv
+max_accepts:1
+min_consensus_fraction:0.51
+reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/gg_13_8_otus/99_otus_clean.fasta
+similarity:0.99
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxEBPp8P
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-3/rep_seqs.fna --id 0.99 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/ref_dbs/gg_13_8_otus/99_otus_clean.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_DhakoO.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	150	*	*	*	*	*	bc23d2ee539bf2f52faf789289af7879	*
+L	19408	1541	*	*	*	*	*	4440404	*
+H	19408	150	100.0	+	0	0	531I150M860I	dcb7b288381ec22163253cc31ca4bb57	4440404
+N	*	150	*	*	*	*	*	c4269a6e9bd66eca53e710c9f9d9ad4f	*
+N	*	150	*	*	*	*	*	194be3a565245d51b6d1182d4d8c7e5b	*
+L	16646	1508	*	*	*	*	*	4310109	*
+H	16646	150	100.0	+	0	0	496I150M862I	4e9b3c8dd9808d6a78936ceaf96dc0d5	4310109
+L	14256	1369	*	*	*	*	*	1059977	*
+H	14256	150	100.0	+	0	0	513I150M706I	aebf2a74a3aa9e5876c479b1db88985f	1059977
+N	*	150	*	*	*	*	*	d8505780c03879a277eb71fe2c852192	*
+L	14087	1559	*	*	*	*	*	1133720	*
+H	14087	150	100.0	+	0	0	534I150M875I	075614efc7d3dd61cd64a4e5f17078ae	1133720
+N	*	150	*	*	*	*	*	92e3a73c9006d7a85d3112558daf2576	*
+N	*	150	*	*	*	*	*	d9e724faff24eeeb7ac7fcc5cc7885b6	*
+N	*	150	*	*	*	*	*	7a8d29c59b803baaed9cc1f04ce0dc33	*
+N	*	150	*	*	*	*	*	b3fef1e26b7b6ac20847ede4da68547a	*
+N	*	150	*	*	*	*	*	86adb6193435090318cf24df07770d07	*
+L	15904	1539	*	*	*	*	*	4094808	*
+H	15904	150	100.0	+	0	0	547I150M842I	94b000e59b7ac160b0416c9ab45ff0bf	4094808
+L	14785	1385	*	*	*	*	*	855943	*
+H	14785	150	99.3	+	0	0	450I150M785I	74c5523929f4d53f7928f15bc7751994	855943
+N	*	150	*	*	*	*	*	b7269ca8dbd01fc77b163d64ff1caf90	*
+L	2920	1433	*	*	*	*	*	532163	*
+H	2920	150	100.0	+	0	0	471I150M812I	e25836661b81c9cc3aa99c8b2c7ca14d	532163
+N	*	150	*	*	*	*	*	1c86153e1b13ab5322c96f2602b73513	*
+L	4013	1512	*	*	*	*	*	416063	*
+H	4013	150	100.0	+	0	0	533I150M829I	47ad35356a9bfec68416d32e4f039021	416063
+L	12967	1452	*	*	*	*	*	2433962	*
+H	12967	150	99.3	+	0	0	494I150M808I	29f6e97a2ed3b8abe26bb45acba8451f	2433962
+L	12167	1516	*	*	*	*	*	2017805	*
+H	12167	150	100.0	+	0	0	535I150M831I	04195686f2b70585790ec75320de0d6f	2017805
+L	18925	1514	*	*	*	*	*	4416988	*
+H	18925	150	100.0	+	0	0	534I150M830I	5642c43966bbd7f41c2f0cbe988205ff	4416988
+N	*	150	*	*	*	*	*	9ac5fec396208e598ab2e2d26985d0df	*
+L	695	1347	*	*	*	*	*	959333	*
+H	695	150	100.0	+	0	0	484I150M713I	33b601a7a8295e7a6c8f413504129220	959333
+L	18629	1441	*	*	*	*	*	4402960	*
+H	18629	150	100.0	+	0	0	510I150M781I	ac5402de1ddf427ab8d2b0a8a0a44f19	4402960
+D	695	2	*	*	*	*	100.0	959333	*
+D	2920	2	*	*	*	*	100.0	532163	*
+D	4013	2	*	*	*	*	100.0	416063	*
+D	12167	2	*	*	*	*	100.0	2017805	*
+D	12967	2	*	*	*	*	99.3	2433962	*
+D	14087	2	*	*	*	*	100.0	1133720	*
+D	14256	2	*	*	*	*	100.0	1059977	*
+D	14785	2	*	*	*	*	99.3	855943	*
+D	15904	2	*	*	*	*	100.0	4094808	*
+D	16646	2	*	*	*	*	100.0	4310109	*
+D	18629	2	*	*	*	*	100.0	4402960	*
+D	18925	2	*	*	*	*	100.0	4416988	*
+D	19408	2	*	*	*	*	100.0	4440404	*

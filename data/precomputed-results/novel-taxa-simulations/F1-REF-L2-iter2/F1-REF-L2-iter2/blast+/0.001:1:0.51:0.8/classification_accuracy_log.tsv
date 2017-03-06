@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	2	blast+	0.001:1:0.51:0.8	k__Fungi;p__Ascomycota;c__Pezizomycotina_cls_Incertae_sedis;o__Pezizomycotina_ord_Incertae_sedis;f__Pezizomycotina_fam_Incertae_sedis;g__Cryptostroma;s__Cryptostroma_corticale	k__Fungi;p__Ascomycota;c__Sordariomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.51:0.8	Unassigned	k__Fungi;p__Basidiomycota;c__Tremellomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.51:0.8	k__Fungi;p__Ascomycota;c__Leotiomycetes;o__Helotiales;f__Helotiales_fam_Incertae_sedis;g__Tetracladium;s__Tetracladium_marchalianum	k__Fungi;p__Ascomycota;c__Saccharomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.51:0.8	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Chytridiales;f__Chytriomycetaceae;g__Chytriomyces;s__Chytriomyces_hyalinus	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes	misclassification	1	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.51:0.8	Unassigned	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.51:0.8	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Lecanorales;f__Lecanorales_fam_Incertae_sedis;g__Lecania;s__Lecania_cyrtella	k__Fungi;p__Ascomycota;c__Arthoniomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.51:0.8	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Pleosporales;f__Pleosporales_fam_Incertae_sedis;g__Phoma;s__Phoma_sp	k__Fungi;p__Ascomycota;c__Pneumocystidomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.51:0.8	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Thelephorales;f__Thelephoraceae;g__Tomentella;s__Tomentella_sp	k__Fungi;p__Basidiomycota;c__Wallemiomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.51:0.8	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Diversisporales;f__Diversisporaceae;g__Corymbiglomus;s__Corymbiglomus_corymbiforme	k__Fungi;p__Chytridiomycota;c__Blastocladiomycetes	misclassification	1	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.51:0.8	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Cortinariaceae;g__Cortinarius;s__Cortinarius_sp	k__Fungi;p__Basidiomycota;c__Entorrhizomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	blast+	0.001:1:0.51:0.8	Unassigned	k__Fungi;p__Zygomycota;c__Zoopagomycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0

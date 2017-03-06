@@ -9,6 +9,7 @@
 # The full license is in the file COPYING.txt, distributed with this software.
 # ----------------------------------------------------------------------------
 
+from sys import exit
 from glob import glob
 from os.path import abspath, join, exists, split
 from collections import defaultdict
@@ -259,7 +260,8 @@ def compute_prf(actual_table,
     return p, r, f
 
 
-def get_taxonomy_collapser(level, md_key='taxonomy'):
+def get_taxonomy_collapser(level, md_key='taxonomy',
+                           unassignable_label='unassigned'):
     """ Returns fn to pass to table.collapse
 
         level: the level to collapse on in the "taxonomy" observation
@@ -270,7 +272,11 @@ def get_taxonomy_collapser(level, md_key='taxonomy'):
         try:
             levels = [l.strip() for l in md[md_key].split(';')]
         except AttributeError:
-            levels = [l.strip() for l in md[md_key]]
+            try:
+                levels = [l.strip() for l in md[md_key]]
+            # if no metadata is listed for observation, group as Unassigned
+            except TypeError:
+                levels = [unassignable_label]
         result = ';'.join(levels[:level+1])
         return result
     return f
@@ -473,8 +479,11 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
                                    'best N alignments', 'coverage', 'e value'],
                  'uclust': ['min consensus fraction', 'similarity',
                             'max accepts'],
-                 'vsearch': ['min consensus fraction', 'similarity',
-                             'max accepts']}
+                 'vsearch': ['max accepts', 'similarity',
+                             'min consensus fraction'],
+                 'blast+': ['e-value', 'max accepts', 'similarity',
+                            'min consensus fraction'],
+                 'q2-nb': ['confidence']}
     param_ids.update(new_param_ids)
     for dataset_id, ref_id, method, params, actual_table_fp in result_tables:
 
@@ -583,6 +592,19 @@ def merge_expected_and_observed_tables(expected_results_dir, results_dirs,
     '''For each dataset in expected_results_dir, merge expected and observed
     taxonomy compositions.
     '''
+    # Quick and dirty way to keep merge from running automatically in notebooks
+    # when users "run all" cells. This is really just a convenience function
+    # that is meant to be called from the tax-credit notebooks and causing
+    # force=False to kill the function is the best simple control. The
+    # alternative is to work out a way to weed out expected_tables that have a
+    # merged biom, and just load that biom instead of overwriting if
+    # force=False. Then do the same for result_tables. If any new result_tables
+    # exist, perform merge if force=True. The only time force=False should
+    # result in a new table is when a new mock community/reference dataset
+    # combo is added — so just let users set force=True if that's the case.
+    if force is False:
+        exit('Skipping merge. Set force=True if you intend to generate new '
+             'merged tables.')
 
     # Find expected tables, add sample metadata
     expected_table_lookup = get_expected_tables_lookup(

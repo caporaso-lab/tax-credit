@@ -2,7 +2,7 @@
 
 ### A standardized and extensible evaluation framework for taxonomic classifiers
 
-To view static versions of the reports presented in [Bokulich, et al., (Microbiome, under review)](https://peerj.com/preprints/934/), [start here](https://github.com/nbokulich/short-read-tax-assignment/tree/master/ipynb).
+To view static versions of the reports presented in [Bokulich, et al., (Microbiome, under review)](https://peerj.com/preprints/934/), [start here](http://nbviewer.jupyter.org/github/nbokulich/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
 
 
 Environment
