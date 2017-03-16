@@ -1,0 +1,96 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+max_accepts:1
+min_consensus_fraction:0.51
+reference_sequences_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta
+similarity:0.9
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxcJiXyj
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-21/rep_seqs.fna --id 0.9 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_XHoUnN.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+L	36506	250	*	*	*	*	*	515490	*
+H	36506	290	92.8	+	0	0	250M40D	71afc98653010db3bff468c6ca9b8804	515490
+L	44093	250	*	*	*	*	*	356701	*
+H	44093	290	100.0	+	0	0	250M40D	975969967b8b4ec67e7e3c027dee8ea2	356701
+L	153208	250	*	*	*	*	*	3884703	*
+H	153208	290	100.0	+	0	0	250M40D	52bf878ca5242fa5de40aa283dd575d0	3884703
+L	97464	250	*	*	*	*	*	137961	*
+H	97464	290	100.0	+	0	0	250M40D	2c26e1126b431afed72a9cdd672eb336	137961
+L	150586	250	*	*	*	*	*	963964	*
+H	150586	290	100.0	+	0	0	250M40D	871eb8f466b01c297c20c38284adeb3a	963964
+L	106553	250	*	*	*	*	*	64558	*
+H	106553	290	100.0	+	0	0	250M40D	941951961df8c17bfc1e62498099aa0c	64558
+L	2663	250	*	*	*	*	*	1044680	*
+H	2663	290	100.0	+	0	0	250M40D	a55979f0b62fc9c467a7c0b0b1b25da4	1044680
+L	40857	250	*	*	*	*	*	390972	*
+H	40857	290	99.2	+	0	0	250M40D	2bfa94fe5d4926f932fa803ac6510f26	390972
+L	165126	250	*	*	*	*	*	4317724	*
+H	165126	290	100.0	+	0	0	250M40D	1c3bd50b5af30355165e6372284af7da	4317724
+L	177546	250	*	*	*	*	*	4380971	*
+H	177546	290	97.6	+	0	0	250M40D	bcf020b15c4a363e33f5fe51233b20c0	4380971
+L	13310	250	*	*	*	*	*	739890	*
+H	13310	290	100.0	+	0	0	250M40D	abd481feb0682c0565d4c8014b9dc3d5	739890
+L	169931	250	*	*	*	*	*	4341595	*
+H	169931	290	100.0	+	0	0	250M40D	106f9d839c35c92022ecdde61828cdee	4341595
+L	141532	250	*	*	*	*	*	1059977	*
+H	141532	290	95.6	+	0	0	250M40D	96a3bc302d2b292eaf7ef3f78e728fb2	1059977
+L	164648	250	*	*	*	*	*	4315405	*
+H	164648	290	98.4	+	0	0	250M40D	e26faa01840994984ceef0ea2f5d9b1c	4315405
+L	171709	250	*	*	*	*	*	4350748	*
+H	171709	290	100.0	+	0	0	250M40D	5850e4d77ae4a4a88a7645f98c50987e	4350748
+L	33153	250	*	*	*	*	*	529929	*
+H	33153	290	100.0	+	0	0	250M40D	ba5a42b887d6bb8262647d321eeb0913	529929
+L	5952	250	*	*	*	*	*	919092	*
+H	5952	290	100.0	+	0	0	250M40D	2a0a51068e21501d965b70fa6720012c	919092
+L	167451	250	*	*	*	*	*	4329215	*
+H	167451	290	92.0	+	0	0	250M40D	39d09153211fc56766059bc107688083	4329215
+L	50090	250	*	*	*	*	*	332318	*
+H	50090	290	100.0	+	0	0	250M40D	e377ef0b2083c029f5f706d4c1d5635f	332318
+L	101129	250	*	*	*	*	*	109111	*
+H	101129	290	100.0	+	0	0	250M40D	17c1c4a16b53cfc6019a34982a01031f	109111
+L	166988	250	*	*	*	*	*	4326794	*
+H	166988	290	100.0	+	0	0	250M40D	a162395533885ca954a0bc0dd324b8f9	4326794
+L	161380	250	*	*	*	*	*	4300042	*
+H	161380	290	100.0	+	0	0	250M40D	47171fcf92c9ef7027470d9c0ac2108b	4300042
+L	184603	250	*	*	*	*	*	4416988	*
+H	184603	290	96.8	+	0	0	250M40D	103e1871d49834dd8831282ed3bb4b0c	4416988
+L	70196	250	*	*	*	*	*	252206	*
+H	70196	290	100.0	+	0	0	250M40D	a885fd875821f7414776504c97319696	252206
+L	141083	250	*	*	*	*	*	3157007	*
+H	141083	290	100.0	+	0	0	250M40D	58c58fd59737254aa4fd074e7e03347a	3157007
+H	166988	290	96.0	+	0	0	250M40D	be474d5ba826820fa654894511c720d5	4326794
+D	2663	2	*	*	*	*	100.0	1044680	*
+D	5952	2	*	*	*	*	100.0	919092	*
+D	13310	2	*	*	*	*	100.0	739890	*
+D	33153	2	*	*	*	*	100.0	529929	*
+D	36506	2	*	*	*	*	92.8	515490	*
+D	40857	2	*	*	*	*	99.2	390972	*
+D	44093	2	*	*	*	*	100.0	356701	*
+D	50090	2	*	*	*	*	100.0	332318	*
+D	70196	2	*	*	*	*	100.0	252206	*
+D	97464	2	*	*	*	*	100.0	137961	*
+D	101129	2	*	*	*	*	100.0	109111	*
+D	106553	2	*	*	*	*	100.0	64558	*
+D	141083	2	*	*	*	*	100.0	3157007	*
+D	141532	2	*	*	*	*	95.6	1059977	*
+D	150586	2	*	*	*	*	100.0	963964	*
+D	153208	2	*	*	*	*	100.0	3884703	*
+D	161380	2	*	*	*	*	100.0	4300042	*
+D	164648	2	*	*	*	*	98.4	4315405	*
+D	165126	2	*	*	*	*	100.0	4317724	*
+D	166988	3	*	*	*	*	98.0	4326794	*
+D	167451	2	*	*	*	*	92.0	4329215	*
+D	169931	2	*	*	*	*	100.0	4341595	*
+D	171709	2	*	*	*	*	100.0	4350748	*
+D	177546	2	*	*	*	*	97.6	4380971	*
+D	184603	2	*	*	*	*	96.8	4416988	*
