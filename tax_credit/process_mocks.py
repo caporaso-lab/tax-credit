@@ -372,7 +372,7 @@ def denoise_to_feature_table(demux_seqs,
         summary_fn = str
             filename of feature table summary output visualization
     '''
-    biom_table, rep_seqs = dada2.methods.denoise(
+    biom_table, rep_seqs = dada2.methods.denoise_single(
         demux_seqs, trim_left=trim_left, trunc_len=trunc_len)
     # save Artifact
     rep_seqs.save(join(community_dir, rep_seqs_fn))
