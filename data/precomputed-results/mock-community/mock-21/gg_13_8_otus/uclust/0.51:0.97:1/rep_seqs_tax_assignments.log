@@ -1,0 +1,78 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+max_accepts:1
+min_consensus_fraction:0.51
+reference_sequences_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta
+similarity:0.97
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-tax_tsjnP
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-21/rep_seqs.fna --id 0.97 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_JrsrXI.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	290	*	*	*	*	*	71afc98653010db3bff468c6ca9b8804	*
+L	103015	250	*	*	*	*	*	101362	*
+H	103015	290	99.2	+	0	0	242MD8M39D	975969967b8b4ec67e7e3c027dee8ea2	101362
+L	124860	250	*	*	*	*	*	1017802	*
+H	124860	290	97.2	+	0	0	51M2D199M38D	52bf878ca5242fa5de40aa283dd575d0	1017802
+L	65114	250	*	*	*	*	*	270647	*
+H	65114	290	100.0	+	0	0	76MD174M39D	2c26e1126b431afed72a9cdd672eb336	270647
+H	124860	290	97.2	+	0	0	51M2D199M38D	871eb8f466b01c297c20c38284adeb3a	1017802
+H	124860	290	97.2	+	0	0	51M2D199M38D	941951961df8c17bfc1e62498099aa0c	1017802
+H	124860	290	97.2	+	0	0	51M2D199M38D	a55979f0b62fc9c467a7c0b0b1b25da4	1017802
+L	131693	250	*	*	*	*	*	1082215	*
+H	131693	290	98.4	+	0	0	250M40D	2bfa94fe5d4926f932fa803ac6510f26	1082215
+L	25890	250	*	*	*	*	*	560075	*
+H	25890	290	98.8	+	0	0	12MD7M2D231M37D	1c3bd50b5af30355165e6372284af7da	560075
+L	3509	250	*	*	*	*	*	1010753	*
+H	3509	290	97.6	+	0	0	250M40D	bcf020b15c4a363e33f5fe51233b20c0	1010753
+L	76259	250	*	*	*	*	*	224212	*
+H	76259	290	99.6	+	0	0	250M40D	abd481feb0682c0565d4c8014b9dc3d5	224212
+L	195377	250	*	*	*	*	*	4471122	*
+H	195377	290	98.4	+	0	0	159MI90M41D	106f9d839c35c92022ecdde61828cdee	4471122
+N	*	290	*	*	*	*	*	96a3bc302d2b292eaf7ef3f78e728fb2	*
+L	160757	250	*	*	*	*	*	4297222	*
+H	160757	290	97.6	+	0	0	9MI14MI225M42D	e26faa01840994984ceef0ea2f5d9b1c	4297222
+L	164648	250	*	*	*	*	*	4315405	*
+H	164648	290	100.0	+	0	0	250M40D	5850e4d77ae4a4a88a7645f98c50987e	4315405
+H	124860	290	97.2	+	0	0	51M2D199M38D	ba5a42b887d6bb8262647d321eeb0913	1017802
+H	124860	290	97.2	+	0	0	51M2D199M38D	2a0a51068e21501d965b70fa6720012c	1017802
+N	*	290	*	*	*	*	*	39d09153211fc56766059bc107688083	*
+L	53455	250	*	*	*	*	*	318583	*
+H	53455	290	100.0	+	0	0	177MD73M39D	e377ef0b2083c029f5f706d4c1d5635f	318583
+L	104078	250	*	*	*	*	*	93356	*
+H	104078	290	99.6	+	0	0	145MI104M41D	17c1c4a16b53cfc6019a34982a01031f	93356
+L	152007	250	*	*	*	*	*	971934	*
+H	152007	290	98.0	+	0	0	40MD210M39D	a162395533885ca954a0bc0dd324b8f9	971934
+L	141532	250	*	*	*	*	*	1059977	*
+H	141532	290	99.6	+	0	0	250M40D	47171fcf92c9ef7027470d9c0ac2108b	1059977
+N	*	290	*	*	*	*	*	103e1871d49834dd8831282ed3bb4b0c	*
+L	70196	250	*	*	*	*	*	252206	*
+H	70196	290	100.0	+	0	0	250M40D	a885fd875821f7414776504c97319696	252206
+L	124724	250	*	*	*	*	*	2197048	*
+H	124724	290	100.0	+	0	0	6MD244M39D	58c58fd59737254aa4fd074e7e03347a	2197048
+N	*	290	*	*	*	*	*	be474d5ba826820fa654894511c720d5	*
+D	3509	2	*	*	*	*	97.6	1010753	*
+D	25890	2	*	*	*	*	98.8	560075	*
+D	53455	2	*	*	*	*	100.0	318583	*
+D	65114	2	*	*	*	*	100.0	270647	*
+D	70196	2	*	*	*	*	100.0	252206	*
+D	76259	2	*	*	*	*	99.6	224212	*
+D	103015	2	*	*	*	*	99.2	101362	*
+D	104078	2	*	*	*	*	99.6	93356	*
+D	124724	2	*	*	*	*	100.0	2197048	*
+D	124860	7	*	*	*	*	97.2	1017802	*
+D	131693	2	*	*	*	*	98.4	1082215	*
+D	141532	2	*	*	*	*	99.6	1059977	*
+D	152007	2	*	*	*	*	98.0	971934	*
+D	160757	2	*	*	*	*	97.6	4297222	*
+D	164648	2	*	*	*	*	100.0	4315405	*
+D	195377	2	*	*	*	*	98.4	4471122	*

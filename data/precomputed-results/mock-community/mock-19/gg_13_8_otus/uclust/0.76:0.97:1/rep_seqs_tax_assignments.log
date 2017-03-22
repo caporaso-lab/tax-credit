@@ -1,0 +1,102 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+max_accepts:1
+min_consensus_fraction:0.76
+reference_sequences_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta
+similarity:0.97
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-tax7Zt_JO
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-19/rep_seqs.fna --id 0.97 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_0F69ob.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	250	*	*	*	*	*	c0b189ffde8f150b8e90c46b4473aa3c	*
+N	*	250	*	*	*	*	*	5826f6bd485381c0ba2f0cd08501a931	*
+N	*	250	*	*	*	*	*	95865d1c5c4fa57118e9305aeb040dea	*
+N	*	250	*	*	*	*	*	c8bc630e42c66d1968b05ae9d99c9953	*
+N	*	250	*	*	*	*	*	d072c59c683082d3aa5a18fabce5b2ee	*
+N	*	250	*	*	*	*	*	6ad91f1902796a90a5165a6747501ce0	*
+N	*	250	*	*	*	*	*	cc1e427b91cf1d82cc74738924f57c87	*
+N	*	250	*	*	*	*	*	1e35379d88089e27e07899b9df535e35	*
+L	158218	250	*	*	*	*	*	4183921	*
+H	158218	250	99.6	+	0	0	250M	8826128724233ed3f97fec6429b3b5ef	4183921
+N	*	250	*	*	*	*	*	7cd563c2194fe831b074c1233da9342f	*
+N	*	250	*	*	*	*	*	207c769c1208d911f1badd05ef5dcb35	*
+L	122659	250	*	*	*	*	*	2080339	*
+H	122659	250	98.8	+	0	0	250M	dec4f574cdeb5d3c5638adb9c876a22a	2080339
+N	*	250	*	*	*	*	*	f4a5bb35817150d51dfc9c328e23241b	*
+N	*	250	*	*	*	*	*	a6375351eeb843e5b84461d37cf466a3	*
+N	*	250	*	*	*	*	*	19d868c86a50b4d4d238a25e6bf5ea5d	*
+L	99738	250	*	*	*	*	*	114174	*
+H	99738	250	100.0	+	0	0	250M	fdb690a39d34d55bf1aa55d52d3fcc41	114174
+N	*	250	*	*	*	*	*	b3634d4cde23028d09e8eb89cb68f9df	*
+N	*	250	*	*	*	*	*	9e26409cababbcbf6677f4c43aeb7670	*
+L	71994	250	*	*	*	*	*	244957	*
+H	71994	250	100.0	+	0	0	250M	8b057a5364e57c0605a3ab444601d2fc	244957
+N	*	250	*	*	*	*	*	1a7027993c37e1d023d3c01d16039178	*
+L	16743	250	*	*	*	*	*	615105	*
+H	16743	250	99.2	+	0	0	250M	0a1ecb6089d61b94f4d5627348bc349f	615105
+N	*	250	*	*	*	*	*	cfef00a8a161f32d87c63662e701c022	*
+N	*	250	*	*	*	*	*	361552c456026915e7971f7ff6979eb7	*
+L	132010	250	*	*	*	*	*	1076643	*
+H	132010	250	99.6	+	0	0	250M	14a2cd516d5bc0912630be6aeea6acfd	1076643
+N	*	250	*	*	*	*	*	43c42b8fa62f50b1fb52b421bc2011dc	*
+N	*	250	*	*	*	*	*	2c14984f66b1428c4839e9486961db6a	*
+L	102799	250	*	*	*	*	*	102184	*
+H	102799	250	99.2	+	0	0	250M	fe91de7cd0ac12581a8ad44bf81938b3	102184
+L	144238	250	*	*	*	*	*	3341679	*
+H	144238	250	99.6	+	0	0	250M	521080de462dfc157bdb3ec392a6c487	3341679
+N	*	250	*	*	*	*	*	9ffcc6f47589fb4ca2339dd6a018161c	*
+N	*	250	*	*	*	*	*	887ebdda26f18198378fa9a8f78a15c3	*
+N	*	250	*	*	*	*	*	f6dc864596104f6d58d7154a6d7b8a4e	*
+N	*	250	*	*	*	*	*	c3b66ce3cdcab23e9cd5c6eddff1ac94	*
+N	*	250	*	*	*	*	*	7410570dffc21b8fd0c685074c61fd30	*
+L	172718	250	*	*	*	*	*	4356402	*
+H	172718	250	98.0	+	0	0	81MI168MD	1b158b8b2922d4fcad5d9cea607cbb7d	4356402
+N	*	250	*	*	*	*	*	4f8fe598c98c3d7abb3174aa93e18044	*
+N	*	250	*	*	*	*	*	6a51a452d1a83fb05e2555a8aad21f69	*
+L	116419	250	*	*	*	*	*	1720567	*
+H	116419	250	99.6	+	0	0	250M	4d39e3fe1dc93133c1d17bf0c1fd8128	1720567
+N	*	250	*	*	*	*	*	de1504c97047578c2f757258a6564c8f	*
+N	*	250	*	*	*	*	*	8d983bcb1195622b3bfb72f69d6d09a9	*
+N	*	250	*	*	*	*	*	4a9d21a7a4a3f1ddf8d522da055ea2e6	*
+N	*	250	*	*	*	*	*	79420c98f368be110dc07f233dff9075	*
+L	101746	250	*	*	*	*	*	106260	*
+H	101746	250	99.6	+	0	0	250M	d65886bee0f292fbbf5fc64ff1bc0b24	106260
+N	*	250	*	*	*	*	*	19eb7ff4e2e629af5cdaee0f246f9cbc	*
+N	*	250	*	*	*	*	*	1375e036d4bf6693e3d396afb96109f4	*
+N	*	250	*	*	*	*	*	f4a4b29021c1adcdd3c0d9e0f6a63357	*
+N	*	250	*	*	*	*	*	0b95b88ae14ae4772c27ae8af231cd65	*
+N	*	250	*	*	*	*	*	87487c968633558a98435ceb0e4d3d73	*
+N	*	250	*	*	*	*	*	e392356ed7ecaed507f51e6bf0ed5d78	*
+N	*	250	*	*	*	*	*	de249ff10460661cfd698fadbe39d584	*
+N	*	250	*	*	*	*	*	6ae3b4f3fef6e0cb17179d1d30dbd7e0	*
+L	33446	250	*	*	*	*	*	528731	*
+H	33446	250	98.4	+	0	0	145MD104MI	0f06e0a1fa729308fa8836fb4511de8c	528731
+N	*	250	*	*	*	*	*	cbe02502935a5dee81d1b0b4c11ec0a7	*
+L	113639	250	*	*	*	*	*	1562928	*
+H	113639	250	99.2	+	0	0	242MI7MD	e5269e32edd47bb63709e25e22a6f0ae	1562928
+L	52285	250	*	*	*	*	*	323453	*
+H	52285	250	98.8	+	0	0	250M	094226930fb6d71f02c7b6124105e94b	323453
+D	16743	2	*	*	*	*	99.2	615105	*
+D	33446	2	*	*	*	*	98.4	528731	*
+D	52285	2	*	*	*	*	98.8	323453	*
+D	71994	2	*	*	*	*	100.0	244957	*
+D	99738	2	*	*	*	*	100.0	114174	*
+D	101746	2	*	*	*	*	99.6	106260	*
+D	102799	2	*	*	*	*	99.2	102184	*
+D	113639	2	*	*	*	*	99.2	1562928	*
+D	116419	2	*	*	*	*	99.6	1720567	*
+D	122659	2	*	*	*	*	98.8	2080339	*
+D	132010	2	*	*	*	*	99.6	1076643	*
+D	144238	2	*	*	*	*	99.6	3341679	*
+D	158218	2	*	*	*	*	99.6	4183921	*
+D	172718	2	*	*	*	*	98.0	4356402	*
