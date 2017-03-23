@@ -14,13 +14,17 @@ import json
 import numpy as np
 import pandas as pd
 from io import StringIO
+from os.path import join
+from tempfile import mkdtemp
+from shutil import rmtree
 
 from biom import Table
 from tax_credit.eval_framework import (compute_prf,
                                        filter_table,
                                        get_actual_and_expected_vectors,
                                        get_sample_to_top_params,
-                                       parameter_comparisons)
+                                       parameter_comparisons,
+                                       per_sequence_precision)
 
 
 class EvalFrameworkTests(TestCase):
@@ -171,6 +175,39 @@ class EvalFrameworkTests(TestCase):
                              actual_sample_id='s2', expected_sample_id='s4')
         expected = (0.5, 1.0, 2./3.)
         self.assertAlmostEqual(actual, expected)
+
+    def test_per_sequence_precision(self):
+        """ p, r, and f on individual expected sequences."""
+        exp_taxa = join(self.tmpdir, 'trueish-taxonomies.tsv')
+        obs_taxa = join(self.tmpdir, 'taxonomy.tsv')
+        for i, ep, er, ef in zip(
+                range(7),
+                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.3333333333],
+                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.0833333333],
+                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.1333333333]):
+            p, r, f = per_sequence_precision(
+                exp_taxa, obs_taxa, self.table1, 's1', i)
+            self.assertAlmostEqual(p, ep)
+            self.assertAlmostEqual(r, er)
+            self.assertAlmostEqual(f, ef)
+
+    def test_per_sequence_precision_exclude(self):
+        """ p, r, and f on individual expected sequences, excluding specific
+        taxa.
+        """
+        exp_taxa = join(self.tmpdir, 'trueish-taxonomies.tsv')
+        obs_taxa = join(self.tmpdir, 'taxonomy.tsv')
+        for i, ep, er, ef in zip(
+                range(7),
+                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.],
+                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.],
+                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.]):
+            p, r, f = per_sequence_precision(
+                exp_taxa, obs_taxa, self.table1, 's1', i,
+                exclude=['Aa;Bb;Cc;Dd;Ee;Ff;Gg'])
+            self.assertAlmostEqual(p, ep)
+            self.assertAlmostEqual(r, er)
+            self.assertAlmostEqual(f, ef)
 
     def test_get_actual_and_expected_vectors(self):
         actual_actual_vector, actual_expected_vector = \
@@ -2278,12 +2315,35 @@ class EvalFrameworkTests(TestCase):
              '0.44,0.916666667,gg_13_8_otus,m1,0.00097195,0.608520351,,,,,,'
              '3,0.51,0.9'])
 
+        _exp_taxa = '\n'.join(
+            ['o1\tAa;Bb;Cc;Dd;Ee;Ff;Gg',
+             'o2\tAa;Bb;Cc;Dd;Ee;Ff;Hh',
+             'o3\tAa;Ii;Jj;Kk;Ll;Mm;Nn',
+             'o4\tAa;Ii;Jj;Kk;Ll;Mm;Oo'])
+
+        _obs_taxa = '\n'.join(
+            ['o1\tAa;Bb;Cc;Dd;Ee;Ff;Gg',
+             'o2\tAa;Bb;Cc;Dd;Ee;Ff;Ii',
+             'o3\tAa;Ii;Pp;Qq;Rr;Tt',
+             'o4\tAa;Ii;Jj;Kk;Ll;Mm;Oo'])
+
         cls.table1 = Table.from_json(json.loads(_table1))
         cls.table2 = Table.from_json(json.loads(_table2))
         cls.table3 = Table.from_json(json.loads(_table3))
 
         cls.mock_result_table1 = pd.DataFrame.from_csv(
             StringIO(_mock_result_table1))
+
+        cls.tmpdir = mkdtemp()
+
+        with open(join(cls.tmpdir, 'trueish-taxonomies.tsv'), 'w') as out:
+            out.write(_exp_taxa)
+        with open(join(cls.tmpdir, 'taxonomy.tsv'), 'w') as out:
+            out.write(_obs_taxa)
+
+    @classmethod
+    def tearDownClass(cls):
+        rmtree(cls.tmpdir)
 
 
 if __name__ == "__main__":

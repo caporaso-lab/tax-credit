@@ -131,6 +131,7 @@ class EvalFrameworkTests(TestCase):
             [self.paramdir], self.tmpdir, join(self.tmpdir, 'summary.txt'),
             test_type='cross-validated')
         pla = extract_per_level_accuracy(results)
+        print(pla)
         # confirm that method/dataset data propagate properly
         self.assertEqual(pla['Dataset'].unique(), ['B1-REF-L6'])
         self.assertEqual(pla['iteration'].unique(), ['0'])
