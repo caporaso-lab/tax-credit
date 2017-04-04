@@ -578,7 +578,8 @@ def count_records(record_counter, record_name, line_count):
 
 
 def compute_prf(exp, obs, avg='micro', test_type='cross-validated',
-                l_range=range(1, 7), level=6):
+                l_range=range(1, 7), level=6, sample_weight=None,
+                exclude=None):
     '''Compute precision, recall, and F-measure using sklearn.
     exp_taxa: list
         Expected observations for each sample (sequence).
@@ -591,25 +592,38 @@ def compute_prf(exp, obs, avg='micro', test_type='cross-validated',
         'novel-taxa' or 'cross-validated'.
     l_range: range
         Range of taxonomic levels to test is test_type = 'cross-validated'.
-    level:
+    level: int
         Level of taxonomic assignment used if test_type = 'novel-taxa'
+    sample_weight: array-like of shape = [n_samples], optional
+        Sample weights.
+    exclude: list
+        List of labels to explicitly exclude from score calculations.
     '''
 
     prf = precision_recall_fscore_support
 
     # with labels, null classifications can be FN but not TP or FP.
     # Hence, nulls affect recall but not precision.
-    def lab(exp, obs, level):
-        # use set or else multiple counts weight observations.
-        # Remove all labels < level. Hence, underclassifcation becomes null,
-        # and can only be FN, but overclassification is still counted as FP.
-        return [t for t in set(exp + obs) if not len(t.split(';')) < level]
+    if exclude is None:
+        exclude = []
 
-    if test_type == 'novel-taxa':
+    def lab(exp, obs, level, exclude):
+        # use set or else multiple counts weight observations.
+        # Remove all labels <= level. Hence, underclassification becomes null,
+        # and can only be FN, but overclassification is still counted as FP.
+        return [t for t in set(exp + obs) if not len(t.split(';')) <= level and
+                t not in exclude]
+
+    if test_type == 'mock':
+        p, r, f, s = prf(
+            exp, obs, average=avg, labels=lab(exp, obs, level, exclude),
+            sample_weight=sample_weight)
+    elif test_type == 'novel-taxa':
         exp = extract_taxa_names(exp, level=slice(0, level))
         # slice at level, so that exp=level-1 (otherwise exp = true label,
         # not novel taxa label)
-        p, r, f, s = prf(exp, obs, average=avg, labels=lab(exp, obs, level))
+        p, r, f, s = prf(
+            exp, obs, average=avg, labels=lab(exp, obs, level-1, exclude))
     elif test_type == 'cross-validated':
         # initialize p/r/f as lists of 0s, representing each taxonomic level.
         p, r, f = [0] * 7, [0] * 7, [0] * 7
@@ -618,13 +632,27 @@ def compute_prf(exp, obs, avg='micro', test_type='cross-validated',
             _obs = extract_taxa_names(obs, level=slice(0, level+1))
             _exp = extract_taxa_names(exp, level=slice(0, level+1))
             # Here use level+1 to slice actual level
-            p[level], r[level], f[level], s = prf(_exp, _obs, average='micro',
-                                                  labels=lab(_exp, _obs,
-                                                             level+1))
+            p[level], r[level], f[level], s = prf(
+                _exp, _obs, average='micro',
+                labels=lab(_exp, _obs, level, exclude))
     else:
-        raise ValueError('test_type must == "novel-taxa" or "cross-validated"')
+        raise ValueError('test_type must == "novel-taxa" or "cross-validated" '
+                         'or "mock".')
 
     return p, r, f
+
+
+def load_prf(obs_fp, exp_fp, level=slice(0, 7)):
+    exp_taxa = load_taxa(exp_fp, level=level)
+    obs_taxa = load_taxa(obs_fp, level=level)
+
+    # raise error if obs_taxa and exp_taxa are not same length
+    if len(obs_taxa) != len(exp_taxa):
+        raise RuntimeError(
+            'Lengths of expected and observed taxa do not match. '
+            'Check inputs: {0}, {1}'.format(obs_fp, exp_fp))
+
+    return exp_taxa, obs_taxa
 
 
 def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
@@ -657,14 +685,7 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
         # import observed and expected taxonomies to list; order both by ID
         obs_fp = join(results_dir, 'query_tax_assignments.txt')
         exp_fp = join(expected_results_dir, dataset_id, 'query_taxa.tsv')
-        exp_taxa = load_taxa(exp_fp, level=slice(0, 7))
-        obs_taxa = load_taxa(obs_fp, level=slice(0, 7))
-
-        # raise error if obs_taxa and exp_taxa are not same length
-        if len(obs_taxa) != len(exp_taxa):
-            raise RuntimeError(
-                'Lengths of expected and observed taxa do not match. '
-                'Check inputs: {0}, {1}'.format(obs_fp, exp_fp))
+        exp_taxa, obs_taxa = load_prf(obs_fp, exp_fp)
 
         p, r, f = compute_prf(exp_taxa, obs_taxa, test_type=test_type,
                               level=level)

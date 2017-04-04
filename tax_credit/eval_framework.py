@@ -11,7 +11,7 @@
 
 from sys import exit
 from glob import glob
-from os.path import abspath, join, exists, split
+from os.path import abspath, join, exists, split, dirname
 from collections import defaultdict
 from functools import partial
 from random import shuffle
@@ -20,6 +20,7 @@ from biom import load_table
 from biom.cli.util import write_biom_table
 from scipy.stats import pearsonr, spearmanr
 import pandas as pd
+from tax_credit import framework_functions, taxa_manipulator
 
 
 def get_sample_to_top_params(df, metric, sample_col='SampleID',
@@ -322,11 +323,12 @@ def seek_results(results_dirs):
     return results
 
 
-def evaluate_results(results_dirs, expected_results_dir, results_fp,
+def evaluate_results(results_dirs, expected_results_dir, results_fp, mock_dir,
                      taxonomy_level_range=range(2, 7), min_count=0,
                      taxa_to_keep=None, md_key='taxonomy', new_param_ids=None,
                      subsample=False, filename_pattern='table.L{0}-taxa.biom',
-                     size=10, force=False):
+                     size=10, per_seq_precision=False, exclude=['other'],
+                     force=False):
     '''Load observed and expected observations from tax-credit, compute
         precision, recall, F-measure, and correlations, and return results
         as dataframe.
@@ -339,6 +341,9 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp,
             the structure:
             expected_results_dir/<dataset name>/<reference name>/expected/
         results_fp: path to output file containing evaluation results summary.
+        mock_dir: path
+            Directory of mock community directiories containing mock feature
+            tables without taxonomy.
         taxonomy_level_range: RANGE of taxonomic levels to evaluate.
         min_count: int
             Minimum abundance threshold for filtering taxonomic features.
@@ -353,6 +358,8 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp,
             Randomly subsample results for test runs.
         size: int
             Size of subsample to take.
+        exclude: list
+            taxonomies to explicitly exclude from precision scoring.
         force: bool
             Overwrite pre-existing results_fp?
     '''
@@ -373,11 +380,14 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp,
         mock_results = compute_mock_results(results,
                                             expected_tables,
                                             results_fp,
+                                            mock_dir,
                                             taxonomy_level_range,
                                             min_count=min_count,
                                             taxa_to_keep=taxa_to_keep,
                                             md_key=md_key,
-                                            new_param_ids=new_param_ids)
+                                            new_param_ids=new_param_ids,
+                                            per_seq_precision=per_seq_precision,  # noqa
+                                            exclude=exclude)
     else:
         print("{0} already exists.".format(results_fp))
         print("Reading in pre-computed evaluation results.")
@@ -453,9 +463,11 @@ def mount_observations(table_fp, min_count=0, taxonomy_level=6,
 
 
 def compute_mock_results(result_tables, expected_table_lookup, results_fp,
-                         taxonomy_level_range=range(2, 7), min_count=0,
+                         mock_dir, taxonomy_level_range=range(2, 7),
+                         min_count=0,
                          taxa_to_keep=None, md_key='taxonomy',
-                         new_param_ids=None):
+                         new_param_ids=None, per_seq_precision=False,
+                         exclude=None):
     """ Compute precision, recall, and f-measure for result_tables at
     taxonomy_level
 
@@ -467,7 +479,14 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
          table filepath, for the expected result tables
         taxonomy_level_range: range of levels to compute results
         results_fp: path to output file containing evaluation results summary
-
+        mock_dir: path
+            Directory of mock community directories that contain feature tables
+            without taxonomy.
+        per_seq_precision: bool
+            Compute per-sequence precision/recall scores from expected
+            taxonomy assignments?
+        exclude: list
+            taxonomies to explicitly exclude from precision scoring.
     """
     results = []
     new_param_ids = {}
@@ -511,6 +530,15 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
                                               taxa_to_keep=taxa_to_keep,
                                               md_key=md_key)
 
+            # load the feature table without taxonomy assignment
+            # we use this for per-sequence precision
+            feature_table_fp = join(mock_dir, dataset_id, 'feature_table.biom')
+            try:
+                feature_table = load_table(feature_table_fp)
+            except ValueError:
+                raise ValueError(
+                    "Couldn't parse BIOM table: {0}".format(feature_table_fp))
+
             for sample_id in actual_table.ids(axis="sample"):
                 # compute precision, recall, and f-measure
                 try:
@@ -532,8 +560,18 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
                 spearman_r, spearman_p = spearmanr(actual_vector,
                                                    expected_vector)
 
+                # compute per-sequence precion / recall
+                if per_seq_precision and exists(join(
+                        dirname(expected_table_fp), 'trueish-taxonomies.tsv')):
+                    ps, rs, fs = per_sequence_precision(
+                        expected_table_fp, actual_table_fp, feature_table,
+                        sample_id, taxonomy_level, exclude=exclude)
+                else:
+                    ps, rs, fs = -1., -1., -1.
+
+                # log results
                 results.append((dataset_id, taxonomy_level, sample_id,
-                                ref_id, method, params, p, r, f,
+                                ref_id, method, params, p, r, f, ps, rs, fs,
                                 pearson_r, pearson_p, spearman_r, spearman_p))
 
         # record parameter data
@@ -550,14 +588,62 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
     param_df = pd.DataFrame(param_data)
     result = pd.DataFrame(results, columns=["Dataset", "Level", "SampleID",
                                             "Reference", "Method",
-                                            "Parameters", "Precision",
-                                            "Recall", "F-measure",
+                                            "Parameters", "Taxa Precision",
+                                            "Taxa Recall", "Taxa F",
+                                            "Precision", "Recall", "F-measure",
                                             "Pearson r", "Pearson p",
                                             "Spearman r", "Spearman p"])
     result = result.merge(param_df.T, left_on=('Method', 'Parameters'),
                           right_index=True)
     result.to_csv(results_fp, sep='\t')
     return result
+
+
+def per_sequence_precision(expected_table_fp, actual_table_fp, feature_table,
+                           sample_id, taxonomy_level, exclude=None):
+    '''Precision/recall on individual representative sequences in a mock
+    community.
+    '''
+    # locate expected and observed taxonomies
+    exp_fp = join(dirname(expected_table_fp), 'trueish-taxonomies.tsv')
+    if exists(exp_fp):
+        obs_dir = dirname(actual_table_fp)
+        if exists(join(obs_dir, 'rep_seqs_tax_assignments.txt')):
+            obs_fp = join(obs_dir, 'rep_seqs_tax_assignments.txt')
+        elif exists(join(obs_dir, 'taxonomy.tsv')):
+            obs_fp = join(obs_dir, 'taxonomy.tsv')
+        else:
+            raise RuntimeError('taxonomy assignments do not exist '
+                               'for dataset {0}'.format(obs_dir))
+        # compile lists of taxa only if observed in current sample
+        exp = observations_to_list(exp_fp, feature_table, sample_id)
+        obs = observations_to_list(obs_fp, feature_table, sample_id)
+        # compile sample weights (observations per sequence in sample)
+        weights = [feature_table.get_value_by_ids(
+                   line.split('\t')[0], sample_id) for line in exp]
+        # load files and run precision/recall
+        exp_taxa, obs_taxa = framework_functions.load_prf(
+            obs, exp, level=slice(0, taxonomy_level+1))
+        ps, rs, fs = framework_functions.compute_prf(
+            exp_taxa, obs_taxa, test_type='mock', level=taxonomy_level,
+            sample_weight=weights, exclude=exclude)
+    else:
+        ps, rs, fs = -1., -1., -1.
+
+    return ps, rs, fs
+
+
+def observations_to_list(obs_fp, actual_table, sample_id):
+    '''extract lines from obs_fp to list if they are observed in a given
+    sample in biom table actual_table. Returns list of lines from obs_fp,
+    which maps biom observation ids (first value in each line) to taxonomy
+    labels in tab-delimited file.
+    '''
+    obs = taxa_manipulator.import_to_list(obs_fp)
+    obs = [line for line in obs if
+           actual_table.exists(line.split('\t')[0], "observation") and
+           actual_table.get_value_by_ids(line.split('\t')[0], sample_id) != 0]
+    return obs
 
 
 def add_sample_metadata_to_table(table_fp, dataset_id, reference_id,
