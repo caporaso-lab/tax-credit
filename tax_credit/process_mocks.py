@@ -236,10 +236,9 @@ def demux_to_plot_quality(seqs_dir,
 
     # demultiplex
     barcodes = qiime2.metadata.MetadataCategory.load(sample_md, index_col)
-    demux_seqs = demux.methods.emp(seqs=seq_artifact,
-                                   barcodes=barcodes,
-                                   rev_comp_barcodes=rc_barcodes,
-                                   rev_comp_mapping_barcodes=rc_map_barcodes)
+    demux_seqs = demux.methods.emp_single(
+        seqs=seq_artifact, barcodes=barcodes, rev_comp_barcodes=rc_barcodes,
+        rev_comp_mapping_barcodes=rc_map_barcodes)
     demux_seqs.per_sample_sequences.save(join(community_dir, demux_fn))
 
     visualize_qual(demux_seqs, community_dir, summary_fn,

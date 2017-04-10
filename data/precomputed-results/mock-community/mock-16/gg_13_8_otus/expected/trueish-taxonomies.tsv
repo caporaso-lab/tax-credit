@@ -1,86 +1,94 @@
 id	taxonomy
-6239da9855d1969e0616715aa749bcf2	k__Bacteria; p__Chloroflexi; c__Chloroflexi; o__Herpetosiphonales; f__; g__; s__
-745a93a306af6a6acfd3c93864d322e9	k__Archaea; p__Euryarchaeota; c__Thermococci; o__Thermococcales; f__Thermococcaceae; g__Pyrococcus; s__
-2cb6c9bb8ef9b8b7aa3428b821c2b39e	k__Archaea; p__Nanoarchaeota; c__[Nanoarchaeoti]; o__[Nanoarchaeotales]; f__[Nanoarchaeotaceae]; g__Nanoarchaeum; s__equitans Kin4-M
-a4e931915b9ab33ecefe941739e7b7bd	k__Bacteria; p__Chlorobi; c__Chlorobia; o__Chlorobiales; f__Chlorobiaceae; g__Chlorobium; s__phaeovibrioides
-e57ecd70d5aaa6c87f0d80d41432b382	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Bacteroidaceae; g__Bacteroides; s__
-d9f8b03b10ed5e90d21fcb4bc569bbe3	k__Bacteria; p__Thermotogae; c__Thermotogae; o__Thermotogales; f__Thermotogaceae; g__Thermotoga; s__
-ecd2e0c10de3cb18466a6a902478031e	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Hydrogenothermaceae; g__Sulfurihydrogenibium; s__
-321690abd94c958690e5fa4da6635120	k__Bacteria; p__Gemmatimonadetes; c__Gemmatimonadetes; o__Gemmatimonadales; f__Gemmatimonadaceae; g__Gemmatimonas; s__
-0834c80a2245782ad26222dabbecfe3f	other
-a09aef16106e33d72eedb31b9f4191ff	k__Bacteria; p__Chlorobi; c__Chlorobia; o__Chlorobiales; f__Chlorobiaceae; g__Chlorobium; s__phaeobacteroides
-0d3cacfc6919975e587aa9cd9a81f626	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales; f__Burkholderiaceae; g__Burkholderia; s__
-f497603776b0d87ba949c1d0f54565c5	k__Archaea; p__Euryarchaeota; c__Methanococci; o__Methanococcales; f__Methanococcaceae; g__Methanococcus; s__
-a94ddc6a9cf9a43d04d134fc895c0ef8	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Spirochaetales; f__Spirochaetaceae; g__Treponema; s__
-ed19868a374e0c230d3c67385da5fb2e	k__Bacteria; p__Verrucomicrobia; c__Verrucomicrobiae; o__Verrucomicrobiales; f__Verrucomicrobiaceae; g__Akkermansia; s__muciniphila
-e72e98355c2f511fce29e1989744f71b	k__Bacteria; p__Planctomycetes; c__Planctomycetia; o__Pirellulales; f__Pirellulaceae; g__Rhodopirellula; s__baltica
-8d0d58745c1de725b49c37ef68e08edf	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales; f__Comamonadaceae; g__Leptothrix; s__
-b9d9c3098ea09ed75be11be1352300f5	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Thermoanaerobacteraceae; g__Thermoanaerobacter; s__
-d2fcaaaf82e2760ff208e4b9067d91b6	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Ruminococcaceae; g__Clostridium; s__
-df53a55085076d670cc6beab175e0fff	k__Archaea; p__Euryarchaeota; c__Methanococci; o__Methanococcales; f__Methanocaldococcaceae; g__Methanocaldococcus; s__
-74b24f87003511f730a7bc330a036010	k__Bacteria; p__Chloroflexi; c__Chloroflexi; o__Chloroflexales; f__Chloroflexaceae; g__Chloroflexus; s__
-a0404757f0e2e3388b9fed6975132605	Sulfitobacter_sp._EE-36 not found
-78034b377b71dfc478e0433bbd89c8b9	Shewanella_baltica_OS185 not found
-0c1e8519e6aaa41cb0a5d3a6bd215c9e	Dickeya_dadantii_3937 not found
-daedd45154da4d0767e221ecbf7fbbcc	Dickeya_dadantii_3937 not found
-cbade9432f365e522b1c92922a97631b	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Nitrosomonadales; f__Nitrosomonadaceae; g__Nitrosomonas; s__europaea
-9dc83cc3eed26a5297afba24b76c1da8	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfovibrionales; f__Desulfovibrionaceae; g__Desulfovibrio; s__
-e09289af250a74f3e0bcc47082e04eb6	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Micromonosporaceae; g__Salinispora; s__arenicola
-f9a65b9e8e60f435ad11ab1a1f727ad0	k__Bacteria; p__[Thermi]; c__Deinococci; o__Thermales; f__Thermaceae; g__Thermus; s__
-ea4afd792e3210c1c867944c3ceb59c4	Chlorobium_tepidum_TLS not found
-41dd024b4ab0881e7d3f58e8a697dc74	other
-0babfa9456694270cd8cecdaa6cdab66	Methanococcus_maripaludis_C5 not found
-7b1b68cac562006a3b12bf41054fe359	other
-8c2114a5f5750c315751c1166edbe420	k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Enterococcaceae; g__Enterococcus; s__
-9df6254fd0ee58b803413731032cdd88	other
-33d26c60adb41cc8963fd822abeade92	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Nitrosomonadales; f__Nitrosomonadaceae; g__Nitrosomonas; s__europaea
-2da0553ee9c53a5460a97b05fc495ee9	Shewanella_baltica_OS185 not found
-b627cffa5fd2bcb8bf0eb14244ca3937	other
-a401b0bf035ee819c23393f2eeba3cbc	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales; f__Alcaligenaceae; g__Bordetella; s__
-99121277e691525b03e1fc991fcc81d0	other
-30c731fc8080d8734293f4a8e0b59d20	other
-d85a997afe5d57cdf8a45b3db458025d	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Bacteroidaceae; g__Bacteroides; s__
-d86004b15b2f67613bdf89ced8f95e2a	k__Bacteria; p__Chlorobi; c__Chlorobia; o__Chlorobiales; f__Chlorobiaceae; g__Pelodictyon; s__phaeoclathratiforme
-141c76e1cfcae6802d3665b36b2a6f8a	Shewanella_baltica_OS185 not found
-29c7a85074c17909def47a10f72cd6bb	Caldicellulosiruptor_bescii_DSM_6725 not found
-a933f1625c1ea732c7669a1ecfa674ef	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Sphingomonadales; f__Sphingomonadaceae; g__Zymomonas; s__
-2c7d57488ecbbea286cfbcbc1be9b922	other
-1ad3d87ff3fd3d3c2cc06d64cd563d94	k__Bacteria; p__Cyanobacteria; c__Nostocophycideae; o__Nostocales; f__Nostocaceae; g__Nostoc; s__
-379cb92a17430513e8ff985491f7c345	other
-d87c4c3d6f5ea2bf2b33ed274906fd56	other
-a0f72f0c8cefa87b39c38030f979af92	other
-17f325489155c73867b71657d3e23b0a	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Bacteroidaceae; g__Bacteroides; s__
-b43b61f04dd0977c343cc2bd33a7d143	k__Bacteria; p__Chloroflexi; c__Chloroflexi; o__Chloroflexales; f__Chloroflexaceae; g__Chloroflexus; s__
-a510885b6538a706134f4d8088cd1a48	k__Bacteria; p__Thermotogae; c__Thermotogae; o__Thermotogales; f__Thermotogaceae; g__Thermotoga; s__
-b59777e0695c8dfdfd0d1d5bc7d1a4e1	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Thermoanaerobacteraceae; g__Thermoanaerobacter; s__
-09c4d058552904ea57e5d427c234dd86	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Acidobacteriaceae; g__Acidobacterium; s__
-dbf81481147b0cb7854942af37a06065	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Caldicellulosiruptoraceae; g__Caldicellulosiruptor; s__saccharolyticus
-5920db06106fe7e4aaf18342b054167a	other
-a6052057ed366cbec2981f670f126d4e	other
-fc3eeb38eac7ca1fa4cd7c1b4753f1f5	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Spirochaetales; f__Spirochaetaceae; g__Treponema; s__
-7dc605ee802a8069bd012eae5c8e4e44	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Sulfolobales; f__Sulfolobaceae; g__Sulfolobus; s__tokodaii
-886cf2e9c22e05f7a4bd435892cd67dd	other
-445eb45f4b788745dc4789790b77e926	other
-697a333a921e984dc8559124340a1662	k__Bacteria; p__Dictyoglomi; c__Dictyoglomia; o__Dictyoglomales; f__Dictyoglomaceae; g__Dictyoglomus; s__turgidum
-d49806e178a36f821a584e6e13aad19c	other
-43177a8b8dacb9372cb684a48f329931	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Aquificaceae; g__Hydrogenobaculum; s__
-7733c6a16f1569c892067ecb8aefb0dc	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhodobacterales; f__Rhodobacteraceae; g__Ruegeria; s__pomeroyi
-8dce550a9e0d36a712baf96c50db6f38	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Hydrogenothermaceae; g__Persephonella; s__marina
-720b484515faec353582a7b058a665e8	k__Bacteria; p__[Thermi]; c__Deinococci; o__Deinococcales; f__Deinococcaceae; g__Deinococcus; s__
-18015bc5bef6bc421def1d57c09e205b	other
-ee23086481d97574681c47a9e25ddcf7	k__Archaea; p__Euryarchaeota; c__Archaeoglobi; o__Archaeoglobales; f__Archaeoglobaceae; g__Archaeoglobus; s__fulgidus
-ee280c370c8b02812be0c20db7c1964c	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Fusobacteriaceae; g__Fusobacterium; s__
-716ee1ef062bc8f9a71252245312ae94	Shewanella_baltica_OS185 not found
-2f70e3f3d66aee68240fa1653eced0ca	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Thermoproteales; f__Thermoproteaceae; g__Pyrobaculum; s__
-b20a92091805a7b7af0aab3ad0bcb71e	other
-3ee4b2834163bc2565db667fbe079b97	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Porphyromonadaceae; g__Porphyromonas; s__
-311030dd3480b4be74d627d8f927c1cb	other
-e019c0ddaa904c0d691cc6d2b82b2472	other
-33d5b48ba27a1ecd5455a8444bd5f1c0	other
-cbb8c0515eceafccdf76a714aa67b2fe	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Thermoproteales; f__Thermoproteaceae; g__Pyrobaculum; s__
-eba3721d3145a2bc096b2ab0b0c4149c	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Fusobacteriaceae; g__Fusobacterium; s__
-005c2c1de94772a7c9e491dd780ba8ed	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Bacteroidaceae; g__Bacteroides; s__
-70ff938396900290987d840816d05258	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Fusobacteriaceae; g__Fusobacterium; s__
-39504264c544d74f4916440f27cd33d0	k__Bacteria; p__Chlorobi; c__Chlorobia; o__Chlorobiales; f__Chlorobiaceae; g__Chlorobium; s__limicola
-5e2d0dbf2708c942e39bb1c48170f88d	other
-c62cc6315e9367bb1c1b131063cfa5fb	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae; g__Ignicoccus; s__
+3333b0876ecec670fa2281305ce310e1	k__Bacteria; p__Dictyoglomi; c__Dictyoglomia; o__Dictyoglomales; f__Dictyoglomaceae; g__Dictyoglomus; s__turgidum
+aadbac24cfeef6bb5bf7e3f0620b758b	k__Bacteria; p__Thermotogae; c__Thermotogae; o__Thermotogales; f__Thermotogaceae; g__Thermotoga; s__
+431569cf382e0e62c8d193ab05b7938e	other
+7f6ac91c8af71843ac5eed18d05c0056	other
+33a6416a4c92c7768147b97d7bf73f1e	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Thermoanaerobacteraceae; g__Thermoanaerobacter; s__
+32fa30ad35b6cfcc1eecdc2824ba45d6	k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Enterococcaceae; g__Enterococcus; s__
+f34972cfe8d67441e5a8ebd6ca1334c1	k__Bacteria; p__Cyanobacteria; c__Nostocophycideae; o__Nostocales; f__Nostocaceae; g__Nostoc; s__
+e825d7cb170763985e5be12fbb66eeb2	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Aquificaceae; g__Hydrogenobaculum; s__
+858869d428292c5365024e663d735ef4	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Thermoproteales; f__Thermoproteaceae; g__Pyrobaculum; s__
+812089bfd95c5451e06def2cdd31c1d6	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales; f__Burkholderiaceae; g__Burkholderia; s__
+d821cc8854024b09ad7183d30d2e0b60	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Sulfolobales; f__Sulfolobaceae; g__Sulfolobus; s__tokodaii
+d1323d6260f8bd1b91fecbcb7243c8b3	other
+0bdbc6ccbf3773bdd041c7f685248aa5	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfovibrionales; f__Desulfovibrionaceae; g__Desulfovibrio; s__
+2b8d090d9b6530a9d4fa2392436fcdd9	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Bacteroidaceae; g__Bacteroides; s__
+40d0e544aca1f7000da9d2e1b8d0b728	other
+b990a4119681b986ebe28def295cc6b2	k__Archaea; p__Euryarchaeota; c__Thermococci; o__Thermococcales; f__Thermococcaceae; g__Pyrococcus; s__
+0767f946608b3f8d40b1b593f3cb2a97	other
+541a78bbd9b2feca494957a3d99c90ed	k__Bacteria; p__Chloroflexi; c__Chloroflexi; o__Herpetosiphonales; f__; g__; s__
+2e6d0ad7b575245f0b521fc54e8220c0	other
+60dcd82e3b3eb598f1a1df4a1d5ded9a	k__Archaea; p__Euryarchaeota; c__Methanococci; o__Methanococcales; f__Methanocaldococcaceae; g__Methanocaldococcus; s__
+a37e354bb9b8967a6191e2a65ca59441	other
+c0cefdb70314726040ebe836f7190c8e	other
+03207fe732020d4668a9dce2b822c692	k__Bacteria; p__Gemmatimonadetes; c__Gemmatimonadetes; o__Gemmatimonadales; f__Gemmatimonadaceae; g__Gemmatimonas; s__
+00ef0d71a92f79e7da8c19eed8914133	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae; g__Ignicoccus; s__
+5b5cb6f23e21b5c32932dd36c6c9f461	other
+55caf08648248d6474dc75c2d53cea3e	Methanococcus_maripaludis_C5 not found
+a670085bad8e93f47a624fc49913e0c7	k__Bacteria; p__Chlorobi; c__Chlorobia; o__Chlorobiales; f__Chlorobiaceae; g__Chlorobium; s__phaeovibrioides
+e26a82762a9e05b3e9738d621011bdf9	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhodobacterales; f__Rhodobacteraceae; g__Ruegeria; s__pomeroyi
+8f203baca6baf4be086f301a8b1433f2	other
+b213c63542d173ea4ee4620979598bd8	k__Bacteria; p__[Thermi]; c__Deinococci; o__Thermales; f__Thermaceae; g__Thermus; s__
+a75469000b685732e36dab747a2cb7be	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Hydrogenothermaceae; g__Sulfurihydrogenibium; s__
+d2cf9cf1ba83006b18aeea07cce6ab6e	k__Bacteria; p__Chlorobi; c__Chlorobia; o__Chlorobiales; f__Chlorobiaceae; g__Chlorobium; s__limicola
+4d52db9f3cd83c983b1fdbd9eb9445b5	other
+d39fd2ae486b7cf75c61fd36de983610	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Caldicellulosiruptoraceae; g__Caldicellulosiruptor; s__
+fe4a35fb1847b115c86dc1c234e1ef07	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Porphyromonadaceae; g__Porphyromonas; s__
+29437f8cdf42cbfcaf329d281b085353	k__Archaea; p__Euryarchaeota; c__Archaeoglobi; o__Archaeoglobales; f__Archaeoglobaceae; g__Archaeoglobus; s__fulgidus
+0534757f38449f6cf980b2eb1bcde6b6	k__Bacteria; p__Chlorobi; c__Chlorobia; o__Chlorobiales; f__Chlorobiaceae; g__Chlorobium; s__phaeobacteroides
+cd350ec5de0315f2c6e770b53ca5a086	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Thermoanaerobacteraceae; g__Thermoanaerobacter; s__
+d4f15d8c75005a7fa318eea2e477f18e	other
+0e30dfa1a2a7a52861f19289aada7940	other
+938bbf5a8d1a8811fb4f2faff887bb23	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Hydrogenothermaceae; g__Persephonella; s__marina
+73d63c2a39a1bda29e0fb871777b1305	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Ruminococcaceae; g__Clostridium; s__
+3befb3e069f2369ad507223dc795a663	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Fusobacteriaceae; g__Fusobacterium; s__
+238417be42b85853bf347af91b94a844	k__Bacteria; p__Verrucomicrobia; c__Verrucomicrobiae; o__Verrucomicrobiales; f__Verrucomicrobiaceae; g__Akkermansia; s__muciniphila
+0fc72dc59e18739acf7501e563e1fb29	Sulfitobacter_sp._EE-36 not found
+5f5c4a189427d74f500f495c0ee45079	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Acidobacteriaceae; g__Acidobacterium; s__
+76b2a5bf63330a41f5d64674a7e9f38e	k__Bacteria; p__Planctomycetes; c__Planctomycetia; o__Pirellulales; f__Pirellulaceae; g__Rhodopirellula; s__baltica
+fd29a73e778c6182e01ef9547c93594c	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales; f__Alcaligenaceae; g__Bordetella; s__
+e9acf1ed99dfc02086b17c31d3263a35	other
+93fd39c3299afa32c82e79f82f07e59e	other
+9fe1a95916406d360c9e94b1e4cec226	other
+f4414c70c7079f52a52db4997d33faa8	k__Bacteria; p__Thermotogae; c__Thermotogae; o__Thermotogales; f__Thermotogaceae; g__Thermotoga; s__
+60cd0ac314698dd12c78938964db9606	other
+bdacad880b5edae6c8a86e20ddccfbff	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Enterobacteriales; f__Enterobacteriaceae; g__Erwinia; s__chrysanthemi
+8968cf8f1b99d58366ee3b5ac0d66c5d	k__Archaea; p__Euryarchaeota; c__Methanococci; o__Methanococcales; f__Methanococcaceae; g__Methanococcus; s__
+7109305bef509e27e5598a09b5dc2343	other
+10fe1e4c748fee16a9deae553cdb8961	other
+139ab7dbf8bec4010a477fe09abc8033	other
+58b1cfa725589a284fdf75901ae9bee3	k__Bacteria; p__Chlorobi; c__Chlorobia; o__Chlorobiales; f__Chlorobiaceae; g__Chlorobaculum; s__
+d49e9535a3b2d04b36cf5554322c6823	k__Bacteria; p__Chloroflexi; c__Chloroflexi; o__Chloroflexales; f__Chloroflexaceae; g__Chloroflexus; s__
+3bea61c3c02bd6b4321c108629016ae9	other
+382e91e2557a2b1398becbba79a9e40a	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Sphingomonadales; f__Sphingomonadaceae; g__Zymomonas; s__
+9ebe22ad291364c6746ab84baf6848a7	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Fusobacteriaceae; g__Fusobacterium; s__
+71377a659973f8108dec7aadcaed7c4e	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Micromonosporaceae; g__Salinispora; s__arenicola
+38384d796792d09002128af8013ec211	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Thermoproteales; f__Thermoproteaceae; g__Pyrobaculum; s__
+58d17e30409dacae29f6e7df0e74c16a	Shewanella_baltica_OS185 not found
+a9d54490f30296ac0c4c80c0fe9efbf8	other
+0e42350decb6db7ff28c15436f01afe0	other
+9588050e0c61dad9196b2ad6aeb8fcad	other
+710f9206159c2bbb9d9932862c338ac3	k__Bacteria; p__Chlorobi; c__Chlorobia; o__Chlorobiales; f__Chlorobiaceae; g__Pelodictyon; s__phaeoclathratiforme
+c352d70fb42511e60bb8844f0985d76b	k__Bacteria; p__Chloroflexi; c__Chloroflexi; o__Chloroflexales; f__Chloroflexaceae; g__Chloroflexus; s__
+8e8009be4a28b1b4de9a3a520f87a897	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Caldicellulosiruptoraceae; g__Caldicellulosiruptor; s__saccharolyticus
+5c1e46913a173a43885e4739b1d46aae	other
+6cf7835ac77f1051cfee13956a9c2568	other
+40d9e96132028e33db3380e56754e864	other
+e984e5d194908c248ca08e2884f60c0b	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Bacteroidaceae; g__Bacteroides; s__
+b5233e48b77042a2697f76013d63b3ed	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales; f__Comamonadaceae; g__Leptothrix; s__
+0b9e34ac9948cd012cf35dedab715c35	k__Bacteria; p__[Thermi]; c__Deinococci; o__Deinococcales; f__Deinococcaceae; g__Deinococcus; s__
+36fc3ee38cf8f6337d1ce27b22df0c09	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Spirochaetales; f__Spirochaetaceae; g__Treponema; s__
+fdc1678af5e8187e08ca4c231f174a06	other
+b3669d2447b6fbe549d6169475cd50bf	other
+f1011db6cf6e03dcc5f3fdc083cfd845	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Spirochaetales; f__Spirochaetaceae; g__Treponema; s__
+83200b3d61a95f0106a8efe9e923e383	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Bacteroidaceae; g__Bacteroides; s__
+1fb8ba60faab2e44c8636f0f5910eec9	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Bacteroidaceae; g__Bacteroides; s__
+f3ed2d35deef46c78e4c688d034cfc72	other
+d767b91077a182e12d425de96bc9f400	k__Archaea; p__Nanoarchaeota; c__[Nanoarchaeoti]; o__[Nanoarchaeotales]; f__[Nanoarchaeotaceae]; g__Nanoarchaeum; s__equitans Kin4-M
+3d8e0a42a89a407ed80f705a8600aa85	other
+327c0c9e60dbf45cfe12ee9632c90a10	other
+abfa8e33d6ca88bdf4dad2131517b507	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Nitrosomonadales; f__Nitrosomonadaceae; g__Nitrosomonas; s__europaea
+bf2f720ce7b8f06786e85e38e7fc2dbb	other
+c8b323be53b4437054b5989696240e73	other
+17df3c0f14ccd9567caf88e930457354	other
+11dde65fd99e96c4b45dc14e445cfe27	other
