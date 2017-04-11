@@ -1,0 +1,111 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+max_accepts:1
+min_consensus_fraction:0.51
+reference_sequences_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta
+similarity:0.99
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxytEGbQ
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-18/rep_seqs.fna --id 0.99 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_bJxd1P.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	212	*	*	*	*	*	e96d9f539bf98b57a321deab95f62f3b	*
+L	158218	250	*	*	*	*	*	4183921	*
+H	158218	212	99.5	+	0	0	212M38I	84ff705ddd94d9791ea0759d74d43d41	4183921
+N	*	212	*	*	*	*	*	49a63ef8cdbb5dacecee8634d71e36e3	*
+N	*	212	*	*	*	*	*	ac6ac810abed160f4dd530a22962a321	*
+L	171295	250	*	*	*	*	*	4348796	*
+H	171295	212	100.0	+	0	0	212M38I	31a8d144426d965e5f0694784be49d0a	4348796
+N	*	212	*	*	*	*	*	9baf5fa424dbd2e354b0115b615af7a8	*
+L	38805	250	*	*	*	*	*	471224	*
+H	38805	212	99.5	+	0	0	212M38I	c352d70fb42511e60bb8844f0985d76b	471224
+N	*	212	*	*	*	*	*	625eb7277021e552bb62d19521e84e79	*
+L	116419	250	*	*	*	*	*	1720567	*
+H	116419	212	99.5	+	0	0	212M38I	6c44e15bbc54ceb757da3dd7b0bf825e	1720567
+L	78721	250	*	*	*	*	*	211106	*
+H	78721	212	99.1	+	0	0	19I212M19I	3ea42fbf35ffe30558546cfbae664d42	211106
+L	112568	250	*	*	*	*	*	1426	*
+H	112568	212	99.5	+	0	0	212M38I	1cd3fcb5a32343a41b24529c34923c3d	1426
+N	*	212	*	*	*	*	*	8667504bf84a906d4d74d9514cc2497d	*
+L	16743	250	*	*	*	*	*	615105	*
+H	16743	212	99.1	+	0	0	19I212M19I	bca5ae50bc6f97db87df22a221d93e3d	615105
+L	191621	250	*	*	*	*	*	4452376	*
+H	191621	212	99.1	+	0	0	212M38I	1fb8ba60faab2e44c8636f0f5910eec9	4452376
+L	13144	250	*	*	*	*	*	746357	*
+H	13144	212	99.5	+	0	0	212M38I	4542364d305079d8425861d46e6583bc	746357
+L	99738	250	*	*	*	*	*	114174	*
+H	99738	212	100.0	+	0	0	212M38I	4a24773ab9ce45be8d47e8f3c435d836	114174
+L	104573	250	*	*	*	*	*	88404	*
+H	104573	212	99.5	+	0	0	19I212M19I	8a99200612b57fd6eb9b758d82218a33	88404
+N	*	212	*	*	*	*	*	85af70b22f9b1f42afbf2a5ccc18d95c	*
+N	*	212	*	*	*	*	*	a9760511ade64686ba8eb879a4d4baff	*
+L	102799	250	*	*	*	*	*	102184	*
+H	102799	212	99.1	+	0	0	19I212M19I	f86ef1a90cececaec20ca0f5a17299aa	102184
+L	11084	250	*	*	*	*	*	808969	*
+H	11084	212	99.1	+	0	0	212M38I	50994b986077ebe324cd3c2fb252a910	808969
+N	*	212	*	*	*	*	*	19292e2139044a96dd17cf3267878d12	*
+N	*	212	*	*	*	*	*	f0a485bec85b080e8c1c2194c5a109b7	*
+H	116419	212	99.5	+	0	0	19I212M19I	ab487d1d30113c07ef25846827b13f93	1720567
+N	*	212	*	*	*	*	*	d72875875de43f02a6be8eae0c38b9a4	*
+L	47245	250	*	*	*	*	*	343814	*
+H	47245	212	100.0	+	0	0	212M38I	395a7f0425d768d2bae576d624c0994c	343814
+H	158218	212	99.5	+	0	0	19I212M19I	e93bdeb7d5c40c28340d243e5243e5fb	4183921
+L	126352	250	*	*	*	*	*	2288536	*
+H	126352	212	100.0	+	0	0	19I212M19I	95605940efbf2716b731bd2cdae8c16a	2288536
+L	31749	250	*	*	*	*	*	535804	*
+H	31749	212	99.5	+	0	0	212M38I	19e283a80c31c748b462679041403566	535804
+L	132010	250	*	*	*	*	*	1076643	*
+H	132010	212	99.5	+	0	0	19I212M19I	2248b7c5b22895f4517bf3904929de3a	1076643
+L	84523	250	*	*	*	*	*	187841	*
+H	84523	212	99.5	+	0	0	19I212M19I	d201ca153bd9bd971f75766c0a290758	187841
+N	*	212	*	*	*	*	*	1d8102f6776ed4a7985059e0011de868	*
+L	43243	250	*	*	*	*	*	361342	*
+H	43243	212	99.5	+	0	0	19I212M19I	9261d0f0d4a10137f3e56494cb8b2993	361342
+N	*	212	*	*	*	*	*	519696d11bb3d90dc9d790803ce748d3	*
+L	4179	250	*	*	*	*	*	985663	*
+H	4179	212	99.1	+	0	0	212M38I	f6116fade5b83756880261ec897fac6b	985663
+L	129525	250	*	*	*	*	*	1112231	*
+H	129525	212	99.1	+	0	0	19I212M19I	f0a5ffa40ceb9c28c0de3548cc4c140b	1112231
+L	58548	250	*	*	*	*	*	298307	*
+H	58548	212	100.0	+	0	0	212M38I	6cf7835ac77f1051cfee13956a9c2568	298307
+L	144238	250	*	*	*	*	*	3341679	*
+H	144238	212	99.5	+	0	0	19I212M19I	932b095ac56a18057bc86137e9211acf	3341679
+L	193775	250	*	*	*	*	*	4463223	*
+H	193775	212	99.5	+	0	0	19I212M19I	b3d3cb839b3670fc1454518632915322	4463223
+L	123060	250	*	*	*	*	*	826738	*
+H	123060	212	99.5	+	0	0	212M38I	bfde99cc56979e29753be02343159ffa	826738
+H	13144	212	99.5	+	0	0	19I212M19I	ab1048378ee3c95f168433c6754f0096	746357
+D	4179	2	*	*	*	*	99.1	985663	*
+D	11084	2	*	*	*	*	99.1	808969	*
+D	13144	3	*	*	*	*	99.5	746357	*
+D	16743	2	*	*	*	*	99.1	615105	*
+D	31749	2	*	*	*	*	99.5	535804	*
+D	38805	2	*	*	*	*	99.5	471224	*
+D	43243	2	*	*	*	*	99.5	361342	*
+D	47245	2	*	*	*	*	100.0	343814	*
+D	58548	2	*	*	*	*	100.0	298307	*
+D	78721	2	*	*	*	*	99.1	211106	*
+D	84523	2	*	*	*	*	99.5	187841	*
+D	99738	2	*	*	*	*	100.0	114174	*
+D	102799	2	*	*	*	*	99.1	102184	*
+D	104573	2	*	*	*	*	99.5	88404	*
+D	112568	2	*	*	*	*	99.5	1426	*
+D	116419	3	*	*	*	*	99.5	1720567	*
+D	123060	2	*	*	*	*	99.5	826738	*
+D	126352	2	*	*	*	*	100.0	2288536	*
+D	129525	2	*	*	*	*	99.1	1112231	*
+D	132010	2	*	*	*	*	99.5	1076643	*
+D	144238	2	*	*	*	*	99.5	3341679	*
+D	158218	3	*	*	*	*	99.5	4183921	*
+D	171295	2	*	*	*	*	100.0	4348796	*
+D	191621	2	*	*	*	*	99.1	4452376	*
+D	193775	2	*	*	*	*	99.5	4463223	*

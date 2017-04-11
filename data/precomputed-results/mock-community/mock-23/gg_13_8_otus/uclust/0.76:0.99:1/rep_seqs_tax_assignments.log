@@ -1,0 +1,168 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/taxonomy/99_otu_taxonomy.txt
+max_accepts:1
+min_consensus_fraction:0.76
+reference_sequences_fp:/Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta
+similarity:0.99
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxpmjJnH
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-23/rep_seqs.fna --id 0.99 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner__i6_eb.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+L	151932	250	*	*	*	*	*	3808430	*
+H	151932	231	100.0	+	0	0	231M19I	b53806d2798866e54bc88919793f0143	3808430
+N	*	231	*	*	*	*	*	22ddf92ba59bd471f971d6df3420d960	*
+L	121675	250	*	*	*	*	*	2026051	*
+H	121675	231	99.1	+	0	0	231M19I	c9bf5c74d65804a3c12ee5f33a35ce53	2026051
+N	*	231	*	*	*	*	*	a7b0c414b25cce98084fb827cf1a301d	*
+N	*	231	*	*	*	*	*	598c0d78a56f4f34186a60a2096c8cbb	*
+N	*	231	*	*	*	*	*	379b0b06a220a7dae9bb4fd3c084fa4b	*
+L	77335	250	*	*	*	*	*	219151	*
+H	77335	231	100.0	+	0	0	231M19I	47d01e6146062d4183e8b7db6a700475	219151
+N	*	231	*	*	*	*	*	3510d5121df9f091d80df9d53c460170	*
+L	24832	250	*	*	*	*	*	564332	*
+H	24832	231	99.1	+	0	0	231M19I	42370bee07a419d0bf08a77c71eb71b2	564332
+L	98951	250	*	*	*	*	*	128604	*
+H	98951	231	100.0	+	0	0	231M19I	94abfcc74e15148e81c3ecca47a75bed	128604
+L	42993	250	*	*	*	*	*	362525	*
+H	42993	231	99.1	+	0	0	231M19I	27fba45e7fc11454fced0163d6f1d252	362525
+L	189040	250	*	*	*	*	*	4438917	*
+H	189040	231	100.0	+	0	0	231M19I	f63e6ab460ac14d303246d75b594b8b3	4438917
+N	*	231	*	*	*	*	*	3cd8ddf19b7f33636feb6f51fb66b95b	*
+N	*	231	*	*	*	*	*	20dbe633dbcc7b600023c3de531d76a6	*
+N	*	231	*	*	*	*	*	a7ac04fb6dae5540438d7f5f9b626ca6	*
+N	*	231	*	*	*	*	*	2c96a1782f0cb1b3e667532edf270489	*
+N	*	231	*	*	*	*	*	ce77c65b3e1e7edeb424469deba7ee67	*
+N	*	231	*	*	*	*	*	88c84411a36fcd85de778f674566a98f	*
+N	*	231	*	*	*	*	*	f6df80fbd44d78dca57212ff04c2e220	*
+N	*	231	*	*	*	*	*	d1d7a9e4b0a0765249da09ad29ca8fe1	*
+N	*	231	*	*	*	*	*	868ad993d877f286cd2f3cb5999e35d8	*
+N	*	231	*	*	*	*	*	c65950f2620a6861702c255894799c99	*
+N	*	231	*	*	*	*	*	91cd2f1bc255bc97cdedfd51a5381471	*
+N	*	231	*	*	*	*	*	ad63a4c28143848beb7dd921e1147d72	*
+N	*	231	*	*	*	*	*	216b40cde70ff45984122f14482c7e57	*
+N	*	231	*	*	*	*	*	261ae78eace5e030b67d81fd7def8d09	*
+L	48128	250	*	*	*	*	*	340223	*
+H	48128	231	99.6	+	0	0	231M19I	59828a7f38cbaf70fd284e624a459803	340223
+L	89405	250	*	*	*	*	*	172359	*
+H	89405	231	99.6	+	0	0	231M19I	5f24d62e8caaa259b59cb08f7c7756df	172359
+N	*	231	*	*	*	*	*	cf0472eb326ad0b923d709b550e88895	*
+N	*	231	*	*	*	*	*	a062f5b5ef35bb18d35c206efb52989a	*
+N	*	231	*	*	*	*	*	2fe0d49dde617cc794a5eac8643a224c	*
+N	*	231	*	*	*	*	*	a6fa8c319add1cce028176bde5925e0d	*
+N	*	231	*	*	*	*	*	a0354da1299a5f86e1dabf551115e988	*
+N	*	231	*	*	*	*	*	b724fc9a4abb0d7600021d80d95e5243	*
+N	*	231	*	*	*	*	*	1c3e865d1fc5e0a8a0f78c8104960cca	*
+H	24832	231	99.6	+	0	0	231M19I	867a6a47b7304418cb43fb4a2e30d3d0	564332
+N	*	231	*	*	*	*	*	a45147adb284cb77039b6f072c024943	*
+N	*	231	*	*	*	*	*	827c9647d41456c90a58feca08988959	*
+N	*	231	*	*	*	*	*	7114621139a3ab545362d7eaab6e1914	*
+L	35663	250	*	*	*	*	*	519213	*
+H	35663	231	99.6	+	0	0	231M19I	83da98c6bc8521e9c791aeced185cb15	519213
+N	*	231	*	*	*	*	*	220c846f12fd2f209cec1f6869147a6d	*
+L	163611	250	*	*	*	*	*	4310500	*
+H	163611	231	99.1	+	0	0	231M19I	9ca45f68f3c2a26d26b68740a86ad5c7	4310500
+N	*	231	*	*	*	*	*	24500b0cb6a2cd594665d924e9c37793	*
+L	146958	250	*	*	*	*	*	3506870	*
+H	146958	231	99.6	+	0	0	231M19I	68661e529a25adcd6991459ac7aa4cd7	3506870
+L	57304	250	*	*	*	*	*	302632	*
+H	57304	231	99.1	+	0	0	231M19I	f916d48796e31987b702bb38076ea489	302632
+N	*	231	*	*	*	*	*	5a68cea8486c9e8d88dd164964f44037	*
+L	91413	250	*	*	*	*	*	162112	*
+H	91413	231	100.0	+	0	0	231M19I	d03173933344f7959edc8d5fa2178b4b	162112
+N	*	231	*	*	*	*	*	b6b46977570b0f03b34e948c7c398dca	*
+L	150192	250	*	*	*	*	*	870406	*
+H	150192	231	100.0	+	0	0	231M19I	675901e598409fba2ca88494be3463d3	870406
+L	117642	250	*	*	*	*	*	1790218	*
+H	117642	231	100.0	+	0	0	231M19I	2d4978cf246f2ee60cd5ddba9df73e8e	1790218
+L	38425	250	*	*	*	*	*	507594	*
+H	38425	231	100.0	+	0	0	231M19I	333a40af36286f867e8e903e420016d4	507594
+L	169931	250	*	*	*	*	*	4341595	*
+H	169931	231	100.0	+	0	0	231M19I	1b736c9b2516e440141859f406d9a754	4341595
+N	*	231	*	*	*	*	*	8cd1bd26a7174f457af7de4009181070	*
+N	*	231	*	*	*	*	*	4782e3cb8bf69dc4598cc1366bbdce7e	*
+N	*	231	*	*	*	*	*	a9bc10e808f392c9e1cf16237f4a9b7e	*
+N	*	231	*	*	*	*	*	89265d3d460ea46717c3c680c9d1d4a0	*
+N	*	231	*	*	*	*	*	cabced68f3beb2813e29253f1c892f3d	*
+N	*	231	*	*	*	*	*	a972fcd8be10c8d34ba56608108cfe22	*
+N	*	231	*	*	*	*	*	ff72c33f44dd52a9940127ece6d74cd8	*
+N	*	231	*	*	*	*	*	0493483cc66975024c927c2356f762d9	*
+N	*	231	*	*	*	*	*	bcc8ad1c4518db8cc3549258f5834d4a	*
+N	*	231	*	*	*	*	*	e14cfc36fbbb77b5d592215be53f3923	*
+L	166988	250	*	*	*	*	*	4326794	*
+H	166988	231	100.0	+	0	0	231M19I	2c5352f7ad9c99e93424ced5793b9f83	4326794
+L	103152	250	*	*	*	*	*	100871	*
+H	103152	231	99.1	+	0	0	231M19I	4669f785716df43aa86c9a990e619eb1	100871
+N	*	231	*	*	*	*	*	f87fe98e3a70e14b5fa41cbe36d56d48	*
+N	*	231	*	*	*	*	*	e20b40e3708fe307459135d57da56815	*
+N	*	231	*	*	*	*	*	b388105c62e78022d2c1ad9774b909be	*
+N	*	231	*	*	*	*	*	8527f4bbaa7eeb322230ec11be03b65e	*
+N	*	231	*	*	*	*	*	34b43c4cee1e9b35548ce4611ce61221	*
+H	163611	231	99.6	+	0	0	231M19I	f4c210a6fd0d1469a03d81516475560a	4310500
+N	*	231	*	*	*	*	*	4aa1826b4bcccd4d1d8eae11fa66d439	*
+L	82163	250	*	*	*	*	*	194818	*
+H	82163	231	100.0	+	0	0	231M19I	1820e6e409a195ddef6a8d62d7b5242b	194818
+L	32614	250	*	*	*	*	*	532163	*
+H	32614	231	100.0	+	0	0	231M19I	a0748d07684e299b7bb3fdb265e5de4a	532163
+L	191523	250	*	*	*	*	*	4451875	*
+H	191523	231	99.1	+	0	0	231M19I	60dee2662b4b91421600aac40dc69575	4451875
+N	*	231	*	*	*	*	*	b8cc728644d1ee15082bc05ed841134a	*
+N	*	231	*	*	*	*	*	4d0eceff835ac453578ef1bc22e21856	*
+L	46763	250	*	*	*	*	*	345834	*
+H	46763	231	99.6	+	0	0	231M19I	aa920529d931f31b07482715d415ac65	345834
+L	20344	250	*	*	*	*	*	582464	*
+H	20344	231	99.6	+	0	0	16MI88MI127M17I	cd63dfedc5c218993f5e48dc2a9e931c	582464
+N	*	231	*	*	*	*	*	e8cae2618096d5179befa00581769617	*
+N	*	231	*	*	*	*	*	6cc76bc1abdad808d9b6e0d0dfda25c0	*
+N	*	231	*	*	*	*	*	bf26a539c6c5f7f6bfbbc113bcb51f43	*
+N	*	231	*	*	*	*	*	6b57b00d3724d584038b912d5462b1a3	*
+L	106041	250	*	*	*	*	*	71551	*
+H	106041	231	99.6	+	0	0	231M19I	bbc6a536ea3427b5eeaa008fd43ff261	71551
+N	*	231	*	*	*	*	*	a77817858ceb7af4413df693bed66147	*
+L	34251	250	*	*	*	*	*	525350	*
+H	34251	231	99.1	+	0	0	231M19I	b3ac116d7126c83be5fb72684b3cc1de	525350
+N	*	231	*	*	*	*	*	2f730983510f77c18a89f6b16e58d3f9	*
+N	*	231	*	*	*	*	*	9f19f8e6b1e65047946a06c6ec0e3b33	*
+N	*	231	*	*	*	*	*	0c01877ee48a17ced09f7382bfdece9f	*
+N	*	231	*	*	*	*	*	0a6b2c70cbe72803956af2241a4a82a7	*
+L	103081	250	*	*	*	*	*	101118	*
+H	103081	231	99.6	+	0	0	231M19I	bd0e04bba322ccdb0aeddbdc43ce1798	101118
+N	*	231	*	*	*	*	*	9f8aa20f490a5369857e9684b459277f	*
+N	*	231	*	*	*	*	*	534500b6dc848fb489ef4fd0c6f9fdcb	*
+D	20344	2	*	*	*	*	99.6	582464	*
+D	24832	3	*	*	*	*	99.4	564332	*
+D	32614	2	*	*	*	*	100.0	532163	*
+D	34251	2	*	*	*	*	99.1	525350	*
+D	35663	2	*	*	*	*	99.6	519213	*
+D	38425	2	*	*	*	*	100.0	507594	*
+D	42993	2	*	*	*	*	99.1	362525	*
+D	46763	2	*	*	*	*	99.6	345834	*
+D	48128	2	*	*	*	*	99.6	340223	*
+D	57304	2	*	*	*	*	99.1	302632	*
+D	77335	2	*	*	*	*	100.0	219151	*
+D	82163	2	*	*	*	*	100.0	194818	*
+D	89405	2	*	*	*	*	99.6	172359	*
+D	91413	2	*	*	*	*	100.0	162112	*
+D	98951	2	*	*	*	*	100.0	128604	*
+D	103081	2	*	*	*	*	99.6	101118	*
+D	103152	2	*	*	*	*	99.1	100871	*
+D	106041	2	*	*	*	*	99.6	71551	*
+D	117642	2	*	*	*	*	100.0	1790218	*
+D	121675	2	*	*	*	*	99.1	2026051	*
+D	146958	2	*	*	*	*	99.6	3506870	*
+D	150192	2	*	*	*	*	100.0	870406	*
+D	151932	2	*	*	*	*	100.0	3808430	*
+D	163611	3	*	*	*	*	99.4	4310500	*
+D	166988	2	*	*	*	*	100.0	4326794	*
+D	169931	2	*	*	*	*	100.0	4341595	*
+D	189040	2	*	*	*	*	100.0	4438917	*
+D	191523	2	*	*	*	*	99.1	4451875	*

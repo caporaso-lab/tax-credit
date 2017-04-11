@@ -402,7 +402,8 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
                               standard='expected', metric="distance",
                               params='params', beta="braycurtis",
                               reference_filter=True, reference_col='reference',
-                              references=['gg_13_8_otus', 'unite_20.11.2016'],
+                              references=['gg_13_8_otus',
+                                          'unite_20.11.2016_clean_fullITS'],
                               paired=True, use_best=True, parametric=True,
                               plotf=violinplot, label_rotation=45,
                               color_pallette=None, y_min=0.0, y_max=1.0,
@@ -435,25 +436,35 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
                                          standard=standard, metric=metric)
         archive = pd.concat([archive, per_method])
 
-    # for each method find best average method/parameter config
-    if use_best is True:
-        best, param_report = isolate_top_params(archive, group_by, params,
-                                                metric)
-        display(pd.DataFrame(param_report, columns=[group_by, params]))
-    else:
-        best = archive
-
+    # filter out auxiliary reference database results
     if reference_filter is True:
-        best = best[best[reference_col].isin(references)]
+        archive = archive[archive[reference_col].isin(references)]
 
-    boxplot_from_data_frame(best, group_by=group_by, color=color, hue=hue,
-                            metric=metric, y_min=None, y_max=None, plotf=plotf,
-                            label_rotation=label_rotation,
-                            color_pallette=color_pallette)
+    # plot results for each reference db separately
+    for reference in archive[reference_col].unique():
+        display(Markdown('## {0}'.format(reference)))
+        archive_subset = archive[archive[reference_col] == reference]
 
-    results = per_method_pairwise_tests(best, group_by=group_by, metric=metric,
-                                        paired=paired, parametric=parametric)
-    return results
+        # for each method find best average method/parameter config
+        if use_best is True:
+            best, param_report = isolate_top_params(
+                archive_subset, group_by, params, metric)
+            display(pd.DataFrame(param_report, columns=[group_by, params]))
+        else:
+            best = archive_subset
+
+
+        boxplot_from_data_frame(best, group_by=group_by, color=color,
+                                hue=hue, metric=metric, y_min=None, y_max=None,
+                                plotf=plotf, label_rotation=label_rotation,
+                                color_pallette=color_pallette)
+        sns.plt.show()
+        sns.plt.clf()
+        
+        results = per_method_pairwise_tests(best, group_by=group_by,
+                                            metric=metric, paired=paired,
+                                            parametric=parametric)
+        display(results)
 
 
 def fastlane_boxplots(expected_results_dir, group_by="method",

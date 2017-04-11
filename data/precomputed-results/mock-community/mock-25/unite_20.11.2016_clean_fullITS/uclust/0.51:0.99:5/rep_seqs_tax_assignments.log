@@ -1,0 +1,64 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_taxonomy_qiime_ver7_99_20.11.2016_dev_clean.tsv
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_taxonomy_qiime_ver7_99_20.11.2016_dev_clean.tsv
+max_accepts:5
+min_consensus_fraction:0.51
+reference_sequences_fp:/Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_refs_qiime_ver7_99_20.11.2016_dev_clean.fasta
+similarity:0.99
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxMYfTQj
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-25/rep_seqs.fna --id 0.99 --rev --maxaccepts 5 --allhits --libonly --lib /Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_refs_qiime_ver7_99_20.11.2016_dev_clean.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_Z7cZ3k.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	165	*	*	*	*	*	507a4f80b46203c7ea1cc1f3c9652d56	*
+N	*	165	*	*	*	*	*	79b09c68e850b6405ab33a215fc37575	*
+L	6439	781	*	*	*	*	*	SH098474.07FU_GU053835_reps	*
+H	6439	165	100.0	-	0	0	141I165M475I	81745a375a7def45786f11810b7f7a23	SH098474.07FU_GU053835_reps
+L	20707	906	*	*	*	*	*	SH098472.07FU_UDB014259_refs	*
+H	20707	165	99.4	-	0	0	310I44MD120M432I	81745a375a7def45786f11810b7f7a23	SH098472.07FU_UDB014259_refs
+L	19366	577	*	*	*	*	*	SH098506.07FU_GQ851800_reps	*
+H	19366	165	99.4	-	0	0	26I165M386I	81745a375a7def45786f11810b7f7a23	SH098506.07FU_GQ851800_reps
+N	*	165	*	*	*	*	*	698cc1c87e33a2fb6935df2885041fd0	*
+N	*	165	*	*	*	*	*	8263dd7f28951a8c4bba772aa8002087	*
+N	*	165	*	*	*	*	*	e906ccf8fc1199985cd01a70720434e4	*
+L	20639	624	*	*	*	*	*	SH088093.07FU_HQ630346_refs	*
+H	20639	165	100.0	-	0	0	135MI30M458I	dcaabcef6fde506746066d19fdc4a7d3	SH088093.07FU_HQ630346_refs
+L	8425	944	*	*	*	*	*	SH105729.07FU_UDB002638_reps	*
+H	8425	165	99.4	-	0	0	373I165M406I	add1877e2a0a9fa2a4d1d46bb632eef6	SH105729.07FU_UDB002638_reps
+L	8529	981	*	*	*	*	*	SH105937.07FU_UDB008257_refs	*
+H	8529	165	99.4	-	0	0	431I95M64I70M321I	c9e68e0956e6a7f01d4af63749dc7db6	SH105937.07FU_UDB008257_refs
+N	*	165	*	*	*	*	*	9fad7c7248bc18d732bd0ef256aaba8b	*
+H	8529	165	100.0	-	0	0	431I165M385I	d1fa3688c168ff1c4b51b88af85c672b	SH105937.07FU_UDB008257_refs
+N	*	165	*	*	*	*	*	91dd74965f7a3bafb5fdf521d499530d	*
+H	8425	165	100.0	-	0	0	373I165M406I	4d2ee7478d36fdce0260c1ba165c9382	SH105729.07FU_UDB002638_reps
+N	*	165	*	*	*	*	*	edc7cbedf6df1c544c256d73cc426a69	*
+L	20741	1824	*	*	*	*	*	SH104437.07FU_UDB001733_refs	*
+H	20741	165	100.0	-	0	0	1197I165M462I	b3af153a9145a74cef633d4ed5da5c50	SH104437.07FU_UDB001733_refs
+N	*	165	*	*	*	*	*	b36e748bf3a4614654df2d83ff1116cc	*
+L	20725	1816	*	*	*	*	*	SH101650.07FU_AM882742_refs	*
+H	20725	165	99.4	-	0	0	1248I165M403I	becb377141a930014e5c33d8d1747773	SH101650.07FU_AM882742_refs
+H	8529	165	99.4	-	0	0	431I165M385I	1155f3280090b1fa48dfc2fd9818b543	SH105937.07FU_UDB008257_refs
+N	*	165	*	*	*	*	*	b7b3cc370cd30775e1518e79c3bb8c67	*
+N	*	165	*	*	*	*	*	5034290617cac040feac3773f3a6d0be	*
+N	*	165	*	*	*	*	*	f27fbf96075574111702ab4d56d0fb51	*
+N	*	165	*	*	*	*	*	1159954bed19d2b166c8a53e12ea2f4f	*
+L	8526	944	*	*	*	*	*	SH105913.07FU_GU452517_reps	*
+H	8526	165	100.0	-	0	0	236I165M543I	99e86f7eb0de36633fed630f02764c0c	SH105913.07FU_GU452517_reps
+L	18955	1609	*	*	*	*	*	SH084815.07FU_EU916982_reps	*
+H	18955	165	99.4	-	0	0	646I30MD134M799I	e5a3b157105cb8775c6e702cfdad8942	SH084815.07FU_EU916982_reps
+D	6439	2	*	*	*	*	100.0	SH098474.07FU_GU053835_reps	*
+D	8425	3	*	*	*	*	99.7	SH105729.07FU_UDB002638_reps	*
+D	8526	2	*	*	*	*	100.0	SH105913.07FU_GU452517_reps	*
+D	8529	4	*	*	*	*	99.6	SH105937.07FU_UDB008257_refs	*
+D	18955	2	*	*	*	*	99.4	SH084815.07FU_EU916982_reps	*
+D	20639	2	*	*	*	*	100.0	SH088093.07FU_HQ630346_refs	*
+D	20725	2	*	*	*	*	99.4	SH101650.07FU_AM882742_refs	*
+D	20741	2	*	*	*	*	100.0	SH104437.07FU_UDB001733_refs	*
