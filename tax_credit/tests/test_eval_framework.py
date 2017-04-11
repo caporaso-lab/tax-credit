@@ -19,9 +19,8 @@ from tempfile import mkdtemp
 from shutil import rmtree
 
 from biom import Table
-from tax_credit.eval_framework import (compute_prf,
+from tax_credit.eval_framework import (compute_taxon_accuracy,
                                        filter_table,
-                                       get_actual_and_expected_vectors,
                                        get_sample_to_top_params,
                                        parameter_comparisons,
                                        per_sequence_precision)
@@ -39,23 +38,14 @@ class EvalFrameworkTests(TestCase):
         self.assertEqual(actual['uclust'][('F2', 'm3')], ['0.51:0.9:3'])
         self.assertEqual(actual.shape, (3, 2))
 
-        actual = get_sample_to_top_params(self.mock_result_table1, "Pearson r")
-        self.assertEqual(actual['rdp'][('B1', 'm1')], ['0.1'])
-        self.assertEqual(actual.shape, (3, 2))
-
     def test_parameter_comparisons(self):
         actual = parameter_comparisons(self.mock_result_table1, "rdp")
         self.assertEqual(actual['F-measure']['0.1'], 2)
         self.assertEqual(actual['F-measure']['0.2'], 1)
         self.assertEqual(actual['F-measure']['0'], 1)
         self.assertEqual(actual['F-measure']['0.3'], 0)
-        self.assertEqual(actual['Pearson r']['0.1'], 3)
-        self.assertEqual(actual['Pearson r']['0.2'], 0)
-        self.assertEqual(actual['Pearson r']['0'], 1)
-        self.assertEqual(actual['Pearson r']['0.3'], 0)
         self.assertEqual(actual['Precision']['0.1'], 2)
         self.assertEqual(actual['Recall']['0.1'], 3)
-        self.assertEqual(actual['Spearman r']['0.1'], 3)
         self.assertEqual(actual.shape, (6, 5))
 
         actual = parameter_comparisons(self.mock_result_table1, "uclust")
@@ -147,33 +137,36 @@ class EvalFrameworkTests(TestCase):
         # no observations are retained
         self.assertEqual(filtered_table.shape[0], 0)
 
-    def test_compute_prf_default(self):
+    def test_compute_taxon_accuracy_default(self):
         """ p, r and f compute correctly when default to first sample ids"""
         # default of comparing first sample in each table
-        actual = compute_prf(self.table1, self.table2)
-        expected = (2./3., 1.0, 0.8)
+        actual = compute_taxon_accuracy(self.table1, self.table2)
+        expected = (2./3., 1.0)
         self.assertAlmostEqual(actual, expected)
         # default of comparing first sample in each table
-        actual = compute_prf(self.table2, self.table1)
-        expected = (1.0, 2./3., 0.8)
+        actual = compute_taxon_accuracy(self.table2, self.table1)
+        expected = (1.0, 2./3.)
         self.assertAlmostEqual(actual, expected)
 
-    def test_compute_prf_alt_sample_ids(self):
+    def test_compute_taxon_accuracy_alt_sample_ids(self):
         """ p, r and f compute correctly when using alternative sample ids"""
         # alt sample in table 1
-        actual = compute_prf(self.table1, self.table2, actual_sample_id='s2')
-        expected = (1.0, 1.0, 1.0)
+        actual = compute_taxon_accuracy(
+            self.table1, self.table2, actual_sample_id='s2')
+        expected = (1.0, 1.0)
         self.assertEqual(actual, expected)
 
         # alt sample in table 2
-        actual = compute_prf(self.table1, self.table2, expected_sample_id='s4')
-        expected = (1./3., 1.0, 0.5)
+        actual = compute_taxon_accuracy(
+            self.table1, self.table2, expected_sample_id='s4')
+        expected = (1./3., 1.0)
         self.assertAlmostEqual(actual, expected)
 
         # alt sample in tables 1 & 2
-        actual = compute_prf(self.table1, self.table2,
-                             actual_sample_id='s2', expected_sample_id='s4')
-        expected = (0.5, 1.0, 2./3.)
+        actual = compute_taxon_accuracy(
+            self.table1, self.table2, actual_sample_id='s2',
+            expected_sample_id='s4')
+        expected = (0.5, 1.0)
         self.assertAlmostEqual(actual, expected)
 
     def test_per_sequence_precision(self):
@@ -208,41 +201,6 @@ class EvalFrameworkTests(TestCase):
             self.assertAlmostEqual(p, ep)
             self.assertAlmostEqual(r, er)
             self.assertAlmostEqual(f, ef)
-
-    def test_get_actual_and_expected_vectors(self):
-        actual_actual_vector, actual_expected_vector = \
-         get_actual_and_expected_vectors(self.table1, self.table2)
-
-        # We don't care about the order of the vector, just the
-        # pairing of the values across the two vectors.
-        actual = list(zip(actual_actual_vector, actual_expected_vector))
-        actual.sort()
-
-        expected_actual_vector = [1.0, 2.0, 9.0]
-        expected_expected_vector = [1.0, 0.0, 9.0]
-        expected = list(zip(expected_actual_vector, expected_expected_vector))
-        expected.sort()
-
-        self.assertEqual(actual, expected)
-
-        # look at samples other than the first in each table
-        actual_actual_vector, actual_expected_vector = \
-            get_actual_and_expected_vectors(
-                self.table1, self.table2, actual_sample_id='s2',
-                expected_sample_id='s4')
-
-        # We don't care about the order of the vector, just the
-        # pairing of the values across the two vectors.
-        actual = list(zip(actual_actual_vector, actual_expected_vector))
-        actual.sort()
-
-        # o2 is not observed, so its value shouldn't show up in the vectors
-        expected_actual_vector = [2.0, 10.0]
-        expected_expected_vector = [0.001, 0.0]
-        expected = list(zip(expected_actual_vector, expected_expected_vector))
-        expected.sort()
-
-        self.assertEqual(actual, expected)
 
     @classmethod
     def setUpClass(cls):
@@ -2269,10 +2227,10 @@ class EvalFrameworkTests(TestCase):
                     }"""
 
         _mock_result_table1 = '\n'.join(
-            [',Dataset,F-measure,Method,Parameters,Pearson p,Pearson r,'
-             'Precision,Recall,Reference,SampleID,Spearman p,Spearman r,'
-             'best N alignments,confidence,coverage,e value,e-value,'
-             'max accepts,min consensus fraction,similarity',
+            [',Dataset,F-measure,Method,Parameters,Taxon Accuracy Rate,'
+             'Taxon Detection Rate,Precision,Recall,Reference,SampleID,'
+             'Spearman p,Spearman r,best N alignments,confidence,coverage,'
+             'e value,e-value,max accepts,min consensus fraction,similarity',
              '402,F2,1,rdp,0,0.507167459,-0.304176543,1,1,unite-97-rep-set,'
              'm3,0.741153822,0.15430335,,0,,,,,,',
              '404,F2,1,rdp,0.1,0.507167459,-0.304176543,1,1,unite-97-rep-set,'
