@@ -18,7 +18,6 @@ from random import shuffle
 from biom.exception import UnknownIDError, TableException
 from biom import load_table
 from biom.cli.util import write_biom_table
-from scipy.stats import pearsonr, spearmanr
 import pandas as pd
 from tax_credit import framework_functions, taxa_manipulator
 
@@ -70,10 +69,11 @@ def get_sample_to_top_params(df, metric, sample_col='SampleID',
     return result
 
 
-def parameter_comparisons(df, method, metrics=['Precision', 'Recall',
-                          'F-measure', 'Pearson r', 'Spearman r'],
-                          sample_col='SampleID', method_col='Method',
-                          dataset_col='Dataset', ascending=None):
+def parameter_comparisons(
+        df, method, metrics=['Precision', 'Recall', 'F-measure',
+                             'Taxon Accuracy Rate', 'Taxon Detection Rate'],
+        sample_col='SampleID', method_col='Method',
+        dataset_col='Dataset', ascending=None):
     """ Count the number of times each parameter combination achieves the top
     score
 
@@ -226,11 +226,9 @@ def get_observed_observation_ids(table, sample_id=None, ws_strip=False):
     return set(result)
 
 
-def compute_prf(actual_table,
-                expected_table,
-                actual_sample_id=None,
-                expected_sample_id=None):
-    """ Compute precision, recall, and f-measure based on presence/absence of
+def compute_taxon_accuracy(actual_table, expected_table, actual_sample_id=None,
+                           expected_sample_id=None):
+    """ Compute taxon accuracy and detection rates based on presence/absence of
     observations
 
         actual_table: table containing results achieved for query
@@ -254,11 +252,10 @@ def compute_prf(actual_table,
     if tp > 0:
         p = tp / (tp + fp)
         r = tp / (tp + fn)
-        f = (2 * p * r) / (p + r)
     else:
-        p, r, f = 0, 0, 0
+        p, r = 0, 0
 
-    return p, r, f
+    return p, r
 
 
 def get_taxonomy_collapser(level, md_key='taxonomy',
@@ -542,37 +539,26 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
             for sample_id in actual_table.ids(axis="sample"):
                 # compute precision, recall, and f-measure
                 try:
-                    p, r, f = compute_prf(actual_table,
-                                          expected_table,
-                                          actual_sample_id=sample_id,
-                                          expected_sample_id=sample_id)
+                    accuracy, detection = compute_taxon_accuracy(
+                        actual_table, expected_table,
+                        actual_sample_id=sample_id,
+                        expected_sample_id=sample_id)
                 except ZeroDivisionError:
-                    p, r, f = -1., -1., -1.
-
-                # compute pearson and spearman
-                actual_vector, expected_vector =\
-                    get_actual_and_expected_vectors(actual_table,
-                                                    expected_table,
-                                                    sample_id,
-                                                    sample_id)
-
-                pearson_r, pearson_p = pearsonr(actual_vector, expected_vector)
-                spearman_r, spearman_p = spearmanr(actual_vector,
-                                                   expected_vector)
+                    accuracy, detection = -1., -1., -1.
 
                 # compute per-sequence precion / recall
                 if per_seq_precision and exists(join(
                         dirname(expected_table_fp), 'trueish-taxonomies.tsv')):
-                    ps, rs, fs = per_sequence_precision(
+                    p, r, f = per_sequence_precision(
                         expected_table_fp, actual_table_fp, feature_table,
                         sample_id, taxonomy_level, exclude=exclude)
                 else:
-                    ps, rs, fs = -1., -1., -1.
+                    p, r, f = -1., -1., -1.
 
                 # log results
                 results.append((dataset_id, taxonomy_level, sample_id,
-                                ref_id, method, params, p, r, f, ps, rs, fs,
-                                pearson_r, pearson_p, spearman_r, spearman_p))
+                                ref_id, method, params, p, r, f, accuracy,
+                                detection))
 
         # record parameter data
         param_data[(method, params)] = {}
@@ -588,11 +574,10 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
     param_df = pd.DataFrame(param_data)
     result = pd.DataFrame(results, columns=["Dataset", "Level", "SampleID",
                                             "Reference", "Method",
-                                            "Parameters", "Taxa Precision",
-                                            "Taxa Recall", "Taxa F",
-                                            "Precision", "Recall", "F-measure",
-                                            "Pearson r", "Pearson p",
-                                            "Spearman r", "Spearman p"])
+                                            "Parameters", "Precision",
+                                            "Recall", "F-measure",
+                                            "Taxon Accuracy Rate",
+                                            "Taxon Detection Rate"])
     result = result.merge(param_df.T, left_on=('Method', 'Parameters'),
                           right_index=True)
     result.to_csv(results_fp, sep='\t')
@@ -773,10 +758,9 @@ method_by_dataset_a1 = partial(method_by_dataset,
                                sort_field="F-measure",
                                display_fields=("Method", "Parameters",
                                                "Precision", "Recall",
-                                               "F-measure"))
-method_by_dataset_a2 = partial(method_by_dataset, sort_field="Pearson r",
-                               display_fields=("Method", "Parameters",
-                                               "Pearson r", "Spearman r"))
+                                               "F-measure",
+                                               "Taxon Accuracy Rate",
+                                               "Taxon Detection Rate"))
 
 
 def method_by_reference_comparison(df, group_by='Reference', dataset='Dataset',
@@ -785,7 +769,9 @@ def method_by_reference_comparison(df, group_by='Reference', dataset='Dataset',
                                    display_fields=("Reference", "Level",
                                                    "Method", "Parameters",
                                                    "Precision", "Recall",
-                                                   "F-measure")):
+                                                   "F-measure",
+                                                   "Taxon Accuracy Rate",
+                                                   "Taxon Detection Rate")):
     '''Compute mean performance for a given reference/method/parameter
     combination across multiple taxonomic levels.
 
@@ -818,54 +804,3 @@ def method_by_reference_comparison(df, group_by='Reference', dataset='Dataset',
                                       display_fields=display_fields)
                 rank = pd.concat([rank, a])
     return rank
-
-
-def get_actual_and_expected_vectors(actual_table,
-                                    expected_table,
-                                    actual_sample_id=None,
-                                    expected_sample_id=None):
-    """ Return vectors of obs counts for obs ids observed in specified samples
-
-        actual_table: table containing results achieved for query
-        expected_table: table containing expected results
-        actual_sample_id: sample_id to test (default is first sample id in
-         actual_table.SampleIds)
-        expected_sample_id: sample_id to test (default is first sample id in
-         expected_table.SampleIds)
-    """
-    actual_obs_ids = get_observed_observation_ids(actual_table,
-                                                  actual_sample_id)
-    expected_obs_ids = get_observed_observation_ids(expected_table,
-                                                    expected_sample_id)
-    all_obs_ids = list(actual_obs_ids | expected_obs_ids)
-
-    # retrieve sample_id index
-    actual_sample_idx = get_sample_idx(actual_table, actual_sample_id)
-    exp_sample_idx = get_sample_idx(expected_table, expected_sample_id)
-
-    actual_vector = [get_index_value(actual_table, obs_id, actual_sample_idx)
-                     for obs_id in all_obs_ids]
-    expected_vector = [get_index_value(expected_table, obs_id, exp_sample_idx)
-                       for obs_id in all_obs_ids]
-
-    return actual_vector, expected_vector
-
-
-def get_index_value(df, obs_id, sample_idx):
-    '''Retrieve value from df at sample/obs index.'''
-    try:
-        obs_idx = df.index(obs_id, axis="observation")
-    except UnknownIDError:
-        value = 0.0
-    else:
-        value = df[obs_idx, sample_idx]
-    return value
-
-
-def get_sample_idx(df, sample_id, axis="sample"):
-    '''Get index of sample in df, given id'''
-    if sample_id is None:
-        sample_idx = 0
-    else:
-        sample_idx = df.index(sample_id, axis=axis)
-    return sample_idx
