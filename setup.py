@@ -15,7 +15,7 @@ setup(
     version='0.0.0-dev',
     license='BSD-3-Clause',
     packages=find_packages(),
-    install_requires=['biom-format', 'pandas', 'statsmodels',
+    install_requires=['biom-format', 'pandas', 'statsmodels', 'bokeh',
                       'scipy', 'jupyter', 'scikit-bio', 'seaborn'],
     author="Nicholas Bokulich",
     author_email="nbokulich@gmail.com",

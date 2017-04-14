@@ -69,11 +69,12 @@ def compare_observed_and_expected(observed, expected):
     expected = [numpy.array(list(str(exp))) for exp in expected]
     comparison = {}
     for _id, obs, rev in zip(ids, observed, rev_observed):
-        forward = min([(gapless_mismatches(obs, exp), key) for
-                       exp, key in zip(expected, keys)])
-        reverse = min([(gapless_mismatches(rev, exp), key) for
-                       exp, key in zip(expected, keys)])
-        comparison[_id] = min(forward, reverse)
+        matches = [(gapless_mismatches(obs, exp), key) for
+                   exp, key in zip(expected, keys)]
+        matches += [(gapless_mismatches(rev, exp), key) for
+                    exp, key in zip(expected, keys)]
+        matches.sort()
+        comparison[_id] = [(e, k) for e, k in matches if e == matches[0][0]]
     return comparison
 
 
@@ -199,7 +200,7 @@ def match_expected_seqs_to_taxonomy(data_dir, mockrobiota_dir, refs, taxs):
             print(expected_expected)
 
 
-def generate_trueish_taxonomies(data_dir):
+def generate_trueish_taxonomies(data_dir, force=False):
     '''Generate "true" taxonomy assignment for each observed sequence in mock
     community, and plot mismatch distributions across all observed sequences
     in each mock community.
@@ -216,7 +217,7 @@ def generate_trueish_taxonomies(data_dir):
         data_dir, 'precomputed-results', 'mock-community')
 
     for com_dir in glob.glob(os.path.join(expected_dir, '*')):
-        if not os.path.isdir(com_dir):
+        if not force and not os.path.isdir(com_dir):
             continue
         community = os.path.basename(com_dir)
         this_mock_dir = os.path.join(mock_dir, community)
@@ -243,17 +244,10 @@ def generate_trueish_taxonomies(data_dir):
             observed = list(observed)
             mismatches = compare_observed_and_expected(
                 observed, expected_sequences)
-            if len(mismatches) != len(observed):
-                print('warning: ', len(observed)-len(mismatches), 'out of',
-                      len(observed), 'observations not found for', community)
 
             # save the taxonomies of the matched reads
+            # we need them in the "expected results" directories
             print(community)
-            max_mismatches = 3
-            # We need these in the "expected results" directories. Any reason
-            # to place in this_mock_dir ?
-            # result_file = os.path.join(
-            #    this_mock_dir, 'trueish-taxonomies.tsv')
             if os.path.exists(os.path.join(
                     com_dir, 'gg_13_8_otus', 'expected')):
                 result_file = os.path.join(com_dir, 'gg_13_8_otus', 'expected',
@@ -267,29 +261,49 @@ def generate_trueish_taxonomies(data_dir):
                 raise RuntimeError('Must specify expected results path for '
                                    '{0}'.format(com_dir))
 
+            max_mismatches = 3
             with open(result_file, 'w') as result_fh:
                 writer = csv.writer(result_fh, delimiter='\t')
                 writer.writerow(['id', 'taxonomy'])
-                for rep_id, (mismatch, exp_id) in mismatches.items():
-                    if mismatch <= max_mismatches:
-                        if exp_id in tax_map:
-                            writer.writerow([rep_id, tax_map[exp_id]])
-                        else:
-                            writer.writerow([rep_id, exp_id + ' not found'])
-                    else:
+                for rep_id, mismatches_for_id in mismatches.items():
+                    if mismatches_for_id[0][0] > max_mismatches:
                         writer.writerow([rep_id, 'other'])
+                        continue
+                    matched_taxonomies = set()
+                    for m, e in mismatches_for_id:
+                        if e in tax_map:
+                            matched_taxonomies.add(tax_map[e])
+                        else:
+                            matched_taxonomies.add('NO-EXPECTED-TAXONOMY')
+                            print('WARNING: no expected taxonomy for ' + e)
+                    matched_taxonomies = list(matched_taxonomies)
+                    if len(matched_taxonomies) > 1:
+                        print('WARNING: ' + rep_id + ' matches')
+                        print(' and\n'.join(matched_taxonomies))
+                        print('with ' + str(mismatches_for_id[0][0]) +
+                              ' mismatches')
+                    for matched_taxonomy in matched_taxonomies:
+                        writer.writerow([rep_id, matched_taxonomy])
 
             feature_file = os.path.join(this_mock_dir, 'feature_table.qza')
             features = qiime2.Artifact.load(feature_file)
             features = features.view(pandas.DataFrame)
-            best_mismatches = list(mm for mm, key in mismatches.values())
+            best_mismatches = list(mm[0][0] for mm in mismatches.values())
             weighted_mismatches = []
+            found = 0
+            total = 0
             for obs in mismatches:
                 try:
                     count = int(features[obs])
                 except TypeError:
                     count = int(sum(features[obs]))
-                weighted_mismatches.extend([mismatches[obs][0]]*count)
+                num_mismatches = mismatches[obs][0][0]
+                weighted_mismatches.extend([num_mismatches]*count)
+                if num_mismatches <= max_mismatches:
+                    found += count
+                total += count
+            print('Guessed taxonomy for %d of %d reads (%.1f%%)' %
+                  (found, total, 100*found/total))
             sns.distplot(best_mismatches, kde=False, bins=50,
                          axlabel='Number of Mismatches')
             matplotlib.pyplot.show()
