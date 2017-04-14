@@ -15,10 +15,12 @@ from os.path import abspath, join, exists, split, dirname
 from collections import defaultdict
 from functools import partial
 from random import shuffle
-from biom.exception import UnknownIDError, TableException
+
+from biom.exception import TableException
 from biom import load_table
 from biom.cli.util import write_biom_table
 import pandas as pd
+
 from tax_credit import framework_functions, taxa_manipulator
 
 
@@ -584,6 +586,39 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
     return result
 
 
+def _multiple_match_kludge(exp, obs):
+    '''Sort expected and observed lists and kludge to deal with cases where we
+    were unable to unambiguously select an expected taxonomy'''
+    obs = {i: t for i, t in [r.split('\t', 1) for r in obs]}
+    exp_grouped = defaultdict(list)
+    for exp_id, exp_taxon in [r.split('\t') for r in exp]:
+        exp_grouped[exp_id].append(exp_taxon)
+    assert obs.keys() == exp_grouped.keys(),\
+        'observed and expected read labels differ:\n'+str(list(obs.keys()))+\
+        '\n'+str(list(exp_grouped.keys()))
+    new_exp = []
+    new_obs = []
+    for exp_id, exp_taxons in exp_grouped.items():
+        obs_row = '\t'.join([exp_id, obs[exp_id]])
+        for exp_taxon in exp_taxons:
+            if obs[exp_id].startswith(exp_id):
+                row = '\t'.join([exp_id, exp_taxon])
+                if len(exp_taxons) > 1:
+                    print('exp')
+                    print(row)
+                    print('obs')
+                    print(obs_row)
+                    print('candidates')
+                    for e in exp_taxons:
+                        print(e)
+                break
+        else:
+            row = '\t'.join([exp_id, exp_taxons[0]])
+        new_exp.append(row)
+        new_obs.append(obs_row)
+    return new_exp, new_obs
+
+
 def per_sequence_precision(expected_table_fp, actual_table_fp, feature_table,
                            sample_id, taxonomy_level, exclude=None):
     '''Precision/recall on individual representative sequences in a mock
@@ -603,6 +638,12 @@ def per_sequence_precision(expected_table_fp, actual_table_fp, feature_table,
         # compile lists of taxa only if observed in current sample
         exp = observations_to_list(exp_fp, feature_table, sample_id)
         obs = observations_to_list(obs_fp, feature_table, sample_id)
+        try:
+            exp, obs = _multiple_match_kludge(exp, obs)
+        except AssertionError:
+            print('AssertionError in:')
+            print(obs_dir)
+            raise
         # compile sample weights (observations per sequence in sample)
         weights = [feature_table.get_value_by_ids(
                    line.split('\t')[0], sample_id) for line in exp]
@@ -753,6 +794,7 @@ def method_by_dataset(df, dataset, sort_field, display_fields,
     filtered_dataset_df = sorted_dataset_df[_is_first(sorted_dataset_df,
                                                       test_field)]
     return filtered_dataset_df.ix[:, display_fields]
+
 
 method_by_dataset_a1 = partial(method_by_dataset,
                                sort_field="F-measure",
