@@ -168,7 +168,7 @@ def match_expected_seqs_to_taxonomy(data_dir, mockrobiota_dir, refs, taxs):
                                         (re.search(est_ids[0], exp_id) and
                                          re.search(est_ids[1], exp_id))):
                                     writer.writerow([exp_id, tax])
-                                    break
+                                    # break
 
         # ... and otherwise derive the expected sequences from the identifiers
         # and references
