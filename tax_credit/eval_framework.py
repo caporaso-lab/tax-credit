@@ -342,7 +342,7 @@ def seek_results(results_dirs, dataset_ids=None, reference_ids=None,
 
 def evaluate_results(results_dirs, expected_results_dir, results_fp, mock_dir,
                      taxonomy_level_range=range(2, 7), min_count=0,
-                     taxa_to_keep=None, md_key='taxonomy', new_param_ids=None,
+                     taxa_to_keep=None, md_key='taxonomy',
                      dataset_ids=None, reference_ids=None,
                      method_ids=None, parameter_ids=None, subsample=False,
                      filename_pattern='table.L{0}-taxa.biom', size=10,
@@ -370,9 +370,6 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp, mock_dir,
             evaluation.
         md_key: metadata key containing taxonomy metadata in observed taxonomy
             biom tables.
-        new_param_ids: dictionary of lists of parameters for taxonomy
-            classifiers to test. In format:
-                {classifier_name: [params1, params2]}
         dataset_ids: list
             dataset ids (mock community study ID) to process. Defaults to None
             (process all).
@@ -417,7 +414,6 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp, mock_dir,
                                 results.
 
     '''
-
     # Define the subdirectories where the query mock community data should be
     results = seek_results(
         results_dirs, dataset_ids, reference_ids, method_ids, parameter_ids)
@@ -433,23 +429,25 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp, mock_dir,
     # Compute accuracy results OR read in pre-existing mock_results_fp
     if not exists(results_fp) or force:
         # if append is True, load pre-existing results prior to overwriting
-        if exists(results_fp) and append:
+        if exists(results_fp) and append and (
+                dataset_ids or reference_ids or method_ids or parameter_ids):
             old_results = pd.DataFrame.from_csv(results_fp, sep='\t')
             # overwrite results that are explicitly requested by results params
-            old_results = filter_df(old_results, 'Dataset', dataset_ids)
-            old_results = filter_df(old_results, 'Reference', reference_ids)
-            old_results = filter_df(old_results, 'Method', method_ids)
-            old_results = filter_df(old_results, 'Parameters', parameter_ids)
+            old_results = _filter_mock_results(
+                old_results, dataset_ids, reference_ids, method_ids,
+                parameter_ids)
         # compute accuracy results
         mock_results = compute_mock_results(
             results, expected_tables, results_fp, mock_dir,
             taxonomy_level_range, min_count=min_count,
             taxa_to_keep=taxa_to_keep, md_key=md_key,
-            new_param_ids=new_param_ids, per_seq_precision=per_seq_precision,
-            exclude=exclude, backup=backup)
+            per_seq_precision=per_seq_precision, exclude=exclude)
         # if append is True, add new results to old
-        if exists(results_fp) and append:
+        if exists(results_fp) and append and (
+                dataset_ids or reference_ids or method_ids or parameter_ids):
             mock_results = pd.concat([mock_results, old_results])
+        # write
+        _write_mock_results(mock_results, results_fp, backup)
 
     # if force is False, load precomputed results and append/filter as required
     else:
@@ -470,11 +468,11 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp, mock_dir,
             # *** a negligible problem right now — users should make sure they
             # *** know they are being consistent and can always overwrite if
             # *** something has gone wrong and need to bypass this behavior.
-            results = [r for r in results if
-                       r[0] not in mock_results['Dataset'].unique() and
-                       r[1] not in mock_results['Reference'].unique() and
-                       r[2] not in mock_results['Method'].unique() and
-                       r[3] not in mock_results['Parameters'].unique()]
+            results = [r for r in results if not
+                       ((mock_results['Dataset'] == r[0]) &
+                        (mock_results['Reference'] == r[1]) &
+                        (mock_results['Method'] == r[2]) &
+                        (mock_results['Parameters'] == r[3])).any()]
             print("append==True and force==False")
             print(len(results), "new results have been appended to results.")
             # merge any new results with pre-computed results, write out
@@ -483,11 +481,10 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp, mock_dir,
                     results, expected_tables, results_fp, mock_dir,
                     taxonomy_level_range, min_count=min_count,
                     taxa_to_keep=taxa_to_keep, md_key=md_key,
-                    new_param_ids=new_param_ids,
-                    per_seq_precision=per_seq_precision,
-                    exclude=exclude, backup=backup)
+                    per_seq_precision=per_seq_precision, exclude=exclude)
                 mock_results = pd.concat([mock_results, new_mock_results])
-                mock_results.to_csv(results_fp, sep='\t')
+                # write. note we only do this if we actually append results!
+                _write_mock_results(mock_results, results_fp, backup)
 
         # if append is false and results params are set, filter loaded data
         elif dataset_ids or reference_ids or method_ids or parameter_ids:
@@ -496,17 +493,33 @@ def evaluate_results(results_dirs, expected_results_dir, results_fp, mock_dir,
                   "explicitly set by results params. To disable this "
                   "function and load all results, set dataset_ids and "
                   "reference_ids and method_ids and parameter_ids to None.")
-            if dataset_ids:
-                mock_results = filter_df(mock_results, 'Dataset', dataset_ids)
-            if reference_ids:
-                mock_results = filter_df(
-                    mock_results, 'Reference', reference_ids)
-            if method_ids:
-                mock_results = filter_df(mock_results, 'Method', method_ids)
-            if parameter_ids:
-                mock_results = filter_df(
-                    mock_results, 'Parameters', parameter_ids)
+            mock_results = _filter_mock_results(
+                mock_results, dataset_ids, reference_ids, method_ids,
+                parameter_ids)
 
+    return mock_results
+
+
+def _write_mock_results(mock_results, results_fp, backup=True):
+    if backup:
+        copy(results_fp, ''.join([results_fp, '.bk']))
+    mock_results.to_csv(results_fp, sep='\t')
+
+
+def _filter_mock_results(mock_results, dataset_ids, reference_ids, method_ids,
+                         parameter_ids):
+    '''Filter mock results dataframe on dataset_ids, reference_ids, method_ids,
+    and parameter_ids'''
+    if dataset_ids:
+        mock_results = filter_df(mock_results, 'Dataset', dataset_ids)
+    if reference_ids:
+        mock_results = filter_df(
+            mock_results, 'Reference', reference_ids)
+    if method_ids:
+        mock_results = filter_df(mock_results, 'Method', method_ids)
+    if parameter_ids:
+        mock_results = filter_df(
+            mock_results, 'Parameters', parameter_ids)
     return mock_results
 
 
@@ -598,8 +611,7 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
                          mock_dir, taxonomy_level_range=range(2, 7),
                          min_count=0,
                          taxa_to_keep=None, md_key='taxonomy',
-                         new_param_ids=None, per_seq_precision=False,
-                         exclude=None, backup=True):
+                         per_seq_precision=False, exclude=None):
     """ Compute precision, recall, and f-measure for result_tables at
     taxonomy_level
 
@@ -619,29 +631,9 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
             taxonomy assignments?
         exclude: list
             taxonomies to explicitly exclude from precision scoring.
-        backup: bool
-            Backup pre-existing results before overwriting? Will overwrite
-            previous backups, and will only backup if force or append ==True.
     """
-    if backup:
-        copy(results_fp, ''.join([results_fp, '.bk']))
 
     results = []
-    new_param_ids = {}
-    param_data = {}
-    param_ids = {'rdp': ['confidence'], 'blast': ['e-value'],
-                 'sortmerna': ['min consensus fraction', 'similarity',
-                               'best N alignments', 'coverage', 'e value'],
-                 'sortmerna-w16': ['min consensus fraction', 'similarity',
-                                   'best N alignments', 'coverage', 'e value'],
-                 'uclust': ['min consensus fraction', 'similarity',
-                            'max accepts'],
-                 'vsearch': ['max accepts', 'similarity',
-                             'min consensus fraction'],
-                 'blast+': ['e-value', 'max accepts', 'similarity',
-                            'min consensus fraction'],
-                 'q2-nb': ['confidence']}
-    param_ids.update(new_param_ids)
     for dataset_id, ref_id, method, params, actual_table_fp in result_tables:
 
         # Find expected results
@@ -701,27 +693,12 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
                                 ref_id, method, params, p, r, f, accuracy,
                                 detection))
 
-        # record parameter data
-        param_data[(method, params)] = {}
-        for k, v in zip(param_ids[method], params.split(':')):
-            v_ = []
-            for e in v:
-                try:
-                    v_.append(float(e))
-                except ValueError:
-                    v_.append(e)
-            param_data[(method, params)][k] = v_
-
-    param_df = pd.DataFrame(param_data)
     result = pd.DataFrame(results, columns=["Dataset", "Level", "SampleID",
                                             "Reference", "Method",
                                             "Parameters", "Precision",
                                             "Recall", "F-measure",
                                             "Taxon Accuracy Rate",
                                             "Taxon Detection Rate"])
-    result = result.merge(param_df.T, left_on=('Method', 'Parameters'),
-                          right_index=True)
-    result.to_csv(results_fp, sep='\t')
     return result
 
 
