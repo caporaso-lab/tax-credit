@@ -1,0 +1,59 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_taxonomy_qiime_ver7_99_20.11.2016_dev_clean.tsv
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_taxonomy_qiime_ver7_99_20.11.2016_dev_clean.tsv
+max_accepts:1
+min_consensus_fraction:0.76
+reference_sequences_fp:/Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_refs_qiime_ver7_99_20.11.2016_dev_clean.fasta
+similarity:0.99
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxPTIbjl
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-26-ITS1/rep_seqs.fna --id 0.99 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_refs_qiime_ver7_99_20.11.2016_dev_clean.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_GEnnzw.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	290	*	*	*	*	*	d7bf056df2823f9082b8dc45c5fa6482	*
+L	5705	663	*	*	*	*	*	SH096261.07FU_JN942657_refs	*
+H	5705	290	99.7	-	0	0	20I290M353I	8246a28746d3c9f9184dbc2b4b01204b	SH096261.07FU_JN942657_refs
+N	*	290	*	*	*	*	*	b74b91bf04919d41babc11dd6491afa4	*
+L	12441	520	*	*	*	*	*	SH124711.07FU_JX827459_reps	*
+H	12441	290	100.0	-	0	0	3I290M227I	72dfa183b8bcb04daa0d1e3385e29048	SH124711.07FU_JX827459_reps
+N	*	290	*	*	*	*	*	242e103479ce87743331a6fb79f90428	*
+L	11131	881	*	*	*	*	*	SH118435.07FU_UDB015175_refs	*
+H	11131	290	100.0	-	0	0	329I290M262I	090f10c4f3c12bef6bf0d3dc87db5b89	SH118435.07FU_UDB015175_refs
+N	*	290	*	*	*	*	*	b8cdb9d70a2308233601db37408b7cb2	*
+N	*	290	*	*	*	*	*	b7df3c9e64e46b0e2b122357e5a451dd	*
+N	*	290	*	*	*	*	*	9299202cf8d0c4c671f64a96f5fb3615	*
+N	*	290	*	*	*	*	*	03bcb98a2a5578524905bf3f4edf4107	*
+N	*	290	*	*	*	*	*	a450cb24dab38f52cfd17faedb314713	*
+N	*	290	*	*	*	*	*	5135430c97682a0a913150e2ca1d0bfd	*
+L	8073	683	*	*	*	*	*	SH104009.07FU_AY375276_reps	*
+H	8073	290	100.0	-	0	0	20I290M373I	59d9d5c81ebbad1889b2875372c4aeea	SH104009.07FU_AY375276_reps
+N	*	290	*	*	*	*	*	ce0bbb3553d4c83710cd6c2bf07948f2	*
+N	*	290	*	*	*	*	*	ba9f80af05850b2aec2b12c18cdd6731	*
+L	7980	598	*	*	*	*	*	SH103715.07FU_JN206387_refs	*
+H	7980	290	100.0	-	0	0	17I290M291I	0a34f6517e4e22927e4f45bb06a9904b	SH103715.07FU_JN206387_refs
+N	*	290	*	*	*	*	*	b3af56c8dea0d3c8ce9db7c7f467c60f	*
+N	*	290	*	*	*	*	*	fd30a6904feb40a375ff4af151f29fd7	*
+N	*	290	*	*	*	*	*	663b9ce871d8821ad3d4b64f83ee91bd	*
+N	*	290	*	*	*	*	*	d58a7249fdde19a4787346250a05569b	*
+L	14102	654	*	*	*	*	*	SH127719.07FU_KC489481_reps	*
+H	14102	290	99.7	-	0	0	20I290M344I	d5a8337527bd81baebaa8618ccea88a4	SH127719.07FU_KC489481_reps
+N	*	290	*	*	*	*	*	05113b86f3119fa2dc11fda0a38f7529	*
+N	*	290	*	*	*	*	*	e2b17f7b0a20de83c66c8b5af89d3fe4	*
+N	*	290	*	*	*	*	*	a7fe8c460ed7006fd914f89353d92f28	*
+L	8649	585	*	*	*	*	*	SH106444.07FU_EU339123_reps	*
+H	8649	290	100.0	-	0	0	290M295I	f7c0d2f087426caf9ac0bc3e697eeef3	SH106444.07FU_EU339123_reps
+D	5705	2	*	*	*	*	99.7	SH096261.07FU_JN942657_refs	*
+D	7980	2	*	*	*	*	100.0	SH103715.07FU_JN206387_refs	*
+D	8073	2	*	*	*	*	100.0	SH104009.07FU_AY375276_reps	*
+D	8649	2	*	*	*	*	100.0	SH106444.07FU_EU339123_reps	*
+D	11131	2	*	*	*	*	100.0	SH118435.07FU_UDB015175_refs	*
+D	12441	2	*	*	*	*	100.0	SH124711.07FU_JX827459_reps	*
+D	14102	2	*	*	*	*	99.7	SH127719.07FU_KC489481_reps	*
