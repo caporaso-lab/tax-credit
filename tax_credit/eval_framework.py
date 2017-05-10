@@ -702,14 +702,19 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
     return result
 
 
-def _multiple_match_kludge(exp, obs):
+def _multiple_match_kludge(exp, obs, fill_empty_observations=True):
     '''Sort expected and observed lists and kludge to deal with cases where we
     were unable to unambiguously select an expected taxonomy'''
     obs = {i: t for i, t in [r.split('\t', 1) for r in obs]}
     exp_grouped = defaultdict(list)
     for exp_id, exp_taxon in [r.split('\t') for r in exp]:
         exp_grouped[exp_id].append(exp_taxon)
-    assert obs.keys() == exp_grouped.keys(),\
+    if fill_empty_observations:
+        for k in exp_grouped.keys():
+            if k not in obs.keys():
+                obs[k] = 'Unassigned'
+    else:
+        assert obs.keys() == exp_grouped.keys(),\
         'observed and expected read labels differ:\n' + \
         str(list(obs.keys())) + '\n' + str(list(exp_grouped.keys()))
     new_exp = []
