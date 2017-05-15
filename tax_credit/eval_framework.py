@@ -276,6 +276,8 @@ def get_taxonomy_collapser(level, md_key='taxonomy',
             # if no metadata is listed for observation, group as Unassigned
             except TypeError:
                 levels = [unassignable_label]
+        except TypeError: # this happens if the table is empty
+            levels = [unassignable_label]
         result = ';'.join(levels[:level+1])
         return result
     return f
@@ -569,7 +571,6 @@ def mount_observations(table_fp, min_count=0, taxonomy_level=6,
         strings are shorter than taxonomic_level, count is less than min_count,
         or observation is not included in taxa_to_keep.
     '''
-
     try:
         table = load_table(table_fp)
     except ValueError:
@@ -765,12 +766,13 @@ def per_sequence_precision(expected_table_fp, actual_table_fp, feature_table,
             print('AssertionError in:')
             print(obs_dir)
             raise
+        # truncate taxonomies to the desired level
+        exp_taxa, obs_taxa = framework_functions.load_prf(
+            obs, exp, level=slice(0, taxonomy_level+1))
         # compile sample weights (observations per sequence in sample)
         weights = [feature_table.get_value_by_ids(
                    line.split('\t')[0], sample_id) for line in exp]
-        # load files and run precision/recall
-        exp_taxa, obs_taxa = framework_functions.load_prf(
-            obs, exp, level=slice(0, taxonomy_level+1))
+        # run precision/recall
         ps, rs, fs = framework_functions.compute_prf(
             exp_taxa, obs_taxa, test_type='mock', level=taxonomy_level,
             sample_weight=weights, exclude=exclude)

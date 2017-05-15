@@ -2275,15 +2275,15 @@ class EvalFrameworkTests(TestCase):
 
         _exp_taxa = '\n'.join(
             ['o1\tAa;Bb;Cc;Dd;Ee;Ff;Gg',
-             'o2\tAa;Bb;Cc;Dd;Ee;Ff;Hh',
              'o3\tAa;Ii;Jj;Kk;Ll;Mm;Nn',
+             'o2\tAa;Bb;Cc;Dd;Ee;Ff;Hh',
              'o4\tAa;Ii;Jj;Kk;Ll;Mm;Oo'])
 
         _obs_taxa = '\n'.join(
-            ['o1\tAa;Bb;Cc;Dd;Ee;Ff;Gg',
-             'o2\tAa;Bb;Cc;Dd;Ee;Ff;Ii',
+            ['o2\tAa;Bb;Cc;Dd;Ee;Ff;Ii',
              'o3\tAa;Ii;Pp;Qq;Rr;Tt',
-             'o4\tAa;Ii;Jj;Kk;Ll;Mm;Oo'])
+             'o4\tAa;Ii;Jj;Kk;Ll;Mm;Oo',
+             'o1\tAa;Bb;Cc;Dd;Ee;Ff;Gg',])
 
         cls.table1 = Table.from_json(json.loads(_table1))
         cls.table2 = Table.from_json(json.loads(_table2))
