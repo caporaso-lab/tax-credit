@@ -132,16 +132,11 @@ def boxplot_from_data_frame(df,
     metric = "y"
     """
 
-    #x_tick_labels = df[group_by].unique()
-    #x_tick_labels.sort()
-
     ax = violinplot(x=group_by, y=metric, hue=hue, data=df, color=color,
                     palette=color_pallette)
     ax.set_ylim(bottom=y_min, top=y_max)
     ax.set_ylabel(metric)
     ax.set_xlabel(group_by)
-    #ax.set_xticklabels(x_tick_labels, rotation=label_rotation)
-    #ax.set_xticklabels(rotation=label_rotation)
     for lab in ax.get_xticklabels():
         lab.set_rotation(label_rotation)
 
