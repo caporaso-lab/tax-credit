@@ -542,7 +542,7 @@ def evaluate_cross_validated_classification(obs_taxa, exp_taxa):
     return result
 
 
-def load_taxa(obs_fp, level=slice(0, 7), field=1):
+def load_taxa(obs_fp, level=slice(0, 7), field=1, sort=True):
     '''Mount observed/expected taxonomy observations.
     obs_fp: path
         Input file containing taxonomy strings and IDs.
@@ -553,8 +553,10 @@ def load_taxa(obs_fp, level=slice(0, 7), field=1):
     field: int
         ab-delimited field containing taxonomy strings.
     '''
-    obs = extract_taxa_names(accept_list_or_file(obs_fp), field=field,
-                             level=level)
+    raw_obs = accept_list_or_file(obs_fp)
+    if sort:
+        raw_obs = sorted(raw_obs)
+    obs = extract_taxa_names(raw_obs, field=field, level=level)
     obs = [';'.join([l.strip() for l in line.split(';')]) for line in obs
            if not line.startswith(('taxonomy', 'Taxon'))]
     return obs
@@ -642,9 +644,9 @@ def compute_prf(exp, obs, avg='micro', test_type='cross-validated',
     return p, r, f
 
 
-def load_prf(obs_fp, exp_fp, level=slice(0, 7)):
-    exp_taxa = load_taxa(exp_fp, level=level)
-    obs_taxa = load_taxa(obs_fp, level=level)
+def load_prf(obs_fp, exp_fp, level=slice(0, 7), sort=True):
+    exp_taxa = load_taxa(exp_fp, level=level, sort=sort)
+    obs_taxa = load_taxa(obs_fp, level=level, sort=sort)
 
     # raise error if obs_taxa and exp_taxa are not same length
     if len(obs_taxa) != len(exp_taxa):
