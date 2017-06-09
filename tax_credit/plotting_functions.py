@@ -132,15 +132,14 @@ def boxplot_from_data_frame(df,
     metric = "y"
     """
 
-    x_tick_labels = df[group_by].unique()
-    x_tick_labels.sort()
-
     ax = violinplot(x=group_by, y=metric, hue=hue, data=df, color=color,
                     palette=color_pallette)
     ax.set_ylim(bottom=y_min, top=y_max)
     ax.set_ylabel(metric)
     ax.set_xlabel(group_by)
-    ax.set_xticklabels(x_tick_labels, rotation=label_rotation)
+    for lab in ax.get_xticklabels():
+        lab.set_rotation(label_rotation)
+
     ax
 
 
@@ -460,7 +459,7 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
                                 color_pallette=color_pallette)
         sns.plt.show()
         sns.plt.clf()
-        
+
         results = per_method_pairwise_tests(best, group_by=group_by,
                                             metric=metric, paired=paired,
                                             parametric=parametric)
@@ -625,17 +624,16 @@ def per_method_pairwise_tests(df, group_by='method', metric='distance',
             # correction below makes p-vals very slightly less significant
             # than they should be
             p = 1.0
-        pvals.append(p)
-    try:
-        rej, pval_corr, alphas, alphab = multipletests(pvals)
-    except:
-        # in case of error, skip. I've had this error occur when all samples
-        # are clustered into one group and hence there is only one P-val=1.0.
-        ZeroDivisionError
-    res = [(combos[a][0], combos[a][1], pval_corr[a])
-           for a in range(len(combos))]
+        pvals.append((a[0], a[1], u, p))
 
-    return pd.DataFrame(res, columns=[group_by + " A", group_by + " B", "P"])
+    result = pd.DataFrame(pvals, columns=["Method A", "Method B", "stat", "P"])
+    result.set_index(['Method A', 'Method B'], inplace=True)
+    try:
+        result['FDR P'] = multipletests(result['P'], method='fdr_bh')[1]
+    except ZeroDivisionError:
+        pass
+
+    return result
 
 
 def isolate_top_params(df, group_by="Method", params="Parameters",

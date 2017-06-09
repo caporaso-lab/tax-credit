@@ -553,7 +553,7 @@ def load_taxa(obs_fp, level=slice(0, 7), field=1):
     field: int
         ab-delimited field containing taxonomy strings.
     '''
-    obs = extract_taxa_names(sorted(accept_list_or_file(obs_fp)), field=field,
+    obs = extract_taxa_names(accept_list_or_file(obs_fp), field=field,
                              level=level)
     obs = [';'.join([l.strip() for l in line.split(';')]) for line in obs
            if not line.startswith(('taxonomy', 'Taxon'))]

@@ -276,6 +276,8 @@ def get_taxonomy_collapser(level, md_key='taxonomy',
             # if no metadata is listed for observation, group as Unassigned
             except TypeError:
                 levels = [unassignable_label]
+        except TypeError: # this happens if the table is empty
+            levels = [unassignable_label]
         result = ';'.join(levels[:level+1])
         return result
     return f
@@ -569,7 +571,6 @@ def mount_observations(table_fp, min_count=0, taxonomy_level=6,
         strings are shorter than taxonomic_level, count is less than min_count,
         or observation is not included in taxa_to_keep.
     '''
-
     try:
         table = load_table(table_fp)
     except ValueError:
@@ -702,14 +703,19 @@ def compute_mock_results(result_tables, expected_table_lookup, results_fp,
     return result
 
 
-def _multiple_match_kludge(exp, obs):
+def _multiple_match_kludge(exp, obs, fill_empty_observations=True):
     '''Sort expected and observed lists and kludge to deal with cases where we
     were unable to unambiguously select an expected taxonomy'''
     obs = {i: t for i, t in [r.split('\t', 1) for r in obs]}
     exp_grouped = defaultdict(list)
     for exp_id, exp_taxon in [r.split('\t') for r in exp]:
         exp_grouped[exp_id].append(exp_taxon)
-    assert obs.keys() == exp_grouped.keys(),\
+    if fill_empty_observations:
+        for k in exp_grouped.keys():
+            if k not in obs.keys():
+                obs[k] = 'Unassigned'
+    else:
+        assert obs.keys() == exp_grouped.keys(),\
         'observed and expected read labels differ:\n' + \
         str(list(obs.keys())) + '\n' + str(list(exp_grouped.keys()))
     new_exp = []
@@ -760,12 +766,13 @@ def per_sequence_precision(expected_table_fp, actual_table_fp, feature_table,
             print('AssertionError in:')
             print(obs_dir)
             raise
+        # truncate taxonomies to the desired level
+        exp_taxa, obs_taxa = framework_functions.load_prf(
+            obs, exp, level=slice(0, taxonomy_level+1))
         # compile sample weights (observations per sequence in sample)
         weights = [feature_table.get_value_by_ids(
                    line.split('\t')[0], sample_id) for line in exp]
-        # load files and run precision/recall
-        exp_taxa, obs_taxa = framework_functions.load_prf(
-            obs, exp, level=slice(0, taxonomy_level+1))
+        # run precision/recall
         ps, rs, fs = framework_functions.compute_prf(
             exp_taxa, obs_taxa, test_type='mock', level=taxonomy_level,
             sample_weight=weights, exclude=exclude)
