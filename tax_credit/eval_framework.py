@@ -768,7 +768,7 @@ def per_sequence_precision(expected_table_fp, actual_table_fp, feature_table,
             raise
         # truncate taxonomies to the desired level
         exp_taxa, obs_taxa = framework_functions.load_prf(
-            obs, exp, level=slice(0, taxonomy_level+1))
+            obs, exp, level=slice(0, taxonomy_level+1), sort=False)
         # compile sample weights (observations per sequence in sample)
         weights = [feature_table.get_value_by_ids(
                    line.split('\t')[0], sample_id) for line in exp]
