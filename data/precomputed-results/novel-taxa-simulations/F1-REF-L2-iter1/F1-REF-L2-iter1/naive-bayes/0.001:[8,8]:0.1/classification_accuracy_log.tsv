@@ -1,0 +1,15 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Ascomycota;c__Pezizomycetes;o__Pezizales;f__Pyronemataceae	k__Fungi;p__Basidiomycota;c__Agaricomycetes	misclassification	1	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Ascomycota;c__Eurotiomycetes;o__Eurotiomycetes_ord_Incertae_sedis;f__Eurotiomycetes_fam_Incertae_sedis;g__Calyptrozyma;s__Calyptrozyma_sp	k__Fungi;p__Ascomycota;c__Leotiomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Ascomycota;c__Pezizomycetes;o__Pezizales;f__Tuberaceae;g__Tuber	k__Fungi;p__Ascomycota;c__Archaeorhizomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes;o__Microstromatales	k__Fungi;p__Basidiomycota;c__Ustilaginomycotina_cls_Incertae_sedis	overclassification	2	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Ascomycota;c__Lecanoromycetes	k__Fungi;p__Zygomycota;c__Kickxellomycotina_cls_Incertae_sedis	misclassification	1	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis;o__Mortierellales;f__Mortierellaceae;g__Mortierella;s__Mortierella_parazychae	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes	misclassification	1	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Capnodiales;f__Mycosphaerellaceae	k__Fungi;p__Ascomycota;c__Pezizomycotina_cls_Incertae_sedis	overclassification	2	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Basidiomycota;c__Microbotryomycetes	k__Fungi;p__Basidiomycota;c__Tritirachiomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Ascomycota;c__Dothideomycetes	k__Fungi;p__Ascomycota;c__Laboulbeniomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Basidiomycota;c__Microbotryomycetes;o__Sporidiobolales;f__Sporidiobolales_fam_Incertae_sedis;g__Sporobolomyces;s__Sporobolomyces_symmetricus	k__Fungi;p__Basidiomycota;c__Cystobasidiomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Lecanorales;f__Parmeliaceae	k__Fungi;p__Ascomycota;c__Orbiliomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Botryosphaeriales;f__Botryosphaeriaceae	k__Fungi;p__Ascomycota;c__Taphrinomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Tremellales;f__Tremellales_fam_Incertae_sedis	k__Fungi;p__Basidiomycota;c__Dacrymycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	1	naive-bayes	0.001:[8,8]:0.1	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Pleosporales;f__Lophiostomataceae	k__Fungi;p__Basidiomycota;c__Agaricomycotina_cls_Incertae_sedis	misclassification	1	0.0	0.0	0.0
