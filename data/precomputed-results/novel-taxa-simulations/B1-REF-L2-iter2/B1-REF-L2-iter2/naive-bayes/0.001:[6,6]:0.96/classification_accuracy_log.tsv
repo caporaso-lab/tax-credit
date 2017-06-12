@@ -1,0 +1,16 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Bacteria;p__Bacteroidetes	k__Bacteria;p__Bacteroidetes;c__Sphingobacteriia	match	2	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales	k__Bacteria;p__Actinobacteria;c__Acidimicrobiia	overclassification	2	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Bacteria;p__Firmicutes;c__Bacilli	k__Bacteria;p__Firmicutes;c__Erysipelotrichi	overclassification	2	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Bacteria;p__Cyanobacteria	k__Bacteria;p__Cyanobacteria;c__Synechococcophycideae	match	2	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Archaea;p__Euryarchaeota	k__Archaea;p__Euryarchaeota;c__Methanococci	match	2	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Bacteria;p__Bacteroidetes	k__Bacteria;p__Bacteroidetes;c__Saprospirae	match	2	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Bacteria	k__Bacteria;p__Chloroflexi;c__Anaerolineae	underclassification	1	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Bacteria	k__Bacteria;p__Spirochaetes;c__Leptospirae	underclassification	1	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Bacteria	k__Bacteria;p__Chloroflexi;c__Ktedonobacteria	underclassification	1	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Bacteria	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria	underclassification	1	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Bacteria	k__Bacteria;p__Planctomycetes;c__Phycisphaerae	underclassification	1	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Archaea;p__Crenarchaeota;c__Aigarchaeota;o__Caldiarchales;f__Caldiarchaceae;g__Caldiarchaeum;s__subterraneum	k__Archaea;p__Crenarchaeota;c__Thermoprotei	overclassification	2	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	Unassigned	k__Archaea;p__Euryarchaeota;c__Methanobacteria	underclassification	0	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Archaea;p__Euryarchaeota;c__Archaeoglobi;o__Archaeoglobales;f__Archaeoglobaceae;g__Archaeoglobus	k__Archaea;p__Euryarchaeota;c__Thermococci	overclassification	2	0.5	0.266666666667	0.347826086957
+B1-REF	2	2	naive-bayes	0.001:[6,6]:0.96	k__Bacteria	k__Bacteria;p__Acidobacteria;c__Acidobacteriia	underclassification	1	0.5	0.266666666667	0.347826086957

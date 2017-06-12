@@ -1,0 +1,13 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Prevotellaceae;g__Prevotella;s__copri	k__Bacteria;p__Synergistetes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Prevotellaceae;g__Prevotella;s__copri	k__Bacteria;p__Aquificae	overclassification	1	0.0	0.0	0.0
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Ruminococcaceae;g__Faecalibacterium;s__prausnitzii	k__Bacteria;p__Thermotogae	overclassification	1	0.0	0.0	0.0
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Veillonellaceae;g__Veillonella;s__parvula	k__Bacteria;p__Lentisphaerae	overclassification	1	0.0	0.0	0.0
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Staphylococcaceae;g__Staphylococcus;s__aureus	k__Bacteria;p__Cyanobacteria	overclassification	1	0.0	0.0	0.0
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Prevotellaceae;g__Prevotella;s__copri	k__Bacteria;p__Chloroflexi	overclassification	1	0.0	0.0	0.0
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Archaea;p__Crenarchaeota;c__Thaumarchaeota;o__Nitrososphaerales;f__Nitrososphaeraceae;g__Candidatus Nitrososphaera;s__gargensis	k__Bacteria;p__Actinobacteria	misclassification	0	0.0	0.0	0.0
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Peptococcaceae;g__Desulfosporosinus;s__meridiei	k__Archaea;p__Euryarchaeota	misclassification	0	0.0	0.0	0.0
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Prevotellaceae;g__Prevotella;s__copri	k__Bacteria;p__Acidobacteria	overclassification	1	0.0	0.0	0.0
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales;f__Prevotellaceae;g__Prevotella;s__copri	k__Bacteria;p__Chlamydiae	overclassification	1	0.0	0.0	0.0
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Archaea;p__Crenarchaeota;c__Thaumarchaeota;o__Nitrososphaerales;f__Nitrososphaeraceae;g__Candidatus Nitrososphaera;s__gargensis	k__Bacteria;p__Thermi	misclassification	0	0.0	0.0	0.0
+B1-REF	1	1	naive-bayes	0.001:[4,4]:0.0	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Veillonellaceae;g__Veillonella;s__parvula	k__Bacteria;p__Fusobacteria	overclassification	1	0.0	0.0	0.0

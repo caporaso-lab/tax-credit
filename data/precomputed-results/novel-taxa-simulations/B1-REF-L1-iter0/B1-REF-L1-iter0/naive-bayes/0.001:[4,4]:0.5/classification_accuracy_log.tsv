@@ -1,0 +1,10 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	1	0	naive-bayes	0.001:[4,4]:0.5	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Propionibacteriaceae;g__Propionibacterium;s__acnes	k__Bacteria;p__Deferribacteres	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[4,4]:0.5	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Propionibacteriaceae;g__Propionibacterium;s__acnes	k__Bacteria;p__Chrysiogenetes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[4,4]:0.5	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Propionibacteriaceae;g__Propionibacterium;s__acnes	k__Bacteria;p__Elusimicrobia	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[4,4]:0.5	k__Archaea;p__Crenarchaeota;c__Thaumarchaeota;o__Nitrososphaerales;f__Nitrososphaeraceae;g__Candidatus Nitrososphaera;s__gargensis	k__Bacteria;p__Fibrobacteres	misclassification	0	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[4,4]:0.5	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Propionibacteriaceae;g__Propionibacterium;s__acnes	k__Bacteria;p__Proteobacteria	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[4,4]:0.5	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Propionibacteriaceae;g__Propionibacterium;s__acnes	k__Bacteria;p__Spirochaetes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[4,4]:0.5	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Propionibacteriaceae;g__Propionibacterium;s__acnes	k__Bacteria;p__Bacteroidetes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[4,4]:0.5	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Propionibacteriaceae;g__Propionibacterium;s__acnes	k__Bacteria;p__Tenericutes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[4,4]:0.5	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Propionibacteriaceae;g__Propionibacterium;s__acnes	k__Bacteria;p__Firmicutes	overclassification	1	0.0	0.0	0.0
