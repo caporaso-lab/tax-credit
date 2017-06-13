@@ -75,12 +75,15 @@ def pointplot_from_data_frame(df, x_axis, y_vars, group_by, color_by,
     style_theme = seaborn plot style theme
     plot_type = allows switching to other plot types, but this is untested
     '''
+    grid = dict()
     sns.set_style(style_theme)
     for y_var in y_vars:
-        grid = sns.FacetGrid(df, col=group_by, hue=color_by,
-                             palette=color_pallette)
-        grid = grid.map(sns.pointplot, x_axis, y_var, marker="o", ms=4)
+        grid[y_var] = sns.FacetGrid(df, col=group_by, hue=color_by,
+                                    palette=color_pallette)
+        grid[y_var] = grid[y_var].map(
+            sns.pointplot, x_axis, y_var, marker="o", ms=4)
     sns.plt.show()
+    return grid
 
 
 def heatmap_from_data_frame(df, metric, rows=["Method", "Parameters"],
@@ -109,6 +112,8 @@ def heatmap_from_data_frame(df, metric, rows=["Method", "Parameters"],
     ax.set_title(metric, fontsize=20)
 
     plt.show()
+
+    return ax
 
 
 def boxplot_from_data_frame(df,
@@ -140,7 +145,9 @@ def boxplot_from_data_frame(df,
     for lab in ax.get_xticklabels():
         lab.set_rotation(label_rotation)
 
-    ax
+    plt.show()
+
+    return ax
 
 
 def calculate_linear_regress(df, x, y, group_by):
@@ -426,7 +433,7 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
         Compare average distance distributions across all methods (False) or
         only the best parameter configuration for each method? (True)
     '''
-
+    box = dict()
     # Aggregate all distance matrix data
     archive = pd.DataFrame()
     for table, dataset_id, reference_id in seek_tables(expected_results_dir):
@@ -453,10 +460,11 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
             best = archive_subset
 
 
-        boxplot_from_data_frame(best, group_by=group_by, color=color,
-                                hue=hue, metric=metric, y_min=None, y_max=None,
-                                plotf=plotf, label_rotation=label_rotation,
-                                color_pallette=color_pallette)
+        box[reference] = boxplot_from_data_frame(
+            best, group_by=group_by, color=color, hue=hue, metric=metric,
+            y_min=None, y_max=None, plotf=plotf, label_rotation=label_rotation,
+            color_pallette=color_pallette)
+
         sns.plt.show()
         sns.plt.clf()
 
@@ -464,6 +472,8 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
                                             metric=metric, paired=paired,
                                             parametric=parametric)
         display(results)
+
+    return box, best
 
 
 def fastlane_boxplots(expected_results_dir, group_by="method",
@@ -505,7 +515,7 @@ def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
     hue, color variables all pass directly to equivalently named variables in
         seaborn.violinplot().
     '''
-
+    box = dict()
     within_between = within_between_category_distance(dm, sample_md, 'method')
 
     per_method = per_method_distance(dm, sample_md, group_by=group_by,
@@ -515,16 +525,18 @@ def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
                     (per_method, group_by, '2: Pairwise ')]:
 
         display(Markdown('## Comparison {0} Distance'.format(s + group_by)))
-        boxplot_from_data_frame(d, group_by=g, color=color, metric=metric,
-                                y_min=None, y_max=None, hue=hue, plotf=plotf,
-                                label_rotation=label_rotation,
-                                color_pallette=color_pallette)
+        box[g] = boxplot_from_data_frame(
+            d, group_by=g, color=color, metric=metric, y_min=None, y_max=None,
+            hue=hue, plotf=plotf, label_rotation=label_rotation,
+            color_pallette=color_pallette)
 
         results = per_method_pairwise_tests(d, group_by=g, metric=metric)
 
         sns.plt.show()
         sns.plt.clf()
         display(results)
+
+    return box
 
 
 def per_method_distance(dm, md, group_by='method', standard='expected',
@@ -623,7 +635,7 @@ def per_method_pairwise_tests(df, group_by='method', metric='distance',
             # this is not technically correct, from the standpoint of p-val
             # correction below makes p-vals very slightly less significant
             # than they should be
-            p = 1.0
+            u, p = 0.0, 1.0
         pvals.append((a[0], a[1], u, p))
 
     result = pd.DataFrame(pvals, columns=["Method A", "Method B", "stat", "P"])
@@ -720,7 +732,7 @@ def rank_optimized_method_performance_by_dataset(df,
         seaborn.violinplot(). See boxplot_from_data_frame() for more
         information.
     '''
-
+    box = dict()
     for d in df[dataset].unique():
         for lv in level_range:
             display(Markdown("## {0} level {1}".format(d, lv)))
@@ -737,8 +749,11 @@ def rank_optimized_method_performance_by_dataset(df,
                                                 metric=metric, paired=paired,
                                                 parametric=parametric)
             display(results)
-            boxplot_from_data_frame(best, group_by=method, color=color,
-                                    metric=metric, y_min=y_min, y_max=y_max,
-                                    label_rotation=label_rotation, hue=hue,
-                                    plotf=plotf, color_pallette=color_pallette)
+            box[d] = boxplot_from_data_frame(
+                best, group_by=method, color=color, metric=metric, y_min=y_min,
+                y_max=y_max, label_rotation=label_rotation, hue=hue,
+                plotf=plotf, color_pallette=color_pallette)
+
             sns.plt.show()
+
+    return box
