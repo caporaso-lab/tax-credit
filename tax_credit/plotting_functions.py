@@ -39,8 +39,8 @@ from bokeh.models import (HoverTool,
 from bokeh.io import output_notebook
 
 
-def lmplot_from_data_frame(df, x, y, group_by, style_theme="whitegrid",
-                           regress=False):
+def lmplot_from_data_frame(df, x, y, group_by=None, style_theme="whitegrid",
+                           regress=False, hue=None, color_palette=None):
     '''Make seaborn lmplot from pandas dataframe.
     df: pandas.DataFrame
     x: str
@@ -53,16 +53,24 @@ def lmplot_from_data_frame(df, x, y, group_by, style_theme="whitegrid",
         seaborn plot style theme
     '''
     sns.set_style(style_theme)
-    sns.lmplot(x, y, col=group_by, data=df, ci=None, size=5,
-               scatter_kws={"s": 50, "alpha": 1}, sharey=True)
+    lm = sns.lmplot(x, y, col=group_by, data=df, ci=None, size=5,
+                    scatter_kws={"s": 50, "alpha": 1}, sharey=True, hue=hue,
+                    palette=color_palette)
     sns.plt.show()
 
     if regress is True:
-        return calculate_linear_regress(df, x, y, group_by)
+        try:
+            reg = calculate_linear_regress(df, x, y, group_by)
+        except ValueError:
+            reg = calculate_linear_regress(df, x, y, hue)
+    else:
+        reg = None
+
+    return lm, reg
 
 
 def pointplot_from_data_frame(df, x_axis, y_vars, group_by, color_by,
-                              color_pallette, style_theme="whitegrid",
+                              color_palette, style_theme="whitegrid",
                               plot_type=sns.pointplot):
     '''Generate seaborn pointplot from pandas dataframe.
     df = pandas.DataFrame
@@ -70,7 +78,7 @@ def pointplot_from_data_frame(df, x_axis, y_vars, group_by, color_by,
     y_vars = LIST of variables to use for plotting y axis
     group_by = df variable to use for separating plot panels with FacetGrid
     color_by = df variable on which to plot and color subgroups within data
-    color_pallette = color palette to use for plotting. Either a dict mapping
+    color_palette = color palette to use for plotting. Either a dict mapping
                      color_by groups to colors, or a named seaborn palette.
     style_theme = seaborn plot style theme
     plot_type = allows switching to other plot types, but this is untested
@@ -79,7 +87,7 @@ def pointplot_from_data_frame(df, x_axis, y_vars, group_by, color_by,
     sns.set_style(style_theme)
     for y_var in y_vars:
         grid[y_var] = sns.FacetGrid(df, col=group_by, hue=color_by,
-                                    palette=color_pallette)
+                                    palette=color_palette)
         grid[y_var] = grid[y_var].map(
             sns.pointplot, x_axis, y_var, marker="o", ms=4)
     sns.plt.show()
@@ -124,7 +132,7 @@ def boxplot_from_data_frame(df,
                             y_max=1.0,
                             plotf=violinplot,
                             color='grey',
-                            color_pallette=None,
+                            color_palette=None,
                             label_rotation=45):
     """Generate boxplot or violinplot of metric by group
 
@@ -138,7 +146,7 @@ def boxplot_from_data_frame(df,
     """
 
     ax = violinplot(x=group_by, y=metric, hue=hue, data=df, color=color,
-                    palette=color_pallette)
+                    palette=color_palette)
     ax.set_ylim(bottom=y_min, top=y_max)
     ax.set_ylabel(metric)
     ax.set_xlabel(group_by)
@@ -412,7 +420,7 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
                                           'unite_20.11.2016_clean_fullITS'],
                               paired=True, use_best=True, parametric=True,
                               plotf=violinplot, label_rotation=45,
-                              color_pallette=None, y_min=0.0, y_max=1.0,
+                              color_palette=None, y_min=0.0, y_max=1.0,
                               color=None, hue=None):
 
     '''Distance boxplots that aggregate and average results across multiple
@@ -463,7 +471,7 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
         box[reference] = boxplot_from_data_frame(
             best, group_by=group_by, color=color, hue=hue, metric=metric,
             y_min=None, y_max=None, plotf=plotf, label_rotation=label_rotation,
-            color_pallette=color_pallette)
+            color_palette=color_palette)
 
         sns.plt.show()
         sns.plt.clf()
@@ -497,7 +505,7 @@ def fastlane_boxplots(expected_results_dir, group_by="method",
 def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
                         metric="distance", hue=None, y_min=0.0, y_max=1.0,
                         plotf=violinplot, label_rotation=45, color=None,
-                        color_pallette=None):
+                        color_palette=None):
     '''Generate distance boxplots and Mann-Whitney U tests on distance matrix.
 
     dm: skbio.DistanceMatrix
@@ -528,7 +536,7 @@ def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
         box[g] = boxplot_from_data_frame(
             d, group_by=g, color=color, metric=metric, y_min=None, y_max=None,
             hue=hue, plotf=plotf, label_rotation=label_rotation,
-            color_pallette=color_pallette)
+            color_palette=color_palette)
 
         results = per_method_pairwise_tests(d, group_by=g, metric=metric)
 
@@ -693,7 +701,7 @@ def rank_optimized_method_performance_by_dataset(df,
                                                  plotf=violinplot,
                                                  label_rotation=45,
                                                  color=None,
-                                                 color_pallette=None):
+                                                 color_palette=None):
 
     '''Rank the performance of methods using optimized parameter configuration
     within each dataset in dataframe. Optimal methods are computed from the
@@ -752,7 +760,7 @@ def rank_optimized_method_performance_by_dataset(df,
             box[d] = boxplot_from_data_frame(
                 best, group_by=method, color=color, metric=metric, y_min=y_min,
                 y_max=y_max, label_rotation=label_rotation, hue=hue,
-                plotf=plotf, color_pallette=color_pallette)
+                plotf=plotf, color_palette=color_palette)
 
             sns.plt.show()
 
