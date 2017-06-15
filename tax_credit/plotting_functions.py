@@ -463,10 +463,13 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
         if use_best is True:
             best, param_report = isolate_top_params(
                 archive_subset, group_by, params, metric)
-            display(pd.DataFrame(param_report, columns=[group_by, params]))
+            # display(pd.DataFrame(param_report, columns=[group_by, params]))
+
+            _show_method_rank(best, group_by, params, metric,
+                              [group_by, params, metric], ascending=False)
+
         else:
             best = archive_subset
-
 
         box[reference] = boxplot_from_data_frame(
             best, group_by=group_by, color=color, hue=hue, metric=metric,
@@ -483,6 +486,16 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
 
     return box, best
 
+
+def _show_method_rank(best, group_by, params, metric, display_fields,
+                      ascending=False):
+    '''Find the best param configuration for each method and show those
+    configs, along with the parameters and metric scores.
+    '''
+    avg_best = best.groupby([group_by, params]).mean().reset_index()
+    avg_best_sorted = avg_best.sort_values(by=metric, ascending=ascending)
+    method_rank = avg_best_sorted.ix[:, display_fields]
+    display(method_rank)
 
 def fastlane_boxplots(expected_results_dir, group_by="method",
                       standard='expected', metric="distance", hue=None,
@@ -748,15 +761,15 @@ def rank_optimized_method_performance_by_dataset(df,
             best, param_report = isolate_top_params(df_l[df_l[dataset] == d],
                                                     method, params, metric,
                                                     ascending=ascending)
-            avg_best = best.groupby([method, params]).mean().reset_index()
-            avg_best_sorted = avg_best.sort_values(by=metric,
-                                                   ascending=ascending)
-            method_rank = avg_best_sorted.ix[:, display_fields]
-            display(method_rank)
+
+            _show_method_rank(best, method, params, metric,
+                              display_fields, ascending=ascending)
+
             results = per_method_pairwise_tests(best, group_by=method,
                                                 metric=metric, paired=paired,
                                                 parametric=parametric)
             display(results)
+
             box[d] = boxplot_from_data_frame(
                 best, group_by=method, color=color, metric=metric, y_min=y_min,
                 y_max=y_max, label_rotation=label_rotation, hue=hue,
