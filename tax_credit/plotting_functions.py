@@ -460,31 +460,82 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
         archive_subset = archive[archive[reference_col] == reference]
 
         # for each method find best average method/parameter config
-        if use_best is True:
+        if use_best:
             best, param_report = isolate_top_params(
                 archive_subset, group_by, params, metric)
             # display(pd.DataFrame(param_report, columns=[group_by, params]))
 
-            _show_method_rank(best, group_by, params, metric,
-                              [group_by, params, metric], ascending=False)
+            method_rank = _show_method_rank(
+                best, group_by, params, metric, [group_by, params, metric],
+                ascending=False)
 
         else:
             best = archive_subset
+
+        results = per_method_pairwise_tests(best, group_by=group_by,
+                                            metric=metric, paired=paired,
+                                            parametric=parametric)
 
         box[reference] = boxplot_from_data_frame(
             best, group_by=group_by, color=color, hue=hue, metric=metric,
             y_min=None, y_max=None, plotf=plotf, label_rotation=label_rotation,
             color_palette=color_palette)
 
+        if use_best:
+            box[reference] = _add_significance_to_boxplots(
+                results, method_rank, box[reference], method='method')
+
         sns.plt.show()
         sns.plt.clf()
 
-        results = per_method_pairwise_tests(best, group_by=group_by,
-                                            metric=metric, paired=paired,
-                                            parametric=parametric)
         display(results)
 
     return box, best
+
+
+def _add_significance_to_boxplots(pairwise, rankings, ax, method='Method'):
+
+    x_labels = [a.get_text() for a in ax.get_xticklabels()]
+    methods = [m for m in rankings[method]]
+
+    ranks = []
+    # iterate range instead of methods, so that we can use pop for comparisons
+    # against shrinking list of methods
+    methods_copy = methods.copy()
+    for n in range(len(methods_copy)):
+        method = methods_copy.pop(0)
+        inner_rank = {method}
+        for other_method in methods_copy:
+            if method in pairwise.index.levels[0] and \
+                    other_method in pairwise.loc[method].index:
+                if pairwise.loc[method].loc[other_method]['FDR P'] > 0.05:
+                    inner_rank.add(other_method)
+            elif other_method in pairwise.index.levels[0] and \
+                    method in pairwise.loc[other_method].index:
+                if pairwise.loc[other_method].loc[method]['FDR P'] > 0.05:
+                    inner_rank.add(other_method)
+        # only add new set of equalities if it contains unique items
+        if len(ranks) == 0 or not inner_rank.issubset(ranks[-1]):
+            ranks.append(inner_rank)
+
+    # provide unique letters for each significance group
+    letters = 'abcdefghijklmnopqrstuvwxyz'
+
+    sig_groups = {}
+    for method in methods:
+        sig_groups[method] = []
+        for rank, letter in zip(ranks, letters):
+            if method in rank:
+                sig_groups[method].append(letter)
+        sig_groups[method] = ''.join(sig_groups[method])
+
+    # add significance labels above plot
+    pos = range(len(x_labels))
+    for tick, label in zip(pos, x_labels):
+        ax.text(tick, ax.get_ybound()[1], sig_groups[label], size='medium',
+                horizontalalignment='center', color='k', weight='semibold')
+
+    return ax
 
 
 def _show_method_rank(best, group_by, params, metric, display_fields,
@@ -496,6 +547,8 @@ def _show_method_rank(best, group_by, params, metric, display_fields,
     avg_best_sorted = avg_best.sort_values(by=metric, ascending=ascending)
     method_rank = avg_best_sorted.ix[:, display_fields]
     display(method_rank)
+    return method_rank
+
 
 def fastlane_boxplots(expected_results_dir, group_by="method",
                       standard='expected', metric="distance", hue=None,
@@ -762,8 +815,9 @@ def rank_optimized_method_performance_by_dataset(df,
                                                     method, params, metric,
                                                     ascending=ascending)
 
-            _show_method_rank(best, method, params, metric,
-                              display_fields, ascending=ascending)
+            method_rank = _show_method_rank(
+                best, method, params, metric, display_fields,
+                ascending=ascending)
 
             results = per_method_pairwise_tests(best, group_by=method,
                                                 metric=metric, paired=paired,
@@ -774,6 +828,9 @@ def rank_optimized_method_performance_by_dataset(df,
                 best, group_by=method, color=color, metric=metric, y_min=y_min,
                 y_max=y_max, label_rotation=label_rotation, hue=hue,
                 plotf=plotf, color_palette=color_palette)
+
+            box[d] = _add_significance_to_boxplots(
+                results, method_rank, box[d])
 
             sns.plt.show()
 
