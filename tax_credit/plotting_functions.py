@@ -39,8 +39,8 @@ from bokeh.models import (HoverTool,
 from bokeh.io import output_notebook
 
 
-def lmplot_from_data_frame(df, x, y, group_by, style_theme="whitegrid",
-                           regress=False):
+def lmplot_from_data_frame(df, x, y, group_by=None, style_theme="whitegrid",
+                           regress=False, hue=None, color_palette=None):
     '''Make seaborn lmplot from pandas dataframe.
     df: pandas.DataFrame
     x: str
@@ -53,16 +53,24 @@ def lmplot_from_data_frame(df, x, y, group_by, style_theme="whitegrid",
         seaborn plot style theme
     '''
     sns.set_style(style_theme)
-    sns.lmplot(x, y, col=group_by, data=df, ci=None, size=5,
-               scatter_kws={"s": 50, "alpha": 1}, sharey=True)
+    lm = sns.lmplot(x, y, col=group_by, data=df, ci=None, size=5,
+                    scatter_kws={"s": 50, "alpha": 1}, sharey=True, hue=hue,
+                    palette=color_palette)
     sns.plt.show()
 
     if regress is True:
-        return calculate_linear_regress(df, x, y, group_by)
+        try:
+            reg = calculate_linear_regress(df, x, y, group_by)
+        except ValueError:
+            reg = calculate_linear_regress(df, x, y, hue)
+    else:
+        reg = None
+
+    return lm, reg
 
 
 def pointplot_from_data_frame(df, x_axis, y_vars, group_by, color_by,
-                              color_pallette, style_theme="whitegrid",
+                              color_palette, style_theme="whitegrid",
                               plot_type=sns.pointplot):
     '''Generate seaborn pointplot from pandas dataframe.
     df = pandas.DataFrame
@@ -70,17 +78,20 @@ def pointplot_from_data_frame(df, x_axis, y_vars, group_by, color_by,
     y_vars = LIST of variables to use for plotting y axis
     group_by = df variable to use for separating plot panels with FacetGrid
     color_by = df variable on which to plot and color subgroups within data
-    color_pallette = color palette to use for plotting. Either a dict mapping
+    color_palette = color palette to use for plotting. Either a dict mapping
                      color_by groups to colors, or a named seaborn palette.
     style_theme = seaborn plot style theme
     plot_type = allows switching to other plot types, but this is untested
     '''
+    grid = dict()
     sns.set_style(style_theme)
     for y_var in y_vars:
-        grid = sns.FacetGrid(df, col=group_by, hue=color_by,
-                             palette=color_pallette)
-        grid = grid.map(sns.pointplot, x_axis, y_var, marker="o", ms=4)
+        grid[y_var] = sns.FacetGrid(df, col=group_by, hue=color_by,
+                                    palette=color_palette)
+        grid[y_var] = grid[y_var].map(
+            sns.pointplot, x_axis, y_var, marker="o", ms=4)
     sns.plt.show()
+    return grid
 
 
 def heatmap_from_data_frame(df, metric, rows=["Method", "Parameters"],
@@ -110,6 +121,8 @@ def heatmap_from_data_frame(df, metric, rows=["Method", "Parameters"],
 
     plt.show()
 
+    return ax
+
 
 def boxplot_from_data_frame(df,
                             group_by="Method",
@@ -119,7 +132,7 @@ def boxplot_from_data_frame(df,
                             y_max=1.0,
                             plotf=violinplot,
                             color='grey',
-                            color_pallette=None,
+                            color_palette=None,
                             label_rotation=45):
     """Generate boxplot or violinplot of metric by group
 
@@ -133,14 +146,16 @@ def boxplot_from_data_frame(df,
     """
 
     ax = violinplot(x=group_by, y=metric, hue=hue, data=df, color=color,
-                    palette=color_pallette)
+                    palette=color_palette)
     ax.set_ylim(bottom=y_min, top=y_max)
     ax.set_ylabel(metric)
     ax.set_xlabel(group_by)
     for lab in ax.get_xticklabels():
         lab.set_rotation(label_rotation)
 
-    ax
+    plt.show()
+
+    return ax
 
 
 def calculate_linear_regress(df, x, y, group_by):
@@ -405,7 +420,7 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
                                           'unite_20.11.2016_clean_fullITS'],
                               paired=True, use_best=True, parametric=True,
                               plotf=violinplot, label_rotation=45,
-                              color_pallette=None, y_min=0.0, y_max=1.0,
+                              color_palette=None, y_min=0.0, y_max=1.0,
                               color=None, hue=None):
 
     '''Distance boxplots that aggregate and average results across multiple
@@ -426,7 +441,7 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
         Compare average distance distributions across all methods (False) or
         only the best parameter configuration for each method? (True)
     '''
-
+    box = dict()
     # Aggregate all distance matrix data
     archive = pd.DataFrame()
     for table, dataset_id, reference_id in seek_tables(expected_results_dir):
@@ -445,25 +460,94 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
         archive_subset = archive[archive[reference_col] == reference]
 
         # for each method find best average method/parameter config
-        if use_best is True:
+        if use_best:
             best, param_report = isolate_top_params(
                 archive_subset, group_by, params, metric)
-            display(pd.DataFrame(param_report, columns=[group_by, params]))
+            # display(pd.DataFrame(param_report, columns=[group_by, params]))
+
+            method_rank = _show_method_rank(
+                best, group_by, params, metric, [group_by, params, metric],
+                ascending=False)
+
         else:
             best = archive_subset
-
-
-        boxplot_from_data_frame(best, group_by=group_by, color=color,
-                                hue=hue, metric=metric, y_min=None, y_max=None,
-                                plotf=plotf, label_rotation=label_rotation,
-                                color_pallette=color_pallette)
-        sns.plt.show()
-        sns.plt.clf()
 
         results = per_method_pairwise_tests(best, group_by=group_by,
                                             metric=metric, paired=paired,
                                             parametric=parametric)
+
+        box[reference] = boxplot_from_data_frame(
+            best, group_by=group_by, color=color, hue=hue, metric=metric,
+            y_min=None, y_max=None, plotf=plotf, label_rotation=label_rotation,
+            color_palette=color_palette)
+
+        if use_best:
+            box[reference] = _add_significance_to_boxplots(
+                results, method_rank, box[reference], method='method')
+
+        sns.plt.show()
+        sns.plt.clf()
+
         display(results)
+
+    return box, best
+
+
+def _add_significance_to_boxplots(pairwise, rankings, ax, method='Method'):
+
+    x_labels = [a.get_text() for a in ax.get_xticklabels()]
+    methods = [m for m in rankings[method]]
+
+    ranks = []
+    # iterate range instead of methods, so that we can use pop for comparisons
+    # against shrinking list of methods
+    methods_copy = methods.copy()
+    for n in range(len(methods_copy)):
+        method = methods_copy.pop(0)
+        inner_rank = {method}
+        for other_method in methods_copy:
+            if method in pairwise.index.levels[0] and \
+                    other_method in pairwise.loc[method].index:
+                if pairwise.loc[method].loc[other_method]['FDR P'] > 0.05:
+                    inner_rank.add(other_method)
+            elif other_method in pairwise.index.levels[0] and \
+                    method in pairwise.loc[other_method].index:
+                if pairwise.loc[other_method].loc[method]['FDR P'] > 0.05:
+                    inner_rank.add(other_method)
+        # only add new set of equalities if it contains unique items
+        if len(ranks) == 0 or not inner_rank.issubset(ranks[-1]):
+            ranks.append(inner_rank)
+
+    # provide unique letters for each significance group
+    letters = 'abcdefghijklmnopqrstuvwxyz'
+
+    sig_groups = {}
+    for method in methods:
+        sig_groups[method] = []
+        for rank, letter in zip(ranks, letters):
+            if method in rank:
+                sig_groups[method].append(letter)
+        sig_groups[method] = ''.join(sig_groups[method])
+
+    # add significance labels above plot
+    pos = range(len(x_labels))
+    for tick, label in zip(pos, x_labels):
+        ax.text(tick, ax.get_ybound()[1], sig_groups[label], size='medium',
+                horizontalalignment='center', color='k', weight='semibold')
+
+    return ax
+
+
+def _show_method_rank(best, group_by, params, metric, display_fields,
+                      ascending=False):
+    '''Find the best param configuration for each method and show those
+    configs, along with the parameters and metric scores.
+    '''
+    avg_best = best.groupby([group_by, params]).mean().reset_index()
+    avg_best_sorted = avg_best.sort_values(by=metric, ascending=ascending)
+    method_rank = avg_best_sorted.ix[:, display_fields]
+    display(method_rank)
+    return method_rank
 
 
 def fastlane_boxplots(expected_results_dir, group_by="method",
@@ -487,7 +571,7 @@ def fastlane_boxplots(expected_results_dir, group_by="method",
 def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
                         metric="distance", hue=None, y_min=0.0, y_max=1.0,
                         plotf=violinplot, label_rotation=45, color=None,
-                        color_pallette=None):
+                        color_palette=None):
     '''Generate distance boxplots and Mann-Whitney U tests on distance matrix.
 
     dm: skbio.DistanceMatrix
@@ -505,7 +589,7 @@ def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
     hue, color variables all pass directly to equivalently named variables in
         seaborn.violinplot().
     '''
-
+    box = dict()
     within_between = within_between_category_distance(dm, sample_md, 'method')
 
     per_method = per_method_distance(dm, sample_md, group_by=group_by,
@@ -515,16 +599,18 @@ def per_method_boxplots(dm, sample_md, group_by="method", standard='expected',
                     (per_method, group_by, '2: Pairwise ')]:
 
         display(Markdown('## Comparison {0} Distance'.format(s + group_by)))
-        boxplot_from_data_frame(d, group_by=g, color=color, metric=metric,
-                                y_min=None, y_max=None, hue=hue, plotf=plotf,
-                                label_rotation=label_rotation,
-                                color_pallette=color_pallette)
+        box[g] = boxplot_from_data_frame(
+            d, group_by=g, color=color, metric=metric, y_min=None, y_max=None,
+            hue=hue, plotf=plotf, label_rotation=label_rotation,
+            color_palette=color_palette)
 
         results = per_method_pairwise_tests(d, group_by=g, metric=metric)
 
         sns.plt.show()
         sns.plt.clf()
         display(results)
+
+    return box
 
 
 def per_method_distance(dm, md, group_by='method', standard='expected',
@@ -623,7 +709,7 @@ def per_method_pairwise_tests(df, group_by='method', metric='distance',
             # this is not technically correct, from the standpoint of p-val
             # correction below makes p-vals very slightly less significant
             # than they should be
-            p = 1.0
+            u, p = 0.0, 1.0
         pvals.append((a[0], a[1], u, p))
 
     result = pd.DataFrame(pvals, columns=["Method A", "Method B", "stat", "P"])
@@ -681,7 +767,7 @@ def rank_optimized_method_performance_by_dataset(df,
                                                  plotf=violinplot,
                                                  label_rotation=45,
                                                  color=None,
-                                                 color_pallette=None):
+                                                 color_palette=None):
 
     '''Rank the performance of methods using optimized parameter configuration
     within each dataset in dataframe. Optimal methods are computed from the
@@ -720,7 +806,7 @@ def rank_optimized_method_performance_by_dataset(df,
         seaborn.violinplot(). See boxplot_from_data_frame() for more
         information.
     '''
-
+    box = dict()
     for d in df[dataset].unique():
         for lv in level_range:
             display(Markdown("## {0} level {1}".format(d, lv)))
@@ -728,17 +814,24 @@ def rank_optimized_method_performance_by_dataset(df,
             best, param_report = isolate_top_params(df_l[df_l[dataset] == d],
                                                     method, params, metric,
                                                     ascending=ascending)
-            avg_best = best.groupby([method, params]).mean().reset_index()
-            avg_best_sorted = avg_best.sort_values(by=metric,
-                                                   ascending=ascending)
-            method_rank = avg_best_sorted.ix[:, display_fields]
-            display(method_rank)
+
+            method_rank = _show_method_rank(
+                best, method, params, metric, display_fields,
+                ascending=ascending)
+
             results = per_method_pairwise_tests(best, group_by=method,
                                                 metric=metric, paired=paired,
                                                 parametric=parametric)
             display(results)
-            boxplot_from_data_frame(best, group_by=method, color=color,
-                                    metric=metric, y_min=y_min, y_max=y_max,
-                                    label_rotation=label_rotation, hue=hue,
-                                    plotf=plotf, color_pallette=color_pallette)
+
+            box[d] = boxplot_from_data_frame(
+                best, group_by=method, color=color, metric=metric, y_min=y_min,
+                y_max=y_max, label_rotation=label_rotation, hue=hue,
+                plotf=plotf, color_palette=color_palette)
+
+            box[d] = _add_significance_to_boxplots(
+                results, method_rank, box[d])
+
             sns.plt.show()
+
+    return box
