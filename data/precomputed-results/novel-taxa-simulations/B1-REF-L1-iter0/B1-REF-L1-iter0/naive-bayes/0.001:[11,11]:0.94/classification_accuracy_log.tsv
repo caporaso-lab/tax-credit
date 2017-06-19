@@ -1,0 +1,10 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	1	0	naive-bayes	0.001:[11,11]:0.94	k__Bacteria	k__Bacteria;p__Deferribacteres	match	1	0.888888888889	0.888888888889	0.888888888889
+B1-REF	1	0	naive-bayes	0.001:[11,11]:0.94	k__Bacteria	k__Bacteria;p__Chrysiogenetes	match	1	0.888888888889	0.888888888889	0.888888888889
+B1-REF	1	0	naive-bayes	0.001:[11,11]:0.94	k__Bacteria	k__Bacteria;p__Elusimicrobia	match	1	0.888888888889	0.888888888889	0.888888888889
+B1-REF	1	0	naive-bayes	0.001:[11,11]:0.94	k__Bacteria	k__Bacteria;p__Fibrobacteres	match	1	0.888888888889	0.888888888889	0.888888888889
+B1-REF	1	0	naive-bayes	0.001:[11,11]:0.94	k__Bacteria	k__Bacteria;p__Proteobacteria	match	1	0.888888888889	0.888888888889	0.888888888889
+B1-REF	1	0	naive-bayes	0.001:[11,11]:0.94	k__Bacteria;p__Actinobacteria	k__Bacteria;p__Spirochaetes	overclassification	1	0.888888888889	0.888888888889	0.888888888889
+B1-REF	1	0	naive-bayes	0.001:[11,11]:0.94	k__Bacteria	k__Bacteria;p__Bacteroidetes	match	1	0.888888888889	0.888888888889	0.888888888889
+B1-REF	1	0	naive-bayes	0.001:[11,11]:0.94	k__Bacteria	k__Bacteria;p__Tenericutes	match	1	0.888888888889	0.888888888889	0.888888888889
+B1-REF	1	0	naive-bayes	0.001:[11,11]:0.94	k__Bacteria	k__Bacteria;p__Firmicutes	match	1	0.888888888889	0.888888888889	0.888888888889

@@ -1,0 +1,3 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	1	1	naive-bayes	0.001:[6,6]:0.5	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Ascomycota	overclassification	1	0.0	0.0	0.0
+F1-REF	1	1	naive-bayes	0.001:[6,6]:0.5	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Inocybaceae;g__Inocybe;s__Inocybe_sp	k__Fungi;p__Neocallimastigomycota	overclassification	1	0.0	0.0	0.0

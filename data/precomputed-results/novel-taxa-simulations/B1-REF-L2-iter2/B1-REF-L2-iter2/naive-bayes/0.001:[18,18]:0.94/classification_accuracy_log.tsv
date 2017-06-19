@@ -1,0 +1,16 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria;p__Bacteroidetes;c__Bacteroidia;o__Bacteroidales	k__Bacteria;p__Bacteroidetes;c__Sphingobacteriia	overclassification	2	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Bacteria;p__Actinobacteria;c__Acidimicrobiia	underclassification	1	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Bacteria;p__Firmicutes;c__Erysipelotrichi	underclassification	1	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Bacteria;p__Cyanobacteria;c__Synechococcophycideae	underclassification	1	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	Unassigned	k__Archaea;p__Euryarchaeota;c__Methanococci	underclassification	0	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Bacteria;p__Bacteroidetes;c__Saprospirae	underclassification	1	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Bacteria;p__Chloroflexi;c__Anaerolineae	underclassification	1	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Bacteria;p__Spirochaetes;c__Leptospirae	underclassification	1	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Bacteria;p__Chloroflexi;c__Ktedonobacteria	underclassification	1	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria	underclassification	1	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Bacteria;p__Planctomycetes;c__Phycisphaerae	underclassification	1	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Archaea;p__Crenarchaeota;c__Thermoprotei	misclassification	0	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Archaea;p__Euryarchaeota;c__Methanobacteria	misclassification	0	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	Unassigned	k__Archaea;p__Euryarchaeota;c__Thermococci	underclassification	0	0.0	0.0	0.0
+B1-REF	2	2	naive-bayes	0.001:[18,18]:0.94	k__Bacteria	k__Bacteria;p__Acidobacteria;c__Acidobacteriia	underclassification	1	0.0	0.0	0.0
