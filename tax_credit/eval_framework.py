@@ -276,7 +276,8 @@ def get_taxonomy_collapser(level, md_key='taxonomy',
             # if no metadata is listed for observation, group as Unassigned
             except TypeError:
                 levels = [unassignable_label]
-        except TypeError: # this happens if the table is empty
+        # this happens if the table is empty
+        except TypeError:
             levels = [unassignable_label]
         result = ';'.join(levels[:level+1])
         return result
@@ -716,8 +717,8 @@ def _multiple_match_kludge(exp, obs, fill_empty_observations=True):
                 obs[k] = 'Unassigned'
     else:
         assert obs.keys() == exp_grouped.keys(),\
-        'observed and expected read labels differ:\n' + \
-        str(list(obs.keys())) + '\n' + str(list(exp_grouped.keys()))
+            'observed and expected read labels differ:\n' + \
+            str(list(obs.keys())) + '\n' + str(list(exp_grouped.keys()))
     new_exp = []
     new_obs = []
     for exp_id, exp_taxons in exp_grouped.items():

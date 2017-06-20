@@ -395,18 +395,18 @@ class EvalFrameworkTests(TestCase):
             out.write(_taxa2)
 
         cls.databases = {'B1-REF': [refpath, cls.query_fp,
-                                     "ref1", "GTGCCAGCMGCCGCGGTAA",
-                                     "ATTAGAWACCCBDGTAGTCC", "515f", "806r"]}
+                                    "ref1", "GTGCCAGCMGCCGCGGTAA",
+                                    "ATTAGAWACCCBDGTAGTCC", "515f", "806r"]}
         cls.ref_data = pd.DataFrame.from_dict(cls.databases, orient="index")
         cls.ref_data.columns = ["Reference file path", "Reference tax path",
-                                 "Reference id", "Fwd primer", "Rev primer",
-                                 "Fwd primer id", "Rev primer id"]
+                                "Reference id", "Fwd primer", "Rev primer",
+                                "Fwd primer id", "Rev primer id"]
 
         cls.exp_p = [0, 1.0, 1.0, 0.875, 0.8571428571428571,
-                      0.83333333333333337, 0.66666666666666663]
+                     0.83333333333333337, 0.66666666666666663]
         cls.exp_r = [0, 1.0, 1.0, 0.875, 0.75, 0.625, 0.25]
         cls.exp_f = [0, 1.0, 1.0, 0.875, 0.79999999999999993,
-                      0.7142857142857143, 0.36363636363636365]
+                     0.7142857142857143, 0.36363636363636365]
         cls.exp_m = [0, 0, 0, 1, 1, 1, 3, 2]
 
     @classmethod

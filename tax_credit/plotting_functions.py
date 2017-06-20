@@ -26,7 +26,7 @@ from skbio.stats.ordination import pcoa
 from skbio.stats.distance import anosim
 from biom import load_table
 from glob import glob
-from os.path import join, split, dirname, relpath
+from os.path import join, split
 from itertools import combinations
 from IPython.display import display, Markdown
 from bokeh.plotting import figure, show, output_file
