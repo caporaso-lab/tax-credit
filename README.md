@@ -1,5 +1,7 @@
 # TAX CREdiT: TAXonomic ClassifieR Evaluation Tool
 
+[![Build Status](https://travis-ci.org/caporaso-lab/tax-credit.svg?branch=master)](https://travis-ci.org/caporaso-lab/tax-credit)
+
 ### A standardized and extensible evaluation framework for taxonomic classifiers
 
 To view static versions of the reports presented in [Bokulich, et al., (Microbiome, under review)](https://peerj.com/preprints/934/), [start here](http://nbviewer.jupyter.org/github/nbokulich/tax-credit/blob/master/ipynb/Index.ipynb).

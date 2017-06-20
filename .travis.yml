@@ -1,0 +1,15 @@
+sudo: false
+language: python
+python:
+  - "3.5"
+install:
+  - pip install flake8
+script:
+  - python tax_credit/tests/test_eval_framework.py
+  - python tax_credit/tests/test_framework_functions.py
+  - python tax_credit/tests/test_plotting_functions.py
+  - python tax_credit/tests/test_process_mocks.py
+  - python tax_credit/tests/test_simulated_communities.py
+  - python tax_credit/tests/test_taxa_manipulator.py
+  - flake8 tax_credit
+
