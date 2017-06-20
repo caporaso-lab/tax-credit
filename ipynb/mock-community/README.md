@@ -3,7 +3,7 @@
 This notebook describes how to apply the mock community evaluations presented in (Bokulich, Rideout, et al. (in preparation)) to reproduce the analyses in that paper, or to extend them to other data sets. 
 
 ## Structuring new results for comparison to precomputed results
-To prepare results from another classifier for analysis, you'll need to have [BIOM](http://www.biom-format.org) files with taxonomy assignments as an observation metadata category called ``taxonomy``. An example of how to generate these is presented in the [data generation notebook](./mock-dataset-generation.ipynb) in this directory, which was used to generated the precomputed data in the [tax-credit repository](https://github.com/caporaso-lab/short-read-tax-assignment/).
+To prepare results from another classifier for analysis, you'll need to have [BIOM](http://www.biom-format.org) files with taxonomy assignments as an observation metadata category called ``taxonomy``. An example of how to generate these is presented in the [data generation notebook](./mock-dataset-generation.ipynb) in this directory, which was used to generated the precomputed data in the [tax-credit repository](https://github.com/caporaso-lab/tax-credit/).
 
 Your BIOM tables should be called ``table.biom``, and nested in the following directory structure:
 
@@ -19,7 +19,7 @@ results_dir/
 
 ``results_dir`` is the name of the top level directory, and you will set this value in the first code cell of the analysis notebooks. You can name this directory whatever you want to. ``mock-community`` describes the specific analysis that is being run, and must be named ``mock-community`` for the framework to find your results.
 
-This directory structure is identical to that for the [precomputed results](https://github.com/caporaso-lab/short-read-tax-assignment/tree/master/data/precomputed-results). You can review that directory structure for an example of how this should look.
+This directory structure is identical to that for the [precomputed results](https://github.com/caporaso-lab/tax-credit/tree/master/data/precomputed-results). You can review that directory structure for an example of how this should look.
 
 ## Contents
 * [Data Generation](./dataset-generation.ipynb): retrieve and process mock community data sets for analysis. (These data are stored in tax-credit and will not need to be performed again, unless if preparing new mock community data sets for analysis.)

@@ -2,7 +2,7 @@
 
 ### A standardized and extensible evaluation framework for taxonomic classifiers
 
-To view static versions of the reports presented in [Bokulich, et al., (Microbiome, under review)](https://peerj.com/preprints/934/), [start here](http://nbviewer.jupyter.org/github/nbokulich/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
+To view static versions of the reports presented in [Bokulich, et al., (Microbiome, under review)](https://peerj.com/preprints/934/), [start here](http://nbviewer.jupyter.org/github/nbokulich/tax-credit/blob/master/ipynb/Index.ipynb).
 
 
 Environment
@@ -11,7 +11,7 @@ This repository contains python-3 code and Jupyter notebooks, but some taxonomy 
 
 The first step is to create a conda environment with the necessary dependencies. This requires installing [miniconda 3](http://conda.pydata.org/miniconda.html) to manage parallel python environments. After miniconda (or another conda version) is installed, proceed with [installing QIIME 2](https://docs.qiime2.org/2.0.6/install/).
 
-An example of how to load different environments to support other methods can be see in the [QIIME-1 taxonomy assignment notebook](https://github.com/nbokulich/short-read-tax-assignment/tree/master/ipynb/mock-community/generate-tax-assignments.ipynb).
+An example of how to load different environments to support other methods can be see in the [QIIME-1 taxonomy assignment notebook](https://github.com/nbokulich/tax-credit/tree/master/ipynb/mock-community/generate-tax-assignments.ipynb).
 
 
 Setup and install
@@ -20,15 +20,15 @@ The library code and IPython Notebooks are then installed as follows:
 
 ```
 cd $HOME/projects
-git clone https://github.com/gregcaporaso/short-read-tax-assignment.git
-cd $HOME/projects/short-read-tax-assignment/code
+git clone https://github.com/gregcaporaso/tax-credit.git
+cd $HOME/projects/tax-credit/code
 sudo pip install .
 ```
 
 To run the unit tests, you should install run:
 
 ```
-cd $HOME/projects/short-read-tax-assignment/code
+cd $HOME/projects/tax-credit/code
 nosetests .
 ```
 
@@ -53,7 +53,7 @@ The analyses included here can all be run in standard, modern laptop, provided y
 Using the Jupyter Notebooks included in this repository
 -------------------------------------------------------
 
-To view and interact with [Jupyter Notebook](http://jupyter.org/), change into the ``/short-read-tax-assignment/ipynb`` directory and run Jupyter Notebooks from the terminal with the command:
+To view and interact with [Jupyter Notebook](http://jupyter.org/), change into the ``/tax-credit/ipynb`` directory and run Jupyter Notebooks from the terminal with the command:
 
 ``jupyter notebook index.ipynb``
 
@@ -63,6 +63,6 @@ The notebooks menu should open in your browser. From the main index, you can fol
 Citing
 ------
 
-If you use any of the data or code included in this repository, please cite with:
+tax-credit is currently unpublished, but for now if you use any of the data or code included in this repository, please cite the following paper:
 
 Bokulich NA, Rideout JR, Kopylova E, Bolyen E, Patnode J, Ellett Z, McDonald D, Wolfe B, Maurice CF, Dutton RJ, Turnbaugh PJ, Knight R, Caporaso JG. (2015) A standardized, extensible framework for optimizing classification improves marker-gene taxonomic assignments. PeerJ PrePrints 3:e1156 https://dx.doi.org/10.7287/peerj.preprints.934v1
