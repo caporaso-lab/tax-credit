@@ -1,0 +1,8 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	1	2	rdp	0.9	k__Archaea;p__Euryarchaeota	k__Archaea;p__Nanoarchaeota	overclassification	1	0.714285714286	0.714285714286	0.714285714286
+B1-REF	1	2	rdp	0.9	k__Bacteria	k__Bacteria;p__Verrucomicrobia	match	1	0.714285714286	0.714285714286	0.714285714286
+B1-REF	1	2	rdp	0.9	k__Bacteria	k__Bacteria;p__Chlorobi	match	1	0.714285714286	0.714285714286	0.714285714286
+B1-REF	1	2	rdp	0.9	k__Bacteria	k__Bacteria;p__Dictyoglomi	match	1	0.714285714286	0.714285714286	0.714285714286
+B1-REF	1	2	rdp	0.9	k__Bacteria	k__Bacteria;p__Planctomycetes	match	1	0.714285714286	0.714285714286	0.714285714286
+B1-REF	1	2	rdp	0.9	Unclassified	k__Archaea;p__Crenarchaeota	underclassification	0	0.714285714286	0.714285714286	0.714285714286
+B1-REF	1	2	rdp	0.9	k__Bacteria	k__Bacteria;p__Nitrospirae	match	1	0.714285714286	0.714285714286	0.714285714286

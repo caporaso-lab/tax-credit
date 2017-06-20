@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	2	sortmerna	0.76:0.9:5:0.9:1.0	Unassigned	k__Fungi;p__Ascomycota;c__Sordariomycetes	underclassification	0	0.125	0.0909090909091	0.105263157895
+F1-REF	2	2	sortmerna	0.76:0.9:5:0.9:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Sebacinales;f__Sebacinaceae;g__Sebacina	k__Fungi;p__Basidiomycota;c__Tremellomycetes	overclassification	2	0.125	0.0909090909091	0.105263157895
+F1-REF	2	2	sortmerna	0.76:0.9:5:0.9:1.0	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Saccharomycetes	match	2	0.125	0.0909090909091	0.105263157895
+F1-REF	2	2	sortmerna	0.76:0.9:5:0.9:1.0	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Chytridiales;f__Chytriomycetaceae;g__Chytriomyces;s__Chytriomyces_hyalinus	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes	misclassification	1	0.125	0.0909090909091	0.105263157895
+F1-REF	2	2	sortmerna	0.76:0.9:5:0.9:1.0	Unassigned	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis	underclassification	0	0.125	0.0909090909091	0.105263157895
+F1-REF	2	2	sortmerna	0.76:0.9:5:0.9:1.0	Unassigned	k__Fungi;p__Ascomycota;c__Arthoniomycetes	underclassification	0	0.125	0.0909090909091	0.105263157895
+F1-REF	2	2	sortmerna	0.76:0.9:5:0.9:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Inocybaceae;g__Inocybe;s__Inocybe_sp	k__Fungi;p__Ascomycota;c__Pneumocystidomycetes	misclassification	1	0.125	0.0909090909091	0.105263157895
+F1-REF	2	2	sortmerna	0.76:0.9:5:0.9:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Thelephorales;f__Thelephoraceae;g__Tomentella;s__Tomentella_sp	k__Fungi;p__Basidiomycota;c__Wallemiomycetes	overclassification	2	0.125	0.0909090909091	0.105263157895
+F1-REF	2	2	sortmerna	0.76:0.9:5:0.9:1.0	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Diversisporales;f__Acaulosporaceae;g__Acaulospora;s__Acaulospora_mellea	k__Fungi;p__Chytridiomycota;c__Blastocladiomycetes	misclassification	1	0.125	0.0909090909091	0.105263157895
+F1-REF	2	2	sortmerna	0.76:0.9:5:0.9:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales	k__Fungi;p__Basidiomycota;c__Entorrhizomycetes	overclassification	2	0.125	0.0909090909091	0.105263157895
+F1-REF	2	2	sortmerna	0.76:0.9:5:0.9:1.0	k__Fungi;p__Basidiomycota;c__Ustilaginomycetes;o__Ustilaginales;f__Ustilaginales_fam_Incertae_sedis;g__Farysizyma;s__Farysizyma_sp	k__Fungi;p__Zygomycota;c__Zoopagomycotina_cls_Incertae_sedis	misclassification	1	0.125	0.0909090909091	0.105263157895

@@ -1,0 +1,32 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L1-iter2/ref_taxa.tsv
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L1-iter2/ref_taxa.tsv
+max_accepts:5
+min_consensus_fraction:0.76
+reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L1-iter2/ref_seqs.fasta
+similarity:0.8
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxdoK7B4
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L1-iter2/query.fasta --id 0.8 --rev --maxaccepts 5 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L1-iter2/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_DsDPHN.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	230	*	*	*	*	*	SH077873.07FU_JN205814_refs	*
+L	2173	195	*	*	*	*	*	SH092368.07FU_KJ767101_reps	*
+H	2173	112	100.0	+	0	0	83I112M	SH092404.07FU_KF887147_reps	SH092368.07FU_KJ767101_reps
+L	5211	112	*	*	*	*	*	SH123992.07FU_KF015668_refs	*
+H	5211	112	100.0	+	0	0	112M	SH092404.07FU_KF887147_reps	SH123992.07FU_KF015668_refs
+L	2176	250	*	*	*	*	*	SH092383.07FU_AB472195_reps	*
+H	2176	112	100.0	+	0	0	112M138I	SH092404.07FU_KF887147_reps	SH092383.07FU_AB472195_reps
+L	2179	250	*	*	*	*	*	SH092395.07FU_JQ922156_reps	*
+H	2179	112	100.0	+	0	0	81I112M57I	SH092404.07FU_KF887147_reps	SH092395.07FU_JQ922156_reps
+L	1250	216	*	*	*	*	*	SH085535.07FU_KF827448_reps	*
+H	1250	112	100.0	+	0	0	112M104I	SH092404.07FU_KF887147_reps	SH085535.07FU_KF827448_reps
+D	1250	2	*	*	*	*	100.0	SH085535.07FU_KF827448_reps	*

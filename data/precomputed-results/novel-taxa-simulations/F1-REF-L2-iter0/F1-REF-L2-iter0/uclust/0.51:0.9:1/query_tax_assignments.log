@@ -1,0 +1,39 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter0/ref_taxa.tsv
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter0/ref_taxa.tsv
+max_accepts:1
+min_consensus_fraction:0.51
+reference_sequences_fp:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter0/ref_seqs.fasta
+similarity:0.9
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxOIyHiv
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter0/query.fasta --id 0.9 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L2-iter0/ref_seqs.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_nX1P8J.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+N	*	141	*	*	*	*	*	SH076456.07FU_GQ927301_reps	*
+N	*	181	*	*	*	*	*	SH076782.07FU_EF600956_reps	*
+N	*	161	*	*	*	*	*	SH076993.07FU_FM205629_refs	*
+N	*	164	*	*	*	*	*	SH077292.07FU_JQ256426_refs	*
+N	*	157	*	*	*	*	*	SH077357.07FU_DQ640065_refs	*
+N	*	250	*	*	*	*	*	SH077499.07FU_HQ599386_refs	*
+N	*	230	*	*	*	*	*	SH077873.07FU_JN205814_refs	*
+N	*	184	*	*	*	*	*	SH078623.07FU_KF528010_reps	*
+N	*	221	*	*	*	*	*	SH078630.07FU_FJ515182_reps	*
+N	*	250	*	*	*	*	*	SH080277.07FU_AF444519_refs	*
+N	*	250	*	*	*	*	*	SH092147.07FU_FJ171856_reps	*
+N	*	173	*	*	*	*	*	SH096911.07FU_KC197021_refs	*
+N	*	250	*	*	*	*	*	SH097403.07FU_JN882331_reps	*
+N	*	250	*	*	*	*	*	SH107478.07FU_KC965137_reps	*
+N	*	250	*	*	*	*	*	SH118495.07FU_EF137934_refs	*
+L	5405	250	*	*	*	*	*	SH134928.07FU_GQ383691_reps	*
+H	5405	247	92.3	+	0	0	168M3I25MD53MI	SH130381.07FU_DQ486692_refs	SH134928.07FU_GQ383691_reps
+N	*	250	*	*	*	*	*	SH549973.07FU_KT767195_reps	*
+D	5405	2	*	*	*	*	92.3	SH134928.07FU_GQ383691_reps	*

@@ -1,0 +1,10 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	1	0	vsearch	10:0.99:0.8	Unassigned	k__Bacteria;p__Deferribacteres	underclassification	0	0.222222222222	0.222222222222	0.222222222222
+B1-REF	1	0	vsearch	10:0.99:0.8	Unassigned	k__Bacteria;p__Chrysiogenetes	underclassification	0	0.222222222222	0.222222222222	0.222222222222
+B1-REF	1	0	vsearch	10:0.99:0.8	k__Bacteria;p__Actinobacteria	k__Bacteria;p__Elusimicrobia	overclassification	1	0.222222222222	0.222222222222	0.222222222222
+B1-REF	1	0	vsearch	10:0.99:0.8	Unassigned	k__Bacteria;p__Fibrobacteres	underclassification	0	0.222222222222	0.222222222222	0.222222222222
+B1-REF	1	0	vsearch	10:0.99:0.8	k__Bacteria	k__Bacteria;p__Proteobacteria	match	1	0.222222222222	0.222222222222	0.222222222222
+B1-REF	1	0	vsearch	10:0.99:0.8	Unassigned	k__Bacteria;p__Spirochaetes	underclassification	0	0.222222222222	0.222222222222	0.222222222222
+B1-REF	1	0	vsearch	10:0.99:0.8	Unassigned	k__Bacteria;p__Bacteroidetes	underclassification	0	0.222222222222	0.222222222222	0.222222222222
+B1-REF	1	0	vsearch	10:0.99:0.8	k__Bacteria;p__Cyanobacteria;c__Synechococcophycideae;o__Synechococcales;f__Chamaesiphonaceae;g__Chamaesiphon;s__minutus	k__Bacteria;p__Tenericutes	overclassification	1	0.222222222222	0.222222222222	0.222222222222
+B1-REF	1	0	vsearch	10:0.99:0.8	k__Bacteria	k__Bacteria;p__Firmicutes	match	1	0.222222222222	0.222222222222	0.222222222222

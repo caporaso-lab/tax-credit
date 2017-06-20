@@ -1,0 +1,10 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	1	0	naive-bayes	0.001:[32,32]:0.0	k__Bacteria;p__Acidobacteria;c__Acidobacteriia;o__Acidobacteriales;f__Acidobacteriaceae;g__Acidicapsa;s__borealis	k__Bacteria;p__Deferribacteres	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[32,32]:0.0	k__Bacteria;p__Planctomycetes;c__Planctomycetia;o__Pirellulales;f__Pirellulaceae;g__planctomycete;s__MS3071	k__Bacteria;p__Chrysiogenetes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[32,32]:0.0	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Thermomonosporaceae;g__Actinomadura;s__atramentaria	k__Bacteria;p__Elusimicrobia	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[32,32]:0.0	k__Bacteria;p__Verrucomicrobia;c__Verrucomicrobiae;o__Verrucomicrobiales;f__Verrucomicrobiaceae;g__Haloferula;s__phyci	k__Bacteria;p__Fibrobacteres	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[32,32]:0.0	k__Bacteria;p__Cyanobacteria;c__Oscillatoriophycideae;o__Chroococcales;f__Xenococcaceae;g__Oscillatoria;s__rosea	k__Bacteria;p__Proteobacteria	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[32,32]:0.0	k__Bacteria;p__Verrucomicrobia;c__Verrucomicrobiae;o__Verrucomicrobiales;f__Verrucomicrobiaceae;g__Haloferula;s__rosea	k__Bacteria;p__Spirochaetes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[32,32]:0.0	k__Bacteria;p__Lentisphaerae;c__Lentisphaeria;o__Victivallales;f__Victivallaceae;g__Victivallis;s__vadensis	k__Bacteria;p__Bacteroidetes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[32,32]:0.0	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Streptomycetaceae;g__Streptomyces;s__alboverticillatus	k__Bacteria;p__Tenericutes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	naive-bayes	0.001:[32,32]:0.0	k__Bacteria;p__Acidobacteria;c__Holophagae;o__Holophagales;f__Holophagaceae;g__Holophaga;s__foetida	k__Bacteria;p__Firmicutes	overclassification	1	0.0	0.0	0.0

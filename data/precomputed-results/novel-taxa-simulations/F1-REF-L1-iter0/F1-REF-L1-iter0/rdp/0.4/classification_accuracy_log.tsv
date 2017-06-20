@@ -1,0 +1,4 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	1	0	rdp	0.4	k__Fungi	k__Fungi;p__Basidiomycota	match	1	0.666666666667	0.666666666667	0.666666666667
+F1-REF	1	0	rdp	0.4	k__Fungi;p__Ascomycota	k__Fungi;p__Glomeromycota	overclassification	1	0.666666666667	0.666666666667	0.666666666667
+F1-REF	1	0	rdp	0.4	k__Fungi	k__Fungi;p__Chytridiomycota	match	1	0.666666666667	0.666666666667	0.666666666667

@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	2	sortmerna	0.51:0.8:1:0.8:1.0	Unassigned	k__Fungi;p__Ascomycota;c__Sordariomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	sortmerna	0.51:0.8:1:0.8:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Sebacinales;f__Sebacinaceae;g__Sebacina;s__Sebacina_incrustans	k__Fungi;p__Basidiomycota;c__Tremellomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	sortmerna	0.51:0.8:1:0.8:1.0	k__Fungi;p__Ascomycota;c__Leotiomycetes;o__Rhytismatales;f__Rhytismataceae;g__Coccomyces;s__Coccomyces_dentatus	k__Fungi;p__Ascomycota;c__Saccharomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	sortmerna	0.51:0.8:1:0.8:1.0	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Chytridiales;f__Chytriomycetaceae;g__Chytriomyces;s__Chytriomyces_hyalinus	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes	misclassification	1	0.0	0.0	0.0
+F1-REF	2	2	sortmerna	0.51:0.8:1:0.8:1.0	Unassigned	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	sortmerna	0.51:0.8:1:0.8:1.0	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Lecanorales;f__Lecanorales_fam_Incertae_sedis;g__Lecania;s__Lecania_cyrtella	k__Fungi;p__Ascomycota;c__Arthoniomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	sortmerna	0.51:0.8:1:0.8:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Inocybaceae;g__Inocybe;s__Inocybe_sp	k__Fungi;p__Ascomycota;c__Pneumocystidomycetes	misclassification	1	0.0	0.0	0.0
+F1-REF	2	2	sortmerna	0.51:0.8:1:0.8:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Hymenochaetales;f__Schizoporaceae;g__Hyphodontia;s__Hyphodontia_setulosa	k__Fungi;p__Basidiomycota;c__Wallemiomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	sortmerna	0.51:0.8:1:0.8:1.0	k__Fungi;p__Glomeromycota;c__Glomeromycetes;o__Diversisporales;f__Acaulosporaceae;g__Acaulospora;s__Acaulospora_mellea	k__Fungi;p__Chytridiomycota;c__Blastocladiomycetes	misclassification	1	0.0	0.0	0.0
+F1-REF	2	2	sortmerna	0.51:0.8:1:0.8:1.0	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Cortinariaceae;g__Cortinarius;s__Cortinarius_sp	k__Fungi;p__Basidiomycota;c__Entorrhizomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	sortmerna	0.51:0.8:1:0.8:1.0	k__Fungi;p__Basidiomycota;c__Ustilaginomycetes;o__Ustilaginales;f__Ustilaginales_fam_Incertae_sedis;g__Farysizyma;s__Farysizyma_sp	k__Fungi;p__Zygomycota;c__Zoopagomycotina_cls_Incertae_sedis	misclassification	1	0.0	0.0	0.0

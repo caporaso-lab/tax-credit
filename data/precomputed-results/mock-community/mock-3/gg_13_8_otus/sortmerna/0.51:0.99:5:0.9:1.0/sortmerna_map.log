@@ -1,0 +1,31 @@
+ Wed Feb 15 18:30:02 2017
+
+ Command: sortmerna --ref /Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta,/var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpbjKlgE/dna-sequences -e 1.0 --aligned /Users/nbokulich/Desktop/projects/mock-community/mock-3/gg_13_8_otus/sortmerna/0.51:0.99:5:0.9:1.0/sortmerna_map -a 1 --print_all_reads --log --blast 3 --reads /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-3/rep_seqs.fna -v --best 5 
+ Process pid = 41337
+ Parameters summary:
+    Index: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/tmpbjKlgE/dna-sequences
+     Seed length = 18
+     Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
+     Gumbel lambda = 0.579768
+     Gumbel K = 0.309510
+     Minimal SW score based on E-value = 42
+    Number of seeds = 2
+    Edges = 4 (as integer)
+    SW match = 2
+    SW mismatch = -3
+    SW gap open penalty = 5
+    SW gap extend penalty = 2
+    SW ambiguous nucleotide = -3
+    SQ tags are not output
+    Number of threads = 1 (OpenMP is not supported with your current C++ compiler).
+    Reads file = /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-3/rep_seqs.fna
+
+ Results:
+    Total reads = 25
+    Total reads passing E-value threshold = 25 (100.00%)
+    Total reads failing E-value threshold = 0 (0.00%)
+    Minimum read length = 150
+    Maximum read length = 150
+    Mean read length = 150
+ By database:
+    /Users/nbokulich/Desktop/ref_dbs/gg_13_8_otus/rep_set/99_otus/dna-sequences.fasta		100.00%

@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	2	naive-bayes	0.001:[18,18]:0.7	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Sordariomycetes	match	2	0.666666666667	0.363636363636	0.470588235294
+F1-REF	2	2	naive-bayes	0.001:[18,18]:0.7	k__Fungi	k__Fungi;p__Basidiomycota;c__Tremellomycetes	underclassification	1	0.666666666667	0.363636363636	0.470588235294
+F1-REF	2	2	naive-bayes	0.001:[18,18]:0.7	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Saccharomycetes	match	2	0.666666666667	0.363636363636	0.470588235294
+F1-REF	2	2	naive-bayes	0.001:[18,18]:0.7	k__Fungi	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes	underclassification	1	0.666666666667	0.363636363636	0.470588235294
+F1-REF	2	2	naive-bayes	0.001:[18,18]:0.7	k__Fungi	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis	underclassification	1	0.666666666667	0.363636363636	0.470588235294
+F1-REF	2	2	naive-bayes	0.001:[18,18]:0.7	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Arthoniomycetes	match	2	0.666666666667	0.363636363636	0.470588235294
+F1-REF	2	2	naive-bayes	0.001:[18,18]:0.7	k__Fungi;p__Ascomycota	k__Fungi;p__Ascomycota;c__Pneumocystidomycetes	match	2	0.666666666667	0.363636363636	0.470588235294
+F1-REF	2	2	naive-bayes	0.001:[18,18]:0.7	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Basidiomycota;c__Wallemiomycetes	overclassification	2	0.666666666667	0.363636363636	0.470588235294
+F1-REF	2	2	naive-bayes	0.001:[18,18]:0.7	k__Fungi;p__Basidiomycota;c__Agaricomycetes	k__Fungi;p__Chytridiomycota;c__Blastocladiomycetes	misclassification	1	0.666666666667	0.363636363636	0.470588235294
+F1-REF	2	2	naive-bayes	0.001:[18,18]:0.7	k__Fungi	k__Fungi;p__Basidiomycota;c__Entorrhizomycetes	underclassification	1	0.666666666667	0.363636363636	0.470588235294
+F1-REF	2	2	naive-bayes	0.001:[18,18]:0.7	k__Fungi	k__Fungi;p__Zygomycota;c__Zoopagomycotina_cls_Incertae_sedis	underclassification	1	0.666666666667	0.363636363636	0.470588235294

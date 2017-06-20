@@ -1,0 +1,10 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	1	0	sortmerna	1.0:0.8:1:0.8:1.0	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Nocardiaceae;g__Rhodococcus;s__globerulus	k__Bacteria;p__Deferribacteres	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	sortmerna	1.0:0.8:1:0.8:1.0	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Micrococcaceae;g__Rothia;s__amarae	k__Bacteria;p__Chrysiogenetes	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	sortmerna	1.0:0.8:1:0.8:1.0	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Actinomycetales;f__Streptomycetaceae;g__Streptomyces;s__lanatus	k__Bacteria;p__Elusimicrobia	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	sortmerna	1.0:0.8:1:0.8:1.0	Unassigned	k__Bacteria;p__Fibrobacteres	underclassification	0	0.0	0.0	0.0
+B1-REF	1	0	sortmerna	1.0:0.8:1:0.8:1.0	k__Bacteria;p__Acidobacteria;c__Acidobacteriia;o__Acidobacteriales;f__Acidobacteriaceae;g__Granulicella;s__paludicola	k__Bacteria;p__Proteobacteria	overclassification	1	0.0	0.0	0.0
+B1-REF	1	0	sortmerna	1.0:0.8:1:0.8:1.0	Unassigned	k__Bacteria;p__Spirochaetes	underclassification	0	0.0	0.0	0.0
+B1-REF	1	0	sortmerna	1.0:0.8:1:0.8:1.0	Unassigned	k__Bacteria;p__Bacteroidetes	underclassification	0	0.0	0.0	0.0
+B1-REF	1	0	sortmerna	1.0:0.8:1:0.8:1.0	Unassigned	k__Bacteria;p__Tenericutes	underclassification	0	0.0	0.0	0.0
+B1-REF	1	0	sortmerna	1.0:0.8:1:0.8:1.0	k__Bacteria;p__Cyanobacteria;c__Synechococcophycideae;o__Pseudanabaenales;f__Pseudanabaenaceae;g__Leptolyngbya;s__antarctica	k__Bacteria;p__Firmicutes	overclassification	1	0.0	0.0	0.0

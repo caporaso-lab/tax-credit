@@ -1,0 +1,3 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	1	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Ascomycota	underclassification	0	0.0	0.0	0.0
+F1-REF	1	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Neocallimastigomycota	underclassification	0	0.0	0.0	0.0

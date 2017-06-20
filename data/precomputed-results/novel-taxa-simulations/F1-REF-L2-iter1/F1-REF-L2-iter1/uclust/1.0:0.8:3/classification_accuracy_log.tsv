@@ -1,0 +1,15 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Basidiomycota;c__Agaricomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Leotiomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Archaeorhizomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Basidiomycota;c__Ustilaginomycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Zygomycota;c__Kickxellomycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Pezizomycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Basidiomycota;c__Tritirachiomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Laboulbeniomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Basidiomycota;c__Cystobasidiomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Lecanorales;f__Parmeliaceae;g__Bryoria	k__Fungi;p__Ascomycota;c__Orbiliomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Ascomycota;c__Taphrinomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Basidiomycota;c__Dacrymycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	1	uclust	1.0:0.8:3	Unassigned	k__Fungi;p__Basidiomycota;c__Agaricomycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0

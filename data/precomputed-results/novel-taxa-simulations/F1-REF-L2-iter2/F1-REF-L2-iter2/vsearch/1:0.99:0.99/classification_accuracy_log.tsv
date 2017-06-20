@@ -1,0 +1,12 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	2	vsearch	1:0.99:0.99	k__Fungi;p__Ascomycota;c__Pezizomycetes;o__Pezizales;f__Pyronemataceae;g__Scutellinia;s__Scutellinia_sp	k__Fungi;p__Ascomycota;c__Sordariomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	vsearch	1:0.99:0.99	Unassigned	k__Fungi;p__Basidiomycota;c__Tremellomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	vsearch	1:0.99:0.99	k__Fungi;p__Ascomycota;c__Leotiomycetes;o__Helotiales;f__Dermateaceae;g__Mollisia;s__Mollisia_sp	k__Fungi;p__Ascomycota;c__Saccharomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	vsearch	1:0.99:0.99	k__Fungi;p__Chytridiomycota;c__Chytridiomycetes;o__Rhizophydiales;f__Alphamycetaceae;g__Alphamyces;s__Alphamyces_chaetifer	k__Fungi;p__Basidiomycota;c__Exobasidiomycetes	misclassification	1	0.0	0.0	0.0
+F1-REF	2	2	vsearch	1:0.99:0.99	Unassigned	k__Fungi;p__Zygomycota;c__Mortierellomycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	vsearch	1:0.99:0.99	k__Fungi;p__Ascomycota;c__Lecanoromycetes;o__Teloschistales;f__Megalosporaceae;g__Austroblastenia;s__Austroblastenia_pauciseptata	k__Fungi;p__Ascomycota;c__Arthoniomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	vsearch	1:0.99:0.99	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Hygrophoraceae;g__Hygrocybe;s__Hygrocybe_helobia	k__Fungi;p__Ascomycota;c__Pneumocystidomycetes	misclassification	1	0.0	0.0	0.0
+F1-REF	2	2	vsearch	1:0.99:0.99	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Polyporales;f__Phanerochaetaceae;g__Ceriporia;s__Ceriporia_nanlingensis	k__Fungi;p__Basidiomycota;c__Wallemiomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	2	vsearch	1:0.99:0.99	Unassigned	k__Fungi;p__Chytridiomycota;c__Blastocladiomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	vsearch	1:0.99:0.99	Unassigned	k__Fungi;p__Basidiomycota;c__Entorrhizomycetes	underclassification	0	0.0	0.0	0.0
+F1-REF	2	2	vsearch	1:0.99:0.99	Unassigned	k__Fungi;p__Zygomycota;c__Zoopagomycotina_cls_Incertae_sedis	underclassification	0	0.0	0.0	0.0

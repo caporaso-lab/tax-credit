@@ -1,0 +1,8 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+B1-REF	1	2	blast	1e-10	No blast hit	k__Archaea;p__Nanoarchaeota	misclassification	0	0.0	0.0	0.0
+B1-REF	1	2	blast	1e-10	k__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Sphingomonadales;f__Sphingomonadaceae;g__Sandarakinorhabdus;s__limnophila	k__Bacteria;p__Verrucomicrobia	overclassification	1	0.0	0.0	0.0
+B1-REF	1	2	blast	1e-10	k__Bacteria;p__Actinobacteria;c__Actinobacteria;o__Bifidobacteriales;f__Bifidobacteriaceae;g__Bifidobacterium;s__animalis	k__Bacteria;p__Chlorobi	overclassification	1	0.0	0.0	0.0
+B1-REF	1	2	blast	1e-10	k__Bacteria;p__Firmicutes;c__Clostridia;o__Thermoanaerobacterales;f__Thermoanaerobacteraceae;g__Thermoanaerobacter;s__uzonensis	k__Bacteria;p__Dictyoglomi	overclassification	1	0.0	0.0	0.0
+B1-REF	1	2	blast	1e-10	No blast hit	k__Bacteria;p__Planctomycetes	misclassification	0	0.0	0.0	0.0
+B1-REF	1	2	blast	1e-10	No blast hit	k__Archaea;p__Crenarchaeota	misclassification	0	0.0	0.0	0.0
+B1-REF	1	2	blast	1e-10	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfobacterales;f__Desulfobacteraceae;g__Desulfonema;s__limicola	k__Bacteria;p__Nitrospirae	overclassification	1	0.0	0.0	0.0

@@ -1,0 +1,65 @@
+UclustConsensusTaxonAssigner parameters:
+id_to_taxonomy_filepath:/Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_taxonomy_qiime_ver7_99_20.11.2016_dev_clean.tsv
+id_to_taxonomy_fp:/Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_taxonomy_qiime_ver7_99_20.11.2016_dev_clean.tsv
+max_accepts:1
+min_consensus_fraction:1.0
+reference_sequences_fp:/Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_refs_qiime_ver7_99_20.11.2016_dev_clean.fasta
+similarity:0.97
+unassignable_label:Unassigned
+Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxwBcPU9
+
+.uc file contents:
+
+# uclust --input /Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-26-ITS1/rep_seqs.fna --id 0.97 --rev --maxaccepts 1 --allhits --libonly --lib /Users/nbokulich/Desktop/ref_dbs/sh_qiime_release_20.11.2016/developer/sh_refs_qiime_ver7_99_20.11.2016_dev_clean.fasta --uc /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/UclustConsensusTaxonAssigner_WjoItI.uc
+# version=1.2.22
+# Tab-separated fields:
+# 1=Type, 2=ClusterNr, 3=SeqLength or ClusterSize, 4=PctId, 5=Strand, 6=QueryStart, 7=SeedStart, 8=Alignment, 9=QueryLabel, 10=TargetLabel
+# Record types (field 1): L=LibSeed, S=NewSeed, H=Hit, R=Reject, D=LibCluster, C=NewCluster, N=NoHit
+# For C and D types, PctId is average id with seed.
+# QueryStart and SeedStart are zero-based relative to start of sequence.
+# If minus strand, SeedStart is relative to reverse-complemented seed.
+L	8676	513	*	*	*	*	*	SH106479.07FU_KF188722_reps	*
+H	8676	290	98.3	-	0	0	290M223I	d7bf056df2823f9082b8dc45c5fa6482	SH106479.07FU_KF188722_reps
+L	5705	663	*	*	*	*	*	SH096261.07FU_JN942657_refs	*
+H	5705	290	99.7	-	0	0	20I290M353I	8246a28746d3c9f9184dbc2b4b01204b	SH096261.07FU_JN942657_refs
+N	*	290	*	*	*	*	*	b74b91bf04919d41babc11dd6491afa4	*
+L	12445	526	*	*	*	*	*	SH124715.07FU_AF414968_reps	*
+H	12445	290	97.2	-	0	0	11I146M2D142M227I	72dfa183b8bcb04daa0d1e3385e29048	SH124715.07FU_AF414968_reps
+L	742	613	*	*	*	*	*	SH079313.07FU_JF770450_refs	*
+H	742	290	98.6	-	0	0	40I290M283I	242e103479ce87743331a6fb79f90428	SH079313.07FU_JF770450_refs
+L	11131	881	*	*	*	*	*	SH118435.07FU_UDB015175_refs	*
+H	11131	290	100.0	-	0	0	329I290M262I	090f10c4f3c12bef6bf0d3dc87db5b89	SH118435.07FU_UDB015175_refs
+N	*	290	*	*	*	*	*	b8cdb9d70a2308233601db37408b7cb2	*
+H	742	290	98.6	-	0	0	40I290M283I	b7df3c9e64e46b0e2b122357e5a451dd	SH079313.07FU_JF770450_refs
+L	19629	530	*	*	*	*	*	SH107791.07FU_HQ829413_reps	*
+H	19629	290	98.6	-	0	0	11I44MI117MD128M229I	9299202cf8d0c4c671f64a96f5fb3615	SH107791.07FU_HQ829413_reps
+N	*	290	*	*	*	*	*	03bcb98a2a5578524905bf3f4edf4107	*
+N	*	290	*	*	*	*	*	a450cb24dab38f52cfd17faedb314713	*
+N	*	290	*	*	*	*	*	5135430c97682a0a913150e2ca1d0bfd	*
+L	8073	683	*	*	*	*	*	SH104009.07FU_AY375276_reps	*
+H	8073	290	100.0	-	0	0	20I290M373I	59d9d5c81ebbad1889b2875372c4aeea	SH104009.07FU_AY375276_reps
+N	*	290	*	*	*	*	*	ce0bbb3553d4c83710cd6c2bf07948f2	*
+H	742	290	99.0	-	0	0	40I290M283I	ba9f80af05850b2aec2b12c18cdd6731	SH079313.07FU_JF770450_refs
+L	7980	598	*	*	*	*	*	SH103715.07FU_JN206387_refs	*
+H	7980	290	100.0	-	0	0	17I290M291I	0a34f6517e4e22927e4f45bb06a9904b	SH103715.07FU_JN206387_refs
+N	*	290	*	*	*	*	*	b3af56c8dea0d3c8ce9db7c7f467c60f	*
+N	*	290	*	*	*	*	*	fd30a6904feb40a375ff4af151f29fd7	*
+N	*	290	*	*	*	*	*	663b9ce871d8821ad3d4b64f83ee91bd	*
+H	8676	290	98.6	-	0	0	290M223I	d58a7249fdde19a4787346250a05569b	SH106479.07FU_KF188722_reps
+L	14102	654	*	*	*	*	*	SH127719.07FU_KC489481_reps	*
+H	14102	290	99.7	-	0	0	20I290M344I	d5a8337527bd81baebaa8618ccea88a4	SH127719.07FU_KC489481_reps
+N	*	290	*	*	*	*	*	05113b86f3119fa2dc11fda0a38f7529	*
+N	*	290	*	*	*	*	*	e2b17f7b0a20de83c66c8b5af89d3fe4	*
+N	*	290	*	*	*	*	*	a7fe8c460ed7006fd914f89353d92f28	*
+L	8649	585	*	*	*	*	*	SH106444.07FU_EU339123_reps	*
+H	8649	290	100.0	-	0	0	290M295I	f7c0d2f087426caf9ac0bc3e697eeef3	SH106444.07FU_EU339123_reps
+D	742	4	*	*	*	*	98.7	SH079313.07FU_JF770450_refs	*
+D	5705	2	*	*	*	*	99.7	SH096261.07FU_JN942657_refs	*
+D	7980	2	*	*	*	*	100.0	SH103715.07FU_JN206387_refs	*
+D	8073	2	*	*	*	*	100.0	SH104009.07FU_AY375276_reps	*
+D	8649	2	*	*	*	*	100.0	SH106444.07FU_EU339123_reps	*
+D	8676	3	*	*	*	*	98.4	SH106479.07FU_KF188722_reps	*
+D	11131	2	*	*	*	*	100.0	SH118435.07FU_UDB015175_refs	*
+D	12445	2	*	*	*	*	97.2	SH124715.07FU_AF414968_reps	*
+D	14102	2	*	*	*	*	99.7	SH127719.07FU_KC489481_reps	*
+D	19629	2	*	*	*	*	98.6	SH107791.07FU_HQ829413_reps	*

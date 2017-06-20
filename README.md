@@ -1,70 +1,64 @@
-A standardized and extensible evaluation framework for taxonomic classifiers
-============================================================================
+# TAX CREdiT: TAXonomic ClassifieR Evaluation Tool
 
-To view static versions of the reports presented in [Bokulich, et al., (Microbiome, under review)](https://peerj.com/preprints/934/), [start here](http://nbviewer.ipython.org/github/gregcaporaso/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
+### A standardized and extensible evaluation framework for taxonomic classifiers
 
-This repository contains python code and IPython Notebooks designed to run on the QIIME 1.9.1 AWS instance. You can find
-that AMI on the [QIIME resources page](http://qiime.org/home_static/dataFiles.html).
+To view static versions of the reports presented in [Bokulich, et al., (Microbiome, under review)](https://peerj.com/preprints/934/), [start here](http://nbviewer.jupyter.org/github/nbokulich/short-read-tax-assignment/blob/master/ipynb/Index.ipynb).
+
+
+Environment
+-----------------
+This repository contains python-3 code and Jupyter notebooks, but some taxonomy assignment methods (e.g., using QIIME-1 legacy methods) may require different python or software versions. Hence, we use conda parallel environments to support comparison of myriad methods in a single framework.
+
+The first step is to create a conda environment with the necessary dependencies. This requires installing [miniconda 3](http://conda.pydata.org/miniconda.html) to manage parallel python environments. After miniconda (or another conda version) is installed, proceed with [installing QIIME 2](https://docs.qiime2.org/2.0.6/install/).
+
+An example of how to load different environments to support other methods can be see in the [QIIME-1 taxonomy assignment notebook](https://github.com/nbokulich/short-read-tax-assignment/tree/master/ipynb/mock-community/generate-tax-assignments.ipynb).
+
 
 Setup and install
 -----------------
-
-The analyses presented in our paper were run on an m2.4xlarge instance (some of the assignment procedures can require large amounts of memory, so this allows for use of 4 parallel engines). 
-
-A 100GB EBS volume was mounted as ``$HOME/data`` (generic instructions for this are [here](http://qiime.org/tutorials/working_with_aws.html#creating-a-volume-for-persistent-storage-across-different-launches-of-an-instance-or-different-instances), but any instructions for mounting an EBS volume should suffice and others may be more up-to-date. 
-
-The ``$HOME/tmp`` directory was updated to be a symbolic link to ``/mnt/``, and ownership of ``/mnt`` was transferred to the ``ubuntu`` user. This was done as follows:
-
-```
-rm -r $HOME/temp/
-ln -s /mnt/ $HOME/temp
-sudo chown ubuntu /mnt
-sudo chgrp ubuntu /mnt
-```
-
 The library code and IPython Notebooks are then installed as follows:
 
 ```
-cd $HOME/data
+cd $HOME/projects
 git clone https://github.com/gregcaporaso/short-read-tax-assignment.git
-cd $HOME/data/short-read-tax-assignment/code
+cd $HOME/projects/short-read-tax-assignment/code
 sudo pip install .
 ```
-(If you are not running this on the QIIME 1.9.1 AWS instance, you may need to run ``sudo pip install numpy`` before ``sudo pip install .``.)
 
 To run the unit tests, you should install run:
 
 ```
-cd $HOME/data/short-read-tax-assignment/code
+cd $HOME/projects/short-read-tax-assignment/code
 nosetests .
 ```
 
 Finally, download and unzip the reference databases:
 
 ```
-cd $HOME/data/
-wget https://dl.dropboxusercontent.com/u/2868868/unite-97-rep-set.tgz
+cd $HOME/ref_dbs/
+wget https://unite.ut.ee/sh_files/sh_qiime_release_20.11.2016.zip
 wget ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
-tar -xzf unite-97-rep-set.tgz
+unzip sh_qiime_release_20.11.2016.zip
 tar -xzf gg_13_8_otus.tar.gz
 ```
 
-Using the IPython Notebooks included in this repository
+Equipment
+------------------
+The analyses included here can all be run in standard, modern laptop, provided you don't mind waiting a few hours on the most memory-intensive step (taxonomy classification of millions of sequences). All analyses presented in ``tax-credit`` were run in a single afternoon using a MacBook Pro with the following specifications:
+**OS** OS X 10.11.6 "El Capitan"
+**Processor** 2.3 GHz Intel Core i7
+**Memory** 8 GB 1600 MHz DDR3
+
+
+Using the Jupyter Notebooks included in this repository
 -------------------------------------------------------
 
-To view and interact with an [IPython Notebook](http://ipython.org/notebook.html), change into the ``$HOME/data/short-read-tax-assignment/ipynb`` directory and [start the IPython Notebook server in a screen session](http://qiime.org/tutorials/working_with_aws.html#connecting-to-your-qiime-ec2-instance-using-the-ipython-notebook).
+To view and interact with [Jupyter Notebook](http://jupyter.org/), change into the ``/short-read-tax-assignment/ipynb`` directory and run Jupyter Notebooks from the terminal with the command:
 
+``jupyter notebook index.ipynb``
 
-**Everything below here needs to be updated after the re-analyses are completed.**
+The notebooks menu should open in your browser. From the main index, you can follow the menus to browse different analyses, or use ``File --> Open`` from the notebook toolbar to access the full file tree.
 
-Evaluation workflows, for testing new taxonomic assignment methods
-------------------------------------------------------------------
-
-Several [IPython Notebooks](http://ipython.org/notebook.html) are provided to illustrate how to run a parameter sweep on a concept design for a new taxonomic assigner, and then evaluate that in the context of pre-computed results (the evaluation data from this study). The notebooks can be found under ``short-read-tax-assignment/ipynb``.
-
-The notebooks whose names begin with ``0`` illustrate how to generate results that can be analyzed using the evaluation framework presented here. These will likely have software requirements in addition to those  that are installed with ``short-read-tax-assignment``. Those will be listed in the top of each individual notebook.
-
-The notebooks whose names begin with ``1`` are used to run the analyses performed in our study, and which you can re-run to include your data. These do not have requirements beyond those included in the ``short-read-tax-assignment`` installation, though you will need to update filepaths in one cell in that notebook to refer to locations on the system where you are executing the notebook.
 
 Citing
 ------

@@ -1,0 +1,35 @@
+# Mock-26 contains low-coverage samples to be removed with this command and file
+# projectdir=$HOME/Desktop/projects/short-read-tax-assignment/data/mock-community/mock-26/; projectdir1=$HOME/Desktop/projects/short-read-tax-assignment/data/precomputed-results/mock-community/mock-26/unite_20.11.2016_clean_fullITS/expected/; source activate qiime1; filter_samples_from_otu_table.py -i $projectdir/feature_table.biom -o $projectdir/feature_table_1.biom --sample_id_fp $projectdir/samples-to-keep.tsv --negate_sample_id_fp; filter_samples_from_otu_table.py -i $projectdir1/table.L6-taxa.biom -o $projectdir1/feature_table_1.biom --sample_id_fp $projectdir/samples-to-keep.tsv --negate_sample_id_fp; mv $projectdir/feature_table_1.biom $projectdir/feature_table.biom; mv $projectdir1/feature_table_1.biom $projectdir1/table.L6-taxa.biom
+Mock.50
+Mock.63
+Mock.60
+Mock.121
+Mock.42
+Mock.61
+Mock.72
+Mock.68
+Mock.56
+Mock.127
+Mock.49
+Mock.51
+Mock.74
+Mock.71
+Mock.65
+Mock.55
+Mock.76
+Mock.73
+Mock.125
+Mock.64
+Mock.80
+Mock.124
+Mock.59
+Mock.78
+Mock.75
+Mock.128
+Mock.77
+Mock.69
+Mock.129
+Mock.70
+Mock.130
+Mock.123
+Mock.131

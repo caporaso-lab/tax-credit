@@ -1,9 +1,0 @@
-BlastTaxonAssigner parameters:
-Application:blastn/megablast
-Max E value:10000.0
-Min percent identity:90.0
-id_to_taxonomy_filepath:/home/ubuntu/data/gg_13_8_otus/taxonomy/97_otu_taxonomy.txt
-reference_seqs_filepath:/home/ubuntu/data/gg_13_8_otus/rep_set/97_otus.fasta
-Number of sequences inspected: 9983
-Number with no blast hits: 4
-Result path: /tmp/assign-tax4NED6d

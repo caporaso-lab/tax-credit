@@ -1,0 +1,18 @@
+dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Ascomycota;c__Lecanoromycetes	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Ascomycota;c__Dothideomycetes	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Ascomycota;c__Pezizomycetes	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Ascomycota;c__Geoglossomycetes	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Basidiomycota;c__Microbotryomycetes	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Ascomycota;c__Eurotiomycetes	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Zygomycota;c__Mucoromycotina_cls_Incertae_sedis	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Basidiomycota;c__Pucciniomycetes	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Basidiomycota;c__Ustilaginomycetes	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Hygrophoraceae;g__Hygrophorus;s__Hygrophorus_speciosus	k__Fungi;p__Basidiomycota;c__Agaricostilbomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Ascomycota;c__Neolectomycetes	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Diaporthales;f__Diaporthaceae;g__Phomopsis;s__Phomopsis_sp	k__Fungi;p__Ascomycota;c__Ascomycota_cls_Incertae_sedis	overclassification	2	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Chytridiomycota;c__Monoblepharidomycetes	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Chaetosphaeriales;f__Chaetosphaeriaceae;g__Dictyochaeta;s__Dictyochaeta_simplex	k__Fungi;p__Ascomycota;c__Lichinomycetes	overclassification	2	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	No blast hit	k__Fungi;p__Zygomycota;c__Entomophthoromycotina_cls_Incertae_sedis	misclassification	0	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	k__Fungi;p__Basidiomycota;c__Agaricomycetes;o__Agaricales;f__Strophariaceae;g__Galerina;s__Galerina_hypnorum	k__Fungi;p__Basidiomycota;c__Basidiomycota_cls_Incertae_sedis	overclassification	2	0.0	0.0	0.0
+F1-REF	2	0	blast	1e-10	k__Fungi;p__Basidiomycota;c__Cystobasidiomycetes;o__Cystobasidiales;f__Cystobasidiaceae;g__Occultifur;s__Occultifur_sp	k__Fungi;p__Ascomycota;c__Schizosaccharomycetes	misclassification	1	0.0	0.0	0.0
