@@ -37,10 +37,12 @@ tar -xzf gg_13_8_otus.tar.gz
 
 Equipment
 ------------------
-The analyses included here can all be run in standard, modern laptop, provided you don't mind waiting a few hours on the most memory-intensive step (taxonomy classification of millions of sequences). All analyses presented in ``tax-credit`` were run in a single afternoon using a MacBook Pro with the following specifications:
+The analyses included here can all be run in standard, modern laptop, provided you don't mind waiting a few hours on the most memory-intensive step (taxonomy classification of millions of sequences). With the exception of the `q2-feature-classifier naive-bayes*` classifier sweeps, which were run on a high-performance cluster, all analyses presented in ``tax-credit`` were run in a single day using a MacBook Pro with the following specifications:
 **OS** OS X 10.11.6 "El Capitan"
 **Processor** 2.3 GHz Intel Core i7
 **Memory** 8 GB 1600 MHz DDR3
+
+If you intend to perform extensive parameter sweeps on a classifier (e.g., several hundred or more parameter combinations), you may want to consider running these analyses using cluster resources, if available.
 
 
 Using the Jupyter Notebooks included in this repository
