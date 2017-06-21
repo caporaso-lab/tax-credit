@@ -30,8 +30,8 @@ class EvalFrameworkTests(TestCase):
             's2\t0.1\t0.9'])
 
         cls.table2 = '\n'.join(['#SampleID\t0001\t0003',
-                                 's1\t0.5\t0.5',
-                                 's2\t0.1\t0.9\n'])
+                                's1\t0.5\t0.5',
+                                's2\t0.1\t0.9\n'])
 
         _ref1 = '\n'.join([
             '0001\tk__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; '
@@ -40,9 +40,9 @@ class EvalFrameworkTests(TestCase):
             'bacteriales; f__Flavobacteriaceae; g__Flavobacterium; s__'])
 
         cls.seqs1 = '\n'.join(['>0001',
-                                'ACTAGTAGTTGAC',
-                                '>0003',
-                                'ATCGATGCATGCA\n'])
+                               'ACTAGTAGTTGAC',
+                               '>0003',
+                               'ATCGATGCATGCA\n'])
 
         cls.tmpdir = mkdtemp()
         testdir = join(cls.tmpdir, 'sim_test')

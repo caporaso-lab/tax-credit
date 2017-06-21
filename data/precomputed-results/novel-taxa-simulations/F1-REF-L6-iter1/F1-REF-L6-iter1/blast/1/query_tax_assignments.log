@@ -1,9 +1,0 @@
-BlastTaxonAssigner parameters:
-Application:blastn/megablast
-Max E value:1.0
-Min percent identity:90.0
-id_to_taxonomy_filepath:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L6-iter1/ref_taxa.tsv
-reference_seqs_filepath:/Users/nbokulich/Desktop/projects/short-read-tax-assignment/data/novel-taxa-simulations/F1-REF-L6-iter1/ref_seqs.fasta
-Number of sequences inspected: 1786
-Number with no blast hits: 152
-Result path: /var/folders/0t/l1dz88p50y91vx_22fx5w3780000gn/T/assign-taxWwCdR0

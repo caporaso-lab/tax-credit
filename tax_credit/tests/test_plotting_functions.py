@@ -248,8 +248,8 @@ class EvalFrameworkTests(TestCase):
         cls.dm, cls.s_md = make_distance_matrix(
             join(cls.tmpdir, 'table2.biom'), method="braycurtis")
         cls.dist = per_method_distance(cls.dm, cls.s_md, group_by='method',
-                                        standard='B', metric='distance',
-                                        sample='Sample')
+                                       standard='B', metric='distance',
+                                       sample='Sample')
 
     @classmethod
     def tearDownClass(cls):
