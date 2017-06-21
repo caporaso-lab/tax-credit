@@ -7,7 +7,7 @@ The following notebooks describe the evaluation of taxonomy classifiers using cr
 To prepare results from another classifier for analysis, you'll need to have tab-delimited taxonomy files that map query sequence IDs to their taxonomy assignments in the format:
 seqID	taxonomy;label;string
 
-An example of how to generate these is presented in the [taxonomy assignment notebook](./taxonomy-assignment.ipynb) in this directory, which was used to generated the precomputed data in the [tax-credit repository](https://github.com/caporaso-lab/short-read-tax-assignment/).
+An example of how to generate these is presented in the [taxonomy assignment notebook](./taxonomy-assignment.ipynb) in this directory, which was used to generated the precomputed data in the [tax-credit repository](https://github.com/caporaso-lab/tax-credit/).
 
 Your taxonomy files should be called ``query_tax_assignments.txt``, and nested in the following directory structure:
 
@@ -22,7 +22,7 @@ results_dir/
 
 ``results_dir`` is the name of the top level directory, and you will set this value in the first code cell of the analysis notebooks. You can name this directory whatever you want to. ``cross-validated`` describes the specific analysis that is being run, and must be named ``cross-validated`` for the framework to find your results.
 
-This directory structure is identical to that for the [precomputed results](https://github.com/caporaso-lab/short-read-tax-assignment/tree/master/data/precomputed-results). You can review that directory structure for an example of how this should look.
+This directory structure is identical to that for the [precomputed results](https://github.com/caporaso-lab/tax-credit/tree/master/data/precomputed-results). You can review that directory structure for an example of how this should look.
 
 ## Contents
 

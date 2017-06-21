@@ -67,20 +67,20 @@ class EvalFrameworkTests(TestCase):
             'o__Desulfuromonadales; f__Geobacteraceae; g__Geobacter; s__']
 
         cls.seqs1 = '\n'.join(['>229854',
-                                'ACTAGTAGTTGAC',
-                                '>367523',
-                                'ATCGATGCATGCA',
-                                '>239330',
-                                'TGTGTGCTGGTAGTTAC',
-                                '>203525',
-                                'TGTATGCTGATGC\n'])
+                               'ACTAGTAGTTGAC',
+                               '>367523',
+                               'ATCGATGCATGCA',
+                               '>239330',
+                               'TGTGTGCTGGTAGTTAC',
+                               '>203525',
+                               'TGTATGCTGATGC\n'])
 
         cls.seqs2 = '\n'.join(['>229854',
-                                'ACTAGTAGTTGAC',
-                                '>367523',
-                                'ATCGATGCATGCA',
-                                '>239330',
-                                'TGTGTGCTGGTAGTTAC\n'])
+                               'ACTAGTAGTTGAC',
+                               '>367523',
+                               'ATCGATGCATGCA',
+                               '>239330',
+                               'TGTGTGCTGGTAGTTAC\n'])
 
         cls.tmpdir = mkdtemp()
 
