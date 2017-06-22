@@ -1,6 +1,6 @@
 # Mock community evaluations
 
-This notebook describes how to apply the mock community evaluations presented in (Bokulich, Rideout, et al. (in preparation)) to reproduce the analyses in that paper, or to extend them to other data sets. 
+This notebook describes how to apply the mock community evaluations presented in (Bokulich, Kaehler, et al. (in preparation)) to reproduce the analyses in that paper, or to extend them to other data sets. 
 
 ## Structuring new results for comparison to precomputed results
 To prepare results from another classifier for analysis, you'll need to have [BIOM](http://www.biom-format.org) files with taxonomy assignments as an observation metadata category called ``taxonomy``. An example of how to generate these is presented in the [data generation notebook](./mock-dataset-generation.ipynb) in this directory, which was used to generated the precomputed data in the [tax-credit repository](https://github.com/caporaso-lab/tax-credit/).
