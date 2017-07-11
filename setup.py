@@ -17,7 +17,7 @@ setup(
     packages=find_packages(),
     install_requires=['biom-format', 'pandas', 'statsmodels', 'bokeh',
                       'scipy', 'jupyter', 'scikit-bio', 'seaborn',
-		              'scikit-learn'],
+		      'scikit-learn', 'joblib'],
     author="Nicholas Bokulich",
     author_email="nbokulich@gmail.com",
     description="Systematic benchmarking of taxonomic classification methods",
