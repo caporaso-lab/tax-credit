@@ -1,3 +1,0 @@
-dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
-F1-REF	1	1	naive-bayes	0.001:[6,6]:0.98	k__Fungi	k__Fungi;p__Ascomycota	match	1	1.0	1.0	1.0
-F1-REF	1	1	naive-bayes	0.001:[6,6]:0.98	k__Fungi	k__Fungi;p__Neocallimastigomycota	match	1	1.0	1.0	1.0

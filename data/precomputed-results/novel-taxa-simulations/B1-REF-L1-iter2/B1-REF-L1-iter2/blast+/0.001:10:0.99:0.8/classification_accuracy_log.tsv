@@ -1,8 +1,0 @@
-dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
-B1-REF	1	2	blast+	0.001:10:0.99:0.8	Unassigned	k__Archaea;p__Nanoarchaeota	underclassification	0	0.285714285714	0.285714285714	0.285714285714
-B1-REF	1	2	blast+	0.001:10:0.99:0.8	k__Bacteria	k__Bacteria;p__Verrucomicrobia	match	1	0.285714285714	0.285714285714	0.285714285714
-B1-REF	1	2	blast+	0.001:10:0.99:0.8	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Ruminococcaceae	k__Bacteria;p__Chlorobi	overclassification	1	0.285714285714	0.285714285714	0.285714285714
-B1-REF	1	2	blast+	0.001:10:0.99:0.8	k__Bacteria;p__Firmicutes;c__Clostridia;o__Thermoanaerobacterales;f__Thermoanaerobacteraceae;g__Thermoanaerobacter	k__Bacteria;p__Dictyoglomi	overclassification	1	0.285714285714	0.285714285714	0.285714285714
-B1-REF	1	2	blast+	0.001:10:0.99:0.8	k__Bacteria;p__Firmicutes;c__Bacilli;o__Bacillales;f__Staphylococcaceae;g__Staphylococcus	k__Bacteria;p__Planctomycetes	overclassification	1	0.285714285714	0.285714285714	0.285714285714
-B1-REF	1	2	blast+	0.001:10:0.99:0.8	Unassigned	k__Archaea;p__Crenarchaeota	underclassification	0	0.285714285714	0.285714285714	0.285714285714
-B1-REF	1	2	blast+	0.001:10:0.99:0.8	k__Bacteria	k__Bacteria;p__Nitrospirae	match	1	0.285714285714	0.285714285714	0.285714285714

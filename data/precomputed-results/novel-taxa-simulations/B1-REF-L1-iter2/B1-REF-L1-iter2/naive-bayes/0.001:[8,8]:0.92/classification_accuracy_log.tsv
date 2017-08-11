@@ -1,8 +1,0 @@
-dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
-B1-REF	1	2	naive-bayes	0.001:[8,8]:0.92	k__Archaea;p__Euryarchaeota;c__Thermococci;o__Thermococcales;f__Thermococcaceae	k__Archaea;p__Nanoarchaeota	overclassification	1	0.571428571429	0.571428571429	0.571428571429
-B1-REF	1	2	naive-bayes	0.001:[8,8]:0.92	k__Bacteria	k__Bacteria;p__Verrucomicrobia	match	1	0.571428571429	0.571428571429	0.571428571429
-B1-REF	1	2	naive-bayes	0.001:[8,8]:0.92	k__Bacteria	k__Bacteria;p__Chlorobi	match	1	0.571428571429	0.571428571429	0.571428571429
-B1-REF	1	2	naive-bayes	0.001:[8,8]:0.92	k__Bacteria;p__Firmicutes;c__Clostridia;o__Thermoanaerobacterales;f__Thermoanaerobacteraceae	k__Bacteria;p__Dictyoglomi	overclassification	1	0.571428571429	0.571428571429	0.571428571429
-B1-REF	1	2	naive-bayes	0.001:[8,8]:0.92	k__Bacteria	k__Bacteria;p__Planctomycetes	match	1	0.571428571429	0.571428571429	0.571428571429
-B1-REF	1	2	naive-bayes	0.001:[8,8]:0.92	Unassigned	k__Archaea;p__Crenarchaeota	underclassification	0	0.571428571429	0.571428571429	0.571428571429
-B1-REF	1	2	naive-bayes	0.001:[8,8]:0.92	k__Bacteria	k__Bacteria;p__Nitrospirae	match	1	0.571428571429	0.571428571429	0.571428571429

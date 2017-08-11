@@ -19,6 +19,8 @@ from tempfile import mkdtemp
 from shutil import rmtree
 
 from biom import Table
+from sklearn.metrics import precision_recall_fscore_support
+
 from tax_credit.eval_framework import (compute_taxon_accuracy,
                                        filter_table,
                                        get_sample_to_top_params,
@@ -173,13 +175,30 @@ class EvalFrameworkTests(TestCase):
         """ p, r, and f on individual expected sequences."""
         exp_taxa = join(self.tmpdir, 'trueish-taxonomies.tsv')
         obs_taxa = join(self.tmpdir, 'taxonomy.tsv')
-        for i, ep, er, ef in zip(
-                range(7),
-                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.3333333333],
-                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.0833333333],
-                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.1333333333]):
+
+        exp_list = []
+        obs_list = []
+        weights = []
+        with open(exp_taxa) as exp_in:
+            for line in exp_in:
+                sid, taxon = line.split()
+                if not self.table1.exists(sid, axis='observation'):
+                    continue
+                exp_list.append(taxon)
+                with open(obs_taxa) as obs_in:
+                    for oline in obs_in:
+                        osid, otaxon = oline.split()
+                        if osid == sid:
+                            obs_list.append(otaxon)
+                            break
+                weights.append(self.table1.get_value_by_ids(sid, 's1'))
+        for i in range(7):
             p, r, f = per_sequence_precision(
                 exp_taxa, obs_taxa, self.table1, 's1', i)
+            elist = [';'.join(e.split(';')[:i+1]) for e in exp_list]
+            olist = [';'.join(o.split(';')[:i+1]) for o in obs_list]
+            ep, er, ef, _ = precision_recall_fscore_support(
+                elist, olist, sample_weight=weights, average='micro')
             self.assertAlmostEqual(p, ep)
             self.assertAlmostEqual(r, er)
             self.assertAlmostEqual(f, ef)
@@ -190,20 +209,19 @@ class EvalFrameworkTests(TestCase):
         """
         exp_taxa = join(self.tmpdir, 'trueish-taxonomies.tsv')
         obs_taxa = join(self.tmpdir, 'taxonomy.tsv')
-        for i, ep, er, ef in zip(
-                range(7),
-                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.],
-                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.],
-                [1., 1., 0.25, 0.25, 0.25, 0.25, 0.]):
+        etable = self.table1.filter(['o1'], axis='observation', invert=True,
+                                    inplace=False)
+        for i in range(7):
             p, r, f = per_sequence_precision(
-                exp_taxa, obs_taxa, self.table1, 's1', i,
-                exclude=['Aa;Bb;Cc;Dd;Ee;Ff;Gg'])
+                exp_taxa, obs_taxa, self.table1, 's1', i, exclude=['other'])
+            ep, er, ef = per_sequence_precision(
+                exp_taxa, obs_taxa, etable, 's1', i)
             self.assertAlmostEqual(p, ep)
             self.assertAlmostEqual(r, er)
             self.assertAlmostEqual(f, ef)
 
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(self):
         _table1 = """{"id": "None",
                       "format": "Biological Observation Matrix 1.0.0",
                       "format_url": "http:\/\/biom-format.org",
@@ -2274,7 +2292,7 @@ class EvalFrameworkTests(TestCase):
              '3,0.51,0.9'])
 
         _exp_taxa = '\n'.join(
-            ['o1\tAa;Bb;Cc;Dd;Ee;Ff;Gg',
+            ['o1\tother',
              'o3\tAa;Ii;Jj;Kk;Ll;Mm;Nn',
              'o2\tAa;Bb;Cc;Dd;Ee;Ff;Hh',
              'o4\tAa;Ii;Jj;Kk;Ll;Mm;Oo'])
@@ -2285,23 +2303,23 @@ class EvalFrameworkTests(TestCase):
              'o4\tAa;Ii;Jj;Kk;Ll;Mm;Oo',
              'o1\tAa;Bb;Cc;Dd;Ee;Ff;Gg'])
 
-        cls.table1 = Table.from_json(json.loads(_table1))
-        cls.table2 = Table.from_json(json.loads(_table2))
-        cls.table3 = Table.from_json(json.loads(_table3))
+        self.table1 = Table.from_json(json.loads(_table1))
+        self.table2 = Table.from_json(json.loads(_table2))
+        self.table3 = Table.from_json(json.loads(_table3))
 
-        cls.mock_result_table1 = pd.DataFrame.from_csv(
+        self.mock_result_table1 = pd.DataFrame.from_csv(
             StringIO(_mock_result_table1))
 
-        cls.tmpdir = mkdtemp()
+        self.tmpdir = mkdtemp()
 
-        with open(join(cls.tmpdir, 'trueish-taxonomies.tsv'), 'w') as out:
+        with open(join(self.tmpdir, 'trueish-taxonomies.tsv'), 'w') as out:
             out.write(_exp_taxa)
-        with open(join(cls.tmpdir, 'taxonomy.tsv'), 'w') as out:
+        with open(join(self.tmpdir, 'taxonomy.tsv'), 'w') as out:
             out.write(_obs_taxa)
 
     @classmethod
-    def tearDownClass(cls):
-        rmtree(cls.tmpdir)
+    def tearDownClass(self):
+        rmtree(self.tmpdir)
 
 
 if __name__ == "__main__":

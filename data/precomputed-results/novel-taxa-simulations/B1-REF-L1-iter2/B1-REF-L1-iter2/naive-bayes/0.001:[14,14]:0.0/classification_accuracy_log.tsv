@@ -1,8 +1,0 @@
-dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
-B1-REF	1	2	naive-bayes	0.001:[14,14]:0.0	k__Archaea;p__Euryarchaeota;c__Thermococci;o__Thermococcales;f__Thermococcaceae;g__Thermococcus;s__radiotolerans	k__Archaea;p__Nanoarchaeota	overclassification	1	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[14,14]:0.0	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Xanthomonadales;f__Xanthomonadaceae;g__Silanimonas;s__lenta	k__Bacteria;p__Verrucomicrobia	overclassification	1	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[14,14]:0.0	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Ruminococcaceae;g__Papillibacter;s__cinnamivorans	k__Bacteria;p__Chlorobi	overclassification	1	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[14,14]:0.0	k__Bacteria;p__Firmicutes;c__Clostridia;o__Thermoanaerobacterales;f__Thermoanaerobacteraceae;g__Thermanaeromonas;s__toyohensis	k__Bacteria;p__Dictyoglomi	overclassification	1	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[14,14]:0.0	k__Bacteria;p__Aquificae;c__Aquificae;o__Aquificales;f__Hydrogenothermaceae;g__Persephonella;s__marina	k__Bacteria;p__Planctomycetes	overclassification	1	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[14,14]:0.0	k__Archaea;p__Euryarchaeota;c__Methanomicrobia;o__Methanosarcinales;f__Methanosarcinaceae;g__Methanosalsum;s__zhilinae	k__Archaea;p__Crenarchaeota	overclassification	1	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[14,14]:0.0	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfobacterales;f__Desulfobacteraceae;g__Desulfonema;s__limicola	k__Bacteria;p__Nitrospirae	overclassification	1	0.0	0.0	0.0

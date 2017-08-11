@@ -1,17 +1,2252 @@
 Feature ID	Taxon	Confidence
-814161	k__Bacteria; p__Cyanobacteria	0.9796595688052504
-583935	k__Bacteria; p__Bacteroidetes	0.9999878433520158
-563323	k__Bacteria	0.9999619905886584
-547165	k__Bacteria	0.9999975392766843
-370253	k__Bacteria	0.999999882094804
-370251	k__Bacteria; p__Proteobacteria	0.957833927088258
-299518	k__Bacteria	0.9999933820864455
-1137725	k__Bacteria; p__Proteobacteria	0.9172274372131834
-2480449	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae	0.9226241165029802
-2834269	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales	0.9756896445793755
-2919166	k__Bacteria; p__Actinobacteria	0.9035598227854289
-1105271	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	0.987537546050761
-4471401	k__Bacteria	0.9999634081013893
-773133	k__Archaea; p__Euryarchaeota	0.9961127420507409
-144391	k__Archaea; p__Euryarchaeota; c__Thermococci; o__Thermococcales; f__Thermococcaceae; g__Thermococcus	0.9474800791727196
-4370637	k__Archaea; p__Crenarchaeota; c__Thermoprotei	0.9990538080170663
+1111526	k__Bacteria	0.9997977787308647
+1111241	k__Bacteria	0.9953275844082361
+1109361	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.980100925497504
+1108035	k__Bacteria	0.9983236980747725
+1107835	k__Bacteria	0.9995250963225941
+1106386	k__Bacteria	0.9995326422742309
+1104862	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9986739166828599
+1104627	k__Bacteria	0.9998006697077301
+1104048	k__Bacteria	0.9990381613844799
+1097296	k__Bacteria	0.9999989903186249
+1096024	k__Bacteria	0.9943022193152385
+1093514	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9881511323850324
+1092944	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.984010769265218
+1092566	k__Bacteria	0.9997572003644383
+1092081	k__Bacteria	0.9999165414721247
+1085110	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9404036308638809
+1084698	k__Bacteria	0.9995741513477429
+1084213	k__Bacteria	0.9988475814375177
+1083674	k__Bacteria	0.9920652059674357
+1083331	k__Bacteria	0.9992066941185711
+1080702	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9404036308638809
+1080420	k__Bacteria	0.9996318280372866
+1078281	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9873130144576542
+1076587	k__Bacteria	0.9998970033794419
+1073436	k__Bacteria	0.9980033909578081
+1072147	k__Bacteria	0.9998553184916101
+1071487	k__Bacteria; p__Actinobacteria	0.9003086703774038
+1068117	k__Bacteria	0.9996911086354503
+1066191	k__Bacteria	0.9999357005566903
+1059772	k__Bacteria	0.9992342630501944
+1057918	k__Bacteria	0.9999604640419754
+1055965	k__Bacteria	0.9989939400027025
+1055252	k__Bacteria	0.9993617288384181
+1053844	k__Bacteria	0.9999653022042354
+1050411	k__Bacteria	0.9996465891168337
+1047818	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9983449259111271
+1047632	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9404036308638809
+1046636	k__Bacteria	0.9998124751104622
+1043327	k__Bacteria	0.9935796249249994
+1043103	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9425843989632252
+1042986	k__Bacteria	0.9999555981030697
+1042066	k__Bacteria	0.999732191622339
+1039007	k__Bacteria	0.9993779181130288
+1036481	k__Bacteria	0.9998000936228324
+1035821	k__Bacteria	0.9993083691690738
+1035220	k__Bacteria; p__Actinobacteria	0.9791895590365108
+1032259	k__Bacteria	0.9999772362767937
+1031912	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9455689277839593
+1029627	k__Bacteria	0.9995387894930262
+1025539	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9192019597118659
+1023473	k__Bacteria	0.9978574240130965
+1023367	k__Bacteria	0.9999785016526799
+1019878	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9951704501609654
+1019193	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9987722800137082
+1018322	k__Bacteria	0.9995076260881076
+1015599	k__Bacteria; p__Actinobacteria	0.9696425340831568
+1010548	k__Bacteria	0.999796059122933
+1006843	k__Bacteria	0.9999427718430325
+1005854	k__Bacteria	0.999960792948056
+999477	k__Bacteria	0.9886177383665757
+996144	k__Bacteria	0.9995743147903798
+995978	k__Bacteria	0.9999347045776098
+995258	k__Bacteria	0.9995541978854143
+991375	k__Bacteria	0.9973873794063567
+990900	k__Bacteria	0.9983218894072454
+990499	k__Bacteria	0.9997190720772574
+990259	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9847455169042573
+980833	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.990559132928696
+980394	k__Bacteria; p__Actinobacteria	0.9926739863074416
+974874	k__Bacteria	0.9991180763162264
+972783	k__Bacteria	0.9999016567668302
+971775	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9924693877981744
+963162	k__Bacteria	0.9998497717320189
+962082	k__Bacteria	0.9999643706311747
+960695	k__Bacteria	0.9999772362767937
+959333	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9404036308638809
+958575	k__Bacteria; p__Actinobacteria	0.9484511781704668
+956654	k__Bacteria	0.9998682680706367
+956420	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9749337882894489
+951916	k__Bacteria; p__Actinobacteria	0.9447236492004047
+947418	k__Bacteria	0.9997565686573421
+947050	k__Bacteria; p__Actinobacteria	0.9867322825261424
+944309	k__Bacteria; p__Actinobacteria	0.9492334627908846
+940770	k__Bacteria	0.9996978743409571
+939313	k__Bacteria	0.9997648326377904
+934751	k__Bacteria	0.9997380442217508
+934634	k__Bacteria	0.9998175354365517
+928738	k__Bacteria	0.9998221415753372
+926221	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9015732774413712
+923789	k__Bacteria	0.9980321815123953
+922059	k__Bacteria	0.9988829562674194
+920017	k__Bacteria	0.9996150255988208
+919353	k__Bacteria	0.999981885504045
+910381	k__Bacteria	0.9999674047272303
+904602	k__Bacteria	0.9997936129608225
+904199	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9205739250327858
+903228	k__Bacteria	0.9999490138149522
+896892	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9976455026955342
+893029	k__Bacteria	0.9998113853951766
+890884	k__Bacteria	0.9993304714131558
+886016	k__Bacteria	0.9998839129010086
+885389	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9971960763714686
+880205	k__Bacteria	0.9999589660400405
+878103	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9182028329218597
+875383	k__Bacteria	0.9996404028805363
+874754	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9349453086425269
+872969	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959625409954727
+866674	k__Bacteria	0.9998566791501002
+855689	k__Bacteria	0.9997012890268315
+854327	k__Bacteria	0.9998401447598535
+852984	k__Bacteria; p__Actinobacteria	0.9657722442805496
+851573	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.994114981486026
+849625	k__Bacteria	0.9910474985970904
+847791	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9068119391909467
+846333	k__Bacteria	0.9937096421775078
+844795	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9609313004992265
+842365	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+842258	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9941915702750667
+839512	k__Bacteria	0.9974624561055649
+836529	k__Bacteria	0.9999969928457167
+835915	k__Bacteria	0.9999997889335321
+834090	k__Bacteria	0.9999730171101214
+827497	k__Bacteria	0.9999685906958641
+823138	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9547122860120074
+821617	k__Bacteria	0.9999821042355771
+820555	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9809769275782014
+819387	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9982254711687382
+814977	k__Bacteria	0.99972446089309
+814623	k__Bacteria	0.9999662636192773
+814347	k__Bacteria	0.9991806597038823
+814165	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9279334782734824
+812790	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9493727795858116
+812401	k__Bacteria	0.9999931155325739
+810638	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9788240167970236
+808962	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9786319707745709
+807930	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9152889795251617
+807424	k__Bacteria	0.9997590383480058
+805534	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9314328324261956
+791566	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9604330559048326
+782515	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9582635318616329
+779482	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9073848155213586
+776622	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9860801391447223
+768768	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9968647447662176
+765331	k__Bacteria	0.9999865160222696
+756293	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.990502157869512
+744902	k__Bacteria	0.9997936834547307
+744773	k__Bacteria	0.9999489414704206
+744767	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9812334733570447
+742264	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9512366558926743
+739458	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9970305609008374
+737888	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9120773312215227
+724271	k__Bacteria	0.9999990805150382
+719768	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.917234879878118
+712047	k__Bacteria	0.9999960362126785
+699655	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9815148336775772
+696563	k__Bacteria	0.9999432906351609
+689814	k__Bacteria	0.9999996150366314
+681966	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9985695784297031
+680934	k__Bacteria	0.9997837097904662
+678722	k__Bacteria	0.9908456274293619
+668602	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9604330559048326
+667894	k__Bacteria	0.9999914580919118
+657046	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.996668046561788
+656570	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9812334733570447
+653852	k__Bacteria	0.9999970049875241
+650343	k__Bacteria	0.9999629408855657
+650021	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9711343540810797
+629970	k__Bacteria	0.9910474985970904
+629716	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9901985701411368
+626012	k__Bacteria	0.9999862965000913
+622460	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9929635309964364
+614036	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9604330559048326
+610455	k__Bacteria; p__Actinobacteria	0.9239193223578636
+594122	k__Bacteria; p__Planctomycetes; c__Phycisphaerae; o__Phycisphaerales; f__Phycisphaeraceae; g__Phycisphaera; s__mikurensis	0.9560275495073872
+593016	k__Bacteria	0.9999878141406662
+592817	k__Bacteria	0.99998425642742
+592620	k__Bacteria	0.9994394924529836
+592612	k__Bacteria	0.9919909000793583
+592408	k__Bacteria	0.9977947510572904
+591711	k__Bacteria	0.9999304154110115
+591699	k__Bacteria	0.9998921444576985
+591605	k__Bacteria	0.9913970851162011
+591570	k__Bacteria	0.9999796098498062
+590024	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9077675595550997
+589626	k__Bacteria	0.99998425642742
+589018	k__Bacteria	0.9999304154110115
+588866	k__Bacteria	0.9999830495069773
+587602	k__Bacteria	0.9997871161053016
+587588	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9611466368290583
+585863	k__Bacteria	0.9999957959747376
+585622	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9987363086408056
+584949	k__Bacteria	0.9998889094427348
+584873	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9739206648355927
+584386	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.999494461320254
+584317	k__Bacteria	0.9989780188955507
+583706	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9998147083345307
+583608	k__Bacteria	0.9998297188888462
+582889	k__Bacteria	0.9999637445009056
+582579	k__Bacteria	0.9999833235632976
+582196	k__Bacteria	0.9970329424126362
+582194	k__Bacteria	0.9999995317001021
+581964	k__Bacteria	0.9999927798746119
+580916	k__Bacteria	0.9998782881389708
+580849	k__Bacteria	0.9998119388078807
+580162	k__Bacteria	0.9895393811041292
+579112	k__Bacteria	0.9980494910900847
+578596	k__Bacteria	0.9955058006121565
+577680	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9635903833845783
+577152	k__Bacteria	0.999934658469538
+576830	k__Bacteria	0.9988579001191381
+576678	k__Bacteria	0.9998956092601624
+576421	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9609313004992265
+575762	k__Bacteria	0.9999483320538857
+575549	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.99816189022009
+575032	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9989881158664358
+575002	k__Bacteria	0.9996515887914251
+574998	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9493741771090723
+574646	k__Bacteria	0.9994130939683193
+573854	k__Bacteria	0.9999961118497741
+572312	k__Bacteria	0.9995618413666996
+571908	k__Bacteria	0.9999832055852657
+570906	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9024113922046362
+570301	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9502073323744327
+570118	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9040268310244176
+570079	k__Bacteria	0.9994158947592366
+569913	k__Bacteria	0.9999980090680382
+569707	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9866765254626721
+569678	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9703203500718639
+568332	k__Bacteria	0.9999700194402635
+567381	k__Bacteria	0.9999667491774148
+566588	k__Bacteria	0.9999052690097603
+566012	k__Bacteria	0.9999996485556247
+565863	k__Bacteria	0.9998847673385395
+564981	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9032918727152316
+564838	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9781136255678351
+564805	k__Bacteria	0.9999962890183454
+564762	k__Bacteria	0.9998899918996631
+564164	k__Bacteria	0.9989215427219287
+564101	k__Bacteria	0.9999425975184572
+562759	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9618033839245586
+562317	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9954368348584651
+562064	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9871045938872252
+561756	k__Bacteria	0.99998425642742
+561483	k__Bacteria	0.9999730768527771
+560836	k__Bacteria	0.9838173357950348
+560458	k__Bacteria	0.9999637445009056
+559775	k__Bacteria	0.9997783805348176
+559105	k__Bacteria	0.9999997252980359
+557957	k__Bacteria	0.9998566766592689
+557875	k__Bacteria	0.9999998564529688
+557577	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9509655223787175
+556569	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9808347953003484
+556300	k__Bacteria	0.9806175096173708
+554940	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9852871847448718
+554555	k__Bacteria	0.9999667491774148
+554326	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9717670243174685
+554183	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9871045938872252
+553016	k__Bacteria	0.9999425975184572
+552367	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9998785893247238
+550519	k__Bacteria	0.9999987488845403
+550372	k__Bacteria	0.9895393811041292
+550013	k__Bacteria	0.9999071602788631
+549779	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.977113959400867
+549295	k__Bacteria	0.9998000029255594
+548952	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9945242359408488
+547150	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9970279012780958
+545850	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9276904264110216
+545511	k__Bacteria; p__Actinobacteria; c__Nitriliruptoria; o__Nitriliruptorales; f__Nitriliruptoraceae; g__Nitriliruptor; s__alkaliphilus	0.9731464525657583
+545500	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9316350475561697
+543215	k__Bacteria	0.99997162515483
+542311	k__Bacteria	0.9983722876375507
+540202	k__Bacteria	0.9999888277871496
+539888	k__Bacteria	0.9928562055154223
+539666	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9886011528043197
+539184	k__Bacteria	0.9998561979201706
+539068	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9805008436919969
+538564	k__Bacteria	0.9999620273942667
+538491	k__Bacteria	0.9987954606277873
+537713	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9653665199472053
+537325	k__Bacteria	0.9999276429539269
+537101	k__Bacteria	0.9999372153251713
+536754	k__Bacteria	0.9999024785063871
+536261	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.906936409886981
+535707	k__Bacteria	0.9950313645317117
+535370	k__Bacteria	0.9999013116057875
+533899	k__Bacteria	0.9997808657594793
+532635	k__Bacteria	0.9998778098011374
+532396	k__Bacteria	0.9927961813944939
+532050	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9491685392224062
+531674	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9837527955597852
+531210	k__Bacteria	0.9994610245995179
+531106	k__Bacteria	0.9356628976327837
+530875	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9724914364749933
+530715	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+530447	k__Bacteria	0.9585787524785757
+530212	k__Bacteria	0.9952992505719594
+529842	k__Bacteria	0.9855540025845028
+529800	k__Bacteria	0.99536608513459
+529636	k__Bacteria	0.999955116296828
+529462	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+529459	k__Bacteria; p__Chloroflexi; c__Thermobacula; o__Thermobaculales; f__Thermobaculaceae; g__Thermobaculum; s__terrenum	0.9410675724530294
+529017	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9676557205161627
+528818	k__Bacteria	0.9911897051281563
+528224	k__Bacteria	0.9978119451181054
+528116	k__Bacteria	0.9655604821143846
+528110	k__Bacteria	0.9954957487880183
+527874	k__Bacteria	0.9896156794464834
+527055	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.955618051872828
+526623	k__Bacteria	0.9937187256958409
+526312	k__Bacteria	0.9920270231975997
+526004	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9769245843130228
+525967	k__Bacteria	0.9999870738234524
+525656	k__Bacteria	0.9999970044071382
+525306	k__Bacteria	0.9936667483623177
+525229	k__Bacteria	0.9968429066988286
+524964	k__Bacteria	0.9777063584821629
+524884	k__Bacteria	0.9994367809515168
+524463	k__Bacteria	0.9999772500208134
+524219	k__Bacteria	0.9999465535950691
+524124	k__Bacteria	0.9896154095019951
+524072	k__Bacteria	0.9854081293828137
+523589	k__Bacteria	0.9999810318249072
+523363	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9633235135109943
+523118	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9282296692937155
+522968	k__Bacteria	0.9999981956919161
+522791	k__Bacteria	0.9980998813944668
+522180	k__Bacteria	0.9958661649573253
+521806	k__Bacteria	0.9969668796615112
+521773	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9003949252640149
+521268	k__Bacteria	0.9902616846690117
+521209	k__Bacteria	0.9977814838680152
+521191	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9420141008033495
+521157	k__Bacteria	0.995194891721735
+520892	k__Bacteria	0.999841478643343
+519308	k__Bacteria	0.9814218788851663
+519167	k__Bacteria	0.9980302321640603
+518801	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9771602497771789
+518707	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9578015776393214
+518690	k__Bacteria	0.9839758188863402
+518641	k__Bacteria	0.95493801446449
+518372	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9031527637892972
+518245	k__Bacteria	0.9999496283972567
+517996	k__Bacteria	0.9346226140687115
+517784	k__Bacteria	0.9880382468838921
+517622	k__Bacteria	0.9999650212110045
+517572	k__Bacteria	0.9922887297701647
+517184	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9388942298756341
+517148	k__Bacteria	0.9984388085917943
+516968	k__Bacteria	0.9970482267622077
+516564	k__Bacteria	0.9979127888845666
+516464	k__Bacteria	0.9837842675824113
+516458	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9784027686130832
+516337	k__Bacteria	0.9955136563165287
+516325	k__Bacteria	0.9933391919595718
+516229	k__Bacteria	0.9936667483623177
+516135	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9674162806131982
+515769	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9981458603243428
+515583	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9134251861865216
+515581	k__Bacteria	0.993604216193155
+515254	k__Bacteria	0.996689717045231
+514940	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9833186992984304
+514858	k__Bacteria	0.9977814838680152
+514773	k__Bacteria	0.9998088465471052
+514486	k__Bacteria	0.9955327473708774
+514471	k__Bacteria	0.9901990674784602
+514209	k__Bacteria	0.9682494325872177
+514015	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9783913943031923
+513773	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9147851432717335
+513326	k__Bacteria	0.9887853904600067
+513250	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9786504850158618
+512960	k__Bacteria	0.9969689844212465
+512202	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9656533548644288
+512058	k__Bacteria	0.9975022610823395
+511694	k__Bacteria	0.9999559906776537
+510983	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9954112266995044
+510918	k__Bacteria	0.9982910464168542
+510679	k__Bacteria	0.9999976993570145
+510416	k__Bacteria	0.9831508289329101
+510204	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9983333214337125
+507111	k__Bacteria	0.9960092573516819
+505922	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9404036308638809
+501953	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9030289360703332
+495253	k__Bacteria; p__Actinobacteria	0.9954652145320029
+493999	k__Bacteria; p__Actinobacteria	0.965010243404997
+484444	k__Bacteria	0.9998855331523574
+471141	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9387118825952845
+471106	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9064146913052238
+470760	k__Bacteria	0.9999510550484372
+470692	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.916857409573242
+469946	k__Bacteria	0.9997474419107025
+467549	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9918439765487631
+459094	k__Bacteria	0.9999772500208134
+452573	k__Bacteria	0.9999782892312482
+449827	k__Bacteria	0.9999188159906719
+443505	k__Bacteria	0.9999599065291911
+441768	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9519123241989517
+441019	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9788240167970236
+439804	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9881538939621195
+439746	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.977463903316777
+436314	k__Bacteria	0.9980715642097262
+436168	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9385955806089094
+434593	k__Bacteria	0.9991028173339696
+424721	k__Bacteria; p__Actinobacteria	0.9879758155383275
+422136	k__Bacteria	0.9802428525492807
+421277	k__Bacteria	0.9999532632768222
+420062	k__Bacteria	0.999976264012937
+419194	k__Bacteria	0.9999772362767937
+415455	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9951261409902257
+409809	k__Bacteria	0.9999935200652281
+408630	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.973849705639861
+404241	k__Bacteria; p__Actinobacteria	0.9979243559694306
+403648	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9394630879372567
+400480	k__Bacteria	0.943419743953134
+400286	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9704885626048319
+395029	k__Bacteria	0.99995428977283
+392048	k__Bacteria	0.9948918151727039
+390927	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9251931376383588
+388327	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9652871873878024
+375716	k__Bacteria	0.9998379130224844
+375527	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.952796731980873
+373116	k__Bacteria	0.9999576653180149
+371911	k__Bacteria	0.9998023588198808
+370320	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9531976769125453
+370050	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+369739	k__Bacteria	0.9999999999511039
+369612	k__Bacteria	0.9999952724429176
+369607	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+369167	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+368972	k__Bacteria	0.9830259060904004
+368858	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+368699	k__Bacteria	0.9999874706610552
+368681	k__Bacteria	0.9979199520715634
+368173	k__Bacteria	0.9999953069518037
+367610	k__Bacteria	0.9999792090438484
+367490	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+367190	k__Bacteria	0.9998948299292417
+367120	k__Bacteria	0.9999973577583484
+366916	k__Bacteria	0.9999981457084709
+366717	k__Bacteria	0.9999861138710331
+366222	k__Bacteria	0.9984972502982645
+366068	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9761676743524929
+365868	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+365427	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+365214	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9536120637115526
+365095	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+364452	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9864761719286412
+364047	k__Bacteria	0.9998445933488967
+363824	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9654532184534551
+363692	k__Bacteria	0.9969293553961884
+363625	k__Bacteria	0.9381511075641101
+363243	k__Bacteria	0.9999874706610552
+362674	k__Bacteria	0.9977814838680152
+362647	k__Bacteria	0.9999969140284597
+362327	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9609347461010289
+361866	k__Bacteria	0.9999079158269946
+361810	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9368349485473472
+360750	k__Bacteria	0.9946183301000592
+360703	k__Bacteria	0.9996113959603633
+360646	k__Bacteria	0.9980494910900847
+359629	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9158617840818589
+359045	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9973522600321708
+358953	k__Bacteria	0.9999789746398929
+358772	k__Bacteria	0.9999985172393979
+358757	k__Bacteria	0.9999800736148948
+358412	k__Bacteria	0.9999432906351609
+358359	k__Bacteria	0.9999890783468247
+358251	k__Bacteria	0.9999927798746119
+358021	k__Bacteria	0.9996200402438583
+357791	k__Bacteria	0.9998348933217462
+357717	k__Bacteria	0.9999253966345131
+356625	k__Bacteria	0.9955024153073754
+356516	k__Bacteria	0.9999970846048105
+356356	k__Bacteria	0.9996697926729742
+356049	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9996752956608342
+355422	k__Bacteria	0.9999977277000108
+354485	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+354322	k__Bacteria	0.9911897051281563
+354315	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9188529430322703
+354265	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9705432501746504
+353624	k__Bacteria	0.9995583341699287
+352468	k__Bacteria	0.9995746818102155
+351834	k__Bacteria	0.9994359115197224
+351231	k__Bacteria	0.9860193744493827
+350224	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9914147564195344
+349467	k__Bacteria	0.9999827634719672
+348750	k__Bacteria	0.9910474985970904
+348514	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9891369934402604
+347846	k__Bacteria	0.9981170231807501
+346711	k__Bacteria	0.9997766726739611
+345939	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9104533799996867
+344167	k__Bacteria	0.9999719515193192
+344154	k__Bacteria	0.9960141716360442
+343094	k__Bacteria	0.9885808160145352
+343049	k__Bacteria	0.9997854929330963
+342513	k__Bacteria	0.9945027804455976
+342469	k__Bacteria	0.9997004721112819
+342427	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959625409954727
+342268	k__Bacteria	0.9999894525660229
+341934	k__Bacteria	0.9997936974295831
+340716	k__Bacteria	0.9999681714118882
+340696	k__Bacteria	0.9995633446843153
+340693	k__Bacteria	0.9998899924978372
+340525	k__Bacteria	0.9999897050022525
+340301	k__Bacteria	0.9999982075910925
+340099	k__Bacteria	0.9999831924775268
+339813	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9997021225715813
+339599	k__Bacteria	0.9860193744493827
+339494	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9781136255678351
+339350	k__Bacteria	0.9999990698537854
+339028	k__Bacteria	0.9999372153251713
+338757	k__Bacteria	0.9999234622526447
+338752	k__Bacteria	0.9857902982215612
+338711	k__Bacteria	0.9998881973760716
+338150	k__Bacteria	0.9996563933734849
+336960	k__Bacteria	0.9997893978933377
+336431	k__Bacteria	0.9989215427219287
+335612	k__Bacteria	0.9966556291992174
+334742	k__Bacteria	0.99985036737569
+334335	k__Bacteria	0.9908647077913559
+332958	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9164357954305434
+332301	k__Bacteria	0.9999341533296053
+331542	k__Bacteria	0.9994805045252222
+330989	k__Bacteria	0.9999372153251713
+330564	k__Bacteria	0.9999699300864738
+330439	k__Bacteria	0.9983116734382622
+328617	k__Bacteria	0.9980709781920475
+328404	k__Bacteria	0.9999989881666546
+327852	k__Bacteria	0.9999024785063871
+326865	k__Bacteria	0.9999425975184572
+326545	k__Bacteria	0.9998902942681318
+326534	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9974389425034179
+326411	k__Bacteria	0.9980494910900847
+324843	k__Bacteria	0.9935809387933775
+324194	k__Bacteria	0.9999948492295704
+323279	k__Bacteria	0.9998945218182146
+323239	k__Bacteria	0.9919133563373703
+323182	k__Bacteria	0.9999886147966076
+322658	k__Bacteria	0.9974862908478973
+322393	k__Bacteria	0.9907301085045319
+322112	k__Bacteria	0.9999695419966753
+321772	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9546569427460094
+321131	k__Bacteria	0.9996953120025777
+320922	k__Bacteria	0.9999939036710629
+320841	k__Bacteria	0.9946097302979342
+319275	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9556996443806987
+318182	k__Bacteria	0.999976067547687
+316371	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9362230673868599
+315194	k__Bacteria	0.9998125698453056
+314348	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9124254033897875
+313831	k__Bacteria	0.993630238444079
+313699	k__Bacteria	0.9997437202454322
+313144	k__Bacteria	0.9999953819186922
+313121	k__Bacteria	0.9910474985970904
+313031	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9932699885035969
+312962	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+312770	k__Bacteria	0.9988416703133189
+312765	k__Bacteria	0.9997937318090752
+312677	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9609347461010289
+312574	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9024442647852696
+312551	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.983842485820309
+312458	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+312187	k__Bacteria	0.9999952169424594
+311537	k__Bacteria	0.9999054517540923
+311402	k__Bacteria	0.9999990698537854
+311039	k__Bacteria	0.9999620273942667
+309900	k__Bacteria	0.9999097869390206
+309428	k__Bacteria	0.999999583662449
+309107	k__Bacteria	0.9999990698537854
+308333	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9812026544182545
+308034	k__Bacteria	0.9999773626904579
+308014	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9832572317774589
+307541	k__Bacteria	0.9907301085045319
+305267	k__Bacteria	0.9999714456245944
+304779	k__Bacteria	0.9999989286479972
+304729	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9976739079569812
+304117	k__Bacteria	0.9950562836251827
+303877	k__Bacteria	0.9990673619573545
+303260	k__Bacteria	0.9993733896659986
+302718	k__Bacteria	0.9999786406651059
+301656	k__Bacteria	0.9910474985970904
+300926	k__Bacteria	0.9998903535469874
+299918	k__Bacteria	0.9997051214247128
+299770	k__Bacteria	0.9986653915291134
+299617	k__Bacteria	0.9999515900479716
+299494	k__Bacteria	0.9983116734382622
+298417	k__Bacteria	0.9999976993570145
+296749	k__Bacteria	0.9999566812660278
+296734	k__Bacteria	0.9999414890835877
+296659	k__Bacteria	0.9995266207738641
+296552	k__Bacteria	0.9961954114161315
+296363	k__Bacteria	0.9999368953357554
+296316	k__Bacteria	0.9998652262766642
+295151	k__Bacteria	0.9999569705820419
+294978	k__Bacteria	0.9999435455783632
+294922	k__Bacteria	0.9999964809144262
+294713	k__Bacteria	0.9999372153251713
+294580	k__Bacteria	0.9999990698537854
+294138	k__Bacteria	0.9997840305876052
+293113	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9281705891513372
+292815	k__Bacteria	0.9996018324859747
+292707	k__Bacteria	0.99536608513459
+292634	k__Bacteria	0.9857902982215612
+291812	k__Bacteria	0.9961954114161315
+290102	k__Bacteria	0.9999877427564001
+290018	k__Bacteria	0.9999858932845722
+289911	k__Bacteria	0.9999763077505982
+289787	k__Bacteria	0.9999569705820419
+289480	k__Bacteria	0.9997840305876052
+289278	k__Bacteria	0.999279324340443
+288367	k__Bacteria	0.9999372153251713
+288039	k__Bacteria	0.999960472831477
+286579	k__Bacteria; p__Actinobacteria	0.9843688216497648
+285819	k__Bacteria	0.9998562695527612
+285518	k__Bacteria	0.999880265985349
+283508	k__Bacteria	0.9998922367759833
+283138	k__Bacteria	0.9999459089022353
+282674	k__Bacteria	0.9999744419016541
+282575	k__Bacteria	0.9997430056892153
+282536	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9968770487014865
+281625	k__Bacteria	0.9999552601142508
+280943	k__Bacteria	0.9999798172438167
+280070	k__Bacteria	0.9999967929733489
+277489	k__Bacteria	0.9999971943449458
+276941	k__Bacteria	0.9999624195938133
+276940	k__Bacteria	0.9961747343798213
+276605	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9239036109708546
+275759	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9088111646774419
+275708	k__Bacteria	0.9999841652833553
+275441	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9513818373486599
+275435	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9877139668321321
+274603	k__Bacteria	0.9998041919087166
+274399	k__Bacteria	0.9999198729636183
+274379	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9660588880744996
+274317	k__Bacteria	0.9993564101422074
+274158	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9669033591941077
+274123	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9120773312215227
+273535	k__Bacteria	0.9999806670038154
+273121	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9862277666433865
+272593	k__Bacteria	0.9999520771542473
+272088	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9855854963702569
+272031	k__Bacteria	0.9999878101026723
+271782	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9972458947654613
+271655	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9676881829734792
+271585	k__Bacteria	0.9999884610380925
+271191	k__Bacteria	0.9999793089461301
+270928	k__Bacteria	0.9999671725683136
+270720	k__Bacteria	0.9999744870991885
+270408	k__Bacteria	0.9999863743551348
+270358	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9772519522191842
+269548	k__Bacteria	0.9894482978504239
+268868	k__Bacteria	0.9995708297985361
+268728	k__Bacteria	0.9999999208384521
+268653	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9205244474181637
+268217	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9000404834169417
+268125	k__Bacteria	0.9999764748576185
+267996	k__Bacteria	0.9999761495913788
+267730	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9339968630447324
+267698	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.998273483079621
+267323	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.976614546274717
+265806	k__Bacteria	0.9999671725683136
+265604	k__Bacteria	0.9999996380984298
+264874	k__Bacteria	0.9999820373405024
+264568	k__Bacteria	0.999965207769836
+264562	k__Bacteria	0.9976047417486359
+264070	k__Bacteria	0.9999712232386805
+263857	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9149556717557873
+263783	k__Bacteria	0.9999669316258329
+263781	k__Bacteria	0.9997913493933538
+263631	k__Bacteria	0.9999874706610552
+263210	k__Bacteria	0.9987885480368531
+263193	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9342226340090714
+263179	k__Bacteria	0.9999743804166271
+262701	k__Bacteria	0.9998811387964247
+262491	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+262229	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9051888862136875
+261912	k__Bacteria	0.9998970033794419
+261549	k__Bacteria	0.9989880976542121
+261023	k__Bacteria	0.9999052690097603
+260790	k__Bacteria	0.9999548966966604
+260289	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9558484020011914
+260026	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9113190613323777
+259983	k__Bacteria	0.9999821756072765
+259781	k__Bacteria	0.9999716805833826
+259087	k__Bacteria	0.9999691434756841
+258710	k__Bacteria	0.9999666265973367
+258101	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9855854963702569
+258081	k__Bacteria	0.999925012110698
+257076	k__Bacteria	0.980826013039908
+256889	k__Bacteria	0.9999999865435261
+256761	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9596275230003233
+256678	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.999757394872323
+256229	k__Bacteria	0.9981588602166698
+254797	k__Bacteria	0.9979166469490576
+254417	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9975783046509945
+252679	k__Bacteria	0.9998318295362452
+252480	k__Bacteria	0.9999338103473414
+251973	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.924572002401502
+251702	k__Bacteria	0.9998466766897056
+251397	k__Bacteria	0.9999584490441027
+251051	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9915801791554928
+250626	k__Bacteria	0.99999476154182
+250544	k__Bacteria	0.9998937986793539
+249918	k__Bacteria	0.9999373827775915
+249595	k__Bacteria	0.9999503006979681
+249532	k__Bacteria	0.9995488656934824
+249213	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9981934220054018
+248512	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.983842485820309
+248109	k__Bacteria	0.9999713135824487
+247626	k__Bacteria	0.9993905699168825
+246303	k__Bacteria	0.9995326422742309
+246186	k__Bacteria	0.9999651970534275
+245604	k__Bacteria	0.9999633210532433
+245601	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9955618536156529
+244795	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.924141464484872
+243830	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9777602601780782
+243285	k__Bacteria	0.9998713350143178
+243071	k__Bacteria; p__Chloroflexi; c__Thermobacula; o__Thermobaculales; f__Thermobaculaceae; g__Thermobaculum; s__terrenum	0.9406879526702734
+242452	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9837699665243449
+241225	k__Bacteria	0.9999008880484627
+240740	k__Bacteria	0.9996071332238324
+240616	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9241410267115618
+240431	k__Bacteria	0.9999685266581186
+240170	k__Bacteria	0.9998693272522847
+239441	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9108663614728176
+239336	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9964484341424968
+238491	k__Bacteria	0.9999999874507282
+237517	k__Bacteria	0.9999177194678532
+237265	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9682668445914547
+237081	k__Bacteria	0.9997480810341356
+236017	k__Bacteria	0.9999700194402635
+235822	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9271312300904173
+233692	k__Bacteria	0.9998456149354303
+233401	Unassigned	0.1585079700258607
+231220	k__Bacteria	0.9983607523347007
+229434	k__Bacteria	0.9998626645983152
+229429	k__Bacteria	0.9997366667334593
+228947	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9732298092953403
+227853	k__Bacteria	0.9999921471363555
+227662	k__Bacteria	0.9965129275106175
+227216	k__Bacteria	0.999966148602424
+226417	k__Bacteria	0.9825827947578647
+224417	k__Bacteria	0.9997895481337261
+224168	k__Bacteria	0.9992119907127587
+221053	k__Bacteria	0.9996953027244194
+220201	k__Bacteria	0.9999991374040653
+220197	k__Bacteria	0.9991326753790061
+219578	k__Bacteria	0.9985721431434167
+219161	k__Bacteria	0.998290416487138
+218000	k__Bacteria	0.9999999609846137
+213707	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9040268310244176
+212341	k__Bacteria	0.9998981568396756
+212299	k__Bacteria	0.9996744126411908
+211964	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9814215540308844
+210398	k__Bacteria	0.9997366667334593
+210269	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9894462404835319
+208399	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9436601212281421
+208196	k__Bacteria	0.9998971325945063
+206221	k__Bacteria	0.999770405684388
+205365	k__Bacteria	0.999195020263256
+203166	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9979583433038306
+203071	k__Bacteria	0.9999991406380229
+202971	k__Bacteria	0.9989542239973482
+202563	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9895882053497731
+200891	k__Bacteria	0.9999839759833519
+200840	k__Bacteria	0.9998629962825808
+200217	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9381271069918257
+199726	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9908583106238505
+199323	k__Bacteria	0.999965207769836
+198916	k__Bacteria	0.9999474986797738
+198245	k__Bacteria	0.9999372153251713
+197924	k__Bacteria	0.9974962595741874
+197490	k__Bacteria	0.9977035244596603
+197149	k__Bacteria	0.9901513136176474
+197072	k__Bacteria	0.9946214456667276
+196889	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9177243775661077
+196652	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.97885264934021
+196633	k__Bacteria	0.9998650074266533
+196569	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+195877	k__Bacteria	0.9999933114976279
+195508	k__Bacteria	0.9948397588907604
+194489	k__Bacteria	0.9999219151529661
+194461	k__Bacteria	0.999991842610879
+194262	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9368349485473472
+194162	k__Bacteria	0.999970350054393
+193985	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+193853	k__Bacteria	0.999975372828371
+193495	k__Bacteria	0.9999874706610552
+193160	k__Bacteria	0.9998767605108043
+192797	k__Bacteria	0.9993273973501755
+192723	k__Bacteria	0.9898038290758817
+192515	k__Bacteria	0.9999952724429176
+191966	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+191586	k__Bacteria	0.9902668419304588
+190804	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9654405142400675
+190711	k__Bacteria	0.999918346149638
+190698	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+190025	k__Bacteria	0.9928078196903385
+189984	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+189835	k__Bacteria	0.9997761228159778
+189432	k__Bacteria	0.9894332330306491
+189282	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+189253	k__Bacteria	0.9910474985970904
+189083	k__Bacteria	0.990160344062082
+188942	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9965272441636416
+188860	k__Bacteria	0.9999225281224268
+188773	k__Bacteria	0.9999372153251713
+188706	k__Bacteria	0.9910144014885219
+188638	k__Bacteria	0.9999895260327568
+188369	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.920985389899321
+188329	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9761941106008827
+187650	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+187070	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+186392	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9646299478613563
+186332	k__Bacteria	0.9999430933341295
+186316	k__Bacteria	0.9999996706774551
+186275	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9611392467583427
+186184	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9980945961059143
+185679	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9558546219898516
+185544	k__Bacteria	0.9971435535950098
+185454	k__Bacteria	0.9998767605108043
+185277	k__Bacteria	0.9998457537466612
+185148	k__Bacteria	0.9999845344824522
+184810	k__Bacteria	0.999975372828371
+184536	k__Bacteria	0.9999433876085675
+183849	k__Bacteria	0.9999372153251713
+183598	k__Bacteria	0.9965023759694647
+183498	k__Bacteria	0.9999813673314308
+182841	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9527202797260932
+182826	k__Bacteria	0.9998513779290479
+182176	k__Bacteria	0.9999874706610552
+182087	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+182045	k__Bacteria	0.9999569913355867
+181612	k__Bacteria	0.9999757506211477
+181390	k__Bacteria	0.9972526165515039
+181280	k__Bacteria	0.9998394367463178
+181039	k__Bacteria	0.9997134699170994
+181037	k__Bacteria	0.999975372828371
+180716	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9458403987220801
+180517	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9625969132712955
+180513	k__Bacteria	0.9999997574543339
+180494	k__Bacteria	0.9971435535950098
+180071	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+179885	k__Bacteria	0.9999667491774148
+179802	k__Bacteria	0.9999667491774148
+179394	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9722735739709361
+179385	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9909501811867476
+178763	k__Bacteria	0.9874372084540525
+178267	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.966629942286895
+178224	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.997950071253337
+177990	k__Bacteria	0.999825403598863
+177620	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9273806911131843
+177602	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9556284073188218
+176675	k__Bacteria	0.9910474985970904
+176153	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9685856931832886
+176005	k__Bacteria	0.9999874706610552
+175858	k__Bacteria	0.9996636776466197
+175171	k__Bacteria	0.9973083905268174
+174182	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+173945	k__Bacteria	0.9998970033794419
+173039	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+172528	k__Bacteria	0.9999730171101214
+172000	k__Bacteria	0.9999075443514838
+171996	k__Bacteria	0.9996298586810417
+171994	k__Bacteria	0.9998591785673964
+171837	k__Bacteria	0.9998956369634054
+171640	k__Bacteria	0.9812916746317483
+170412	k__Bacteria	0.9994311762199389
+170244	k__Bacteria	0.999985406233052
+169717	k__Bacteria	0.9998238858501334
+169637	k__Bacteria	0.9860193744493827
+169446	k__Bacteria	0.9903837723227596
+168614	k__Bacteria	0.9998861491233393
+168293	k__Bacteria	0.9999806621921846
+167665	k__Bacteria	0.9999806621921846
+167118	k__Bacteria	0.9999396330304475
+166830	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9087957760570728
+165904	k__Bacteria	0.9999804391159226
+165882	k__Bacteria	0.9999628282512922
+165253	k__Bacteria	0.9833162205488499
+164901	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9130126941665181
+164669	k__Bacteria	0.9999501333231533
+164351	k__Bacteria	0.9999854577667224
+164192	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9742448689988299
+164075	k__Bacteria	0.9999794838666309
+164055	k__Bacteria	0.9999806621921846
+162423	k__Bacteria	0.9999934137310768
+161810	k__Bacteria	0.9997166985930592
+161765	k__Bacteria	0.9997562253729538
+161253	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9692739031583096
+161199	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.999925097610019
+161154	k__Bacteria	0.999959557578853
+160946	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9856391767619971
+160810	k__Bacteria	0.9999343251609264
+160359	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9985641692507603
+160352	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.998488400697867
+159861	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9358429710996632
+159000	k__Bacteria	0.9999575200799246
+158859	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.999586844597461
+158263	k__Bacteria	0.9984699245012735
+157163	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9894462404835319
+156425	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9496952479918955
+155696	k__Bacteria	0.999923126040707
+154964	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9981539459896605
+153716	k__Bacteria	0.999840752223824
+152932	k__Bacteria	0.9999995538750159
+152349	k__Bacteria	0.9993383308785878
+151386	k__Bacteria	0.9919386870999073
+151298	k__Bacteria	0.9999899791543517
+151083	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9024113922046362
+150229	k__Bacteria	0.9886261868672034
+150016	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959844425574278
+149661	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9681161122276003
+149654	k__Bacteria	0.9989215427219287
+149414	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9871531162410131
+149304	k__Bacteria	0.9997700063046628
+149022	k__Bacteria	0.9999966394644138
+148461	k__Bacteria	0.9985423252601151
+148208	k__Bacteria; p__Actinobacteria	0.9964907799425542
+147707	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9241750989000882
+146198	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9227260050223615
+146193	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9892509169058148
+145704	k__Bacteria	0.999996043645419
+145519	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+145011	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9279669095238199
+144943	k__Bacteria	0.9999996413113629
+144295	k__Bacteria	0.9993331068843014
+144053	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9041603339332963
+143718	k__Bacteria	0.9999898492830592
+143564	k__Bacteria	0.9996416473950933
+143540	k__Bacteria	0.9990715080601897
+143424	k__Bacteria	0.9985033323370535
+143401	k__Bacteria	0.9999933114976279
+143057	k__Bacteria	0.9999390411787445
+142996	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Jonquetella; s__anthropi	0.9612099233523919
+142929	k__Bacteria	0.9999787363716939
+141824	k__Bacteria	0.9997381710605092
+141516	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9985524909870703
+141494	k__Bacteria	0.9977694308569245
+141490	k__Bacteria	0.999992379705303
+141264	k__Bacteria	0.9998577866762866
+141244	k__Bacteria	0.9999831924775268
+140908	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9380639778659653
+139127	k__Bacteria	0.9999514846828544
+139087	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9900863603832412
+138779	k__Bacteria	0.9999727021931358
+138733	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.97885264934021
+138582	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9659563960359927
+138381	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9976735690416602
+138027	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9676322073965342
+137910	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9716431004871834
+136980	k__Bacteria	0.9999921672768667
+136963	k__Bacteria	0.9999042540783663
+136829	k__Bacteria	0.9998623623998011
+136628	k__Bacteria	0.9860193744493827
+136582	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9671213164712706
+136508	k__Bacteria	0.9999911101791682
+136290	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Jonquetella; s__anthropi	0.9273614819287338
+136211	k__Bacteria	0.9990800653579293
+136134	k__Bacteria	0.9996816872342716
+136130	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9985230616367623
+132943	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9528459049180249
+132837	k__Bacteria	0.9882967368424357
+132339	k__Bacteria	0.9999997209706932
+132030	k__Bacteria	0.9999817239272298
+131456	k__Bacteria	0.9999968949234809
+131048	k__Bacteria	0.9995712525715046
+131016	k__Bacteria	0.9999772362767937
+130684	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9056999957535767
+130663	k__Bacteria	0.9738760688939274
+129940	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9287634923411878
+129923	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.983186162943615
+129337	k__Bacteria	0.998882072794163
+128205	k__Bacteria	0.9860193744493827
+123983	k__Bacteria	0.9910474985970904
+119349	k__Bacteria	0.9978836014557914
+118821	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9434093514124453
+117109	k__Bacteria	0.9974080108929946
+115461	k__Bacteria	0.9997984094527387
+112989	k__Bacteria	0.9999337394749357
+112236	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9450349885722734
+112199	k__Bacteria	0.9997171971558381
+111749	k__Bacteria	0.9999862965000913
+111533	k__Bacteria	0.9997892268863443
+111524	k__Bacteria	0.9999951574788917
+110766	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9442474846444998
+110675	k__Bacteria	0.999914453495594
+109811	k__Bacteria	0.9915334387759354
+109216	k__Bacteria	0.9995014269226291
+108458	k__Bacteria	0.993369555445485
+108298	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9849155942930613
+108279	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9693440648202016
+108074	k__Bacteria	0.9965914672301078
+108003	k__Bacteria	0.9998057162321864
+107854	k__Bacteria	0.9998947354338749
+107690	k__Bacteria	0.9999998633772204
+107429	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9958786663734637
+107261	k__Bacteria	0.999992057275555
+106340	k__Bacteria	0.9994823695845627
+105998	k__Bacteria	0.9999368668938396
+105882	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9896297783042317
+105756	k__Bacteria	0.999907323473495
+105745	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.999514102111562
+105593	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9854494095740771
+105548	k__Bacteria	0.9999109688518695
+105235	k__Bacteria	0.9617345905497249
+104526	k__Bacteria; p__Actinobacteria	0.9532931875525654
+103948	k__Bacteria	0.9999772362767937
+102689	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9486544842645741
+101997	k__Bacteria	0.9998481331006536
+101945	k__Bacteria	0.9999172481512196
+101860	k__Bacteria	0.9998311653606301
+101495	k__Bacteria	0.9982070809462144
+101449	k__Bacteria	0.9988016625739874
+101068	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9962214567054712
+100858	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9725639482364584
+100775	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9236286611492527
+100578	k__Bacteria	0.9886112712587584
+100339	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9829817430935565
+99904	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9327200525855942
+99890	k__Bacteria	0.9999747015347551
+99430	k__Bacteria	0.9984618068578581
+99356	k__Bacteria	0.9999869743493941
+99276	k__Bacteria	0.9984795368549082
+97650	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9841952026631117
+96830	k__Bacteria	0.9969363525536936
+93705	k__Bacteria	0.9984896468237188
+92017	k__Bacteria	0.9999995538750159
+89578	k__Bacteria	0.9999827634719672
+88458	k__Bacteria	0.9993383308785878
+88130	k__Bacteria	0.9997212322613022
+87984	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9976158600386741
+87400	k__Bacteria	0.9999169816350127
+86606	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9224983989957678
+84026	k__Bacteria	0.9999468191929396
+83013	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9467924472388086
+82680	k__Bacteria	0.9999997786435436
+81641	k__Bacteria	0.9999450311300129
+80086	k__Bacteria	0.9996636066172436
+77995	k__Bacteria	0.9928183391774533
+77692	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9759594899309003
+77538	k__Bacteria	0.99925905440233
+77438	k__Bacteria	0.992957528872255
+76334	k__Bacteria	0.9999722207567134
+76111	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9182684542319335
+75890	k__Bacteria	0.9997946383598165
+74559	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9181858474088382
+74259	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9145539826000425
+73668	k__Bacteria	0.9990241977135781
+73484	k__Bacteria	0.9999997267814454
+73007	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.997779732576694
+71635	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9973522600321708
+71589	k__Bacteria	0.9999968478845965
+70687	k__Bacteria	0.9500171186021219
+70057	k__Bacteria	0.9998778098011374
+69463	k__Bacteria	0.9999379306683179
+67818	k__Bacteria	0.9999509570236703
+65468	k__Bacteria	0.9999826746512059
+65329	k__Bacteria	0.9994130939683193
+63877	k__Bacteria	0.999715675924356
+63459	k__Bacteria	0.9995727662591923
+61968	k__Bacteria	0.9696249194013393
+61102	k__Bacteria	0.9999821746391755
+59721	k__Bacteria	0.999843407926218
+59537	k__Bacteria	0.9983053343240144
+58865	Unassigned	0.1426332040779864
+53467	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9997303683482093
+52107	k__Bacteria	0.9999997574543339
+51788	k__Bacteria	0.9998861515777066
+51176	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9416420102045404
+51091	k__Bacteria	0.9999970191002177
+51045	k__Bacteria	0.9999702737977989
+50758	k__Bacteria	0.9995264852196274
+49918	k__Bacteria	0.9829179734265144
+49725	k__Bacteria; p__Actinobacteria	0.9281289833168299
+48944	k__Bacteria	0.9997602180154037
+47887	k__Bacteria	0.9720236027503206
+45894	k__Bacteria	0.999531231225836
+45637	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9524784269698223
+44864	k__Bacteria	0.9991326753790061
+44380	k__Bacteria	0.9999832557626357
+40104	k__Bacteria	0.9999836497707245
+39523	k__Bacteria	0.9999982391499138
+36306	k__Bacteria	0.9999835654881349
+36261	k__Bacteria	0.9999516471819236
+35634	k__Bacteria	0.9999990652889651
+34894	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9705618983756853
+34303	k__Bacteria	0.9999968083359121
+33905	k__Bacteria	0.999908790293612
+33892	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9946533040238584
+32422	Unassigned	0.6574822077820972
+31358	k__Bacteria	0.99996622976368
+30376	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9982023684848019
+28828	k__Bacteria	0.9991867598936455
+28247	k__Bacteria	0.9999778671527632
+25889	k__Bacteria	0.9999993841676303
+24211	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9716431004871834
+23706	k__Bacteria	0.9998653454190782
+23551	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9997146537531584
+23520	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9954571469905414
+22581	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9864283810486076
+21822	k__Bacteria	0.9998091832414118
+20961	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9084310258163586
+19424	k__Bacteria	0.9993961343311025
+17513	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9998966594502473
+16939	k__Bacteria	0.986127125449039
+16234	k__Bacteria	0.9999914832231818
+16099	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9455514608640749
+16096	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9910457273025277
+15711	k__Bacteria	0.9999387374051882
+15261	k__Bacteria	0.9999973680160291
+15212	k__Bacteria	0.9999822216246014
+15059	k__Bacteria	0.9999929343676873
+14678	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9693902583747839
+14616	k__Bacteria	0.9999996236576373
+14615	k__Bacteria	0.9999998648649028
+14554	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9213379163758404
+14469	k__Bacteria	0.9999998133898937
+14457	k__Bacteria	0.9999987361937018
+13876	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9504864423729356
+13104	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9527139876767116
+13086	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9527139876767116
+13008	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9995075720554525
+12865	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.999444543699464
+12838	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9995260828811372
+12519	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9855854963702569
+12451	k__Bacteria	0.9999852626818282
+12449	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9730739642860203
+12333	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9914366062160989
+12275	k__Bacteria; p__Actinobacteria	0.9849423011531617
+12249	k__Bacteria	0.9999767018316008
+12219	k__Bacteria	0.9999665642962203
+12186	k__Bacteria; p__Actinobacteria	0.9973900145063792
+12185	k__Bacteria; p__Actinobacteria	0.988842600279892
+12124	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.999727659116746
+11832	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9983333214337125
+11807	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9945515672007839
+11440	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.999797774512446
+11369	k__Bacteria	0.9999725583355447
+11292	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9189817076278439
+11047	k__Bacteria	0.979299068682414
+10945	k__Bacteria	0.9788771403571171
+10937	k__Bacteria	0.9990899407573609
+10662	k__Bacteria	0.9996628581612679
+10431	k__Bacteria	0.9995140942256742
+10323	k__Bacteria	0.9997774998752559
+10267	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9372099626535046
+10264	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9784893035026547
+10256	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9984049518557389
+9868	k__Bacteria	0.9999450507308058
+9812	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9963380242547161
+9744	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.986703993363252
+9683	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9901985701411368
+9559	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9892861606885557
+9502	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9937885769502333
+9498	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9958189189245447
+9468	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9961592764444739
+9036	k__Bacteria	0.9996317814153598
+8966	k__Bacteria	0.999968475016235
+8836	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.947209683959518
+8756	k__Bacteria	0.9999572928464648
+8389	k__Bacteria	0.9998632636171244
+8006	k__Bacteria	0.9998816552195107
+8002	k__Bacteria	0.9997986842254972
+7983	k__Bacteria	0.9995575237185584
+7960	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9537894157229777
+7801	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9838902823976026
+7499	k__Bacteria	0.9999997081106856
+7457	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9382010830409648
+7214	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9639854865736408
+7139	k__Bacteria	0.9999351530713895
+7126	k__Bacteria	0.9998713633087206
+6223	k__Bacteria	0.9982527283988116
+6206	k__Bacteria	0.9999030375279483
+5690	k__Bacteria	0.9997487416678256
+5631	k__Bacteria	0.9990994959091174
+5572	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.93575963417951
+5460	k__Bacteria	0.9995106793951642
+5441	k__Bacteria	0.9995722301056733
+5113	k__Bacteria	0.9997944115413151
+4735	k__Bacteria	0.9999607839001752
+4563	k__Bacteria	0.9999366423967536
+4383	k__Bacteria	0.9999591511735836
+4115	k__Bacteria	0.9998945891544024
+3852	k__Bacteria	0.9995522529257912
+3820	k__Bacteria	0.9997756072138231
+3793	k__Bacteria	0.999763722688657
+3116	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Jonquetella; s__anthropi	0.979017716607443
+2486	k__Bacteria	0.9975800246471056
+2071	k__Bacteria	0.9440291434634785
+1416	k__Bacteria	0.9999791394882027
+1222	k__Bacteria	0.9999335965024025
+980234	k__Bacteria	0.9998535615071998
+748654	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9681161122276003
+862178	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9822958136297312
+1122195	k__Bacteria	0.99989025011964
+1137725	k__Bacteria	0.9999375245876573
+609314	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9065759752671397
+784410	k__Bacteria	0.9993733896659986
+1540169	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9276904264110216
+872974	k__Bacteria	0.9995276317112834
+729672	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9951642742228073
+1550523	k__Bacteria	0.9983497965904703
+1552323	k__Bacteria	0.9916713270282705
+1145098	k__Bacteria	0.9998912055118224
+1038556	k__Bacteria	0.9998680227468147
+948625	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9022259051697648
+1565322	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9409339165656013
+1582512	k__Bacteria	0.9998677785565129
+1143450	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9485976118881001
+1592799	k__Bacteria	0.9980000536126664
+1599709	k__Bacteria	0.9995727461636608
+878493	k__Bacteria	0.9999999653006363
+957885	k__Bacteria	0.9999081678559999
+1137869	k__Bacteria	0.9999954680412197
+1627925	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9627118682216609
+856952	k__Bacteria	0.9999849167492166
+1643426	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9327113628223084
+784861	k__Bacteria; p__Actinobacteria	0.9015066944674215
+1655542	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9811379008961686
+1139097	k__Bacteria	0.9998260988831055
+1668154	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959844425574278
+1670118	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9308323177413035
+1674080	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9947712812552926
+1680485	k__Bacteria	0.9998878292924822
+1684221	k__Bacteria	0.9998065078390528
+866659	k__Bacteria	0.9997887763791433
+1694537	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9872277617691515
+276481	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9954579630436383
+1147382	k__Bacteria	0.999999949234046
+1721299	k__Bacteria	0.9993420477579149
+982887	k__Bacteria	0.9996016761860923
+805373	k__Bacteria	0.9999435602197809
+980740	k__Bacteria	0.9998023347411691
+1744265	k__Bacteria	0.9999772538418735
+729943	k__Bacteria	0.999888554967081
+1764173	k__Bacteria	0.9998899918996631
+814159	k__Bacteria	0.9984896468237188
+1137031	k__Bacteria	0.99998135104762
+805980	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9226782091709791
+1790401	k__Bacteria	0.9927767876790077
+1803216	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9380044571508073
+1042844	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9566106755727889
+1811927	k__Bacteria	0.9999515083512248
+755061	k__Bacteria	0.9999785002130198
+620032	k__Bacteria	0.9999869081634062
+1818342	k__Bacteria	0.9999341488607224
+857794	k__Bacteria	0.9999067331689685
+1134709	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9217584314369522
+849544	k__Bacteria	0.9877190670733823
+1827950	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9454357770568201
+1832798	k__Bacteria	0.9996298586810417
+1141121	k__Bacteria	0.9999625018731148
+861981	k__Bacteria; p__Actinobacteria	0.9788961688971097
+1846517	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9921126391192576
+1136004	k__Bacteria	0.9999830540767867
+1121839	k__Bacteria	0.9996971368632355
+995900	k__Bacteria	0.9994045467373422
+1867217	k__Bacteria	0.9998881735099313
+921193	k__Bacteria	0.9998934221483454
+714797	k__Bacteria	0.9999523147516215
+1146004	k__Bacteria	0.99962535649639
+801271	k__Bacteria	0.9995156650632057
+1896186	k__Bacteria	0.9998632636171244
+1901021	k__Bacteria	0.9983545004768661
+1119632	k__Bacteria	0.9999638938061567
+801155	k__Bacteria	0.999840752223824
+1913151	k__Bacteria	0.9978525469367803
+1920831	k__Bacteria	0.9998427679310878
+1921611	k__Bacteria	0.9999789746398929
+1921615	k__Bacteria	0.9682855162085876
+1922365	k__Bacteria	0.9711515085022153
+1130328	k__Bacteria	0.9991740167864466
+1142320	k__Bacteria	0.999550344926769
+1936793	k__Bacteria	0.9860193744493827
+717005	k__Bacteria	0.9998803357883712
+1122887	k__Bacteria	0.9769023164136594
+1962283	k__Bacteria	0.9999993854596333
+842879	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9609347461010289
+877241	k__Bacteria	0.9999915601320613
+1132993	k__Bacteria	0.9996707102389525
+1140833	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9740571519112092
+747009	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9947383236052574
+744900	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9956482290628778
+793506	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9942309378009757
+1132942	k__Bacteria	0.9999928303743235
+2005562	k__Bacteria	0.9999617350024276
+2023151	k__Bacteria	0.999998281920259
+796356	k__Bacteria	0.9999468792151414
+2041715	k__Bacteria	0.9764104076120568
+2041719	k__Bacteria	0.9493616784754104
+1030771	k__Bacteria	0.9989386188317381
+765188	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9983581060678149
+990300	k__Bacteria	0.9999772362767937
+2077519	k__Bacteria	0.999584190385199
+1133363	k__Bacteria	0.9999801757739629
+1135379	k__Bacteria	0.9993482779905782
+2084902	k__Bacteria	0.9999951485304386
+1043351	k__Bacteria; p__Actinobacteria	0.985104636118891
+745650	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Jonquetella; s__anthropi	0.907182423838017
+917969	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9894462404835319
+2092284	k__Bacteria	0.9855999843739792
+838434	k__Bacteria; p__Actinobacteria; c__Nitriliruptoria; o__Nitriliruptorales; f__Nitriliruptoraceae; g__Nitriliruptor; s__alkaliphilus	0.9659152953438994
+2109730	k__Bacteria	0.9860193744493827
+2111156	k__Bacteria	0.9999996615301505
+1135552	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9656951194298093
+1072707	k__Bacteria	0.9994705766729619
+2117122	k__Bacteria	0.9999737676761373
+2119420	k__Bacteria	0.9994027401173328
+817228	k__Bacteria	0.9990157476948399
+2122946	k__Bacteria	0.9999999996403974
+1071660	k__Bacteria	0.999729524909569
+841350	k__Bacteria	0.9967048212711126
+2147851	k__Bacteria	0.9922778990305358
+1024271	k__Bacteria	0.9998937716884925
+1119941	k__Bacteria	0.9986285962536886
+2169203	k__Bacteria	0.9997893607746918
+848682	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9609347461010289
+2170497	k__Bacteria	0.9704129342367922
+1121406	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9995894116116933
+989990	k__Bacteria	0.9999831163247832
+2183898	k__Bacteria	0.9999510291449052
+1144109	k__Bacteria	0.9864924644550804
+1051470	k__Bacteria; p__Actinobacteria	0.9643338673010462
+981108	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9971924904726147
+920026	k__Bacteria; p__Actinobacteria	0.9967190160151677
+2210671	k__Bacteria	0.9953615122254755
+766995	k__Bacteria	0.9995488547157374
+2225714	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9596275230003233
+2227908	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9539132545479622
+2228267	k__Bacteria	0.9995493339976783
+2228274	k__Bacteria	0.9999869305063004
+2229897	k__Bacteria	0.9985947675448594
+822886	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9313078450841749
+2244744	k__Bacteria	0.9858515676230345
+831595	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9012386748789497
+2250345	k__Bacteria	0.9999804682511344
+2251867	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9871815259021772
+1124905	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9594600270067177
+2268864	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9448455809534655
+1075454	k__Bacteria	0.9999772500208134
+2279752	k__Bacteria	0.9960270470163907
+2283274	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9966414712487496
+823017	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9954368348584651
+1142342	k__Bacteria	0.9999965154778602
+935427	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9704232221279956
+829038	k__Bacteria	0.9999864283815926
+2309802	k__Bacteria	0.9982455918344596
+2310825	k__Bacteria	0.9910803737822058
+2311731	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.952796731980873
+2329112	k__Bacteria	0.9981831073633732
+2333461	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9768535590262081
+891398	k__Bacteria	0.9993533697798711
+2342005	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9839277473801323
+2346211	k__Bacteria	0.9999899792296558
+965863	k__Bacteria	0.9989792329488872
+2362317	k__Bacteria	0.994333241042389
+2365398	k__Bacteria	0.9991895446279754
+2366462	k__Bacteria	0.9993026622028979
+1017375	k__Bacteria	0.9998881785745892
+2367656	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9135230963755135
+2369177	k__Bacteria	0.9932538262677147
+648540	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9788255050092194
+2374730	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9675517910309638
+848516	k__Bacteria	0.9999790906996803
+830267	k__Bacteria	0.9998985500308216
+2387673	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952227171675634
+1076035	k__Bacteria; p__Actinobacteria	0.9351327817546892
+2397581	k__Bacteria	0.9965464189921429
+2399341	k__Bacteria	0.9999227929843447
+682944	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9609347461010289
+2402563	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9071778959568343
+1130952	k__Bacteria	0.9999988202707195
+2406759	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9898237303981855
+2408840	k__Bacteria	0.9931771276545844
+1130871	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9374758911216
+2415182	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9704232221279956
+2416706	k__Bacteria	0.9999104752232937
+1126164	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9900863603832412
+833623	k__Bacteria	0.9999990920631009
+2450394	k__Bacteria	0.9999194975268633
+2461915	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9504628478077676
+2462171	k__Bacteria	0.9998205394273496
+1042363	k__Bacteria	0.9998469641466496
+2472963	k__Bacteria	0.9998772434338986
+1056563	k__Bacteria	0.9999426887748937
+2481940	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9704232221279956
+2484351	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9609507245680305
+779431	k__Bacteria	0.997737285592745
+2490937	k__Bacteria; p__Actinobacteria	0.994405031722767
+2494775	k__Bacteria	0.9999460025381118
+1048605	k__Bacteria	0.9998543898213083
+2497623	k__Bacteria	0.9906643055442903
+1118182	k__Bacteria	0.9994230544686176
+1027317	k__Bacteria; p__Actinobacteria	0.9825737870623465
+631060	k__Bacteria	0.9999801690084644
+646051	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9137036349955562
+1010727	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9954979367870371
+2531289	k__Bacteria	0.9999117665330542
+2534140	k__Bacteria	0.9996546295534704
+2535910	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9404036308638809
+1146480	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9461001597526889
+864496	k__Bacteria	0.9996428182425684
+1009998	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9680086628203183
+2547782	k__Bacteria	0.99986417957078
+1128312	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9301888987813589
+996368	k__Bacteria	0.9998481257499995
+891089	k__Bacteria	0.9987083035413651
+1137214	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9898959049418804
+2566741	k__Bacteria	0.9994155876310754
+2581108	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9123590323304476
+722795	k__Bacteria	0.9999967837887835
+2584970	k__Bacteria	0.9708832782473458
+2584976	k__Bacteria	0.9833856780724287
+1131423	k__Bacteria	0.9994502995827473
+2592157	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9448455809534655
+1144898	k__Bacteria	0.9999839527057334
+2606464	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9962137472295395
+820440	k__Bacteria	0.9997926132323233
+816345	k__Bacteria	0.999806699737455
+649130	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9813913210102642
+2611121	k__Bacteria	0.9999712938476087
+984698	k__Bacteria; p__Actinobacteria	0.9980371480773672
+2634855	k__Bacteria	0.9998389338158309
+1115614	k__Bacteria	0.9996337605442384
+1142268	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9923960941185798
+2658179	k__Bacteria	0.9860193744493827
+2662130	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.984433199508582
+1112584	k__Bacteria	0.9851232767328063
+839429	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9597317974634919
+28400	k__Bacteria	0.9999586151499533
+2674082	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9024113922046362
+2682874	k__Bacteria	0.9878901313416055
+815656	k__Bacteria	0.9999745340886879
+2697645	k__Bacteria	0.9999912771740882
+905151	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9854299726073437
+2700812	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9832767616411613
+2703308	k__Bacteria	0.9999946858649956
+623275	k__Bacteria; p__Chloroflexi; c__Thermobacula; o__Thermobaculales; f__Thermobaculaceae; g__Thermobaculum; s__terrenum	0.9611202190760202
+1094005	k__Bacteria	0.9998595188031043
+2711706	k__Bacteria	0.9999976993570145
+2714175	k__Bacteria	0.9878834906756003
+1127838	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9778148376844509
+712667	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9971019143740031
+1056123	k__Bacteria	0.9998610406010963
+821104	k__Bacteria	0.9995784244357085
+2749362	k__Bacteria	0.9999990062151874
+930730	k__Bacteria	0.9992693321097309
+2766655	k__Bacteria	0.999676490319465
+1126896	k__Bacteria	0.9999713877028664
+7982	k__Bacteria	0.9999900446137354
+1107827	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9754834393818107
+843618	k__Bacteria	0.9920994407320961
+2806316	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9513019812512439
+2806523	k__Bacteria	0.9945777367897285
+1135761	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9637488079528717
+2825793	k__Bacteria	0.9999796714574586
+1009973	k__Bacteria	0.9998594141138601
+976105	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9908893539231824
+899093	k__Bacteria	0.9997602242071784
+1098065	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9852491827124855
+843753	k__Bacteria	0.9911756811024078
+2834983	k__Bacteria	0.9999130762283592
+1122081	k__Bacteria	0.9999994337344451
+2840491	k__Bacteria; p__Actinobacteria	0.915375123320605
+2841565	k__Bacteria; p__Actinobacteria	0.98926251569242
+2842308	k__Bacteria	0.9960866202955383
+2842794	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9558851570689348
+2848995	k__Bacteria	0.9992800146150781
+2849737	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9432398684153983
+2855167	k__Bacteria	0.9942557838448207
+1128017	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9018152317478954
+1136534	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9536280415597727
+869738	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9921920788285926
+2873589	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9725803217527328
+960062	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9953244335631528
+978194	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9404036308638809
+810722	k__Bacteria	0.9999769335389674
+2904927	k__Bacteria	0.9970976269242621
+882714	k__Bacteria	0.9997917305031165
+2914077	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.935724338106229
+981912	k__Bacteria	0.9893523409138051
+2925754	k__Bacteria	0.9993134367526774
+1133078	k__Bacteria	0.9996703894241463
+2932341	k__Bacteria	0.9807977877996812
+2951301	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9794505834117345
+2960026	k__Bacteria; p__Actinobacteria	0.9862791802237421
+1145398	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9873801580964316
+845072	k__Bacteria	0.9910474985970904
+2980524	k__Bacteria	0.9896347007908918
+699744	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9033001219415121
+1123876	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9716381109677922
+2991800	k__Bacteria	0.9999237918621934
+808854	k__Bacteria	0.9999311331040224
+806451	k__Bacteria	0.999986480032207
+3015891	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9448455809534655
+775029	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9988619621480418
+3020841	k__Bacteria	0.9999694772475639
+3023154	k__Bacteria	0.9999993810792945
+1122523	k__Bacteria	0.9998833399376408
+851344	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9392511012343387
+3028530	k__Bacteria	0.9999695665295899
+1139163	k__Bacteria	0.9999355690203552
+1094954	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9924540793634864
+3052115	k__Bacteria	0.9999789746398929
+3052746	k__Bacteria	0.9999959841356426
+729934	k__Bacteria	0.9999612887542071
+1017311	k__Bacteria	0.9998249496612779
+3098612	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9789944359289373
+937670	k__Bacteria	0.9999353044120739
+660055	k__Bacteria	0.9999670517504966
+1137731	k__Bacteria	0.999715077379529
+3117237	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9734047385433914
+3123206	k__Bacteria	0.9411877740476124
+3124969	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.951004181200083
+886061	k__Bacteria	0.9996429822987061
+3127947	k__Bacteria	0.999934834990387
+3134285	k__Bacteria	0.9998562695527612
+824872	k__Bacteria	0.9998149166851311
+3138133	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9972912522808836
+3145472	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959625409954727
+803508	k__Bacteria	0.996277124687586
+818789	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9286281995015115
+722963	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9998589268795975
+826933	k__Bacteria	0.9997539885805972
+1138729	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9458276200185454
+1121390	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9375355190150041
+1038508	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9495215063507713
+3186906	k__Bacteria	0.9997418012090801
+3189210	k__Bacteria	0.9880424969102627
+3206871	k__Bacteria	0.9999142438078642
+3209977	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9928638984124607
+3218884	k__Bacteria	0.9999996635407549
+783392	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9936577584850562
+1089594	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9070682362835516
+851316	k__Bacteria	0.9976175659274601
+3240840	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9609347461010289
+1105625	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.991393223391008
+643438	k__Bacteria	0.9995968987318561
+3270796	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9192370226971209
+3271868	k__Bacteria	0.9833162205488499
+1044323	k__Bacteria	0.9997380811875806
+3272947	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9455395194471898
+820043	k__Bacteria	0.999985695968247
+3287613	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9966594096538108
+1142767	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9952991438005083
+861081	k__Bacteria; p__Actinobacteria	0.9922573968936435
+1131131	k__Bacteria	0.9999998608762067
+829709	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9385785698157422
+3307468	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9072732903065353
+1117992	k__Bacteria	0.9999252052593062
+3318309	k__Bacteria	0.9999574994798579
+1105714	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9479891431087076
+1126922	k__Bacteria	0.9995778402912239
+1126064	k__Bacteria	0.9999988103512906
+3327541	k__Bacteria	0.9999887857562575
+634117	k__Bacteria	0.9999386605660404
+693632	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+834310	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9105690842299733
+3374533	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9102191859506318
+1128861	k__Bacteria	0.9987509873536717
+3377974	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9527202797260932
+806092	k__Bacteria; p__Actinobacteria	0.989252019634757
+1115403	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9901985701411368
+3400355	k__Bacteria	0.9999008099556755
+3406555	k__Bacteria	0.9999490511531189
+3413561	k__Bacteria	0.9999100193494304
+3428396	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9676322073965342
+1055216	k__Bacteria	0.999973603306962
+3431782	k__Bacteria	0.9985591517865293
+1108530	k__Bacteria	0.9999064044706509
+3433843	k__Bacteria	0.9999789746398929
+3437016	k__Bacteria	0.999934907965197
+3448408	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9996524528763783
+3448648	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.994634184683966
+1041306	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9083625140378415
+878771	k__Bacteria	0.9999681140454895
+1096261	k__Bacteria	0.9998253051031082
+3462224	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9922019289092734
+3464845	k__Bacteria	0.9901374092401638
+1122379	k__Bacteria	0.9999973243276888
+1146228	k__Bacteria	0.9998363403088174
+1017624	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9006034911595693
+853055	k__Bacteria	0.999942436662394
+1132940	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9978391267275921
+976976	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9975967691930759
+3493362	k__Bacteria	0.9993160127085985
+618066	k__Bacteria	0.9997325983265386
+845348	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+1033371	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9973522600321708
+834086	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9788240167970236
+835513	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.955618051872828
+3506870	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.995539127732717
+3508095	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9336483896381259
+3509166	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9743195913963405
+1121554	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.95374685923125
+1108473	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.980100925497504
+3522841	k__Bacteria	0.9998632636171244
+1115975	k__Bacteria	0.9998595840995546
+821119	k__Bacteria	0.999966148602424
+895077	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9903774026472255
+828975	k__Bacteria	0.9993396948580774
+1130941	k__Bacteria	0.9999132589236449
+3550616	k__Bacteria	0.9999831924775268
+1136120	k__Bacteria	0.9999857763684933
+1115522	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9963038606939323
+625186	k__Bacteria	0.9998934132862245
+1064428	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9098395433916182
+3572894	k__Bacteria	0.9999789746398929
+3584131	k__Bacteria	0.9535857000732179
+821185	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9997111372383236
+927124	k__Bacteria	0.999140823719346
+765168	k__Bacteria	0.99493571391527
+3602952	k__Bacteria	0.9973421534645106
+3607912	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9831664507401137
+3611916	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9036602389416143
+3613883	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9498488464809526
+189634	k__Bacteria	0.9999630523945154
+1145671	k__Bacteria	0.9907301085045319
+3634180	k__Bacteria	0.9999823511609918
+3645903	k__Bacteria	0.9999280121901939
+3647536	k__Bacteria	0.9999778167659359
+3648887	k__Bacteria	0.9897369785236718
+1105685	k__Bacteria	0.9995931146560709
+1040514	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9876473525781982
+1023953	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9679980978428719
+1139900	k__Bacteria	0.9991645892059784
+3664777	k__Bacteria	0.9998850510045
+3667016	k__Bacteria	0.9952780516825047
+3667971	k__Bacteria	0.9917703017655362
+3689523	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9643806517106635
+1146150	k__Bacteria	0.9970595431615331
+1126217	k__Bacteria; p__Actinobacteria	0.9285547290084678
+1121426	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9881483004714459
+792218	k__Bacteria	0.999924813811156
+1148060	k__Bacteria	0.9999992761821641
+3698967	k__Bacteria	0.999970484629214
+3698970	k__Bacteria	0.9999309676240098
+636377	k__Bacteria	0.9996056964683173
+3700151	k__Bacteria	0.9999848674776803
+1137684	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9737862305047443
+3707872	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9678567042769612
+798828	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9639854865736408
+947288	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9411454132502471
+1133164	k__Bacteria	0.9999596333395906
+820122	k__Bacteria	0.9999339961055296
+3735939	k__Bacteria	0.9998032995732182
+698296	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9064371791750699
+951136	k__Bacteria	0.9985178094108309
+3746312	k__Bacteria	0.9812319631362832
+1108411	k__Bacteria	0.9998454466040909
+3752807	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9560825403269351
+3755210	k__Bacteria	0.9999996910339402
+1141041	k__Bacteria	0.999606078861841
+1144357	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9976158600386741
+1142562	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9493720023467619
+3778551	k__Bacteria	0.9999985408997684
+3783638	k__Bacteria	0.9916713270282705
+3783639	k__Bacteria	0.9971435535950098
+680394	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9745832311971017
+3792580	k__Bacteria	0.9897428705638909
+1134701	k__Bacteria; p__Cyanobacteria; c__Gloeobacterophycideae; o__Gloeobacterales; f__Gloeobacteraceae; g__Gloeobacter; s__violaceus	0.9828561869454621
+997934	k__Bacteria	0.9989617488071348
+893797	k__Bacteria	0.9923538122317116
+1124343	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9949475024019151
+695881	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9871045938872252
+1137944	k__Bacteria	0.9999963519259902
+3825890	k__Bacteria	0.9980494910900847
+3828801	k__Bacteria	0.9999318035690082
+3828901	k__Bacteria	0.9999960128028225
+908572	k__Bacteria	0.9707420954197316
+789850	k__Bacteria	0.9928312553914663
+3835597	k__Bacteria	0.9999999234501535
+1127185	k__Bacteria	0.9982627979804777
+742896	k__Bacteria	0.9999280121901939
+3871230	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9947591787576125
+3871494	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+835562	k__Bacteria	0.9997897525378578
+1034142	k__Bacteria; p__Actinobacteria; c__Nitriliruptoria; o__Nitriliruptorales; f__Nitriliruptoraceae; g__Nitriliruptor; s__alkaliphilus	0.9102348276290821
+804710	k__Bacteria	0.9967586536615376
+908322	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9967032927261941
+3925303	k__Bacteria	0.9967909754837136
+3933490	k__Bacteria	0.999928821145905
+999394	k__Bacteria	0.9999201861102496
+824624	k__Bacteria	0.9999998211233305
+1136010	k__Bacteria	0.9994336111831964
+849779	k__Bacteria	0.9904258597963879
+818534	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9838032419684203
+1060967	k__Bacteria	0.9921752155568819
+3971194	k__Bacteria	0.9999787782126293
+3971195	k__Bacteria	0.9999785837924035
+612512	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9868728079288823
+878014	k__Bacteria	0.9998416365434951
+1104486	k__Bacteria; p__Actinobacteria	0.9296602072659945
+3978769	k__Bacteria	0.9999881117102201
+970515	k__Bacteria	0.9999574781588104
+828203	k__Bacteria	0.9999555457290423
+4020387	k__Bacteria	0.9996233969928646
+958569	k__Bacteria	0.9999598764228971
+4028751	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9287796812669518
+4029584	k__Bacteria	0.9964663393130164
+4033821	k__Bacteria	0.9858544525873563
+4044885	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9619544055720981
+4045361	k__Bacteria	0.9999944275191182
+4045829	k__Bacteria	0.9999405614840416
+4052620	k__Bacteria	0.9999986815612804
+4053636	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+1061935	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9532134111951653
+1141922	k__Bacteria	0.991892776604445
+1140027	k__Bacteria	0.9998360464421814
+634584	k__Bacteria	0.9999694550814683
+4062294	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9876202409933343
+1143479	k__Bacteria	0.9998251087690871
+4080510	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9589222333668219
+1122955	k__Bacteria	0.9995722009063236
+700996	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9642961882563822
+4098279	k__Bacteria	0.9999992361031285
+1027841	k__Bacteria	0.9999008201709979
+1132028	k__Bacteria	0.9995597210331155
+4113608	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9404036308638809
+4121939	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9723947095235717
+1136009	k__Bacteria	0.9954708900867771
+4132075	k__Bacteria	0.999941282357078
+4133150	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9971230417117792
+845595	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9729908774917763
+4135570	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9894011294149436
+4141001	k__Bacteria	0.9999321117798057
+676511	k__Bacteria	0.9999940660667593
+918932	k__Bacteria	0.9999784922836329
+4151747	k__Bacteria	0.9849047134526577
+4153080	k__Bacteria	0.9998899918996631
+1123994	k__Bacteria	0.9999815143068985
+861595	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9404036308638809
+4164965	k__Bacteria	0.9860193744493827
+4176794	k__Bacteria	0.9999951574788917
+1082650	k__Bacteria	0.9998032810197389
+4182252	k__Bacteria	0.9860193744493827
+4188861	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9609347461010289
+970222	k__Bacteria	0.9999772362767937
+4196769	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9946952723041736
+616188	k__Bacteria	0.9998179278152238
+734810	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9023044011087245
+4200771	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9837948954509891
+4200775	k__Bacteria	0.9998105743861078
+1148235	k__Bacteria	0.9999689123444742
+4202279	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9934075208861718
+4208928	k__Bacteria; p__Actinobacteria	0.9194631485305604
+957735	k__Bacteria	0.999975925337884
+820176	k__Bacteria	0.9999970286313683
+4234212	k__Bacteria	0.9853576348059815
+4242243	k__Bacteria	0.9999428512760784
+1143045	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959844425574278
+1115035	k__Bacteria	0.9999822531239709
+4263820	k__Bacteria	0.999939644406001
+4266230	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959625409954727
+816306	k__Bacteria	0.9999540835753682
+863013	k__Bacteria; p__Actinobacteria	0.9409549200486845
+614695	k__Bacteria	0.9999845886022299
+1136373	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9899195847062392
+4290138	k__Bacteria	0.9999789746398929
+1074945	k__Bacteria; p__Actinobacteria	0.983119264482979
+4294447	k__Bacteria	0.9996131903384086
+4294457	k__Bacteria; p__Actinobacteria	0.9524023365899895
+4294478	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9716431004871834
+4294579	k__Bacteria	0.999902900961214
+4294593	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9126030740117557
+4295036	k__Bacteria	0.9998802460856351
+4295676	k__Bacteria	0.9923288912423787
+4296273	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4296806	k__Bacteria	0.9999999803834451
+4296987	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9942474011010805
+4297554	k__Bacteria	0.9600374073389875
+4298291	k__Bacteria	0.9902481231537016
+4298369	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9126030740117557
+4298885	k__Bacteria	0.9999618464469748
+4299060	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9952928755902217
+4300007	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4300774	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9973522600321708
+4300907	k__Bacteria	0.9999895467625709
+4301031	k__Bacteria	0.9928530277688066
+4302223	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9831673141757524
+4302610	k__Bacteria	0.9999710658028148
+4303759	k__Bacteria	0.9948918151727039
+4304125	k__Bacteria	0.9940130789876691
+4304681	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4306178	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9126030740117557
+4306206	k__Bacteria	0.9999425369747057
+4306867	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959844425574278
+4307308	k__Bacteria	0.9968034724655853
+4307809	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9596275230003233
+4308200	k__Bacteria	0.9831854293191551
+4308388	k__Bacteria	0.9965730110725964
+4308450	k__Bacteria	0.9969363525536936
+4308624	k__Bacteria	0.9999280121901939
+4308678	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9406126655155963
+4309323	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4309912	k__Bacteria	0.9999999479883572
+4310109	k__Bacteria	0.9889699320468893
+4310509	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9974539645280454
+4311644	k__Bacteria	0.980826013039908
+4312276	k__Bacteria	0.9825827947578638
+4313256	k__Bacteria	0.9916713270282705
+4314047	k__Bacteria	0.9999875821410505
+4314463	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9974539645280454
+4314728	k__Bacteria	0.9999710284579602
+4315346	k__Bacteria	0.9999802352453158
+4315858	k__Bacteria	0.9999800643209115
+4315874	k__Bacteria	0.9960383766154896
+4316543	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959844425574278
+4316835	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.995292365249655
+4317058	k__Bacteria	0.9999265040686157
+4317240	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9969324383249955
+4318352	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9981458603243428
+4318587	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959844425574278
+4319647	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4320155	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9950342132373117
+4320659	k__Bacteria	0.9998735420908107
+4321187	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9974539645280454
+4321193	k__Bacteria	0.9940130789876691
+4321366	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9314828317668257
+4321872	k__Bacteria	0.9946264135378938
+4322704	k__Bacteria	0.9999999457399785
+4322982	k__Bacteria	0.9999789746398929
+4323024	k__Bacteria; p__Actinobacteria	0.9141485562683052
+4323072	k__Bacteria	0.9998562695527612
+4323092	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4323389	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9126030740117557
+4323784	k__Bacteria	0.9999795658140295
+4324949	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4325036	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9691022900644648
+4325676	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9932304491881662
+4325952	k__Bacteria	0.9995205356679334
+4326280	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9448455809534655
+4326286	k__Bacteria	0.9960662988884513
+4326492	k__Bacteria	0.9997816413079935
+4326530	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9392531030507254
+4327059	k__Bacteria	0.998858507517304
+4327184	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9933801517429348
+4327786	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+4328823	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9244478224321071
+4329680	k__Bacteria	0.9999921471363555
+4329917	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9960857410898469
+4330738	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9233104887970671
+4330933	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9928856506656291
+4331147	k__Bacteria	0.9992480666536996
+4331471	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9349188345741183
+4331694	k__Bacteria	0.9999153226846414
+4332235	k__Bacteria	0.99998788352348
+4332410	k__Bacteria	0.9928530277688066
+4332730	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9935783964741025
+4333286	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9251530705057709
+4333556	k__Bacteria	0.9999280121901939
+4333820	k__Bacteria; p__Actinobacteria	0.9254707825872042
+4334422	k__Bacteria	0.9920970111352378
+4334615	k__Bacteria	0.9999998893920782
+4335118	k__Bacteria	0.9999606000742807
+4335427	k__Bacteria	0.9860193744493827
+4335454	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9974539645280454
+4335515	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4336024	k__Bacteria	0.9998923276500166
+4336443	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9379368192486414
+4336774	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9962433935583008
+4338128	k__Bacteria	0.9996748864929637
+4338354	k__Bacteria	0.9999474103794042
+4338963	k__Bacteria	0.9999280121901939
+4339214	k__Bacteria	0.9999841659144805
+4339777	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9126030740117557
+4339831	k__Bacteria	0.9999809143563053
+4340962	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9126030740117557
+4341850	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4342219	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4342797	k__Bacteria	0.9998417898845747
+4342952	k__Bacteria	0.9986294450000675
+4343005	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9947591787576125
+4343701	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.986703993363252
+4344528	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9981458603243428
+4344861	k__Bacteria	0.9999789746398929
+4346588	k__Bacteria	0.9940232519240846
+4346923	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9404036308638809
+4346987	k__Bacteria	0.9980669591666997
+4347524	k__Bacteria	0.9997126783869779
+4347611	k__Bacteria	0.9975642122016103
+4347747	k__Bacteria; p__Actinobacteria	0.988039366162556
+4348782	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9527139876767116
+4349970	k__Bacteria	0.99993046946293
+4350076	k__Bacteria	0.9999912710684841
+4350245	k__Bacteria	0.999999667196348
+4350247	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9915450611853489
+4350433	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9843866638887737
+4351076	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9964995339511834
+4352219	k__Bacteria	0.9999703404532483
+4352273	k__Bacteria; p__Actinobacteria	0.9543379980090841
+4352660	k__Bacteria	0.9812691171536955
+4352897	k__Bacteria	0.9999957424398815
+4352992	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9605802168665029
+4353119	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9638867319230361
+4353157	k__Bacteria	0.9998674341097048
+4353578	k__Bacteria	0.9999699314172825
+4353743	k__Bacteria	0.9999808887946197
+4354462	k__Bacteria	0.9999945511345912
+4354843	k__Bacteria	0.9999890832423237
+4356422	k__Bacteria	0.9946264135378938
+4356464	k__Bacteria	0.9999669648287219
+4356822	k__Bacteria	0.9998920319499817
+4357324	k__Bacteria	0.9999495607401178
+4357503	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9994926293136394
+4357894	k__Bacteria	0.9999887743322302
+4358574	k__Bacteria	0.998711497505843
+4358825	k__Bacteria	0.9999235376154842
+4359220	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959844425574278
+4359731	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9780180865450865
+4359732	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.925295546193836
+4360168	k__Bacteria	0.9995011791014972
+4360170	k__Bacteria	0.9998250632808282
+4360979	k__Bacteria	0.9999999866623881
+4361351	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9984771541775912
+4361591	k__Bacteria; p__Actinobacteria	0.9278394648546424
+4361722	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4362037	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9880001988413465
+4362160	k__Bacteria	0.9999735758451704
+4362940	k__Bacteria	0.9999484282103276
+4362976	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9338021669283314
+4363363	k__Bacteria	0.9999784655235741
+4364830	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9024113922046362
+4364892	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9639890613103053
+4365130	k__Bacteria	0.9983545004768661
+4365611	k__Bacteria	0.9997480115924102
+4365717	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9716431004871834
+4365903	k__Bacteria	0.9637913745765277
+4367674	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9875314409993031
+4368216	k__Bacteria	0.9907301085045319
+4368848	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9931797664295258
+4368900	k__Bacteria	0.9999389561344824
+4369090	k__Bacteria	0.9999830173005576
+4369482	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9193264693885359
+4369812	k__Bacteria	0.9999789746398929
+4370328	k__Bacteria	0.9219224133163948
+4371122	k__Bacteria	0.9928562055154223
+4371644	k__Bacteria	0.9999586453690642
+4372118	k__Bacteria	0.9997900897440023
+4372285	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9336483896381259
+4373091	k__Bacteria; p__Actinobacteria	0.9942995387190721
+4373885	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9531733702330188
+4374175	k__Bacteria	0.9999952724429176
+4374484	k__Bacteria	0.9999924974337034
+4374873	k__Bacteria; p__Actinobacteria	0.9953153283245473
+4374973	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4375212	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4375255	k__Bacteria	0.9995258913842621
+4375826	k__Bacteria	0.9836965348905327
+4375885	k__Bacteria	0.9971435535950098
+4375949	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9593516379147599
+4376296	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9973522600321708
+4376477	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9448455809534655
+4376583	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9128810934338358
+4376910	k__Bacteria	0.9908383736577668
+4377305	k__Bacteria	0.9998652262766642
+4378462	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9521128940858904
+4380273	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4380365	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959625409954727
+4380745	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9660683158616626
+4380948	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9448455809534655
+4381192	k__Bacteria	0.9999564534791964
+4381678	k__Bacteria	0.9999999866623881
+4382956	k__Bacteria; p__Actinobacteria	0.9857278776361851
+4382998	k__Bacteria	0.9999997896729358
+4383103	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9758177280676835
+4383165	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9426469990341656
+4383576	k__Bacteria	0.9916713270282705
+4385311	k__Bacteria	0.9999469636443612
+4385576	k__Bacteria	0.9905399162831967
+4386760	k__Bacteria	0.9961342540866632
+4386966	k__Bacteria	0.9992235933144576
+4386967	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9988802120249278
+4387313	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9184335395897193
+4387607	k__Bacteria	0.9999895467625709
+4388093	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9962795120469237
+4388219	k__Bacteria	0.9999034284303484
+4388396	k__Bacteria	0.994930797095288
+4388515	k__Bacteria	0.9999179213668739
+4388720	k__Bacteria	0.9825827947578647
+4389092	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4389347	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9276904264110216
+4390091	k__Bacteria	0.9999934159835512
+4391173	k__Bacteria	0.999529835989378
+4391457	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9180358009476647
+4391460	k__Bacteria	0.9809689625424899
+4391466	k__Bacteria	0.9996092712802641
+4391687	k__Bacteria	0.99873644660818
+4391752	k__Bacteria	0.999832627280572
+4392347	k__Bacteria	0.9936778760891651
+4392601	k__Bacteria	0.9999978853198094
+4393290	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9614993861643403
+4393291	k__Bacteria	0.9999865046751583
+4393352	k__Bacteria	0.9998592900368902
+4393400	k__Bacteria	0.9974444348183581
+4393505	k__Bacteria; p__Lentisphaerae; c__Lentisphaeria; o__Victivallales; f__Victivallaceae; g__Victivallis; s__vadensis	0.9609562667199135
+4393532	k__Bacteria	0.9999999413189782
+4393739	k__Bacteria	0.9998970033794419
+4394503	k__Bacteria	0.9999996008607838
+4394901	k__Bacteria	0.999638260106917
+4395206	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9191951281997942
+4395611	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9973522600321708
+4395747	k__Bacteria; p__Chloroflexi; c__Thermobacula; o__Thermobaculales; f__Thermobaculaceae; g__Thermobaculum; s__terrenum	0.9064000671646808
+4396235	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9960691445671002
+4396442	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9897557434042873
+4397087	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae	0.9443669564985473
+4398300	k__Bacteria	0.9269961942852898
+4399051	k__Bacteria	0.9995349152290738
+4400032	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.985153244244932
+4400482	k__Bacteria	0.9998427679310878
+4400559	k__Bacteria; p__Actinobacteria	0.9737417762714986
+4401048	k__Bacteria	0.9998606579806038
+4401373	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959625409954727
+4402081	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9177243775661077
+4402205	k__Bacteria	0.9999975260162551
+4402981	k__Bacteria	0.996473519465059
+4403113	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.967084492737454
+4403672	k__Bacteria	0.999825068558094
+4404557	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9200579618632104
+4407039	k__Bacteria	0.9999155187533662
+4407174	k__Bacteria	0.9973918966037477
+4407408	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9172303145088663
+4407979	k__Bacteria	0.99997162515483
+4408158	k__Bacteria	0.9861570654094493
+4408793	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9349933603827494
+4409058	k__Bacteria	0.9999822848735763
+4409084	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9593523988605671
+4409601	k__Bacteria; p__Actinobacteria	0.9727768078094977
+4411130	k__Bacteria	0.9926281463751339
+4411138	k__Bacteria; p__Actinobacteria	0.9365183802024689
+4413547	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+4415333	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9014190090176298
+4415433	k__Bacteria	0.9910474985970904
+4415996	k__Bacteria	0.9999940489100138
+4416099	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9743054263052383
+4417523	k__Bacteria; p__Actinobacteria	0.910602347770425
+4418394	k__Bacteria	0.9999719624005584
+4419123	k__Bacteria	0.9904845821230018
+4420161	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4420203	k__Bacteria	0.9999708024449802
+4420472	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4422396	k__Bacteria	0.9998744269966684
+4423172	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.996166460180547
+4423202	k__Bacteria	0.996821227967379
+4423372	k__Bacteria	0.9999873360332845
+4423384	k__Bacteria	0.9999675136735402
+4423600	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9639890613103053
+4424103	k__Bacteria	0.9999557768764011
+4424396	k__Bacteria	0.9999484796742344
+4424655	k__Bacteria	0.9999987936228847
+4426051	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9112594836513234
+4426336	k__Bacteria	0.9997185446469652
+4426645	k__Bacteria	0.9999304154110115
+4426946	k__Bacteria	0.9823070168383481
+4427366	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9639894810355585
+4427433	k__Bacteria	0.9956736196765905
+4428136	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9519123241989517
+4428177	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9974539645280454
+4428218	k__Bacteria	0.9995253947342015
+4428226	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+4428358	k__Bacteria	0.9999945240135512
+4428440	k__Bacteria	0.9990821715177014
+4428924	k__Bacteria	0.9998863870480995
+4428967	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+4429645	k__Bacteria	0.9902481231537016
+4430521	k__Bacteria	0.999966148602424
+4430533	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9962433973974971
+4431101	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9963442865810038
+4431189	k__Bacteria	0.9999886990167801
+4431590	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9964556607635728
+4431592	k__Bacteria	0.9999995538750159
+4432807	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9907291831279973
+4433521	k__Bacteria	0.9999679391087095
+4434051	k__Bacteria	0.9999963196993067
+4434484	k__Bacteria	0.9982001738547087
+4434679	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9774996289667159
+4434972	k__Bacteria	0.9999725106680122
+4435130	k__Bacteria	0.9996515351876878
+4435206	k__Bacteria	0.9996001749244845
+4435279	k__Bacteria	0.9891370675939353
+4435425	k__Bacteria	0.9993305278820231
+4435664	k__Bacteria	0.9962406226799879
+4435888	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.974434318697018
+4436040	k__Bacteria	0.9971771333988161
+4437101	k__Bacteria	0.9881860636014718
+4438326	k__Bacteria	0.9598786145526385
+4438848	k__Bacteria	0.9999595141881303
+4439032	k__Bacteria	0.9998501182299236
+4439182	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9784800250183867
+4439574	k__Bacteria	0.9999789746398929
+4439785	k__Bacteria	0.9999825209661349
+4440006	k__Bacteria	0.9999810380903971
+4440251	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9460981578302989
+4441175	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959844425574278
+4441424	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9684351088938051
+4441548	k__Bacteria	0.9999911312922883
+4441660	k__Bacteria	0.9999998989738524
+4441804	k__Bacteria	0.9999757002961199
+4442303	k__Bacteria	0.9999719314734281
+4443032	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.995522336905704
+4443851	k__Bacteria	0.9999086798409752
+4444348	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9711343540810797
+4444494	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Desulfurispirillum; s__alkaliphilum	0.9233103166047258
+4444616	k__Bacteria	0.9970553727345948
+4444717	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9971230417117792
+4445439	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9126030740117557
+4446058	k__Bacteria	0.99997958306073
+4446131	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9902227125238316
+4446362	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9946640402961677
+4446502	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9943550380271665
+4446734	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.958252685532869
+4447141	k__Bacteria	0.9998895671607073
+4448728	k__Bacteria	0.9968034724655853
+4449415	k__Bacteria	0.9999970886765766
+4449431	k__Bacteria	0.9999886906273211
+4449618	k__Bacteria	0.9999808972297535
+4449665	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9643666214841748
+4450487	k__Bacteria	0.9921939094041521
+4450618	k__Bacteria	0.997494668998744
+4450972	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9970748905271979
+4451171	k__Bacteria	0.9895393811041292
+4451876	k__Bacteria	0.9921889236820446
+4453315	k__Bacteria	0.9858984779397644
+4453410	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9111009696299671
+4453484	k__Bacteria	0.9895020373418943
+4454084	k__Bacteria; p__Planctomycetes; c__Phycisphaerae; o__Phycisphaerales; f__Phycisphaeraceae; g__Phycisphaera; s__mikurensis	0.9322259437038357
+4454257	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.988422167593609
+4454457	k__Bacteria; p__Chloroflexi; c__Thermobacula; o__Thermobaculales; f__Thermobaculaceae; g__Thermobaculum; s__terrenum	0.950948269604275
+4454544	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9708265278139909
+4455299	k__Bacteria	0.9999833694288905
+4456068	k__Bacteria	0.9999409731663423
+4456166	k__Bacteria	0.9999061251781916
+4456781	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9939819778219817
+4456858	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9448455809534655
+4457129	k__Bacteria	0.9999929956467531
+4457481	k__Bacteria	0.9999776916946216
+4457728	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9618033839245586
+4457925	k__Bacteria	0.9990661778132465
+4458042	k__Bacteria	0.9999971911781641
+4458679	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9812334733570447
+4458713	k__Bacteria; p__Chrysiogenetes; c__Chrysiogenetes; o__Chrysiogenales; f__Chrysiogenaceae; g__Chrysiogenes; s__arsenatis	0.9007361888086561
+4458753	k__Bacteria	0.9946264135378938
+4458934	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9704232221279956
+4459041	k__Bacteria	0.9910474985970904
+4459159	k__Bacteria	0.9910474985970904
+4460356	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9012840508706005
+4460853	k__Bacteria	0.9999827634719672
+4461054	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9973164559241664
+4461327	k__Bacteria	0.9723334102882137
+4461622	k__Bacteria	0.9997280376929036
+4461879	k__Bacteria	0.9996659105697614
+4461922	k__Bacteria	0.9999999192254961
+4462474	k__Bacteria	0.9997562253729538
+4462654	k__Bacteria	0.9999990602980932
+4462906	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9765356127497454
+4463184	k__Bacteria	0.9998097108572229
+4463689	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9991366899858719
+4464031	k__Bacteria	0.9996828742853375
+4464159	k__Bacteria	0.9997877553371616
+4464601	k__Bacteria	0.9999972477052883
+4464888	k__Bacteria	0.9999617358303261
+4464992	k__Bacteria	0.9933510655499137
+4465066	k__Bacteria	0.9999221896757422
+4465533	k__Bacteria	0.999939917968149
+4466616	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9952524906343265
+4468056	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9448455809534655
+4468190	k__Bacteria	0.9778725611640323
+4468496	k__Bacteria	0.9946264135378938
+4468509	k__Bacteria	0.9999985287714025
+4468544	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9938229674239908
+4468831	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9448455809534655
+4469015	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9331115966181931
+4469175	k__Bacteria	0.9997895481337261
+4469673	k__Bacteria	0.9999102824702674
+4469781	k__Bacteria	0.999839724154293
+4471401	k__Bacteria	0.9994717244676709
+4471761	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9498635849782279
+4471762	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.990671296061967
+4471892	k__Bacteria	0.9999602153763435
+4472158	k__Bacteria	0.9999789746398929
+4472633	k__Bacteria	0.999999302923123
+4473006	k__Bacteria	0.9999875821410505
+4473411	k__Bacteria	0.9994387280695345
+4473952	k__Bacteria	0.9999996984803144
+4474995	k__Bacteria	0.9999651920316768
+4475169	k__Bacteria	0.993353473098209
+4475300	k__Bacteria	0.999127801583007
+4475974	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9930794223690695
+4476709	k__Bacteria	0.999999899826662
+4476836	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9509899272325616
+4477138	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9807662915690982
+4478125	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae	0.9634174542419758
+4479113	k__Bacteria	0.9999134492179216
+4479142	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9959844425574278
+4480389	k__Bacteria	0.9999952363698711
+4480786	k__Bacteria	0.9999881117102201
+4481000	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9980678569262387
+4481961	k__Bacteria; p__Actinobacteria; c__Thermoleophilia; o__Gaiellales; f__Gaiellaceae; g__Gaiella; s__occulta	0.9973522600321708
+4482058	k__Bacteria	0.999986425939849
+4482078	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.9845095389399321
+4482229	k__Bacteria	0.9861828090159394
+4482362	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9997162324234493
+4482383	k__Bacteria; p__Synergistetes; c__Synergistia; o__Synergistales; f__Dethiosulfovibrionaceae; g__Dethiosulfovibrio	0.970031992365846
+4482513	k__Bacteria	0.9999983072122111
+4482585	k__Bacteria	0.9999631550313172
+4483576	k__Bacteria	0.9999021257462182
+4484108	k__Bacteria	0.9902481231537016
+4484368	k__Bacteria	0.9999184452444266
+4484395	k__Bacteria	0.9939509834895172
+1036261	k__Archaea	0.9936289658825792
+805106	k__Archaea; p__Euryarchaeota; c__Thermoplasmata	0.9211726695353694
+591811	k__Archaea; p__Euryarchaeota; c__Thermoplasmata	0.9195343231102575
+574835	k__Archaea; p__Euryarchaeota; c__Thermoplasmata	0.922237944217605
+562255	k__Archaea; p__Crenarchaeota; c__Aigarchaeota; o__Caldiarchales; f__Caldiarchaceae; g__Caldiarchaeum; s__subterraneum	0.9993032365182534
+560969	k__Archaea; p__Euryarchaeota; c__Thermoplasmata	0.94288973466441
+554093	k__Archaea; p__Euryarchaeota	0.9952949416207922
+318329	k__Archaea	0.9919858081284657
+179370	k__Archaea; p__Crenarchaeota; c__Aigarchaeota; o__Caldiarchales; f__Caldiarchaceae; g__Caldiarchaeum; s__subterraneum	0.9979171091199046
+160478	k__Archaea; p__Euryarchaeota; c__Thermoplasmata; o__Thermoplasmatales; f__Picrophilaceae	0.9532150738454954
+158889	k__Archaea	0.9999658489165046
+150607	k__Archaea; p__Crenarchaeota; c__Aigarchaeota; o__Caldiarchales; f__Caldiarchaceae; g__Caldiarchaeum; s__subterraneum	0.9985428846384518
+144391	k__Archaea	0.9999666797388113
+143107	k__Archaea; p__Crenarchaeota; c__Aigarchaeota; o__Caldiarchales; f__Caldiarchaceae; g__Caldiarchaeum; s__subterraneum	0.994458919463305
+108944	k__Archaea	0.9866863272324062
+106491	k__Archaea	0.9757789075151457
+103455	k__Archaea; p__Euryarchaeota; c__Thermoplasmata	0.9419210246748484
+76611	k__Archaea; p__Crenarchaeota; c__Aigarchaeota; o__Caldiarchales; f__Caldiarchaceae; g__Caldiarchaeum; s__subterraneum	0.9937393729393845
+58361	k__Archaea; p__Euryarchaeota; c__Thermoplasmata	0.9615596882532078
+34469	k__Archaea	0.9930358964467605
+28138	k__Archaea; p__Euryarchaeota; c__Thermoplasmata; o__E2; f__Methanomassiliicoccaceae; g__Coxiella; s__burnetii	0.9213592332322994
+19329	k__Archaea; p__Crenarchaeota; c__Aigarchaeota; o__Caldiarchales; f__Caldiarchaceae; g__Caldiarchaeum; s__subterraneum	0.996345502389465
+17995	Unassigned	0.12220487109826861
+1142	k__Archaea; p__Crenarchaeota; c__Aigarchaeota; o__Caldiarchales; f__Caldiarchaceae; g__Caldiarchaeum; s__subterraneum	0.9797139958989073
+1029	k__Archaea	0.9715886966826757
+439	k__Archaea; p__Euryarchaeota; c__Thermoplasmata; o__E2; f__Methanomassiliicoccaceae; g__Coxiella; s__burnetii	0.9217532272012557
+227	k__Archaea; p__Euryarchaeota; c__Thermoplasmata	0.9652044026992239
+1144812	k__Archaea; p__Euryarchaeota	0.9709346081740876
+1136866	k__Archaea	0.9974065638676098
+2076642	k__Archaea	0.9719617705024379
+1074804	k__Archaea	0.9854694293326247
+1137781	k__Archaea; p__Euryarchaeota; c__Thermoplasmata; o__E2; f__Methanomassiliicoccaceae; g__Coxiella; s__burnetii	0.9054008596062983
+4225748	k__Archaea; p__Crenarchaeota; c__Aigarchaeota; o__Caldiarchales; f__Caldiarchaceae; g__Caldiarchaeum; s__subterraneum	0.9991886576793512
+610438	k__Archaea; p__Crenarchaeota; c__Aigarchaeota; o__Caldiarchales; f__Caldiarchaceae; g__Caldiarchaeum; s__subterraneum	0.9922167452313942
+4323345	k__Archaea	0.9802025646486255
+4338135	k__Archaea	0.9970592302563354
+4362616	k__Archaea; p__Crenarchaeota; c__Aigarchaeota; o__Caldiarchales; f__Caldiarchaceae; g__Caldiarchaeum; s__subterraneum	0.9995367417479862
+4370431	k__Archaea; p__Euryarchaeota; c__Thermoplasmata	0.9069577055993843
+4404369	k__Archaea; p__Euryarchaeota; c__Thermoplasmata	0.9703893974348572
+4417438	k__Archaea; p__Crenarchaeota; c__Aigarchaeota; o__Caldiarchales; f__Caldiarchaceae; g__Caldiarchaeum; s__subterraneum	0.9999856269021828
+4444847	k__Archaea; p__Euryarchaeota; c__Thermoplasmata; o__E2; f__Methanomassiliicoccaceae; g__Coxiella; s__burnetii	0.9170830452359336
+4475393	k__Archaea; p__Euryarchaeota; c__Thermoplasmata; o__E2; f__Methanomassiliicoccaceae; g__Coxiella; s__burnetii	0.9517703137449679

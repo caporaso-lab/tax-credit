@@ -1,8 +1,0 @@
-dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
-B1-REF	1	2	naive-bayes	0.001:[18,18]:1.0	Unassigned	k__Archaea;p__Nanoarchaeota	underclassification	0	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[18,18]:1.0	Unassigned	k__Bacteria;p__Verrucomicrobia	underclassification	0	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[18,18]:1.0	Unassigned	k__Bacteria;p__Chlorobi	underclassification	0	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[18,18]:1.0	Unassigned	k__Bacteria;p__Dictyoglomi	underclassification	0	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[18,18]:1.0	Unassigned	k__Bacteria;p__Planctomycetes	underclassification	0	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[18,18]:1.0	Unassigned	k__Archaea;p__Crenarchaeota	underclassification	0	0.0	0.0	0.0
-B1-REF	1	2	naive-bayes	0.001:[18,18]:1.0	Unassigned	k__Bacteria;p__Nitrospirae	underclassification	0	0.0	0.0	0.0

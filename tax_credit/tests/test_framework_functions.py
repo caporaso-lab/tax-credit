@@ -8,13 +8,14 @@
 # The full license is in the file COPYING.txt, distributed with this software.
 # ----------------------------------------------------------------------------
 
+from os import makedirs
+from os.path import exists, join
+from collections import Counter
 
 from unittest import TestCase, main
 import pandas as pd
 from shutil import rmtree
 from tempfile import mkdtemp
-from os import makedirs
-from os.path import exists, join
 from tax_credit.framework_functions import (
     generate_simulated_datasets,
     find_last_common_ancestor,
@@ -30,51 +31,50 @@ class EvalFrameworkTests(TestCase):
     def test_generate_simulated_datasets(self):
         generate_simulated_datasets(
             self.ref_data, self.tmpdir, 100, 2, range(6, 5, -1))
-        # cross-validated should include only acidilacti and brevis,
-        # one rep in both query and ref
+        # cross-validated q0 should be ref1 and vice versa
         q0 = import_to_list(
             join(self.cvdir, 'B1-REF-iter0/query_taxa.tsv'), field=1)
         q1 = import_to_list(
             join(self.cvdir, 'B1-REF-iter1/query_taxa.tsv'), field=1)
-        cv_taxa = set(q0 + q1)
         ref0 = import_to_list(
             join(self.cvdir, 'B1-REF-iter0/ref_taxa.tsv'), field=1)
         ref1 = import_to_list(
             join(self.cvdir, 'B1-REF-iter1/ref_taxa.tsv'), field=1)
-        cv_ref = set(ref0 + ref1)
-        self.assertEqual(cv_taxa, {
-            'k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; '
-            'f__Lactobacillaceae; g__Lactobacillus; s__brevis',
-            'k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; '
-            'f__Lactobacillaceae; g__Pediococcus; s__acidilactici'})
-        self.assertEqual(cv_taxa & cv_ref, {
-            'k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; '
-            'f__Lactobacillaceae; g__Lactobacillus; s__brevis',
-            'k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; '
-            'f__Lactobacillaceae; g__Pediococcus; s__acidilactici'})
+        for q_taxon in q0:
+            for r_taxon in ref1:
+                if r_taxon.startswith(q_taxon):
+                    break
+            else:
+                self.fail(q_taxon + ' not in reference taxa')
+        for q_taxon in q1:
+            for r_taxon in ref0:
+                if r_taxon.startswith(q_taxon):
+                    break
+            else:
+                self.fail(q_taxon + ' not in reference taxa')
+        # ref0 + ref1 should equal ref
+        ref = import_to_list(join(self.tmpdir, self.query_fp), field=1)
+        self.assertEqual(Counter(ref), Counter(ref0 + ref1))
         # confirm that query seq IDs are not in ref for cross-val
         for i in [0, 1]:
             # test that cross-validated queries have pair in ref,
             # but keys do not match
-            query_taxa = import_taxonomy_to_dict(
-                join(self.cvdir, 'B1-REF-iter{0}/query_taxa.tsv'.format(i)))
-            ref_taxa = import_taxonomy_to_dict(
-                join(self.cvdir, 'B1-REF-iter{0}/ref_taxa.tsv'.format(i)))
-            for key, value in query_taxa.items():
-                # seq ID keys do not match
-                self.assertNotIn(key, ref_taxa)
-                # but matching taxonomy is present for each query taxon.
-                self.assertIn(value, ref_taxa.values())
+            query_ids = import_to_list(
+                join(self.cvdir, 'B1-REF-iter{0}/query_taxa.tsv'.format(i)),
+                field=0)
+            ref_ids = import_to_list(
+                join(self.cvdir, 'B1-REF-iter{0}/ref_taxa.tsv'.format(i)),
+                field=0)
+            # seq ID keys do not match
+            self.assertEqual(set(query_ids).intersection(set(ref_ids)), set())
             # test that novel-taxa queries have no match in ref
             query_taxa = import_taxonomy_to_dict(
                 join(self.ntdir, 'B1-REF-L6-iter{0}/query_taxa.tsv'.format(i)))
             ref_taxa = import_taxonomy_to_dict(
                 join(self.ntdir, 'B1-REF-L6-iter{0}/ref_taxa.tsv'.format(i)))
-            taxa = [t.split(';')[5] for t in ref_taxa.values()]
             for key, value in query_taxa.items():
                 self.assertNotIn(key, ref_taxa)
                 self.assertNotIn(value, ref_taxa.values())
-                self.assertIn(value.split(';')[5], taxa)
 
     def test_find_last_common_ancestor(self):
         taxa1 = import_to_list(self.query_fp)
@@ -82,8 +82,7 @@ class EvalFrameworkTests(TestCase):
         t1 = extract_taxa_names(taxa1, level=slice(None), field=1)
         t2 = extract_taxa_names(taxa2, level=slice(None), field=1)
         for i, n in zip(range(8), [7, 6, 5, 4, 7, 3, 6, 6]):
-            self.assertEqual(find_last_common_ancestor(
-                t2[i].split(';'), t1[i].split(';')), n)
+            self.assertEqual(find_last_common_ancestor(t2[i], t1[i]), n)
 
     def test_novel_taxa_classification_evaluation(self):
         # test novel taxa evaluation
@@ -95,17 +94,16 @@ class EvalFrameworkTests(TestCase):
         self.assertEqual(int(results.iloc[0]['iteration']), 0)
         self.assertEqual(results.iloc[0]['Method'], 'method1')
         self.assertEqual(results.iloc[0]['Parameters'], 'param1')
-        self.assertAlmostEqual(results.iloc[0]['match_ratio'], 0.375)
+        self.assertAlmostEqual(results.iloc[0]['match_ratio'], 0.25)
+        self.assertAlmostEqual(results.iloc[0]['overclassification_ratio'], 0.)
         self.assertAlmostEqual(
-            results.iloc[0]['overclassification_ratio'], 0.25)
-        self.assertAlmostEqual(
-            results.iloc[0]['underclassification_ratio'], 0.25)
+            results.iloc[0]['underclassification_ratio'], 0.625)
         self.assertAlmostEqual(
             results.iloc[0]['misclassification_ratio'], 0.125)
-        self.assertAlmostEqual(results.iloc[0]['Precision'], 0.5)
-        self.assertAlmostEqual(results.iloc[0]['Recall'], 0.375)
+        self.assertAlmostEqual(results.iloc[0]['Precision'], 0.666666667)
+        self.assertAlmostEqual(results.iloc[0]['Recall'], 0.25)
         self.assertAlmostEqual(
-            results.iloc[0]['F-measure'], 0.42857142857142855)
+            results.iloc[0]['F-measure'], 0.363636364)
         self.assertEqual(results.iloc[0]['mismatch_level_list'], self.exp_m)
         # test cross-validated evaluation
         results = novel_taxa_classification_evaluation(
@@ -131,14 +129,13 @@ class EvalFrameworkTests(TestCase):
             [self.paramdir], self.tmpdir, join(self.tmpdir, 'summary.txt'),
             test_type='cross-validated')
         pla = extract_per_level_accuracy(results)
-        print(pla)
         # confirm that method/dataset data propagate properly
         self.assertEqual(pla['Dataset'].unique(), ['B1-REF-L6'])
         self.assertEqual(pla['iteration'].unique(), ['0'])
         self.assertEqual(pla['Method'].unique(), ['method1'])
         self.assertEqual(pla['Parameters'].unique(), ['param1'])
         # confirm that level and per-level results are correct
-        for i, p, r, f in zip(range(6), self.exp_p, self.exp_r, self.exp_f):
+        for i in range(6):
             self.assertEqual(pla.iloc[i]['level'], i + 1)
             self.assertEqual(pla.iloc[i]['Precision'], self.exp_p[i + 1])
             self.assertEqual(pla.iloc[i]['Recall'], self.exp_r[i + 1])
@@ -146,7 +143,7 @@ class EvalFrameworkTests(TestCase):
             self.assertEqual(pla.iloc[i]['match_ratio'], self.exp_r[i + 1])
 
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(self):
         _ref1 = '\n'.join([
             '>179419',
             'TGAGAGTTTGATCCTGGCTCAGGACGAACGCTGGCGGCATGCCTAATACATGCAAGTCGAACGAG'
@@ -377,41 +374,41 @@ class EvalFrameworkTests(TestCase):
             '1136710	k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacil'
             'lales; f__Lactobacillaceae; g__Pediococcus'])
 
-        cls.tmpdir = mkdtemp()
+        self.tmpdir = mkdtemp()
         name = 'B1-REF-L6-iter0'
-        cls.query_fp = join(cls.tmpdir, name, 'query_taxa.tsv')
-        cls.paramdir = join(cls.tmpdir, name, name, 'method1', 'param1')
-        cls.obs_taxa_fp = join(cls.paramdir, 'query_tax_assignments.txt')
-        refpath = join(cls.tmpdir, 'ref1.txt')
-        cls.cvdir = join(cls.tmpdir, 'cross-validated')
-        cls.ntdir = join(cls.tmpdir, 'novel-taxa-simulations')
-        if not exists(cls.paramdir):
-            makedirs(cls.paramdir)
+        self.query_fp = join(self.tmpdir, name, 'query_taxa.tsv')
+        self.paramdir = join(self.tmpdir, name, name, 'method1', 'param1')
+        self.obs_taxa_fp = join(self.paramdir, 'query_tax_assignments.txt')
+        refpath = join(self.tmpdir, 'ref1.txt')
+        self.cvdir = join(self.tmpdir, 'cross-validated')
+        self.ntdir = join(self.tmpdir, 'novel-taxa-simulations')
+        if not exists(self.paramdir):
+            makedirs(self.paramdir)
         with open(refpath, 'w') as out:
             out.write(_ref1)
-        with open(cls.query_fp, 'w') as out:
+        with open(self.query_fp, 'w') as out:
             out.write(_taxa1)
-        with open(cls.obs_taxa_fp, 'w') as out:
+        with open(self.obs_taxa_fp, 'w') as out:
             out.write(_taxa2)
 
-        cls.databases = {'B1-REF': [refpath, cls.query_fp,
-                                    "ref1", "GTGCCAGCMGCCGCGGTAA",
-                                    "ATTAGAWACCCBDGTAGTCC", "515f", "806r"]}
-        cls.ref_data = pd.DataFrame.from_dict(cls.databases, orient="index")
-        cls.ref_data.columns = ["Reference file path", "Reference tax path",
-                                "Reference id", "Fwd primer", "Rev primer",
-                                "Fwd primer id", "Rev primer id"]
+        self.databases = {'B1-REF': [refpath, self.query_fp,
+                                     "ref1", "GTGCCAGCMGCCGCGGTAA",
+                                     "GGACTACHVGGGTWTCTAAT", "515f", "806r"]}
+        self.ref_data = pd.DataFrame.from_dict(self.databases, orient="index")
+        self.ref_data.columns = ["Reference file path", "Reference tax path",
+                                 "Reference id", "Fwd primer", "Rev primer",
+                                 "Fwd primer id", "Rev primer id"]
 
-        cls.exp_p = [0, 1.0, 1.0, 0.875, 0.8571428571428571,
-                     0.83333333333333337, 0.66666666666666663]
-        cls.exp_r = [0, 1.0, 1.0, 0.875, 0.75, 0.625, 0.25]
-        cls.exp_f = [0, 1.0, 1.0, 0.875, 0.79999999999999993,
-                     0.7142857142857143, 0.36363636363636365]
-        cls.exp_m = [0, 0, 0, 1, 1, 1, 3, 2]
+        self.exp_p = [0, 1.0, 1.0, 0.875, 0.8571428571428571,
+                      0.83333333333333337, 0.66666666666666663]
+        self.exp_r = [0, 1.0, 1.0, 0.875, 0.75, 0.625, 0.25]
+        self.exp_f = [0, 1.0, 1.0, 0.875, 0.79999999999999993,
+                      0.7142857142857143, 0.36363636363636365]
+        self.exp_m = [0, 0, 0, 1, 1, 1, 3, 2]
 
     @classmethod
-    def tearDownClass(cls):
-        rmtree(cls.tmpdir)
+    def tearDownClass(self):
+        rmtree(self.tmpdir)
 
 
 if __name__ == "__main__":
