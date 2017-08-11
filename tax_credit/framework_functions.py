@@ -15,27 +15,30 @@ from glob import glob
 from itertools import product
 from shutil import rmtree, move
 from random import sample
+from time import time
+from collections import Counter, defaultdict
+
+import matplotlib.pyplot as plt
+from seaborn import regplot
 from biom import load_table
 from biom.cli.util import write_biom_table
 from biom.parse import MetadataMap
-from skbio.alignment import local_pairwise_align_ssw
-from skbio import io, DNA
-from time import time
+from numpy import random
+from skbio import io
 import pandas as pd
-from collections import Counter
-from sklearn.metrics import precision_recall_fscore_support
+from sklearn.model_selection import StratifiedKFold
+
 from tax_credit.taxa_manipulator import (accept_list_or_file,
+                                         import_to_list,
                                          import_taxonomy_to_dict,
                                          export_list_to_file,
-                                         extract_rownames,
                                          filter_sequences,
-                                         extract_fasta_ids,
                                          string_search,
                                          trim_taxonomy_strings,
-                                         unique_lines,
-                                         branching_taxa,
-                                         stratify_taxonomy_subsets,
                                          extract_taxa_names)
+from qiime2 import Artifact
+from qiime2.plugins import feature_classifier
+from q2_types.feature_data import DNAIterator
 
 
 def gen_param_sweep(data_dir, results_dir, reference_dbs,
@@ -132,7 +135,7 @@ def move_results_to_repository(method_dirs, precomputed_results_dir):
 
 
 def clean_database(taxa_in, seqs_in, db_dir,
-                   junk='__;|__$|_sp_|unknown|unidentified'):
+                   junk='__;|__$|_sp$|unknown|unidentified'):
 
     '''Remove ambiguous and empty taxonomies from reference seqs/taxonomy.
 
@@ -168,35 +171,6 @@ def clean_database(taxa_in, seqs_in, db_dir,
     return clean_taxa, clean_fasta
 
 
-def find_primer_site(query_seq, target_seq):
-    '''Align primer to target DNA using striped Smith-Waterman, return site'''
-    # Increase gap extend penalty to avoid large gaps, short alignments
-    aln, score, start_end_positions = local_pairwise_align_ssw(
-        query_seq, target_seq, gap_extend_penalty=10)
-    return start_end_positions
-
-
-def extract_amplicons(seqs_in, amplicons_out, reads_out, fwd_primer,
-                      rev_primer, read_length, min_read_length=80):
-    '''Generate artificial amplicons and reads from a set of fasta sequences'''
-
-    with open(amplicons_out, 'w') as amplicons:
-        with open(reads_out, 'w') as reads:
-            for seq in io.read(seqs_in, format='fasta'):
-                # Align forward and reverse primers onto input sequence
-                seq_DNA = DNA(seq, lowercase=True)
-                fwd_primer_start = find_primer_site(fwd_primer, seq_DNA)[1][0]
-                rev_primer_end = find_primer_site(rev_primer, seq_DNA)[1][1]
-                # Trim seq to amplicon
-                amplicon = seq[fwd_primer_start:rev_primer_end]
-                if len(amplicon) != 0:
-                    amplicon.write(amplicons)
-                # Trim amplicon to sequence read length
-                read = amplicon[0:read_length]
-                if len(read) >= min_read_length:
-                    read.write(reads)
-
-
 def seq_count(infile):
     '''Count sequences in fasta file'''
     with open(infile, "r") as f:
@@ -204,8 +178,98 @@ def seq_count(infile):
     return count
 
 
+class Node(object):
+    def __init__(self):
+        self.tips = set()
+        self.children = defaultdict(Node)
+
+    def add(self, sid, taxon):
+        self.tips.add(sid)
+        if taxon:
+            self.children[taxon[0]].add(sid, taxon[1:])
+
+    def __lt__(self, other):
+        return len(self.tips) < len(other.tips)
+
+
+def build_tree(taxonomy, sequences):
+    tree = Node()
+    filtered_ids = {s.metadata['id'] for s in sequences}
+    for sid, taxon in taxonomy.view(pd.Series).items():
+        if sid not in filtered_ids:
+            continue
+        tree.add(sid, taxon.split(';'))
+    return tree
+
+
+def get_strata(tree, k, taxon=[]):
+    if not tree.children:
+        return [(';'.join(taxon), tree.tips)]
+    sorted_children = map(list, map(reversed, tree.children.items()))
+    sorted_children = iter(sorted(sorted_children))
+    misc = set()
+    # aggregate children with small tip sets
+    for child, level in sorted_children:
+        if len(child.tips) >= k:
+            break
+        misc.update(child.tips)
+    else:  # all the tips are in misc
+        return [(';'.join(taxon), misc)]
+    # grab the tips from the child that's not in misc
+    strata = get_strata(child, k, taxon+[level])
+    # get the rest
+    for child, level in sorted_children:
+        strata.extend(get_strata(child, k, taxon+[level]))
+    # if there were more than k misc, make a stratum for them
+    if len(misc) > k:
+        strata = [(';'.join(taxon), misc)] + strata
+    else:  # randomly add them to the other strata
+        for i, tip in enumerate(misc):
+            strata[i % len(strata)][1].add(tip)
+    return strata
+
+
+def distances(A, B, n):
+    iA = random.choice(range(len(A)), size=n)
+    iB = random.choice(range(len(B)), size=n)
+    d = [0]*n
+    for i, (a, b) in enumerate(zip(iA, iB)):
+        d[i] = sum(x != y for x, y in zip(A[a], B[b]))
+    return d
+
+
+def distance_comparison(dataframe, data_dir, test_name, samples=10000):
+    simulated_dir = join(data_dir, test_name)
+    for index, data in dataframe.iterrows():
+        lengths = Counter()
+        inner = []
+        outer = []
+        trainsets = glob(join(simulated_dir, index+'*', 'ref_seqs.fasta'))
+        testsets = glob(join(simulated_dir, index+'*', 'query.fasta'))
+        for train_fp, test_fp in zip(trainsets, testsets):
+            train = list(map(str, io.read(train_fp, format='fasta')))
+            test = list(map(str, io.read(test_fp, format='fasta')))
+            if not train or not test:
+                continue
+            lengths.update(map(len, test))
+            inner.extend(distances(train, train, samples))
+            outer.extend(distances(train, test, samples))
+        inner.sort()
+        outer.sort()
+        df = pd.DataFrame(
+            {'train/train': inner, 'train/test': outer})
+
+        plt.figure()  # figsize=(width, height))
+        ax = regplot('train/train', 'train/test', df, fit_reg=False)
+        ax.set_title(index, fontsize=20)
+        maxval = max((inner[-1], outer[-1]))
+        plt.plot([0, maxval], [0, maxval], linewidth=2)
+        plt.show()
+
+
 def generate_simulated_datasets(dataframe, data_dir, read_length, iterations,
-                                levelrange=range(6, 0, -1)):
+                                levelrange=range(6, 0, -1), force=False,
+                                min_read_length=80):
     '''From a dataframe of sequence reference databases, build training/test
     sets of "novel taxa" queries, taxonomies, and reference seqs/taxonomies.
 
@@ -215,6 +279,8 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations,
         raise ValueError('Must perform two or more iterations for '
                          'construction of cross-validated datasets.')
 
+    cv_dir = join(data_dir, 'cross-validated')
+    novel_dir = join(data_dir, 'novel-taxa-simulations')
     for index, data in dataframe.iterrows():
         db_dir = join(data_dir, 'ref_dbs', data['Reference id'])
         if not exists(db_dir):
@@ -225,125 +291,114 @@ def generate_simulated_datasets(dataframe, data_dir, read_length, iterations,
             basename(splitext(data['Reference file path'])[0])))
         clean_taxa = join(db_dir, '{0}_clean.tsv'.format(
             basename(splitext(data['Reference tax path'])[0])))
-        if not exists(clean_fasta):
+        if not exists(clean_fasta) or force:
             clean_taxa, clean_fasta = clean_database(
               data['Reference tax path'], data['Reference file path'], db_dir)
 
-        # Trim reference sequences to amplicon target
+        # Extract amplicons and filter by minimum length
         primer_pair = '{0}-{1}'.format(data['Fwd primer id'],
                                        data['Rev primer id'])
         base, ext = splitext(clean_fasta)
-        amplicons_fp = join('{0}_{1}{2}'.format(
-            base, primer_pair, ext))
         simulated_reads_fp = join('{0}_{1}_trim{2}{3}'.format(
             base, primer_pair, read_length, ext))
+        if not exists(simulated_reads_fp) or force:
+            # Trim reference sequences to amplicon target
+            seqs = Artifact.import_data('FeatureData[Sequence]', clean_fasta)
+            trimmed = feature_classifier.methods.extract_reads(
+                sequences=seqs, trunc_len=read_length,
+                f_primer=data['Fwd primer'], r_primer=data['Rev primer']).reads
 
-        # Extract amplicons
-        if not exists(simulated_reads_fp):
-            extract_amplicons(clean_fasta, amplicons_fp, simulated_reads_fp,
-                              DNA(data['Fwd primer']), DNA(data['Rev primer']),
-                              read_length, min_read_length=80)
+            with open(simulated_reads_fp, 'w') as simulated_reads:
+                for seq in trimmed.view(DNAIterator):
+                    if len(seq) >= min_read_length:
+                        seq.write(simulated_reads, format='fasta')
         else:
             print('simulated reads and amplicons exist: skipping extraction')
-
-        # Filter taxonomy strings to match read sequences
-        valid_taxa = '^' + '$|^'.join(list(extract_fasta_ids(
-            simulated_reads_fp))) + '$'
-        read_taxa = string_search(clean_taxa, valid_taxa, discard=False,
-                                  field=slice(0, 1), delim='\t')
 
         # Print sequence counts to see how many seqs were filtered
         print(index, 'Sequence Counts')
         print('Raw Fasta:           ', seq_count(data['Reference file path']))
         print('Clean Fasta:         ', seq_count(clean_fasta))
-        print('Simulated Amplicons: ', seq_count(amplicons_fp))
         print('Simulated Reads:     ', seq_count(simulated_reads_fp))
 
-        # Generate novel query and reference seqs/taxa pairs
-        novel_dir = join(data_dir, 'novel-taxa-simulations')
-        generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
-                                     iterations, novel_dir,
-                                     levelrange=levelrange)
-
         # Generate simulated community query and reference seqs/taxa pairs
-        simulated_dir = join(data_dir, 'cross-validated')
-        generate_crossvalidated_sequences(read_taxa, simulated_reads_fp, index,
-                                          iterations, simulated_dir)
+        generate_cross_validated_sequences(
+            clean_taxa, simulated_reads_fp, index, iterations, cv_dir)
+
+        # Generate novel query and reference seqs/taxa pairs
+        generate_novel_sequence_sets(cv_dir, novel_dir, levelrange=levelrange)
 
 
-def generate_novel_sequence_sets(read_taxa, simulated_reads_fp, index,
-                                 iterations, data_dir,
+def generate_novel_sequence_sets(cv_dir, novel_dir,
                                  levelrange=range(6, 0, -1)):
     '''Generate paired query/reference fastas and taxonomies for novel taxa
     analysis, given an input of simulated amplicon taxonomies (read_taxa)
     and fastas (simulated_reads_fp), the index (database) name, # of
     iterations to perform (cross-validated data subsets), the output dir
-    (data_dir).
-    read_taxa: list or path
-        list or file of taxonomies corresponding to simulated_reads_fp
-    simulated_reads_fp: path
-        simulated amplicon reads (fasta format file)
-    index: str
-        reference database name
-    iterations: int >= 2
-        number of subsets to create
-    data_dir: path
+    (novel_dir).
+    novel_dir: path
         base output directory to contain simulated datasets
+    cv_dir: path
+        directory containing cross-validation data sets for filtering
     '''
-    if iterations < 2:
-        raise ValueError('Must perform two or more iterations for '
-                         'construction of cross-validated datasets.')
 
-    # Remove non-branching taxa
-    for level in levelrange:
-        # Trim taxonomy strings to level X
-        expected_taxa = trim_taxonomy_strings(read_taxa, level)
-        # sample unique representative taxa
-        unique_taxa = unique_lines(expected_taxa, mode='n', field=1)
-        # Remove non-branched taxa
-        branched_taxa = branching_taxa(unique_taxa, field=level)
+    for cv_fold_dir in glob(join(cv_dir, '*')):
+        index, REF, iteration = basename(cv_fold_dir).split('-')
+        for level in levelrange:
+            novel_fold_dir = join(
+                novel_dir, '-'.join([index, REF, 'L'+str(level), iteration]))
+            if not exists(novel_fold_dir):
+                makedirs(novel_fold_dir)
 
-        # Count unique and braching taxa, just for fun
-        print('{0} level {1} contains {2} unique and {3} branched taxa\
-              '.format(index, level, len(unique_taxa), len(branched_taxa)))
+            # Trim taxonomy strings to level X and copy them into the directory
+            query_taxa = trim_taxonomy_strings(
+                join(cv_fold_dir, 'query_taxa.tsv'), level)
+            query_taxa_fp = join(novel_fold_dir, 'query_taxa.tsv')
+            export_list_to_file(query_taxa, query_taxa_fp)
 
-    # Create QUERY / REF pairs
-        # Create QUERY TAXONOMY as subsets of branched taxa lists
-        basename = '{0}-L{1}'.format(index, level)
-        # stratify at level-1, since we want to stratify the branches, not tips
-        stratify_taxonomy_subsets(branched_taxa, iterations, data_dir,
-                                  basename, level=level-1)
-
-        # Create REF and TAXONOMY files paired to QUERY files:
-        for iteration in range(0, iterations):
-            db_iter_dir = join(data_dir, '{0}-iter{1}'.format(basename,
-                                                              iteration))
-            query_taxonomy_fp = join(db_iter_dir, 'query_taxa.tsv')
-            query_fp = join(db_iter_dir, 'query.fasta')
-            ref_fp = join(db_iter_dir, 'ref_seqs.fasta')
-            ref_taxonomy_fp = join(db_iter_dir, 'ref_taxa.tsv')
-
-            # 1) Create REF TAXONOMY from list of taxonomies that
+            # Create REF TAXONOMY from list of taxonomies that
             #    DO NOT match QUERY taxonomies
+            ref_taxa_fp = join(novel_fold_dir, 'ref_taxa.tsv')
             name_list = '^' + '$|^'.join(list(set(extract_taxa_names(
-                query_taxonomy_fp, slice(1, level+1), stripchars='')))) + '$'
-            ref_taxonomy = string_search(read_taxa, name_list,
-                                         discard=True, field=slice(1, level+1))
-            export_list_to_file(ref_taxonomy, ref_taxonomy_fp)
+                query_taxa_fp, slice(1, level+1), stripchars='')))) + '$'
+            ref_taxa = string_search(join(cv_fold_dir, 'ref_taxa.tsv'),
+                                     name_list, discard=True,
+                                     field=slice(1, level+1))
+            export_list_to_file(ref_taxa, ref_taxa_fp)
 
-            # 2) Create REF: Filter ref database to contain only seqs that
+            # Now trim the taxonomy strings to level X-1 for consistency with
+            # CV and remove any that are unclassified at that level
+            query_taxa = trim_taxonomy_strings(query_taxa_fp, level-1)
+            separated = defaultdict(list)
+            for s in query_taxa:
+                separated[s.count(';')].append(s)
+            export_list_to_file(separated[max(separated)], query_taxa_fp)
+
+            # Create REF: Filter ref database to contain only seqs that
             #    match non-matching taxonomy strings
-            filter_sequences(simulated_reads_fp, ref_fp,
-                             ref_taxonomy_fp, keep=True)
+            ref_fp = join(novel_fold_dir, 'ref_seqs.fasta')
+            filter_sequences(join(cv_fold_dir, 'ref_seqs.fasta'),
+                             ref_fp, ref_taxa_fp, keep=True)
 
-            # 3) Create QUERY: Filter ref database to contain only seqs
+            # Create QUERY: Filter ref database to contain only seqs
             #    that match QUERY TAXONOMY
-            filter_sequences(simulated_reads_fp, query_fp,
-                             query_taxonomy_fp, keep=True)
+            query_fp = join(novel_fold_dir, 'query.fasta')
+            filter_sequences(join(cv_fold_dir, 'query.fasta'),
+                             query_fp, query_taxa_fp, keep=True)
+
+            # Encode as Artifacts for convenience
+            artifact = Artifact.import_data('FeatureData[Sequence]', ref_fp)
+            artifact.save(ref_fp[:-5] + 'qza')
+            artifact = Artifact.import_data('FeatureData[Sequence]', query_fp)
+            artifact.save(query_fp[:-5] + 'qza')
+            artifact = Artifact.import_data(
+                'FeatureData[Taxonomy]', ref_taxa_fp,
+                view_type='HeaderlessTSVTaxonomyFormat')
+            artifact.save(ref_taxa_fp[:-3] + 'qza')
 
 
-def generate_crossvalidated_sequences(read_taxa, simulated_reads_fp, index,
-                                      iterations, data_dir):
+def generate_cross_validated_sequences(read_taxa, simulated_reads_fp, index,
+                                       iterations, cv_dir):
     '''Generates simulated community files (fasta and taxonomy) as subsets of
     simulated amplicons/taxa for cross-validated taxonomy assignment. Selects
     duplicated taxa names, evenly allocates these among subsets as query taxa
@@ -357,82 +412,114 @@ def generate_crossvalidated_sequences(read_taxa, simulated_reads_fp, index,
         reference database name
     iterations: int >= 2
         number of subsets to create
-    data_dir: path
+    cv_dir: path
         base output directory to contain simulated datasets
     '''
     if iterations < 2:
         raise ValueError('Must perform two or more iterations for '
                          'construction of cross-validated datasets.')
 
-    # Subset amplicons so that taxa are evenly distributed between train/test
-    duplicated_taxa = unique_lines(read_taxa, mode='d', field=1)
-    stratify_taxonomy_subsets(duplicated_taxa, iterations, data_dir, index,
-                              level=1, delim='\t')
-    # generate pairs of train/test fastas/taxonomies for each CV subset
-    for iteration in range(0, iterations):
-        db_iter_dir = join(data_dir, '{0}-iter{1}'.format(index, iteration))
+    # Stratify the data and form the CV data sets
+    simulated_reads = list(io.read(simulated_reads_fp, format='fasta'))
+    taxonomy = Artifact.import_data(
+        'FeatureData[Taxonomy]', read_taxa,
+        view_type='HeaderlessTSVTaxonomyFormat')
+    tree = build_tree(taxonomy, simulated_reads)
+    strata = get_strata(tree, iterations)
+    print(index + ': generating', iterations, 'folds on', len(strata),
+          'strata')
+    X, y = zip(*[(s, t) for t, ss in strata for s in ss])
+    skf = StratifiedKFold(
+        n_splits=iterations, shuffle=True, random_state=0)
+    splits = []
+    for train, test in skf.split(X, y):
+        train_set = {X[i] for i in train}
+        test_set = {X[i] for i in test}
+        splits.append((train_set, test_set))
+
+    # Output the CV data sets in the expected formats
+    taxonomy_series = taxonomy.view(pd.Series)
+    for iteration, (train, test) in enumerate(splits):
+        db_iter_dir = join(cv_dir, '{0}-iter{1}'.format(index, iteration))
+        if not exists(db_iter_dir):
+            makedirs(db_iter_dir)
         query_taxa_fp = join(db_iter_dir, 'query_taxa.tsv')
         query_fp = join(db_iter_dir, 'query.fasta')
         ref_fp = join(db_iter_dir, 'ref_seqs.fasta')
         ref_taxa_fp = join(db_iter_dir, 'ref_taxa.tsv')
 
-        # 1) Create REF taxa that do not match query IDs
-        ids = '^' + '$|^'.join(list(extract_rownames(query_taxa_fp))) + '$'
-        ref_taxa = string_search(read_taxa, ids, discard=True,
-                                 field=slice(0, 1), delim='\t')
-        export_list_to_file(ref_taxa, ref_taxa_fp)
-        # 2) Create REF: seqs that match ref taxonomy
-        filter_sequences(simulated_reads_fp, ref_fp, ref_taxa_fp, keep=True)
-        # 3) Create QUERY: seqs that match QUERY TAXONOMY
-        filter_sequences(simulated_reads_fp, query_fp, query_taxa_fp,
-                         keep=True)
+        # Output the taxa files
+        train_series = taxonomy_series[train]
+        train_series.to_csv(ref_taxa_fp, sep='\t')
+        # If a taxonomy in the test set doesn't exist in the training set, trim
+        # it until it does
+        train_taxonomies = set()
+        for taxonomy in train_series.values:
+            taxonomy = taxonomy.split(';')
+            for level in range(1, len(taxonomy)+1):
+                train_taxonomies.add(';'.join(taxonomy[:level]))
+        test_list = []
+        for sid in test:
+            taxonomy = taxonomy_series[sid].split(';')
+            for level in range(len(taxonomy), 0, -1):
+                if ';'.join(taxonomy[:level]) in train_taxonomies:
+                    test_list.append(
+                        '\t'.join([sid, ';'.join(taxonomy[:level]).strip()]))
+                    break
+            else:
+                raise RuntimeError('unknown kingdom in query set')
+        export_list_to_file(test_list, query_taxa_fp)
+        # Output the reference files
+        with open(ref_fp, 'w') as ref_fasta:
+            with open(query_fp, 'w') as query_fasta:
+                for seq in simulated_reads:
+                    if seq.metadata['id'] in train:
+                        seq.write(ref_fasta, format='fasta')
+                    else:
+                        seq.write(query_fasta, format='fasta')
+
+        # Encode as Artifacts for convenience
+        artifact = Artifact.import_data('FeatureData[Sequence]', ref_fp)
+        artifact.save(ref_fp[:-5] + 'qza')
+        artifact = Artifact.import_data('FeatureData[Sequence]', query_fp)
+        artifact.save(query_fp[:-5] + 'qza')
+        artifact = Artifact.import_data(
+            'FeatureData[Taxonomy]', ref_taxa_fp,
+            view_type='HeaderlessTSVTaxonomyFormat')
+        artifact.save(ref_taxa_fp[:-3] + 'qza')
 
 
-def test_crossvalidated_sequences(dataframe, data_dir, iterations):
+def test_cross_validated_sequences(data_dir):
     '''confirm that test (query) taxa IDs are not in training (ref) set, but
     that all taxonomy strings are.
     '''
     simulated_dir = join(data_dir, 'cross-validated')
-    for index, data in dataframe.iterrows():
-        for iteration in range(0, iterations):
-            db_iter_dir = join(simulated_dir, '{0}-iter{1}'.format(index,
-                                                                   iteration))
-            query_taxa = import_taxonomy_to_dict(join(db_iter_dir,
-                                                      'query_taxa.tsv'))
-            ref_taxa = import_taxonomy_to_dict(join(db_iter_dir,
-                                                    'ref_taxa.tsv'))
-            for key, value in query_taxa.items():
-                if key in ref_taxa:
-                    print('key duplicate: ', key)
-                if value not in ref_taxa.values():
-                    print('missing value: ', value)
+    for db_iter_dir in glob(join(simulated_dir, '*-iter*')):
+        query_taxa = import_to_list(
+            join(db_iter_dir, 'query_taxa.tsv'), field=0)
+        ref_taxa = import_to_list(
+            join(db_iter_dir, 'ref_taxa.tsv'), field=0)
+        common = set(query_taxa).intersection(set(ref_taxa))
+        if common:
+            print('sequences in training and test sets:')
+            print(common)
 
 
-def test_novel_taxa_datasets(dataframe, data_dir, iterations,
-                             levelrange=range(6, 0, -1)):
+def test_novel_taxa_datasets(data_dir):
     '''confirm that test (query) taxa IDs and taxonomies are not in training
     (ref) set, but sister branch taxa are.
     '''
     novel_dir = join(data_dir, 'novel-taxa-simulations')
-    for index, data in dataframe.iterrows():
-        for level in levelrange:
-            for itr in range(0, iterations):
-                db_iter_dir = join(novel_dir, '{0}-L{1}-iter{2}'.format(index,
-                                                                        level,
-                                                                        itr))
-                query_taxa = import_taxonomy_to_dict(join(db_iter_dir,
-                                                          'query_taxa.tsv'))
-                ref_taxa = import_taxonomy_to_dict(join(db_iter_dir,
-                                                        'ref_taxa.tsv'))
-                taxa = [t.split(';')[level-1] for t in ref_taxa.values()]
-                for key, value in query_taxa.items():
-                    if key in ref_taxa:
-                        print('key duplicate:', index, level, itr, key)
-                    if value in ref_taxa.values():
-                        print('value duplicate:', index, level, itr, value)
-                    if value.split(';')[level-1] not in taxa:
-                        print('missing branch:', index, level, itr,
-                              value.split(';')[level-1])
+    for db_iter_dir in glob(join(novel_dir, '*-L*-iter*')):
+        query_taxa = import_taxonomy_to_dict(join(db_iter_dir,
+                                                  'query_taxa.tsv'))
+        ref_taxa = import_taxonomy_to_dict(join(db_iter_dir,
+                                                'ref_taxa.tsv'))
+        for key, value in query_taxa.items():
+            if key in ref_taxa:
+                print('key duplicate:', basename(db_iter_dir), key)
+            if value in ref_taxa.values():
+                print('value duplicate:', basename(db_iter_dir), value)
 
 
 def recall_novel_taxa_dirs(data_dir, databases, iterations,
@@ -476,70 +563,28 @@ def recall_novel_taxa_dirs(data_dir, databases, iterations,
 
 # tag for removal — if match == recall, do we need to keep LCA?
 def find_last_common_ancestor(taxon_a, taxon_b):
-    '''Given two taxonomy strings (input as lists of taxa names separated by
-    level), find the first level at which taxa mismatch.
+    '''Given two taxonomy strings, find the first level at which taxa mismatch.
     '''
-    mismatch_level = 0
-    for taxa_comparison in zip(taxon_a, taxon_b):
-        if taxa_comparison[0].strip() == taxa_comparison[1].strip():
-            mismatch_level += 1
-        else:
-            break
-    return mismatch_level
+    i = -1
+    for i, (ta, tb) in enumerate(zip(taxon_a.split(';'), taxon_b.split(';'))):
+        if ta != tb:
+            return i
+    return i + 1
 
 
-def evaluate_novel_taxa_classification(obs_taxa, exp_taxa, level):
-    '''Given an observed and actual taxonomy string corresponding to a "novel"
-    taxon, score as match, overclassification, underclassification, or
-    misclassification'''
-
-    # compare observations at level
-    def lev(t):
-        return t[level - 1].strip()
-
-    # or at top level of observed
-    def top(t):
-        return t[len(obs_taxa)-1].strip()
-
-    # if observed has same assignment depth as expected-1 and top level match,
-    # ==match. len(exp_taxa) - 1 because exp_taxa is actual taxonomy string,
-    # L-1 is the actual expected taxonomy string
-    if len(obs_taxa) == len(exp_taxa) - 1 and lev(obs_taxa) == lev(exp_taxa):
-        result = 'match'
-    # if deeper and assignemnt at L-1 is correct, count as overclassification
-    elif len(obs_taxa) >= len(exp_taxa) and lev(obs_taxa) == lev(exp_taxa):
-        result = 'overclassification'
-    # if shallower and top-level assign correct, count as underclassification
-    elif (len(obs_taxa) < len(exp_taxa) - 1 and
-          top(obs_taxa) == top(exp_taxa) or
-          obs_taxa[0] == 'Unclassified' or obs_taxa[0] == 'Unassigned'):
-        result = 'underclassification'
-    # Otherwise, count as misclassification
-    else:
-        result = 'misclassification'
-    return result
-
-
-def evaluate_cross_validated_classification(obs_taxa, exp_taxa):
+def evaluate_classification(obs_taxon, exp_taxon):
     '''Given an observed and actual taxonomy string corresponding to a cross-
     validated simulated community, score as match, overclassification,
     underclassification, or misclassification'''
 
-    # compare observations at depth of top level of obs_taxa
-    obs = obs_taxa[len(obs_taxa)-1].strip()
-    exp = exp_taxa[len(obs_taxa)-1].strip()
-
-    # if  observed = expected, match
-    if len(obs_taxa) == len(exp_taxa) and obs == exp:
-        result = 'match'
-    # if shallower and top-level assign correct, count as underclassification
-    elif (len(obs_taxa) < len(exp_taxa) and obs == exp or
-          obs_taxa[0] == 'Unclassified' or obs_taxa[0] == 'Unassigned'):
-        result = 'underclassification'
-    # Otherwise, count as misclassification
-    else:
-        result = 'misclassification'
-    return result
+    if obs_taxon == exp_taxon:
+        return 'match'
+    if exp_taxon.startswith(obs_taxon) or \
+            obs_taxon in ('Unclassified', 'Unassigned', 'No blast hit'):
+        return 'underclassification'
+    if obs_taxon.startswith(exp_taxon):
+        return 'overclassification'
+    return 'misclassification'
 
 
 def load_taxa(obs_fp, level=slice(0, 7), field=1, sort=True):
@@ -579,9 +624,40 @@ def count_records(record_counter, record_name, line_count):
     return ratio
 
 
-def compute_prf(exp, obs, avg='micro', test_type='cross-validated',
-                l_range=range(1, 7), level=6, sample_weight=None,
-                exclude=None):
+def precision_recall_fscore(exp, obs, sample_weight=None, exclude=None):
+    # precision, recall, fscore, calculated using microaveraging
+    if exclude is None:
+        exclude = []
+    if sample_weight is None:
+        sample_weight = [1]*len(exp)
+    tp, fp, fn = 0, 0, 0
+    for e, o, w in zip(exp, obs, sample_weight):
+        if e in exclude:
+            continue
+        classification = evaluate_classification(o, e)
+        if classification == 'match':
+            # tp for the true class, the rest are tn
+            tp += w
+        elif classification == 'underclassification':
+            # fn for the true class
+            fn += w
+            # no fp for the predicted class, because it was right to some level
+            # the rest are tn
+        else:
+            # fp the the predicted class
+            fp += w
+            # fn for the true class, the rest are tn
+            fn += w
+    if tp == 0:
+        return 0, 0, 0
+    p = tp / (tp + fp)
+    r = tp / (tp + fn)
+    f = 2.*p*r / (p + r)
+    return p, r, f
+
+
+def compute_prf(exp, obs, test_type='cross-validated',
+                l_range=range(1, 7), sample_weight=None, exclude=None):
     '''Compute precision, recall, and F-measure using sklearn.
     exp_taxa: list
         Expected observations for each sample (sequence).
@@ -594,51 +670,24 @@ def compute_prf(exp, obs, avg='micro', test_type='cross-validated',
         'novel-taxa' or 'cross-validated'.
     l_range: range
         Range of taxonomic levels to test is test_type = 'cross-validated'.
-    level: int
-        Level of taxonomic assignment used if test_type = 'novel-taxa'
     sample_weight: array-like of shape = [n_samples], optional
         Sample weights.
-    exclude: list
-        List of labels to explicitly exclude from score calculations.
     '''
 
-    prf = precision_recall_fscore_support
-
-    # with labels, null classifications can be FN but not TP or FP.
-    # Hence, nulls affect recall but not precision.
-    if exclude is None:
-        exclude = []
-
-    def lab(exp, obs, level, exclude):
-        # use set or else multiple counts weight observations.
-        # Remove all labels <= level. Hence, underclassification becomes null,
-        # and can only be FN, but overclassification is still counted as FP.
-        return [t for t in set(exp + obs) if not len(t.split(';')) <= level and
-                t not in exclude]
-
-    if test_type == 'mock':
-        p, r, f, s = prf(
-            exp, obs, average=avg, labels=lab(exp, obs, level, exclude),
-            sample_weight=sample_weight)
-    elif test_type == 'novel-taxa':
-        exp = extract_taxa_names(exp, level=slice(0, level))
-        # slice at level, so that exp=level-1 (otherwise exp = true label,
-        # not novel taxa label)
-        p, r, f, s = prf(
-            exp, obs, average=avg, labels=lab(exp, obs, level-1, exclude))
+    if test_type in ('mock', 'novel-taxa'):
+        p, r, f = precision_recall_fscore(
+            exp, obs, sample_weight=sample_weight, exclude=exclude)
     elif test_type == 'cross-validated':
         # initialize p/r/f as lists of 0s, representing each taxonomic level.
         p, r, f = [0] * 7, [0] * 7, [0] * 7
         # iterate over multiple taxonomic levels
-        for level in l_range:
-            _obs = extract_taxa_names(obs, level=slice(0, level+1))
-            _exp = extract_taxa_names(exp, level=slice(0, level+1))
-            # Here use level+1 to slice actual level
-            p[level], r[level], f[level], s = prf(
-                _exp, _obs, average='micro',
-                labels=lab(_exp, _obs, level, exclude))
+        for lvl in l_range:
+            _obs = extract_taxa_names(obs, level=slice(0, lvl+1))
+            _exp = extract_taxa_names(exp, level=slice(0, lvl+1))
+            p[lvl], r[lvl], f[lvl] = precision_recall_fscore(
+                _exp, _obs, sample_weight=sample_weight, exclude=exclude)
     else:
-        raise ValueError('test_type must == "novel-taxa" or "cross-validated" '
+        raise ValueError('test_type must be "novel-taxa" or "cross-validated" '
                          'or "mock".')
 
     return p, r, f
@@ -689,8 +738,7 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
         exp_fp = join(expected_results_dir, dataset_id, 'query_taxa.tsv')
         exp_taxa, obs_taxa = load_prf(obs_fp, exp_fp)
 
-        p, r, f = compute_prf(exp_taxa, obs_taxa, test_type=test_type,
-                              level=level)
+        p, r, f = compute_prf(exp_taxa, obs_taxa, test_type=test_type)
 
         # Create empty list of levels at which first mismatch occurs
         mismatch_level_list = [0] * 8
@@ -701,20 +749,12 @@ def novel_taxa_classification_evaluation(results_dirs, expected_results_dir,
         # loop through observations, store results to counter
         record_counter = Counter()
         for obs, exp in zip(obs_taxa, exp_taxa):
-            # access "expected taxonomy"
-            o = obs.split(';')
-            e = exp.split(';')
-
             # Find shallowest level of mismatch
-            mismatch_level = find_last_common_ancestor(o, e)
+            mismatch_level = find_last_common_ancestor(obs, exp)
             mismatch_level_list[mismatch_level] += 1
 
             # evaluate novel taxa classification
-            if test_type == 'novel-taxa':
-                result = evaluate_novel_taxa_classification(o, e, level)
-
-            elif test_type == 'cross-validated':
-                result = evaluate_cross_validated_classification(o, e)
+            result = evaluate_classification(obs, exp)
 
             record_counter.update({'line_count': 1})
             record_counter.update({result: 1})

@@ -1,3 +1,0 @@
-dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
-F1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	k__Fungi;p__Ascomycota	k__Fungi;p__Zygomycota	overclassification	1	0.0	0.0	0.0
-F1-REF	1	2	sortmerna	0.51:0.8:5:0.9:1.0	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Pleosporales	k__Fungi;p__Fungi_phy_Incertae_sedis	overclassification	1	0.0	0.0	0.0

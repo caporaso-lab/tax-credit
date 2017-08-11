@@ -1,26 +1,2185 @@
 Feature ID	Taxon	Confidence
-981957	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria	0.9970290467595523
-814161	k__Bacteria	0.928055117815256
-746126	k__Bacteria	0.9174724627690004
-517456	k__Bacteria	0.9114479427470475
-89370	k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Aerococcaceae	0.9111885900204948
-38566	k__Bacteria	0.8936137520970711
-23520	k__Bacteria	0.9982062608620736
-16094	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Hydrogenothermaceae	0.9290593780377653
-10759	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfovibrionales; f__Desulfohalobiaceae; g__Desulfonatronospira; s__delicata	0.8117001678913273
-6602	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales; f__Oxalobacteraceae	0.9888936373074431
-3820	k__Bacteria	0.9437411580279343
-1128670	k__Bacteria; p__Proteobacteria	0.701810797640356
-28400	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Enterobacteriales; f__Enterobacteriaceae	0.8639034685951721
-822699	k__Bacteria; p__Proteobacteria	0.7455672917392349
-1105864	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Chromatiales; f__Chromatiaceae	0.8721663761830281
-1140636	k__Bacteria	0.9058297422229247
-818834	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.956204912504604
-4183921	k__Bacteria	0.9045542396296512
-4321924	k__Bacteria	0.9037410322162789
-4369464	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Sphingomonadales; f__Sphingomonadaceae; g__Sandaracinobacter; s__sibiricus	0.9993992467893144
-4391457	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Sphingomonadales; f__Erythrobacteraceae	0.9554784883972127
-4392252	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae; o__Synechococcales; f__Chamaesiphonaceae; g__Chamaesiphon	0.9932903458596886
-4446822	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Sphingomonadales; f__Sphingomonadaceae; g__Sandaracinobacter; s__sibiricus	0.9996083413349414
-4456895	k__Bacteria	0.9233629926558206
-4359816	Unassigned	0.6606299166910532
+1111682	k__Bacteria	0.859265381362115
+1110945	k__Bacteria	0.9117806378939975
+1109804	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kordiimonadales; f__Kordiimonadaceae; g__Kordiimonas; s__gwangyangensis	0.8114241261303031
+1107192	k__Bacteria	0.8631386148273932
+1103964	k__Bacteria	0.9344124950086649
+1101727	k__Bacteria	0.8685182125872993
+1100780	k__Bacteria	0.8758558569681356
+1099283	k__Bacteria	0.8892611226553139
+1098690	k__Bacteria	0.8967136306865454
+1097378	k__Bacteria	0.9501527530017536
+1097287	k__Bacteria	0.8879591204006064
+1096498	k__Bacteria	0.9545885233571167
+1093892	k__Bacteria	0.9163843675579023
+1091363	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999552082937044
+1089411	Unassigned	0.8150400932181157
+1087183	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9918443693789776
+1086509	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8905945282137169
+1085372	k__Bacteria	0.9183004290168049
+1082343	k__Bacteria	0.9357083104933469
+1079901	k__Bacteria	0.9210214243903216
+1078441	k__Bacteria	0.9400890916271499
+1076840	k__Bacteria	0.8882443334150473
+1075519	k__Bacteria	0.9384295987464489
+1071620	k__Bacteria	0.8025406742585752
+1070334	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9965031036141679
+1069987	k__Bacteria	0.8849043932337326
+1067649	k__Bacteria	0.9380183676433462
+1067574	k__Bacteria	0.9322135187224401
+1064719	k__Bacteria	0.8975906815922623
+1063810	k__Bacteria	0.9294487892326131
+1062419	k__Bacteria	0.8964498144229783
+1061474	k__Bacteria	0.9554208460534042
+1060774	k__Bacteria	0.9429146441495673
+1057930	k__Bacteria	0.888748647025894
+1057733	Unassigned	0.8481229347400705
+1055397	k__Bacteria	0.8713900180452366
+1054751	k__Bacteria	0.9316043834847765
+1051267	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9120799123287681
+1050844	k__Bacteria	0.8994803590521601
+1049768	k__Bacteria	0.944152575933835
+1046630	k__Bacteria	0.9047919412297898
+1046178	k__Bacteria	0.8965590915317632
+1045353	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8906267376188889
+1041947	k__Bacteria	0.9099771458296032
+1038433	k__Bacteria	0.9594432218308221
+1035820	k__Bacteria	0.8630483816688004
+1033457	k__Bacteria	0.9207011508790849
+1029493	k__Bacteria	0.9172793711839199
+1028571	k__Bacteria	0.9383382319366383
+1027660	k__Bacteria	0.8734690412611161
+1025982	k__Bacteria	0.8784482377535453
+1023508	k__Bacteria	0.8945549171467299
+1019894	Unassigned	0.8722245381017575
+1018666	k__Bacteria	0.9493323398991566
+1017181	k__Bacteria	0.9012087366862193
+1012539	k__Bacteria	0.8885280222347879
+1012294	k__Bacteria	0.9490609591977471
+1008570	k__Bacteria	0.8782420564555448
+999866	k__Bacteria	0.9407449360839221
+998555	k__Bacteria	0.9421410134854372
+997722	k__Bacteria	0.8685234990904153
+990864	k__Bacteria	0.89128925539422
+990723	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9122956361276863
+990243	k__Bacteria	0.9207557805860395
+984336	k__Bacteria	0.9082261722202037
+982227	k__Bacteria	0.9439583192323432
+980714	k__Bacteria	0.935467786307368
+973186	k__Bacteria	0.8817007172822557
+970601	k__Bacteria	0.8639950218094706
+969952	Unassigned	0.8410891713855622
+967275	k__Bacteria	0.8915019235222684
+962605	k__Bacteria	0.9044101830764798
+960691	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8166960431199769
+959169	k__Bacteria	0.9134504795829856
+958210	k__Bacteria	0.9619766704983762
+957557	k__Bacteria	0.8914070909161292
+954571	k__Bacteria	0.9129109423647946
+952498	Unassigned	0.8628105938107469
+948982	k__Bacteria	0.8879591204006064
+945480	k__Bacteria	0.9490154077834706
+941722	k__Bacteria	0.9204289858803196
+938861	k__Bacteria	0.8974941736281402
+936801	k__Bacteria	0.949397247308004
+929839	k__Bacteria	0.8614581437052334
+926583	Unassigned	0.8456777580517976
+924855	k__Bacteria	0.8717263518608492
+924602	k__Bacteria	0.8905678552868873
+923415	k__Bacteria	0.9468630800056406
+922918	k__Bacteria	0.8839954752487269
+918733	k__Bacteria	0.8936789400967323
+916580	k__Bacteria	0.8965122153499385
+910834	k__Bacteria	0.9497963955313546
+909941	k__Bacteria	0.8822654169979602
+909905	Unassigned	0.8479266182049651
+909561	k__Bacteria	0.9409584349349046
+907828	k__Bacteria	0.8813396607210048
+907690	k__Bacteria	0.9371091310287372
+906446	k__Bacteria	0.8484212974977521
+905674	k__Bacteria	0.9081192901575651
+901964	k__Bacteria	0.9002568725178768
+901428	k__Bacteria	0.8962367698955532
+901351	Unassigned	0.8605233324612693
+901170	k__Bacteria	0.8988270077450622
+899620	k__Bacteria	0.8897733121275578
+894888	k__Bacteria	0.912568685414034
+894445	k__Bacteria	0.9026856838598664
+893717	k__Bacteria	0.9135725229236556
+887059	k__Bacteria	0.9341575798340143
+887032	Unassigned	0.8886118159958155
+885263	k__Bacteria	0.8608668684082076
+884863	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9624122866574663
+884690	k__Bacteria	0.9276486566682051
+883648	k__Bacteria	0.9221764733355724
+882691	k__Bacteria	0.8991441629098837
+870395	k__Bacteria	0.8840739352818944
+868257	k__Bacteria	0.9382090782481592
+864786	k__Bacteria	0.9286115539541823
+860603	k__Bacteria	0.9017410853597808
+859279	Unassigned	0.882376583495811
+856569	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8628066120972785
+855892	k__Bacteria	0.896229766848244
+853416	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.8098633966376537
+853051	k__Bacteria	0.9550173139564084
+852375	k__Bacteria	0.9360819880501777
+852012	k__Bacteria	0.8952213058540516
+851594	k__Bacteria	0.9200662093274934
+849631	k__Bacteria	0.9028795668362295
+849283	k__Bacteria	0.9223958407340027
+845454	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9973632543706055
+843415	k__Bacteria	0.9470568003794744
+842580	k__Bacteria	0.9633301701362592
+838985	k__Bacteria	0.8995283014702435
+836477	k__Bacteria	0.9308390755970307
+825815	k__Bacteria	0.9118498340221745
+824606	k__Bacteria	0.9487791510719997
+823360	k__Bacteria	0.8582457562482332
+822450	k__Bacteria	0.9297870392697891
+822394	k__Bacteria	0.9192178492519343
+821464	k__Bacteria	0.9572888606870477
+821460	k__Bacteria	0.9254915007685408
+821228	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999555753992695
+819956	k__Bacteria	0.8900507772362195
+819415	Unassigned	0.8380491193400164
+817767	k__Bacteria	0.910052182057833
+816095	k__Bacteria	0.956133592954335
+815351	k__Bacteria	0.9624068400579879
+812766	k__Bacteria	0.9096395988783594
+811108	k__Bacteria	0.9365011928860428
+808783	k__Bacteria	0.9426904268757463
+807643	k__Bacteria	0.925236404528509
+806739	k__Bacteria	0.8910960239871979
+806547	k__Bacteria	0.9310032510833038
+805665	k__Bacteria	0.9055746576427223
+800218	k__Bacteria	0.8908014847247527
+792531	k__Bacteria	0.920448101085903
+792207	k__Bacteria	0.9132343383342632
+791385	k__Bacteria; p__Firmicutes; c__Clostridia; o__Natranaerobiales; f__Natranaerobiaceae; g__Natronoanaerobium; s__salstagnum	0.9798373325135982
+783059	k__Bacteria	0.9440920072573641
+780288	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7255024264171043
+780036	k__Bacteria	0.8807872617484346
+779876	k__Bacteria	0.9380543153396539
+779089	k__Bacteria	0.90727415616052
+772095	k__Bacteria	0.9254523690050757
+769927	k__Bacteria	0.9215516105048357
+749810	k__Bacteria	0.9169648842567142
+747680	k__Bacteria	0.9644921614386569
+742260	k__Bacteria	0.9424606815015159
+736196	k__Bacteria	0.9097460024147405
+721286	k__Bacteria	0.9288625805568664
+720550	k__Bacteria	0.9663075330154686
+718813	Unassigned	0.839572162984252
+715712	k__Bacteria	0.898820976004252
+709533	k__Bacteria	0.9455182195281788
+701078	k__Bacteria	0.9426342055589428
+700905	k__Bacteria	0.9575518345403461
+695116	k__Bacteria	0.9118272865046507
+692823	k__Bacteria	0.925520611368367
+692019	k__Bacteria	0.9508293629609201
+689950	k__Bacteria	0.9513648307645531
+687996	k__Bacteria	0.8820483756969224
+682752	k__Bacteria	0.9075897920098582
+682737	k__Bacteria	0.9153783968338691
+682208	k__Bacteria	0.9326855902242263
+680958	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Syntrophobacterales; f__Syntrophobacteraceae; g__Desulfoglaeba; s__alkanexedens ALDC	0.9810982503317093
+676571	k__Bacteria	0.914532577042102
+670708	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9977615783960951
+670210	k__Bacteria	0.9579553787733357
+669356	k__Bacteria	0.8826020611201689
+667570	k__Bacteria	0.9152558546306024
+664764	k__Bacteria	0.9153783968338691
+657584	k__Bacteria	0.8733165472359243
+638207	k__Bacteria	0.9365212585334124
+631768	k__Bacteria	0.8873524933820272
+628982	k__Bacteria	0.9282952601399067
+626519	k__Bacteria	0.9072561000454801
+624440	k__Bacteria	0.8984784300178774
+623331	k__Bacteria	0.9580673538833286
+621710	k__Bacteria; p__Proteobacteria	0.7151744644203419
+621068	Unassigned	0.8116986982226224
+619210	k__Bacteria	0.9099987942168759
+617795	k__Bacteria	0.924006233088998
+615189	k__Bacteria	0.9152915340585883
+609606	k__Bacteria	0.8869686174291428
+609022	k__Bacteria	0.8631160049263343
+608506	k__Bacteria	0.871138320085454
+593519	k__Bacteria	0.9117687312260854
+593353	k__Bacteria	0.8940972707158117
+593200	k__Bacteria	0.8677162485092197
+593154	k__Bacteria	0.9506011693251796
+592980	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9812542522884324
+592925	k__Bacteria	0.9192131985732953
+591776	k__Bacteria	0.9353639003202009
+591285	k__Bacteria	0.9029404858700777
+590431	k__Bacteria	0.9353661814484944
+590251	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9978467048342483
+589163	k__Bacteria	0.9034999430121973
+589089	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.7110288349263664
+587616	k__Bacteria	0.9138012417385144
+587418	k__Bacteria	0.9323801851996781
+587358	k__Bacteria	0.9273837272941402
+587004	k__Bacteria	0.9092126917434386
+586832	k__Bacteria	0.9388637597080705
+586809	k__Bacteria	0.9669741993045637
+586302	k__Bacteria	0.9560996234160493
+586062	k__Bacteria	0.9380543153396539
+585840	k__Bacteria	0.9157205878016883
+585817	k__Bacteria	0.9075281525158106
+584689	k__Bacteria	0.9196883519449103
+584131	k__Bacteria	0.9236679945866131
+583935	k__Bacteria	0.9431979500881748
+583549	k__Bacteria	0.9181226759691677
+583498	k__Bacteria	0.9209581711289405
+583406	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9943600454850859
+582464	k__Bacteria	0.9222761426288457
+581398	k__Bacteria	0.904563495443397
+579900	k__Bacteria	0.9092350271246633
+579889	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9996870863005263
+579432	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9996870863005263
+579387	k__Bacteria	0.9486480665254792
+579304	k__Bacteria	0.9035428043441842
+579148	k__Bacteria	0.913172257287432
+579147	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9996870863005263
+578893	k__Bacteria	0.9114001321518859
+578837	k__Bacteria	0.912959461817026
+578257	k__Bacteria	0.9201381533847837
+577132	k__Bacteria	0.8524528243921412
+576360	k__Bacteria	0.9456146934167697
+575932	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9950061069889486
+575630	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999549818716944
+574826	k__Bacteria	0.9064088355249185
+572476	k__Bacteria	0.9178278584700917
+570279	k__Bacteria; p__Proteobacteria	0.7066708821173198
+570232	k__Bacteria	0.8820618372348237
+569729	k__Bacteria	0.9495680670712621
+568228	k__Bacteria	0.9289903159427874
+567585	k__Bacteria	0.9431979500881748
+567412	k__Bacteria	0.9464639491118216
+567241	k__Bacteria	0.8508282293604288
+566717	k__Bacteria	0.9552968797272912
+566574	k__Bacteria	0.9508293629609201
+565880	k__Bacteria	0.9025412568567772
+565388	k__Bacteria	0.9006325989527714
+564431	k__Bacteria	0.9114664476850789
+564045	k__Bacteria	0.9226968003875491
+563625	k__Bacteria	0.9041692411317793
+563193	k__Bacteria	0.9368517015119764
+562859	k__Bacteria	0.8471407209775673
+562318	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9943600454850859
+562225	k__Bacteria	0.8871359326774791
+562181	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999964161058006
+561327	k__Bacteria	0.9256221215212698
+561242	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9996870863005263
+561204	k__Bacteria	0.9201115257898863
+561194	k__Bacteria	0.9508293629609201
+559996	k__Bacteria	0.9407041696375187
+559745	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.7468715116920758
+559649	k__Bacteria	0.9597505197725625
+559136	k__Bacteria	0.911670907988475
+558789	k__Bacteria	0.9608078522561185
+557614	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.825063929049109
+557456	k__Bacteria	0.9311992403065235
+557321	k__Bacteria	0.9194469252929958
+556939	k__Bacteria	0.938286626307533
+556694	k__Bacteria	0.9368532648774522
+556575	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae	0.7089843771646258
+556169	k__Bacteria	0.9432679165077656
+555870	k__Bacteria	0.8970558883910562
+555692	k__Bacteria	0.9633586217353267
+555445	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9797077136029041
+554677	k__Bacteria	0.8684671669959845
+554249	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Syntrophobacterales; f__Syntrophobacteraceae; g__Desulfoglaeba; s__alkanexedens ALDC	0.9653536609397156
+553382	k__Bacteria	0.9291130409945999
+552565	k__Bacteria	0.9485157563793768
+552487	k__Bacteria	0.9220365658925987
+552187	k__Bacteria	0.9026030682597618
+552074	k__Bacteria	0.955750104421783
+551931	k__Bacteria	0.9710322537875219
+551635	k__Bacteria	0.9487729397988909
+551595	k__Bacteria	0.9464080833064533
+549791	k__Bacteria	0.9361251589864705
+549351	k__Bacteria	0.9218434248837384
+549331	k__Bacteria	0.974678334362248
+549232	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.744084161785547
+548784	k__Bacteria	0.9236923620914299
+548406	k__Bacteria	0.9194469252929958
+547948	k__Bacteria	0.8596124338830684
+547396	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7305261817787293
+547302	k__Bacteria	0.8924593953036014
+545805	k__Bacteria	0.9583055765068836
+545041	k__Bacteria	0.8944637274591392
+543139	k__Bacteria	0.8848112093353419
+542142	k__Bacteria	0.9308551066039368
+542079	k__Bacteria	0.9794492755485845
+541894	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7283747391341026
+541292	k__Bacteria	0.91446820882107
+540733	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae; o__Synechococcales; f__Chamaesiphonaceae; g__Chamaesiphon	0.9402257763551949
+540611	k__Bacteria	0.9119890638088018
+540530	k__Bacteria	0.9300384407139547
+539407	k__Bacteria	0.9604289301593751
+539319	k__Bacteria	0.9106979308688957
+539107	k__Bacteria	0.8718287206909202
+538602	Unassigned	0.8291376702571085
+538468	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae; g__Nautilia	0.7160490716149802
+537512	k__Bacteria	0.9566300143074473
+536259	k__Bacteria	0.8914891923694275
+535375	k__Bacteria	0.9165465331999879
+535010	k__Bacteria	0.947194200827126
+534898	Unassigned	0.882376583495811
+534871	k__Bacteria	0.9755622021412211
+534397	k__Bacteria	0.9004763289003787
+534008	k__Bacteria	0.9523654601580679
+533624	k__Bacteria	0.9317028686947193
+533516	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.8447027741273938
+533075	k__Bacteria	0.9330950583950182
+532994	k__Bacteria	0.8829493421894627
+532413	k__Bacteria	0.9063445308571008
+532146	k__Bacteria	0.9539998840435333
+532140	k__Bacteria	0.9339292885100705
+531837	k__Bacteria	0.8599272590354959
+531614	Unassigned	0.888740705336718
+531510	k__Bacteria	0.950608871502623
+531370	k__Bacteria	0.9424643594024664
+531323	k__Bacteria	0.9658378559640122
+530876	k__Bacteria	0.9288822232877331
+530484	Unassigned	0.8725343463670039
+530122	k__Bacteria	0.950614175369093
+530005	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9995177208391718
+529954	k__Bacteria	0.9562067825304682
+529709	k__Bacteria	0.9249011975806103
+529345	k__Bacteria	0.9007766856003794
+529313	k__Bacteria	0.9392080292122277
+528783	k__Bacteria	0.9311102753019556
+528715	k__Bacteria	0.8996739475268354
+528410	k__Bacteria	0.9281350784337469
+528281	k__Bacteria	0.9360746942627167
+527604	k__Bacteria	0.9436577274711552
+527577	k__Bacteria	0.9010274268036378
+527315	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9873714828634076
+527208	k__Bacteria	0.9559422411484333
+527078	k__Bacteria	0.878015524960397
+526987	k__Bacteria	0.9147185532732885
+526806	k__Bacteria	0.9241149975181661
+526174	k__Bacteria	0.9214864963619637
+525942	k__Bacteria	0.888995222149498
+525800	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9978476594612392
+525665	k__Bacteria	0.9299516993405607
+525448	k__Bacteria	0.9223912084334305
+525360	k__Bacteria	0.8833531412314931
+524865	k__Bacteria	0.9252138148047542
+524400	k__Bacteria	0.9346734577413921
+524372	k__Bacteria	0.9033661243030676
+524371	k__Bacteria	0.9338011058107673
+524100	k__Bacteria	0.9317110639228412
+524095	k__Bacteria	0.9496340805554303
+523961	k__Bacteria	0.9352387606273629
+523487	k__Bacteria	0.8783864381167446
+522959	k__Bacteria	0.9528300943676096
+522907	k__Bacteria	0.9439820603861014
+521767	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9996857204183268
+521737	k__Bacteria	0.9369905770365189
+521516	k__Bacteria	0.8866587737817185
+521360	k__Bacteria	0.9315153139387892
+521294	k__Bacteria	0.9225488098712318
+521234	k__Bacteria	0.9508606939855017
+521207	k__Bacteria	0.9401448771526605
+521175	k__Bacteria	0.9438881018250419
+520866	k__Bacteria	0.9295839603084735
+520774	k__Bacteria	0.9182708364770187
+520593	k__Bacteria	0.9546210829165579
+520552	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9445352604044776
+519511	k__Bacteria	0.9311926980700719
+519443	k__Bacteria	0.9298241674746007
+519347	k__Bacteria	0.9474416471868196
+519290	k__Bacteria	0.9314600341130301
+518851	k__Bacteria	0.9474416471868196
+518664	k__Bacteria	0.8879591204006064
+518560	k__Bacteria	0.9547800482254275
+518150	k__Bacteria	0.9304625570059241
+518097	k__Bacteria	0.940316045155216
+518020	k__Bacteria	0.9033253709213074
+517799	Unassigned	0.8498154245347981
+517691	k__Bacteria	0.9391089590265302
+517629	k__Bacteria	0.9606519690128775
+516731	k__Bacteria	0.9121914882428848
+516670	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9789373104090235
+516073	k__Bacteria	0.9209984510812743
+515912	k__Bacteria	0.9257980880238477
+515575	k__Bacteria	0.9179205490250305
+515189	k__Bacteria	0.9357052389505501
+514232	Unassigned	0.7829099910595384
+514077	k__Bacteria	0.9466500975193101
+513909	k__Bacteria	0.8908821041203767
+513807	k__Bacteria	0.9546346597196234
+513653	k__Bacteria; p__Proteobacteria	0.765652135005421
+513499	k__Bacteria	0.8820094469489547
+512569	k__Bacteria	0.9021693791601386
+511401	k__Bacteria	0.9346241555016759
+510742	k__Bacteria	0.9034650603260855
+510703	k__Bacteria	0.8728857825796696
+510294	k__Bacteria	0.9236272814046194
+510079	k__Bacteria	0.9321541554319123
+510001	k__Bacteria	0.9216502039577056
+509764	k__Bacteria	0.9128417715452674
+509352	k__Bacteria; p__Proteobacteria	0.7268182898860142
+509109	k__Bacteria	0.9135749827488436
+508890	Unassigned	0.8482058988549428
+508844	k__Bacteria	0.9677839221747992
+504796	k__Bacteria	0.9382090782481592
+499035	k__Bacteria	0.9582943034684251
+496942	Unassigned	0.7682589386373325
+493008	k__Bacteria	0.9148688225021472
+471412	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8804642945598634
+464583	k__Bacteria	0.8934148533213718
+464224	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9931768152731374
+462595	k__Bacteria	0.9194825397548
+461877	k__Bacteria	0.9245415137237504
+460628	k__Bacteria	0.9068539879734108
+455671	k__Bacteria	0.8909742307647763
+449511	k__Bacteria	0.915490737493194
+445403	k__Bacteria	0.9268726628933035
+443276	k__Bacteria	0.9488169010259904
+438966	k__Bacteria	0.9107148420361673
+437182	k__Bacteria	0.9391392137831133
+434692	k__Bacteria	0.9024300189602863
+432030	k__Bacteria	0.9317814605105545
+431117	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.8545853947361451
+429766	k__Bacteria	0.8888685737360354
+428705	k__Bacteria	0.8972358505847056
+426327	k__Bacteria	0.8989363074744445
+425130	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9920661376630322
+416537	k__Bacteria	0.952175147662429
+408750	k__Bacteria	0.9179325061300637
+407215	k__Bacteria	0.9432021449399753
+405957	k__Bacteria	0.9379910309015017
+403917	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999564175561797
+398604	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7399369475848285
+395792	k__Bacteria	0.933855390317751
+394758	k__Bacteria	0.9338396469098348
+392140	k__Bacteria	0.948748547720263
+391286	Unassigned	0.8446029585613273
+389987	k__Bacteria	0.9387681023704243
+384453	k__Bacteria	0.9440642535466166
+382828	k__Bacteria	0.9535840760374086
+375253	k__Bacteria	0.8885283218195574
+375026	k__Bacteria	0.941327119675726
+374863	Unassigned	0.8629685714820161
+374682	k__Bacteria	0.8989254117723986
+373790	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9986684522334953
+370290	k__Bacteria	0.8960312758999198
+370253	k__Bacteria	0.9324983363684397
+369770	k__Bacteria	0.9087387741332152
+369563	k__Bacteria	0.9569243064322608
+368937	k__Bacteria	0.894658233820369
+368220	k__Bacteria	0.9034650603260855
+368139	k__Bacteria	0.8883294610004706
+367548	k__Bacteria	0.9648523806260011
+367376	k__Bacteria	0.9439752540914226
+366944	k__Bacteria	0.9151653989891556
+366430	k__Bacteria	0.9222155568735965
+366398	k__Bacteria	0.9338628328382976
+365933	k__Bacteria	0.9607154096681267
+365661	k__Bacteria	0.9034650603260855
+365310	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9881346500535216
+365148	k__Bacteria	0.9275929447384254
+365014	k__Bacteria	0.8949376887272077
+364913	k__Bacteria	0.9008198455401802
+364824	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9779337279585452
+364665	k__Bacteria	0.9358817123444397
+364529	k__Bacteria	0.9550716299583397
+364137	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9906898221976801
+363662	k__Bacteria	0.9567670740271685
+363513	k__Bacteria	0.9508293629609201
+363507	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9906898221976801
+363442	k__Bacteria	0.9279016908657797
+363226	k__Bacteria	0.9306671251660255
+362413	k__Bacteria	0.8968902684865663
+362089	k__Bacteria	0.9508293629609201
+361935	k__Bacteria	0.902220866295708
+361808	k__Bacteria	0.8599272590354959
+361759	k__Bacteria	0.9242318637658654
+361337	k__Bacteria	0.9093497804344435
+361231	k__Bacteria	0.8969820850439351
+361222	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9979455281950521
+360897	k__Bacteria	0.9034650603260855
+360764	k__Bacteria	0.9034650603260855
+360393	k__Bacteria	0.8960312758999198
+360246	k__Bacteria	0.9339601610305107
+359986	k__Bacteria	0.9034650603260855
+359553	k__Bacteria	0.9015301250686382
+359448	Unassigned	0.8457874280520244
+359367	k__Bacteria	0.952010630204062
+358945	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9979455281950521
+358647	k__Bacteria	0.8960312758999198
+358551	k__Bacteria	0.8960312758999198
+358309	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9985958224614682
+357681	k__Bacteria	0.9095510179668692
+357442	k__Bacteria	0.9260163446934436
+357331	k__Bacteria	0.8860167226940715
+356089	k__Bacteria	0.9192870135597323
+355899	k__Bacteria	0.9441498069483812
+355649	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999918284343526
+4459730	k__Bacteria	0.955932366460435
+354913	k__Bacteria	0.9395524082623525
+353881	k__Bacteria	0.9224533975435105
+353203	k__Bacteria	0.9082336448963275
+352440	k__Bacteria	0.9296115154555133
+351404	k__Bacteria	0.9251697581853894
+349509	k__Bacteria	0.9308390755970307
+349339	k__Bacteria	0.9296404210332114
+349314	k__Bacteria	0.9055333432959921
+348790	k__Bacteria	0.9085814155974931
+348517	k__Bacteria	0.914068664705404
+348362	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9878143188363867
+348298	k__Bacteria	0.9380543153396539
+347156	k__Bacteria	0.9001473893194993
+346241	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kordiimonadales; f__Kordiimonadaceae; g__Kordiimonas; s__gwangyangensis	0.9540801655094188
+345246	k__Bacteria	0.925675803446363
+344525	k__Bacteria	0.9272439378559849
+343895	k__Bacteria	0.8970018409012304
+343089	k__Bacteria	0.847203785167622
+342971	k__Bacteria	0.9376220056133808
+342294	k__Bacteria	0.9338628328382976
+341488	k__Bacteria	0.9688880765158671
+340982	k__Bacteria	0.9357757709364412
+340734	k__Bacteria	0.9308390755970307
+340509	k__Bacteria	0.9405188455883661
+339934	k__Bacteria	0.9248905681413766
+339457	k__Bacteria	0.9013138672112789
+339236	k__Bacteria	0.9158450949470266
+337992	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9797134883500156
+337195	k__Bacteria	0.9334311540616803
+336784	k__Bacteria	0.9250967080667293
+336759	k__Bacteria	0.8648270398018391
+335039	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae; o__Synechococcales; f__Chamaesiphonaceae; g__Chamaesiphon	0.9273365481135554
+334971	k__Bacteria	0.9055833461268173
+334067	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.7110288349263664
+332919	k__Bacteria	0.9492529872216184
+332043	k__Bacteria	0.8669918737768728
+331595	k__Bacteria; p__Proteobacteria	0.7268182898860142
+330933	Unassigned	0.8700596241969631
+330782	k__Bacteria	0.9189800247538815
+330293	k__Bacteria	0.9419978517587306
+329842	k__Bacteria	0.9420693211186068
+328690	k__Bacteria	0.9179949545147464
+327314	k__Bacteria	0.9426072247793635
+326700	k__Bacteria	0.9213159224821813
+326330	k__Bacteria	0.9281950773528345
+325729	k__Bacteria	0.9142053319116331
+324969	k__Bacteria	0.9146311519199504
+323325	k__Bacteria	0.8815414309244171
+322894	k__Bacteria	0.9634018530855316
+321145	k__Bacteria	0.9474416471868196
+320941	k__Bacteria	0.9573838870446802
+320844	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9804361935228031
+318833	k__Bacteria	0.9328679606003194
+318672	k__Bacteria	0.9027784097465059
+318596	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9961983495814982
+317714	Unassigned	0.8652737499092706
+316761	k__Bacteria	0.9416017850110275
+316500	k__Bacteria	0.8815414309244171
+315051	k__Bacteria	0.9240504521987033
+314702	k__Bacteria	0.9436055973094629
+314654	k__Bacteria	0.9360361224876619
+314531	k__Bacteria	0.9178278584700917
+313756	k__Bacteria	0.9338628328382976
+312339	k__Bacteria	0.8523799091037982
+311564	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9942866232411055
+311305	k__Bacteria	0.9303889944728243
+311173	k__Bacteria	0.8974880858262333
+311151	k__Bacteria	0.9357757709364412
+310746	k__Bacteria	0.96801257618777
+309442	k__Bacteria	0.9580256614681242
+308956	k__Bacteria	0.9002564976010781
+308822	k__Bacteria	0.9186383257746724
+308042	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9785320152564624
+307640	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9964578096688722
+307580	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.982938698938108
+307571	k__Bacteria	0.9380543153396539
+305721	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9993476196130844
+305115	k__Bacteria	0.909780460046689
+304851	k__Bacteria	0.9474416471868196
+304425	k__Bacteria	0.9236417385071447
+304421	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9779337279585452
+304383	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9858872657620049
+303352	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9869703505360868
+303310	k__Bacteria	0.9613914650232679
+302983	Unassigned	0.8971362406232446
+302919	k__Bacteria	0.9540824854263656
+302650	k__Bacteria	0.9222155568735965
+301946	k__Bacteria	0.9426072247793635
+301626	k__Bacteria	0.9380543153396539
+301608	Unassigned	0.8105145390135455
+301421	k__Bacteria	0.882291850298756
+300895	k__Bacteria	0.8798931975637847
+300309	k__Bacteria	0.9158450949470266
+300147	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9906898221976801
+300106	k__Bacteria	0.9485055301634236
+299830	k__Bacteria	0.9013138672112789
+299518	k__Bacteria	0.9222155568735965
+299248	k__Bacteria	0.8951213522534073
+299207	k__Bacteria	0.9303889944728243
+299204	k__Bacteria	0.9426072247793635
+299198	k__Bacteria	0.9598934247368437
+298451	k__Bacteria	0.9146613730116706
+297414	k__Bacteria	0.882291850298756
+297221	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9878143188363867
+296869	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9785320152564624
+296439	k__Bacteria	0.9400064552930815
+296374	k__Bacteria	0.9474416471868196
+295973	k__Bacteria	0.9477204793515398
+294951	k__Bacteria	0.877836953150024
+294884	k__Bacteria	0.9426072247793635
+294617	k__Bacteria	0.898912703837054
+294481	k__Bacteria	0.8950254618539234
+294332	k__Bacteria	0.9279874177264175
+294219	k__Bacteria	0.8715127000865985
+293351	k__Bacteria	0.8760194767552858
+291746	k__Bacteria	0.8933088950422071
+291409	k__Bacteria	0.920208422165471
+291058	k__Bacteria	0.882291850298756
+290398	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9924319542873781
+290260	k__Bacteria	0.8879703081009207
+290241	k__Bacteria	0.9220347616118695
+289550	k__Bacteria	0.9264646713535116
+288970	k__Bacteria; p__Proteobacteria	0.7514391686776155
+288677	k__Bacteria	0.9269891158441763
+288503	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Syntrophobacterales; f__Syntrophobacteraceae; g__Desulfoglaeba; s__alkanexedens ALDC	0.9596019331757665
+288326	k__Bacteria	0.8077185005788438
+288205	k__Bacteria	0.9419253245576127
+287717	k__Bacteria	0.9346241555016759
+287314	k__Bacteria	0.9222155568735965
+287305	k__Bacteria	0.9658713398177746
+286248	k__Bacteria	0.9626048645257427
+285326	Unassigned	0.8449967461016705
+283972	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9873714828634076
+281047	k__Bacteria	0.95930113951713
+278288	k__Bacteria	0.961093314592168
+277294	k__Bacteria	0.9602309167666842
+277184	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9791462783762073
+276183	k__Bacteria	0.9019634377203147
+275760	k__Bacteria	0.8669918737768728
+275701	k__Bacteria	0.935971043003349
+275651	k__Bacteria	0.9148030196154052
+275614	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.998528832237368
+274860	k__Bacteria	0.9711925818588394
+273630	k__Bacteria	0.9475788729858141
+273523	k__Bacteria	0.8227963763836507
+273386	k__Bacteria	0.9170227945261661
+273232	k__Bacteria	0.9222155568735965
+272947	k__Bacteria	0.9722470482486536
+272813	k__Bacteria	0.934280991611335
+272058	k__Bacteria	0.9051820770634335
+271891	k__Bacteria; p__Proteobacteria	0.780925900736146
+271310	k__Bacteria	0.917506277960439
+271158	k__Bacteria	0.919425267503037
+270968	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9898698932839725
+270763	k__Bacteria	0.953737844901334
+268592	k__Bacteria	0.9403415859313708
+268463	k__Bacteria	0.8883799510704807
+267180	k__Bacteria	0.9222836414699228
+266832	k__Bacteria	0.9444872340912035
+266327	k__Bacteria	0.892222552967541
+265137	k__Bacteria	0.9484753192316937
+264348	k__Bacteria	0.841059275168781
+264248	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9874983028049912
+264060	k__Bacteria	0.9226225175354905
+263362	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.98881341771356
+263138	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9980963338158537
+262466	k__Bacteria	0.925507793906726
+262452	k__Bacteria	0.8782394742718126
+262032	k__Bacteria	0.866863137169905
+261401	k__Bacteria	0.9219777566968026
+261118	k__Bacteria	0.892222552967541
+261079	k__Bacteria	0.9271856559764593
+261010	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.98881341771356
+260570	k__Bacteria	0.9350933393254628
+260088	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9833321219259359
+259707	k__Bacteria	0.9197245503651537
+259460	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.8652446222044393
+259432	k__Bacteria	0.9251515953456193
+259059	k__Bacteria	0.911495190699911
+258711	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9818093734143905
+258308	k__Bacteria	0.9258989369867563
+257195	Unassigned	0.8788320667997143
+257083	k__Bacteria	0.9178504177763572
+256815	k__Bacteria	0.9088252047780899
+256690	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9662623267212141
+256467	k__Bacteria	0.9216131409695493
+255749	k__Bacteria	0.9625108930040356
+255365	k__Bacteria	0.9142105264024654
+254951	k__Bacteria	0.9129315980999575
+254943	k__Bacteria	0.8760774502971443
+254715	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9779337279585452
+254433	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9414133250756801
+253436	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9439457323816715
+253276	k__Bacteria	0.9176547491195228
+251319	k__Bacteria	0.9196495918648715
+251029	k__Bacteria	0.9426342055589428
+249229	k__Bacteria	0.8934003705739088
+248847	k__Bacteria	0.9426342055589428
+247727	k__Bacteria	0.8981591691746833
+246763	k__Bacteria	0.9126872722132804
+245966	k__Bacteria	0.9475425363368493
+244736	k__Bacteria	0.8939426730930919
+244668	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7875261779259032
+244196	k__Bacteria	0.9068811481636174
+243570	k__Bacteria	0.9402725060025375
+243476	k__Bacteria	0.9578156117476451
+243125	k__Bacteria	0.9190211866378173
+242603	k__Bacteria	0.9209713948888012
+242099	k__Bacteria	0.9526730247276326
+242098	k__Bacteria	0.9484569904404324
+242096	k__Bacteria	0.9487619734733753
+241971	k__Bacteria	0.9127769036141613
+240305	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.8360165926181152
+239386	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.996996259860504
+239335	k__Bacteria	0.8742756108902869
+238746	k__Bacteria	0.9489102576884749
+238693	k__Bacteria	0.9393452246649228
+238508	k__Bacteria; p__Proteobacteria	0.758836339120627
+238247	k__Bacteria	0.9274781740365856
+237287	k__Bacteria	0.922339286672597
+237263	k__Bacteria	0.9283084986626216
+237209	k__Bacteria	0.9150185758478038
+236697	k__Bacteria	0.9168056863068477
+236386	k__Bacteria	0.9013437551082379
+235262	k__Bacteria	0.9087387741332152
+232946	k__Bacteria	0.9131615604692279
+231170	k__Bacteria	0.9433272525634508
+230635	k__Bacteria	0.9263663806603892
+230218	k__Bacteria	0.9307092625971117
+230108	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9990526602028912
+228362	k__Bacteria	0.9027467135194228
+227564	k__Bacteria	0.9307092625971117
+226929	k__Bacteria	0.9391133499909464
+226338	k__Bacteria	0.903017523885734
+224670	k__Bacteria	0.8931001067851227
+223431	k__Bacteria	0.9207809575710664
+222578	k__Bacteria	0.899007729292386
+221787	k__Bacteria	0.9370857459230352
+220486	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.792040504221473
+219339	k__Bacteria	0.8791597150283678
+218869	k__Bacteria	0.8988350142457915
+218527	k__Bacteria	0.9060001849502624
+218446	k__Bacteria	0.8861262938129568
+218406	k__Bacteria	0.9509336256663138
+218392	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae	0.7089843771646258
+216830	k__Bacteria	0.934280991611335
+216519	k__Bacteria	0.9094962916289048
+214234	k__Bacteria	0.8960312758999198
+212729	k__Bacteria	0.8852675543630497
+210538	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.7998779836563483
+210245	k__Bacteria	0.9566746594039913
+208928	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9871165471079795
+207185	k__Bacteria	0.8852675543630497
+206497	k__Bacteria	0.8800504011063407
+206326	k__Bacteria	0.9456735032239416
+204273	k__Bacteria	0.9027483731002005
+202760	Unassigned	0.8464610831654185
+202365	k__Bacteria	0.9034251440954107
+200551	k__Bacteria	0.899820045107559
+200550	k__Bacteria	0.898128905615347
+200392	k__Bacteria	0.9179508305532676
+199006	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9881346500535216
+197919	k__Bacteria	0.8960312758999198
+197899	k__Bacteria	0.9260163446934436
+197808	k__Bacteria	0.8960312758999198
+197225	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9882777099377466
+197105	k__Bacteria	0.9199567473689381
+196885	k__Bacteria	0.9525340774901199
+196727	k__Bacteria	0.8456972586790586
+196596	Unassigned	0.7994952308672363
+196536	k__Bacteria	0.9069075555934087
+196311	k__Bacteria	0.899399907396412
+196265	k__Bacteria	0.9094999974907135
+196014	k__Bacteria	0.9260163446934436
+195559	k__Bacteria	0.9095510179668692
+195105	k__Bacteria	0.9384488320423391
+194933	k__Bacteria	0.9340939533778297
+194462	k__Bacteria	0.8864163683931375
+194409	k__Bacteria	0.9176515970533681
+194383	k__Bacteria	0.8842140031560931
+194188	k__Bacteria	0.9222155568735965
+194156	k__Bacteria	0.8960312758999198
+193575	k__Bacteria	0.9035439232733168
+193099	k__Bacteria	0.9271742133688323
+192774	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9964116310708148
+192114	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9901645765900743
+192107	k__Bacteria	0.8670680101530539
+192085	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9962166753542028
+192082	k__Bacteria	0.9477172325478672
+191660	k__Bacteria	0.8960312758999198
+191547	k__Bacteria	0.9034650603260855
+191031	k__Bacteria	0.937622707186887
+190721	k__Bacteria	0.9033026741103192
+190696	Unassigned	0.8771092207305733
+190237	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae; o__Synechococcales; f__Chamaesiphonaceae; g__Chamaesiphon	0.8937422979525289
+190148	k__Bacteria	0.8844436362434479
+189818	k__Bacteria	0.8960312758999198
+189474	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9849840563536758
+189403	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9963135935636921
+189377	k__Bacteria	0.9034650603260855
+189244	k__Bacteria	0.8983767680733292
+189176	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9964116310708148
+189158	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9779337279585452
+189061	k__Bacteria	0.8960312758999198
+188594	k__Bacteria	0.9260163446934436
+188382	k__Bacteria	0.8960312758999198
+188326	Unassigned	0.8687935930337318
+188039	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9943600454850859
+187050	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9878143188363867
+186867	k__Bacteria	0.9286682807701189
+186315	k__Bacteria	0.9380543153396539
+185891	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9942866232411055
+185863	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9964457495069619
+185627	k__Bacteria	0.9530150203130671
+184903	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9804361935228031
+184790	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae; o__Synechococcales; f__Acaryochloridaceae; g__Aphanocapsa; s__muscicola	0.9999481073317252
+184727	k__Bacteria	0.9470032426354619
+184610	k__Bacteria	0.9338628328382976
+183978	k__Bacteria	0.9225130841484698
+183955	k__Bacteria	0.9241572721584724
+183495	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9943600454850859
+183297	k__Bacteria	0.9677289095356374
+183204	k__Bacteria	0.9024260315271643
+183138	k__Bacteria	0.9095510179668692
+183062	k__Bacteria	0.9376124343324708
+183047	Unassigned	0.8798384290574184
+182880	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7363552711072751
+182631	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9932023956711524
+182257	k__Bacteria	0.8960312758999198
+181953	k__Bacteria	0.9178278584700917
+181768	k__Bacteria	0.8968011207307864
+181761	k__Bacteria	0.938292761493123
+181742	k__Bacteria	0.9260163446934436
+181558	k__Bacteria	0.9260163446934436
+180959	k__Bacteria	0.9656753414289329
+180727	k__Bacteria	0.920817462590722
+180637	k__Bacteria	0.9095510179668692
+180110	k__Bacteria	0.9278312091278418
+179620	k__Bacteria	0.9402307836844592
+179437	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9964684948841545
+179166	k__Bacteria	0.8847413229148654
+179005	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9779337279585452
+178935	k__Bacteria	0.9034650603260855
+178000	k__Bacteria	0.9034650603260855
+177587	k__Bacteria	0.9187027364844416
+176308	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9714846130009734
+175791	k__Bacteria	0.9051889519461094
+175575	k__Bacteria	0.9431118326597893
+175560	k__Bacteria	0.9198185286996536
+175411	k__Bacteria	0.9187027364844416
+175248	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9779337279585452
+175117	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9979455281950521
+174841	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9959413633017439
+174379	k__Bacteria	0.9334555719864516
+174360	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.994369785130245
+174205	k__Bacteria	0.9222155568735965
+174005	k__Bacteria	0.8743990786033108
+173956	k__Bacteria	0.9099834229367374
+173717	k__Bacteria	0.8944828224367992
+173627	k__Bacteria	0.9753029105937744
+173412	k__Bacteria	0.9012928124815425
+172201	k__Bacteria	0.8933819144712009
+171749	k__Bacteria	0.9110522212861916
+171289	k__Bacteria	0.885853141714605
+170229	k__Bacteria	0.8910960239871979
+169889	k__Bacteria	0.9357757709364412
+169837	k__Bacteria	0.8580808887204822
+169836	k__Bacteria	0.9236790575021699
+169444	k__Bacteria	0.890344313898328
+168491	k__Bacteria	0.919684912663563
+167717	k__Bacteria	0.9308390755970307
+167258	k__Bacteria	0.8706291594836009
+166803	k__Bacteria	0.8593442384450091
+166704	k__Bacteria	0.8685497040650675
+166388	k__Bacteria	0.9169903950005737
+165919	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7363552711072751
+165851	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7777114687200076
+165451	k__Bacteria	0.8683166571727823
+165440	k__Bacteria	0.9024322287151818
+164994	k__Bacteria	0.9362072537988924
+164974	Unassigned	0.8733440210690542
+164881	k__Bacteria	0.9224097751353662
+164522	k__Bacteria	0.9422265562432824
+164034	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9857614309344149
+163872	Unassigned	0.8758937097119192
+163538	k__Bacteria	0.9577199593686497
+163472	k__Bacteria	0.9444872340912035
+163227	k__Bacteria	0.9128116347947174
+162694	k__Bacteria	0.8860149656436167
+162553	k__Bacteria; p__Proteobacteria	0.7616956902603891
+162292	k__Bacteria	0.8809666258308531
+161782	k__Bacteria	0.8860149656436167
+161677	k__Bacteria	0.9413018972982243
+161482	Unassigned	0.8496740575160091
+161355	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae; g__Nautilia	0.7253910458667615
+160883	k__Bacteria	0.9293510721397611
+160780	k__Bacteria	0.9357322970093915
+160627	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.947041695299557
+160610	k__Bacteria	0.9721804291219167
+160438	k__Bacteria	0.9255022561643125
+160179	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae	0.7603564135430445
+158981	k__Bacteria	0.8966501038502859
+158657	k__Bacteria	0.8908014847247527
+158631	k__Bacteria	0.9145990110838756
+158554	k__Bacteria	0.9398824754764639
+158377	k__Bacteria	0.9437414229810794
+158284	k__Bacteria	0.9235864588888397
+158182	k__Bacteria	0.9412113499809709
+158009	k__Bacteria	0.9213785768012
+157775	k__Bacteria	0.8879591204006064
+157645	k__Bacteria	0.9412113499809709
+157201	k__Bacteria	0.9167941978519731
+157178	Unassigned	0.8726645688649672
+155622	k__Bacteria	0.8909524578019823
+155597	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9981256248583029
+154963	k__Bacteria	0.9317755851974753
+154763	k__Bacteria	0.9225664805388484
+154138	k__Bacteria	0.9271227524788164
+153952	k__Bacteria	0.9344092102912344
+152491	k__Bacteria	0.9444652246670904
+152489	k__Bacteria	0.9301148173757979
+151878	k__Bacteria	0.9405037925178601
+150737	k__Bacteria	0.9597680122553602
+149749	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9852018946284414
+149741	k__Bacteria	0.8945409998328462
+149193	k__Bacteria	0.8960312758999198
+149042	Unassigned	0.9081742422022049
+149006	k__Bacteria	0.892222552967541
+148568	k__Bacteria	0.8945490835100703
+147494	k__Bacteria	0.9241114984121189
+145880	k__Bacteria	0.9550860992152851
+145226	k__Bacteria	0.9034650603260855
+144970	k__Bacteria	0.8977392993500961
+144735	k__Bacteria	0.9354129673892516
+144686	k__Bacteria	0.9314170779077471
+144390	k__Bacteria	0.8988350142457915
+144239	k__Bacteria	0.9355709135167061
+143867	k__Bacteria	0.8477003305497801
+143617	k__Bacteria; p__Proteobacteria	0.7356917493763698
+143231	k__Bacteria	0.8910960239871979
+142796	Unassigned	0.8617831119908301
+142417	k__Bacteria	0.9096260891062758
+142313	k__Bacteria	0.924835314354445
+141703	k__Bacteria	0.9524302319271583
+141313	k__Bacteria	0.9536463633424165
+141219	k__Bacteria	0.9317283885910734
+141211	k__Bacteria	0.9222371511007785
+141021	k__Bacteria	0.894146291342693
+140853	Unassigned	0.8277845484211802
+140280	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.8754984447721454
+4352580	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.99939776944202
+139990	k__Bacteria	0.9513648307645531
+139476	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kordiimonadales; f__Kordiimonadaceae; g__Kordiimonas; s__gwangyangensis	0.9780043702852773
+138840	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7324289733273319
+138079	k__Bacteria	0.8921525034830661
+138056	k__Bacteria	0.8977361412147915
+137896	k__Bacteria	0.9453415130856968
+137421	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.8202810000034034
+137210	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.998466372485435
+136706	k__Bacteria	0.9361225014347868
+136680	k__Bacteria	0.9586894377920187
+136091	k__Bacteria	0.9256851627334234
+134019	k__Bacteria	0.8752443487566927
+133839	k__Bacteria	0.8969410447210104
+132687	k__Bacteria	0.9514057848024635
+132022	k__Bacteria	0.9346261166565965
+130864	k__Bacteria	0.8740915854706778
+130269	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7828412951412438
+130217	k__Bacteria	0.9467130723377609
+127158	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999974051263067
+121803	Unassigned	0.9017285737668199
+120639	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9997046817087657
+119501	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999995434678132
+114572	k__Bacteria	0.9579553787733357
+114233	k__Bacteria	0.9696913727489956
+113826	k__Bacteria	0.851278478600855
+111553	k__Bacteria	0.9502164145458756
+111052	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8662667706574019
+110984	k__Bacteria	0.9265307661352543
+110879	k__Bacteria	0.9414262131676653
+110694	k__Bacteria	0.9081192901575651
+110024	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae	0.7089843771646258
+108674	k__Bacteria	0.9626048645257427
+107406	k__Bacteria	0.9168582523760852
+107101	k__Bacteria	0.933062449152905
+107098	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9982819185588173
+107065	k__Bacteria	0.8953708867906303
+107024	k__Bacteria	0.9258610508299088
+107014	k__Bacteria	0.888748647025894
+106694	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7090436985729981
+106270	k__Bacteria	0.827036296968093
+106188	k__Bacteria	0.9662894636212799
+106098	k__Bacteria	0.9081192901575651
+106050	k__Bacteria	0.9483042294943013
+105653	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae; o__Synechococcales; f__Chamaesiphonaceae; g__Chamaesiphon	0.9542905255814991
+104940	k__Bacteria	0.8910960239871979
+103124	k__Bacteria	0.8784840976354625
+102429	k__Bacteria	0.94945290809946
+102356	Unassigned	0.8441687775767611
+101611	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9487773555669985
+101466	k__Bacteria	0.9753029105937744
+101335	k__Bacteria	0.9330404929170368
+100484	k__Bacteria	0.9044870665835653
+99739	k__Bacteria	0.8489396005500135
+99319	k__Bacteria	0.8962313582110789
+99300	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9997079161697071
+98380	k__Bacteria	0.9391392137831133
+97294	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9848160947249249
+97245	k__Bacteria	0.8914891923694275
+92894	k__Bacteria	0.8776355382215515
+92365	k__Bacteria	0.9165808897001785
+92231	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.830026000642533
+92059	k__Bacteria	0.9430622413048788
+91210	k__Bacteria	0.9706656048136899
+91016	k__Bacteria	0.952198056475339
+90286	k__Bacteria	0.8929827865332267
+90031	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kordiimonadales; f__Kordiimonadaceae; g__Kordiimonas; s__gwangyangensis	0.9944580443190508
+87957	k__Bacteria	0.943796342404512
+87218	k__Bacteria	0.9190361472258843
+86183	k__Bacteria	0.9310635607581776
+83445	k__Bacteria	0.9381619741132013
+82861	k__Bacteria	0.9094962916289048
+82437	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.8220234554390735
+82233	k__Bacteria	0.9290277981084599
+81470	k__Bacteria	0.9423318483199176
+79540	k__Bacteria	0.9222434378474783
+79339	k__Bacteria	0.8829493421894627
+79106	k__Bacteria	0.9353041378611014
+77701	k__Bacteria	0.9301148173757979
+76576	k__Bacteria	0.9262203786851246
+74262	k__Bacteria	0.8945349831700717
+73951	k__Bacteria	0.9271227524788164
+71958	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7512046554605376
+71543	k__Bacteria	0.9081192901575651
+71438	k__Bacteria	0.9008711279055059
+70917	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999996501609915
+70616	k__Bacteria	0.9249943517460286
+70512	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8828883388954205
+70405	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9984759236182458
+70116	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7544387877591479
+69970	k__Bacteria	0.9400767215677593
+69575	k__Bacteria	0.9003836600004631
+68830	k__Bacteria	0.920246320450379
+68336	k__Bacteria	0.9218008252010252
+67341	k__Bacteria	0.9534103298458413
+62978	Unassigned	0.8281342554779811
+60919	k__Bacteria	0.9574414980753277
+58866	k__Bacteria	0.9127993066829756
+58407	k__Bacteria	0.945286632874776
+57758	k__Bacteria	0.951870153013583
+53682	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999989892245359
+53642	k__Bacteria	0.9451870417583323
+53170	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.798978482580726
+51110	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999986298159066
+45962	k__Bacteria	0.8836001837265727
+42828	k__Bacteria	0.8829493421894627
+42664	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Syntrophobacterales; f__Syntrophobacteraceae; g__Desulfoglaeba; s__alkanexedens ALDC	0.9845394213967577
+42176	k__Bacteria	0.9297613208862984
+42143	k__Bacteria	0.9428333774585652
+40721	Unassigned	0.8757950762217526
+40435	k__Bacteria	0.8741055169524248
+38986	k__Bacteria	0.8954448880941095
+38888	k__Bacteria	0.9566924867044141
+37441	k__Bacteria	0.9182453457836334
+34323	k__Bacteria; p__Firmicutes; c__Clostridia; o__Natranaerobiales; f__Natranaerobiaceae; g__Natronoanaerobium; s__salstagnum	0.9713262192431045
+33780	k__Bacteria	0.9378539024033669
+32820	k__Bacteria	0.9440630928756025
+30572	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7638591460913482
+30112	k__Bacteria	0.9200241201776735
+28572	k__Bacteria	0.9625368665337327
+28386	k__Bacteria	0.9625926556141146
+27914	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae	0.7089843771646258
+27862	k__Bacteria	0.9021659271392087
+26896	k__Bacteria	0.9188536302563453
+26629	Unassigned	0.8253331200748866
+25580	k__Bacteria	0.8477003305497801
+22164	k__Bacteria	0.8891735517381982
+21138	k__Bacteria	0.8944738536984572
+16711	k__Bacteria	0.9616571983112013
+16191	k__Bacteria	0.8708118817907335
+16190	k__Bacteria	0.8708118817907335
+16117	k__Bacteria	0.9126965644235754
+16094	k__Bacteria	0.9445766241515048
+16076	k__Bacteria	0.9110522212861916
+16040	k__Bacteria	0.8973833027865757
+16026	k__Bacteria	0.9164047051912375
+15851	k__Bacteria	0.8787734777106195
+15094	k__Bacteria	0.9177098201607954
+14988	k__Bacteria	0.9218726951809681
+14980	k__Bacteria	0.9154158579630275
+14592	k__Bacteria	0.9568650248887247
+14537	k__Bacteria	0.9359000211508177
+14511	k__Bacteria	0.9621300581170766
+14468	k__Bacteria	0.9639645443087465
+14459	k__Bacteria	0.9458472055894858
+14450	k__Bacteria	0.9584453869146119
+14390	k__Bacteria	0.9451653986686002
+14348	k__Bacteria	0.9327056269160963
+14304	Unassigned	0.8732999752595468
+14293	k__Bacteria	0.9336268023269958
+14175	k__Bacteria	0.9271051323927947
+13973	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9929331171932011
+13886	k__Bacteria	0.8894179432247169
+13760	k__Bacteria	0.8768453116697064
+13688	k__Bacteria	0.9275923040063864
+13103	k__Bacteria	0.9047944290493222
+12879	k__Bacteria	0.9160244509164677
+12878	k__Bacteria	0.9179139013532227
+12877	k__Bacteria	0.9002103911313869
+12527	k__Bacteria	0.9436720184746723
+12294	k__Bacteria	0.8743276982171171
+12257	k__Bacteria	0.9284547495203462
+12134	k__Bacteria	0.8963394386141978
+12106	k__Bacteria	0.9086536185932533
+12063	k__Bacteria	0.9244181712478475
+11813	k__Bacteria	0.926106507702922
+11774	k__Bacteria	0.9369045476119049
+11427	k__Bacteria	0.9315608153968381
+11121	k__Bacteria	0.9228481642532587
+10792	k__Bacteria	0.9201060316081727
+10695	k__Bacteria	0.9384611626649749
+10298	k__Bacteria	0.9623161548242674
+10257	k__Bacteria	0.9455768264154816
+9814	k__Bacteria	0.8979896472869227
+9776	k__Bacteria	0.9216413429843231
+9442	k__Bacteria	0.953296766796541
+9191	k__Bacteria	0.9040087818922082
+9013	k__Bacteria	0.9215917786964744
+8870	k__Bacteria	0.9156225407750584
+8638	k__Bacteria	0.9583055765068836
+8524	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.8597372182370103
+8517	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.8597372182370103
+8482	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7512046554605376
+8344	k__Bacteria	0.9400767215677593
+8091	k__Bacteria	0.9183552453574295
+8081	k__Bacteria	0.9126217185577622
+8010	k__Bacteria	0.9347369193155196
+7815	k__Bacteria	0.931945967490938
+7521	Unassigned	0.8714435762211049
+7366	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9921887906695921
+7268	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999996770017343
+7088	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.8160025453517825
+6864	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9677928509881928
+6213	k__Bacteria	0.9268425422247366
+6204	k__Bacteria	0.9084235008614657
+5857	k__Bacteria	0.9276723557761903
+4680	k__Bacteria	0.900051250669219
+4614	k__Bacteria	0.941225075871381
+4450	k__Bacteria	0.9488480515025901
+4081	k__Bacteria	0.9427131044762581
+4009	k__Bacteria	0.944383771057199
+3949	k__Bacteria	0.8940064607636862
+3846	k__Bacteria	0.8988795615536866
+3450	k__Bacteria	0.9070861597168163
+3064	k__Bacteria	0.9247105363996924
+2935	k__Bacteria	0.8307204499358498
+2286	k__Bacteria	0.9406430467468057
+2218	k__Bacteria	0.9323318645476516
+1985	k__Bacteria	0.9267594671661793
+1051377	k__Bacteria	0.8802521319426465
+1508162	k__Bacteria	0.9082336448963275
+1032172	k__Bacteria	0.8707525437011859
+954793	k__Bacteria	0.9361587386796413
+870055	k__Bacteria	0.899620834276043
+1526802	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Syntrophobacterales; f__Syntrophobacteraceae; g__Desulfoglaeba; s__alkanexedens ALDC	0.9596019331757665
+1144293	k__Bacteria	0.9420380161709482
+1543534	k__Bacteria	0.9061317061537245
+1546669	k__Bacteria	0.9484065210207547
+660959	k__Bacteria	0.9631050258401136
+779824	k__Bacteria	0.8945409998328462
+1555490	k__Bacteria	0.9046469110406781
+930169	k__Bacteria	0.9455859325031937
+1567542	k__Bacteria	0.9646483697820553
+1055703	k__Bacteria	0.912547661139422
+1608611	k__Bacteria	0.9179949545147464
+674870	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8729814964836246
+1609157	k__Bacteria	0.9179949545147464
+1626578	k__Bacteria	0.9144496449947574
+1632194	k__Bacteria	0.8909270577582772
+1639373	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.7166027543385924
+789084	k__Bacteria	0.8471407209775673
+1125016	k__Bacteria	0.8959636526161961
+1658679	k__Bacteria	0.9544566592085065
+914927	k__Bacteria	0.9364131389371698
+1090021	k__Bacteria	0.8907639201751686
+1672756	k__Bacteria	0.9700695374966665
+1676137	k__Bacteria	0.9146732919975806
+1123543	k__Bacteria	0.953021795812187
+1679577	k__Bacteria	0.9228064043724628
+756291	k__Bacteria	0.8820863767358019
+744311	k__Bacteria	0.9625901660305807
+1690562	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9943622499686046
+957730	k__Bacteria	0.9167391970097755
+1051641	k__Bacteria	0.9528748835751399
+1710623	k__Bacteria	0.9265672073619693
+691442	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.9028117201216693
+1727065	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7885512938141496
+1729189	k__Bacteria	0.9100876412795051
+1147236	k__Bacteria	0.911302106569022
+638076	k__Bacteria	0.9402725060025375
+775368	k__Bacteria	0.9300384407139547
+1061016	k__Bacteria	0.9256515372585071
+631620	k__Bacteria	0.8915886078543249
+1769720	k__Bacteria	0.9353639003202009
+1771843	k__Bacteria	0.9117163328046972
+1771876	k__Bacteria	0.9264399226534863
+1136950	k__Bacteria	0.9710837766432774
+1777699	k__Bacteria	0.9399502632980085
+1780074	k__Bacteria	0.9278363925971961
+1002608	k__Bacteria; p__Proteobacteria	0.7097939324369912
+837330	k__Bacteria	0.9236439727195018
+1786756	k__Bacteria	0.9355730807121012
+846208	k__Bacteria	0.9020518194102157
+1792161	k__Bacteria	0.943855648280811
+1797847	k__Bacteria	0.9580933734226923
+1798719	k__Bacteria	0.9318673871411652
+735945	k__Bacteria	0.9405819820097071
+1144850	k__Bacteria	0.9742100229313592
+1813485	k__Bacteria	0.9503551905148991
+1131185	k__Bacteria	0.9347418389463668
+1824285	k__Bacteria	0.9419563893689538
+735666	k__Bacteria	0.8886615851053946
+930600	k__Bacteria	0.8968753229010135
+1828456	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9943600454850859
+1830364	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9962166753542028
+641796	k__Bacteria	0.9560991242971945
+817828	k__Bacteria	0.9447170229750778
+1858406	k__Bacteria	0.9289677137491975
+860057	k__Bacteria	0.8499527953873416
+678690	k__Bacteria	0.89174978984138
+724259	k__Bacteria	0.9286136723853905
+1898096	k__Bacteria	0.9259489338837511
+1138883	k__Bacteria	0.9578634752684047
+868874	k__Bacteria	0.8711440768216664
+1913623	k__Bacteria	0.9243749342129516
+1126421	k__Bacteria	0.8708107480403907
+684018	k__Bacteria	0.906371001291739
+860657	k__Bacteria	0.9227484527511911
+906437	k__Bacteria	0.9463760315234085
+1939082	k__Bacteria	0.9281107721401552
+1127372	k__Bacteria	0.9623161548242674
+1125228	k__Bacteria	0.9165104471000021
+751560	k__Bacteria	0.8874997466393824
+817546	k__Bacteria	0.9201381533847837
+1129081	k__Bacteria	0.8013301638609838
+1986992	k__Bacteria	0.8672137314991812
+856721	k__Bacteria	0.9291130409945999
+1995363	k__Bacteria	0.8879591204006064
+1997284	k__Bacteria	0.931119551579502
+1108706	k__Bacteria	0.8939426730930919
+2016095	k__Bacteria	0.951339867418611
+2017805	k__Bacteria	0.9471661110248653
+1042599	k__Bacteria	0.9067916140019068
+843567	k__Bacteria	0.9337686688148501
+879460	k__Bacteria	0.9430269797736616
+764687	k__Bacteria	0.8915019235222684
+1136639	k__Bacteria	0.89196340185869
+782289	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7512046554605376
+2046401	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8124765747289426
+2048825	k__Bacteria	0.953205839650666
+996159	k__Bacteria	0.9157507809727278
+2063501	k__Bacteria	0.9179672123101085
+2065203	k__Bacteria	0.9444872340912035
+772508	k__Bacteria	0.9212064637173206
+919490	k__Bacteria	0.8917425702039168
+2085638	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8915076612208666
+2089435	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.7636786194831304
+1135545	k__Bacteria	0.8863265635661389
+2094423	k__Bacteria	0.9097625450207645
+851661	k__Bacteria	0.9259240709428153
+703546	k__Bacteria	0.9650369024467167
+854061	Unassigned	0.8589590578981281
+2108713	k__Bacteria	0.9386754638003579
+2110315	k__Bacteria	0.9280046561411404
+2119418	k__Bacteria	0.9081192901575651
+1129978	k__Bacteria	0.9081192901575651
+1129723	k__Bacteria	0.8592865397047056
+901569	k__Bacteria	0.8676546810662549
+893979	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8210179199061522
+2137117	k__Bacteria	0.9346435455869009
+847511	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9985958224614682
+1134510	k__Bacteria	0.9118394391726747
+2155319	k__Bacteria	0.8882430040082455
+2156406	k__Bacteria	0.9189003184882031
+2168897	k__Bacteria	0.9326893844663028
+2172721	k__Bacteria	0.8908014847247527
+1121753	k__Bacteria	0.9356363320671409
+615094	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.998528832237368
+883116	k__Bacteria	0.9303893180734925
+2200896	k__Bacteria	0.9179949545147464
+1144657	k__Bacteria	0.884544852948414
+2225006	k__Bacteria	0.9375693868243965
+841116	Unassigned	0.8484000782655645
+2234838	Unassigned	0.8658632611353486
+1141633	k__Bacteria	0.9396472471672656
+2270271	k__Bacteria	0.9114852335440472
+820145	k__Bacteria	0.9211680542801449
+2272193	k__Bacteria	0.8862646887415622
+2281172	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.994173963888744
+686211	k__Bacteria	0.8683753424397987
+2281516	k__Bacteria	0.9444872340912035
+2281522	k__Bacteria	0.9199560521116853
+2285105	k__Bacteria	0.9278363925971961
+919872	k__Bacteria	0.90367363072858
+2300731	k__Bacteria	0.9416567162288031
+2303926	k__Bacteria	0.973830610932152
+2304647	Unassigned	0.8683613910450153
+1128167	k__Bacteria	0.926708487340083
+869127	k__Bacteria	0.8861026595944803
+2313300	k__Bacteria	0.8993605291361733
+779784	k__Bacteria	0.9243045598664353
+2325513	k__Bacteria	0.9849113565876122
+1126669	k__Bacteria	0.9051820770634335
+1119485	k__Bacteria	0.9206738945280613
+1148212	k__Bacteria	0.9317026122297764
+1143602	k__Bacteria	0.9303907209499133
+1020481	k__Bacteria	0.8532225398978531
+1131084	k__Bacteria	0.9155306575264011
+1119708	k__Bacteria	0.942536606056722
+2358833	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.7527203836262021
+1124170	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.995888036536634
+2390941	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9868117113598411
+2391461	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Syntrophobacterales; f__Syntrophobacteraceae; g__Desulfoglaeba; s__alkanexedens ALDC	0.9407656900927946
+897886	k__Bacteria	0.9459406831755598
+815502	k__Bacteria	0.9703274050362188
+940401	k__Bacteria	0.8800906636606715
+964909	k__Bacteria	0.9331801817783814
+2410835	k__Bacteria	0.9181582365447344
+628125	k__Bacteria	0.9030921895491755
+1014594	k__Bacteria	0.8820379426161986
+1112913	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Syntrophobacterales; f__Syntrophobacteraceae; g__Desulfoglaeba; s__alkanexedens ALDC	0.9111670339942406
+2426770	k__Bacteria	0.922512511079595
+2431916	k__Bacteria	0.910707981929818
+2433962	k__Bacteria	0.9353639003202009
+838140	k__Bacteria	0.9381567092304808
+669976	k__Bacteria	0.9293678189205443
+2466998	k__Bacteria	0.8955284327371653
+2467145	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9979455281950521
+2477947	k__Bacteria	0.9160350973913255
+2491382	k__Bacteria	0.9583055765068836
+1114327	k__Bacteria	0.9549234471527028
+837310	k__Bacteria	0.8791027354663928
+2493663	k__Bacteria	0.8884534110227095
+623798	k__Bacteria	0.9402929246462294
+2494659	k__Bacteria	0.9616730805868341
+1122559	k__Bacteria	0.9018982349002029
+1068407	k__Bacteria	0.9521080873138774
+2511694	k__Bacteria	0.8957279754522167
+2519044	k__Bacteria	0.9626048645257427
+814201	k__Bacteria	0.8815909991021561
+2520161	Unassigned	0.8346250982820023
+1143466	k__Bacteria	0.9232935946164921
+815136	k__Bacteria	0.974477820266379
+861415	k__Bacteria	0.8611509939643418
+2538454	k__Bacteria	0.8786214976307656
+1049242	k__Bacteria	0.9028358552895688
+1129384	k__Bacteria	0.9608951170421293
+2542324	k__Bacteria	0.9533388322730479
+2546331	Unassigned	0.7998835846696084
+1141500	k__Bacteria	0.8004731005734128
+939327	k__Bacteria	0.8754260052229865
+2559579	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9980669612670563
+990514	k__Bacteria	0.9353639003202009
+895292	k__Bacteria	0.9106278185562164
+2570980	k__Bacteria	0.9461791354912191
+1131995	k__Bacteria	0.948163897216215
+844329	Unassigned	0.8455795902692316
+2575680	k__Bacteria	0.943038726680836
+810603	k__Bacteria	0.9591484837973445
+2607207	k__Bacteria	0.9608397617306913
+636030	k__Bacteria	0.9231913462996257
+881464	k__Bacteria	0.9382090782481592
+1147129	k__Bacteria; p__Proteobacteria	0.7022162388769508
+1129821	k__Bacteria	0.8999659951942491
+669102	k__Bacteria	0.9097480032485047
+2639470	k__Bacteria	0.9436846409679932
+1119342	k__Bacteria	0.9526834371540889
+2648727	k__Bacteria	0.9034650603260855
+2653002	k__Bacteria	0.9167710006607127
+2658060	k__Bacteria	0.9361379577584068
+1049986	k__Bacteria	0.891131162645465
+1098159	k__Bacteria	0.9016071641141565
+837889	k__Bacteria; p__Proteobacteria	0.7424350084558665
+2680639	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9947046663107332
+807615	k__Bacteria	0.931815612768165
+838941	k__Bacteria	0.9450847695333319
+1086805	k__Bacteria	0.9094604752261438
+2706302	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.805723002029557
+1043897	k__Bacteria	0.8887101155185022
+2750321	k__Bacteria	0.8937724934626045
+1120902	k__Bacteria	0.9399821679103023
+2769758	k__Bacteria	0.9364398415669927
+811775	k__Bacteria	0.9137761001130625
+2778461	k__Bacteria	0.9317240310390479
+2785334	k__Bacteria	0.9107745245549
+823736	k__Bacteria	0.925364493387273
+656443	k__Bacteria	0.9656753414289329
+1007872	k__Bacteria	0.8958147737430014
+1091819	Unassigned	0.8453814370220177
+2818526	k__Bacteria	0.9179949545147464
+845252	k__Bacteria	0.921575505116285
+1097955	Unassigned	0.8972314100048958
+1133229	k__Bacteria	0.9349289101888542
+827804	k__Bacteria	0.9308390755970307
+2857130	k__Bacteria	0.9237932577187363
+1025408	k__Bacteria	0.8824248637683689
+822699	k__Bacteria	0.9177235295383958
+2868489	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9937207152038771
+1144471	k__Bacteria	0.9696178216410023
+754336	Unassigned	0.7903229536015736
+669613	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9986684522334953
+1089613	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.878653407554226
+2884179	k__Bacteria	0.9424897515773907
+1109428	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.8201518257328823
+2894263	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999991251427635
+2897332	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9785320152564624
+862312	k__Bacteria	0.927888020783357
+2902741	k__Bacteria	0.8847847167598205
+886615	k__Bacteria	0.9151653989891556
+1106236	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9939426884834565
+862322	k__Bacteria	0.9382090782481592
+761594	k__Bacteria	0.887465578484178
+793752	k__Bacteria	0.9344109436215462
+2944295	k__Bacteria	0.9707905473968473
+1123147	k__Bacteria	0.8846181197076849
+1086250	k__Bacteria	0.9148583879326242
+702079	k__Bacteria	0.9695007257725881
+1131781	k__Bacteria	0.9160244509164677
+668039	k__Bacteria	0.9137736670257273
+2973428	k__Bacteria	0.9486144337058812
+2976009	k__Bacteria	0.9034650603260855
+1139660	k__Bacteria	0.9458192037249381
+1126182	k__Bacteria	0.9345340213162807
+1036496	k__Bacteria	0.8900676438971871
+1102591	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8461988464059698
+1128555	k__Bacteria	0.8929165995790874
+3002161	k__Bacteria	0.8976163977546847
+1138363	k__Bacteria	0.9238695267286186
+3015660	k__Bacteria	0.9273983841026757
+3035308	Unassigned	0.8841198752154655
+3053638	k__Bacteria	0.9233705405930246
+3055093	k__Bacteria	0.952614689226646
+3055791	k__Bacteria	0.8569142740573529
+956586	k__Bacteria	0.9160866513395718
+815715	k__Bacteria	0.9484277019144602
+3060301	k__Bacteria	0.9096535007580068
+797332	k__Bacteria	0.9208829109983199
+3063500	k__Bacteria	0.910942152575709
+3072298	k__Bacteria	0.8199254116564946
+633788	k__Bacteria	0.8797135867493509
+1134316	k__Bacteria	0.933226274485583
+1144986	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.8133988437874203
+1096904	k__Bacteria	0.8615190607909239
+960909	k__Bacteria	0.8923524503447406
+1096382	k__Bacteria	0.9382090782481592
+1147446	Unassigned	0.8406250247745811
+979776	k__Bacteria	0.8844691151615206
+838408	k__Bacteria	0.8962367698955532
+3130152	k__Bacteria	0.9113716031816912
+3141608	k__Bacteria	0.937617208130534
+663952	k__Bacteria	0.9246500951751908
+3143426	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9208969952548007
+661774	k__Bacteria	0.9364006057957737
+3149612	k__Bacteria	0.8884586806381732
+3152468	k__Bacteria	0.9431979500881748
+1092518	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9995177208391718
+1052663	k__Bacteria	0.9044823046617113
+3156519	k__Bacteria	0.9034650603260855
+689498	k__Bacteria	0.9031299504379148
+1119046	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.798436506433428
+1131768	k__Bacteria	0.9506234536219088
+3178559	k__Bacteria	0.9625145357443584
+3185924	k__Bacteria	0.9562581886966145
+3186392	k__Bacteria	0.8844011886699115
+784752	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999985681821518
+3193578	k__Bacteria	0.978512316106908
+3195788	k__Bacteria	0.9126118565377601
+3196116	k__Bacteria	0.9132900719997504
+3201462	k__Bacteria	0.9155474057493501
+1139148	k__Bacteria	0.9303086941772276
+3202924	k__Bacteria	0.9382090782481592
+3206647	k__Bacteria	0.9082336448963275
+3207312	k__Bacteria	0.9179949545147464
+3210709	k__Bacteria	0.8946848543185214
+888659	k__Bacteria	0.9423318483199176
+1016596	Unassigned	0.8323672280514901
+690863	k__Bacteria	0.9282106493522695
+1139791	k__Bacteria	0.9169932574602098
+3232644	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9962166753542028
+3235230	k__Bacteria	0.9241795635097193
+3252949	k__Bacteria	0.9145256624780442
+3261138	k__Bacteria	0.8935632385545553
+3267603	k__Bacteria	0.9038709385681865
+3275938	k__Bacteria	0.9533376619252011
+3278429	k__Bacteria	0.9209707366832015
+3285436	k__Bacteria	0.9380543153396539
+3286714	k__Bacteria	0.9094962916289048
+3286983	k__Bacteria	0.9160244509164677
+1127641	k__Bacteria	0.9034502360318208
+3309143	k__Bacteria	0.8943427868584775
+813469	k__Bacteria	0.8785499655142437
+3319306	k__Bacteria	0.9179949545147464
+1110178	k__Bacteria	0.9366249885561373
+943539	k__Bacteria	0.9098241742270983
+3334888	k__Bacteria	0.9495760819352508
+729112	k__Bacteria	0.9481111004365661
+1131220	Unassigned	0.8286711017719581
+3342416	k__Bacteria	0.9574533267542199
+1086036	k__Bacteria	0.9319463510613304
+3349599	k__Bacteria	0.9195330601432798
+3350931	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8061000921815943
+647165	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9574749124754494
+3360052	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.9418147013800479
+1089908	k__Bacteria	0.928991966727161
+875213	k__Bacteria	0.9233810501116346
+3363021	k__Bacteria	0.8656708582523039
+1115352	k__Bacteria	0.9401648131914191
+1011430	k__Bacteria	0.9226296969276888
+3383131	k__Bacteria	0.9676765123828683
+822752	k__Bacteria	0.892222552967541
+1118989	k__Bacteria	0.9413644848102946
+3392830	k__Bacteria	0.9571955694796708
+3392853	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9754700847190756
+637528	k__Bacteria	0.9425457807846759
+3401720	k__Bacteria	0.9310635607581776
+3404365	k__Bacteria	0.8733064460907306
+3405216	k__Bacteria	0.9280203840866734
+1121137	k__Bacteria	0.8938677388733225
+3419664	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9882032165222983
+1131554	k__Bacteria	0.9289408340945905
+3423340	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8729814964836246
+3425516	k__Bacteria	0.9388216593384862
+699046	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9931768152731374
+1139975	k__Bacteria	0.920523091699412
+3449648	k__Bacteria	0.8972043625500947
+3449653	k__Bacteria	0.9056003829767761
+3449940	k__Bacteria	0.9358478236430477
+1135372	k__Bacteria	0.9249538640821693
+837640	k__Bacteria	0.9666221138225375
+3463110	k__Bacteria	0.9082336448963275
+778701	k__Bacteria	0.8449036983162753
+3475269	k__Bacteria	0.9378652611517543
+3476289	k__Bacteria	0.9224533975435105
+1127789	k__Bacteria	0.8867235755235666
+927872	k__Bacteria	0.8657341662273996
+1069463	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kordiimonadales; f__Kordiimonadaceae; g__Kordiimonas; s__gwangyangensis	0.9567265571555212
+1117800	k__Bacteria	0.8962972527227135
+844594	k__Bacteria	0.9380150019949459
+1134770	k__Bacteria	0.8969715518262817
+3506423	Unassigned	0.8541245562023653
+916974	k__Bacteria	0.910901175072744
+3509164	k__Bacteria	0.8969984197045083
+3510795	k__Bacteria	0.9239199051532488
+779371	Unassigned	0.7478080430377809
+3526742	k__Bacteria	0.8993210029317564
+3532649	k__Bacteria	0.9413018972982243
+3538859	k__Bacteria	0.9435351830316298
+861445	k__Bacteria	0.9445011114151236
+1102930	k__Bacteria	0.8690280669616715
+3550159	k__Bacteria	0.9465055356538704
+1020673	k__Bacteria	0.8838039877008699
+676074	k__Bacteria	0.9278363925971961
+1127493	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9296571922748983
+3557917	k__Bacteria	0.9062606995359277
+3568688	k__Bacteria	0.9034650603260855
+3568710	Unassigned	0.8291845745184322
+3577307	k__Bacteria	0.979958253060447
+1137271	k__Bacteria	0.8988350142457915
+929838	k__Bacteria	0.8885226547359342
+3584599	k__Bacteria	0.923561289966777
+1033790	k__Bacteria	0.9379678064932848
+990172	k__Bacteria	0.9105041520291269
+1144619	k__Bacteria	0.9377453349458479
+1084531	k__Bacteria; p__Proteobacteria	0.7394843917172305
+3630893	k__Bacteria	0.9573838870446802
+3632893	k__Bacteria	0.9034650603260855
+1113060	k__Bacteria	0.9114483182216188
+1117215	k__Bacteria	0.9213697577142377
+905978	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9426372346462282
+622987	k__Bacteria	0.9370407014724106
+3680774	k__Bacteria	0.8914891923694275
+3686366	k__Bacteria	0.9254478496894559
+3694686	k__Bacteria	0.9218892416960753
+1123674	k__Bacteria	0.9409016129846031
+1136440	k__Bacteria	0.8939426730930919
+975495	k__Bacteria	0.8879591204006064
+735045	k__Bacteria	0.9384860882007622
+1138350	k__Bacteria	0.9139238631764575
+3716041	k__Bacteria	0.8908014847247527
+3719461	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.7072654853624831
+625454	k__Bacteria	0.943859380866644
+3726225	k__Bacteria	0.9626048645257427
+1123953	k__Bacteria	0.8877765388067641
+1127632	k__Bacteria	0.9210049289807045
+659124	k__Bacteria	0.8593547228202869
+3746305	Unassigned	0.8784277906126058
+3747075	k__Bacteria	0.8989868915457971
+1138346	k__Bacteria	0.9028898810845637
+1134462	k__Bacteria	0.9370470234223961
+3801267	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9893086272159469
+813643	k__Bacteria	0.9206547533367208
+1046061	k__Bacteria	0.9542331505093734
+1130913	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.8597372182370103
+3823071	k__Bacteria	0.9034650603260855
+969543	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7763793254194706
+3848424	k__Bacteria	0.877836953150024
+1137136	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.9614028903547509
+3848889	k__Bacteria	0.9081192901575651
+3850189	k__Bacteria	0.8550786063428647
+3851393	k__Bacteria	0.9205278858583
+3860764	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7090436985729981
+619924	k__Bacteria	0.877836953150024
+804671	k__Bacteria	0.9148330097016573
+699414	k__Bacteria	0.8870905766997734
+3876919	k__Bacteria	0.921575505116285
+3883854	k__Bacteria	0.8809007641773765
+3890473	k__Bacteria	0.9291667490273052
+1121805	k__Bacteria	0.9634716063984542
+929221	k__Bacteria	0.9363078166933555
+830475	k__Bacteria	0.9395021641569196
+3917515	k__Bacteria	0.8870831499342541
+1119927	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.7089782158161061
+1134168	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7049880082055933
+3929421	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.8252726031910803
+791348	k__Bacteria	0.9001412457426494
+1133579	k__Bacteria	0.9144781297837842
+1089499	k__Bacteria	0.932879629067791
+3945303	k__Bacteria	0.9857485694465126
+851870	k__Bacteria	0.9034449960030145
+793520	k__Bacteria	0.9492250408794215
+3982798	k__Bacteria	0.8954247973585184
+624220	k__Bacteria	0.9394833706952277
+784643	k__Bacteria	0.9588094384318492
+3996373	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9943600454850859
+4004053	Unassigned	0.8732386690141453
+966166	k__Bacteria; p__Proteobacteria	0.7179054196587
+4012184	k__Bacteria	0.9356317235285542
+4022179	k__Bacteria	0.9082336448963275
+1130623	k__Bacteria	0.9335889996255673
+1119525	k__Bacteria	0.9307092625971117
+4037083	k__Bacteria	0.9113078972446887
+4039892	k__Bacteria	0.88534982437054
+1139718	k__Bacteria	0.9374300626423481
+4044766	k__Bacteria	0.9273942919002756
+4052874	k__Bacteria	0.9168182244990097
+1106060	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999233586087561
+1133391	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.7821675678430466
+4063041	k__Bacteria	0.8533082800641678
+4064689	k__Bacteria	0.9339305341383424
+4065003	k__Bacteria	0.9423531732706358
+678541	k__Bacteria	0.877387372694328
+4071599	k__Bacteria	0.8904340360451027
+4078178	k__Bacteria	0.9422710531275567
+987256	k__Bacteria	0.9053301132063811
+1122041	k__Bacteria	0.9345959194062721
+766968	k__Bacteria	0.9485157563793768
+4085620	k__Bacteria	0.9373660802839345
+4097928	k__Bacteria	0.9032137283869599
+4108889	k__Bacteria	0.9423522403206205
+1039815	k__Bacteria	0.9052972969650106
+733099	k__Bacteria	0.9293678189205443
+1130667	k__Bacteria	0.9626048645257427
+4114068	k__Bacteria	0.9284208277481287
+1052359	k__Bacteria	0.8936522251883368
+1131221	k__Bacteria	0.9380661791890151
+1117209	k__Bacteria	0.9180960390579669
+1131470	k__Bacteria	0.9133824513058248
+4141759	k__Bacteria	0.9548208202150718
+4144592	k__Bacteria	0.9519395776003496
+926878	k__Bacteria	0.9476840885526935
+4165504	k__Bacteria	0.9215238665832219
+4171394	Unassigned	0.8795492360190904
+4172691	k__Bacteria	0.9291152741412598
+4174920	k__Bacteria	0.9318722653452539
+4176782	k__Bacteria	0.945592875110178
+4178495	k__Bacteria	0.9707316351986264
+956220	k__Bacteria	0.9462671142118616
+835357	k__Bacteria	0.9386165071561753
+4199309	k__Bacteria	0.932126200242327
+985134	Unassigned	0.8689387002719484
+4207461	k__Bacteria	0.9141432341672634
+4210139	k__Bacteria	0.9423522403206205
+1020662	k__Bacteria	0.8735608376493513
+654764	k__Bacteria	0.9500422782551053
+4232048	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9974640390243619
+4238525	k__Bacteria	0.8782119704316081
+1108786	k__Bacteria	0.9298919778092998
+899860	k__Bacteria	0.8863465063577827
+811672	k__Bacteria	0.9593334161706111
+817170	k__Bacteria	0.9119964199180695
+4250634	k__Bacteria	0.9062874274273022
+4251079	k__Bacteria	0.9064343324315394
+4256470	k__Bacteria	0.9108403811421487
+4256768	k__Bacteria	0.9283710043156234
+4256926	k__Bacteria	0.9233685432531932
+981651	Unassigned	0.8470634226725233
+4279724	k__Bacteria	0.9229330872989873
+1076528	k__Bacteria	0.8859729803783675
+4294481	k__Bacteria	0.8944229464931226
+4294595	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8066649335968008
+4295488	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.878653407554226
+4295618	k__Bacteria	0.9474416471868196
+4296419	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8729814964836246
+4298271	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9940214453846987
+4298448	k__Bacteria	0.9187087382885785
+4298637	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999935404322018
+4298972	Unassigned	0.8848705078671382
+4299087	k__Bacteria	0.9249943517460286
+4299783	k__Bacteria	0.8885437990420223
+4300008	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9115860183546612
+4300497	k__Bacteria	0.8885437990420223
+4301398	k__Bacteria	0.8994780180585841
+4301684	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9947046663107332
+4302098	k__Bacteria	0.9129203649204827
+4302301	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.7332581877041002
+4302361	k__Bacteria	0.8885437990420223
+4302506	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9930399898382595
+4302891	k__Bacteria	0.9391131711568371
+4303180	k__Bacteria	0.8950116860201163
+4303793	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9886805638648104
+4304774	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999808470752073
+4304880	k__Bacteria	0.9380543153396539
+4305154	k__Bacteria	0.9187087382885785
+4305699	k__Bacteria	0.9453015600851669
+4306120	k__Bacteria	0.9216413429843231
+4306374	k__Bacteria	0.9172681983894679
+4307022	k__Bacteria	0.9039693036107153
+4307258	k__Bacteria	0.9485760713591944
+4307522	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9947046663107332
+4307587	k__Bacteria	0.9315850456448218
+4307611	k__Bacteria	0.9006740770093371
+4307683	k__Bacteria	0.910942152575709
+4307797	k__Bacteria	0.9151653989891556
+4308084	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9996381361384202
+4308271	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.796098001839651
+4308851	k__Bacteria	0.8885437990420223
+4309593	k__Bacteria	0.8885437990420223
+4309708	k__Bacteria	0.953964558474142
+4309731	k__Bacteria	0.9039693036107153
+4309996	k__Bacteria	0.9250952789412655
+4310200	k__Bacteria	0.9368903378493761
+4310644	k__Bacteria	0.882291850298756
+4311306	k__Bacteria	0.9473644982648921
+4312103	k__Bacteria	0.910942152575709
+4312468	k__Bacteria	0.8975436040711373
+4312954	k__Bacteria	0.9187087382885785
+4312983	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9953784671719667
+4313517	k__Bacteria	0.9315854613554606
+4313683	k__Bacteria	0.9023615299465223
+4314000	k__Bacteria	0.9267170036577622
+4314001	k__Bacteria	0.9082336448963275
+4314088	Unassigned	0.8917512178551334
+4315135	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8729814964836246
+4315414	k__Bacteria	0.9185834863990517
+4315642	k__Bacteria	0.9647208064714716
+4315979	k__Bacteria	0.9441854504518683
+4316077	k__Bacteria	0.9151653989891556
+4316157	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.830026000642533
+4317187	k__Bacteria	0.9402701838154709
+4317476	k__Bacteria	0.8885437990420223
+4317520	k__Bacteria	0.93010494571404
+4317840	k__Bacteria	0.9360222049203056
+4318098	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.8438760693476213
+4318406	k__Bacteria	0.9612861403880012
+4318631	k__Bacteria	0.9259097973680235
+4319433	k__Bacteria	0.8920378518325455
+4319440	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9997117457431781
+4319580	k__Bacteria	0.9412273294114769
+4319661	k__Bacteria	0.9151653989891556
+4320257	k__Bacteria	0.9497166503447159
+4320811	k__Bacteria	0.900230485751466
+4320894	k__Bacteria	0.9396687773797111
+4321535	k__Bacteria	0.9454997646659028
+4321932	k__Bacteria	0.899875064783269
+4323073	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9873714828634076
+4324016	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8347314996235614
+4324892	k__Bacteria	0.8984226438562306
+4324941	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9947046663107332
+4325593	k__Bacteria	0.9254698662989301
+4326005	k__Bacteria	0.8783652352022546
+4326573	k__Bacteria	0.8856480060775979
+4326574	k__Bacteria	0.8568001245763053
+4327050	k__Bacteria	0.9662533487690611
+4327415	k__Bacteria	0.9453048326702884
+4327697	k__Bacteria	0.9406934600418528
+4327798	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999987286715121
+4327904	k__Bacteria	0.9324951750355492
+4328446	k__Bacteria	0.9179949545147464
+4328665	k__Bacteria	0.8916264757507111
+4328987	k__Bacteria	0.9034650603260855
+4329655	k__Bacteria	0.9074094865684563
+4330327	k__Bacteria	0.9126726856902424
+4330331	k__Bacteria	0.8795380921083383
+4332193	k__Bacteria	0.9126454423622145
+4335180	k__Bacteria	0.9415959959800992
+4336467	k__Bacteria	0.8903509484625951
+4336546	k__Bacteria	0.8278185869818697
+4337151	k__Bacteria	0.900690722860329
+4337223	k__Bacteria	0.9188425336606678
+4337964	k__Bacteria	0.8975986162141385
+4338341	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.8169895312141168
+4338444	Unassigned	0.853262857265345
+4338625	k__Bacteria	0.8908014847247527
+4340136	k__Bacteria	0.9611723413309226
+4340653	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9995177208391718
+4341712	k__Bacteria	0.942935728204608
+4341797	k__Bacteria	0.9513648307645531
+4343297	k__Bacteria	0.9012482948613918
+4343470	k__Bacteria	0.9179949545147464
+4343834	k__Bacteria; p__Proteobacteria	0.7999525410313025
+4344207	k__Bacteria	0.9360222049203056
+4344249	k__Bacteria	0.8962367698955532
+4344419	k__Bacteria	0.9691264905747934
+4344754	k__Bacteria	0.9437929711671922
+4344909	k__Bacteria	0.9380543153396539
+4345313	k__Bacteria	0.8807872617484346
+4346280	k__Bacteria	0.9250571301337875
+4346548	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.8265059446616566
+4347800	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9893086272159469
+4348634	k__Bacteria	0.9527285828665354
+4348731	k__Bacteria	0.9444483487630311
+4348841	k__Bacteria	0.953737844901334
+4349237	k__Bacteria	0.9028283217362633
+4349448	k__Bacteria	0.8988350142457915
+4349687	k__Bacteria	0.9194121787109159
+4350025	k__Bacteria	0.9030440755316581
+4350881	k__Bacteria	0.8560632190911018
+4351506	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8495369210933531
+4352139	k__Bacteria	0.9329710037632909
+4352537	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.995475232669308
+4352774	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7837730961854601
+4353742	Unassigned	0.8380964684293863
+4353807	Unassigned	0.7608728027553384
+4354524	k__Bacteria	0.9444417288526964
+4354706	k__Bacteria	0.9281491798139961
+4354987	k__Bacteria	0.9474416471868196
+4355340	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9873714828634076
+4355582	k__Bacteria	0.8797932659550243
+4355718	k__Bacteria	0.8793532817164739
+4355728	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9985958224614682
+4355895	k__Bacteria	0.8988350142457915
+4356823	k__Bacteria	0.9105268021793161
+4356932	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9986169328182207
+4357117	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9827152475085391
+4357903	k__Bacteria	0.9027483731002005
+4358300	k__Bacteria	0.9053400006406493
+4358520	k__Bacteria	0.9192961816467136
+4358973	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9962166753542028
+4359133	k__Bacteria	0.9118102984941994
+4359604	k__Bacteria	0.9270426731934277
+4359899	k__Bacteria	0.9531466907420936
+4360552	k__Bacteria	0.9310042737682438
+4361366	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9936527755388913
+4361533	k__Bacteria	0.8947776857125248
+4363101	k__Bacteria	0.919536537694529
+4364205	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7398118783105336
+4365016	k__Bacteria	0.9234350168397626
+4365042	k__Bacteria	0.9081192901575651
+4365567	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9858992455789524
+4365803	k__Bacteria	0.954876697159282
+4365922	k__Bacteria	0.9508504180633672
+4366000	k__Bacteria	0.9476015251879752
+4366299	k__Bacteria	0.9574473279758863
+4366350	k__Bacteria	0.9648225808104668
+4366856	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9962166753542028
+4366912	k__Bacteria	0.9804118087005894
+4368159	k__Bacteria; p__Firmicutes; c__Clostridia; o__Natranaerobiales; f__Natranaerobiaceae; g__Natronoanaerobium; s__salstagnum	0.9338877128076548
+4368691	k__Bacteria	0.9234391552737334
+4368854	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8729814964836246
+4368963	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8729814964836246
+4369648	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.830026000642533
+4370946	k__Bacteria	0.9275078839384893
+4371438	k__Bacteria	0.970615962757809
+4371538	k__Bacteria	0.9039693036107153
+4371645	k__Bacteria	0.9254698662989301
+4371888	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9976537851988416
+4371903	k__Bacteria	0.9365008169877368
+4371951	k__Bacteria	0.9265079734559091
+4372581	k__Bacteria	0.9256403739499461
+4374082	k__Bacteria	0.9049638249766639
+4374148	k__Bacteria	0.9656753414289329
+4374425	k__Bacteria	0.9243509334084068
+4374690	k__Bacteria	0.9688154611997868
+4374753	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9931768152731374
+4375314	k__Bacteria	0.9283687120111285
+4376843	k__Bacteria	0.9431979500881748
+4377301	k__Bacteria	0.8463050728147054
+4377394	k__Bacteria	0.9638554287881604
+4377781	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.830026000642533
+4378159	k__Bacteria	0.9023615299465223
+4378212	k__Bacteria	0.9066670547430297
+4378324	k__Bacteria	0.9081192901575651
+4378739	k__Bacteria	0.9626048645257427
+4379190	k__Bacteria	0.913910554369921
+4379450	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9979704561125332
+4380040	k__Bacteria	0.9443150315481137
+4380427	k__Bacteria	0.912310762847187
+4380475	k__Bacteria	0.909139976269599
+4380829	k__Bacteria	0.9545441595481197
+4381230	k__Bacteria	0.8988350142457915
+4381970	k__Bacteria	0.9204722218397612
+4382393	k__Bacteria	0.9463027220011399
+4382740	k__Bacteria	0.9380851819226768
+4382934	k__Bacteria	0.9641198433166165
+4383820	k__Bacteria	0.9017459820907051
+4384124	k__Bacteria	0.9313994400235058
+4384750	k__Bacteria	0.9285837297148495
+4384817	k__Bacteria	0.9344399427122594
+4384888	k__Bacteria	0.8913243716841934
+4384897	k__Bacteria	0.9186871564676454
+4385318	k__Bacteria	0.9338628328382976
+4385517	k__Bacteria	0.9474166366768049
+4385601	k__Bacteria	0.9493258153802202
+4385836	k__Bacteria	0.9537887906485562
+4386725	k__Bacteria	0.9148899342046525
+4387833	k__Bacteria	0.9382090782481592
+4388719	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8796614457196347
+4388793	k__Bacteria	0.9729691208716916
+4389145	k__Bacteria	0.9072728841379943
+4390140	k__Bacteria	0.928266990460538
+4390359	k__Bacteria	0.9299781972538388
+4391417	k__Bacteria	0.8638978404957595
+4392252	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae; o__Synechococcales; f__Chamaesiphonaceae; g__Chamaesiphon	0.9976041942541781
+4393172	k__Bacteria	0.9179949545147464
+4394426	k__Bacteria	0.9436055973094629
+4394819	k__Bacteria	0.9374757674609043
+4394897	k__Bacteria	0.9344858547963932
+4395420	k__Bacteria	0.9337989044639196
+4395465	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9952015411691089
+4396480	k__Bacteria	0.9299878489080683
+4397154	k__Bacteria	0.9330146364392448
+4398511	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9948801720451463
+4398668	k__Bacteria	0.9167491153495002
+4398904	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.993228994641487
+4399636	k__Bacteria	0.9341412693428817
+4399718	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae; g__Nautilia	0.7685178277666778
+4399837	Unassigned	0.8585338086062713
+4400440	k__Bacteria	0.9516799625411729
+4400502	k__Bacteria	0.9218137443793365
+4401634	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9970780108002897
+4403441	k__Bacteria	0.9255309230401344
+4403464	k__Bacteria	0.9371339070790633
+4403651	k__Bacteria	0.8978252317062819
+4404966	k__Bacteria	0.9525256777871062
+4405865	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7905813239637757
+4406343	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9947046663107332
+4407262	k__Bacteria	0.9373337260656436
+4407476	k__Bacteria	0.9230241313476494
+4408558	k__Bacteria	0.9053041975217454
+4409960	k__Bacteria	0.9160233951331762
+4409962	k__Bacteria	0.940656354478225
+4410077	k__Bacteria	0.9148899342046525
+4410246	k__Bacteria	0.9165673165191119
+4410599	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9996543705354698
+4411492	k__Bacteria	0.9205873051899315
+4412145	k__Bacteria	0.8088540692869991
+4412321	Unassigned	0.856594561737485
+4412501	Unassigned	0.8960966452397151
+4412978	k__Bacteria	0.9418755699770768
+4413215	Unassigned	0.8491797452109612
+4413404	k__Bacteria	0.9451589206178116
+4413902	k__Bacteria	0.9200892572029997
+4414265	k__Bacteria	0.9034650603260855
+4414471	k__Bacteria	0.9429802363258678
+4414478	k__Bacteria	0.8959980391232554
+4414489	k__Bacteria	0.9081014879031688
+4414688	k__Bacteria; p__Proteobacteria	0.7066249680179737
+4415058	k__Bacteria	0.8723735080837915
+4415150	k__Bacteria	0.8960312758999198
+4415207	k__Bacteria	0.9114063864268431
+4415618	k__Bacteria	0.8776150185344339
+4416025	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9962166753542028
+4416186	k__Bacteria	0.9162383103204649
+4416538	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.8232102478145946
+4416753	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9953651472560777
+4416844	k__Bacteria	0.929006187509132
+4417377	k__Bacteria	0.9124924031879103
+4417788	k__Bacteria	0.940760335413097
+4418490	k__Bacteria	0.9401506264373346
+4418712	k__Bacteria	0.9102593942827566
+4418842	k__Bacteria	0.8933676240451843
+4419798	k__Bacteria	0.9390518213857952
+4419982	k__Bacteria	0.9354261067532644
+4420473	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8154725612712097
+4422394	k__Bacteria	0.9243449611452558
+4424647	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8372612723797718
+4424976	k__Bacteria	0.9088252047780899
+4425527	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8729814964836246
+4425913	k__Bacteria; p__Firmicutes	0.700367523591717
+4425960	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.999999702939293
+4426334	k__Bacteria	0.9307439114226664
+4426874	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9950306898994208
+4427542	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999995434678132
+4427543	k__Bacteria	0.9532873008817532
+4427594	Unassigned	0.8456870136896837
+4428929	k__Bacteria	0.9222071856142489
+4429261	k__Bacteria	0.8678385901191382
+4429263	k__Bacteria	0.9452306210692449
+4429536	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9874159350972602
+4430572	k__Bacteria	0.8835665141929262
+4431822	k__Bacteria	0.9182569366373358
+4432043	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9897349429005108
+4432270	Unassigned	0.8609188417949951
+4432891	k__Bacteria	0.9125802792732159
+4432963	k__Bacteria	0.8885437990420223
+4433322	k__Bacteria	0.8551117097454725
+4433339	k__Bacteria	0.9280114853179667
+4433383	k__Bacteria	0.9642961102395001
+4435500	k__Bacteria	0.9281016163198622
+4435662	k__Bacteria	0.9093275066598615
+4435943	k__Bacteria	0.9165808897001785
+4435984	k__Bacteria	0.9024322287151818
+4436005	k__Bacteria	0.9680514311834152
+4436552	k__Bacteria	0.9380543153396539
+4436774	k__Bacteria	0.9254769506426381
+4437209	k__Bacteria	0.9264570697165849
+4437293	k__Bacteria	0.9107217605214807
+4437342	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9947046663107332
+4437422	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.9999989331372781
+4437485	k__Bacteria	0.9034650603260855
+4437907	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.9254844018805743
+4438330	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9985249193478707
+4438739	k__Bacteria	0.9382090782481592
+4438844	k__Bacteria	0.9262233423057552
+4439053	k__Bacteria	0.9027331440611174
+4439144	k__Bacteria	0.9445695906006236
+4439565	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7622174650962869
+4441550	k__Bacteria	0.8988350142457915
+4444503	k__Bacteria	0.9181226759691677
+4444636	k__Bacteria	0.9572588812428026
+4445570	k__Bacteria	0.9614156170213388
+4446358	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8644876031277073
+4446548	k__Bacteria	0.9581926384519539
+4446956	k__Bacteria	0.8412118921594833
+4446962	k__Bacteria	0.9397052136920613
+4446963	k__Bacteria	0.8596124338830684
+4447248	k__Bacteria	0.9165808897001785
+4449835	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae; o__Synechococcales; f__Chamaesiphonaceae; g__Chamaesiphon	0.91824564963593
+4449904	k__Bacteria	0.9436055973094629
+4450440	k__Bacteria	0.9711925818588394
+4451561	k__Bacteria	0.9312539155727966
+4452392	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.830026000642533
+4452449	k__Bacteria	0.9273458343684624
+4452718	k__Bacteria	0.8924304321376502
+4453636	k__Bacteria	0.9036810862127168
+4453775	k__Bacteria	0.9168484275277905
+4453805	k__Bacteria	0.9178278584700917
+4454475	k__Bacteria	0.916003388226088
+4455305	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9932327872847004
+4455844	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8729814964836246
+4455905	k__Bacteria	0.8890315026020497
+4456419	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.999666221076552
+4456690	k__Bacteria	0.8885437990420223
+4456787	k__Bacteria	0.9144348079114573
+4456892	k__Bacteria	0.9208343052828312
+4456895	k__Bacteria	0.9528710663018449
+4457112	k__Bacteria	0.9231443214045998
+4457308	k__Bacteria	0.9203578620530835
+4458015	k__Bacteria	0.8998297608940439
+4458639	k__Bacteria	0.9238167637535586
+4458676	k__Bacteria	0.8771938019757787
+4458737	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.741367489587702
+4459180	k__Bacteria	0.9275526717614311
+4461731	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9931768152731374
+4461741	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9931768152731374
+4462633	k__Bacteria	0.9191432837766126
+4462938	k__Bacteria	0.8928366353251964
+4463076	k__Bacteria	0.9389833768234249
+4463370	k__Bacteria	0.8960312758999198
+4464024	k__Bacteria	0.8770900834953116
+4464025	k__Bacteria	0.906978674206062
+4464416	k__Bacteria	0.9381499766014434
+4464749	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__HTCC2188; f__HTCC2089; g__Acinetobacter; s__radioresistens	0.7627114465457793
+4464839	k__Bacteria	0.9604614561203008
+4465109	k__Bacteria	0.9812050287864431
+4465295	k__Bacteria	0.9190109110231046
+4465561	k__Bacteria	0.9166918998718755
+4466008	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.7682548817457201
+4466245	k__Bacteria	0.9167065262316579
+4466754	k__Bacteria	0.9231893151453208
+4466876	k__Bacteria	0.9711060066257973
+4467143	k__Bacteria	0.9294851262694248
+4467166	k__Bacteria	0.9023615299465223
+4467619	k__Bacteria	0.9230041356464194
+4468024	k__Bacteria	0.8989400872823833
+4468506	Unassigned	0.8199334584380135
+4469722	k__Bacteria	0.9105941492944474
+4471486	k__Bacteria	0.9347456463565823
+4472429	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8729814964836246
+4472592	k__Bacteria	0.9211440643606978
+4472916	k__Bacteria	0.9338582330640505
+4473437	k__Bacteria	0.8992083426424755
+4473934	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.9988111693851462
+4474055	k__Bacteria	0.9228354500533306
+4474491	k__Bacteria	0.921623660256655
+4474516	k__Bacteria	0.9285051970585331
+4474895	k__Bacteria	0.9271822714687367
+4475009	k__Bacteria	0.9398824754764639
+4475036	k__Bacteria	0.8885437990420223
+4476061	k__Bacteria	0.9078748023944321
+4476964	k__Bacteria	0.9203984139407093
+4477254	k__Bacteria	0.8674027284459856
+4477448	Unassigned	0.8374658552058873
+4477719	k__Bacteria	0.9378213545467677
+4478358	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	0.7887444464282989
+4478545	k__Bacteria	0.9527767834947749
+4478630	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8729814964836246
+4478899	k__Bacteria	0.9303810857426931
+4479224	k__Bacteria	0.9275913759649124
+4479227	k__Bacteria	0.9263962901971152
+4480240	k__Bacteria	0.9159546182826636
+4480752	k__Bacteria	0.9320096081250274
+4480819	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kordiimonadales; f__Kordiimonadaceae; g__Kordiimonas; s__gwangyangensis	0.8295369093424964
+4480954	k__Bacteria; p__Acidobacteria; c__Holophagae; o__Holophagales; f__Holophagaceae; g__Holophaga; s__foetida	0.8213950556094223
+4481459	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	0.7613226257405891
+4481550	k__Bacteria	0.8867200436475008
+4482112	k__Bacteria	0.91352271680257
+4482792	Unassigned	0.8443154215155039
+4482804	k__Bacteria	0.9172793711839199
+4483293	k__Bacteria	0.9201980509282498
+4483591	k__Bacteria	0.9408512387324525
+4483775	k__Bacteria	0.9246649903789493
+848243	k__Bacteria	0.8830307600378706
+726864	k__Bacteria	0.9243210377922514
+565906	k__Bacteria	0.931722465178139
+565364	k__Bacteria	0.9263671450658928
+556561	k__Bacteria	0.9406007053604594
+555048	k__Bacteria	0.9021357603199529
+543169	k__Bacteria	0.8501825656716635
+405660	k__Bacteria	0.9315094479818654
+347857	k__Bacteria	0.8930670465264342
+325885	k__Bacteria	0.8961828075606844
+323489	k__Bacteria	0.9149128675732553
+254455	k__Bacteria	0.9377367012151554
+219691	k__Bacteria	0.8346000247641594
+186470	Unassigned	0.7885163032101635
+155684	k__Bacteria	0.9408896423215121
+155495	k__Bacteria	0.9386741307198337
+106645	k__Bacteria	0.9036344120141447
+104582	k__Bacteria	0.857471879431737
+59549	Unassigned	0.8885325231922956
+25116	k__Bacteria	0.8696533388708633
+18525	k__Bacteria	0.9312662057086972
+1106	k__Bacteria	0.9125523417538323
+804	Unassigned	0.8369883330036199
+757	Unassigned	0.8359354397672664
+657	k__Bacteria	0.9235896311961702
+665283	k__Bacteria	0.9287221662214634
+613187	k__Bacteria	0.9159790610756969
+2058825	Unassigned	0.690066542736204
+692586	k__Bacteria	0.8610499086638017
+2076643	k__Bacteria	0.940587860202896
+1145507	k__Bacteria	0.9242267026357662
+781489	k__Bacteria	0.9559387483399137
+748601	k__Bacteria	0.8921200338423962
+2752954	k__Bacteria	0.9616708718295098
+2940299	k__Bacteria	0.9078993623819103
+840131	k__Bacteria	0.9668170259188744
+4307029	k__Bacteria	0.8829753725296564
+4358883	k__Bacteria	0.8710494270681635
+4455990	k__Bacteria	0.9363618197196959
+4474546	k__Bacteria	0.9107830605341504

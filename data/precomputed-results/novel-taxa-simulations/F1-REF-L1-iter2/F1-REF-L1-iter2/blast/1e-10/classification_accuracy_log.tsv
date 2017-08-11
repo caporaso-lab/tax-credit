@@ -1,3 +1,0 @@
-dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
-F1-REF	1	2	blast	1e-10	No blast hit	k__Fungi;p__Zygomycota	misclassification	0	0.0	0.0	0.0
-F1-REF	1	2	blast	1e-10	k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Pleosporales;f__Pleomassariaceae;g__Trematosphaeria;s__Trematosphaeria_pertusa	k__Fungi;p__Fungi_phy_Incertae_sedis	overclassification	1	0.0	0.0	0.0

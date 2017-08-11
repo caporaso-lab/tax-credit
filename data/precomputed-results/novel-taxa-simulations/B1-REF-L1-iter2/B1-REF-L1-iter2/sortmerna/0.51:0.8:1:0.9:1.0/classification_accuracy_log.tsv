@@ -1,8 +1,0 @@
-dataset	level	iteration	method	parameters               	observed_taxonomy	expected_taxonomy	result	mismatch_level               	Precision	Recall	F-measure
-B1-REF	1	2	sortmerna	0.51:0.8:1:0.9:1.0	Unassigned	k__Archaea;p__Nanoarchaeota	underclassification	0	0.0	0.0	0.0
-B1-REF	1	2	sortmerna	0.51:0.8:1:0.9:1.0	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Xanthomonadales;f__Xanthomonadaceae;g__Silanimonas;s__lenta	k__Bacteria;p__Verrucomicrobia	overclassification	1	0.0	0.0	0.0
-B1-REF	1	2	sortmerna	0.51:0.8:1:0.9:1.0	k__Bacteria;p__Firmicutes;c__Clostridia;o__Clostridiales;f__Ruminococcaceae;g__Oscillospira;s__guilliermondii	k__Bacteria;p__Chlorobi	overclassification	1	0.0	0.0	0.0
-B1-REF	1	2	sortmerna	0.51:0.8:1:0.9:1.0	k__Bacteria;p__Firmicutes;c__Clostridia;o__Thermoanaerobacterales;f__Thermoanaerobacteraceae;g__Thermoanaerobacter;s__uzonensis	k__Bacteria;p__Dictyoglomi	overclassification	1	0.0	0.0	0.0
-B1-REF	1	2	sortmerna	0.51:0.8:1:0.9:1.0	k__Bacteria;p__Proteobacteria;c__Deltaproteobacteria;o__Desulfobacterales;f__Desulfobacteraceae;g__Desulfosalsimonas;s__propionicica	k__Bacteria;p__Planctomycetes	overclassification	1	0.0	0.0	0.0
-B1-REF	1	2	sortmerna	0.51:0.8:1:0.9:1.0	Unassigned	k__Archaea;p__Crenarchaeota	underclassification	0	0.0	0.0	0.0
-B1-REF	1	2	sortmerna	0.51:0.8:1:0.9:1.0	k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Oceanospirillales;f__SUP05;g__Ruthia;s__magnifica	k__Bacteria;p__Nitrospirae	overclassification	1	0.0	0.0	0.0

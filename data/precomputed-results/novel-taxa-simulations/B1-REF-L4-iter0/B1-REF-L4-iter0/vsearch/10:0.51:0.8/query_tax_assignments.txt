@@ -1,64 +1,2309 @@
 Feature ID	Taxon	Confidence
-246206	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Pseudonocardiaceae	1.0
-16094	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales	0.8
-778480	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae	0.7
-1145893	k__Bacteria; p__Bacteroidetes; c__Cytophagia; o__Cytophagales; f__Flammeovirgaceae	0.8
-4471604	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales	1.0
-654665	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfovibrionales; f__Desulfovibrionaceae; g__Desulfovibrio; s__putealis	0.7
-2480449	k__Bacteria; p__Cyanobacteria; c__Nostocophycideae; o__Nostocales; f__Scytonemataceae	0.6
-1143180	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Nitrososphaerales; f__Nitrososphaeraceae; g__Candidatus Nitrososphaera; s__gargensis	0.8
-1141411	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Sphingomonadales; f__Erythrobacteraceae	1.0
-728797	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfobacterales; f__Desulfobulbaceae	0.7
-1130161	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Nocardiaceae; g__Rhodococcus; s__ruber	1.0
-816056	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Koribacteraceae; g__Candidatus Koribacter; s__versatilis	0.6
-814161	k__Bacteria; p__Cyanobacteria	1.0
-564981	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Micrococcaceae	1.0
-537713	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
-4446822	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales; f__Phyllobacteriaceae	1.0
-1121390	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
-687789	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
-7213	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Burkholderiales; f__Oxalobacteraceae	0.7
-524581	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales; f__Bradyrhizobiaceae; g__Bosea; s__genosp.	0.7
-1015017	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfobacterales; f__Desulfobulbaceae	0.7
-2132220	k__Bacteria; p__Bacteroidetes; c__Saprospirae; o__Saprospirales; f__Saprospiraceae; g__Portibacter; s__lacus	1.0
-287305	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfuromonadales; f__Desulfuromonadaceae	0.6
-4369464	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales; f__Brucellaceae; g__Ochrobactrum	0.6
-89370	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Planococcaceae; g__Planococcus	0.8
-4353965	k__Archaea; p__Euryarchaeota; c__Methanomicrobia; o__Methanomicrobiales; f__Methanomicrobiaceae; g__Methanoculleus; s__bourgensis	0.6
-11226	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Campylobacterales; f__Helicobacteraceae	1.0
-2169466	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Prevotellaceae; g__Prevotella; s__copri	1.0
-81749	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
-112212	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Caulobacterales; f__Caulobacteraceae; g__Brevundimonas; s__diminuta	0.7
-146198	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Methylococcales; f__Methylococcaceae	0.9
-202684	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales	0.9
-743801	k__Bacteria; p__Planctomycetes; c__Planctomycetia; o__Gemmatales; f__Gemmataceae; g__Gemmata; s__obscuriglobus	1.0
-38566	k__Bacteria; p__Verrucomicrobia; c__Verrucomicrobiae; o__Verrucomicrobiales; f__Verrucomicrobiaceae; g__Prosthecobacter; s__debontii	0.6
-780288	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales; f__Oceanospirillaceae; g__Marinomonas; s__primoryensis	0.9
-4359816	k__Archaea; p__Crenarchaeota; c__Thermoprotei	1.0
-751671	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Staphylococcaceae; g__Staphylococcus; s__aureus	0.8
+942135	k__Bacteria; p__Firmicutes	0.6
+629172	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+548478	k__Bacteria; p__Firmicutes	0.6
+814411	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4104788	Unassigned	1.0
+536559	k__Bacteria; p__Firmicutes	0.6
+174611	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria	0.6666666666666666
+311712	k__Bacteria; p__Firmicutes	0.9
+56680	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.7
+30439	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+332902	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+564904	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4464303	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+293948	k__Bacteria	1.0
+897252	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4335764	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+4323512	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4474944	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+893403	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+67396	Unassigned	1.0
+465367	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+530343	Unassigned	1.0
+4347200	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+69274	Unassigned	1.0
+461539	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+1141725	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+971243	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+581729	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+346311	k__Bacteria; p__Proteobacteria	1.0
+1105281	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+157554	k__Bacteria; p__Firmicutes	0.7
+175290	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+905180	k__Bacteria; p__Firmicutes	0.7
+1134626	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1062865	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+225602	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+8386	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1023869	k__Bacteria; p__Firmicutes	0.6
+520430	Unassigned	1.0
+4467026	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+245648	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+261768	Unassigned	1.0
+369121	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+532305	Unassigned	1.0
+550703	k__Bacteria	1.0
+158622	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1856545	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+2418016	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+569456	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+291815	k__Bacteria; p__Firmicutes	0.8
+367320	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8888888888888888
+514350	k__Bacteria; p__Firmicutes	0.8
+4395332	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+14912	k__Bacteria	1.0
+1140599	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+326035	Unassigned	1.0
+275257	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+544573	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+164017	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4480725	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4386407	k__Bacteria	1.0
+180606	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4392842	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4361669	k__Bacteria; p__Firmicutes	0.6
+301801	k__Bacteria	1.0
+4324217	Unassigned	1.0
+901611	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces; s__europaeus	1.0
+259187	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+555568	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+200408	Unassigned	1.0
+4068376	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8333333333333334
+315936	k__Bacteria	1.0
+4404392	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Koribacteraceae; g__Candidatus Koribacter; s__versatilis	0.75
+4351121	k__Bacteria; p__Firmicutes	0.6
+809272	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+989487	Unassigned	1.0
+1124779	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+898690	k__Bacteria	1.0
+367266	k__Bacteria	1.0
+2548274	k__Bacteria; p__Firmicutes	0.6
+1535393	k__Bacteria; p__Firmicutes	0.6
+176123	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+370964	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+290718	k__Bacteria	1.0
+15712	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	1.0
+1145812	k__Bacteria	1.0
+369289	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+645407	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+757185	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+4473417	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+513332	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales; f__Cohaesibacteraceae; g__Cohaesibacter; s__gelatinilyticus	1.0
+1029790	k__Bacteria	1.0
+81453	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+4387904	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+5704	k__Bacteria; p__Proteobacteria	1.0
+187324	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+1016041	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+528329	Unassigned	1.0
+251986	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+545417	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+349895	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8888888888888888
+4427609	Unassigned	1.0
+363722	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+539939	k__Bacteria; p__Firmicutes	0.6
+4425749	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+315650	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+1056322	k__Bacteria	1.0
+319556	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+3679698	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Methylococcales; f__Crenotrichaceae; g__Crenothrix; s__polyspora	1.0
+180255	k__Bacteria	1.0
+250238	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales; f__Xenococcaceae	0.6
+1790396	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+554260	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4331976	k__Bacteria; p__Firmicutes	0.7
+762393	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+2423288	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+72222	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4324826	k__Bacteria; p__Firmicutes	0.7
+296597	Unassigned	1.0
+719955	k__Bacteria; p__Firmicutes	0.6
+816730	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae	0.7777777777777778
+2746191	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+333420	k__Bacteria; p__Proteobacteria	0.7
+4361600	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga	0.75
+90403	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+354223	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+289458	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+351375	k__Bacteria; p__Proteobacteria	0.6
+708264	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+632119	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.6
+2028260	Unassigned	1.0
+4024983	k__Bacteria; p__Firmicutes	0.6
+250537	k__Bacteria; p__Firmicutes	0.6
+2195545	k__Bacteria	1.0
+654665	k__Bacteria; p__Proteobacteria	0.8
+268416	k__Bacteria; p__Proteobacteria	0.8
+224099	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+192202	k__Bacteria	1.0
+860168	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+847491	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+196820	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+2280812	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+178022	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+520195	Unassigned	1.0
+1011780	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+14437	k__Bacteria; p__Firmicutes	0.6
+557044	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+334144	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+883709	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+271851	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+824748	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.7
+141948	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga	0.75
+2000711	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4333705	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+550172	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+580742	k__Bacteria; p__Chlamydiae; c__Chlamydiia; o__Chlamydiales; f__Simkaniaceae	0.6666666666666666
+4430842	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+19636	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+354765	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+301824	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+927410	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+4473994	k__Bacteria; p__Firmicutes	0.6
+574838	k__Bacteria; p__Firmicutes	0.6
+4308022	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+538813	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales; f__Xenococcaceae	0.6666666666666666
+4417243	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1083894	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+141289	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6666666666666666
+666223	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+12968	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4367060	k__Bacteria	1.0
+4300778	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4115079	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+241305	k__Bacteria	1.0
+1069610	k__Bacteria	1.0
+573610	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+369615	k__Bacteria; p__Firmicutes	0.7
+3799782	k__Bacteria; p__Firmicutes; c__Bacilli	0.6666666666666666
+247964	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+266440	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4380	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Methylococcales; f__Crenotrichaceae; g__Crenothrix; s__polyspora	0.6
+3534735	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+239139	k__Bacteria; p__Proteobacteria	1.0
+539051	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+193716	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+556172	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+606927	k__Bacteria; p__Firmicutes	0.6
+1059977	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+547214	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4370965	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+542840	k__Bacteria; p__Firmicutes	0.8
+571536	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+16306	k__Bacteria; p__Firmicutes	0.7
+1136676	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4301996	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+2338105	Unassigned	1.0
+336703	k__Bacteria	1.0
+4414342	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1140707	k__Bacteria; p__Firmicutes	0.6
+443001	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+196412	k__Archaea; p__Crenarchaeota	1.0
+358383	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+293198	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+1034344	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.7
+302906	Unassigned	1.0
+4407376	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+4454024	Unassigned	1.0
+1741490	k__Bacteria	1.0
+1141398	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+3263959	Unassigned	1.0
+390157	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+328755	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+3264272	Unassigned	1.0
+1628559	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1095808	k__Bacteria; p__Firmicutes	0.8
+1131099	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+1107772	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+531993	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Barnesiellaceae; g__Barnesiella; s__viscericola	1.0
+70497	k__Bacteria; p__Firmicutes	0.7
+4377536	Unassigned	1.0
+292799	Unassigned	1.0
+4456852	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+677415	k__Bacteria; p__Firmicutes	0.8
+509589	Unassigned	1.0
+1913619	Unassigned	1.0
+3993446	Unassigned	1.0
+308095	k__Bacteria	1.0
+4334748	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4451667	Unassigned	1.0
+851640	k__Bacteria; p__Firmicutes	0.8
+143753	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+294670	k__Bacteria; p__Firmicutes	0.6
+898628	k__Bacteria; p__Firmicutes; c__Bacilli	0.6666666666666666
+362685	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+23952	k__Bacteria	1.0
+245191	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+664377	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+266313	k__Bacteria	1.0
+529744	Unassigned	1.0
+4446943	k__Bacteria; p__Firmicutes	0.8
+304047	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+142276	k__Bacteria; p__Firmicutes	0.6
+536778	k__Bacteria	1.0
+1066621	Unassigned	1.0
+1063780	k__Bacteria; p__Firmicutes	0.6
+925547	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.7
+101458	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+574270	k__Bacteria; p__Firmicutes	0.7
+748985	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+107677	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kordiimonadales; f__Kordiimonadaceae; g__Kordiimonas; s__gwangyangensis	1.0
+1139502	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+851938	k__Bacteria; p__Firmicutes	1.0
+12029	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4434445	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+865934	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+348202	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+3929758	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+391340	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+3521424	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+790610	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+649373	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+987904	k__Bacteria; p__Firmicutes	0.7
+155922	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+574932	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+190727	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+267212	k__Bacteria	1.0
+3548595	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6666666666666666
+1005146	k__Bacteria; p__Firmicutes	0.7
+187346	k__Bacteria; p__Firmicutes	0.8
+225045	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+305880	k__Bacteria; p__Proteobacteria	0.8
+2279387	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+316816	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+4360541	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+4343155	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+186364	Unassigned	1.0
+435754	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+4424063	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+987209	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+2639475	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+905676	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+515578	Unassigned	1.0
+114955	k__Bacteria; p__Firmicutes	0.6
+143318	k__Bacteria	1.0
+200073	k__Bacteria; p__Planctomycetes; c__Planctomycetia; o__Gemmatales; f__Isosphaeraceae; g__Nostocoida; s__limicola III	1.0
+316037	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+945333	k__Bacteria	1.0
+79476	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1671681	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+900718	k__Bacteria; p__Firmicutes	0.8
+559416	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+928998	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+580117	Unassigned	1.0
+162546	k__Bacteria; p__Firmicutes; c__Bacilli	0.5714285714285714
+311392	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+942700	k__Bacteria; p__Firmicutes	0.875
+173181	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	1.0
+824806	k__Bacteria	1.0
+1025011	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+3035626	Unassigned	1.0
+365904	k__Bacteria	1.0
+28109	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1050577	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4324586	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+1113872	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+77309	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+161828	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+194741	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+4469734	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+517531	k__Bacteria	1.0
+179321	Unassigned	1.0
+285885	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+692067	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+833475	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+822953	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+236649	Unassigned	1.0
+6367	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4461617	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+26897	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4456886	k__Bacteria	1.0
+4367894	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae	0.75
+195680	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+824571	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+187198	Unassigned	1.0
+693653	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+99387	k__Bacteria; p__Firmicutes	0.7
+195588	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+525076	k__Bacteria	1.0
+589329	Unassigned	1.0
+1146401	k__Bacteria	1.0
+358972	k__Bacteria	1.0
+582582	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+807234	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales; f__Xenococcaceae	0.6
+562815	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4476200	k__Archaea; p__Crenarchaeota	1.0
+783036	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+261330	Unassigned	1.0
+1803014	Unassigned	1.0
+90686	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+351236	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4367583	k__Bacteria; p__Proteobacteria	0.6
+12837	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+567725	k__Bacteria	1.0
+3617607	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+385834	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4154525	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+1037579	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+234324	Unassigned	1.0
+3601770	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4082	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Sphaerochaetales; f__Sphaerochaetaceae; g__wall-less; s__spirochete	1.0
+1111191	k__Bacteria; p__Proteobacteria	0.7
+4419561	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+77726	k__Bacteria; p__Firmicutes	0.6
+566103	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+2268857	k__Bacteria	1.0
+1132675	k__Bacteria; p__Firmicutes	0.6
+4417767	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+4094805	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+210213	k__Bacteria; p__Firmicutes	0.6
+789693	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+525239	Unassigned	1.0
+4376803	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+571095	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+4356825	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+109619	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+911016	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+163773	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+279553	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+2573946	k__Bacteria	1.0
+4447441	k__Bacteria; p__Firmicutes	0.6666666666666666
+2117818	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+811179	k__Bacteria	1.0
+4383677	Unassigned	1.0
+814853	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4338182	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+202391	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+171460	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Leptotrichiaceae; g__Streptobacillus; s__moniliformis	0.75
+322136	k__Bacteria; p__Firmicutes	0.8
+556428	k__Bacteria	1.0
+4337660	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+179854	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4225242	Unassigned	1.0
+4342039	k__Bacteria; p__Firmicutes	0.8
+1133255	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+515968	Unassigned	1.0
+1135946	k__Bacteria; p__Proteobacteria	1.0
+4360571	k__Bacteria; p__Firmicutes	0.9
+90652	k__Bacteria; p__Firmicutes	0.75
+178838	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+960530	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+1063527	k__Bacteria; p__Firmicutes	0.875
+530120	Unassigned	1.0
+4301333	k__Bacteria; p__Firmicutes	0.6666666666666666
+311867	Unassigned	1.0
+181665	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+1115071	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+359626	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+877752	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+186988	k__Bacteria; p__Firmicutes	0.7
+152512	k__Bacteria	1.0
+253214	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+923176	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+572373	k__Bacteria; p__Proteobacteria	1.0
+146037	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+1132070	Unassigned	1.0
+1940	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4411367	k__Bacteria; p__Proteobacteria	1.0
+256327	k__Bacteria; p__Firmicutes	0.7
+347566	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Methylococcales; f__Crenotrichaceae; g__Crenothrix; s__polyspora	0.6
+915430	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+334819	k__Bacteria; p__Firmicutes	0.75
+983745	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2762496	Unassigned	1.0
+98137	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2529283	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+2397589	Unassigned	1.0
+753803	Unassigned	1.0
+4303114	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+114487	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Sphaerochaetales; f__Sphaerochaetaceae; g__wall-less; s__spirochete	1.0
+2494386	k__Bacteria; p__Firmicutes	0.7
+22082	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6666666666666666
+3576	Unassigned	1.0
+253702	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.6
+820402	k__Bacteria; p__Firmicutes	0.9
+84660	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4407964	Unassigned	1.0
+329794	k__Bacteria	1.0
+190060	k__Bacteria	1.0
+176704	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+357370	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+2134881	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+815638	k__Bacteria	1.0
+1024063	k__Bacteria	1.0
+2422766	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+1098473	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+188333	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+827889	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Leptotrichiaceae; g__Streptobacillus; s__moniliformis	0.75
+3995074	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.75
+522595	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.7777777777777778
+1037951	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+12972	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4415878	k__Bacteria	1.0
+3232	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.8
+3361368	Unassigned	1.0
+877033	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+105388	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4328298	k__Bacteria	1.0
+1097519	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+1041410	k__Bacteria; p__Firmicutes; c__Bacilli	1.0
+1057538	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.6
+607251	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4295991	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+801579	k__Bacteria	1.0
+4483131	k__Bacteria	1.0
+273862	k__Bacteria; p__Proteobacteria	0.8
+14949	k__Bacteria; p__Firmicutes	0.6
+276744	k__Bacteria; p__Firmicutes	0.9
+233593	Unassigned	1.0
+301923	Unassigned	1.0
+4434443	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+157668	Unassigned	1.0
+967425	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+4450249	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2231398	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+546765	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4348520	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4414563	k__Bacteria; p__Thermi; c__Deinococci; o__Thermales; f__Thermaceae; g__Marinithermus; s__hydrothermalis	1.0
+304067	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2245321	k__Bacteria	1.0
+1020171	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+749486	k__Bacteria	1.0
+4307589	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.875
+383245	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+2752492	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4336527	k__Bacteria	1.0
+1114718	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+4357680	Unassigned	1.0
+165042	k__Bacteria; p__Firmicutes; c__Clostridia	0.6
+511136	Unassigned	1.0
+186077	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+519695	Unassigned	1.0
+808374	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+1722468	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.75
+516647	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+768898	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+14180	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+2978565	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+164089	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Leptotrichiaceae; g__Streptobacillus; s__moniliformis	1.0
+594286	k__Bacteria; p__Firmicutes	0.8
+565020	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+1103203	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+193422	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+99452	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+543452	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+1138690	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+319238	k__Bacteria; p__Proteobacteria	1.0
+880694	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4193312	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4408670	Unassigned	1.0
+937248	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae; g__Scopulibacillus; s__darangshiensis	1.0
+376180	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+323836	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+349786	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8888888888888888
+210264	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+139597	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+291090	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+300099	Unassigned	1.0
+4357025	k__Bacteria; p__Firmicutes	0.6
+1614788	k__Bacteria; p__Firmicutes	0.6
+161726	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+257318	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4348607	Unassigned	1.0
+258054	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+550587	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+794069	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4311651	k__Bacteria	1.0
+209760	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+189028	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales; f__Xenococcaceae	0.6
+167511	Unassigned	1.0
+2272569	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+785062	Unassigned	1.0
+524536	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1086010	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+484439	k__Bacteria; p__Firmicutes; c__Clostridia	1.0
+85525	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+2805447	k__Bacteria; p__Firmicutes	0.8
+3817438	k__Bacteria; p__Firmicutes; c__Clostridia	0.6
+517011	Unassigned	1.0
+1143460	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+221407	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+3314057	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+155997	k__Bacteria; p__Firmicutes	0.6
+1013169	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+419544	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+75332	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.6
+567515	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6666666666666666
+2678580	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+4342102	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+150451	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales	0.5714285714285714
+174325	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+1661969	k__Bacteria; p__Firmicutes	0.6
+58491	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.7
+576519	k__Bacteria; p__Proteobacteria	0.6
+770290	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+72465	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+273870	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+178374	k__Bacteria; p__Proteobacteria	0.7
+573180	k__Bacteria	1.0
+1098140	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+805573	k__Bacteria; p__Firmicutes	0.75
+4469529	k__Bacteria; p__Firmicutes; c__Bacilli	0.6
+1048228	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+509638	Unassigned	1.0
+1140286	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1105611	k__Bacteria; p__Firmicutes	0.8
+517223	Unassigned	1.0
+2579939	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+185088	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+620813	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+610721	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+12133	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1053138	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1055786	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+102069	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+430858	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1141940	k__Bacteria; p__Firmicutes	0.8
+2545906	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+74862	Unassigned	1.0
+4379571	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4370420	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4343762	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+4462587	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+519797	Unassigned	1.0
+853756	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1073979	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+3654884	k__Bacteria; p__Firmicutes	0.6
+1127998	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+580990	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales; f__Cohaesibacteraceae; g__Cohaesibacter; s__gelatinilyticus	1.0
+315671	k__Bacteria; p__Firmicutes	0.7
+3426615	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+3240365	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+305272	k__Bacteria; p__Firmicutes	0.8
+4434459	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae; g__Scopulibacillus; s__darangshiensis	1.0
+456906	k__Bacteria; p__Firmicutes; c__Bacilli	0.5714285714285714
+761841	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+540478	k__Bacteria; p__Firmicutes	0.6
+592559	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Methylococcales; f__Crenotrichaceae; g__Crenothrix; s__polyspora	0.6666666666666666
+565853	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+54563	k__Bacteria; p__Proteobacteria	0.8
+327728	Unassigned	1.0
+140691	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+949701	k__Bacteria; p__Firmicutes	0.7
+1606832	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+579858	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	0.6
+577027	Unassigned	1.0
+114964	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+416063	k__Bacteria; p__Firmicutes; c__Bacilli	0.5714285714285714
+4345928	k__Bacteria	1.0
+180321	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria	0.6666666666666666
+560868	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6666666666666666
+343273	k__Bacteria	1.0
+4375080	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4312242	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+150987	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4422974	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4330337	Unassigned	1.0
+193801	Unassigned	1.0
+353532	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+165758	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+137666	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+297631	Unassigned	1.0
+4371071	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+519504	Unassigned	1.0
+4424719	k__Bacteria; p__Firmicutes	0.6
+1146204	k__Bacteria	1.0
+79	Unassigned	1.0
+1141610	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+1133006	k__Bacteria; p__Proteobacteria	0.6
+324915	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+1061704	k__Bacteria; p__Firmicutes	0.7
+405278	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+529929	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+1140689	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+165515	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4366548	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+970742	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+40546	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Methylococcales; f__Crenotrichaceae; g__Crenothrix; s__polyspora	0.6666666666666666
+1143023	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+550733	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae; g__Nautilia	0.6666666666666666
+275689	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+30384	Unassigned	1.0
+109575	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6666666666666666
+6503	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+632539	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+257043	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+184118	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+3864823	k__Bacteria; p__Firmicutes	0.8
+166493	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+608675	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+399087	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+1114257	k__Bacteria; p__Firmicutes	0.6
+584295	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+682524	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+151294	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+520295	Unassigned	1.0
+233104	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1043500	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.75
+1122363	k__Bacteria	1.0
+1056070	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+3261476	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+1086359	k__Bacteria	1.0
+2088164	k__Bacteria	1.0
+12287	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+668919	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+333212	k__Bacteria; p__Firmicutes	0.7
+113265	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+822570	k__Bacteria; p__Firmicutes	0.9
+537510	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+862001	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+4455569	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4345272	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+825830	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+952231	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+1809752	Unassigned	1.0
+1754342	k__Bacteria	1.0
+1035800	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	1.0
+936219	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4394046	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+196781	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+185198	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+150495	Unassigned	1.0
+94242	k__Archaea; p__Euryarchaeota; c__Thermoplasmata; o__Thermoplasmatales; f__Picrophilaceae	1.0
+391990	k__Bacteria; p__Firmicutes	0.875
+860263	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+64384	k__Bacteria; p__Firmicutes	0.7777777777777778
+823067	k__Bacteria	1.0
+1120420	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+208785	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+13832	k__Bacteria; p__Firmicutes	0.7
+916393	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1110005	k__Bacteria	1.0
+1097208	k__Bacteria	1.0
+1109067	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.6
+250143	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+294134	Unassigned	1.0
+32634	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4328910	k__Bacteria; p__Firmicutes; c__Bacilli	1.0
+368350	k__Bacteria; p__Firmicutes	0.8
+837366	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+236153	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+629776	Unassigned	1.0
+823745	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1145	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales; f__SAGMA-X; g__Nitrosotalea; s__devanaterra	1.0
+2428620	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+107044	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+170409	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4310095	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+545061	Unassigned	1.0
+107506	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.7
+2930682	Unassigned	1.0
+103272	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+104998	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4323342	k__Archaea; p__Euryarchaeota; c__Methanomicrobia	1.0
+183603	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+235385	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+4305463	Unassigned	1.0
+826144	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4398077	Unassigned	1.0
+4450486	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+782413	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4396527	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+181436	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1077325	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+951714	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+871972	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+890982	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4418224	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+185769	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+1014684	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+561627	Unassigned	1.0
+1713225	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+1137534	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+278497	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+819	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae	0.5555555555555556
+294521	Unassigned	1.0
+661252	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1733555	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+4356801	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+144989	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4103317	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+577305	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+333517	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+2723504	Unassigned	1.0
+526753	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+4305211	k__Bacteria; p__Firmicutes	0.7
+4410816	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+3772087	Unassigned	1.0
+698557	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+186384	k__Bacteria	1.0
+179463	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+689156	k__Bacteria; p__Firmicutes; c__Clostridia	0.6666666666666666
+349762	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+13957	k__Bacteria	1.0
+207893	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1016896	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2707395	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+247720	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4381303	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+183049	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+133599	k__Bacteria; p__Firmicutes	0.6
+452703	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+357640	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+141955	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Sphaerochaetales; f__Sphaerochaetaceae; g__wall-less; s__spirochete	1.0
+4388900	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+371360	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+3764940	Unassigned	1.0
+99195	k__Bacteria; p__Proteobacteria	1.0
+4362854	k__Bacteria; p__Firmicutes	0.6
+2823384	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+2853117	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+163361	k__Bacteria; p__Firmicutes	0.75
+4362978	k__Bacteria	1.0
+4406217	Unassigned	1.0
+407441	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4311693	Unassigned	1.0
+183948	k__Bacteria; p__Proteobacteria	0.8
+359412	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+517381	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+422784	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+220064	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+289833	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+105384	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae	0.75
+145993	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga	0.75
+317252	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4351733	k__Bacteria; p__Firmicutes	0.6
+15120	k__Bacteria; p__Firmicutes	0.6
+1062363	k__Bacteria	1.0
+169400	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1101151	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4361522	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+836308	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4330232	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+177	Unassigned	1.0
+293729	k__Bacteria	1.0
+312980	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+46882	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+833333	k__Bacteria	1.0
+880135	Unassigned	1.0
+581527	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+646353	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae; g__Nautilia; s__profundicola	1.0
+1132317	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+1130618	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4309612	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+246027	k__Bacteria; p__Firmicutes	0.6
+105927	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+187159	k__Bacteria; p__Firmicutes	0.8
+223746	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+741890	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+143476	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+351280	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+580233	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+9870	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+317249	k__Bacteria; p__Firmicutes	0.6
+774894	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+3306	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.7
+4425789	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2430693	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+1050080	Unassigned	1.0
+77778	k__Bacteria; p__Spirochaetes; c__Spirochaetes; o__Sphaerochaetales; f__Sphaerochaetaceae; g__wall-less; s__spirochete	1.0
+469852	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+583562	k__Bacteria; p__Proteobacteria	0.6
+369840	Unassigned	1.0
+2465826	k__Bacteria; p__Firmicutes	0.7
+590381	k__Bacteria; p__Firmicutes	0.6
+402376	k__Bacteria; p__Firmicutes	0.6
+981957	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+12915	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+752365	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+4440548	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+561406	k__Bacteria; p__Firmicutes	0.6
+70378	k__Bacteria	1.0
+15257	k__Bacteria	1.0
+3989849	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+366506	Unassigned	1.0
+4308348	Unassigned	1.0
+167017	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales; f__Cystobacteraceae	0.7
+972955	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+192836	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__xylanolytica	1.0
+331282	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+4336595	Unassigned	1.0
+523144	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+712861	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4385664	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+319359	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+1121058	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.6
+1111723	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4395496	k__Bacteria; p__Firmicutes	0.8888888888888888
+687937	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+975253	Unassigned	1.0
+859522	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4483329	k__Bacteria; p__Firmicutes; c__Bacilli	0.6666666666666666
+4330158	Unassigned	1.0
+400178	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+557711	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.6
+809998	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Desulfurobacteriaceae	0.625
+4457730	k__Bacteria	1.0
+12808	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+216903	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+176151	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+303619	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+707265	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4295289	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+199432	k__Bacteria; p__Firmicutes	0.6
+258659	k__Bacteria; p__Firmicutes	0.8
+1019222	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+63191	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+184000	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+100650	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+100203	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.6
+268353	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+1133720	k__Bacteria; p__Firmicutes	0.6
+4260083	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+335060	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+225174	k__Bacteria; p__Firmicutes; c__Clostridia; o__Halanaerobiales; f__Halanaerobiaceae; g__Halocella; s__cellulolsilytica	1.0
+4484389	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+528130	Unassigned	1.0
+22797	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1139594	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+556184	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+347953	Unassigned	1.0
+4083238	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4299696	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4366892	k__Bacteria	1.0
+28823	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+91998	k__Bacteria; p__Firmicutes	0.7
+198212	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+3667970	Unassigned	1.0
+4338704	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+514926	Unassigned	1.0
+4323076	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+963912	k__Bacteria; p__Firmicutes	0.875
+516959	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+162150	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4303627	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+111313	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+2821812	Unassigned	1.0
+137025	k__Bacteria	1.0
+982067	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+804865	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+592452	k__Bacteria; p__Firmicutes	0.8
+4413620	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+515539	Unassigned	1.0
+208897	k__Bacteria; p__Firmicutes	0.7
+1071450	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+81160	k__Bacteria	1.0
+4367027	Unassigned	1.0
+4415814	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+320826	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+432525	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+626867	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.7
+4425997	Unassigned	1.0
+261218	k__Bacteria; p__Firmicutes	0.6
+1105	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales; f__SAGMA-X; g__Nitrosotalea; s__devanaterra	1.0
+1137294	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+582819	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+58790	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+166669	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+185645	Unassigned	1.0
+524619	Unassigned	1.0
+4318438	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+184191	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+2063500	Unassigned	1.0
+197248	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+3043394	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.875
+526725	k__Bacteria; p__Firmicutes	0.7
+178356	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+528148	Unassigned	1.0
+192326	k__Bacteria; p__Firmicutes	0.6
+226845	k__Bacteria; p__Firmicutes	0.6
+723677	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4326090	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+273776	k__Bacteria; p__Proteobacteria	0.8
+212383	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+416186	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+320458	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+193358	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+528890	Unassigned	1.0
+652616	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+978149	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4394763	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	1.0
+43103	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	1.0
+4410889	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+2269886	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+420854	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+19113	k__Bacteria; p__Firmicutes	0.6
+217968	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+9755	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4419624	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+368175	Unassigned	1.0
+966636	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+4392135	Unassigned	1.0
+959633	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+3541842	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	0.6
+81949	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4401539	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4370723	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+165390	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+264656	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4430193	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+171126	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+2888723	Unassigned	1.0
+758208	Unassigned	1.0
+527159	Unassigned	1.0
+161447	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
 107892	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
-147523	k__Bacteria; p__Cyanobacteria; c__Synechococcophycideae; o__Pseudanabaenales; f__Pseudanabaenaceae; g__Leptolyngbya; s__frigida	0.7
-328755	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales; f__Phyllobacteriaceae	0.8
-4313041	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Porphyromonadaceae; g__Parabacteroides; s__distasonis	1.0
-1140810	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Streptosporangiaceae; g__Nonomuraea	0.6
-52818	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
-2439887	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
-2117818	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales; f__Hyphomicrobiaceae; g__Rhodoplanes; s__elegans	1.0
-792531	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Aeromonadales; f__Aeromonadaceae; g__Aeromonas	0.9
-559105	k__Bacteria; p__Firmicutes; c__Clostridia; o__Thermoanaerobacterales; f__Thermoanaerobacteraceae; g__Thermoanaerobacter; s__uzonensis	0.9
+790223	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6666666666666666
+198786	Unassigned	1.0
+4294859	k__Bacteria; p__Firmicutes	0.6
+524301	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+937965	Unassigned	1.0
+594106	Unassigned	1.0
+271084	Unassigned	1.0
+1006504	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6666666666666666
+4354173	k__Bacteria; p__Firmicutes	0.8
+850562	Unassigned	1.0
+358697	k__Bacteria	1.0
+1866008	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+528166	Unassigned	1.0
+273134	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+664146	k__Bacteria; p__Firmicutes	0.6
+198490	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8333333333333334
+197780	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+1145384	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+3111389	Unassigned	1.0
+632212	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+276272	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+253954	k__Bacteria; p__Firmicutes	0.6
+170046	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+946128	k__Bacteria; p__Firmicutes	0.7
+517068	Unassigned	1.0
+722431	k__Bacteria; p__Firmicutes	0.6
+4449454	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+81121	k__Bacteria; p__Firmicutes	0.9
+141282	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4341586	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+718701	k__Bacteria; p__Proteobacteria	1.0
+153785	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4410103	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales; f__Cystobacteraceae	0.8
+930656	Unassigned	1.0
+174654	k__Bacteria; p__Proteobacteria	0.6
+47556	k__Bacteria; p__Proteobacteria	1.0
+320306	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+355587	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+951490	k__Bacteria; p__Firmicutes	0.7
+13401	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1047674	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+555760	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales; f__Cystobacteraceae	0.8
+1980933	k__Bacteria; p__Firmicutes; c__Bacilli	0.75
+365012	k__Bacteria; p__Firmicutes	0.6
+170383	k__Bacteria; p__Firmicutes	0.75
+4423231	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+308569	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8888888888888888
+3550619	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+544733	Unassigned	1.0
+195317	k__Bacteria	1.0
+541328	k__Bacteria	1.0
+4341595	k__Bacteria	1.0
+934443	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+26373	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales; f__Cystobacteraceae; g__Cystobacter; s__fuscus	1.0
+4361369	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4363899	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+233981	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+347565	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+543220	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+193776	Unassigned	1.0
+554012	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+9554	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+788391	Unassigned	1.0
+4466830	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+704830	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+541055	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+527654	k__Bacteria; p__Firmicutes; c__Clostridia; o__Halanaerobiales; f__Halanaerobiaceae; g__Halothermothrix; s__orenii	1.0
+4370215	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+4330483	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+4340498	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2120211	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+898374	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4377694	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+128429	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+261920	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+2388086	k__Bacteria	1.0
+4438536	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+173865	k__Bacteria; p__Proteobacteria	0.8
+509213	Unassigned	1.0
+509373	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+3768618	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+281407	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+2199223	Unassigned	1.0
+1097786	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+458596	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+290799	k__Bacteria; p__Firmicutes	0.6
+172893	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Leptotrichiaceae; g__Streptobacillus; s__moniliformis	0.75
+340340	k__Bacteria	1.0
+1604096	k__Bacteria; p__Firmicutes	0.875
+718882	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+1137409	k__Bacteria	1.0
+206056	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+875118	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2332707	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+996995	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	1.0
+936935	k__Bacteria; p__Firmicutes; c__Bacilli	0.5714285714285714
+199123	k__Bacteria; p__Firmicutes	0.8
+273792	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+836288	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+851667	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	0.9
+15785	k__Bacteria; p__Firmicutes; c__Bacilli; o__Haloplasmatales; f__Haloplasmataceae; g__Haloplasma; s__contractile	1.0
+184695	k__Bacteria; p__Firmicutes; c__Clostridia	0.6
+519044	Unassigned	1.0
+4470106	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+579407	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1611845	k__Bacteria; p__Firmicutes; c__Bacilli	0.6666666666666666
+4332215	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.6
+539994	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+360604	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+244156	k__Bacteria; p__Firmicutes	0.7
+3413555	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6666666666666666
+780282	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+559142	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+782122	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4370843	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+652681	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4337903	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+144558	k__Bacteria; p__Bacteroidetes; c__Cytophagia; o__Cytophagales; f__Cytophagaceae	0.6666666666666666
+1103554	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+4328432	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+4348253	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+679966	Unassigned	1.0
+1124812	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+172267	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+3254563	Unassigned	1.0
+140721	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+1106358	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+684420	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+3049001	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+421611	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+695831	k__Bacteria; p__Firmicutes	0.8
+511327	k__Bacteria	1.0
+183258	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4304830	Unassigned	1.0
+189350	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+1109623	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+330003	k__Bacteria; p__Firmicutes	0.75
+1079968	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+659582	k__Bacteria	1.0
+370368	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+70330	k__Bacteria	1.0
+1129898	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+1120121	k__Bacteria; p__Firmicutes	0.6
+4479762	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+831676	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+197492	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales; f__Cystobacteraceae	0.8
+1068830	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4322809	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4440230	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+254355	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+893157	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+1134279	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+4360164	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+1124064	k__Bacteria	1.0
+177092	Unassigned	1.0
+2120210	k__Bacteria	1.0
+906174	k__Bacteria	1.0
+4382045	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+4423778	k__Bacteria; p__Firmicutes	0.9
+860477	Unassigned	1.0
+176743	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+741050	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+558567	k__Bacteria	1.0
+175954	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+719400	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+4454083	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+1715972	Unassigned	1.0
+1039893	k__Bacteria; p__Firmicutes; c__Bacilli	0.5714285714285714
+576765	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+152796	k__Bacteria; p__Firmicutes; c__Bacilli	1.0
+818704	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+558327	k__Bacteria; p__Firmicutes	0.8
+528965	Unassigned	1.0
+7761	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1029117	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+164624	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+695304	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+893513	k__Bacteria	1.0
+239277	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+229413	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+302420	Unassigned	1.0
+302080	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Barnesiellaceae; g__Barnesiella	1.0
+315132	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+741098	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+179515	Unassigned	1.0
+66723	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4435466	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4371943	Unassigned	1.0
+569952	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1013429	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae; g__Scopulibacillus; s__darangshiensis	1.0
+246454	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4425763	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6666666666666666
+367373	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4397814	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+1976824	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+727205	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+4408520	k__Bacteria	1.0
+4004054	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4282872	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+750371	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+824087	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4315519	k__Bacteria; p__Firmicutes	0.7
+1055192	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+3294726	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+4405914	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+118615	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+83866	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1011012	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+939177	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+1044602	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+362461	k__Bacteria	1.0
+4335023	k__Bacteria; p__Firmicutes	0.6666666666666666
+4414240	Unassigned	1.0
+3189910	Unassigned	1.0
+2195540	k__Bacteria; p__Firmicutes	0.6
+4372396	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+694179	k__Bacteria; p__Firmicutes	0.8
+4446133	k__Bacteria; p__Firmicutes	0.9
+1107243	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+303448	k__Bacteria	1.0
+21784	k__Bacteria	1.0
+341551	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales; f__SAGMA-X; g__Nitrosotalea; s__devanaterra	1.0
+4289383	k__Bacteria	1.0
+144140	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+1053080	k__Bacteria	1.0
+362501	k__Bacteria; p__Proteobacteria	0.6
+294573	Unassigned	1.0
+2492265	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+137543	k__Bacteria; p__Firmicutes	0.7
+927867	k__Bacteria; p__Firmicutes	0.8888888888888888
+585346	k__Bacteria; p__Firmicutes	0.7
+592323	Unassigned	1.0
+4312478	k__Bacteria; p__Firmicutes	0.6
+226789	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4424692	k__Bacteria; p__Firmicutes	0.7
+342403	k__Bacteria	1.0
+729564	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+4481957	k__Bacteria; p__Firmicutes	0.7
+367748	Unassigned	1.0
+269919	Unassigned	1.0
+907135	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+4341403	Unassigned	1.0
+4420411	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+4151	Unassigned	1.0
+827919	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+700971	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8333333333333334
+338916	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	1.0
+4331428	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+365656	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4454818	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+863832	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4381755	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.875
+144720	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+514512	Unassigned	1.0
+40840	k__Bacteria; p__Firmicutes	0.75
+199278	Unassigned	1.0
+101819	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+329225	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6666666666666666
+817611	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+263524	k__Bacteria	1.0
+113733	Unassigned	1.0
+197966	k__Bacteria	1.0
+183428	k__Bacteria; p__Firmicutes; c__Clostridia	0.6
+299348	k__Bacteria; p__Firmicutes	0.6
+352225	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1126132	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+870406	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+711276	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Koribacteraceae; g__Candidatus Koribacter; s__versatilis	0.6
+4304862	k__Bacteria; p__Firmicutes	0.8
+9254	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4361423	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+347203	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4334113	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+720133	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+2254349	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1138108	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+11226	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae; g__Lebetimonas; s__acidiphila	1.0
+1117972	k__Bacteria; p__Firmicutes	0.7
+337507	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1557455	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8333333333333334
+566030	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4464473	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+1524633	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+576097	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+816435	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+367117	k__Bacteria; p__Firmicutes	0.6
+191096	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+978530	Unassigned	1.0
+3509168	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+287811	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae; g__Bacillus; s__racemilacticus	1.0
+357932	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+120281	k__Bacteria; p__Firmicutes	0.9
+299514	k__Bacteria; p__Firmicutes; c__Clostridia	0.6
+284241	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+8105	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4345255	k__Bacteria	1.0
+246752	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+173212	k__Bacteria	1.0
+4452542	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+244067	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+4302603	k__Bacteria; p__Firmicutes	0.7
+510759	Unassigned	1.0
+4298155	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+2061548	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4378327	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4335425	k__Bacteria	1.0
+255639	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4365871	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+297934	k__Bacteria	1.0
+894493	k__Bacteria; p__Firmicutes	0.875
+1136590	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+1113318	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae; g__Nautilia	1.0
+265653	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+938614	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+184278	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1048105	k__Bacteria; p__Firmicutes	0.6666666666666666
+9155	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4336406	Unassigned	1.0
+320120	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4334331	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+1050461	Unassigned	1.0
+82008	k__Bacteria; p__Firmicutes	0.6
+1097596	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+522627	Unassigned	1.0
+335167	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+764356	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+366110	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+1107152	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+4418037	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae	0.7
+825642	k__Bacteria	1.0
+4380803	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+4340065	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+493391	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+11432	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2810058	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4254525	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae; g__Scopulibacillus; s__darangshiensis	1.0
+1138243	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+186815	k__Bacteria; p__Firmicutes	0.8
+4340682	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+516648	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1000635	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+132991	Unassigned	1.0
+960163	k__Bacteria	1.0
+1121558	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.5714285714285714
+14610	k__Bacteria; p__Firmicutes	0.8
+248740	k__Bacteria; p__Firmicutes	0.6
+404002	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+271921	k__Bacteria	1.0
+1837337	k__Bacteria; p__Firmicutes	0.6
+260809	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1119783	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+193515	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+137026	k__Bacteria; p__Firmicutes	0.6
+4311939	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+187530	k__Bacteria	1.0
+149643	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4310831	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+10849	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales; f__Cystobacteraceae	0.8
+848286	Unassigned	1.0
+302475	k__Bacteria; p__Firmicutes; c__Clostridia	0.6
+4378640	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4459893	Unassigned	1.0
+240253	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+162216	k__Bacteria; p__Proteobacteria	0.8
+4366390	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+752321	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+7980	Unassigned	1.0
+106723	Unassigned	1.0
+343270	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+2311362	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+567854	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+122394	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+569580	k__Bacteria; p__Firmicutes	0.7
+4310844	Unassigned	1.0
+219027	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4317645	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+547165	Unassigned	1.0
+4467697	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+2544619	k__Bacteria; p__Firmicutes	0.9
+1133393	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+532598	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+218254	k__Bacteria; p__Firmicutes	0.6
+523616	Unassigned	1.0
+2782257	Unassigned	1.0
+1894098	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	0.9
+154751	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+887875	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4463937	Unassigned	1.0
+4430582	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+2115593	Unassigned	1.0
+4412049	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+3352220	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+290581	k__Bacteria	1.0
+271234	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+197631	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	1.0
+3515488	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+13730	k__Bacteria; p__Firmicutes; c__Clostridia	0.6
+2784938	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+915793	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+846306	Unassigned	1.0
+988202	Unassigned	1.0
+251710	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Koribacteraceae; g__Candidatus Koribacter; s__versatilis	0.6
+247070	Unassigned	1.0
+4345046	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Koribacteraceae; g__Candidatus Koribacter; s__versatilis	0.6666666666666666
+862297	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+2318399	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.7
+130529	Unassigned	1.0
+142238	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+4364883	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4375593	k__Bacteria; p__Firmicutes	0.7
+264673	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4427847	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+4369816	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+4323428	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+171490	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1109955	k__Bacteria; p__Proteobacteria	1.0
+528634	Unassigned	1.0
+175023	Unassigned	1.0
+815903	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4389144	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1036182	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+292424	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+4473612	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+367188	k__Bacteria; p__Firmicutes	0.6
+522292	Unassigned	1.0
+4330018	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+7452	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4367726	Unassigned	1.0
+869007	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+344827	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+561902	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4461322	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+4454736	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+469663	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	0.8
+365459	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4310027	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+136137	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4363421	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+196638	k__Bacteria	1.0
+4473664	k__Bacteria; p__Proteobacteria	0.6
+20285	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+811080	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae	0.75
+809811	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+345666	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.6666666666666666
+4398135	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+730054	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+94046	k__Bacteria; p__Bacteroidetes; c__Cytophagia; o__Cytophagales; f__Cytophagaceae	0.6666666666666666
+361850	Unassigned	1.0
+1036307	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2108564	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+11445	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4437453	Unassigned	1.0
+808919	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales; f__Cystobacteraceae	0.8
+235381	Unassigned	1.0
+107628	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+115201	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4303388	Unassigned	1.0
+73570	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+851788	Unassigned	1.0
+152004	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+522512	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+4311218	k__Bacteria; p__Proteobacteria	0.9
+4335530	Unassigned	1.0
+1108877	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4436059	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+8553	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+59955	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+93332	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+4039231	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4453271	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4476280	k__Bacteria; p__Firmicutes	0.6
+4371578	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+1070934	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales; f__SAGMA-X; g__Nitrosotalea; s__devanaterra	1.0
+2594040	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+542053	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+99439	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+190526	Unassigned	1.0
+565851	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4311438	Unassigned	1.0
+513249	Unassigned	1.0
+87670	k__Bacteria; p__Proteobacteria	0.6
+218910	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4425341	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+177819	k__Bacteria	1.0
+927202	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+4321404	Unassigned	1.0
+4404641	k__Bacteria; p__Firmicutes	0.6
+14536	k__Bacteria; p__Firmicutes	0.9
+365152	Unassigned	1.0
+323619	Unassigned	1.0
+4429	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+230139	Unassigned	1.0
+748703	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae	0.5555555555555556
+846327	Unassigned	1.0
+4431829	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+1141373	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales; f__Cystobacteraceae	0.8
+526429	Unassigned	1.0
+277610	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+13885	k__Bacteria	1.0
+308938	k__Bacteria; p__Firmicutes	0.5555555555555556
+987790	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga	0.6
+932077	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+330860	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+145514	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1007399	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+1063794	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+299390	k__Bacteria; p__Firmicutes	0.8
+185324	Unassigned	1.0
+4410638	Unassigned	1.0
+3652076	Unassigned	1.0
+136380	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+2885267	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+182564	k__Bacteria; p__Firmicutes; c__Clostridia; o__Natranaerobiales; f__Natranaerobiaceae; g__Natronoanaerobium; s__salstagnum	1.0
+849594	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+588591	Unassigned	1.0
+3758550	k__Bacteria; p__Firmicutes	0.8
+3509162	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+4392188	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+409932	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+3718738	k__Bacteria	1.0
+625693	k__Bacteria; p__Firmicutes	0.6
+4381759	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+4454082	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+180590	Unassigned	1.0
+4350788	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4335320	Unassigned	1.0
+183777	k__Bacteria; p__Firmicutes	0.7
+4365357	k__Bacteria; p__Chlamydiae; c__Chlamydiia; o__Chlamydiales; f__Simkaniaceae	0.6666666666666666
+4165495	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4463851	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales; f__Cystobacteraceae	0.7
+4481636	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+669859	k__Bacteria; p__Firmicutes	0.6
+4356666	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+137817	k__Bacteria; p__Firmicutes	0.9
+879723	k__Bacteria; p__Firmicutes	0.7
+624438	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+289052	Unassigned	1.0
+439204	k__Bacteria	1.0
+1048878	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+107047	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+862836	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+291047	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+304929	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+1096270	k__Bacteria; p__Firmicutes	0.7777777777777778
+368452	Unassigned	1.0
+243715	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+247306	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+237136	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+3956998	k__Bacteria; p__Proteobacteria	1.0
+430191	Unassigned	1.0
+3630086	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+960505	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4357636	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+3860	Unassigned	1.0
+2200209	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4455702	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+655310	Unassigned	1.0
+1015954	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.8
+515372	Unassigned	1.0
+352776	k__Bacteria	1.0
+2525775	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4213092	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales; f__Xenococcaceae	0.7
+453529	Unassigned	1.0
+80384	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+833107	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Leptotrichiaceae; g__Streptobacillus; s__moniliformis	0.75
+4458776	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+854941	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+172009	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4323074	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+1689014	Unassigned	1.0
+3897458	k__Bacteria; p__Firmicutes; c__Bacilli	1.0
+1144348	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4400927	k__Archaea; p__Euryarchaeota; c__Methanomicrobia; o__Methanosarcinales; f__Methermicoccaceae; g__Methermicoccus; s__shengliensis	1.0
+1139884	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+4344483	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+4475831	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+193108	Unassigned	1.0
+795662	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+107650	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+368070	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+2648149	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+370056	k__Bacteria; p__Firmicutes	0.6
+360425	Unassigned	1.0
+979585	k__Bacteria	1.0
+336110	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+26799	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales; f__Xenococcaceae	0.5714285714285714
+4013058	k__Bacteria; p__Firmicutes	0.7
+610941	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+157838	k__Bacteria; p__Firmicutes; c__Clostridia	1.0
+367351	k__Bacteria; p__Proteobacteria	1.0
+336372	Unassigned	1.0
+256048	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+981172	k__Bacteria; p__Firmicutes; c__Bacilli	0.5714285714285714
+584653	Unassigned	1.0
+1043859	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4326452	k__Bacteria; p__Firmicutes	0.6666666666666666
+510417	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+632631	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4437566	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+3350934	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+566047	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+286034	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+280639	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+181808	k__Bacteria; p__Proteobacteria	0.8
+184478	k__Bacteria	1.0
+323424	k__Bacteria; p__Proteobacteria	0.8
+4472632	k__Bacteria; p__Firmicutes; c__Bacilli	1.0
+900515	k__Bacteria	1.0
+844726	Unassigned	1.0
+767448	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4306121	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4385558	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+586677	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+4443538	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+891662	k__Bacteria; p__Firmicutes	1.0
+4368038	k__Bacteria	1.0
+71074	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales; f__SAGMA-X; g__Nitrosotalea; s__devanaterra	1.0
+365758	Unassigned	1.0
+89985	k__Bacteria; p__Firmicutes	0.7
+4431746	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+471184	k__Bacteria; p__Aquificae; c__Aquificae; o__Aquificales; f__Desulfurobacteriaceae	0.7142857142857143
+33577	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+7316	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1120396	Unassigned	1.0
+4348716	Unassigned	1.0
+4349512	k__Bacteria; p__Firmicutes	0.8
+1801172	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.8
+2797980	k__Bacteria	1.0
+1143908	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+4406595	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4191587	Unassigned	1.0
+4297420	k__Bacteria; p__Firmicutes; c__Bacilli	0.75
+4456567	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1133895	k__Bacteria; p__Firmicutes	0.6
+249952	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+337846	k__Bacteria	1.0
+4422652	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+525431	Unassigned	1.0
+4414486	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4474582	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+51116	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+13958	k__Bacteria	1.0
+42372	k__Bacteria; p__Firmicutes; c__Bacilli	1.0
+1036883	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+258821	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+2111162	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+24414	k__Archaea; p__Euryarchaeota; c__Thermoplasmata; o__Thermoplasmatales; f__Picrophilaceae	1.0
+4368514	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+869556	k__Bacteria	1.0
+4450317	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+326054	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+268664	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+177872	Unassigned	1.0
+4300564	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+287388	k__Bacteria; p__Firmicutes; c__Clostridia	0.6
+177599	k__Bacteria; p__Firmicutes	0.8
+4338154	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+1092684	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+444228	k__Bacteria	1.0
+2551103	Unassigned	1.0
+3592276	k__Bacteria; p__Proteobacteria; c__Betaproteobacteria; o__Procabacteriales; f__Procabacteriaceae; g__Leeia; s__oryzae	1.0
+915747	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+189284	Unassigned	1.0
+291575	Unassigned	1.0
+37047	k__Bacteria	1.0
+2221242	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+525698	Unassigned	1.0
+14363	k__Bacteria	1.0
+999977	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+260246	k__Bacteria; p__Proteobacteria	0.625
+10672	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales; f__Cystobacteraceae	0.7
+179645	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+1140810	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+3267887	k__Bacteria; p__Firmicutes	0.8
+159978	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4437436	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+342749	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+2676430	k__Bacteria; p__Firmicutes; c__Bacilli	1.0
+1550344	Unassigned	1.0
+4354539	Unassigned	1.0
+1133608	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+132602	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2116314	k__Bacteria; p__Firmicutes	0.875
+4347159	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4376418	Unassigned	1.0
+2887447	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+569759	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+687940	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4323075	k__Bacteria; p__Firmicutes	0.6
+559395	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2231364	k__Bacteria	1.0
+2164261	k__Bacteria; p__Firmicutes	0.6
+99023	k__Bacteria; p__Firmicutes	0.7
+548468	k__Bacteria; p__Proteobacteria	1.0
+565542	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+105407	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4392658	k__Bacteria; p__Firmicutes	0.7
+700436	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4483056	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+209087	Unassigned	1.0
+323045	k__Bacteria; p__Proteobacteria	0.6666666666666666
+2325822	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+183736	k__Bacteria	1.0
+265983	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+605409	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1037696	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+420929	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4301111	k__Bacteria; p__Firmicutes	0.9
+531264	Unassigned	1.0
+238532	k__Bacteria	1.0
+1031787	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+193209	k__Bacteria; p__Firmicutes	0.7
+561032	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+834798	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Leptotrichiaceae; g__Streptobacillus; s__moniliformis	0.75
+4424039	Unassigned	1.0
+1015017	k__Bacteria; p__Proteobacteria	1.0
+3658577	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+141151	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+589846	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1082059	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+210009	k__Bacteria	1.0
+239398	k__Bacteria	1.0
+1134860	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+1107713	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4337884	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+301253	Unassigned	1.0
+4384203	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+556108	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+177732	k__Bacteria	1.0
+842699	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+206424	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+828162	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Leptotrichiaceae; g__Streptobacillus; s__moniliformis	0.75
+1067645	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+320308	k__Bacteria	1.0
+4429556	k__Bacteria; p__Firmicutes	0.7
+3908642	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+362997	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+4352494	k__Bacteria; p__Firmicutes	0.7142857142857143
+559607	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+455175	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4343217	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1141031	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+4389146	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4379655	k__Bacteria; p__Firmicutes	0.7
+4347196	Unassigned	1.0
+4428060	Unassigned	1.0
+5652	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+704200	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+825929	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+203093	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+319707	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Methylococcales; f__Crenotrichaceae; g__Crenothrix; s__polyspora	0.6
+1004326	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+357451	Unassigned	1.0
+101121	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+315305	k__Bacteria; p__Firmicutes	0.8
+101603	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4456222	k__Bacteria	1.0
+3571256	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1137471	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4323285	Unassigned	1.0
+4205301	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4409247	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+588954	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+530531	Unassigned	1.0
+44006	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+941499	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+2099920	Unassigned	1.0
+240680	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+131693	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+14292	k__Bacteria; p__Firmicutes; c__Clostridia; o__Halanaerobiales; f__Halanaerobiaceae	0.75
+312477	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+225945	Unassigned	1.0
+4042728	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
 4410345	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
-1132553	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Rhizobiales	1.0
-332510	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
-98889	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Enterobacteriales; f__Enterobacteriaceae	0.9
-4360950	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Desulfobacterales	1.0
-4370726	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Fusobacteriaceae; g__Cetobacterium; s__somerae	1.0
-106578	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Oscillatoriales; f__Phormidiaceae; g__Oscillatoria; s__spongeliae	0.6
-3608204	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
-152262	k__Bacteria; p__Chlamydiae; c__Chlamydiia; o__Chlamydiales	0.7
-548719	k__Bacteria; p__Firmicutes; c__Bacilli; o__Lactobacillales; f__Enterococcaceae; g__Enterococcus	0.6
-821395	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Xanthomonadales; f__Xanthomonadaceae	1.0
-268395	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Nocardiaceae; g__Rhodococcus; s__ruber	0.7
-87218	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Peptococcaceae; g__Desulfosporosinus; s__meridiei	0.8
+836932	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4412201	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+34942	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1144022	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1109229	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+790312	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4186239	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.75
+4305916	Unassigned	1.0
+4319560	k__Bacteria; p__Firmicutes	0.9
+4361784	k__Bacteria; p__Firmicutes	0.8
+1002057	k__Bacteria; p__Firmicutes	0.8888888888888888
+851811	k__Bacteria	1.0
+4327601	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4329899	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+1708702	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4329646	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+953758	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+348612	Unassigned	1.0
+4405527	k__Bacteria; p__Firmicutes	0.7
+573107	k__Bacteria; p__Firmicutes	0.9
+7367	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1064511	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+1001719	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+70730	k__Bacteria; p__Proteobacteria	1.0
+1104583	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+503399	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1139988	Unassigned	1.0
+4338991	Unassigned	1.0
+4463691	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+168397	Unassigned	1.0
+258212	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+362525	k__Bacteria; p__Firmicutes; c__Bacilli	0.625
 4348329	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
-2621281	k__Bacteria; p__Bacteroidetes; c__Flavobacteriia; o__Flavobacteriales; f__Weeksellaceae; g__Elizabethkingia; s__meningoseptica	0.7
-1133579	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Legionellales; f__Legionellaceae; g__Legionella	0.9
+20496	k__Bacteria; p__Firmicutes	0.8
+938542	k__Bacteria; p__Firmicutes; c__Bacilli	0.6666666666666666
+1736067	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+513714	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1085243	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+137325	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+226469	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4337109	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+363923	k__Bacteria; p__Proteobacteria	0.6
+4385465	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4509	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+4482723	Unassigned	1.0
+779345	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+194294	Unassigned	1.0
+316225	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+12122	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4473175	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4297407	Unassigned	1.0
+470236	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+327910	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+522515	Unassigned	1.0
+4475092	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+776	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae	0.5555555555555556
+4395629	k__Bacteria; p__Firmicutes	0.7
+301841	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+4358053	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+452696	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+768483	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4388677	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+912023	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+3775142	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+3992501	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+555365	k__Bacteria; p__Firmicutes	0.8
+336616	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+4317351	Unassigned	1.0
+976140	Unassigned	1.0
+161745	k__Bacteria; p__Fusobacteria; c__Fusobacteriia; o__Fusobacteriales; f__Leptotrichiaceae; g__Streptobacillus; s__moniliformis	0.75
+4183921	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+9001	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4424643	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+189477	k__Bacteria	1.0
+4350610	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+195342	k__Bacteria	1.0
+4466931	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales; f__Xenococcaceae	0.6
+783511	k__Bacteria; p__Firmicutes	0.7
+4320462	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+49544	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+830734	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+155881	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4419712	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+824647	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+4404046	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4418344	k__Bacteria	1.0
+1006231	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.7
+11759	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+94847	k__Bacteria; p__Firmicutes; c__Clostridia	0.5714285714285714
+1083016	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+276833	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+1105559	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+8850	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+12184	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+523221	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+966918	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+841520	k__Archaea; p__Euryarchaeota; c__Methanomicrobia	1.0
+4482754	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+702595	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+571078	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+439949	k__Bacteria; p__Firmicutes	0.6
+1135354	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+522398	Unassigned	1.0
+427687	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+50112	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1065306	k__Bacteria	1.0
+1123630	k__Bacteria	1.0
+592897	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+1001624	k__Bacteria; p__Firmicutes	0.8888888888888888
+938	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae	0.7
+924910	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4435690	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+509902	Unassigned	1.0
+3807	k__Bacteria; p__Firmicutes; c__Bacilli	0.5714285714285714
+1779674	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+1016818	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+4407301	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+104459	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+195775	k__Bacteria; p__Firmicutes	0.7
+234242	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.5555555555555556
+13413	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+549640	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga	0.75
+1063197	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+289404	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+1819091	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+1144465	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4302966	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+240056	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+1101588	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+965043	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+3569531	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+1051521	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+854915	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+518723	Unassigned	1.0
+1598513	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	1.0
+175570	k__Bacteria	1.0
+4380846	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2603271	Unassigned	1.0
+841400	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+32352	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+108949	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales; f__SAGMA-X; g__Nitrosotalea; s__devanaterra	1.0
+196246	Unassigned	1.0
+4408437	k__Bacteria; p__Firmicutes; c__Bacilli	0.6666666666666666
+30465	Unassigned	1.0
+2746063	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7777777777777778
+307268	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4336032	k__Bacteria; p__Firmicutes	0.8
+3747214	k__Bacteria; p__Firmicutes	0.6
+311921	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+576274	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+817924	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+633056	Unassigned	1.0
+511532	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	1.0
+1135992	k__Bacteria; p__Firmicutes	0.9
+3662644	k__Bacteria; p__Firmicutes; c__Bacilli	0.5714285714285714
+577022	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+911369	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+3156520	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+4384079	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+4381400	Unassigned	1.0
+848950	Unassigned	1.0
+930980	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7142857142857143
+3686364	k__Bacteria; p__Firmicutes; c__Clostridia; o__Clostridiales; f__Syntrophomonadaceae; g__Syntrophomonas; s__wolfei	0.6
+4377046	Unassigned	1.0
+4379524	k__Bacteria; p__Firmicutes	0.7777777777777778
+4482853	Unassigned	1.0
+1049642	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+509017	Unassigned	1.0
+359093	k__Bacteria; p__Firmicutes; c__Clostridia; o__Halanaerobiales; f__Halanaerobiaceae; g__Halothermothrix; s__orenii	1.0
+225670	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+4440566	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4461398	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+216097	k__Bacteria	1.0
+2316721	k__Bacteria	1.0
+646494	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+682918	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae	0.6666666666666666
+1111449	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4415033	k__Bacteria; p__Firmicutes; c__Bacilli	0.5714285714285714
+168128	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+301676	k__Bacteria; p__Firmicutes	0.6
+2426773	Unassigned	1.0
+64294	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+344573	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+583155	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+719343	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales; f__Xenococcaceae	0.6
+810895	Unassigned	1.0
+582558	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae	0.75
+4338024	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+531114	Unassigned	1.0
+633074	k__Bacteria; p__Firmicutes	0.7
+2481947	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+2331935	Unassigned	1.0
+727134	k__Bacteria; p__Firmicutes	0.6
+6279	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+4448880	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+240738	k__Bacteria	1.0
+12027	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+611604	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+48918	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+225722	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+809489	k__Bacteria	1.0
+339019	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+547740	k__Bacteria; p__Firmicutes; c__Clostridia	0.6
+4448012	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+158494	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+4480210	k__Bacteria; p__Firmicutes	0.6
+1059170	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4433382	k__Bacteria	1.0
+4319891	k__Bacteria; p__Firmicutes	0.6
+348525	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8888888888888888
+582389	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+151023	k__Bacteria; p__Firmicutes	0.6
+4316381	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+2855258	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+524076	Unassigned	1.0
+228686	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+299070	k__Bacteria; p__Firmicutes; c__Bacilli	0.6
+4364157	k__Archaea; p__Crenarchaeota	1.0
+209452	k__Archaea; p__Crenarchaeota; c__Thermoprotei; o__Desulfurococcales; f__Desulfurococcaceae	0.75
+273710	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+1931141	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+278777	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+536531	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+199880	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+290952	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+386833	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+570125	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae; g__Nautilia	0.6666666666666666
+295370	k__Bacteria; p__Firmicutes	0.6
+2889500	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+283017	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+520539	Unassigned	1.0
+4442860	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+1124776	k__Bacteria; p__Firmicutes	0.6
+4217330	Unassigned	1.0
+404763	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+525934	Unassigned	1.0
+291190	Unassigned	1.0
+702348	k__Bacteria; p__Firmicutes	0.6
+4413571	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+268092	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2000781	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4301422	Unassigned	1.0
+4398672	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+936008	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+115224	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4330131	k__Bacteria	1.0
+4394666	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4378213	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4477696	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+180825	Unassigned	1.0
+270758	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+104080	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+216096	k__Bacteria	1.0
+3678627	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.75
+534626	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+297923	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae; g__Bacillus; s__racemilacticus	1.0
+108598	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+993769	k__Bacteria; p__Firmicutes	0.6
+903340	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+870398	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+146956	k__Bacteria; p__Firmicutes	0.9
+15623	Unassigned	1.0
+4309324	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+177276	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6666666666666666
+853793	k__Bacteria; p__Firmicutes; c__Bacilli	0.6666666666666666
+593155	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+191604	Unassigned	1.0
+681370	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4386115	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+582872	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4306061	k__Bacteria; p__Firmicutes	0.8
+304021	k__Bacteria; p__Firmicutes	0.6
+4447394	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+4334744	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+345548	k__Bacteria; p__Firmicutes	0.8
+103126	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+268782	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.7
+314128	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+3047463	k__Bacteria	1.0
+1033284	k__Bacteria; p__Firmicutes	0.6
+810000	k__Bacteria; p__Firmicutes	0.7
+591316	k__Bacteria; p__Firmicutes	0.7
+1105085	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+3478590	k__Bacteria; p__Firmicutes	0.9
+514152	Unassigned	1.0
+143579	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+24210	Unassigned	1.0
+29133	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+405726	k__Bacteria; p__Firmicutes	0.9
+2716047	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+10095	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+647708	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4381246	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+1125647	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+76200	k__Bacteria	1.0
+86428	k__Bacteria; p__Firmicutes	0.8
+277682	k__Bacteria; p__Firmicutes	0.6
+4331429	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+218488	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+4373049	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+3767077	k__Bacteria	1.0
+1055306	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+4359813	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+165247	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+821327	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+36985	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales; f__SAGMA-X; g__Nitrosotalea; s__devanaterra	1.0
+199447	k__Bacteria	1.0
+2533450	k__Bacteria; p__Firmicutes	0.6666666666666666
+4323811	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+451161	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+4466425	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+558839	Unassigned	1.0
+4380020	k__Bacteria; p__Firmicutes	0.6
+952029	k__Bacteria; p__Firmicutes	0.7
+1143305	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+664205	k__Bacteria	1.0
+4339460	k__Bacteria; p__Firmicutes	0.6
+526774	Unassigned	1.0
+100793	k__Bacteria; p__Proteobacteria	1.0
+525355	Unassigned	1.0
+15850	Unassigned	1.0
+3698582	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4391566	k__Bacteria	1.0
+258969	k__Bacteria; p__Proteobacteria	0.8
+303487	k__Bacteria; p__Firmicutes	0.9
+147086	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+336769	Unassigned	1.0
+929961	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4295387	k__Bacteria; p__Firmicutes	0.6
+108927	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales; f__SAGMA-X; g__Nitrosotalea; s__devanaterra	1.0
+4374084	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+1008002	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+4417874	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+185297	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+1209	Unassigned	1.0
+4339978	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4472467	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+178331	Unassigned	1.0
+186974	Unassigned	1.0
+4095705	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4473973	Unassigned	1.0
+327271	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4442862	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+12944	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+5457	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+4338018	Unassigned	1.0
+1110959	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1805553	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+9252	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4298371	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4363722	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4349004	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+526773	k__Bacteria; p__Firmicutes	0.7
+2045262	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4472338	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__xylanolytica	1.0
+255657	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.7
+4397579	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+286128	k__Bacteria; p__Firmicutes	0.7
+4304126	k__Bacteria; p__Firmicutes	0.75
+3084281	k__Bacteria	1.0
+4581	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+2000706	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+137611	k__Bacteria; p__Firmicutes	0.6
+261809	k__Bacteria; p__Firmicutes	0.6
+805578	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+334083	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+613229	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales; f__SAGMA-X; g__Nitrosotalea; s__devanaterra	1.0
+190890	k__Bacteria	1.0
+976319	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+271203	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+192800	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+3746640	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+4426107	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+158939	k__Bacteria; p__Firmicutes	0.7
+182134	Unassigned	1.0
+420500	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+2448302	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+327793	k__Bacteria; p__Proteobacteria	1.0
+511747	Unassigned	1.0
+555873	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4328364	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+1954303	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	1.0
+190169	Unassigned	1.0
+4329133	k__Bacteria	1.0
+4424654	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4335683	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+993110	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+210155	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8888888888888888
+4239853	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4127464	k__Bacteria	1.0
+307140	Unassigned	1.0
+4420377	k__Bacteria; p__Firmicutes	0.6
+4351472	k__Bacteria	1.0
+4478216	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+779164	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales; f__Hahellaceae; g__Hahella	1.0
+4415951	k__Bacteria; p__Firmicutes	0.7
+4430704	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4481839	k__Bacteria; p__Firmicutes	0.8
+260554	Unassigned	1.0
+529745	Unassigned	1.0
+115021	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+410549	k__Bacteria; p__Firmicutes	0.6
+1057342	k__Bacteria; p__Firmicutes	0.7777777777777778
+177655	k__Bacteria; p__Firmicutes	0.6
+90465	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6666666666666666
+285219	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+793101	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	0.7
+3629684	k__Bacteria	1.0
+675223	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+821905	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+63478	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+31020	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales; f__SAGMA-X; g__Nitrosotalea; s__devanaterra	1.0
+4370479	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.7
+1661972	k__Bacteria	1.0
+174753	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+4427435	Unassigned	1.0
+1052599	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4327593	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4412941	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+106310	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+1094006	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+1095069	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+196370	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+48874	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4475659	k__Bacteria; p__Firmicutes	0.6
+649143	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4457355	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+4412341	k__Bacteria; p__Firmicutes	0.8
+295594	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+4334560	k__Bacteria	1.0
+4441968	k__Bacteria; p__Firmicutes	0.8
+172623	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+4263094	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales; f__SUP05; g__Ruthia; s__magnifica	1.0
+10486	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+154282	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+368426	k__Bacteria; p__Firmicutes	0.9
+369741	Unassigned	1.0
+955596	k__Bacteria	1.0
+104887	k__Archaea; p__Euryarchaeota; c__Methanomicrobia; o__Methanosarcinales; f__Methermicoccaceae; g__Methermicoccus; s__shengliensis	1.0
+524116	Unassigned	1.0
+756973	k__Archaea; p__Crenarchaeota; c__Thaumarchaeota; o__Cenarchaeales; f__SAGMA-X; g__Nitrosotalea; s__devanaterra	1.0
+4378218	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+539182	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+160873	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+2469255	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+6648	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+319983	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+321330	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+12703	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+564081	k__Bacteria; p__Firmicutes	0.7
+163919	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria	1.0
+267503	k__Bacteria; p__Proteobacteria	0.8
+526385	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+562526	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+294202	k__Bacteria; p__Firmicutes	0.8
+812597	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+575576	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+13813	k__Bacteria; p__Firmicutes	0.9
+176638	Unassigned	1.0
+134286	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8571428571428571
+3250935	k__Bacteria; p__Firmicutes; c__Bacilli	1.0
+814070	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+804849	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4403646	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4302956	Unassigned	1.0
+525363	k__Bacteria	1.0
+303914	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+866683	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4424397	k__Bacteria; p__Firmicutes	0.7
+4408009	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+4462164	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+855346	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+734955	k__Bacteria; p__Firmicutes	0.7
+4323232	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+2539537	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+663649	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+2251911	Unassigned	1.0
+320110	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+609925	k__Bacteria; p__Firmicutes	0.6
+322033	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+4348925	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+350277	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+158170	k__Bacteria; p__Firmicutes; c__Clostridia; o__Halanaerobiales; f__Halanaerobiaceae; g__Halothermothrix; s__orenii	1.0
+175696	Unassigned	1.0
+4295367	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+4369634	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4327276	Unassigned	1.0
+914964	k__Bacteria; p__Firmicutes	0.8
+4335424	k__Bacteria	1.0
+1041100	k__Bacteria; p__Firmicutes	0.7
+4432431	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+867450	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+379623	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+186705	Unassigned	1.0
+2555294	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+624618	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.8
+540739	k__Bacteria	1.0
+3192102	k__Bacteria; p__Firmicutes	0.6
+532388	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4376120	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+689513	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.8
+294855	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.6
+4433199	k__Bacteria; p__Firmicutes	0.9
+296971	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+4306920	k__Bacteria; p__Firmicutes	0.75
+49524	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+991797	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+1113881	k__Bacteria; p__Firmicutes; c__Bacilli; o__Bacillales; f__Sporolactobacillaceae	0.75
+1131355	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+2076641	Unassigned	1.0
+570635	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+319384	k__Bacteria; p__Firmicutes	0.6
+47411	Unassigned	1.0
+2998997	k__Bacteria; p__Proteobacteria; c__Epsilonproteobacteria; o__Nautiliales; f__Nautiliaceae	0.75
+4457195	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+1886044	Unassigned	1.0
+673761	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+556906	Unassigned	1.0
+4377922	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+665978	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+58307	Unassigned	1.0
+5672	k__Bacteria; p__Proteobacteria	1.0
+553118	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4377091	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+810918	k__Bacteria; p__Thermi; c__Deinococci; o__Thermales; f__Thermaceae; g__Marinithermus; s__hydrothermalis	1.0
+1019904	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+906749	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.9
+778200	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.6
+1111941	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4386351	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga; s__fermentans	1.0
+860257	k__Bacteria; p__Firmicutes	0.6
+1121111	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4371325	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	1.0
+4333043	Unassigned	1.0
+2028641	k__Bacteria; p__Cyanobacteria; c__Oscillatoriophycideae; o__Chroococcales	0.7
+1127561	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria; o__Oceanospirillales	0.6
+523121	Unassigned	1.0
+1135594	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+363996	k__Bacteria; p__Proteobacteria	0.6
+818834	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+3549545	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae; g__Cytophaga	0.75
+337798	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4348061	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales; f__Actinomycetaceae; g__Actinomyces	0.6
+51306	k__Bacteria; p__Acidobacteria; c__Acidobacteriia; o__Acidobacteriales; f__Koribacteraceae; g__Candidatus Koribacter; s__versatilis	1.0
+4318771	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.8
+151968	k__Bacteria; p__Firmicutes; c__Bacilli	0.5714285714285714
+4331254	Unassigned	1.0
+825031	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+4300521	Unassigned	1.0
+3682321	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+4450770	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+1138192	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+59553	k__Bacteria; p__Proteobacteria; c__Alphaproteobacteria; o__Kiloniellales; f__Kiloniellaceae; g__Thalassospira; s__xiamenensis	0.7
+919562	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+4326794	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7142857142857143
+1596	Unassigned	1.0
+4365206	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.9
+296442	Unassigned	1.0
+4314049	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+3505877	Unassigned	1.0
+1138403	k__Bacteria; p__Firmicutes	0.8
+193761	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Thermodesulfobacteriales; f__Thermodesulfobacteriaceae; g__Thermodesulfatator; s__indicus	1.0
+1630085	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4448555	Unassigned	1.0
+570390	k__Bacteria; p__Bacteroidetes; c__Bacteroidia; o__Bacteroidales; f__Marinilabiaceae	0.6666666666666666
+4303686	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+4423450	k__Bacteria; p__Firmicutes	0.6666666666666666
+158997	k__Bacteria; p__Firmicutes; c__Clostridia; o__Halanaerobiales; f__Halanaerobiaceae; g__Halothermothrix; s__orenii	1.0
+950266	k__Bacteria; p__Firmicutes; c__Bacilli	0.5714285714285714
+72018	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.7
+530230	Unassigned	1.0
+4401405	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	1.0
+2319292	k__Bacteria; p__Proteobacteria; c__Deltaproteobacteria; o__Myxococcales; f__Cystobacteraceae	0.8
+2017017	k__Bacteria; p__Proteobacteria; c__Gammaproteobacteria	0.6
+907586	k__Bacteria; p__Actinobacteria; c__Actinobacteria; o__Actinomycetales	1.0
+198502	Unassigned	1.0
+1059933	k__Bacteria; p__Firmicutes	0.7
+4431608	k__Bacteria; p__Firmicutes	0.6
+294894	k__Bacteria; p__Firmicutes	0.8

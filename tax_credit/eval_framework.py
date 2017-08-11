@@ -775,7 +775,7 @@ def per_sequence_precision(expected_table_fp, actual_table_fp, feature_table,
                    line.split('\t')[0], sample_id) for line in exp]
         # run precision/recall
         ps, rs, fs = framework_functions.compute_prf(
-            exp_taxa, obs_taxa, test_type='mock', level=taxonomy_level,
+            exp_taxa, obs_taxa, test_type='mock',
             sample_weight=weights, exclude=exclude)
     else:
         ps, rs, fs = -1., -1., -1.
