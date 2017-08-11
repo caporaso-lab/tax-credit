@@ -14,7 +14,7 @@ setup(
     name='tax-credit',
     version='0.0.0-dev',
     license='BSD-3-Clause',
-    packages=find_packages(),
+    packages=find_packages('tax_credit'),
     install_requires=['biom-format', 'pandas', 'statsmodels', 'bokeh',
                       'scipy', 'jupyter', 'scikit-bio', 'seaborn',
 		      'scikit-learn', 'joblib'],
