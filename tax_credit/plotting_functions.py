@@ -145,8 +145,9 @@ def boxplot_from_data_frame(df,
     metric = "y"
     """
 
+    sns.set_style("whitegrid")
     ax = violinplot(x=group_by, y=metric, hue=hue, data=df, color=color,
-                    palette=color_palette)
+                    palette=color_palette, order=sorted(df[group_by].unique()))
     ax.set_ylim(bottom=y_min, top=y_max)
     ax.set_ylabel(metric)
     ax.set_xlabel(group_by)
@@ -442,6 +443,7 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
         only the best parameter configuration for each method? (True)
     '''
     box = dict()
+    best = dict()
     # Aggregate all distance matrix data
     archive = pd.DataFrame()
     for table, dataset_id, reference_id in seek_tables(expected_results_dir):
@@ -461,25 +463,25 @@ def average_distance_boxplots(expected_results_dir, group_by="method",
 
         # for each method find best average method/parameter config
         if use_best:
-            best, param_report = isolate_top_params(
+            best[reference], param_report = isolate_top_params(
                 archive_subset, group_by, params, metric)
             # display(pd.DataFrame(param_report, columns=[group_by, params]))
 
             method_rank = _show_method_rank(
-                best, group_by, params, metric, [group_by, params, metric],
-                ascending=False)
+                best[reference], group_by, params, metric,
+                [group_by, params, metric], ascending=False)
 
         else:
-            best = archive_subset
+            best[reference] = archive_subset
 
-        results = per_method_pairwise_tests(best, group_by=group_by,
+        results = per_method_pairwise_tests(best[reference], group_by=group_by,
                                             metric=metric, paired=paired,
                                             parametric=parametric)
 
         box[reference] = boxplot_from_data_frame(
-            best, group_by=group_by, color=color, hue=hue, metric=metric,
+            best[reference], group_by=group_by, color=color, hue=hue,
             y_min=None, y_max=None, plotf=plotf, label_rotation=label_rotation,
-            color_palette=color_palette)
+            metric=metric, color_palette=color_palette)
 
         if use_best:
             box[reference] = _add_significance_to_boxplots(
